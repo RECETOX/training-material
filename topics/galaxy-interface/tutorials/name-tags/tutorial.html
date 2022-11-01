@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Name tags for following complex histories" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:42 +0000" />
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
 <meta name="DC.creator" content="Helena Rasche" />
 
         
@@ -145,10 +145,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -187,7 +191,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/galaxy-interface/tutorials/name-tags/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -274,7 +277,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:42 +0000",
+  "dateModified": "2022-10-18 14:23:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Name tags for following complex histories",
   "interactivityType": "mixed",
@@ -328,7 +331,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/name-tags/tutorial.html",
   "timeRequired": "PT20M",
   "keywords": "galaxy-interface",
-  "description": "The questions this  addresses are:\n - What are name tags or hash tags?\n - How can I use them to keep track of my data?\n\n\\nThe objectives are:\n - Learn how to set name tags\n - Learn how they are propagated\n\n",
+  "description": "The questions this  addresses are:\n - What are name tags or hash tags?\n - How can I use them to keep track of my data?\n\n\nThe objectives are:\n - Learn how to set name tags\n - Learn how they are propagated\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -413,7 +416,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -452,7 +455,7 @@
 
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jun 24, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -470,7 +473,7 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="introduction">Introduction</h1>
+                <h1 id="introduction">Introduction</h1>
 
 <p>Long ad hoc data analysis sessions in <span class="notranslate">Galaxy</span> can leave you with a multitude of
 datasets named things like “1724: Summarize taxa on data 1628 and data 1629” or “1853: Pick
@@ -512,11 +515,12 @@ To more clearly see this, look at the simple <span class="notranslate">workflow<
 </table>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#setting-name-tags-manually" id="markdown-toc-setting-name-tags-manually">Setting name tags manually</a></li>
   <li><a href="#setting-name-tags-with-the-rule-builder" id="markdown-toc-setting-name-tags-with-the-rule-builder">Setting name tags with the Rule Builder</a></li>
   <li><a href="#name-tags-in-action" id="markdown-toc-name-tags-in-action">Name tags in Action</a></li>
@@ -527,14 +531,14 @@ To more clearly see this, look at the simple <span class="notranslate">workflow<
 <h1 id="setting-name-tags-manually">Setting name tags manually</h1>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-set-name-tags-manually"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Set name tags manually</h3>
+  <div id="hands-on-set-name-tags-manually" class="box-title" aria-label="hands-on box: Set name tags manually"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Set name tags manually</div>
 
   <ol>
     <li>
       <p>Create a new history</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <h3 data-toc-skip="" id="-tip-creating-a-new-history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history</h3>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
     </li>
     <li>
       <p>Using the <strong>Upload</strong> <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> tool select <strong>Paste/Fetch data</strong> and paste some data like “Hello, World”</p>
@@ -553,7 +557,7 @@ To more clearly see this, look at the simple <span class="notranslate">workflow<
       </ul>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <h3 data-toc-skip="" id="-tip-adding-a-tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag</h3>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
+      <blockquote class="tip">  <div id="tip-adding-a-tag" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
     </li>
   </ol>
 
@@ -566,7 +570,7 @@ To more clearly see this, look at the simple <span class="notranslate">workflow<
 <p><img src="../../images/nametag-colour.png" alt="Name tags have different colours based on their contents. " loading="lazy" /></p>
 
 <blockquote class="details">
-  <h3 id="details-in-depth-colours"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> In depth: Colours</h3>
+  <div id="details-in-depth-colours" class="box-title"><button type="button" aria-controls="details-in-depth-colours-contents" aria-expanded="true" aria-label="Toggle details box: In depth: Colours"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: In depth: Colours<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The colours are generated from a checksum of the text of each tag. Every time the same tag is used, the same colour will be generated. Different words will usually result in different colours.</p>
 
@@ -583,7 +587,7 @@ While current evidence (<span class="citation"><a href="#microsoft-word-recognit
 <p>For more information about the rule-based uploader, please see <a href="/training-material/topics/galaxy-interface/tutorials/upload-rules/tutorial.html">this dedicated tutorial</a></p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-set-name-tags-during-upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Set name tags during upload</h3>
+  <div id="hands-on-set-name-tags-during-upload" class="box-title" aria-label="hands-on box: Set name tags during upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Set name tags during upload</div>
 
   <ol>
     <li>Open the <strong>Upload</strong> <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> interface</li>
@@ -650,7 +654,7 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
 <p>The datasets now have two types of tags: name tags and general purpose tags. General purpose tags, unlike name tags, will not propagate. They’re mainly useful for searching through your datasets (Try entering <code class="language-plaintext highlighter-rouge">tag=paired</code> in your History search box).</p>
 
 <blockquote class="question">
-  <h3 id="question-questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Questions</h3>
+  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
   <ol>
     <li>How many tags does the dataset named <code class="language-plaintext highlighter-rouge">GSM461177</code> have? Which ones?</li>
@@ -658,7 +662,7 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
   </ol>
 
   <blockquote class="solution">
-    <h3 id="solution-solution"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>3 tags. You can find all tags of a dataset by first clicking on it to expand it, and then clicking on the tags icon <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span>. The tags are <code class="language-plaintext highlighter-rouge">#GSM461177</code>, <code class="language-plaintext highlighter-rouge">paired</code>, and <code class="language-plaintext highlighter-rouge">untreat</code></li>
@@ -673,7 +677,7 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
 <p>Now that we have our name tags in place, let’s see them in action!</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-some-analysis-steps"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Some analysis steps</h3>
+  <div id="hands-on-some-analysis-steps" class="box-title" aria-label="hands-on box: Some analysis steps"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Some analysis steps</div>
   <ol>
     <li><strong>Select first</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> lines from a dataset (head)
       <ul>
@@ -693,7 +697,7 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
 <p><img src="../../images/nametag-filter.png" alt="Filtering datasets is possible on tag names. " loading="lazy" /></p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-multiple-inputs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Multiple inputs</h3>
+  <div id="hands-on-multiple-inputs" class="box-title" aria-label="hands-on box: Multiple inputs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Multiple inputs</div>
   <ol>
     <li><strong>Join two datasets</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> side by side on a specified field
       <ul>
@@ -714,7 +718,7 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Naming your datasets clearly is good practice, but name tags provide an easier alternative to the amount of effort required to rename 100s of datasets.</p>
@@ -746,7 +750,7 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -781,7 +785,7 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Helena Rasche, 2022 <b>Name tags for following complex histories (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/name-tags/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/name-tags/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Helena Rasche,  <b>Name tags for following complex histories (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/name-tags/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/name-tags/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -789,18 +793,25 @@ https://zenodo.org/record/1185122/files/GSM461182_untreat_single.counts
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{galaxy-interface-name-tags,
 author = "Helena Rasche",
 title = "Name tags for following complex histories (Galaxy Training Materials)",
-year = "2022",
-month = "06",
-day = "24"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/name-tags/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -817,8 +828,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -831,7 +842,7 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
 

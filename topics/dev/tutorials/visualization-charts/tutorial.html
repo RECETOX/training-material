@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="JavaScript plugins" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:41 +0000" />
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
 <meta name="DC.creator" content="Saskia Hiltemann" />
 <meta name="DC.creator" content="Youri Hoogstrate" />
 <meta name="DC.creator" content="Björn Grüning" />
@@ -149,10 +149,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -191,7 +195,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/dev/tutorials/visualization-charts/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -278,7 +281,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:41 +0000",
+  "dateModified": "2022-10-18 14:23:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "JavaScript plugins",
   "interactivityType": "mixed",
@@ -332,7 +335,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/visualization-charts/tutorial.html",
   "timeRequired": "PT1H",
   "keywords": "dev",
-  "description": "The questions this  addresses are:\n - How can I make a custom visualization plugin for Galaxy?\n\n\\nThe objectives are:\n - Learn how to add JavaScript plugins to Galaxy using the Charts visualization framework\n\n",
+  "description": "The questions this  addresses are:\n - How can I make a custom visualization plugin for Galaxy?\n\n\nThe objectives are:\n - Learn how to add JavaScript plugins to Galaxy using the Charts visualization framework\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -605,7 +608,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -708,7 +711,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 27, 2021 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -726,7 +729,7 @@
             <div class="col-sm-10">
                  
 
-                <h2 class="no_toc" id="introduction">Introduction</h2>
+                <h2 id="introduction">Introduction</h2>
 
 <p>In this tutorial we are going to demonstrate how to add a third party
 JavaScript-based visualization to <span class="notranslate">Galaxy</span>, and we’ll talk about what the benefits
@@ -738,7 +741,7 @@ available for the visualization of <code class="language-plaintext highlighter-r
 <a href="https://chemapps.stolaf.edu/jmol/jsmol/jsmol.htm">JSMol</a>.</p>
 
 <blockquote class="details">
-  <h3 id="details-background-what-is-the-pdb-protein-data-bank-file-format"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> Background: What is the PDB (Protein Data Bank) file format?</h3>
+  <div id="details-background-what-is-the-pdb-protein-data-bank-file-format" class="box-title"><button type="button" aria-controls="details-background-what-is-the-pdb-protein-data-bank-file-format-contents" aria-expanded="true" aria-label="Toggle details box: Background: What is the PDB (Protein Data Bank) file format?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Background: What is the PDB (Protein Data Bank) file format?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The <code class="language-plaintext highlighter-rouge">PDB</code>-file format contains atomic coordinates of biomolecules derived through a range of experimental and computational methods. Most commonly the file contains a spatial crystallographic snapshot of a protein. There are 100s of thousands of protein structures publicly available at the Protein Data Bank (<a href="https://www.rcsb.org">https://www.rcsb.org</a>). Proteins are usually labeled by a four-letter code.
 Here is an example of a <code class="language-plaintext highlighter-rouge">PDB</code>-file for a hydrolase bond to its inhibitor (PDB: <a href="https://www.rcsb.org/pdb/explore/explore.do?structureId=1acb">1ACB</a>):</p>
@@ -790,7 +793,7 @@ continue by visiting the protein viewer developer site at
 with the plugin.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>
@@ -807,13 +810,15 @@ with the plugin.</p>
 </blockquote>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#section-1---basic-plugin-setup" id="markdown-toc-section-1---basic-plugin-setup">Section 1 - Basic plugin setup</a></li>
   <li><a href="#section-2---allow-different-rendering-modes" id="markdown-toc-section-2---allow-different-rendering-modes">Section 2 - Allow different rendering modes</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
@@ -828,7 +833,7 @@ thing we are going to do is to clone a <em><span class="notranslate">Galaxy</spa
 directory structure for the new visualization plugin.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-1" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>Clone an instance of <em><span class="notranslate">Galaxy</span></em> in a path, further referred to as <code class="language-plaintext highlighter-rouge">$<span class="notranslate">GALAXY</span>_ROOT</code>:
@@ -873,7 +878,7 @@ be in the <code class="language-plaintext highlighter-rouge">png</code>-file for
 <p><img src="../../files/charts-plugins/pdb/logo.png" alt="Logo. " loading="lazy" /></p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-2" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>
@@ -894,7 +899,7 @@ their visualization. Throughout this tutorial we are going to gradually augment
 this file but for now we keep it simple.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-3"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-3" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>
@@ -925,7 +930,7 @@ your plugin with its new logo in the list there.</p>
 <h3 id="assign-a-new-datatype-to-your-visualization">Assign a new datatype to your visualization</h3>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-4"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-4" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>
@@ -937,7 +942,7 @@ your plugin with its new logo in the list there.</p>
       <p><code class="language-plaintext highlighter-rouge">&lt;test type="isinstance" test_attr="datatype" result_type="datatype"&gt;molecules.PDB&lt;/test&gt;</code></p>
     </li>
     <li>
-      <p>Remove the <code class="language-plaintext highlighter-rouge">&lt;specs&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;groups&gt;</code> sections.</p>
+      <p>Remove the <code class="language-plaintext highlighter-rouge">&lt;settings&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;groups&gt;</code> sections.</p>
     </li>
   </ol>
 
@@ -966,7 +971,7 @@ a working example or documentation. Fortunately the <em>PV-Viewer</em> comes wit
 Let’s take a look at the <a href="https://pv.readthedocs.io/">documentation</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-exploring-the-pv-viewer"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Exploring the PV-Viewer</h3>
+  <div id="hands-on-exploring-the-pv-viewer" class="box-title" aria-label="hands-on box: Exploring the PV-Viewer"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Exploring the PV-Viewer</div>
 
   <ol>
     <li>
@@ -985,7 +990,7 @@ Let’s take a look at the <a href="https://pv.readthedocs.io/">documentation</a
 <p>Now that we have learned the basics on how the viewer plugin works, we can edit it and adjust  <code class="language-plaintext highlighter-rouge">script.js</code>.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-5"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-5" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>Access your visualization’s <code class="language-plaintext highlighter-rouge">myviz/src</code> directory.
@@ -1038,7 +1043,7 @@ your <code class="language-plaintext highlighter-rouge">myviz</code> plugin dire
 instance, just make sure to properly refresh your browser.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-6"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-6" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>Navigate to your visualization’s root directory:
@@ -1070,7 +1075,7 @@ instance, just make sure to properly refresh your browser.</p>
 <p>In this section we will select a <code class="language-plaintext highlighter-rouge">PDB</code>-file from the Protein Data Bank and visualize it with our new plugin.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-7"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-7" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>
@@ -1118,7 +1123,7 @@ latter is provided in <em>JavaScript</em> and not as XML.</p>
 <p>More information on parameters can be found in the <a href="https://docs.galaxyproject.org/en/latest/dev/schema.html">wiki</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-8"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on</h3>
+  <div id="hands-on-hands-on-8" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
 
   <ol>
     <li>Add the following block into the <code class="language-plaintext highlighter-rouge">myviz.xml</code> file:
@@ -1173,7 +1178,7 @@ latter is provided in <em>JavaScript</em> and not as XML.</p>
 
 </blockquote>
 
-<h2 class="no_toc" id="conclusion">Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 
 <p>First of all, thank you for completing this tutorial. We have learned how to add
 JavaScript visualizations to <span class="notranslate">Galaxy</span> utilizing the Charts framework.</p>
@@ -1181,7 +1186,7 @@ JavaScript visualizations to <span class="notranslate">Galaxy</span> utilizing t
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Demonstrating a pluggable extension system for JavaScript visualizations</p>
@@ -1209,7 +1214,7 @@ JavaScript visualizations to <span class="notranslate">Galaxy</span> utilizing t
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -1244,7 +1249,7 @@ JavaScript visualizations to <span class="notranslate">Galaxy</span> utilizing t
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Saskia Hiltemann, Youri Hoogstrate, Björn Grüning, Aysam Guerler, Dannon Baker, 2021 <b>JavaScript plugins (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/visualization-charts/tutorial.html">https://training.galaxyproject.org/training-material/topics/dev/tutorials/visualization-charts/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Saskia Hiltemann, Youri Hoogstrate, Björn Grüning, Aysam Guerler, Dannon Baker,  <b>JavaScript plugins (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/visualization-charts/tutorial.html">https://training.galaxyproject.org/training-material/topics/dev/tutorials/visualization-charts/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1252,18 +1257,25 @@ JavaScript visualizations to <span class="notranslate">Galaxy</span> utilizing t
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{dev-visualization-charts,
 author = "Saskia Hiltemann and Youri Hoogstrate and Björn Grüning and Aysam Guerler and Dannon Baker",
 title = "JavaScript plugins (Galaxy Training Materials)",
-year = "2021",
-month = "05",
-day = "27"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/visualization-charts/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -1280,8 +1292,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -1294,7 +1306,7 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
 

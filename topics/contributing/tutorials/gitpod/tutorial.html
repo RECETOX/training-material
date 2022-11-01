@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Running the GTN website online using GitPod" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:41 +0000" />
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
 <meta name="DC.creator" content="Saskia Hiltemann" />
 
         
@@ -145,10 +145,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -187,7 +191,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/gitpod/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -274,7 +277,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:41 +0000",
+  "dateModified": "2022-10-18 14:23:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Running the GTN website online using GitPod",
   "interactivityType": "mixed",
@@ -328,7 +331,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/gitpod/tutorial.html",
   "timeRequired": "PT15M",
   "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How can I get a preview of the GTN website using GitPod?\n\n\\nThe objectives are:\n - Preview the GTN website online via GitPod\n - Make changes to the GTN website and preview those changes\n\n",
+  "description": "The questions this  addresses are:\n - How can I get a preview of the GTN website using GitPod?\n\n\nThe objectives are:\n - Preview the GTN website online via GitPod\n - Make changes to the GTN website and preview those changes\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -413,7 +416,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -543,7 +546,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jun 25, 2021 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -561,16 +564,17 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="introduction">Introduction</h1>
+                <h1 id="introduction">Introduction</h1>
 
 <p>If you are working on your own training materials and want preview them online without installing anything on your computer, you can do this using GitPod!</p>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, you will learn how to run a local instance of the GTN website:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#setting-up-gitpod" id="markdown-toc-setting-up-gitpod">Setting up Gitpod</a></li>
   <li><a href="#the-gitpod-workspace" id="markdown-toc-the-gitpod-workspace">The GitPod Workspace</a></li>
   <li><a href="#build-and-preview-the-gtn-website" id="markdown-toc-build-and-preview-the-gtn-website">Build and preview the GTN website</a></li>
@@ -584,7 +588,7 @@
 <h1 id="setting-up-gitpod">Setting up Gitpod</h1>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-setting-up-gitpod"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Setting up GitPod</h3>
+  <div id="hands-on-setting-up-gitpod" class="box-title" aria-label="hands-on box: Setting up GitPod"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Setting up GitPod</div>
 
   <ol>
     <li><strong>Create a fork</strong> of the GTN GitHub repository
@@ -595,14 +599,14 @@
       </ul>
 
       <blockquote class="tip">
-        <h3 id="tip-already-have-a-fork-of-the-gtn"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span>: Already have a fork of the GTN?</h3>
+        <div id="tip-already-have-a-fork-of-the-gtn" class="box-title"><button type="button" aria-controls="tip-already-have-a-fork-of-the-gtn-contents" aria-expanded="true" aria-label="Toggle tip box: Already have a fork of the GTN?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Already have a fork of the GTN?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>If you already have a fork, fantastic! But a common issue is that the <code class="language-plaintext highlighter-rouge">main</code> branch gets outdated, or your fork was from before we renamed the <code class="language-plaintext highlighter-rouge">master</code> branch to <code class="language-plaintext highlighter-rouge">main</code>.</p>
 
         <ul>
           <li>Start by browsing to your fork in GitHub</li>
-          <li>Check the default branch that is shown? Does it say <code class="language-plaintext highlighter-rouge">master</code>? Then you need to update it.
+          <li>Check the default branch that is shown? Does it say <code class="language-plaintext highlighter-rouge">master</code>? Then you need to update it. (Note - don’t just switch branches from “master” to “main”, follow the instructions below to reset the default branch to “main”.)
             <ol>
-              <li>Go to your fork’s settings</li>
+              <li>Go to your fork’s settings (Click on the gear icon called “Settings”)</li>
               <li>Find “Branches” on the left</li>
               <li>If it says master you can click on the ⇆  icon to switch branches.</li>
               <li>Select <code class="language-plaintext highlighter-rouge">main</code> (it may not be present).</li>
@@ -628,7 +632,7 @@
       <p>For example, <code class="language-plaintext highlighter-rouge">gitpod.io/#https://github.com/&lt;your use<span class="notranslate">rna</span>me&gt;/training-material</code></p>
 
       <blockquote class="tip">
-        <h3 id="tip-tip-make-this-even-easier-with-the-gitpod-browser-extension"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Tip: Make this even easier with the GitPod browser extension!</h3>
+        <div id="tip-make-this-even-easier-with-the-gitpod-browser-extension" class="box-title"><button type="button" aria-controls="tip-make-this-even-easier-with-the-gitpod-browser-extension-contents" aria-expanded="true" aria-label="Toggle tip box: Make this even easier with the GitPod browser extension!"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Make this even easier with the GitPod browser extension!<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <ol>
           <li>To make this even easier, you can install the GitPod browser extension
             <ul>
@@ -665,7 +669,7 @@
 <p>Before we start making any changes, let’s build the website and get a live preview.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-setting-up-gitpod-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Setting up GitPod</h3>
+  <div id="hands-on-setting-up-gitpod-1" class="box-title" aria-label="hands-on box: Setting up GitPod"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Setting up GitPod</div>
 
   <ol>
     <li>
@@ -696,7 +700,7 @@
       <p><img src="../../images/gitpod/ready.png" alt="output in the terminal after the build process has completed . " loading="lazy" /></p>
 
       <blockquote class="tip">
-        <h3 id="tip-tip-not-opening"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Tip: Not opening?</h3>
+        <div id="tip-not-opening" class="box-title"><button type="button" aria-controls="tip-not-opening-contents" aria-expanded="true" aria-label="Toggle tip box: Not opening?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Not opening?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <p><img src="../../images/gitpod_popup.png" alt="screenshot of firefox permissions dialog which shows blocked windows and an allow menu. " loading="lazy" />
 Some browsers block popups by default, you may need to allow GitPod to show popups in order to click links.</p>
       </blockquote>
@@ -719,7 +723,7 @@ Some browsers block popups by default, you may need to allow GitPod to show popu
 <p><strong>Scenario:</strong> You have spotted a typo in one of the tutorials, and would like to fix this and see the resulting GTN webpage.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-make-and-view-changes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Make and view changes</h3>
+  <div id="hands-on-make-and-view-changes" class="box-title" aria-label="hands-on box: Make and view changes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make and view changes</div>
 
   <ol>
     <li>In the preview of the GTN website, open the following tutorial:
@@ -736,7 +740,7 @@ Some browsers block popups by default, you may need to allow GitPod to show popu
 </code></pre></div>      </div>
 
       <blockquote class="tip">
-        <h3 id="tip-tip-finding-files-faster"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Tip: Finding files faster?</h3>
+        <div id="tip-finding-files-faster" class="box-title"><button type="button" aria-controls="tip-finding-files-faster-contents" aria-expanded="true" aria-label="Toggle tip box: Finding files faster?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Finding files faster?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>You can use the key combination <kbd>ctrl-p</kbd> to launch the file search dialog and simply enter the text <code class="language-plaintext highlighter-rouge">topics/introduction/tutorials/<span class="notranslate">galaxy</span>-intro-short/tutorial.md</code></p>
       </blockquote>
     </li>
@@ -769,7 +773,7 @@ Some browsers block popups by default, you may need to allow GitPod to show popu
 <p>When you have finished your changes, it all looks good in the preview, you want to save your changes back to GitHub so that you can either continue later, or make a Pull Request to the GTN to contribute your changes.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-save-changes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Save changes</h3>
+  <div id="hands-on-save-changes" class="box-title" aria-label="hands-on box: Save changes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Save changes</div>
 
   <ol>
     <li><strong>Option 1: via the terminal</strong>
@@ -831,7 +835,7 @@ If it doesn’t take you to GitPod’s permission page because your browser bloc
 <p>Everybody gets 50 hours per month for free on GitPod, so it is wise to close your GitPod workspace when you are finished with it, to conserve your quotum.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-shutting-down-your-gitpod-workspace"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Shutting down your GitPod workspace</h3>
+  <div id="hands-on-shutting-down-your-gitpod-workspace" class="box-title" aria-label="hands-on box: Shutting down your GitPod workspace"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Shutting down your GitPod workspace</div>
 
   <ol>
     <li>Click on the menu button at the top left corner of the screen
@@ -848,7 +852,7 @@ If it doesn’t take you to GitPod’s permission page because your browser bloc
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>GitPod can be used to serve the GTN training materials</p>
@@ -873,7 +877,7 @@ If it doesn’t take you to GitPod’s permission page because your browser bloc
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -908,7 +912,7 @@ If it doesn’t take you to GitPod’s permission page because your browser bloc
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Saskia Hiltemann, 2021 <b>Running the GTN website online using GitPod (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/gitpod/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/gitpod/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Saskia Hiltemann,  <b>Running the GTN website online using GitPod (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/gitpod/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/gitpod/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -916,18 +920,25 @@ If it doesn’t take you to GitPod’s permission page because your browser bloc
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{contributing-gitpod,
 author = "Saskia Hiltemann",
 title = "Running the GTN website online using GitPod (Galaxy Training Materials)",
-year = "2021",
-month = "06",
-day = "25"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/gitpod/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -944,8 +955,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -958,11 +969,11 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <h3>Developing GTN training material</h3>
+                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
@@ -1040,6 +1051,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
                             
@@ -1064,6 +1083,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
                                 
                             
@@ -1073,6 +1100,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                             
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
                                 
                             
                         

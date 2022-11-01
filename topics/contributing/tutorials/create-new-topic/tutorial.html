@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Including a new topic" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:42 +0000" />
+<meta name="DC.date" content="2022-10-18 14:25:39 +0000" />
 <meta name="DC.creator" content="Bérénice Batut" />
 
         
@@ -145,10 +145,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -187,7 +191,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/create-new-topic/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -274,7 +277,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:42 +0000",
+  "dateModified": "2022-10-18 14:25:39 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Including a new topic",
   "interactivityType": "mixed",
@@ -328,7 +331,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html",
   "timeRequired": "PT30M",
   "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How to include a new topic?\n\n\\nThe objectives are:\n - Create a new topic\n - Set up the metadata for a topic\n\n",
+  "description": "The questions this  addresses are:\n - How to include a new topic?\n\n\nThe objectives are:\n - Create a new topic\n - Set up the metadata for a topic\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -366,6 +369,10 @@
 		</td>
 	</tr>
 	
+
+
+	
+
 	
 	<tr>
 		<td><abbr title="These people edited the text, either for spelling and grammar, flow, GTN-fit, or other similar editing categories">Editor(s)</abbr></td>
@@ -392,7 +399,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -498,7 +505,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 20, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -516,9 +523,13 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="introduction">Introduction</h1>
+                <h1 id="introduction">Introduction</h1>
 
-<p>Each training material is related to a topic. All training materials (slides, tutorials, …) related to a topic are found in a dedicated directory (<em>e.g.</em> <code class="language-plaintext highlighter-rouge">transcriptomics</code> directory contains the material related to exome sequencing analysis). Each topic have the following structure:</p>
+<p>Each training material is related to a topic. All training materials (slides, tutorials, …) related to a topic are found in a dedicated directory (<em>e.g.</em> <code class="language-plaintext highlighter-rouge">transcriptomics</code> directory contains the material related to exome sequencing analysis).</p>
+
+<h2 id="directory-structure">Directory structure</h2>
+
+<p>Each topic has the following structure:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── README.md
 ├── metadata.yaml
@@ -539,7 +550,7 @@
 │   │   │   ├── tour.yaml
 </code></pre></div></div>
 
-<h2 class="no_toc" id="images-directory"><code class="language-plaintext highlighter-rouge">images</code> directory</h2>
+<h3 id="images-directory"><code class="language-plaintext highlighter-rouge">images</code> directory</h3>
 
 <p>The <code class="language-plaintext highlighter-rouge">images</code> directory collects all images/pictures needed for the training materials related to the topic, <em>i.e</em> pictures for the slides or the tutorials.</p>
 
@@ -547,11 +558,11 @@
 
 <p>All images for the slides must be in <code class="language-plaintext highlighter-rouge">images</code> directory. The images must be in good quality. The sources (<code class="language-plaintext highlighter-rouge">svg</code> or other) of the images must also be added to the <code class="language-plaintext highlighter-rouge">images</code> directory. We encourage you to use <a href="https://www.yworks.com/products/yed">yEd</a> to easily generate diagrams and <a href="https://inkscape.org/en/">Inkscape</a> for any other images.</p>
 
-<h2 class="no_toc" id="slides-directory"><code class="language-plaintext highlighter-rouge">slides</code> directory</h2>
+<h3 id="slides-directory"><code class="language-plaintext highlighter-rouge">slides</code> directory</h3>
 
 <p>This directory contains introduction slide deck. There could be several slide decks, to cover different aspect. The slides are rendered using <code class="language-plaintext highlighter-rouge">remark.js</code> but written in Markdown to facilitate collaboration.</p>
 
-<h2 class="no_toc" id="tutorials-directory"><code class="language-plaintext highlighter-rouge">tutorials</code> directory</h2>
+<h3 id="tutorials-directory"><code class="language-plaintext highlighter-rouge">tutorials</code> directory</h3>
 
 <p>This directory collects the tutorials related to the topic, one per subdirectory.</p>
 
@@ -562,13 +573,13 @@
 <p>The content of each tutorial is generated with <a href="https://jekyllrb.com/">Jekyll</a> from a Markdown file and some metadata (e.g. the requirements, the Zenodo link, the questions) defined inside the metadata of the related topic.</p>
 
 <blockquote class="comment">
-  <h3 id="comment-contributing"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Contributing</h3>
+  <div id="comment-contributing" class="box-title" aria-label="comment box: Contributing"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Contributing</div>
   <p>Want to contribute to a tutorial? Check out <a href="/training-material/topics/contributing/">our training materials about that</a>.</p>
 </blockquote>
 
 <p>Sometimes, an hands-on tutorial is not the most appropriate format for a tutorial and slides are better. The content must be then added in the <code class="language-plaintext highlighter-rouge">slides</code> directory.</p>
 
-<h2 class="no_toc" id="docker-directory"><code class="language-plaintext highlighter-rouge">docker</code> directory</h2>
+<h3 id="docker-directory"><code class="language-plaintext highlighter-rouge">docker</code> directory</h3>
 
 <p>For each topic, a flavored Docker image must integrate the tools needed for
 the tutorials. The corresponding image must be based on official <span class="notranslate">Galaxy</span> Docker
@@ -576,17 +587,23 @@ images.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">docker</code> image will also integrate the <span class="notranslate">Galaxy</span> tours available for each topics and the workflows.</p>
 
-<h1 class="no_toc" id="creating-a-new-topic">Creating a new topic</h1>
+<h1 id="creating-a-new-topic">Creating a new topic</h1>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>    <ol>
+      <li><a href="#directory-structure" id="markdown-toc-directory-structure">Directory structure</a></li>
+    </ol>
+  </li>
+  <li><a href="#creating-a-new-topic" id="markdown-toc-creating-a-new-topic">Creating a new topic</a></li>
   <li><a href="#defining-the-topic" id="markdown-toc-defining-the-topic">Defining the topic</a></li>
   <li><a href="#creating-the-skeleton-for-the-topic" id="markdown-toc-creating-the-skeleton-for-the-topic">Creating the skeleton for the topic</a></li>
   <li><a href="#adapt-the-metadata-for-your-topic" id="markdown-toc-adapt-the-metadata-for-your-topic">Adapt the metadata for your topic</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
@@ -596,7 +613,7 @@ images.</p>
 <p>When we structured the repository, we decided to use as topics the categories that are used in the <a href="https://toolshed.g2.bx.psu.edu/"><span class="notranslate">ToolShed</span></a>. The <span class="notranslate">ToolShed</span> assigns a category to each tool. Therefore, to decide where to put your tutorial, have a look at which <span class="notranslate">ToolShed</span>’s category the main tools in your tutorial belong. For example, this tutorial will rely on the NCBI Blast+ tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-defining-the-topic-for-the-tutorial"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Defining the topic for the tutorial</h3>
+  <div id="hands-on-defining-the-topic-for-the-tutorial" class="box-title" aria-label="hands-on box: Defining the topic for the tutorial"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Defining the topic for the tutorial</div>
 
   <ol>
     <li>Search for NCBI Blast+ on the <a href="https://toolshed.g2.bx.psu.edu/"><span class="notranslate">ToolShed</span></a></li>
@@ -604,12 +621,12 @@ images.</p>
       <p>Check in which category it has been placed</p>
 
       <blockquote class="question">
-        <h3 id="question-questions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Questions</h3>
+        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
 
         <p>In which topic will you put the new tutorial?</p>
 
         <blockquote class="solution">
-          <h3 id="solution-solution"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">solution</span> Solution</h3>
+          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <p>If we search for <a href="https://toolshed.g2.bx.psu.edu/view/devteam/ncbi_blast_plus/7538e2bfcd41">NCBI Blast+ in the <span class="notranslate">ToolShed</span></a>, it is placed in 2 categories (bottom): “Next Gen Mappers”, and “Sequence Analysis”.
 We decided to put it in “Sequence analysis” because this is the most general one for this tutorial.</p>
@@ -626,7 +643,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>Once the topic name has been chosen, we can create it.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-create-all-the-required-files-and-folders-structures-automatically"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Create all the required files and folders structures automatically</h3>
+  <div id="hands-on-create-all-the-required-files-and-folders-structures-automatically" class="box-title" aria-label="hands-on box: Create all the required files and folders structures automatically"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create all the required files and folders structures automatically</div>
 
   <ol>
     <li>Open a terminal</li>
@@ -646,7 +663,7 @@ We decided to put it in “Sequence analysis” because this is the most general
       <p>Make sure that Jekyll is running</p>
 
       <blockquote class="comment">
-        <h3 id="comment-jekyll"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Jekyll</h3>
+        <div id="comment-jekyll" class="box-title" aria-label="comment box: Jekyll"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Jekyll</div>
         <p>Want to learn how to start Jekyll? <a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Check out our tutorial to serve the website locally</a></p>
       </blockquote>
     </li>
@@ -660,11 +677,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>Several metadata are defined in <code class="language-plaintext highlighter-rouge">metadata.yaml</code> file in your topic folder to :</p>
 
 <blockquote class="tip">
-<h3>
-	
-		<code>Topic Schema</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: Topic Schema">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>Topic Schema</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>A dictionary/map</b>
 
@@ -696,11 +720,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>name</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>name</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -763,11 +790,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>type</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>type</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -860,11 +890,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>title</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>title</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -912,11 +945,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>summary</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>summary</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -963,11 +999,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>maintainers</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>maintainers</code>
+			
+		
+	</div>
 
 <b>List of Items</b>
 
@@ -1018,11 +1057,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>docker_image</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: docker_image">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>docker_image</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1065,11 +1111,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>edam_ontology</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: edam_ontology">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>edam_ontology</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1122,11 +1175,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>enable</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: enable">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>enable</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>Boolean</b>
 
@@ -1160,11 +1220,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>gitter</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: gitter">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>gitter</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1216,11 +1283,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>references</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: references">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>references</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>List of Items</b>
 
@@ -1257,15 +1331,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 
 	
-		
+	
 		
 		
 		<blockquote class="comment">
-<h3>
-	
-		<code>Sequence Value</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>Sequence Value (List of items)</code>
+			
+		
+	</div>
 
 <b>A dictionary/map</b>
 
@@ -1297,11 +1374,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>authors</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>authors</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1335,11 +1415,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>title</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>title</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1373,11 +1456,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>link</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>link</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1420,11 +1506,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>summary</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: summary">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>summary</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1469,11 +1562,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>requirements</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: requirements">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>requirements</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>List of Items</b>
 
@@ -1509,15 +1609,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 
 	
-		
+	
 		
 		
 		<blockquote class="comment">
-<h3>
-	
-		<code>Sequence Value</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>Sequence Value (List of items)</code>
+			
+		
+	</div>
 
 <b>A dictionary/map</b>
 
@@ -1549,11 +1652,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>type</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>type</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1612,11 +1718,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>topic_name</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: topic_name">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>topic_name</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1650,11 +1763,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>tutorials</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: tutorials">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>tutorials</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>List of Items</b>
 
@@ -1703,11 +1823,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>subtopics</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: subtopics">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>subtopics</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>List of Items</b>
 
@@ -1732,15 +1859,22 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 
 	
-		
+	
 		
 		
 		<blockquote class="tip">
-<h3>
-	
-		<code>Sequence Value</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: Sequence Value (List of items)">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>Sequence Value (List of items)</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>A dictionary/map</b>
 
@@ -1772,11 +1906,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>id</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>id</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1829,11 +1966,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>title</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>title</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1881,11 +2021,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="comment">
-<h3>
-	
-		<code>description</code>
-	
-	 <b>required</b></h3>
+
+	<div class="box-title">
+		
+			
+				<code>description</code>
+			
+		
+	</div>
 
 <b>Free Text</b>
 
@@ -1939,11 +2082,18 @@ We decided to put it in “Sequence analysis” because this is the most general
 			
 
 			<blockquote class="tip">
-<h3>
-	
-		<code>enable</code>
-	
-	</h3>
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: enable">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>enable</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
 
 <b>Boolean</b>
 
@@ -2008,7 +2158,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-update-the-new-topic-to-the-website"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Update the new topic to the website</h3>
+  <div id="hands-on-update-the-new-topic-to-the-website" class="box-title" aria-label="hands-on box: Update the new topic to the website"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Update the new topic to the website</div>
 
   <ol>
     <li>Open the <code class="language-plaintext highlighter-rouge">metadata.yaml</code> file in your topic folder</li>
@@ -2017,7 +2167,7 @@ We decided to put it in “Sequence analysis” because this is the most general
       <p>Make sure that Jekyll is running</p>
 
       <blockquote class="comment">
-        <h3 id="comment-jekyll-1"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Jekyll</h3>
+        <div id="comment-jekyll-1" class="box-title" aria-label="comment box: Jekyll"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Jekyll</div>
         <p>Want to learn how to start Jekyll? <a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Check out our tutorial to serve the website locally</a></p>
       </blockquote>
     </li>
@@ -2026,14 +2176,14 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 </blockquote>
 
-<h1 class="no_toc" id="conclusion">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
 
 <p>We just created a new topic. We can now fill it by <a href="/training-material/topics/contributing/tutorials/create-new-tutorial/tutorial.html">creating new tutorials</a></p>
 
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>A new topic can be easily added for new tutorials</p>
@@ -2058,7 +2208,7 @@ We decided to put it in “Sequence analysis” because this is the most general
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -2093,7 +2243,7 @@ We decided to put it in “Sequence analysis” because this is the most general
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">, 2022 <b>Including a new topic (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">,  <b>Including a new topic (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2101,18 +2251,25 @@ We decided to put it in “Sequence analysis” because this is the most general
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{contributing-create-new-topic,
-author = "",
+author = "Bérénice Batut",
 title = "Including a new topic (Galaxy Training Materials)",
-year = "2022",
-month = "05",
-day = "20"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -2129,8 +2286,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -2146,11 +2303,11 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <h3>Developing GTN training material</h3>
+                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
@@ -2228,6 +2385,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
                             
@@ -2252,6 +2417,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
                                 
                             
@@ -2261,6 +2434,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                             
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
                                 
                             
                         

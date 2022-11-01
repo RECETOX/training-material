@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Contributing with GitHub via its interface" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:42 +0000" />
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
 <meta name="DC.creator" content="Bérénice Batut" />
 
         
@@ -145,10 +145,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -187,7 +191,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/github-interface-contribution/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -274,7 +277,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:42 +0000",
+  "dateModified": "2022-10-18 14:23:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Contributing with GitHub via its interface",
   "interactivityType": "mixed",
@@ -328,7 +331,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html",
   "timeRequired": "PT20M",
   "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How can I contribute to an open-source project with GitHub and its interface\n\n\\nThe objectives are:\n - Edit a file via GitHub interface\n - Create a pull request\n - Update a pull request\n\n",
+  "description": "The questions this  addresses are:\n - How can I contribute to an open-source project with GitHub and its interface\n\n\nThe objectives are:\n - Edit a file via GitHub interface\n - Create a pull request\n - Update a pull request\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -413,7 +416,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -522,7 +525,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 19, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -540,21 +543,23 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="introduction">Introduction</h1>
+                <h1 id="introduction">Introduction</h1>
 
 <p>All the training material which you find on <a href="/training-material/">https://training.<span class="notranslate">galaxy</span>project.org/training-material/</a> is stored on a <a href="https://github.com">GitHub</a> repository (<a href="https://github.com/galaxyproject/training-material">https://github.com/<span class="notranslate">galaxy</span>project/training-material</a>), a code hosting platform for version control and collaboration. GitHub interface is quite intuitive and simplifies the contributions from anyone.</p>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, you will learn how to use GitHub interface to contribute to the training material:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#github" id="markdown-toc-github">GitHub</a></li>
   <li><a href="#edit-a-file" id="markdown-toc-edit-a-file">Edit a file</a></li>
   <li><a href="#open-a-pull-request" id="markdown-toc-open-a-pull-request">Open a Pull Request</a></li>
   <li><a href="#update-a-pull-request" id="markdown-toc-update-a-pull-request">Update a Pull Request</a></li>
   <li><a href="#close-the-pull-request" id="markdown-toc-close-the-pull-request">Close the Pull Request</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
@@ -564,7 +569,7 @@
 <p>The GitHub repository for the training material is: <a href="https://github.com/galaxyproject/training-material">https://github.com/<span class="notranslate">galaxy</span>project/training-material</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-familiarization-with-github"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Familiarization with GitHub</h3>
+  <div id="hands-on-familiarization-with-github" class="box-title" aria-label="hands-on box: Familiarization with GitHub"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Familiarization with GitHub</div>
 
   <ol>
     <li>
@@ -591,7 +596,7 @@
 <p>This <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file is where we collect the information (name, email, etc) about the different contributors to display them on our <a href="/training-material/hall-of-fame.html">Hall of Fame</a>. You will add your information there. But first you need to sign in to GitHub to be able to change this file.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-sign-in-to-github"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Sign in to GitHub</h3>
+  <div id="hands-on-sign-in-to-github" class="box-title" aria-label="hands-on box: Sign in to GitHub"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Sign in to GitHub</div>
 
   <ol>
     <li>
@@ -611,7 +616,7 @@
 <p>You can now modify the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file to add your information there</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-edit-a-file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Edit a file</h3>
+  <div id="hands-on-edit-a-file" class="box-title" aria-label="hands-on box: Edit a file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Edit a file</div>
 
   <ol>
     <li>Open the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file on GitHub</li>
@@ -640,7 +645,7 @@
           <p>Fill the box “Update CONTRIBUTORS.yaml” with “Add &lt; GitHub use<span class="notranslate">rna</span>me &gt; as contributor” (replace &lt; GitHub use<span class="notranslate">rna</span>me &gt; by your GitHub use<span class="notranslate">rna</span>me)</p>
 
           <blockquote class="comment">
-            <h3 id="comment-commit-messages"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Commit messages</h3>
+            <div id="comment-commit-messages" class="box-title" aria-label="comment box: Commit messages"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Commit messages</div>
             <p>This a commit message: a description explaining why a particular change was made. Theses messages capture the history of the changes, so other contributors can understand what have been done and why</p>
           </blockquote>
         </li>
@@ -663,7 +668,7 @@
 <p>Without realizing it, GitHub let you create your first branch (named here <code class="language-plaintext highlighter-rouge">patch-1</code>) and add a changement on this branch.</p>
 
 <blockquote class="comment">
-  <h3 id="comment-branching"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Branching</h3>
+  <div id="comment-branching" class="box-title" aria-label="comment box: Branching"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Branching</div>
   <p>Branching is the way to work on different versions of a repository at one time. By default your repository has one branch named <code class="language-plaintext highlighter-rouge">main</code> which is considered to be the definitive branch. When you create a branch off the main branch, you’re making a copy, or snapshot, of <code class="language-plaintext highlighter-rouge">main</code> as it was at that point in time.</p>
 
   <p>By changing a file in this branch, it will diverge from the <code class="language-plaintext highlighter-rouge">main</code> branch. It will contain data that is only on this new branch.</p>
@@ -678,7 +683,7 @@
 <figure id="figure-4"><img src="../../images/github_pr_interface.png" alt="Pull request form. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 4:</span> Pull request form</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-edit-a-file-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Edit a file</h3>
+  <div id="hands-on-edit-a-file-1" class="box-title" aria-label="hands-on box: Edit a file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Edit a file</div>
 
   <ol>
     <li>Open and read the <a href="https://github.com/galaxyproject/training-material/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> file</li>
@@ -696,7 +701,7 @@
           <p>This message is a good way to introduce yourself and to explain the message you made. Be kind and descriptive. It helps the reviewers to understand why you did your changes and if it should be intergrated into the <code class="language-plaintext highlighter-rouge">main</code> branch (and then website).</p>
 
           <blockquote class="comment">
-            <h3 id="comment-pull-request-messages"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Pull request messages</h3>
+            <div id="comment-pull-request-messages" class="box-title" aria-label="comment box: Pull request messages"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Pull request messages</div>
             <p>GitHub uses <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a>, a simple Markup language, to render the Pull request messages. You can then add bold test, lists, images, etc.</p>
           </blockquote>
         </li>
@@ -728,7 +733,7 @@
 <p>One of the reviewers of your pull request asked you to add your name after your GitHub use<span class="notranslate">rna</span>me in the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-update-a-pull-request"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Update a Pull Request</h3>
+  <div id="hands-on-update-a-pull-request" class="box-title" aria-label="hands-on box: Update a Pull Request"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Update a Pull Request</div>
 
   <ol>
     <li>Go to the list of pull request tab on GitHub</li>
@@ -779,7 +784,7 @@ Reviewers can now approve and merge your pull request.</p>
 <p>Because this was just a practice pull request, let’s close it again.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-close-the-pull-request"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Close the Pull Request</h3>
+  <div id="hands-on-close-the-pull-request" class="box-title" aria-label="hands-on box: Close the Pull Request"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Close the Pull Request</div>
 
   <p>Once you have run through all these steps, please close the pull request again.</p>
 
@@ -794,12 +799,12 @@ Reviewers can now approve and merge your pull request.</p>
 
 </blockquote>
 
-<h1 class="no_toc" id="conclusion">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
 
 <p>With this tutorial, you learn how to use GitHub to change a file, create a pull request and then contribute to the training material. What you have learned here can be applied to any file.</p>
 
 <blockquote class="details">
-  <h3 id="details-more-about-github"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> More about GitHub</h3>
+  <div id="details-more-about-github" class="box-title"><button type="button" aria-controls="details-more-about-github-contents" aria-expanded="true" aria-label="Toggle details box: More about GitHub"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More about GitHub<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Via the GitHub interface, you can also go further: create file, branch directly, etc.
 To learn that, we recommend you to read the <a href="https://guides.github.com/activities/hello-world/">GitHub guide</a></p>
 </blockquote>
@@ -807,7 +812,7 @@ To learn that, we recommend you to read the <a href="https://guides.github.com/a
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>You can’t add or push directly to the <code class="language-plaintext highlighter-rouge">main</code> branch, so you need to create a pull request</p>
@@ -838,7 +843,7 @@ To learn that, we recommend you to read the <a href="https://guides.github.com/a
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -873,7 +878,7 @@ To learn that, we recommend you to read the <a href="https://guides.github.com/a
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Bérénice Batut, 2022 <b>Contributing with GitHub via its interface (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Bérénice Batut,  <b>Contributing with GitHub via its interface (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -881,18 +886,25 @@ To learn that, we recommend you to read the <a href="https://guides.github.com/a
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{contributing-github-interface-contribution,
 author = "Bérénice Batut",
 title = "Contributing with GitHub via its interface (Galaxy Training Materials)",
-year = "2022",
-month = "05",
-day = "19"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -909,8 +921,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -923,11 +935,11 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <h3>Developing GTN training material</h3>
+                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
@@ -1005,6 +1017,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
                             
@@ -1029,6 +1049,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
                                 
                             
@@ -1038,6 +1066,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                             
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
                                 
                             
                         

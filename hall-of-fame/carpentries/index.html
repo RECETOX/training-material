@@ -24,6 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="GTN Contributor: The Carpentries" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
+<meta name="DC.date" content="1970-01-01 00:00:00 +0000" />
 
         
         
@@ -140,6 +141,7 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
             <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
                 <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
@@ -182,7 +184,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/hall-of-fame/carpentries/" title="Version 2022-06-01">2022-06-01</a>
@@ -427,6 +428,40 @@
 							Foundations of Data Science
 						</a>
 						/
+						<a href="/training-material//topics/data-science/tutorials/python-venv/tutorial.html">
+						Virtual Environments For Software Development
+						</a>
+						
+						
+	<abbr title="This person wrote the bulk of the training material, they may have done the analysis, built the workflow, and wrote the text themselves.">✍️</abbr>
+
+
+					</li>
+				
+					<li>
+						
+						
+						<a href="/training-material/topics/data-science">
+							Foundations of Data Science
+						</a>
+						/
+						<a href="/training-material//topics/data-science/tutorials/python-venv/tutorial.html">
+						Virtual Environments For Software Development
+						</a>
+						
+						
+	<abbr title="These individuals or organisations provided funding support for the development of this resource">💵</abbr>
+
+
+					</li>
+				
+					<li>
+						
+						
+						<a href="/training-material/topics/data-science">
+							Foundations of Data Science
+						</a>
+						/
 						<a href="/training-material//topics/data-science/tutorials/cli-advanced/tutorial.html">
 						Advanced CLI in Galaxy
 						</a>
@@ -563,6 +598,40 @@
 							Foundations of Data Science
 						</a>
 						/
+						<a href="/training-material//topics/data-science/tutorials/python-testing/tutorial.html">
+						Python - Testing
+						</a>
+						
+						
+	<abbr title="This person wrote the bulk of the training material, they may have done the analysis, built the workflow, and wrote the text themselves.">✍️</abbr>
+
+
+					</li>
+				
+					<li>
+						
+						
+						<a href="/training-material/topics/data-science">
+							Foundations of Data Science
+						</a>
+						/
+						<a href="/training-material//topics/data-science/tutorials/python-testing/tutorial.html">
+						Python - Testing
+						</a>
+						
+						
+	<abbr title="These individuals or organisations provided funding support for the development of this resource">💵</abbr>
+
+
+					</li>
+				
+					<li>
+						
+						
+						<a href="/training-material/topics/data-science">
+							Foundations of Data Science
+						</a>
+						/
 						<a href="/training-material//topics/data-science/tutorials/sql-python/tutorial.html">
 						SQL with Python
 						</a>
@@ -624,6 +693,57 @@
 
 					</li>
 				
+					<li>
+						
+						
+						<a href="/training-material/topics/data-science">
+							Foundations of Data Science
+						</a>
+						/
+						<a href="/training-material//topics/data-science/tutorials/python-conda/tutorial.html">
+						Conda Environments For Software Development
+						</a>
+						
+						
+	<abbr title="This person wrote the bulk of the training material, they may have done the analysis, built the workflow, and wrote the text themselves.">✍️</abbr>
+
+
+					</li>
+				
+					<li>
+						
+						
+						<a href="/training-material/topics/data-science">
+							Foundations of Data Science
+						</a>
+						/
+						<a href="/training-material//topics/data-science/tutorials/python-conda/tutorial.html">
+						Conda Environments For Software Development
+						</a>
+						
+						
+	<abbr title="These individuals or organisations provided funding support for the development of this resource">💵</abbr>
+
+
+					</li>
+				
+					<li>
+						
+						
+						<a href="/training-material/topics/teaching">
+							Teaching and Hosting Galaxy training
+						</a>
+						/
+						<a href="/training-material//topics/teaching/tutorials/live-coding/tutorial.html">
+						Live Coding is a Skill
+						</a>
+						
+						
+	
+
+
+					</li>
+				
 				</ul>
 				
 
@@ -644,11 +764,14 @@
   </div>
  <div class="row no-gutters">
   <div class="col-sm-5">
-   <img class="card-img newscover" src="/training-material//assets/images/GTN.png" alt="GTN logo with a multi-coloured star and the words Galaxy Training Network">
+   <img class="card-img newscover" src="/training-material//assets/images/GTN.png" alt="GTN logo with a multi-coloured star and the words Galaxy Training Network" loading="lazy">
   </div>
   <div class="col-sm-7">
    <div class="card-body">
         <!--<a href="/training-material/news/2021/10/12/data-science.html"><h4 class="card-title">New Topic: Data Science Survival Kit</h4></a>-->
+        <div class="text-muted">
+        12 October 2021
+        </div>
         <div markdown="0">
 
 	<div class="contributors-line">
@@ -690,6 +813,10 @@
 		</td>
 	</tr>
 	
+
+
+	
+
 	
 
 	
@@ -727,9 +854,13 @@
                 
                 </div>
 				
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
 
-				<script type="text/javascript">
+<script type="text/javascript">
+const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`) === true || window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+if(isReduced){
+    Chart.defaults.global.animation.duration = 0;
+}
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var ctx2 = document.getElementById('slidesVsTutorials').getContext('2d');
@@ -808,10 +939,52 @@ var topics = [
 	
 	"Foundations of Data Science",
 
+	
+	
+	"Foundations of Data Science",
+
+	
+	
+	"Foundations of Data Science",
+
+	
+	
+	"Foundations of Data Science",
+
+	
+	
+	"Foundations of Data Science",
+
+	
+	
+	"Foundations of Data Science",
+
+	
+	
+	"Foundations of Data Science",
+
+	
+	
+	"Teaching and Hosting Galaxy training",
+
 
 ];
 
 var slidesVsTutos = [
+
+	"Tutorials",
+
+	"Tutorials",
+
+	"Tutorials",
+
+	"Tutorials",
+
+	"Tutorials",
+
+	"Tutorials",
+
+	"Tutorials",
 
 	"Tutorials",
 
@@ -941,7 +1114,7 @@ var chart2 = new Chart(ctx2, {
         The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
         </p>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/b3192832de88c502588a977a276ac4ec8ba940b2">b3192832de88c502588a977a276ac4ec8ba940b2</a></p>
+        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/3e099f33f0b616ddeef76c2a1ee9871ebbceb042">3e099f33f0b616ddeef76c2a1ee9871ebbceb042</a></p>
     </div>
 </footer>
 

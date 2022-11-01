@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Adding auto-generated video to your slides" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:41 +0000" />
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
 <meta name="DC.creator" content="Helena Rasche" />
 
         
@@ -145,10 +145,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -187,7 +191,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/slides-with-video/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -274,7 +277,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:41 +0000",
+  "dateModified": "2022-10-18 14:23:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Adding auto-generated video to your slides",
   "interactivityType": "mixed",
@@ -328,7 +331,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html",
   "timeRequired": "PT20M",
   "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How can we add auto-generated video?\n - How does it work?\n - What do I need to do to make it optimal for viewers?\n\n\\nThe objectives are:\n - Adding a video to a set of slides\n\n",
+  "description": "The questions this  addresses are:\n - How can we add auto-generated video?\n - How does it work?\n - What do I need to do to make it optimal for viewers?\n\n\nThe objectives are:\n - Adding a video to a set of slides\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -413,7 +416,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -522,7 +525,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 24, 2021 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -540,23 +543,27 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="video-lectures">Video Lectures</h1>
+                <h1 id="video-lectures">Video Lectures</h1>
 
 <p>Based on the work by Delphine Larivière and James Taylor with their <a href="https://github.com/galaxyproject/video-lectures/">COVID-19 Lectures</a> we have implemented a similar feature in the <span class="notranslate">Galaxy</span> Training Network.</p>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will:</p>
 
 <ol id="markdown-toc">
-  <li><a href="#how-it-works" id="markdown-toc-how-it-works">How it Works</a></li>
+  <li><a href="#video-lectures" id="markdown-toc-video-lectures">Video Lectures</a>    <ol>
+      <li><a href="#how-it-works" id="markdown-toc-how-it-works">How it Works</a></li>
+    </ol>
+  </li>
   <li><a href="#enabling-video" id="markdown-toc-enabling-video">Enabling Video</a>    <ol>
       <li><a href="#writing-good-captions" id="markdown-toc-writing-good-captions">Writing Good Captions</a></li>
       <li><a href="#enable-the-video" id="markdown-toc-enable-the-video">Enable the Video</a></li>
     </ol>
   </li>
   <li><a href="#how-it-works-in-detail" id="markdown-toc-how-it-works-in-detail">How it works: In Detail</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
@@ -671,7 +678,7 @@ This role deploys CVMFS.</p>
 <p>Lastly, we need to tell the GTN framework we would like videos to be generated.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-enable-video"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Enable video</h3>
+  <div id="hands-on-enable-video" class="box-title" aria-label="hands-on box: Enable video"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Enable video</div>
 
   <ol>
     <li>Edit the <code class="language-plaintext highlighter-rouge">slides.html</code> for your tutorial</li>
@@ -712,12 +719,13 @@ This role deploys CVMFS.</p>
 
 <p>Many of the scripts inte<span class="notranslate">rna</span>lly are prefixed with <code class="language-plaintext highlighter-rouge">ari</code>, we named our inte<span class="notranslate">rna</span>l version after <a href="https://github.com/jhudsl/ari/">github.com/jhudsl/ari/</a> which inspired it, but we wanted a version that would be more closely tied to the GTN and integrate with our infrastructure nicely, so we ended up writing our own.</p>
 
-<h1 class="no_toc" id="conclusion">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
+
 
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Thanks to the GTN, videos are easy to add</p>
@@ -745,7 +753,7 @@ This role deploys CVMFS.</p>
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -780,7 +788,7 @@ This role deploys CVMFS.</p>
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Helena Rasche, 2021 <b>Adding auto-generated video to your slides (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Helena Rasche,  <b>Adding auto-generated video to your slides (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -788,18 +796,25 @@ This role deploys CVMFS.</p>
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{contributing-slides-with-video,
 author = "Helena Rasche",
 title = "Adding auto-generated video to your slides (Galaxy Training Materials)",
-year = "2021",
-month = "11",
-day = "24"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -816,8 +831,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -830,11 +845,11 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <h3>Developing GTN training material</h3>
+                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
@@ -912,6 +927,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
                             
@@ -936,6 +959,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
                                 
                             
@@ -945,6 +976,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                             
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
                                 
                             
                         

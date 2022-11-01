@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Creating Interactive Galaxy Tours" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:40 +0000" />
+<meta name="DC.date" content="2022-10-20 15:42:03 +0000" />
 <meta name="DC.creator" content="Bérénice Batut" />
 <meta name="DC.creator" content="Björn Grüning" />
 <meta name="DC.creator" content="Saskia Hiltemann" />
@@ -147,10 +147,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -189,7 +193,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -276,7 +279,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:40 +0000",
+  "dateModified": "2022-10-20 15:42:03 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Creating Interactive Galaxy Tours",
   "interactivityType": "mixed",
@@ -330,7 +333,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html",
   "timeRequired": "PT15M",
   "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - What is a Interactive Galaxy Tour?\n - How can we create an Interactive Tour?\n\n\\nThe objectives are:\n - Creating a Galaxy tour from scratch\n - Deploying and running a tour\n\n",
+  "description": "The questions this  addresses are:\n - What is a Interactive Galaxy Tour?\n - How can we create an Interactive Tour?\n\n\nThe objectives are:\n - Creating a Galaxy tour from scratch\n - Deploying and running a tour\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -515,7 +518,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -624,7 +627,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Dec 14, 2020 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 20, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -642,7 +645,7 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="introduction">Introduction</h1>
+                <h1 id="introduction">Introduction</h1>
 
 <p><span class="notranslate">Galaxy</span> is a great solution to train the bioinformatics concepts:</p>
 
@@ -660,13 +663,15 @@
 <p>In this tutorial, you will understand how to design and develop a new tutorial fitting in this training material repository. As doing helps to understand, we will develop a small tutorial to explain BLAST with the full infrastructure to be able to run this tutorial anywhere.</p>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#a-galaxy-interactive-tour" id="markdown-toc-a-galaxy-interactive-tour">A <span class="notranslate">Galaxy</span> Interactive Tour</a></li>
   <li><a href="#creating-a-galaxy-interactive-tour" id="markdown-toc-creating-a-galaxy-interactive-tour">Creating a <span class="notranslate">Galaxy</span> Interactive Tour</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
@@ -763,11 +768,11 @@ steps:
 
 <p><a href="https://github.com/TailorDev/galaxy-tourbuilder">A Web browser plugin</a> is available to help the creation and the test (on the fly) of an interactive tour.</p>
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/0YVvz"><a href="//imgur.com/a/0YVvz"><span class="notranslate">Galaxy</span> Tour Builder by TailorDev</a></blockquote>
-<script async="" src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/0YVvz"><a href="https://imgur.com/a/0YVvz"><span class="notranslate">Galaxy</span> Tour Builder by TailorDev</a></blockquote>
+<script async="" src="https://s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-install-and-start-the-plugin"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Install and start the plugin</h3>
+  <div id="hands-on-install-and-start-the-plugin" class="box-title" aria-label="hands-on box: Install and start the plugin"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Install and start the plugin</div>
 
   <ol>
     <li>Install the plugin using the app store of your web-browser:
@@ -785,7 +790,7 @@ steps:
 <p>We can now create easily a <span class="notranslate">Galaxy</span> Interactive Tour and test it on the fly.</p>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-create-a-galaxy-interactive-tour"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Create a <span class="notranslate">Galaxy</span> Interactive Tour</h3>
+  <div id="hands-on-create-a-galaxy-interactive-tour" class="box-title" aria-label="hands-on box: Create a Galaxy Interactive Tour"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create a <span class="notranslate">Galaxy</span> Interactive Tour</div>
 
   <ol>
     <li>Create a <span class="notranslate">Galaxy</span> Interactive Tour for “BLAST” tutorial</li>
@@ -796,12 +801,13 @@ steps:
   </ol>
 </blockquote>
 
-<h1 class="no_toc" id="conclusion">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
+
 
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>The Interactive Tours are a good training object for self-learning at its own speed</p>
@@ -829,7 +835,7 @@ steps:
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -864,7 +870,7 @@ steps:
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Bérénice Batut, Björn Grüning, Saskia Hiltemann, 2020 <b>Creating Interactive Galaxy Tours (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Bérénice Batut, Björn Grüning, Saskia Hiltemann,  <b>Creating Interactive Galaxy Tours (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -872,18 +878,25 @@ steps:
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{contributing-create-new-tutorial-tours,
 author = "Bérénice Batut and Björn Grüning and Saskia Hiltemann",
 title = "Creating Interactive Galaxy Tours (Galaxy Training Materials)",
-year = "2020",
-month = "12",
-day = "14"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -900,8 +913,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -914,11 +927,11 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <h3>Developing GTN training material</h3>
+                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
@@ -996,6 +1009,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
                             
@@ -1020,6 +1041,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
                                 
                             
@@ -1029,6 +1058,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                             
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
                                 
                             
                         

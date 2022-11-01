@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Updating diffs in admin training" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:41 +0000" />
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
 <meta name="DC.creator" content="Helena Rasche" />
 
         
@@ -145,10 +145,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -187,7 +191,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/admin-knitting/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -274,7 +277,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:41 +0000",
+  "dateModified": "2022-10-18 14:23:35 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Updating diffs in admin training",
   "interactivityType": "mixed",
@@ -328,7 +331,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html",
   "timeRequired": "PT5M",
   "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How does it work?\n\n\\nThe objectives are:\n - Update some text in an earlier commit\n\n",
+  "description": "The questions this  addresses are:\n - How does it work?\n\n\nThe objectives are:\n - Update some text in an earlier commit\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -413,7 +416,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -516,7 +519,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jun 22, 2021 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -534,7 +537,7 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="updating-diffs">Updating Diffs</h1>
+                <h1 id="updating-diffs">Updating Diffs</h1>
 
 <p>The admin training was recently converted completely to use diffs. This was
 done so we could build a git repository, and time travel to any point within
@@ -543,13 +546,16 @@ admin training, in support of students and testing.</p>
 <p>Here’s some common editing scenarios to help you out.</p>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will:</p>
 
 <ol id="markdown-toc">
-  <li><a href="#how-it-works" id="markdown-toc-how-it-works">How it Works</a></li>
-  <li><a href="#automation" id="markdown-toc-automation">Automation</a></li>
+  <li><a href="#updating-diffs" id="markdown-toc-updating-diffs">Updating Diffs</a>    <ol>
+      <li><a href="#how-it-works" id="markdown-toc-how-it-works">How it Works</a></li>
+      <li><a href="#automation" id="markdown-toc-automation">Automation</a></li>
+    </ol>
+  </li>
   <li><a href="#git-gat-knick-knacks-some-common-scenarios" id="markdown-toc-git-gat-knick-knacks-some-common-scenarios">Git-Gat Knick-Knacks: Some Common Scenarios</a>    <ol>
       <li><a href="#i-want-to-update-the-text-of-a-specific-commit" id="markdown-toc-i-want-to-update-the-text-of-a-specific-commit">I want to update the text of a specific commit</a></li>
       <li><a href="#upgrading-an-existing-tutorial" id="markdown-toc-upgrading-an-existing-tutorial">Upgrading an existing tutorial</a></li>
@@ -699,7 +705,7 @@ Applying: admin/pulsar/0008: Send bwa and bwa-mem to pulsar
 </ul>
 
 <blockquote class="warning">
-  <h3 id="warning-danger-dont-mess-with-the-commit-names-at-this-step"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden">warning</span> Danger: Don’t mess with the commit names at this step</h3>
+  <div id="warning-danger-don-t-mess-with-the-commit-names-at-this-step" class="box-title" aria-label="warning box: Danger: Don't mess with the commit names at this step"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Danger: Don't mess with the commit names at this step</div>
   <p>They’re used for figuring out which commit a patch file belongs to. Sorry!</p>
 </blockquote>
 
@@ -708,12 +714,12 @@ Applying: admin/pulsar/0008: Send bwa and bwa-mem to pulsar
 <h2 id="i-want-to-update-the-text-of-a-specific-commit">I want to update the text of a specific commit</h2>
 
 <blockquote class="question">
-  <h3 id="question-example-problem"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Example problem</h3>
+  <div id="question-example-problem" class="box-title" aria-label="question box: Example problem"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Example problem</div>
   <p>I want to edit the commit titled “Add production facing vars” to add an addtional variable in admin/ansible-<span class="notranslate">galaxy</span>.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-make-the-change-you-want-to-see-in-the-gat"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Make the change you want to see in the GAT</h3>
+  <div id="hands-on-make-the-change-you-want-to-see-in-the-gat" class="box-title" aria-label="hands-on box: Make the change you want to see in the GAT"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make the change you want to see in the GAT</div>
   <ol>
     <li>
       <p>Start by exporting</p>
@@ -838,12 +844,12 @@ Successfully rebased and updated refs/heads/main.
 <h2 id="upgrading-an-existing-tutorial">Upgrading an existing tutorial</h2>
 
 <blockquote class="question">
-  <h3 id="question-example-problem-1"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Example problem</h3>
+  <div id="question-example-problem-1" class="box-title" aria-label="question box: Example problem"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Example problem</div>
   <p>I have a new tutorial in the schedule and I want to upgrade it to use this feature</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-make-the-change-you-want-to-see-in-the-gat-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Make the change you want to see in the GAT</h3>
+  <div id="hands-on-make-the-change-you-want-to-see-in-the-gat-1" class="box-title" aria-label="hands-on box: Make the change you want to see in the GAT"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make the change you want to see in the GAT</div>
 
   <ol>
     <li>
@@ -912,7 +918,7 @@ $ ./bin/knit-automated.sh import
 <h2 id="i-want-to-add-a-new-commit">I want to add a new commit</h2>
 
 <blockquote class="notranslate hands_on">
-  <h3 id="hands_on-hands-on-make-the-change-you-want-to-see-in-the-gat-2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands-on: Make the change you want to see in the GAT</h3>
+  <div id="hands-on-make-the-change-you-want-to-see-in-the-gat-2" class="box-title" aria-label="hands-on box: Make the change you want to see in the GAT"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make the change you want to see in the GAT</div>
 
   <ol>
     <li>
@@ -1053,7 +1059,7 @@ topics/admin/tutorials/pulsar/tutorial.md
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>The knitting script works OK?</p>
@@ -1087,7 +1093,7 @@ topics/admin/tutorials/pulsar/tutorial.md
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -1122,7 +1128,7 @@ topics/admin/tutorials/pulsar/tutorial.md
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Helena Rasche, 2021 <b>Updating diffs in admin training (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Helena Rasche,  <b>Updating diffs in admin training (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1130,18 +1136,25 @@ topics/admin/tutorials/pulsar/tutorial.md
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{contributing-admin-knitting,
 author = "Helena Rasche",
 title = "Updating diffs in admin training (Galaxy Training Materials)",
-year = "2021",
-month = "06",
-day = "22"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -1158,8 +1171,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -1172,11 +1185,11 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <h3>Developing GTN training material</h3>
+                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
@@ -1254,6 +1267,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
                             
@@ -1278,6 +1299,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                         
                             
                                 
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
                     <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
                                 
                             
@@ -1287,6 +1316,14 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                             
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
                                 
                             
                         

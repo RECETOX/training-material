@@ -43,6 +43,23 @@
     }
   ],
   "gitter": "galaxy-genome-annotation/Lobby",
+  "subtopics": [
+    {
+      "id": "intro",
+      "title": "Introduction",
+      "description": "Start here if you are new to genome annotation in Galaxy."
+    },
+    {
+      "id": "prokaryote",
+      "title": "Prokaryotes",
+      "description": "Annotation of prokaryotic genomes."
+    },
+    {
+      "id": "eukaryote",
+      "title": "Eukaryotes",
+      "description": "Annotation of eukaryotic genomes."
+    }
+  ],
   "materials": [
     {
       "layout": "introduction_slides",
@@ -74,13 +91,113 @@
           "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json"
         }
       ],
-      "last_modified_at": "2021-12-08T14:02:30+00:00",
+      "subtopic": "intro",
       "url": "/topics/genome-annotation/slides/introduction.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "introduction",
       "slides": true,
       "urls": {
         "slides": "https://training.galaxyproject.org/training-material/api/topics//genome-annotation/slides/introduction.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
+      "title": "Comparative gene analysis in unannotated genomes",
+      "zenodo_link": "https://zenodo.org/record/7034885",
+      "questions": [
+        "I have several genomes assemblies that are not annoatated (or I do not trust annotations)",
+        "I am interested to compare structure of a particular gene across these genome assemblies",
+        "How do I do that?"
+      ],
+      "objectives": [
+        "Provide a quick method for identifying genes of interest in unannotated or newly assembled genomes"
+      ],
+      "time_estimation": "30M",
+      "key_points": [
+        "You can locate gene of interest in unannotated genomes and compare its structure across multiple species"
+      ],
+      "contributors": [
+        {
+          "name": "Anton Nekrutenko",
+          "email": "anton@nekrut.org",
+          "joined": "2017-09",
+          "id": "nekrut",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/nekrut.json"
+        }
+      ],
+      "tags": [
+        "evolution",
+        "annotation",
+        "vgp",
+        "cookbook",
+        "eukaryote",
+        "prokaryote"
+      ],
+      "requirements": [
+        {
+          "type": "internal",
+          "topic_name": "introduction",
+          "tutorials": [
+            "galaxy-intro-101"
+          ]
+        },
+        {
+          "type": "internal",
+          "topic_name": "galaxy-interface",
+          "tutorials": [
+            "collections"
+          ]
+        }
+      ],
+      "abbreviations": {
+        "ORF": "Open Reading Frame"
+      },
+      "priority": 2,
+      "url": "/topics/genome-annotation/tutorials/gene-centric/tutorial.html",
+      "topic_name": "genome-annotation",
+      "tutorial_name": "gene-centric",
+      "hands_on": true,
+      "slides": false,
+      "workflows": [
+        {
+          "workflow": "Comparative-gene-analysis.ga",
+          "tests": false
+        }
+      ],
+      "tools": [
+        "Cut1",
+        "Filter1",
+        "cat1",
+        "join1",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/diamond/bg_diamond/2.0.15+galaxy0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/diamond/bg_diamond_makedb/2.0.15+galaxy0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/diamond/bg_diamond_view/2.0.15+galaxy0",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/split_file_on_column/tp_split_on_column/0.4",
+        "toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/1.6",
+        "toolshed.g2.bx.psu.edu/repos/devteam/column_maker/Add_a_column1/2.0",
+        "toolshed.g2.bx.psu.edu/repos/devteam/intersect/gops_intersect_1/1.0.0",
+        "toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1",
+        "toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.1",
+        "toolshed.g2.bx.psu.edu/repos/iuc/orfipy/orfipy/0.0.4+galaxy0",
+        "toolshed.g2.bx.psu.edu/repos/iuc/rapidnj/rapidnj/2.3.2",
+        "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+        "toolshed.g2.bx.psu.edu/repos/rnateam/mafft/rbc_mafft/7.489+galaxy0"
+      ],
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics//genome-annotation/tutorials/gene-centric/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics//genome-annotation/tutorials/gene-centric/tutorial.json"
       }
     },
     {
@@ -149,7 +266,8 @@
         "CRISPR": "Clustered Regularly Interspaced Short Palindromic Repeats",
         "MAGeCK": "Model-based Analysis of Genome-wide CRISPR-Cas9 Knockout"
       },
-      "last_modified_at": "2022-03-09T17:14:10+00:00",
+      "subtopic": "eukaryote",
+      "priority": 8,
       "url": "/topics/genome-annotation/tutorials/crispr-screen/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "crispr-screen",
@@ -238,7 +356,8 @@
           "url": "https://training.galaxyproject.org/training-material/api/contributors/bebatut.json"
         }
       ],
-      "last_modified_at": "2022-03-31T12:57:41+00:00",
+      "subtopic": "prokaryote",
+      "priority": 4,
       "url": "/topics/genome-annotation/tutorials/tnseq/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "tnseq",
@@ -320,7 +439,6 @@
           "url": "https://training.galaxyproject.org/training-material/api/contributors/estebanpw.json"
         }
       ],
-      "last_modified_at": "2021-03-12T17:24:55+00:00",
       "url": "/topics/genome-annotation/tutorials/hpc-for-lsgc/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "hpc-for-lsgc",
@@ -364,8 +482,7 @@
       "title": "Functional annotation of protein sequences",
       "zenodo_link": "https://zenodo.org/record/6861851",
       "tags": [
-        "eukaryote",
-        "prokaryote"
+        "eukaryote"
       ],
       "questions": [
         "How to perform functional annotation on protein sequences?"
@@ -387,7 +504,8 @@
           "erasmusplus"
         ]
       },
-      "last_modified_at": "2022-07-20T14:42:58+00:00",
+      "subtopic": "eukaryote",
+      "priority": 6,
       "url": "/topics/genome-annotation/tutorials/functional/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "functional",
@@ -483,7 +601,7 @@
           "url": "https://training.galaxyproject.org/training-material/api/contributors/bgruening.json"
         }
       ],
-      "last_modified_at": "2020-12-30T14:38:46+00:00",
+      "subtopic": "prokaryote",
       "url": "/topics/genome-annotation/tutorials/genome-annotation/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "genome-annotation",
@@ -532,7 +650,7 @@
       "time_estimation": "8h",
       "level": "Intermediate",
       "key_points": [
-        "Funannotate allows to perform structural annotatation of a eukaryotic genome.",
+        "Funannotate allows to perform structural annotation of an eukaryotic genome.",
         "Functional annotation can be performed using EggNOG-mapper and InterProScan.",
         "BUSCO and JBrowse allow to inspect the quality of an annotation.",
         "Funannotate allows to format an annotation for sumission at NCBI."
@@ -563,7 +681,8 @@
           ]
         }
       ],
-      "last_modified_at": "2022-07-20T14:42:58+00:00",
+      "subtopic": "eukaryote",
+      "priority": 2,
       "url": "/topics/genome-annotation/tutorials/funannotate/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "funannotate",
@@ -701,7 +820,8 @@
           "url": "https://training.galaxyproject.org/training-material/api/contributors/abretaud.json"
         }
       ],
-      "last_modified_at": "2020-12-31T16:14:33+00:00",
+      "subtopic": "eukaryote",
+      "priority": 4,
       "url": "/topics/genome-annotation/tutorials/annotation-with-maker/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "annotation-with-maker",
@@ -777,7 +897,8 @@
           "url": "https://training.galaxyproject.org/training-material/api/contributors/abretaud.json"
         }
       ],
-      "last_modified_at": "2020-12-31T16:14:33+00:00",
+      "subtopic": "eukaryote",
+      "priority": 3,
       "url": "/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "annotation-with-maker-short",
@@ -860,7 +981,7 @@
           "url": "https://training.galaxyproject.org/training-material/api/contributors/slugger70.json"
         }
       ],
-      "last_modified_at": "2021-05-28T15:48:59+00:00",
+      "subtopic": "prokaryote",
       "url": "/topics/genome-annotation/tutorials/annotation-with-prokka/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "annotation-with-prokka",
@@ -897,17 +1018,128 @@
     },
     {
       "layout": "tutorial_hands_on",
+      "title": "Long non-coding RNAs (lncRNAs) annotation with FEELnc",
+      "zenodo_link": "https://zenodo.org/record/7107050",
+      "tags": [
+        "eukaryote"
+      ],
+      "questions": [
+        "How to annotate lncRNAs with FEELnc?",
+        "How to classify lncRNAs according to their localisation and direction of transcription of proximal RNA transcripts?",
+        "How to update genome annotation with these annotated lncRNAs?"
+      ],
+      "objectives": [
+        "Load data (genome assembly, annotation and mapped RNASeq) into Galaxy",
+        "Perform a transcriptome assembly with StringTie",
+        "Annotate lncRNAs with FEELnc",
+        "Classify lncRNAs according to their location",
+        "Update genome annotation with lncRNAs"
+      ],
+      "time_estimation": "2h",
+      "level": "Intermediate",
+      "key_points": [
+        "StringTie allows to perform a transcriptome assembly using mapped RNASeq data and provides an annotation file containing trancripts description.",
+        "FEELnc pipeline allows to perform annotation of long non-coding RNAs (lncRNAs).",
+        "Annotation is based on reconstructed transcripts from RNA-seq data (either with or without a reference genome)",
+        "Annotation can be performed without any training set of non-coding RNAs.",
+        "FEELnc provides the localisation and the direction of transcription of proximal RNA transcripts of lncRNAs."
+      ],
+      "contributions": {
+        "authorship": [
+          "stephanierobin"
+        ],
+        "editing": [
+          "abretaud"
+        ]
+      },
+      "abbreviations": {
+        "lncRNAs": "long non-coding RNAs",
+        "LncRNAs": "Long non-coding RNAs",
+        "mRNAs": "Messenger RNAs"
+      },
+      "requirements": [
+        {
+          "type": "internal",
+          "topic_name": "genome-annotation",
+          "tutorials": [
+            "funannotate"
+          ]
+        }
+      ],
+      "subtopic": "eukaryote",
+      "priority": 7,
+      "url": "/topics/genome-annotation/tutorials/lncrna/tutorial.html",
+      "topic_name": "genome-annotation",
+      "tutorial_name": "lncrna",
+      "hands_on": true,
+      "slides": false,
+      "workflows": [
+        {
+          "workflow": "main_workflow.ga",
+          "tests": false
+        }
+      ],
+      "tools": [
+        "Extract_features1",
+        "https://toolshed.g2.bx.psu.edu/view/bgruening/text_processing/f46f0e4f75c4",
+        "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/0.1.1",
+        "toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.3+galaxy0",
+        "toolshed.g2.bx.psu.edu/repos/iuc/feelnc/feelnc/0.2",
+        "toolshed.g2.bx.psu.edu/repos/iuc/stringtie/stringtie/1.3.6",
+        "toolshed.g2.bx.psu.edu/repos/iuc/stringtie/stringtie/2.1.7+galaxy1"
+      ],
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "contributors": [
+        {
+          "name": "Stéphanie Robin",
+          "email": "stephanie.robin@inrae.fr",
+          "twitter": "robinstphanie1",
+          "orcid": "0000-0001-7379-9173",
+          "joined": "2021-11",
+          "id": "stephanierobin",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/stephanierobin.json"
+        },
+        {
+          "name": "Anthony Bretaudeau",
+          "email": "anthony.bretaudeau@inra.fr",
+          "twitter": "abretau",
+          "gitter": "abretaud",
+          "orcid": "0000-0003-0914-2470",
+          "joined": "2017-09",
+          "elixir_node": "fr",
+          "id": "abretaud",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/abretaud.json"
+        }
+      ],
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics//genome-annotation/tutorials/lncrna/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics//genome-annotation/tutorials/lncrna/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
       "title": "Masking repeats with RepeatMasker",
-      "zenodo_link": "https://zenodo.org/record/5726723",
+      "zenodo_link": "https://zenodo.org/record/7085837",
       "tags": [
         "eukaryote"
       ],
       "questions": [
         "How to mask repeats in a genome?",
-        "What is the difference between hard and soft masking?"
+        "What is the difference between hard and soft-masking?"
       ],
       "objectives": [
-        "Use RepeatMasker to soft mask a newly assmbled genome"
+        "Use Red and RepeatMasker to soft-mask a newly assembled genome"
       ],
       "time_estimation": "1H",
       "level": "Introductory",
@@ -972,6 +1204,14 @@
           "funding_statement": "This project (<a href=\"https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2020-1-NL01-KA203-064717\"><code class=\"language-plaintext highlighter-rouge\">2020-1-NL01-KA203-064717</code></a>) is funded with the support of the Erasmus+ programme of the European Union. Their funding has supported a large number of tutorials within the GTN across a wide array of topics.\n<img src=\"https://gallantries.github.io/assets/images/logosbeneficaireserasmusright_en.jpg\" alt=\"eu flag with the text: with the support of the erasmus programme of the european union\" />",
           "id": "erasmusplus",
           "url": "https://training.galaxyproject.org/training-material/api/contributors/erasmusplus.json"
+        },
+        {
+          "name": "Jonathan Kreplak",
+          "email": "jonathan.kreplak@inrae.fr",
+          "joined": "2020-09",
+          "orcid": "0000-0001-5563-1932",
+          "id": "jkreplak",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/jkreplak.json"
         }
       ],
       "abbreviations": {
@@ -987,7 +1227,8 @@
           ]
         }
       ],
-      "last_modified_at": "2022-02-25T10:08:50+00:00",
+      "subtopic": "eukaryote",
+      "priority": 1,
       "url": "/topics/genome-annotation/tutorials/repeatmasker/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "repeatmasker",
@@ -1000,7 +1241,9 @@
         }
       ],
       "tools": [
-        "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1"
+        "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/4.1.2-p1+galaxy1",
+        "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_maskfastabed/2.30.0",
+        "toolshed.g2.bx.psu.edu/repos/iuc/red/red/2018.09.10+galaxy1"
       ],
       "tours": false,
       "video": false,
@@ -1021,7 +1264,108 @@
     },
     {
       "layout": "tutorial_hands_on",
-      "title": "Refining Genome Annotations with Apollo",
+      "title": "Refining Genome Annotations with Apollo (eukaryotes)",
+      "zenodo_link": "https://zenodo.org/record/3270822",
+      "tags": [
+        "eukaryote",
+        "cyoa"
+      ],
+      "questions": [
+        "How to visualize your genome after automated annotations have been performed?",
+        "How to manually annotate genome after automated annotations have been performed?",
+        "How to evaluate and visualize annotated genomic features?",
+        "How do I collaborate when doing genome annotation?"
+      ],
+      "objectives": [
+        "Load a genome into Galaxy",
+        "View annotations in JBrowse",
+        "Learn how to load JBrowse data into Apollo",
+        "Learn how to manually refine genome annotations within Apollo",
+        "Export refined genome annotations"
+      ],
+      "time_estimation": "3h",
+      "level": "Intermediate",
+      "key_points": [
+        "Apollo is the Google Docs of the genome annotation world, real-time collaborative genome annotation.",
+        "Apollo allows a group to view and manually refine predicted genome annotations",
+        "Use Apollo to edit annotations within your group.",
+        "Export manual annotations as GFF3."
+      ],
+      "contributors": [
+        {
+          "name": "Anthony Bretaudeau",
+          "email": "anthony.bretaudeau@inra.fr",
+          "twitter": "abretau",
+          "gitter": "abretaud",
+          "orcid": "0000-0003-0914-2470",
+          "joined": "2017-09",
+          "elixir_node": "fr",
+          "id": "abretaud",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/abretaud.json"
+        },
+        {
+          "name": "Erasmus+ Programme",
+          "joined": "2020-09",
+          "avatar": "https://www.erasmusplus.nl/assets/images/logo.png",
+          "github": false,
+          "funder": true,
+          "funding_id": "2020-1-NL01-KA203-064717",
+          "funding_statement": "This project (<a href=\"https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2020-1-NL01-KA203-064717\"><code class=\"language-plaintext highlighter-rouge\">2020-1-NL01-KA203-064717</code></a>) is funded with the support of the Erasmus+ programme of the European Union. Their funding has supported a large number of tutorials within the GTN across a wide array of topics.\n<img src=\"https://gallantries.github.io/assets/images/logosbeneficaireserasmusright_en.jpg\" alt=\"eu flag with the text: with the support of the erasmus programme of the european union\" />",
+          "id": "erasmusplus",
+          "url": "https://training.galaxyproject.org/training-material/api/contributors/erasmusplus.json"
+        }
+      ],
+      "requirements": [
+        {
+          "type": "internal",
+          "topic_name": "galaxy-interface",
+          "tutorials": [
+            "upload-rules"
+          ]
+        },
+        {
+          "type": "internal",
+          "topic_name": "genome-annotation",
+          "tutorials": [
+            "funannotate"
+          ]
+        }
+      ],
+      "subtopic": "eukaryote",
+      "priority": 6,
+      "abbreviations": {
+        "OGS": "Official Gene Set"
+      },
+      "url": "/topics/genome-annotation/tutorials/apollo-euk/tutorial.html",
+      "topic_name": "genome-annotation",
+      "tutorial_name": "apollo-euk",
+      "hands_on": true,
+      "slides": false,
+      "tools": [
+        "toolshed.g2.bx.psu.edu/repos/gga/apollo_create_or_update/create_or_update/4.2.5",
+        "toolshed.g2.bx.psu.edu/repos/gga/apollo_iframe/iframe/4.2.5",
+        "toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.11+galaxy1"
+      ],
+      "tours": false,
+      "video": false,
+      "translations": {
+        "tutorial": [
+
+        ],
+        "slides": [
+
+        ],
+        "video": false
+      },
+      "type": "tutorial",
+      "urls": {
+        "hands_on": "https://training.galaxyproject.org/training-material/api/topics//genome-annotation/tutorials/apollo-euk/tutorial.json",
+        "slides": "https://training.galaxyproject.org/training-material/api/topics//genome-annotation/tutorials/apollo-euk/tutorial.json"
+      }
+    },
+    {
+      "layout": "tutorial_hands_on",
+      "title": "Refining Genome Annotations with Apollo (prokaryotes)",
       "zenodo_link": "https://zenodo.org/record/3270822",
       "tags": [
         "prokaryote"
@@ -1116,7 +1460,10 @@
           ]
         }
       ],
-      "last_modified_at": "2021-12-14T14:52:15+00:00",
+      "subtopic": "prokaryote",
+      "abbreviations": {
+        "OGS": "Official Gene Set"
+      },
       "url": "/topics/genome-annotation/tutorials/apollo/tutorial.html",
       "topic_name": "genome-annotation",
       "tutorial_name": "apollo",
@@ -1131,7 +1478,6 @@
       "tools": [
         "toolshed.g2.bx.psu.edu/repos/gga/apollo_create_account/create_account/3.1",
         "toolshed.g2.bx.psu.edu/repos/gga/apollo_create_or_update/create_or_update/4.2.5",
-        "toolshed.g2.bx.psu.edu/repos/gga/apollo_export/export/4.2.5",
         "toolshed.g2.bx.psu.edu/repos/gga/apollo_iframe/iframe/4.2.5",
         "toolshed.g2.bx.psu.edu/repos/gga/apollo_list_organism/list_organism/3.1",
         "toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.11+galaxy1"

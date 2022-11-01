@@ -24,7 +24,7 @@
 <meta name="DC.type" content="text" />
 <meta name="DC.title" content="Python - Try & Except" />
 <meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="1970-01-01 00:33:42 +0000" />
+<meta name="DC.date" content="2022-09-28 13:13:58 +0000" />
 <meta name="DC.creator" content="Helena Rasche" />
 <meta name="DC.creator" content="Donny Vrins" />
 <meta name="DC.creator" content="Bazante Sanders" />
@@ -147,10 +147,14 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
-            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-            </a>
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
         
 
         <div class="dropdown-item">
@@ -189,7 +193,6 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
                 <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/python-exceptions/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
@@ -276,7 +279,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "1970-01-01 00:33:42 +0000",
+  "dateModified": "2022-09-28 13:13:58 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Python - Try & Except",
   "interactivityType": "mixed",
@@ -330,7 +333,7 @@
   "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-exceptions/tutorial.html",
   "timeRequired": "PT20M",
   "keywords": "data-science, jupyter-notebook",
-  "description": "The questions this  addresses are:\n - How do I try to execute code, knowing it might fail?\n - What are some situations where this is important?\n - How can I write my own exceptions.\n\n\\nThe objectives are:\n - catch an exception\n - raise your own exception\n\n",
+  "description": "The questions this  addresses are:\n - How do I try to execute code, knowing it might fail?\n - What are some situations where this is important?\n - How can I write my own exceptions.\n\n\nThe objectives are:\n - catch an exception\n - raise your own exception\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -508,7 +511,7 @@
 
 
     <blockquote class="overview">
-        <h3>Overview</h3>
+        <div class="box-title" aria-label="overview box">Overview</div>
         
         <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
         
@@ -615,7 +618,7 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Apr 25, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
             
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
@@ -638,7 +641,7 @@
                      
                     
                         <blockquote class="comment">
-                            <h3><i class="far fa-comment-dots" aria-hidden="true"></i> Best viewed in a Jupyter Notebook</h3>
+                            <div class="box-title" aria-label="comment box">Best viewed in a Jupyter Notebook</div>
                             <p>
                                 This tutorial is best viewed in a Jupyter notebook! You can load this notebook one of the following ways<!--, or you can click to run it in MyBinder-->
                             </p>
@@ -670,7 +673,7 @@
                 <p>Try/except are a construct in Python used to catch a potential exception. Sometimes things go wrong in your code! Or in someone else’s code in a module. Sometimes some errors might be expected like when you try and read a user supplied file, maybe it isn’t available because they’ve specified the wrong path.</p>
 
 <blockquote class="agenda">
-  <h3 id="agenda">Agenda</h3>
+  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -720,7 +723,7 @@
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <h3 id="tip-tip-where-do-valueerror-zerodivisionerror-come-from"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden">tip</span> Tip: Where do ValueError, ZeroDivisionError come from?</h3>
+  <div id="tip-where-do-valueerror-zerodivisionerror-come-from" class="box-title"><button type="button" aria-controls="tip-where-do-valueerror-zerodivisionerror-come-from-contents" aria-expanded="true" aria-label="Toggle tip box: Where do ValueError, ZeroDivisionError come from?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Where do ValueError, ZeroDivisionError come from?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>There are loads of different types of exception codes! <a href="https://docs.python.org/3/library/exceptions.html">The python documentation has a large list</a> of exceptions and some descriptions for when or why those exceptions might be raised.</p>
 </blockquote>
 
@@ -804,7 +807,7 @@ except BlastNotAvailable:
 
                 
                 <blockquote class="key_points">
-                    <h3><i class="fas fa-key" aria-hidden="true"></i> Key points</h3>
+                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>raise lets your raise your own <code class="language-plaintext highlighter-rouge">Exception</code>s</p>
@@ -838,7 +841,7 @@ except BlastNotAvailable:
                 
 
                 <h1>Feedback</h1>
-                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452" target="_blank">how it went</a>.
+                <p class="text-muted">Did you use this material as an instructor? Feel free to give us feedback on <a href="https://github.com/galaxyproject/training-material/issues/1452">how it went</a>.
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
@@ -873,7 +876,7 @@ except BlastNotAvailable:
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Helena Rasche, Donny Vrins, Bazante Sanders, 2022 <b>Python - Try & Except (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-exceptions/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-exceptions/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">Helena Rasche, Donny Vrins, Bazante Sanders,  <b>Python - Try & Except (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-exceptions/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-exceptions/tutorial.html</a> Online; accessed TODAY
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -881,18 +884,25 @@ except BlastNotAvailable:
                     </ol>
                 </p>
 
-
+                <!-- collapsible boxcontaining the BibTeX-formatted citation -->
                 <blockquote class="details">
-                  <h3><i class="fa fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> BibTeX</h3>
-                  <p style="display: none;">
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+                  <div id="citation-bibtex" class="box-title">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
+                    </button>
+                   </div>
+                   <p style="display: none;">
+
+                   <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
+
 <code id="citation-code">@misc{data-science-python-exceptions,
 author = "Helena Rasche and Donny Vrins and Bazante Sanders",
 title = "Python - Try & Except (Galaxy Training Materials)",
-year = "2022",
-month = "04",
-day = "25"
+year = "",
+month = "",
+day = ""
 url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-exceptions/tutorial.html}",
 note = "[Online; accessed TODAY]"
 }
@@ -909,8 +919,8 @@ note = "[Online; accessed TODAY]"
     title = {Community-Driven Data Analysis Training for Biology},
     journal = {Cell Systems}
 }</code>
-                </pre></div></div>
-                </p>
+                   </pre></div></div>
+                   </p>
                 </blockquote>
 
                 
@@ -923,7 +933,7 @@ document.getElementById("citation-code").innerHTML = document.getElementById("ci
 document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
 </script>
 
-                <h3><i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!</h3>
+                <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
 
