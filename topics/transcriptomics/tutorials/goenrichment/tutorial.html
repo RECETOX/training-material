@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="GO Enrichment Analysis" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="IGC Bioinformatics Unit" />
-<meta name="DC.creator" content="Maria Doyle" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: GO Enrichment Analysis" />
-        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/goenrichment/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/goenrichment/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/goenrichment/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/goenrichment/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/goenrichment/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/goenrichment/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/goenrichment/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/goenrichment/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/goenrichment/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/goenrichment/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="GO Enrichment Analysis">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-11-17 15:55:28 +0000">
+<meta name="DC.creator" content="IGC Bioinformatics Unit">
+<meta name="DC.creator" content="Maria Doyle">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for all kinds of transcriptomics analysis.">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: GO Enrichment Analysis">
+        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis.">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -278,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2022-11-17 15:55:28 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "GO Enrichment Analysis",
   "interactivityType": "mixed",
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'GO Enrichment Analysis' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "How to perform a GO Enrichment Analysis\n - How to interpret and simplify the results",
   "keywords": "transcriptomics",
   "description": "The questions this  addresses are:\n - How can I functionally interpret a list of genes of interest that I obtained from my experiment?\n\n\nThe objectives are:\n - How to perform a GO Enrichment Analysis\n - How to interpret and simplify the results\n\n",
   "inLanguage": {
@@ -418,8 +239,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/igcbioinformatics/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/igcbioinformatics/",
@@ -439,8 +260,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/mblue9/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/mblue9/",
@@ -454,51 +275,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/igcbioinformatics/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/igcbioinformatics/",
-      "name": "IGC Bioinformatics Unit",
-      "image": "https://avatars.githubusercontent.com/igcbioinformatics",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/mblue9/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/mblue9/",
-      "name": "Maria Doyle",
-      "image": "https://avatars.githubusercontent.com/mblue9",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0003-4847-8436",
+      "orcid": "https://orcid.org/0000-0003-4847-8436"
     }
   ],
   "about": [
@@ -515,35 +294,209 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-transcriptomics">
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/goenrichment/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/goenrichment/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/goenrichment/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/goenrichment/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-transcriptomics">
     <h1 data-toc-skip>GO Enrichment Analysis</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/igcbioinformatics/" class="contributor-badge contributor-igcbioinformatics"><img src="https://avatars.githubusercontent.com/igcbioinformatics?s=27" alt="Avatar">IGC Bioinformatics Unit</a>
-
-
-
-<a href="/training-material/hall-of-fame/mblue9/" class="contributor-badge contributor-mblue9"><img src="https://avatars.githubusercontent.com/mblue9?s=27" alt="Avatar">Maria Doyle</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/igcbioinformatics/" class="contributor-badge contributor-igcbioinformatics"><img src="https://avatars.githubusercontent.com/igcbioinformatics?s=36" alt="Avatar" width="36" height="36">IGC Bioinformatics Unit</a><a href="/training-material/hall-of-fame/mblue9/" class="contributor-badge contributor-mblue9"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/mblue9?s=36" alt="Avatar" width="36" height="36">Maria Doyle</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -589,6 +542,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -606,6 +561,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -649,17 +606,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/transcriptomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/2565417#.XGXUXlz7TIU">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -669,8 +622,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/goenrichment/workflows/" title="Workflows" alt="GO Enrichment Analysis workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/goenrichment/workflows/" title="GO Enrichment Analysis workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -683,13 +636,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/goenrichment/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/goenrichment/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -715,218 +665,91 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr>
+		</a>
+	</li>
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
-            Human Cell Atlas
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://metagenomics.usegalaxy.eu/" title="Metagenomics">
-            Metagenomics
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
-            Single Cell Omics workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://virology.usegalaxy.eu/" title="Virology">
-            Virology
-        </a>
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 17, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00291">https://gxy.io/GTN:T00291</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -937,21 +760,22 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
-<p>When we have a large list of genes of interest, such as a list of differentially expressed genes obtained from an <span class="notranslate">RNA</span>-Seq experiment, how do we extract biological meaning from it?</p>
+<p>When we have a large list of genes of interest, such as a list of differentially expressed genes obtained from an RNA-Seq experiment, how do we extract biological meaning from it?</p>
 
 <p>One way to do so is to perform functional enrichment analysis. This method consists of applying statistical tests to verify if genes of interest are more often associated to certain biological functions than what would be expected in a random set of genes. In this tutorial you will learn about enrichment analysis and how to perform it.</p>
 
 <h2 id="what-is-the-gene-ontology">What is the Gene Ontology?</h2>
 <p>The <a href="http://www.geneontology.org/">Gene Ontology</a> (GO) is a structured, controlled vocabulary for the classification of gene function at the molecular and cellular level. It is divided in three separate sub-ontologies or GO types: biological process (e.g., signal transduction), molecular function (e.g., ATPase activity) and cellular component (e.g., ribosome). These sub-ontologies are structured as directed acyclic graphs (a hierarchy with multi-parenting) of GO terms.</p>
 
-<figure id="figure-1"><img src="../../images/goenrichment_GOexample.png" alt="GO Example. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> QuickGO - http://www.ebi.ac.uk/QuickGO</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/transcriptomics_images/goenrichment_GOexample.png" alt="GO Example. " width="257" height="367" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> QuickGO - http://www.ebi.ac.uk/QuickGO</figcaption></figure>
 
-<p>The GO Ontology, like other ontologies, are usually coded in the <a href="http://www.geneontology.org/faq/what-obo-file-format">OBO</a> or the <a href="http://www.geneontology.org/faq/what-owl-file">OWL</a> formats. It can be downloaded from the <a href="http://geneontology.org/page/download-ontology">Gene Ontology website</a> or from the <a href="http://www.obofoundry.org/">OBO foundry</a>. You can also find in <span class="notranslate">Galaxy</span> tools that allow you to manipulate and extract information from OBO files, but this is outside the scope of this tutorial.</p>
+<p>The GO Ontology, like other ontologies, are usually coded in the <a href="http://www.geneontology.org/faq/what-obo-file-format">OBO</a> or the <a href="http://www.geneontology.org/faq/what-owl-file">OWL</a> formats. It can be downloaded from the <a href="http://geneontology.org/page/download-ontology">Gene Ontology website</a> or from the <a href="http://www.obofoundry.org/">OBO foundry</a>. You can also find in Galaxy tools that allow you to manipulate and extract information from OBO files, but this is outside the scope of this tutorial.</p>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
   <p>Take note of when and where you obtained your ontology file, as these are constantly being updated.</p>
 
 </blockquote>
@@ -994,12 +818,12 @@
 
 <p>The appropriate statistical test is the one-tailed variant of Fisher’s exact test, also known as the hypergeometric test for over-representation. When the one-tailed version is applied, this test will compute the probability of observing at least the sample frequency, given the population frequency.  The <a href="https://en.wikipedia.org/wiki/Hypergeometric_distribution">hypergeometric distribution</a> measures precisely the probability of <strong>k</strong> successes in <strong>n</strong> draws, without replacement, from a finite population of size <strong>N</strong> that contains exactly <strong>K</strong> successful objects:</p>
 
-<p><img src="../../images/goenrichment_formula.png" alt="Go Enrichment Formula. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/goenrichment_formula.png" alt="Go Enrichment Formula. " width="144" height="70" loading="lazy" /></p>
 
-<p>For this first exercise we will use data from <a href="https://www.ncbi.nlm.nih.gov/pubmed/22383036" title="Trapnell et al. data">Trapnell et al. 2014</a>. In this work, the authors created an artificial dataset of gene <span class="notranslate">expression</span> in <em>Drosophila melanogaster</em>, where 300 random genes were set (insilico) to be differentially expressed between two conditions.</p>
+<p>For this first exercise we will use data from <a href="https://www.ncbi.nlm.nih.gov/pubmed/22383036" title="Trapnell et al. data">Trapnell et al. 2014</a>. In this work, the authors created an artificial dataset of gene expression in <em>Drosophila melanogaster</em>, where 300 random genes were set (insilico) to be differentially expressed between two conditions.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <p>The data for this tutorial is available at <a href="https://zenodo.org/record/2565417#.XGXUXlz7TIU">Zenodo</a> to download. For convenience and reproducibility of results, we already added the GO ontology and annotations in the Zenodo repository.</p>
 
@@ -1008,9 +832,10 @@
       <p><strong>Create a new history</strong></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
-    <li><strong>Upload to the <span class="notranslate">Galaxy</span></strong> the following files:
+    <li><strong>Upload to the Galaxy</strong> the following files:
       <ul>
         <li>go.obo</li>
         <li>drosophila_gene_association.fb</li>
@@ -1018,12 +843,12 @@
       </ul>
 
       <blockquote class="tip">
-        <div id="tip-upload-data-to-galaxy" class="box-title"><button type="button" aria-controls="tip-upload-data-to-galaxy-contents" aria-expanded="true" aria-label="Toggle tip box: Upload data to Galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Upload data to <span class="notranslate">Galaxy</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-upload-data-to-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-upload-data-to-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Upload data to Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <ul>
           <li><strong>Click</strong> on the upload button in the upper left of the interface.</li>
         </ul>
 
-        <p><img src="../../images/goenrichment_galaxy_upload.png" alt="Galaxy Upload. " loading="lazy" /></p>
+        <p><img src="../../images/transcriptomics_images/goenrichment_galaxy_upload.png" alt="Galaxy Upload. " width="266" height="206" loading="lazy" /></p>
 
         <ul>
           <li>Press <strong>Choose local file</strong> and search for your file.</li>
@@ -1034,26 +859,26 @@
     <li>
       <p><strong>Rename</strong> the <em>go.obo</em> file to <code class="language-plaintext highlighter-rouge">GO</code> and <em>drosophila_gene_association.fb</em> file to <code class="language-plaintext highlighter-rouge">GO annotations Drosophila melanogaster</code>.</p>
 
-      <p>After you upload the files, and if you press the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon of <code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code> it should look something like this:</p>
-      <figure id="figure-2"><img src="../../images/goenrichment_trapnellFile.png" alt="Trapnell File. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Trapnell file</figcaption></figure>
+      <p>After you upload the files, and if you press the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (eye) icon of <code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code> it should look something like this:</p>
+      <figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/transcriptomics_images/goenrichment_trapnellFile.png" alt="Trapnell File. " width="1438" height="580" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Trapnell file</figcaption></figure>
 
       <blockquote class="comment">
-        <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
-        <p>The study set represents the differentially expressed genes. These were chosen as having an adjusted p-value for the differential <span class="notranslate">expression</span> test (last column) smaller than a given threshold. In this case, we want to select the genes with an adjusted p-value &lt; 0.05.</p>
+        <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
+        <p>The study set represents the differentially expressed genes. These were chosen as having an adjusted p-value for the differential expression test (last column) smaller than a given threshold. In this case, we want to select the genes with an adjusted p-value &lt; 0.05.</p>
       </blockquote>
     </li>
-    <li><strong>Filter data on any column using simple <span class="notranslate">expression</span>s</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Filter data on any column using simple expressions</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Filter”</em>: <code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code></li>
         <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>“With following condition”</em>: <code class="language-plaintext highlighter-rouge">c7 &lt; 0.05</code>
-<img src="../../images/goenrichment_galaxyFilter.png" alt="Galaxy Filter. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyFilter.png" alt="Galaxy Filter. " width="921" height="278" loading="lazy" /></li>
       </ul>
     </li>
     <li>
       <p>This generates one file. <strong>Rename</strong> it to <code class="language-plaintext highlighter-rouge">trapnellStudy</code>.</p>
 
       <blockquote class="comment">
-        <div id="comment-2" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
         <p>Both files have the same type of information, the difference between them being the number of genes, as the genes in the study sample are a subset of the population.</p>
       </blockquote>
     </li>
@@ -1064,71 +889,71 @@
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Study set File”</em>: <code class="language-plaintext highlighter-rouge">trapnellStudy</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Population set File”</em>: <code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code></li>
         <li>Use the default options for the rest.
-<img src="../../images/goenrichment_galaxyTrapnell.png" alt="GO Enrichment Trapnell. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyTrapnell.png" alt="GO Enrichment Trapnell. " width="918" height="799" loading="lazy" /></li>
       </ul>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>What were the results from running GOEnrichment?</p>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>This will generate 6 files with the respective default names: <code class="language-plaintext highlighter-rouge">goenrichment on trapnellStudy MF Table', </code>goenrichment on trapnellStudy BP Table’, <code class="language-plaintext highlighter-rouge">goenrichment on trapnellStudy MF Table', </code>goenrichment on trapnellStudy MF Graph’, <code class="language-plaintext highlighter-rouge">goenrichment on trapnellStudy BP Graph' and </code>goenrichment on trapnellStudy CC Graph’. The three Table files list the results of the statistical test for each GO Term, ordered by p-value, and the three Graph files are image files displaying a graph view of the enriched GO terms.</p>
         </blockquote>
       </blockquote>
 
       <blockquote class="comment">
-        <div id="comment-3" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-3"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
         <p>For each GO term we obtain a p-value corresponding to a single, independent test. Since we are making multiple similar tests, the probability of at least one of them being a false positive increases. Therefore we need to make a correction for multiple testing.</p>
       </blockquote>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>How many significant terms do we get?</p>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>When we ask how many significant terms, we want to see GO terms that have a p-value &lt; 0.05. According to the results, for Molecular Function we have 5 GO terms, Biological Process we have 43 GO terms and Component Cellular we have 10 GO terms.</p>
         </blockquote>
       </blockquote>
     </li>
   </ol>
 
-  <p>If you press the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon of the <em>Molecular Function</em> file (<code class="language-plaintext highlighter-rouge">MF Trapnell</code>) you should see something like this:</p>
+  <p>If you press the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (eye) icon of the <em>Molecular Function</em> file (<code class="language-plaintext highlighter-rouge">MF Trapnell</code>) you should see something like this:</p>
 
-  <p><img src="../../images/goenrichment_mfTrapnell.png" alt="GO Enrichment Trapnell MF. " loading="lazy" /></p>
+  <p><img src="../../images/transcriptomics_images/goenrichment_mfTrapnell.png" alt="GO Enrichment Trapnell MF. " width="329" height="293" loading="lazy" /></p>
 
   <blockquote class="question">
-    <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <p>Did you expect to see significant terms?</p>
 
     <blockquote class="solution">
-      <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
       <p>The ~300 genes should be random, so we wouldn’t expect to see any enriched term. Nonetheless we still have significant terms.</p>
     </blockquote>
   </blockquote>
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-4" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment-4"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-  <p>Let’s go back a little bit, and reopen the <code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code> file. If you go through the file, you’ll see genes with ‘NA’ as an adjusted p-value. This means that there are genes in our background population for which the differential <span class="notranslate">expression</span> test was not even performed (usually genes that were not expressed in any sample). These genes are irrelevant for this functional enrichment analysis. We also need to note that the study set does not include those genes!</p>
+  <p>Let’s go back a little bit, and reopen the <code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code> file. If you go through the file, you’ll see genes with ‘NA’ as an adjusted p-value. This means that there are genes in our background population for which the differential expression test was not even performed (usually genes that were not expressed in any sample). These genes are irrelevant for this functional enrichment analysis. We also need to note that the study set does not include those genes!</p>
 </blockquote>
 
 <p>Let’s remove the irrelevant genes from the background population (<code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code>), to see the differences in results.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-1" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
-    <li><strong>Filter data on any column using simple <span class="notranslate">expression</span>s</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Filter data on any column using simple expressions</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Filter”</em>: <code class="language-plaintext highlighter-rouge">trapnellPopulation.tab</code></li>
         <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>“With following condition”</em>: <code class="language-plaintext highlighter-rouge">c7 != 'NA'</code>
-<img src="../../images/goenrichment_galaxyFilterNA.png" alt="Galaxy Filter NA. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyFilterNA.png" alt="Galaxy Filter NA. " width="918" height="282" loading="lazy" /></li>
       </ul>
     </li>
     <li>This generates one file. <strong>Rename</strong> to <code class="language-plaintext highlighter-rouge">trapnellFilteredPopulation</code>.</li>
@@ -1139,17 +964,17 @@
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Study set File”</em>: <code class="language-plaintext highlighter-rouge">trapnellStudy</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Population set File”</em>: <code class="language-plaintext highlighter-rouge">trapnellFilteredPopulation</code></li>
         <li>Use the default options for the rest.
-<img src="../../images/goenrichment_galaxyTrapnellNewPop.png" alt="GO Enrichment Trapnell new Population. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyTrapnellNewPop.png" alt="GO Enrichment Trapnell new Population. " width="922" height="798" loading="lazy" /></li>
       </ul>
     </li>
     <li><strong>Rename</strong> all 6 output files by appending <code class="language-plaintext highlighter-rouge">FilteredPop</code> to the name, to distinguish them from the previous outputs.
 Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph FilteredPop</strong>.</li>
   </ol>
 
-  <p><img src="../../images/goenrichment_mfTrapnellNew.png" alt="GO Enrichment Trapnell new Population MF. " loading="lazy" /></p>
+  <p><img src="../../images/transcriptomics_images/goenrichment_mfTrapnellNew.png" alt="GO Enrichment Trapnell new Population MF. " width="117" height="35" loading="lazy" /></p>
 
   <blockquote class="question">
-    <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>How many significant terms do we get now?</li>
@@ -1157,7 +982,7 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
     </ol>
 
     <blockquote class="solution">
-      <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
       <ul>
         <li>According to the results, in <em>Molecular Function</em> and <em>Biological Process</em> we have 0 GO terms and <em>Component Cellular</em> just 1 GO term.</li>
         <li>The background population genes that we removed are not random, they are usually genes that are expressed in specific conditions, tissues or time points. If they are included in the test, we will obtain false enrichments, as we saw.</li>
@@ -1168,14 +993,14 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
 
 <h1 id="simplification-of-graphs">Simplification of graphs</h1>
 
-<p>Graphical views are essential, but sometimes the graph view can become overwhelming due to the size of the results. To exemplify this issue, we will next perform functional enrichment analysis using a more realistic dataset from a study using the mouse model organism. The original dataset can be found <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30352">here</a>. In this <a href="https://www.nature.com/articles/nature10532">study</a>, the authors compared the gene <span class="notranslate">expression</span> of several tissues. Here, we will use results from the comparison between heart and brain.</p>
+<p>Graphical views are essential, but sometimes the graph view can become overwhelming due to the size of the results. To exemplify this issue, we will next perform functional enrichment analysis using a more realistic dataset from a study using the mouse model organism. The original dataset can be found <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30352">on NCBI</a>. In this <a href="https://www.nature.com/articles/nature10532">study</a>, the authors compared the gene expression of several tissues. Here, we will use results from the comparison between heart and brain.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-2" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <p>For the first exercise we will use as a study set the differential genes (padjusted&lt;0.05).</p>
   <ol>
-    <li><strong>Upload to <span class="notranslate">Galaxy</span></strong> the mouse_brain_vs_heart.txt, Mus_musculus_annotations_biomart_e92.tab and mouse_brain_vs_heart.difgenes.txt files.</li>
+    <li><strong>Upload to Galaxy</strong> the mouse_brain_vs_heart.txt, Mus_musculus_annotations_biomart_e92.tab and mouse_brain_vs_heart.difgenes.txt files.</li>
     <li><strong>Rename</strong> the <em>mouse_brain_vs_heart.txt</em> file to <code class="language-plaintext highlighter-rouge">Mouse population</code>, <em>Mus_musculus_annotations_biomart_e92.tab</em> file to <code class="language-plaintext highlighter-rouge">GO annotations Mus musculus</code> and <em>mouse_brain_vs_heart.difgenes.txt</em> file to <code class="language-plaintext highlighter-rouge">Mouse diff</code>.</li>
     <li><strong>GOEnrichment</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
@@ -1184,17 +1009,17 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Study set File”</em>: <code class="language-plaintext highlighter-rouge">Mouse diff</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Population set File”</em>: <code class="language-plaintext highlighter-rouge">Mouse population</code></li>
         <li>Select <strong>‘No’</strong> in the Summarize Output option.
-<img src="../../images/goenrichment_galaxyMouseDiff.png" alt="GO Enrichment Mouse Diff. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyMouseDiff.png" alt="GO Enrichment Mouse Diff. " width="919" height="800" loading="lazy" /></li>
       </ul>
     </li>
     <li>This will generate 6 files with the names: <code class="language-plaintext highlighter-rouge">goenrichment on Mouse diff MF Table</code>, <code class="language-plaintext highlighter-rouge">goenrichment on Mouse diff BP Table</code>, <code class="language-plaintext highlighter-rouge">goenrichment on Mouse diff CC Table</code>, <code class="language-plaintext highlighter-rouge">goenrichment on Mouse diff MF Graph</code>, <code class="language-plaintext highlighter-rouge">goenrichment on Mouse diff BP Graph</code> and <code class="language-plaintext highlighter-rouge">goenrichment on Mouse diff CC Graph</code>.</li>
     <li>Analyze the table and graph from <em>Biological Process</em>.</li>
   </ol>
 
-  <p><img src="../../images/goenrichment_bpMouseDiff.png" alt="GO Enrichment Mouse Diff BP. " loading="lazy" /></p>
+  <p><img src="../../images/transcriptomics_images/goenrichment_bpMouseDiff.png" alt="GO Enrichment Mouse Diff BP. " width="30775" height="2205" loading="lazy" /></p>
 
   <blockquote class="comment">
-    <div id="comment-5" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+    <div class="box-title comment-title" id="comment-5"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
     <p>As you can see the three graphs are very complex and difficult to analyze.</p>
   </blockquote>
 </blockquote>
@@ -1204,7 +1029,7 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
 <p>The Summarize Output option in the GOEnrichment tool addresses this problem by conflating branches/families of enriched GO terms and selecting the most representative term(s) from them (usually 1-2 term per family). The greatly simplifies the results while retaining branch information, and thus ensuring that every enriched family of functions is present in the results. Some specificity is necessarily lost, but the trade-off is that the results become easier and more intuitive to analyze.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-3" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-3"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
     <li><strong>GOEnrichment</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1214,20 +1039,20 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Study set File”</em>: <code class="language-plaintext highlighter-rouge">Mouse diff</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Population set File”</em>: <code class="language-plaintext highlighter-rouge">Mouse population</code></li>
         <li>Use the default options for the rest (notice that by default the Summarize Option is on).
-<img src="../../images/goenrichment_galaxyMouseDiffSum.png" alt="GO Enrichment Mouse Diff Summarize. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyMouseDiffSum.png" alt="GO Enrichment Mouse Diff Summarize. " width="919" height="798" loading="lazy" /></li>
       </ul>
     </li>
     <li>Analyze again the table and graph from <em>Biological Process</em>.</li>
   </ol>
 
-  <p><img src="../../images/goenrichment_bpMouseDiffSum.png" alt="GO Enrichment Mouse Diff Summarize BP. " loading="lazy" /></p>
+  <p><img src="../../images/transcriptomics_images/goenrichment_bpMouseDiffSum.png" alt="GO Enrichment Mouse Diff Summarize BP. " width="4603" height="869" loading="lazy" /></p>
 
   <blockquote class="question">
-    <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
     <ol class="solution">
       <li>Are there differences in complexity comparing the graph with and without the summarize output option?
         <blockquote>
-          <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>Yes, there are differences. As you can see, the activation of the Summarize option reduces the size of the graph because this parameter causes families of GO terms to be conflated. Each major branch in the full results is still present in the summarized results, but now is reduced to 1 or 2 most representative terms, leading to a graph that is much easier to interpret while still containing all the key functional information.</li>
           </ol>
@@ -1242,10 +1067,10 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
 <p>To test the GO slim approach, let us use the mouse dataset again. First, however, we need to use GOSlimmer tool to convert the annotations file from full GO to GO slim (as GO annotations are typically made to terms that are too specific to be in the GO slim, and thus need to be extended by the true path rule).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-4" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-4"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
-    <li><strong>Upload to the <span class="notranslate">Galaxy</span></strong> the goslim_generic.obo file.</li>
+    <li><strong>Upload to the Galaxy</strong> the goslim_generic.obo file.</li>
     <li><strong>Rename</strong> the <em>goslim_generic.obo</em> file to <code class="language-plaintext highlighter-rouge">GO Slim</code>.</li>
     <li>Run <strong>GOSlimmer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
@@ -1256,7 +1081,7 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
     </li>
   </ol>
 
-  <p><img src="../../images/goenrichment_galaxySlimer.png" alt="Galaxy GO Slimmer. " loading="lazy" /></p>
+  <p><img src="../../images/transcriptomics_images/goenrichment_galaxySlimer.png" alt="Galaxy GO Slimmer. " width="919" height="297" loading="lazy" /></p>
 
   <p>This will generate one file called <code class="language-plaintext highlighter-rouge">Slim Annotations</code>.</p>
 </blockquote>
@@ -1264,30 +1089,30 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
 <p>Now we will go use the GOEnrichment tool with the new Slim Annotations file and the same study set.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-5" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-5"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
     <li><strong>GOEnrichment</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li>Use the <code class="language-plaintext highlighter-rouge">GO Slim</code>, <code class="language-plaintext highlighter-rouge">Slim Annotations</code>, <code class="language-plaintext highlighter-rouge">Mouse diff</code> and <code class="language-plaintext highlighter-rouge">Mouse population</code> files.</li>
         <li>Use the default options.
-<img src="../../images/goenrichment_galaxyMouseSlim.png" alt="GO Enrichment Mouse Slim. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyMouseSlim.png" alt="GO Enrichment Mouse Slim. " width="917" height="797" loading="lazy" /></li>
       </ul>
 
       <blockquote class="question">
-        <div id="question-5" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>What differences do you observe when comparing the results obtained with the GO Slim to those obtained with the full GO, with the Summarize Output option?</li>
         </ol>
 
         <p><em>Component Cellular</em> with full GO
-<img src="../../images/goenrichment_ccSum.png" alt="GO Enrichment Mouse Summarize CC. " loading="lazy" />
+<img src="../../images/transcriptomics_images/goenrichment_ccSum.png" alt="GO Enrichment Mouse Summarize CC. " width="2763" height="595" loading="lazy" />
 <em>Component Cellular</em> with GO Slim
-<img src="../../images/goenrichment_ccSlimSum.png" alt="GO Enrichment Mouse Slim CC. " loading="lazy" /></p>
+<img src="../../images/transcriptomics_images/goenrichment_ccSlimSum.png" alt="GO Enrichment Mouse Slim CC. " width="935" height="253" loading="lazy" /></p>
 
         <blockquote class="solution">
-          <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The differences that you observe are due to the ontology used. When we apply the summarize option with the full GO, the GOEnrichment tool will return a summarized output (as we have seen previously). When we opted for GO Slim, the original annotation was already summarized, resulting in an even more summarized output, but with a consequent loss of specificity.</li>
           </ol>
@@ -1308,14 +1133,14 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
 <p>For the second exercice, we will continue to work with the same study set as before but now we analyze separately genes that are over- and under-expressed, and see the enriched GO terms presents in the brain and heart from the mouse.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-6" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-6"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
     <li>
-      <p><strong>Upload to <span class="notranslate">Galaxy</span></strong> the mouseOverexpressed.txt and the mouseUnderexpressed.txt files.</p>
+      <p><strong>Upload to Galaxy</strong> the mouseOverexpressed.txt and the mouseUnderexpressed.txt files.</p>
 
       <blockquote class="comment">
-        <div id="comment-6" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-6"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>The differentially expressed genes can be identified using the adjusted p-value (also known as FDR). The logFC values indicate whether genes are more expressed (logFC&gt;0) or less expressed (logFC&lt;0) in one condition when comparing with another condition.</p>
 
@@ -1325,21 +1150,21 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
       <ul>
         <li>Use the <code class="language-plaintext highlighter-rouge">GO</code>, the <code class="language-plaintext highlighter-rouge">GO annotations Mus musculus</code> and the <code class="language-plaintext highlighter-rouge">Mouse population</code> files.</li>
         <li>Use the default options.
-<img src="../../images/goenrichment_galaxyMouseOver.png" alt="GO Enrichment Mouse Overexpress. " loading="lazy" />
-<img src="../../images/goenrichment_galaxyMouseUnder.png" alt="GO Enrichment Mouse Underexpress. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/goenrichment_galaxyMouseOver.png" alt="GO Enrichment Mouse Overexpress. " width="920" height="797" loading="lazy" />
+<img src="../../images/transcriptomics_images/goenrichment_galaxyMouseUnder.png" alt="GO Enrichment Mouse Underexpress. " width="918" height="798" loading="lazy" /></li>
       </ul>
     </li>
     <li>
       <p>This will generate 12 files, 6 for each sample file, like in previous cases.</p>
 
       <blockquote class="question">
-        <div id="question-6" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>Analyze both Biological Process tables. According to the study, which tissues are over- and underexpressed?</p>
 
         <blockquote class="solution">
-          <div id="solution-6" class="box-title"><button type="button" aria-controls="solution-6-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>The samples correspond to the <span class="notranslate">expression</span>s that occur in the tissues referring to the brain and heart, so the results in the tables (and also in the graphs) should correspond to the specific functions of each organ. When we analyze the tables of enriched functional terms, we can see that the results from underexpressed genes reveal functions related to the brain. While in the case of the genes overexpressed, we identify functions related to muscle / heart function.</p>
+          <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>The samples correspond to the expressions that occur in the tissues referring to the brain and heart, so the results in the tables (and also in the graphs) should correspond to the specific functions of each organ. When we analyze the tables of enriched functional terms, we can see that the results from underexpressed genes reveal functions related to the brain. While in the case of the genes overexpressed, we identify functions related to muscle / heart function.</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1351,10 +1176,12 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
 <p>Functional enrichment is a good way to look for patterns in gene lists, but interpretation of results can become a complicated process. One way to reduce this complexity is to use the GOEnrichment tool. This tool not only performs the GO Enrichment test, showing us enriched GO terms from our sets, but also contains functionality to simplify the results and make them more easily interpretable. Independently of this, we need to be careful when choosing our genes of interest, but also the background set of genes against which we want to compare.</p>
 
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>The goenrichment tool can be used to perform GO Enrichment analysis</p>
@@ -1392,38 +1219,18 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=GO Enrichment Analysis (Transcriptomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=GO Enrichment Analysis (Transcriptomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">IGC Bioinformatics Unit, Maria Doyle,  <b>GO Enrichment Analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            IGC Bioinformatics Unit, Maria Doyle,  <b>GO Enrichment Analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1435,7 +1242,7 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1444,28 +1251,31 @@ Let’s check the new graph <strong>goenrichment on trapnellStudy MF Graph Filte
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{transcriptomics-goenrichment,
 author = "IGC Bioinformatics Unit and Maria Doyle",
-title = "GO Enrichment Analysis (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "GO Enrichment Analysis (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/goenrichment/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1473,11 +1283,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1486,49 +1296,89 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/transcriptomics/tutorials/goenrichment/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: goenrichment
+  owner: iuc
+  revisions: 2c7c9646ccf0
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: goslimmer
+  owner: iuc
+  revisions: de3e053bd6a5
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00291">https://gxy.io/GTN:T00291</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/goenrichment/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

@@ -1,41 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Galaxy Interactive Tools</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/interactive-tools/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Galaxy Interactive Tools">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-06-14 10:49:27 +0000">
+<meta name="DC.creator" content="Nate Coraor">
+<meta name="DC.creator" content="Estelle Ancelet">
+<meta name="DC.creator" content="Anthony Bretaudeau">
 
+        
+        
+        
+        
+        <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Galaxy Interactive Tools" />
+        <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/gat.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Galaxy Interactive Tools</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:title" content="Galaxy Training: Galaxy Interactive Tools" />
-    <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/interactive-tools/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -86,6 +116,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -112,6 +146,7 @@
   "learningResourceType": "slides",
   "name": "Slides for 'Galaxy Interactive Tools' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/admin/tutorials/interactive-tools/slides.html",
+  "teaches": "Learn the differences between Galaxy Interactive Environments and Galaxy Interactive Tools\n - Have an understanding of what Galaxy Interactive Tools are and how they work",
   "keywords": "admin",
   "description": "The objectives are:\n - Learn the differences between Galaxy Interactive Environments and Galaxy Interactive Tools\n - Have an understanding of what Galaxy Interactive Tools are and how they work\n\n",
   "inLanguage": {
@@ -124,55 +159,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
       "name": "Nate Coraor",
       "image": "https://avatars.githubusercontent.com/natefoo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/eancelet/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/eancelet/",
-      "name": "Estelle Ancelet",
-      "image": "https://avatars.githubusercontent.com/eancelet",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "name": "Anthony Bretaudeau",
-      "image": "https://avatars.githubusercontent.com/abretaud",
       "description": "A contributor to the GTN project.",
       "memberOf": [
         {
@@ -182,38 +175,15 @@
           "url": "https://galaxyproject.org/teach/gtn/"
         }
       ],
-      "identifier": "https://orcid.org/0000-0003-0914-2470",
-      "orcid": "https://orcid.org/0000-0003-0914-2470"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
-      "name": "Nate Coraor",
-      "image": "https://avatars.githubusercontent.com/natefoo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      "identifier": "https://orcid.org/0000-0001-8083-2963",
+      "orcid": "https://orcid.org/0000-0001-8083-2963"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/eancelet/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/eancelet/",
@@ -233,8 +203,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
@@ -260,12 +230,19 @@
       "description": "Resources related to configuration and maintenance of Galaxy servers",
       "url": "https://training.galaxyproject.org/training-material/topics/admin/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# History"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -301,26 +278,17 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="https://avatars.githubusercontent.com/natefoo?s=27" alt="Avatar">Nate Coraor</a>
-
-
-
-<a href="/training-material/hall-of-fame/eancelet/" class="contributor-badge contributor-eancelet"><img src="https://avatars.githubusercontent.com/eancelet?s=27" alt="Avatar">Estelle Ancelet</a>
-
-
-
-<a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/abretaud?s=27" alt="Avatar">Anthony Bretaudeau</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/natefoo?s=36" alt="Avatar" width="36" height="36">Nate Coraor</a><a href="/training-material/hall-of-fame/eancelet/" class="contributor-badge contributor-eancelet"><img src="https://avatars.githubusercontent.com/eancelet?s=36" alt="Avatar" width="36" height="36">Estelle Ancelet</a><a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a>
 	</div>
 
 </div>
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00014">gxy.io/GTN:S00014</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -380,7 +348,7 @@ Useful when presenting.
 
 @hexylena, @bgruening, and @jmchilton create Galaxy Interactive Environments (GIEs)
 
-GIEs use Galaxy's *visualization framework* to run certain types of *interactive* visualizations (e.g. Jupyter Notebook)
+GIEs use Galaxy&apos;s *visualization framework* to run certain types of *interactive* visualizations (e.g. Jupyter Notebook)
 
 GIEs run in a docker container on the Galaxy server or a single remote Docker server
 
@@ -447,7 +415,7 @@ You will sometimes see Interactive Tools referred to as Interactive Environments
 - The tool type must be set to interactive.
 - As a requirement, set the path to the repository where the container is to be pulled from.
 - The tool entry point on the container must be defined.
-- For instance, for a Jupyter Notebook, you'll give the port the application is served on and the domain name suffix.
+- For instance, for a Jupyter Notebook, you&apos;ll give the port the application is served on and the domain name suffix.
 
 ---
 # Mapping clients to containers
@@ -482,7 +450,7 @@ You will sometimes see Interactive Tools referred to as Interactive Environments
 - This information is stored by Galaxy in a sqlite database.
 - So the GIE proxy checks in this sqlite database to know which node and port the IT container is to be found.
 - The GIE proxy forwards the HTTP request to Docker on that node and port.
-- Docker, in turn, forwards it to the application (e.g. Jupyter) on the container's port, defined in the wrapper.
+- Docker, in turn, forwards it to the application (e.g. Jupyter) on the container&apos;s port, defined in the wrapper.
 
 ---
 # Galaxy configuration
@@ -520,7 +488,7 @@ Or the [Node.js-based proxy][usegalaxy_eu-gie_proxy]
 
 The default docker-enabled container exposes all datasets to the tool
 
-Normally this isn't bad (normal tools can't be controlled by the user)
+Normally this isn&apos;t bad (normal tools can&apos;t be controlled by the user)
 
 Interactive tools are fully user controllable
 
@@ -531,7 +499,7 @@ Solution: [Embedded Pulsar][job-conf-pulsar-embedded]
 ???
 
 - As we have seen, interactive tools are launched in docker containers.
-- By default in galaxy, each container has full access to all user's data.
+- By default in galaxy, each container has full access to all user&apos;s data.
 - This is a security issue since a user could take control of an interactive tool and read, write or delete those data.
 
 ---
@@ -568,19 +536,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="https://avatars.githubusercontent.com/natefoo?s=27" alt="Avatar">Nate Coraor</a>
-
-
-
-<a href="/training-material/hall-of-fame/eancelet/" class="contributor-badge contributor-eancelet"><img src="https://avatars.githubusercontent.com/eancelet?s=27" alt="Avatar">Estelle Ancelet</a>
-
-
-
-<a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/abretaud?s=27" alt="Avatar">Anthony Bretaudeau</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/natefoo?s=36" alt="Avatar" width="36" height="36">Nate Coraor</a><a href="/training-material/hall-of-fame/eancelet/" class="contributor-badge contributor-eancelet"><img src="https://avatars.githubusercontent.com/eancelet?s=36" alt="Avatar" width="36" height="36">Estelle Ancelet</a><a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a>
 	</div>
 
 </div>
@@ -600,10 +556,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -615,7 +571,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -627,6 +583,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

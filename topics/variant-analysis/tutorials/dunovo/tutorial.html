@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Calling very rare variants" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-06 17:58:17 +0000" />
-<meta name="DC.creator" content="Anton Nekrutenko" />
-<meta name="DC.creator" content="Nick Stoler" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Genetic differences (variants) between healthy and diseas..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Calling very rare variants" />
-        <meta property="og:description" content="Genetic differences (variants) between healthy and diseas..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dunovo/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dunovo/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dunovo/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dunovo/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dunovo/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dunovo/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/dunovo/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/variant-analysis/tutorials/dunovo/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/variant-analysis/tutorials/dunovo/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/variant-analysis/tutorials/dunovo/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Calling very rare variants">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-03-05 09:19:48 +0000">
+<meta name="DC.creator" content="Anton Nekrutenko">
+<meta name="DC.creator" content="Nick Stoler">
+
+        
+        
+        
+        
+        <meta name="description" content="Genetic differences (variants) between healthy and diseas...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Calling very rare variants">
+        <meta property="og:description" content="Genetic differences (variants) between healthy and diseas...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -278,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-06 17:58:17 +0000",
+  "dateModified": "2023-03-05 09:19:48 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Calling very rare variants",
   "interactivityType": "mixed",
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Under development",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'Calling very rare variants' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Processing raw duplex sequencing data into consensus sequences\n - Find rare variants without relying on diploid assumptions",
   "keywords": "variant-analysis",
   "description": "The questions this  addresses are:\n - What frequency of variants is so low that it is obscured by sequencing error rate?\n - What are the different types of consensus sequences produced from duplex sequencing?\n\n\nThe objectives are:\n - Processing raw duplex sequencing data into consensus sequences\n - Find rare variants without relying on diploid assumptions\n\n",
   "inLanguage": {
@@ -418,8 +239,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
@@ -439,52 +260,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/NickSto/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/NickSto/",
-      "name": "Nick Stoler",
-      "image": "https://avatars.githubusercontent.com/NickSto",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
-      "name": "Anton Nekrutenko",
-      "image": "https://avatars.githubusercontent.com/nekrut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/NickSto/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/NickSto/",
@@ -515,11 +292,192 @@
       "termCode": "topic_0199",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0199"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-variant-analysis">
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/dunovo/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/variant-analysis/tutorials/dunovo/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/variant-analysis/tutorials/dunovo/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/variant-analysis/tutorials/dunovo/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-variant-analysis">
     <h1 data-toc-skip>Calling very rare variants</h1>
     
     <div class="alert alert-warning" role="alert">
@@ -529,27 +487,20 @@
     </div>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/nekrut/" class="contributor-badge contributor-nekrut"><img src="https://avatars.githubusercontent.com/nekrut?s=27" alt="Avatar">Anton Nekrutenko</a>
-
-
-
-<a href="/training-material/hall-of-fame/NickSto/" class="contributor-badge contributor-NickSto"><img src="https://avatars.githubusercontent.com/NickSto?s=27" alt="Avatar">Nick Stoler</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/nekrut/" class="contributor-badge contributor-nekrut"><img src="https://avatars.githubusercontent.com/nekrut?s=36" alt="Avatar" width="36" height="36">Anton Nekrutenko</a><a href="/training-material/hall-of-fame/NickSto/" class="contributor-badge contributor-NickSto"><img src="https://avatars.githubusercontent.com/NickSto?s=36" alt="Avatar" width="36" height="36">Nick Stoler</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -598,6 +549,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -615,6 +568,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -658,10 +613,6 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/variant-analysis/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
 
@@ -669,34 +620,24 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/variant-analysis/tutorials/dunovo/workflows/" title="Workflows" alt="Calling very rare variants workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/variant-analysis/tutorials/dunovo/workflows/" title="Calling very rare variants workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
             
 
             
-                <li class="btn btn-default supporting_material">
-<a class="topic-icon" href="https://github.com/galaxyproject/training-material/tree/main/topics/variant-analysis/tutorials/dunovo/tours/" title="Galaxy interactive tour" >
-    <i class="fas fa-magic" aria-hidden="true"></i> Tours
-</a>
-
-</li>
-            
 
             
 
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/variant-analysis/tutorials/dunovo/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/variant-analysis/tutorials/dunovo/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -722,174 +663,67 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/variant-analysis/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 6, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Mar 5, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00310">https://gxy.io/GTN:T00310</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -900,12 +734,13 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <p>This page explains how to perform discovery of low frequency variants from duplex sequencing data. As an example we use the <em>ABL1</em> dataset published by <a href="https://www.ncbi.nlm.nih.gov/pubmed/25849638">Schmitt and colleagues</a> (SRA accession <a href="https://www.ncbi.nlm.nih.gov/sra/?term=SRR1799908">SRR1799908</a>).</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
 <ol id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>    <ol>
@@ -915,12 +750,12 @@
   </li>
   <li><a href="#generating-consensus-sequences" id="markdown-toc-generating-consensus-sequences">Generating consensus sequences</a>    <ol>
       <li><a href="#getting-data-in-and-assessing-quality" id="markdown-toc-getting-data-in-and-assessing-quality">Getting data in and assessing quality</a></li>
-      <li><a href="#processing-reads-into-duplex-consensus-sequences-with-du-novo" id="markdown-toc-processing-reads-into-duplex-consensus-sequences-with-du-novo">Processing <span class="notranslate">reads</span> into duplex consensus sequences with Du Novo</a></li>
+      <li><a href="#processing-reads-into-duplex-consensus-sequences-with-du-novo" id="markdown-toc-processing-reads-into-duplex-consensus-sequences-with-du-novo">Processing reads into duplex consensus sequences with Du Novo</a></li>
       <li><a href="#filtering-consensuses" id="markdown-toc-filtering-consensuses">Filtering consensuses</a></li>
     </ol>
   </li>
   <li><a href="#calling-variants-with-duplex-consensus-sequences" id="markdown-toc-calling-variants-with-duplex-consensus-sequences">Calling variants with duplex consensus sequences</a>    <ol>
-      <li><a href="#mapping-the-reads" id="markdown-toc-mapping-the-reads"><span class="notranslate">Mapping</span> the <span class="notranslate">reads</span></a></li>
+      <li><a href="#mapping-the-reads" id="markdown-toc-mapping-the-reads">Mapping the reads</a></li>
       <li><a href="#calling-the-variants" id="markdown-toc-calling-the-variants">Calling the variants</a></li>
       <li><a href="#results" id="markdown-toc-results">Results</a></li>
     </ol>
@@ -938,28 +773,28 @@
 
 <h3 id="finding-rare-variants">Finding rare variants</h3>
 
-<p>Most popular variant callers focus on the common case of sequencing a diploid individual to find heterozygous and homozygous variants. This is a well-studied problem with its own challenges, but at least you can expect your variants to be present in either 100%, 50%, or 0% of your sample <span class="notranslate">DNA</span>. If you observe a variant present in 99%, 56%, or 2% of the <span class="notranslate">reads</span> at a site, you can probably assume the allele is actually present at 100%, 50%, or 0%, respectively, in your sample.</p>
+<p>Most popular variant callers focus on the common case of sequencing a diploid individual to find heterozygous and homozygous variants. This is a well-studied problem with its own challenges, but at least you can expect your variants to be present in either 100%, 50%, or 0% of your sample DNA. If you observe a variant present in 99%, 56%, or 2% of the reads at a site, you can probably assume the allele is actually present at 100%, 50%, or 0%, respectively, in your sample.</p>
 
 <p>But in this tutorial, we’re looking for <strong>rare variants</strong>. So our true frequency might actually be 13%, 1%, or even 0.4%. The challenge then becomes distinguishing these situations from sequencing errors. Next-generation sequencers produce noise at this level, making it challenging to make this distinction in data produced with standard resequencing methods.</p>
 
 <h3 id="duplex-sequencing">Duplex sequencing</h3>
 
-<p><a href="http://www.pnas.org/content/109/36/14508.short">Duplex sequencing</a> is a method that addresses the problem of distinguishing sequencing signal from noise. It can increase sequencing accuracy by over four orders of magnitude. Duplex sequencing uses randomly generated oligomers to uniquely tag each fragment in a sample after random shearing. The tagged fragments are then PCR amplified prior to sequencing, so that many <span class="notranslate">reads</span> can be obtained from each original molecule. The tags in each read can then be used to identify which original fragment the read came from. Identifying multiple <span class="notranslate">reads</span> from each fragment allows building a consensus of the original sequence of the fragment, eliminating errors.</p>
+<p><a href="http://www.pnas.org/content/109/36/14508.short">Duplex sequencing</a> is a method that addresses the problem of distinguishing sequencing signal from noise. It can increase sequencing accuracy by over four orders of magnitude. Duplex sequencing uses randomly generated oligomers to uniquely tag each fragment in a sample after random shearing. The tagged fragments are then PCR amplified prior to sequencing, so that many reads can be obtained from each original molecule. The tags in each read can then be used to identify which original fragment the read came from. Identifying multiple reads from each fragment allows building a consensus of the original sequence of the fragment, eliminating errors.</p>
 
 <p>The key to duplex sequencing, as opposed to other types of consensus-based methods (<a href="https://www.nature.com/articles/nrg.2017.117">review here</a>), is that both ends of the original fragment are tagged such that its strands can be distinguished. Knowing which strand each read comes from allows us to recognize errors even in the first round of PCR.</p>
 
-<p>Processing the raw <span class="notranslate">reads</span> into consensus sequences consists of four main steps:</p>
+<p>Processing the raw reads into consensus sequences consists of four main steps:</p>
 <ol>
-  <li>Group <span class="notranslate">reads</span> by their tags.</li>
-  <li>Align <span class="notranslate">reads</span> in the same tag group.</li>
-  <li>Build single-strand consensus sequences (<strong>SSCS</strong>) of <span class="notranslate">reads</span> coming from the same original strand.</li>
+  <li>Group reads by their tags.</li>
+  <li>Align reads in the same tag group.</li>
+  <li>Build single-strand consensus sequences (<strong>SSCS</strong>) of reads coming from the same original strand.</li>
   <li>Build duplex consensus sequences (<strong>DCS</strong>) from pairs of SSCS.</li>
 </ol>
 
 <p>Du Novo is a tool which can carry out these steps. Unlike most other such tools, it can do so without the use of a reference sequence, and it can correct for errors in the tags which can contribute to data loss.</p>
 
 <blockquote class="comment">
-  <div id="comment-terminology" class="box-title" aria-label="comment box: Terminology"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Terminology</div>
+  <div class="box-title comment-title" id="comment-terminology"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Terminology</div>
 
   <p>Du Novo processes the tags from each fragment by concatenating them into a single <strong>barcode</strong>.</p>
 
@@ -970,30 +805,30 @@
 </blockquote>
 
 <p><a href="http://www.pnas.org/content/109/36/14508.short">Schmitt <em>et al.</em> 2012</a> provides this overview of the whole method:
-<img src="../../images/ds.png" alt="duplex. " loading="lazy" /></p>
+<img src="../../images/ds.png" alt="duplex. " width="1280" height="576" loading="lazy" /></p>
 
 <p><strong>Figure 1:</strong> The logic of duplex sequencing. The computational process is shown in part <strong>C</strong>.</p>
 
 <h3 id="the-value-of-single-strand-consensus-sequences">The value of single-strand consensus sequences</h3>
 
-<p>The DCSs have the ultimate accuracy, yet the SSCSs can also be very useful when ampliconic <span class="notranslate">DNA</span> is used as an input to a duplex experiment. Let us illustrate the utility of SSCSs with the following example. Suppose one is interested in quantifying variants in a virus that has a very low titer in body fluids. Since the duplex procedure requires a substantial amount of starting <span class="notranslate">DNA</span> (between <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4271547/">between 0.2 and 3 micrograms</a>) the virus needs to be enriched. This can be done, for example, with a PCR designed to amplify the entire genome of the virus. Yet the problem is that during the amplification heterologous strands will almost certainly realign to some extent forming heteroduplex molecules:</p>
+<p>The DCSs have the ultimate accuracy, yet the SSCSs can also be very useful when ampliconic DNA is used as an input to a duplex experiment. Let us illustrate the utility of SSCSs with the following example. Suppose one is interested in quantifying variants in a virus that has a very low titer in body fluids. Since the duplex procedure requires a substantial amount of starting DNA (between <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4271547/">between 0.2 and 3 micrograms</a>) the virus needs to be enriched. This can be done, for example, with a PCR designed to amplify the entire genome of the virus. Yet the problem is that during the amplification heterologous strands will almost certainly realign to some extent forming heteroduplex molecules:</p>
 
-<p><img src="../../images/het.png" alt="hd. " height="444px" width="605px" loading="lazy" /></p>
+<p><img src="../../images/het.png" alt="hd. " height="888" width="1210" loading="lazy" /></p>
 
 <p><strong>Figure 2:</strong> Heteroduplex formation in ampliconic templates. Image by Barbara Arbeithuber from <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1039-4">Stoler <em>et al.</em> 2016</a>. Here there are two distinct types of viral genomes: carrying <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">G</code>. Because the population of genomes is enriched via PCR, heteroduplex formation takes place, skewing frequency estimates performed using DCSs.</p>
 
-<p>In the image above there are two alleles: green (<code class="language-plaintext highlighter-rouge">A</code>) and red (<code class="language-plaintext highlighter-rouge">G</code>). After PCR a fraction of molecules are in heteroduplex state. If this PCR-derived <span class="notranslate">DNA</span> is now used as the starting material for a DS experiment, the heteroduplex molecules will manifest themselves as having an <code class="language-plaintext highlighter-rouge">N</code> base at this site (because Du Novo interprets disagreements as <code class="language-plaintext highlighter-rouge">N</code>s during consensus generation). So, DSCs produced from this dataset will have <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">G</code>, and <code class="language-plaintext highlighter-rouge">N</code> at the polymorphic site. Yet, SSCSs will only have <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">G</code>. Thus SSCS will give a more accurate estimate of the allele frequency at this site in this particular case. In Du Novo SSCSs are generated when the <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>Output single-strand consensus sequences</em> option of <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus <span class="notranslate">reads</span></strong> tool is set to <code class="language-plaintext highlighter-rouge">Yes</code> (see <a href="#making-consensus-sequences">below</a>).</p>
+<p>In the image above there are two alleles: green (<code class="language-plaintext highlighter-rouge">A</code>) and red (<code class="language-plaintext highlighter-rouge">G</code>). After PCR a fraction of molecules are in heteroduplex state. If this PCR-derived DNA is now used as the starting material for a DS experiment, the heteroduplex molecules will manifest themselves as having an <code class="language-plaintext highlighter-rouge">N</code> base at this site (because Du Novo interprets disagreements as <code class="language-plaintext highlighter-rouge">N</code>s during consensus generation). So, DSCs produced from this dataset will have <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">G</code>, and <code class="language-plaintext highlighter-rouge">N</code> at the polymorphic site. Yet, SSCSs will only have <code class="language-plaintext highlighter-rouge">A</code> and <code class="language-plaintext highlighter-rouge">G</code>. Thus SSCS will give a more accurate estimate of the allele frequency at this site in this particular case. In Du Novo SSCSs are generated when the <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>Output single-strand consensus sequences</em> option of <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus reads</strong> tool is set to <code class="language-plaintext highlighter-rouge">Yes</code> (see <a href="#making-consensus-sequences">below</a>).</p>
 
 <h2 id="how-to-use-this-tutorial">How to use this tutorial</h2>
 
-<p>The entire analysis described here is accessible as a <a href="https://usegalaxy.org/u/nstoler/h/du-novo-gtn-tutorial"><span class="notranslate">Galaxy</span> history</a> that you can copy and play with.</p>
+<p>The entire analysis described here is accessible as a <a href="https://usegalaxy.org/u/nstoler/h/du-novo-gtn-tutorial">Galaxy history</a> that you can copy and play with.</p>
 
 <blockquote class="comment">
-  <div id="comment-running-the-tools" class="box-title" aria-label="comment box: Running the tools"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Running the tools</div>
+  <div class="box-title comment-title" id="comment-running-the-tools"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Running the tools</div>
   <ul>
     <li>Leave all parameters on their default settings, unless instructed otherwise.
       <blockquote class="comment">
-        <div id="comment-helping-du-novo" class="box-title" aria-label="comment box: Helping Du Novo"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Helping Du Novo</div>
+        <div class="box-title comment-title" id="comment-helping-du-novo"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Helping Du Novo</div>
         <p>But if you’d like to help improve Du Novo, consider checking <code class="language-plaintext highlighter-rouge">Yes</code> under <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>Send usage data</em>.</p>
       </blockquote>
     </li>
@@ -1007,81 +842,81 @@
   <li><a href="#calling-variants-with-single-strand-consensus-sequences">Calling variants with single strand consensus sequences</a></li>
 </ol>
 
-<p>Here are the steps, displayed as the <span class="notranslate">Galaxy</span> history you’ll end up with if you follow the instructions:</p>
+<p>Here are the steps, displayed as the Galaxy history you’ll end up with if you follow the instructions:</p>
 <ul>
-  <li>Note: <span class="notranslate">Galaxy</span> histories show the first step at the bottom!</li>
+  <li>Note: Galaxy histories show the first step at the bottom!</li>
 </ul>
 
-<p><img src="../../images/history-dunovo.png" alt="steps. " loading="lazy" /></p>
+<p><img src="../../images/history-dunovo.png" alt="steps. " width="831" height="1467" loading="lazy" /></p>
 
 <p><strong>Figure 3:</strong> Analysis outline</p>
 
 <h1 id="generating-consensus-sequences">Generating consensus sequences</h1>
 
-<p>The starting point of the analysis is sequencing <span class="notranslate">reads</span> (in <a href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ</a> format) produced from a duplex sequencing library.</p>
+<p>The starting point of the analysis is sequencing reads (in <a href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ</a> format) produced from a duplex sequencing library.</p>
 
 <h2 id="getting-data-in-and-assessing-quality">Getting data in and assessing quality</h2>
 
 <p>We uploaded the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4414912/">Schmitt <em>et al.</em> 2015</a> data directly from SRA as shown in <a href="https://vimeo.com/121187220">this screencast</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-importing-the-raw-data" class="box-title" aria-label="hands-on box: Importing the raw data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Importing the raw data</div>
+  <div class="box-title hands-on-title" id="hands-on-importing-the-raw-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Importing the raw data</div>
 
-  <p>You can obtain the <span class="notranslate">reads</span> from this dataset by copying <a href="https://usegalaxy.org/u/nstoler/h/srr1799908---schmitt-2015">this history</a>.</p>
+  <p>You can obtain the reads from this dataset by copying <a href="https://usegalaxy.org/u/nstoler/h/srr1799908---schmitt-2015">this history</a>.</p>
   <ol>
-    <li>Make sure you’re logged into <a href="https://usegalaxy.org"><span class="notranslate">Galaxy</span></a>.</li>
+    <li>Make sure you’re logged into <a href="https://usegalaxy.org">Galaxy</a>.</li>
     <li>Go to <a href="https://usegalaxy.org/u/nstoler/h/srr1799908---schmitt-2015">the history</a>.</li>
     <li>Click on <strong>Import history</strong> in the upper right.</li>
   </ol>
 
-  <p>Or, if you’d like to use a different <span class="notranslate">Galaxy</span> instance, you can import it:</p>
+  <p>Or, if you’d like to use a different Galaxy instance, you can import it:</p>
   <ol>
     <li>Click on the gear icon at the top of the <strong>History</strong> pane.</li>
     <li>Click on “Import from File” at the bottom of the menu.</li>
     <li>Enter this link in the box under <strong>Archived History URL</strong>:
-<code class="language-plaintext highlighter-rouge">https://use<span class="notranslate">galaxy</span>.org/history/export_archive?id=7ac09d1db287dbba</code></li>
+<code class="language-plaintext highlighter-rouge">https://usegalaxy.org/history/export_archive?id=7ac09d1db287dbba</code></li>
   </ol>
 </blockquote>
 
-<p>This created two datasets in our <span class="notranslate">galaxy</span> history: one for forward <span class="notranslate">reads</span> and one for reverse. We then evaluated the quality of the data by running FastQC on both datasets (forward and reverse). You can read about using <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>FastQC</strong> <a href="/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html#assess-quality-with-fastqc---short--long-reads">here</a>.</p>
+<p>This created two datasets in our galaxy history: one for forward reads and one for reverse. We then evaluated the quality of the data by running FastQC on both datasets (forward and reverse). You can read about using <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>FastQC</strong> in the dedicated <a href="/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html#assess-quality-with-fastqc---short--long-reads">quality-control tutorial</a>.</p>
 
 <p>This gave us the following plots:</p>
 
 <table>
   <tbody>
     <tr>
-      <td><img src="../../images/abl1-f-qc.png" alt="Quality scores across all bases: foward. " loading="lazy" /></td>
-      <td><img src="../../images/abl1-r-qc.png" alt="Quality scores across all bases: reverse. " loading="lazy" /></td>
+      <td><img src="../../images/abl1-f-qc.png" alt="Quality scores across all bases: foward. " width="825" height="600" loading="lazy" /></td>
+      <td><img src="../../images/abl1-r-qc.png" alt="Quality scores across all bases: reverse. " width="825" height="600" loading="lazy" /></td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Figure 4:</strong> FastQC assessment of the quality of the raw <span class="notranslate">reads</span>. <strong>Left:</strong> Forward <span class="notranslate">reads</span>. <strong>Right:</strong> Reverse <span class="notranslate">reads</span>.</p>
+<p><strong>Figure 4:</strong> FastQC assessment of the quality of the raw reads. <strong>Left:</strong> Forward reads. <strong>Right:</strong> Reverse reads.</p>
 
 <p>One can see that these data are of excellent quality and no additional processing is required before we can start the actual analysis.</p>
 
-<h2 id="processing-reads-into-duplex-consensus-sequences-with-du-novo">Processing <span class="notranslate">reads</span> into duplex consensus sequences with Du Novo</h2>
+<h2 id="processing-reads-into-duplex-consensus-sequences-with-du-novo">Processing reads into duplex consensus sequences with Du Novo</h2>
 
-<p>Now we are ready to collapse the raw <span class="notranslate">reads</span> into duplex consensus sequences.</p>
+<p>Now we are ready to collapse the raw reads into duplex consensus sequences.</p>
 
 <blockquote class="comment">
-  <div id="comment-finding-du-novo" class="box-title" aria-label="comment box: Finding Du Novo"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Finding Du Novo</div>
+  <div class="box-title comment-title" id="comment-finding-du-novo"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Finding Du Novo</div>
   <ul>
     <li>The tools in this portion of the tutorial can all be found in the <strong>NGS: Du Novo</strong> section.</li>
   </ul>
 </blockquote>
 
-<h3 id="sorting-reads-into-families">Sorting <span class="notranslate">reads</span> into families</h3>
+<h3 id="sorting-reads-into-families">Sorting reads into families</h3>
 
-<p>The <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make families</strong> tool will separate the 12bp tags from each read pair and concatenate them into a 24bp barcode. Then it will use the barcodes to sort the <span class="notranslate">reads</span> into families that all descend from the same original fragment.</p>
+<p>The <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make families</strong> tool will separate the 12bp tags from each read pair and concatenate them into a 24bp barcode. Then it will use the barcodes to sort the reads into families that all descend from the same original fragment.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-sorting-reads-into-families" class="box-title" aria-label="hands-on box: Sorting reads into families"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Sorting <span class="notranslate">reads</span> into families</div>
+  <div class="box-title hands-on-title" id="hands-on-sorting-reads-into-families"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Sorting reads into families</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make families</strong> with the following parameters:</p>
   <ul>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Sequencing <span class="notranslate">reads</span>, mate 1</em>: <code class="language-plaintext highlighter-rouge">1: SRR1799908_forward</code></li>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Sequencing <span class="notranslate">reads</span>, mate 2</em>: <code class="language-plaintext highlighter-rouge">2: SRR1799908_reverse</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Sequencing reads, mate 1</em>: <code class="language-plaintext highlighter-rouge">1: SRR1799908_forward</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Sequencing reads, mate 2</em>: <code class="language-plaintext highlighter-rouge">2: SRR1799908_reverse</code></li>
     <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Tag length</em>: <code class="language-plaintext highlighter-rouge">12</code></li>
   </ul>
 
@@ -1090,16 +925,16 @@
 
 <h3 id="correcting-barcodes">Correcting barcodes</h3>
 
-<p>The grouping <span class="notranslate">reads</span> based on barcode relies on exact barcode matches. Any PCR or sequencing error in the barcode sequence will prevent the affected <span class="notranslate">reads</span> from being joined with their other family members.</p>
+<p>The grouping reads based on barcode relies on exact barcode matches. Any PCR or sequencing error in the barcode sequence will prevent the affected reads from being joined with their other family members.</p>
 
-<p>Du Novo includes a tool which can correct most of these errors and recover the affected <span class="notranslate">reads</span>. This can increase the final yield of duplex consensus <span class="notranslate">reads</span> by up to 11% (Stoler <em>et al.</em> 2018, in preparation).</p>
+<p>Du Novo includes a tool which can correct most of these errors and recover the affected reads. This can increase the final yield of duplex consensus reads by up to 11% (Stoler <em>et al.</em> 2018, in preparation).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-correcting-barcodes" class="box-title" aria-label="hands-on box: Correcting barcodes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Correcting barcodes</div>
+  <div class="box-title hands-on-title" id="hands-on-correcting-barcodes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Correcting barcodes</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Correct barcodes</strong> with the following parameters:</p>
   <ul>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input <span class="notranslate">reads</span></em>: <code class="language-plaintext highlighter-rouge">7: Du Novo: Make families on data 2 and data 1</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input reads</em>: <code class="language-plaintext highlighter-rouge">7: Du Novo: Make families on data 2 and data 1</code></li>
     <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Maximum differences</em>: <code class="language-plaintext highlighter-rouge">3</code></li>
   </ul>
 
@@ -1108,24 +943,24 @@
 
 <h3 id="aligning-families">Aligning families</h3>
 
-<p>After grouping <span class="notranslate">reads</span> that came from the same original fragment, we need to align them with each other. This next tool will perform a multiple sequence alignment on each family.</p>
+<p>After grouping reads that came from the same original fragment, we need to align them with each other. This next tool will perform a multiple sequence alignment on each family.</p>
 
 <blockquote class="comment">
-  <div id="comment-analysis-bottleneck" class="box-title" aria-label="comment box: Analysis bottleneck"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Analysis bottleneck</div>
+  <div class="box-title comment-title" id="comment-analysis-bottleneck"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Analysis bottleneck</div>
   <p>This is by far the most time-consuming step.</p>
 
-  <p>On this dataset, it took 2 hours to complete when run on <a href="https://usegalaxy.org/"><span class="notranslate">Galaxy</span> Main</a>.</p>
+  <p>On this dataset, it took 2 hours to complete when run on <a href="https://usegalaxy.org/">Galaxy Main</a>.</p>
   <ul>
-    <li>At the time, <span class="notranslate">Galaxy</span> allocated 6 cores to the job.</li>
+    <li>At the time, Galaxy allocated 6 cores to the job.</li>
   </ul>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-aligning-families" class="box-title" aria-label="hands-on box: Aligning families"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Aligning families</div>
+  <div class="box-title hands-on-title" id="hands-on-aligning-families"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Aligning families</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Align families</strong> with the following parameters:</p>
   <ul>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input <span class="notranslate">reads</span></em>: <code class="language-plaintext highlighter-rouge">8: Du Novo: Correct barcodes on data 7</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input reads</em>: <code class="language-plaintext highlighter-rouge">8: Du Novo: Correct barcodes on data 7</code></li>
     <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>Multiple sequence aligner</em>: <code class="language-plaintext highlighter-rouge">Kalign2</code></li>
   </ul>
 
@@ -1134,17 +969,17 @@
 
 <h3 id="making-consensus-sequences">Making consensus sequences</h3>
 
-<p>Now, we need to collapse the aligned <span class="notranslate">reads</span> into consensus sequences. This next tool will process each group of aligned <span class="notranslate">reads</span> that came from the same single-stranded family into a consensus. Then it will align the consensus sequences from the two strands of each original molecule, and call a consensus between them.</p>
+<p>Now, we need to collapse the aligned reads into consensus sequences. This next tool will process each group of aligned reads that came from the same single-stranded family into a consensus. Then it will align the consensus sequences from the two strands of each original molecule, and call a consensus between them.</p>
 
 <p>Normally, the tool only produces the final double-stranded consensus sequences. But we will make use of the single-stranded consensus sequences <a href="#calling-variants-with-single-strand-consensus-sequences">later</a>, so we’ll tell it to keep those as well.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-making-consensus-sequences" class="box-title" aria-label="hands-on box: Making consensus sequences"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Making consensus sequences</div>
+  <div class="box-title hands-on-title" id="hands-on-making-consensus-sequences"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Making consensus sequences</div>
 
-  <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus <span class="notranslate">reads</span></strong> with the following parameters:</p>
+  <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus reads</strong> with the following parameters:</p>
   <ul>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Aligned input <span class="notranslate">reads</span></em>: <code class="language-plaintext highlighter-rouge">9: Du Novo: Align families on data 8</code></li>
-    <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Minimum <span class="notranslate">reads</span> for a consensus sequence</em>: <code class="language-plaintext highlighter-rouge">3</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Aligned input reads</em>: <code class="language-plaintext highlighter-rouge">9: Du Novo: Align families on data 8</code></li>
+    <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Minimum reads for a consensus sequence</em>: <code class="language-plaintext highlighter-rouge">3</code></li>
     <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Consensus % threshold</em>: <code class="language-plaintext highlighter-rouge">0.7</code></li>
     <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>Output format</em>: <code class="language-plaintext highlighter-rouge">FASTQ</code></li>
     <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>Output single-strand consensus sequences as well</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
@@ -1152,17 +987,17 @@
 
   <p>Outputs:</p>
   <ul>
-    <li><code class="language-plaintext highlighter-rouge">10: Du Novo: Make consensus <span class="notranslate">reads</span> on data 9 (mate 1)</code></li>
-    <li><code class="language-plaintext highlighter-rouge">11: Du Novo: Make consensus <span class="notranslate">reads</span> on data 9 (mate 2)</code></li>
-    <li><code class="language-plaintext highlighter-rouge">12: Du Novo: Make consensus <span class="notranslate">reads</span> on data 9 (SSCS mate 1)</code></li>
-    <li><code class="language-plaintext highlighter-rouge">13: Du Novo: Make consensus <span class="notranslate">reads</span> on data 9 (SSCS mate 2)</code></li>
+    <li><code class="language-plaintext highlighter-rouge">10: Du Novo: Make consensus reads on data 9 (mate 1)</code></li>
+    <li><code class="language-plaintext highlighter-rouge">11: Du Novo: Make consensus reads on data 9 (mate 2)</code></li>
+    <li><code class="language-plaintext highlighter-rouge">12: Du Novo: Make consensus reads on data 9 (SSCS mate 1)</code></li>
+    <li><code class="language-plaintext highlighter-rouge">13: Du Novo: Make consensus reads on data 9 (SSCS mate 2)</code></li>
   </ul>
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-setting-output-formats" class="box-title" aria-label="comment box: Setting output formats"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Setting output formats</div>
+  <div class="box-title comment-title" id="comment-setting-output-formats"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Setting output formats</div>
 
-  <p>You may have to set the datatype of the outputs from <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus <span class="notranslate">reads</span></strong> tool.</p>
+  <p>You may have to set the datatype of the outputs from <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus reads</strong> tool.</p>
 
   <p>Versions below 2.16 only set the datatype to <code class="language-plaintext highlighter-rouge">fastq</code>, not the more specific <code class="language-plaintext highlighter-rouge">fastqsanger</code>. Many tools (like <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Map with BWA-MEM</strong>) won’t accept FASTQ input without it specifying what subtype it is.</p>
 
@@ -1175,16 +1010,16 @@
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-where-do-the-fastq-quality-scores-come-from" class="box-title"><button type="button" aria-controls="details-where-do-the-fastq-quality-scores-come-from-contents" aria-expanded="true" aria-label="Toggle details box: Where do the FASTQ quality scores come from?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Where do the FASTQ quality scores come from?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-where-do-the-fastq-quality-scores-come-from"><button class="gtn-boxify-button details" type="button" aria-controls="details-where-do-the-fastq-quality-scores-come-from" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Where do the FASTQ quality scores come from?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>There is no easy way to assign a PHRED score to a consensus base derived from many duplex <span class="notranslate">reads</span>.</p>
+  <p>There is no easy way to assign a PHRED score to a consensus base derived from many duplex reads.</p>
 
   <p>So Du Novo does not attempt to give a meaningful score. It assigns the same arbitrary score to all bases.</p>
   <ul>
     <li>It produces FASTQ for compatibility, but the output contains no more information than a FASTA file.</li>
   </ul>
 
-  <p>You may have noticed the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Output PHRED score</em> parameter in the <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus <span class="notranslate">reads</span></strong> tool. This allows you to specify which score to assign to (all) the bases.</p>
+  <p>You may have noticed the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Output PHRED score</em> parameter in the <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Du Novo: Make consensus reads</strong> tool. This allows you to specify which score to assign to (all) the bases.</p>
 
 </blockquote>
 
@@ -1195,13 +1030,13 @@
 <p>This information could be useful for some analyses, but not for our variant calling. The tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Sequence Content Trimmer</strong> will help with filtering these out. With the settings below, it will move along the read, tracking the frequency of ambiguous (non-ACGT) bases in a 10bp window. If it sees more than 2 ambiguous bases in a window, it will remove the rest of the read, starting with the first offending base in the window. We’ll also tell it to remove entirely any read pair containing a read that got trimmed to less than 50bp.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filtering-the-consensus-sequences" class="box-title" aria-label="hands-on box: Filtering the consensus sequences"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filtering the consensus sequences</div>
+  <div class="box-title hands-on-title" id="hands-on-filtering-the-consensus-sequences"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Filtering the consensus sequences</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Sequence Content Trimmer</strong> with the following parameters:</p>
   <ul>
-    <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>Paired <span class="notranslate">reads</span>?</em>: <code class="language-plaintext highlighter-rouge">Paired</code></li>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input <span class="notranslate">reads</span> (mate 1)</em>: <code class="language-plaintext highlighter-rouge">10: Du Novo: Make consensus <span class="notranslate">reads</span> on data 9 (mate 1)</code></li>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input <span class="notranslate">reads</span> (mate 2)</em>: <code class="language-plaintext highlighter-rouge">11: Du Novo: Make consensus <span class="notranslate">reads</span> on data 9 (mate 2)</code></li>
+    <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>Paired reads?</em>: <code class="language-plaintext highlighter-rouge">Paired</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input reads (mate 1)</em>: <code class="language-plaintext highlighter-rouge">10: Du Novo: Make consensus reads on data 9 (mate 1)</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Input reads (mate 2)</em>: <code class="language-plaintext highlighter-rouge">11: Du Novo: Make consensus reads on data 9 (mate 2)</code></li>
     <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Bases to filter on</em>: <code class="language-plaintext highlighter-rouge">ACGT</code></li>
     <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Frequency threshold</em>: <code class="language-plaintext highlighter-rouge">0.2</code></li>
     <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Size of the window</em>: <code class="language-plaintext highlighter-rouge">10</code></li>
@@ -1221,25 +1056,25 @@
 
 <p>At this point we have trimmed DCSs. We can now proceed to call variants. This involves aligning the variants against the reference genome, then counting variants.</p>
 
-<p>We’re not specifically interested in the reference sequence, since all we care about is sequence content of the consensus <span class="notranslate">reads</span>. But we’ll be using the reference sequence to figure out where all the <span class="notranslate">reads</span> come from. This lets us stack them on top of each other, with equivalent bases lined up in columns. Then we can step through each column, count how many times we see each base, and and compile a list of variants.</p>
+<p>We’re not specifically interested in the reference sequence, since all we care about is sequence content of the consensus reads. But we’ll be using the reference sequence to figure out where all the reads come from. This lets us stack them on top of each other, with equivalent bases lined up in columns. Then we can step through each column, count how many times we see each base, and and compile a list of variants.</p>
 
-<h2 id="mapping-the-reads"><span class="notranslate">Mapping</span> the <span class="notranslate">reads</span></h2>
+<h2 id="mapping-the-reads">Mapping the reads</h2>
 
 <h3 id="align-against-the-genome-with-bwa-mem">Align against the genome with BWA-MEM</h3>
 
-<p>Here, we’ll use <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Map with BWA-MEM</strong> to map the DCS <span class="notranslate">reads</span> to the human reference genome.</p>
+<p>Here, we’ll use <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Map with BWA-MEM</strong> to map the DCS reads to the human reference genome.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-align-with-bwa-mem" class="box-title" aria-label="hands-on box: Align with BWA-MEM"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Align with BWA-MEM</div>
+  <div class="box-title hands-on-title" id="hands-on-align-with-bwa-mem"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Align with BWA-MEM</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Map with BWA-MEM</strong> with the following parameters:</p>
   <ul>
     <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>Using reference genome?</em>: <code class="language-plaintext highlighter-rouge">Human (Homo sapiens) (b38): hg38</code></li>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Select first set of <span class="notranslate">reads</span></em>: <code class="language-plaintext highlighter-rouge">14: Sequence Content Trimmer on data 10 and data 11</code></li>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Select second set of <span class="notranslate">reads</span></em>: <code class="language-plaintext highlighter-rouge">15: Sequence Content Trimmer on data 10 and data 11</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Select first set of reads</em>: <code class="language-plaintext highlighter-rouge">14: Sequence Content Trimmer on data 10 and data 11</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Select second set of reads</em>: <code class="language-plaintext highlighter-rouge">15: Sequence Content Trimmer on data 10 and data 11</code></li>
   </ul>
 
-  <p>Output: <code class="language-plaintext highlighter-rouge">16: Map with BWA-MEM on data 15 and data 14 (mapped <span class="notranslate">reads</span> in BAM format)</code></p>
+  <p>Output: <code class="language-plaintext highlighter-rouge">16: Map with BWA-MEM on data 15 and data 14 (mapped reads in BAM format)</code></p>
 </blockquote>
 
 <h3 id="left-aligning-indels">Left Aligning indels</h3>
@@ -1247,11 +1082,11 @@
 <p>To normalize the positional distribution of indels we use the <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>BamLeftAlign</strong> utility from the <a href="https://github.com/ekg/freebayes#indels">FreeBayes</a> package. You can find it in the <strong>NGS: Variant Analysis</strong> section. This is necessary to avoid erroneous polymorphisms flanking regions with indels (e.g., in low complexity loci):</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-left-align-indels" class="box-title" aria-label="hands-on box: Left-align indels"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Left-align indels</div>
+  <div class="box-title hands-on-title" id="hands-on-left-align-indels"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Left-align indels</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>BamLeftAlign</strong> with the following parameters:</p>
   <ul>
-    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Select alignment file in BAM format</em>: <code class="language-plaintext highlighter-rouge">16: Map with BWA-MEM on data 15 and data 14 (mapped <span class="notranslate">reads</span> in BAM format)</code></li>
+    <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>Select alignment file in BAM format</em>: <code class="language-plaintext highlighter-rouge">16: Map with BWA-MEM on data 15 and data 14 (mapped reads in BAM format)</code></li>
     <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>Using reference genome</em>: <code class="language-plaintext highlighter-rouge">Human (Homo sapiens): hg38</code>
       <ul>
         <li>The same genome we aligned to.</li>
@@ -1264,7 +1099,7 @@
 
 <h2 id="calling-the-variants">Calling the variants</h2>
 
-<p>Now we’ll use our aligned consensus <span class="notranslate">reads</span> to find variants.</p>
+<p>Now we’ll use our aligned consensus reads to find variants.</p>
 
 <p>Normally, in a diploid resequencing experiment, you would call variants relative to the reference. So, you’d report sites which are different from the reference (and whether they’re hetero- or homozygous).</p>
 
@@ -1272,10 +1107,10 @@
 
 <h3 id="finding-variants-in-the-alignment">Finding variants in the alignment</h3>
 
-<p>To identify sites containing variants we use the <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Naive Variant Caller (NVC)</strong> tool from the <strong>NGS: Variant Analysis</strong> section. This <span class="notranslate">reads</span> the alignment and counts the number of bases of each type at each site.</p>
+<p>To identify sites containing variants we use the <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Naive Variant Caller (NVC)</strong> tool from the <strong>NGS: Variant Analysis</strong> section. This reads the alignment and counts the number of bases of each type at each site.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-count-the-variants" class="box-title" aria-label="hands-on box: Count the variants"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Count the variants</div>
+  <div class="box-title hands-on-title" id="hands-on-count-the-variants"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Count the variants</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Naive Variant Caller (NVC)</strong> with the following parameters:</p>
   <ul>
@@ -1296,7 +1131,7 @@
         <li>In our case, base quality <a href="#details-where-do-the-fastq-quality-scores-come-from">isn’t meaningful</a>, so we set the threshold to 0.</li>
       </ul>
     </li>
-    <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Minimum <span class="notranslate">mapping</span> quality</em>: <code class="language-plaintext highlighter-rouge">20</code></li>
+    <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Minimum mapping quality</em>: <code class="language-plaintext highlighter-rouge">20</code></li>
     <li><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">param-text</span> <em>Ploidy</em>: <code class="language-plaintext highlighter-rouge">1</code>
       <ul>
         <li>Ploidy is irrelevant here as it is a mixture of multiple genomes.</li>
@@ -1314,7 +1149,7 @@
 <p>Now we’ll want to parse the VCF produced by the NVC, determine what the major and minor allele is at each site, and calculate their frequencies. The <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Variant Annotator</strong> from the <strong>NGS: Variant Analysis</strong> section can do this.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-read-the-variants-file" class="box-title" aria-label="hands-on box: Read the variants file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Read the variants file</div>
+  <div class="box-title hands-on-title" id="hands-on-read-the-variants-file"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Read the variants file</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Variant Annotator</strong> with the following parameters:</p>
   <ul>
@@ -1333,12 +1168,12 @@
 
 <h3 id="filtering-out-the-noise">Filtering out the noise</h3>
 
-<p>Now we have a file containing the base counts for every site covered by at least 10 <span class="notranslate">reads</span>. We’d like to filter through this data to find sites with a reasonable chance of being a real variant, not sequencing error.</p>
+<p>Now we have a file containing the base counts for every site covered by at least 10 reads. We’d like to filter through this data to find sites with a reasonable chance of being a real variant, not sequencing error.</p>
 
 <p>The <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Variant Annotator</strong> produces a simple tab-delimited file, with one site per line. We can use the <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Filter</strong> tool from the <strong>Filter and Sort</strong> section to process this kind of file. We’ll use the filter <code class="language-plaintext highlighter-rouge">c16 &gt;= 0.01</code> to remove lines where the value in column 16 is less than 0.01. Column 16 contains the minor allele frequency, so this will remove all sites with a MAF less than 1%.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filter-the-raw-variants-list" class="box-title" aria-label="hands-on box: Filter the raw variants list"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter the raw variants list</div>
+  <div class="box-title hands-on-title" id="hands-on-filter-the-raw-variants-list"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Filter the raw variants list</div>
 
   <p>Run <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> <strong>Filter</strong> with the following parameters:</p>
   <ul>
@@ -1393,14 +1228,14 @@
 
 <ul>
   <li><a href="#filtering-consensuses">Filtering consensuses</a></li>
-  <li><a href="#mapping-the-reads"><span class="notranslate">Mapping</span> the <span class="notranslate">reads</span></a>
+  <li><a href="#mapping-the-reads">Mapping the reads</a>
  	- <a href="#align-against-the-genome-with-bwa-mem">Aligning against genome</a>
  	- <a href="#left-aligning-indels">Left aligning indels</a></li>
   <li><a href="#calling-the-variants">Calling the variants</a></li>
 </ul>
 
 <blockquote class="tip">
-  <div id="tip-re-running-with-the-same-settings" class="box-title"><button type="button" aria-controls="tip-re-running-with-the-same-settings-contents" aria-expanded="true" aria-label="Toggle tip box: Re-running with the same settings"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Re-running with the same settings<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-re-running-with-the-same-settings"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-re-running-with-the-same-settings" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Re-running with the same settings<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>There’s a shortcut to avoid setting every parameter the second time you run a tool.</p>
 
@@ -1413,57 +1248,53 @@
 
 <h2 id="re-running-analyses-with-workflows">Re-running analyses with workflows</h2>
 
-<p>Instead of manually re-running all the tools in the variant calling section, you can use a <strong><span class="notranslate">workflow</span></strong> to automatically run the same tools, but on the SSCS <span class="notranslate">reads</span>. Workflows let you run a chain of tools on different input data with a single click of a button. You can find more information on using workflows <a href="../../../introduction/tutorials/galaxy-intro-101/tutorial.html#run-workflow-on-different-data">here</a>.</p>
+<p>Instead of manually re-running all the tools in the variant calling section, you can use a <strong>workflow</strong> to automatically run the same tools, but on the SSCS reads. Workflows let you run a chain of tools on different input data with a single click of a button. You can find more information on using workflows in the <a href="../../../introduction/tutorials/galaxy-intro-101/tutorial.html#run-workflow-on-different-data">Galaxy 101 introductory tutorial</a>.</p>
 
 <p>We’ve prepared two workflows which split the above analysis into two steps:</p>
 
 <ol>
-  <li><a href="https://usegalaxy.org/u/nstoler/w/du-novo-gtn-tutorial">Using Du Novo</a> to create consensus sequencs from raw <span class="notranslate">reads</span>.
+  <li><a href="https://usegalaxy.org/u/nstoler/w/du-novo-gtn-tutorial">Using Du Novo</a> to create consensus sequences from raw reads.
     <ul>
       <li>This will generate trimmed DCS and SSCS files from raw sequencing data.</li>
-      <li>This does not include the FastQC step. You should always run FastQC on your raw <span class="notranslate">reads</span> first, to check the quality of your sequencing run before proceeding with the analysis.</li>
+      <li>This does not include the FastQC step. You should always run FastQC on your raw reads first, to check the quality of your sequencing run before proceeding with the analysis.</li>
     </ul>
+
+    <blockquote class="comment">
+      <div class="box-title comment-title" id="comment-helping-du-novo-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Helping Du Novo</div>
+      <p>The <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>Send usage data</em> option is left off in the above workflow.
+This is because we want to make sure you only share data knowingly.</p>
+
+      <p>But again, if you’d like to help improve Du Novo, consider turning it on.</p>
+    </blockquote>
   </li>
   <li><a href="https://usegalaxy.org/u/nstoler/w/copy-of-du-novo-gtn-tutorial">Calling variants</a> from consensus sequences.
     <ul>
       <li>This takes a pair of FASTQ files and calls variants using them.</li>
       <li>If you’d like variants from both DCS and SSCS, you’ll have to run this twice, once on each.</li>
-      <li><strong>N.B.</strong> Remember that this <span class="notranslate">workflow</span> is designed for the above <em>ABL1</em> analysis. If you want to use it for any other dataset, you’ll have to change the relevant options.</li>
+      <li><strong>N.B.</strong> Remember that this workflow is designed for the above <em>ABL1</em> analysis. If you want to use it for any other dataset, you’ll have to change the relevant options.</li>
     </ul>
   </li>
 </ol>
 
-<p>You can use the variant calling <span class="notranslate">workflow</span> to call variants using the SSCS instead of the DCS.</p>
+<p>You can use the variant calling workflow to call variants using the SSCS instead of the DCS.</p>
 
-<blockquote class="comment">
-  <div id="comment-helping-du-novo-1" class="box-title" aria-label="comment box: Helping Du Novo"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Helping Du Novo</div>
-  <p>The <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>Send usage data</em> option is left off in the above workflows.</p>
-  <ul>
-    <li>We want to make sure you only share data knowingly.</li>
-  </ul>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/workflow-dunovo.png" alt="Du Novo workflow. " width="1053" height="438" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Workflow 1: Making consensus sequences</figcaption></figure>
 
-  <p>But again, if you’d like to help improve Du Novo, consider turning it on.</p>
-</blockquote>
-
-<p><strong><span class="notranslate">Workflow</span>: Making consensus sequences</strong></p>
-
-<p><a href="https://usegalaxy.org/u/nstoler/w/du-novo-gtn-tutorial"><img src="../../images/workflow-dunovo.png" alt="Du Novo workflow. " loading="lazy" /></a></p>
-
-<p><strong><span class="notranslate">Workflow</span>: Variant calling</strong></p>
-
-<p><a href="https://usegalaxy.org/u/nstoler/w/copy-of-du-novo-gtn-tutorial"><img src="../../images/workflow-dunovo-variant-calling.png" alt="Variant calling workflow. " loading="lazy" /></a></p>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/workflow-dunovo-variant-calling.png" alt="Variant calling workflow. " width="777" height="360" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Workflow 2: Variant calling</figcaption></figure>
 
 <h1 id="conclusion">Conclusion</h1>
 
 <p>You should now understand duplex sequencing, rare variants, and be able to process the former to find the latter.</p>
 
 <h3 id="if-things-dont-work">If things don’t work…</h3>
-<p>…you need to complain. Use <a href="https://help.galaxyproject.org/"><span class="notranslate">Galaxy</span>’s Help Channel</a> to do this.</p>
+<p>…you need to complain. Use <a href="https://help.galaxyproject.org/">Galaxy’s Help Channel</a> to do this.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Diploid variant calling relies on assumptions that rare variant calling cannot make</p>
@@ -1498,38 +1329,18 @@
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Calling very rare variants (Variant Analysis)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Calling very rare variants (Variant Analysis)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Anton Nekrutenko, Nick Stoler,  <b>Calling very rare variants (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html">https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Anton Nekrutenko, Nick Stoler,  <b>Calling very rare variants (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html">https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1541,7 +1352,7 @@
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1550,28 +1361,31 @@
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{variant-analysis-dunovo,
 author = "Anton Nekrutenko and Nick Stoler",
-title = "Calling very rare variants (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Calling very rare variants (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1579,11 +1393,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1592,49 +1406,124 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/variant-analysis/tutorials/dunovo/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: naive_variant_caller
+  owner: blankenberg
+  revisions: 6be51647d31a
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bwa
+  owner: devteam
+  revisions: 3fe632431b68
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: freebayes
+  owner: devteam
+  revisions: 156b60c1530f
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: allele_counts
+  owner: nick
+  revisions: 411adeff1eec
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: dunovo
+  owner: nick
+  revisions: 9dc43bf7d1db
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: dunovo
+  owner: nick
+  revisions: 9dc43bf7d1db
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: dunovo
+  owner: nick
+  revisions: 9dc43bf7d1db
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: dunovo
+  owner: nick
+  revisions: 9dc43bf7d1db
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: sequence_content_trimmer
+  owner: nick
+  revisions: 7f170cb06e2e
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00310">https://gxy.io/GTN:T00310</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/dunovo/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

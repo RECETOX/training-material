@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,44 +8,211 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Extracting Workflows from Histories" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Dave Clements" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Extracting Workflows from Histories">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-02-02 12:13:25 +0000">
+<meta name="DC.creator" content="Dave Clements">
 
         
         
         
         
+        <meta name="description" content="A collection of microtutorials explaining various feature...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Extracting Workflows from Histories">
+        <meta property="og:description" content="A collection of microtutorials explaining various feature...">
         
-        <meta name="description" content="A collection of microtutorials explaining various feature..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Extracting Workflows from Histories" />
-        <meta property="og:description" content="A collection of microtutorials explaining various feature..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-02-02 12:13:25 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Extracting Workflows from Histories",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Using Galaxy and Managing your Data",
+    "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
+    "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Extracting Workflows from Histories' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html",
+  "timeRequired": "PT30M",
+  "teaches": "Learn how to extract a workflow from a Galaxy history\n - Learn how to change a workflow using the workflow editor",
+  "keywords": "galaxy-interface, workflows",
+  "description": "The questions this  addresses are:\n - What is a workflow?\n - How can I create a workflow based on my analysis history?\n\n\nThe objectives are:\n - Learn how to extract a workflow from a Galaxy history\n - Learn how to change a workflow using the workflow editor\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
+      "name": "Dave Clements",
+      "image": "https://avatars.githubusercontent.com/tnabtaf",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-9970-6657",
+      "orcid": "https://orcid.org/0000-0002-9970-6657"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Using Galaxy and Managing your Data",
+      "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
+      "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "workflows"
+    }
+  ],
+  "abstract": "# Create a reusable workflow from a history"
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,38 +228,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -112,9 +251,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/galaxy-interface/faqs/" title="Check our FAQs for the Using Galaxy and Managing your Data topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -132,7 +273,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -161,27 +301,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -193,13 +320,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -212,7 +339,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -226,8 +353,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -244,177 +376,26 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 14:23:35 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Extracting Workflows from Histories",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Using Galaxy and Managing your Data",
-    "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
-    "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Extracting Workflows from Histories' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html",
-  "timeRequired": "PT30M",
-  "keywords": "galaxy-interface, workflows",
-  "description": "The questions this  addresses are:\n - What is a workflow?\n - How can I create a workflow based on my analysis history?\n\n\nThe objectives are:\n - Learn how to extract a workflow from a Galaxy history\n - Learn how to change a workflow using the workflow editor\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
-      "name": "Dave Clements",
-      "image": "https://avatars.githubusercontent.com/tnabtaf",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/tnabtaf/",
-      "name": "Dave Clements",
-      "image": "https://avatars.githubusercontent.com/tnabtaf",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Using Galaxy and Managing your Data",
-      "description": "A collection of microtutorials explaining various features of the Galaxy user interface and manipulating data within Galaxy.",
-      "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
-    }
-  ]
-}
-</script>
-
-<section class="tutorial topic-galaxy-interface">
+<article class="tutorial topic-galaxy-interface">
     <h1 data-toc-skip>Extracting Workflows from Histories</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/tnabtaf/" class="contributor-badge contributor-tnabtaf"><img src="https://avatars.githubusercontent.com/tnabtaf?s=27" alt="Avatar">Dave Clements</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/tnabtaf/" class="contributor-badge contributor-tnabtaf"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/tnabtaf?s=36" alt="Avatar" width="36" height="36">Dave Clements</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -451,14 +432,18 @@
 
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 2, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00151">https://gxy.io/GTN:T00151</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -469,22 +454,23 @@
             <div class="col-sm-10">
                  
 
-                <h1 id="create-a-reusable-workflow-from-a-history">Create a reusable <span class="notranslate">workflow</span> from a history</h1>
+                <section aria-label="Tutorial Content" id="tutorial-content">
+                <h1 id="create-a-reusable-workflow-from-a-history">Create a reusable workflow from a history</h1>
 
-<p>This practical shows how to create a reusable analysis pipeline, called a <em><span class="notranslate">workflow</span></em> in <span class="notranslate">Galaxy</span>, from an analysis that you have already run in <span class="notranslate">Galaxy</span>, called a <em>history</em>.</p>
+<p>This practical shows how to create a reusable analysis pipeline, called a <em>workflow</em> in Galaxy, from an analysis that you have already run in Galaxy, called a <em>history</em>.</p>
 
 <blockquote class="comment">
   <h3 id="comment-audience"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden">comment</span> Audience</h3>
-  <p>This tutorial is intended for those who are new to <span class="notranslate">Galaxy</span>.</p>
+  <p>This tutorial is intended for those who are new to Galaxy.</p>
 </blockquote>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
 <ol id="markdown-toc">
-  <li><a href="#create-a-reusable-workflow-from-a-history" id="markdown-toc-create-a-reusable-workflow-from-a-history">Create a reusable <span class="notranslate">workflow</span> from a history</a></li>
+  <li><a href="#create-a-reusable-workflow-from-a-history" id="markdown-toc-create-a-reusable-workflow-from-a-history">Create a reusable workflow from a history</a></li>
   <li><a href="#pretreatments" id="markdown-toc-pretreatments">Pretreatments</a>    <ol>
       <li><a href="#motivation" id="markdown-toc-motivation">Motivation</a></li>
       <li><a href="#set-your-current-history" id="markdown-toc-set-your-current-history">Set your current history</a></li>
@@ -499,31 +485,31 @@
 <h1 id="pretreatments">Pretreatments</h1>
 
 <blockquote class="comment">
-  <div id="comment-requirements" class="box-title" aria-label="comment box: Requirements"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Requirements</div>
+  <div class="box-title comment-title" id="comment-requirements"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Requirements</div>
 
   <p>To run this practical you will need</p>
 
   <ol>
-    <li>Previous experience running at least one analysis in <span class="notranslate">Galaxy</span>.</li>
-    <li>An internet-connected computer.  <span class="notranslate">Galaxy</span> can run on your laptop without an internet connection, but this practical requires access to resources on the web.</li>
-    <li>A web browser. <a href="https://www.mozilla.org/firefox">Firefox</a> and <a href="https://www.google.com/chrome/">Google Chrome</a> work well, as does <a href="https://www.apple.com/safari/">Safari</a>.  Internet Explorer is known to have issues with <span class="notranslate">Galaxy</span> so avoid using that.</li>
-    <li>Access to a <span class="notranslate">Galaxy</span> instance, and an account on that instance. <span class="notranslate">Galaxy</span> is available in many ways. If you are doing this practical as part of a workshop, the instructor will tell you which instance to use. If you are doing this on your own, you can use <a href="https://usegalaxy.org">use<span class="notranslate">galaxy</span>.org</a>.</li>
-    <li>A <span class="notranslate">Galaxy</span> <em>history</em> from an analysis that you have already run.  If you don’t have one handy, you can use <a href="https://usegalaxy.org/u/tnabtaf/h/overlapping-genes-on-opposite-strands">this history</a>. on use<span class="notranslate">galaxy</span>.org.  Click <strong>Import History</strong> (top right) to bring that history into your workspace on use<span class="notranslate">galaxy</span>.org. Any history will work with this tutorial, but that’s the one used in the examples.</li>
+    <li>Previous experience running at least one analysis in Galaxy.</li>
+    <li>An internet-connected computer.  Galaxy can run on your laptop without an internet connection, but this practical requires access to resources on the web.</li>
+    <li>A web browser. <a href="https://www.mozilla.org/firefox">Firefox</a> and <a href="https://www.google.com/chrome/">Google Chrome</a> work well, as does <a href="https://www.apple.com/safari/">Safari</a>.  Internet Explorer is known to have issues with Galaxy so avoid using that.</li>
+    <li>Access to a Galaxy instance, and an account on that instance. Galaxy is available in many ways. If you are doing this practical as part of a workshop, the instructor will tell you which instance to use. If you are doing this on your own, you can use <a href="https://usegalaxy.org">usegalaxy.org</a>.</li>
+    <li>A Galaxy <em>history</em> from an analysis that you have already run.  If you don’t have one handy, you can use <a href="https://usegalaxy.org/u/tnabtaf/h/overlapping-genes-on-opposite-strands">this history</a>. on usegalaxy.org.  Click <strong>Import History</strong> (top right) to bring that history into your workspace on usegalaxy.org. Any history will work with this tutorial, but that’s the one used in the examples.</li>
   </ol>
 </blockquote>
 
-<p>This tutorial is a good second step after running your first analysis on <span class="notranslate">Galaxy</span>.</p>
+<p>This tutorial is a good second step after running your first analysis on Galaxy.</p>
 
 <h2 id="motivation">Motivation</h2>
 
-<p><span class="notranslate">Galaxy</span> excels at helping researchers figure out how to do analyses.  It’s easy to try different tools and settings, and if your first result isn’t quite what you want, you can just keep trying until you get what you want.  What you may end up with is a slightly (or very) messy analysis <em>history</em> under your account.  If this is the only time you’ll run that particular analysis then it’s fine to just hang on to that history.   It might be handy to look at the next time you want to do something in <span class="notranslate">Galaxy</span>.</p>
+<p>Galaxy excels at helping researchers figure out how to do analyses.  It’s easy to try different tools and settings, and if your first result isn’t quite what you want, you can just keep trying until you get what you want.  What you may end up with is a slightly (or very) messy analysis <em>history</em> under your account.  If this is the only time you’ll run that particular analysis then it’s fine to just hang on to that history.   It might be handy to look at the next time you want to do something in Galaxy.</p>
 
 <p>But what if you want to run that analysis again, maybe on updated datasets, or maybe even on entirely different datasets?  You could manually rerun all the steps in your first analysis, using the new datasets instead of the old.  But that is tedious, and error-prone. What you want is the ability to easily run exactly the same tools, with the same settings, in the same order as the first time you ran the analysis.</p>
 
-<p><span class="notranslate">Galaxy</span> <em>workflows</em> enable this, and this tutorial shows how you can create one from the analysis you have already done, and then run the analysis exactly as you did before, but on the new datasets.</p>
+<p>Galaxy <em>workflows</em> enable this, and this tutorial shows how you can create one from the analysis you have already done, and then run the analysis exactly as you did before, but on the new datasets.</p>
 
 <blockquote class="tip">
-  <div id="tip-confused-about-i-histories-i-and-i-workflows-i" class="box-title"><button type="button" aria-controls="tip-confused-about-i-histories-i-and-i-workflows-i-contents" aria-expanded="true" aria-label="Toggle tip box: Confused about &lt;i&gt;Histories&lt;/i&gt; and &lt;i&gt;Workflows?&lt;/i&gt;"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Confused about <i>Histories</i> and <i>Workflows?</i><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-confused-about-i-histories-i-and-i-workflows-i"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-confused-about-i-histories-i-and-i-workflows-i" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Confused about <i>Histories</i> and <i>Workflows?</i><span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Well, you are not alone.  This analogy may help.</p>
 
@@ -532,21 +518,21 @@
       <p>A <em>history</em> is a record of analysis that you have done, or of the analysis you are currently working on.  <strong>Think of a history as a baked cake.</strong>  It’s something that been done.  It has input datasets, possibly intermediate datasets, and output datasets.  Think of the input datasets as the basic ingredients used to make the cake, like eggs and flour, and the output datasets are the cake.</p>
     </li>
     <li>
-      <p>A <em><span class="notranslate">workflow</span></em> is a <strong>recipe</strong> for running an analysis.  It doesn’t contain any of the ingredients or the cake.  It does specify what you’ll need to run the recipe: input datasets (the eggs and flour), and all of the steps you’ll need to do to create the cake (beat the eggs, mix the flour, sugar and baking powder, …).</p>
+      <p>A <em>workflow</em> is a <strong>recipe</strong> for running an analysis.  It doesn’t contain any of the ingredients or the cake.  It does specify what you’ll need to run the recipe: input datasets (the eggs and flour), and all of the steps you’ll need to do to create the cake (beat the eggs, mix the flour, sugar and baking powder, …).</p>
     </li>
   </ul>
 
-  <p>In this tutorial we will take a fully baked cake (a history), <em>ask it to tell us the recipe that was used to create it,</em> and then create a recipe (a <span class="notranslate">workflow</span>) based on what the cake tells us.</p>
+  <p>In this tutorial we will take a fully baked cake (a history), <em>ask it to tell us the recipe that was used to create it,</em> and then create a recipe (a workflow) based on what the cake tells us.</p>
 
   <p>Happy baking.</p>
 </blockquote>
 
 <h2 id="set-your-current-history">Set your current history</h2>
 
-<p>By this time, you may have multiple histories under your <span class="notranslate">Galaxy</span> account.  You’ll need to make the history that you want create a recipe/<span class="notranslate">workflow</span> for be your <em>current</em> history.  Your current history is the one shown in the History panel on the right.</p>
+<p>By this time, you may have multiple histories under your Galaxy account.  You’ll need to make the history that you want create a recipe/workflow for be your <em>current</em> history.  Your current history is the one shown in the History panel on the right.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-managing-your-histories" class="box-title" aria-label="hands-on box: Managing your histories"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Managing your histories</div>
+  <div class="box-title hands-on-title" id="hands-on-managing-your-histories"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Managing your histories</div>
 
   <ol>
     <li>Make sure you are <em>logged in</em>.
@@ -554,27 +540,22 @@
         <li>If you haven’t yet created an account, now is an ideal time to that.  Your current history will be saved as your first history under your new account.</li>
       </ul>
     </li>
-    <li><em>Click</em> on the <strong>table icon</strong> at the top-right of the history panel to switch to your <em>histories</em> view.
+    <li><em>Click</em> on the <strong>History options</strong> at the top-right of the history panel and select <strong>Show Histories Side-by-Side</strong> to switch to <em>multiple history view</em>.
       <ul>
         <li>This lists your histories, from left to right in reverse chronological order, based on the last time each history was your current history.</li>
       </ul>
     </li>
-    <li><em>Switch to</em> the history you want to extract a <span class="notranslate">workflow</span> from.
+    <li><em>Switch to</em> the history you want to extract a workflow from.
       <ul>
-        <li>If the history that you want to create a repeatable <span class="notranslate">workflow</span> for is <em>not</em> your <em>current</em> history (the left-most one), then find the history you want and then <em>click</em> the <strong>Switch to</strong> button at the top of the history.</li>
-        <li>This makes that history the current history and moves it to the very left.</li>
-      </ul>
-    </li>
-    <li><em>Click</em> on the <span class="notranslate">Galaxy</span> Icon or the <i class="fas fa-home" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-home</span> Home Button  at the top upper left of your histories view.
-      <ul>
-        <li>This returns you to the <span class="notranslate">Galaxy</span> home page with the selected history as your current history.</li>
+        <li>If the history that you want to create a repeatable workflow for is <em>not</em> your <em>current</em> history, then find the history you want and then <em>click</em> the <strong>Switch to</strong> button at the bottom of the history.</li>
+        <li>This makes that history the current history.</li>
       </ul>
     </li>
   </ol>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-always-name-your-histories" class="box-title"><button type="button" aria-controls="tip-always-name-your-histories-contents" aria-expanded="true" aria-label="Toggle tip box: Always name your histories"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Always name your histories<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-always-name-your-histories"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-always-name-your-histories" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Always name your histories<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>If you just saw multiple <code class="language-plaintext highlighter-rouge">Unnamed history</code> entries in your histories view, then now you know why.</p>
 
@@ -583,25 +564,25 @@
 
 <h2 id="extract-the-recipe-from-your-history">Extract the recipe from your history</h2>
 
-<p>Now that we have the history we want, let’s use <span class="notranslate">Galaxy</span> to create a reusable <span class="notranslate">workflow</span> from it.  To do this we’ll use the history’s <strong>gear / history options</strong> pull-down list.</p>
+<p>Now that we have the history we want, let’s use Galaxy to create a reusable workflow from it.  To do this we’ll use the history’s <strong>gear / history options</strong> pull-down list.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-extract-workflow" class="box-title" aria-label="hands-on box: Extract workflow"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Extract <span class="notranslate">workflow</span></div>
+  <div class="box-title hands-on-title" id="hands-on-extract-workflow"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Extract workflow</div>
 
   <ol>
-    <li><em>Click</em> on the <strong>gear icon</strong> at the top of your history.
+    <li><em>Click</em> on the <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-history-options</span> <strong>History options</strong> at the top-right of the history panel.
       <ul>
-        <li>This opens a pull-down menu showing lots of actions that you can perform on this history.  Right now, we are interested in only one of them:</li>
+        <li>This opens a pull-down menu showing lots of actions that you can perform on the current history.  Right now, we are interested in only one of them:</li>
       </ul>
     </li>
-    <li><em>Click</em> on <strong>Extract <span class="notranslate">Workflow</span></strong>.  It’s about half-way down the menu.
+    <li><em>Click</em> on <strong>Extract Workflow</strong>.  It’s about half-way down the menu.
       <ul>
-        <li>This launches a form to create a <span class="notranslate">workflow</span>.</li>
+        <li>This launches a form to create a workflow.</li>
       </ul>
     </li>
-    <li><em>Give</em> your <span class="notranslate">workflow</span> a meaningful name.
+    <li><em>Give</em> your workflow a meaningful name.
       <ul>
-        <li>Think about giving it a more general name than what your history has. The example history is about looking for overlapping genes on opposite strands in human on chromosome 22.  That’s pretty specific.  We want to create a <span class="notranslate">workflow</span> that can be used to detect any type of overlapping features, not just genes, and in any species and on any chromosome (or on all chromosomes).  The name should reflect this goal.</li>
+        <li>Think about giving it a more general name than what your history has. The example history is about looking for overlapping genes on opposite strands in human on chromosome 22.  That’s pretty specific.  We want to create a workflow that can be used to detect any type of overlapping features, not just genes, and in any species and on any chromosome (or on all chromosomes).  The name should reflect this goal.</li>
         <li>For this example we’ll name it <code class="language-plaintext highlighter-rouge">Overlapping features on opposite strands</code></li>
       </ul>
     </li>
@@ -612,14 +593,14 @@
       </ul>
     </li>
     <li>
-      <p>Once you have named your <span class="notranslate">workflow</span>, click the <strong>Create <span class="notranslate">Workflow</span></strong> button.</p>
+      <p>Once you have named your workflow, click the <strong>Create Workflow</strong> button.</p>
 
-      <p><img src="../../images/workflow_strand_create.png" alt="Create workflow form. " loading="lazy" /></p>
+      <p><img src="../../images/workflow_strand_create.png" alt="Create workflow form. " width="908" height="669" loading="lazy" /></p>
 
       <ul>
-        <li>This replaces the <span class="notranslate">workflow</span> creation form with a box that says:
+        <li>This replaces the workflow creation form with a box that says:
           <ul>
-            <li><span class="notranslate">Workflow</span> <em><code class="language-plaintext highlighter-rouge">whatever name you entered</code></em> created from current history. You can edit or run the <span class="notranslate">workflow</span>.</li>
+            <li>Workflow <em><code class="language-plaintext highlighter-rouge">whatever name you entered</code></em> created from current history. You can edit or run the workflow.</li>
           </ul>
         </li>
       </ul>
@@ -629,18 +610,18 @@
 
 </blockquote>
 
-<p>This launches the <span class="notranslate">workflow</span> editor and shows a graphical representation of the inputs and steps taken during the analysis.  Each box is either an input dataset, or a tool that was run.  Boxes are connected by lines that show the flow of data from input datasets, through intermediate tools, to the tools that produce the final output(s).  Each tool box show a list of inputs (at the top) and a list of outputs (at the bottom).  The flow of data is generally from left to right.</p>
+<p>This launches the workflow editor and shows a graphical representation of the inputs and steps taken during the analysis.  Each box is either an input dataset, or a tool that was run.  Boxes are connected by lines that show the flow of data from input datasets, through intermediate tools, to the tools that produce the final output(s).  Each tool box show a list of inputs (at the top) and a list of outputs (at the bottom).  The flow of data is generally from left to right.</p>
 
-<p><img src="../../images/workflow_editor_landing_strand.png" alt="Workflow Editor. " loading="lazy" /></p>
+<p><img src="../../images/workflow_editor_landing_strand.png" alt="Workflow Editor. " width="1157" height="703" loading="lazy" /></p>
 
-<p>While we could run this <span class="notranslate">workflow</span> right now, here are a few cleanup steps we should do first.</p>
+<p>While we could run this workflow right now, here are a few cleanup steps we should do first.</p>
 
 <h3 id="rename-input-datasets">Rename input datasets</h3>
 
-<p>The <em>extract <span class="notranslate">workflow</span></em> step assigns the name of input datasets in your history to the corresponding inputs in your <span class="notranslate">workflow</span>.  This is very helpful in the short term because it makes it clear which of the boxes are which datasets.  But, for a <span class="notranslate">workflow</span>, we want a more general (but still helpful) name for input datasets.</p>
+<p>The <em>extract workflow</em> step assigns the name of input datasets in your history to the corresponding inputs in your workflow.  This is very helpful in the short term because it makes it clear which of the boxes are which datasets.  But, for a workflow, we want a more general (but still helpful) name for input datasets.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-rename-inputs" class="box-title" aria-label="hands-on box: Rename inputs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Rename inputs</div>
+  <div class="box-title hands-on-title" id="hands-on-rename-inputs"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Rename inputs</div>
 
   <ol>
     <li><em>Click</em> on the first input dataset.
@@ -650,7 +631,7 @@
     </li>
     <li><em>Set</em> the <strong>Label</strong> field to something more general, yet still informative.
       <ul>
-        <li>In the example <span class="notranslate">workflow</span>, we’ll name this <code class="language-plaintext highlighter-rouge">Genomic features</code> about as general as you can get.</li>
+        <li>In the example workflow, we’ll name this <code class="language-plaintext highlighter-rouge">Genomic features</code> about as general as you can get.</li>
       </ul>
     </li>
     <li>Add a <em>description</em> for your input datasets
@@ -659,8 +640,8 @@
         <li><em>add</em> a description of the dataset in the <strong>Annotation</strong> box.</li>
         <li>For the example, we’ll use:
           <ul>
-            <li><code class="language-plaintext highlighter-rouge"><span class="notranslate">Workflow</span> checks this set of genomic features to find any that overlap with each other on opposite strands.  **It must be at least a 6 column <span class="notranslate">BED</span> file,** as the <span class="notranslate">workflow</span> makes decisions based on column 6 (the strand).</code>
-  <img src="../../images/workflow_strand_renamed_plus_annot.png" alt="Renamed and annotated input dataset. " loading="lazy" /></li>
+            <li><code class="language-plaintext highlighter-rouge">Workflow checks this set of genomic features to find any that overlap with each other on opposite strands.  **It must be at least a 6 column BED file,** as the workflow makes decisions based on column 6 (the strand).</code>
+  <img src="../../images/workflow_strand_renamed_plus_annot.png" alt="Renamed and annotated input dataset. " width="760" height="461" loading="lazy" /></li>
           </ul>
         </li>
       </ul>
@@ -668,32 +649,32 @@
   </ol>
 </blockquote>
 
-<p>There are several other things we could do in the <span class="notranslate">workflow</span> editor, but let’s focus on just two of them.</p>
+<p>There are several other things we could do in the workflow editor, but let’s focus on just two of them.</p>
 
 <p>First, your history might contain several false starts or tool runs where the parameters weren’t quite right. Lets get rid of those now.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-drop-unused-input-datasets-and-tool-boxes" class="box-title" aria-label="hands-on box: Drop unused input datasets and tool boxes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Drop unused input datasets and tool boxes</div>
+  <div class="box-title hands-on-title" id="hands-on-drop-unused-input-datasets-and-tool-boxes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Drop unused input datasets and tool boxes</div>
 
   <ol>
     <li><em>Delete</em> unwanted steps
       <ul>
-        <li>If your history contained any false starts or tool runs that didn’t contribute to your final result, then <em>delete</em> them from the <span class="notranslate">workflow</span> by clicking the black <strong>x</strong> in the corner of those datasets/tools’ boxes.</li>
-        <li>This will remove them from the <span class="notranslate">workflow</span>.</li>
+        <li>If your history contained any false starts or tool runs that didn’t contribute to your final result, then <em>delete</em> them from the workflow by clicking the black <strong>x</strong> in the corner of those datasets/tools’ boxes.</li>
+        <li>This will remove them from the workflow.</li>
       </ul>
     </li>
   </ol>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-removing-unnecessary-steps-before-creating-workflow" class="box-title"><button type="button" aria-controls="tip-removing-unnecessary-steps-before-creating-workflow-contents" aria-expanded="true" aria-label="Toggle tip box: Removing unnecessary steps before creating workflow"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Removing unnecessary steps before creating <span class="notranslate">workflow</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-  <p>You can also delete these steps when you are first extracting the <span class="notranslate">workflow</span> from your history, by unchecking them.  However, it is often easier to identify the steps to drop in the <span class="notranslate">workflow</span> view, where connections and dead-ends are more obvious.</p>
+  <div class="box-title tip-title" id="tip-removing-unnecessary-steps-before-creating-workflow"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-removing-unnecessary-steps-before-creating-workflow" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Removing unnecessary steps before creating workflow<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <p>You can also delete these steps when you are first extracting the workflow from your history, by unchecking them.  However, it is often easier to identify the steps to drop in the workflow view, where connections and dead-ends are more obvious.</p>
 </blockquote>
 
 <p>Second, you might want to give your output datasets meaningful names too.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-name-output-datasets" class="box-title" aria-label="hands-on box: Name output datasets"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Name output datasets</div>
+  <div class="box-title hands-on-title" id="hands-on-name-output-datasets"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Name output datasets</div>
 
   <ol>
     <li><em>Click</em> on a step that produces an output file.
@@ -711,35 +692,35 @@
   </ol>
 </blockquote>
 
-<p>We could add annotation to each step in the process as well, and if this <span class="notranslate">workflow</span> is going to be published in a paper, or shared with others, then that is definitely worth doing.</p>
+<p>We could add annotation to each step in the process as well, and if this workflow is going to be published in a paper, or shared with others, then that is definitely worth doing.</p>
 
-<p>Now that our edits are done, let’s save our work and run the <span class="notranslate">workflow</span>.</p>
+<p>Now that our edits are done, let’s save our work and run the workflow.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-save-the-workflow-edits" class="box-title" aria-label="hands-on box: Save the workflow edits"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Save the <span class="notranslate">workflow</span> edits</div>
+  <div class="box-title hands-on-title" id="hands-on-save-the-workflow-edits"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Save the workflow edits</div>
 
   <ol>
-    <li><em>Click</em> on the <strong>gear icon</strong> at the top right of the central panel, <em>select</em> <strong>Save</strong> from the pull-down menu.</li>
+    <li><em>Click</em> on the <i class="far fa-save" aria-hidden="true"></i><span class="visually-hidden">galaxy-save</span> at the top right to save workflow.</li>
   </ol>
 </blockquote>
 
-<h3 id="test-the-workflow">Test the <span class="notranslate">workflow</span></h3>
+<h3 id="test-the-workflow">Test the workflow</h3>
 
-<p>Now that we have finished creating our <span class="notranslate">workflow</span>, it is time to test it.</p>
+<p>Now that we have finished creating our workflow, it is time to test it.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-run-the-workflow" class="box-title" aria-label="hands-on box: Run the workflow"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Run the <span class="notranslate">workflow</span></div>
+  <div class="box-title hands-on-title" id="hands-on-run-the-workflow"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Run the workflow</div>
 
   <ol>
-    <li><em>Click</em> on the <strong>gear icon</strong> and this time select <strong>Run</strong>.</li>
+    <li><em>Click</em> on the <i class="fas fa-play" aria-hidden="true"></i><span class="visually-hidden">workflow-run</span> to run workflow.</li>
     <li>
-      <p><em>Examine</em> the <span class="notranslate">workflow</span> run form.</p>
+      <p><em>Examine</em> the workflow run form.</p>
 
-      <p>This form lists all the inputs and steps in the <span class="notranslate">workflow</span> also asks if you want to run this <span class="notranslate">workflow</span> in a new history, of just add it to your existing history.
-<img src="../../images/workflow_run_strand_landing.png" alt="Run workflow form. " loading="lazy" /></p>
+      <p>This form lists all the inputs and steps in the workflow also asks if you want to run this workflow in a new history, of just add it to your existing history.
+<img src="../../images/workflow_run_strand_landing.png" alt="Run workflow form. " width="907" height="463" loading="lazy" /></p>
 
       <p>In this form you can also change the run-time parameters of any of the steps.  We aren’t going to do that, but it can be useful when are experimenting with different parameters in different steps.
-Let’s test the <span class="notranslate">workflow</span> by running it on the same input datasets we used in the current history.  If we created the <span class="notranslate">workflow</span> correctly, we should get the same results as in the history.</p>
+Let’s test the workflow by running it on the same input datasets we used in the current history.  If we created the workflow correctly, we should get the same results as in the history.</p>
     </li>
     <li><em>Select</em> <strong>Yes</strong> under <strong>Send results to a new history</strong>.
       <ul>
@@ -752,17 +733,17 @@ Let’s test the <span class="notranslate">workflow</span> by running it on the 
         <li><em>Repeat</em> until all input datasets are set.</li>
       </ul>
     </li>
-    <li><em>Click</em> the <strong>Run <span class="notranslate">workflow</span></strong> button.</li>
+    <li><em>Click</em> the <strong>Run workflow</strong> button.</li>
   </ol>
 </blockquote>
 
-<p>And <span class="notranslate">Galaxy</span> launches the <span class="notranslate">workflow</span>, running in a new history.  It says (in a nice big green box) something like:</p>
+<p>And Galaxy launches the workflow, running in a new history.  It says (in a nice big green box) something like:</p>
 
 <p>You can check the status of queued jobs and view the resulting data <em>by refreshing the History pane.</em> When the job has been run the status will change from ‘running’ to ‘finished’ if completed successfully or ‘error’ if problems were encountered.</p>
 
-<p>But, <em>that’s a lie</em>.  In our case we sent the results to a new history, and the history panel is still showing us the old history.  To get to the new history, open the histories view (<em>click</em> the <strong>table icon</strong> at top of history) and then make the newly created history be the current history.</p>
+<p>But, <em>that’s a lie</em>.  In our case we sent the results to a new history, and the history panel is still showing us the old history.  To get to the new history, open the multiple history view (<em>click</em> the <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-history-options</span> <strong>History Options</strong> at top of the history panel) and then make the newly created history be the current history.</p>
 
-<p>Depending on your <span class="notranslate">workflow</span> and datasets, your analysis may already be done by the time you make it the current history and go back to the standard view.</p>
+<p>Depending on your workflow and datasets, your analysis may already be done by the time you make it the current history and go back to the standard view.</p>
 
 <p>At this point it’s worth doing a little cleanup.  In particular think about updating the output dataset names to be more specific to the data we actually used.</p>
 
@@ -778,10 +759,12 @@ Let’s test the <span class="notranslate">workflow</span> by running it on the 
   </li>
 </ul>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Workflows allow you to easily repeat your analyses on different input datasets</p>
@@ -822,38 +805,18 @@ Let’s test the <span class="notranslate">workflow</span> by running it on the 
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Extracting Workflows from Histories (Using Galaxy and Managing your Data)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Extracting Workflows from Histories (Using Galaxy and Managing your Data)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Dave Clements,  <b>Extracting Workflows from Histories (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Dave Clements,  <b>Extracting Workflows from Histories (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -865,7 +828,7 @@ Let’s test the <span class="notranslate">workflow</span> by running it on the 
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -874,28 +837,31 @@ Let’s test the <span class="notranslate">workflow</span> by running it on the 
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{galaxy-interface-history-to-workflow,
 author = "Dave Clements",
-title = "Extracting Workflows from Histories (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Extracting Workflows from Histories (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -903,11 +869,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -916,49 +882,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00151">https://gxy.io/GTN:T00151</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/history-to-workflow/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

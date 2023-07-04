@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,45 +8,230 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Contributing with GitHub via command-line" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Cyril Monjeaud" />
-<meta name="DC.creator" content="Bérénice Batut" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Contributing with GitHub via command-line">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-03-23 17:25:14 +0000">
+<meta name="DC.creator" content="Cyril Monjeaud">
+<meta name="DC.creator" content="Bérénice Batut">
 
         
         
         
         
+        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Contributing with GitHub via command-line">
+        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co...">
         
-        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Contributing with GitHub via command-line" />
-        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-03-23 17:25:14 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Contributing with GitHub via command-line",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Contributing to the Galaxy Training Material",
+    "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
+    "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Contributing with GitHub via command-line' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html",
+  "timeRequired": "PT30M",
+  "teaches": "Fork a repository on GitHub\n - Clone a remote repository locally\n - Create a branch\n - Commit changes\n - Push changes to a remote repository\n - Create a pull request\n - Update a pull request",
+  "keywords": "contributing",
+  "description": "The questions this  addresses are:\n - How can I contribute to an open-source project with GitHub?\n - What is the GitHub flow?\n\n\nThe objectives are:\n - Fork a repository on GitHub\n - Clone a remote repository locally\n - Create a branch\n - Commit changes\n - Push changes to a remote repository\n - Create a pull request\n - Update a pull request\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cmonjeau/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cmonjeau/",
+      "name": "Cyril Monjeaud",
+      "image": "https://avatars.githubusercontent.com/cmonjeau",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "name": "Bérénice Batut",
+      "image": "https://avatars.githubusercontent.com/bebatut",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9852-1987",
+      "orcid": "https://orcid.org/0000-0001-9852-1987"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Contributing to the Galaxy Training Material",
+      "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
+      "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,38 +247,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -113,9 +270,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/contributing/faqs/" title="Check our FAQs for the Contributing to the Galaxy Training Material topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -133,7 +292,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/contributing/tutorials/github-command-line-contribution/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -162,27 +320,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -194,13 +339,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/github-command-line-contribution/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/contributing/tutorials/github-command-line-contribution/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/contributing/tutorials/github-command-line-contribution/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -213,7 +358,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -227,8 +372,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -245,227 +395,26 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 14:23:35 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Contributing with GitHub via command-line",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Contributing to the Galaxy Training Material",
-    "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
-    "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Contributing with GitHub via command-line' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html",
-  "timeRequired": "PT30M",
-  "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How can I contribute to an open-source project with GitHub?\n - What is the GitHub flow?\n\n\nThe objectives are:\n - Fork a repository on GitHub\n - Clone a remote repository locally\n - Create a branch\n - Commit changes\n - Push changes to a remote repository\n - Create a pull request\n - Update a pull request\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cmonjeau/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cmonjeau/",
-      "name": "Cyril Monjeaud",
-      "image": "https://avatars.githubusercontent.com/cmonjeau",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cmonjeau/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cmonjeau/",
-      "name": "Cyril Monjeaud",
-      "image": "https://avatars.githubusercontent.com/cmonjeau",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Contributing to the Galaxy Training Material",
-      "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
-      "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
-    }
-  ]
-}
-</script>
-
-<section class="tutorial topic-contributing">
+<article class="tutorial topic-contributing">
     <h1 data-toc-skip>Contributing with GitHub via command-line</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/cmonjeau/" class="contributor-badge contributor-cmonjeau"><img src="https://avatars.githubusercontent.com/cmonjeau?s=27" alt="Avatar">Cyril Monjeaud</a>
-
-
-
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/cmonjeau/" class="contributor-badge contributor-cmonjeau"><img src="https://avatars.githubusercontent.com/cmonjeau?s=36" alt="Avatar" width="36" height="36">Cyril Monjeaud</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -535,13 +484,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/contributing/tutorials/github-command-line-contribution/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/contributing/tutorials/github-command-line-contribution/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -567,34 +513,73 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/contributing/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Mar 23, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00064">https://gxy.io/GTN:T00064</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -605,13 +590,14 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
-<p>Most of the content is written in <a href="https://guides.github.com/features/mastering-markdown/">GitHub Flavored Markdown</a> with some metadata (or variables) found in <a href="http://yaml.org/">YAML</a> files. Everything is stored on a <a href="https://github.com">GitHub</a> repository: <a href="https://github.com/galaxyproject/training-material">https://github.com/<span class="notranslate">galaxy</span>project/training-material</a>.</p>
+<p>Most of the content is written in <a href="https://guides.github.com/features/mastering-markdown/">GitHub Flavored Markdown</a> with some metadata (or variables) found in <a href="http://yaml.org/">YAML</a> files. Everything is stored on a <a href="https://github.com">GitHub</a> repository: <a href="https://github.com/galaxyproject/training-material">https://github.com/galaxyproject/training-material</a>.</p>
 
 <p>The process of development of new content is open and transparent, using git and following the <a href="https://guides.github.com/introduction/flow/">GitHub flow</a>:</p>
 
-<figure id="figure-1"><img src="../../images/oss_development_process.png" alt="Open source development process. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Open source development process</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/oss_development_process.png" alt="Open source development process. " width="1947" height="582" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Open source development process</figcaption></figure>
 
 <ol>
   <li>Create a fork</li>
@@ -625,7 +611,7 @@
 </ol>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, you will learn how to contribute to the GitHub repository:</p>
 
@@ -650,24 +636,24 @@
 
 <p>A fork is a copy of a repository. <a href="https://help.github.com/articles/fork-a-repo/">Forking</a> a repository allows you to freely experiment with changes without affecting the original project:</p>
 
-<figure id="figure-2"><img src="../../images/PR_schema_01.png" alt="Explanation of the forking. " width="900px" loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Creation of a fork</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/PR_schema_01.png" alt="Explanation of the forking. " width="1006" height="478" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Creation of a fork</figcaption></figure>
 
 <p>Forking a repository is a simple two-step process:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-fork-the-repository" class="box-title" aria-label="hands-on box: Fork the repository"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Fork the repository</div>
+  <div class="box-title hands-on-title" id="hands-on-fork-the-repository"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Fork the repository</div>
 
   <ol>
-    <li>Go on the GitHub repository: <a href="https://github.com/galaxyproject/training-material">https://github.com/<span class="notranslate">galaxy</span>project/training-material</a></li>
+    <li>Go on the GitHub repository: <a href="https://github.com/galaxyproject/training-material">https://github.com/galaxyproject/training-material</a></li>
     <li>
       <p>Click on <strong>Fork</strong> (top-right corner of the page)</p>
 
-      <p><img src="../../images/PR_fork.jpg" alt="Fork. " loading="lazy" /></p>
+      <p><img src="../../images/PR_fork.jpg" alt="Fork. " width="745" height="116" loading="lazy" /></p>
     </li>
   </ol>
 
   <blockquote class="comment">
-    <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+    <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
     <p>When you click the <strong>Fork</strong> button GitHub will show you a list with your user account and any groups where you can create a fork of this repository (starting with <code class="language-plaintext highlighter-rouge">@</code>). If you see yourself only below “You have existing forks of this repository:”, it means you already have a fork and you have nothing to do.</p>
   </blockquote>
 
@@ -677,10 +663,10 @@
 
 <p>To modify the content of the repository, you need a copy of it on your computer. This step of importing a git repository is called “cloning”:</p>
 
-<figure id="figure-3"><img src="../../images/PR_schema_02.png" alt="Explanation of the cloning. " width="900px" loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 3:</span> Cloning a repository</figcaption></figure>
+<figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/PR_schema_02.png" alt="Explanation of the cloning. " width="1282" height="872" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Cloning a repository</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-clone-the-github-repository" class="box-title" aria-label="hands-on box: Clone the GitHub repository"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Clone the GitHub repository</div>
+  <div class="box-title hands-on-title" id="hands-on-clone-the-github-repository"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Clone the GitHub repository</div>
 
   <ol>
     <li>Get the URL of your fork. You can find this on the main page of your fork under the green button:
@@ -688,12 +674,12 @@
         <li>
           <p>Click on <strong>Code</strong> (right)</p>
 
-          <p><img src="../../images/clone_code_button.png" alt="Get fork URL. " loading="lazy" /></p>
+          <p><img src="../../images/clone_code_button.png" alt="Get fork URL. " width="391" height="328" loading="lazy" /></p>
         </li>
         <li>
           <p>Copy the URL</p>
 
-          <p>It should be something like <code class="language-plaintext highlighter-rouge">https://github.com/&lt; Your GitHub Use<span class="notranslate">rna</span>me &gt;/training-material.git</code></p>
+          <p>It should be something like <code class="language-plaintext highlighter-rouge">https://github.com/&lt; Your GitHub Username &gt;/training-material.git</code></p>
         </li>
       </ol>
     </li>
@@ -702,7 +688,7 @@
     <li>
       <p>Clone the repository with the command:</p>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/&lt; Your GitHub Use<span class="notranslate">rna</span>me &gt;/training-material.git
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/&lt; Your GitHub Username &gt;/training-material.git
 </code></pre></div>      </div>
     </li>
     <li>
@@ -715,7 +701,7 @@
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
   <p>If you already have a local copy of the GitHub repository, you need to update it before doing any changes. To learn how to do that, please follow the <a href="#stay-up-to-date">last section</a>.</p>
 </blockquote>
 
@@ -725,14 +711,14 @@
 
 <p>In GitHub flow, there is a concept: one new feature or change = one branch.</p>
 
-<p>When you’re working on a project, you’re going to have a bunch of different features or ideas in progress at any given time – some of which are ready to go, and others which are not. Branching exists to help you manage this <span class="notranslate">workflow</span>. You should develop different features on different branches to help keep the changes you make simple and easy to review.</p>
+<p>When you’re working on a project, you’re going to have a bunch of different features or ideas in progress at any given time – some of which are ready to go, and others which are not. Branching exists to help you manage this workflow. You should develop different features on different branches to help keep the changes you make simple and easy to review.</p>
 
-<figure id="figure-4"><img src="../../images/PR_branches_01.png" alt="Divergence of a branch compared to main. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 4:</span> When you create a branch in your project, you're creating an environment where you can try out new ideas. Changes you make on a branch don't affect the main branch</figcaption></figure>
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/PR_branches_01.png" alt="Divergence of a branch compared to main. " width="440" height="88" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> When you create a branch in your project, you're creating an environment where you can try out new ideas. Changes you make on a branch don't affect the main branch</figcaption></figure>
 
 <p>Here for this tutorial, you will create a branch called “my_new_branch” in which you will modify the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file, the file used to generate the <a href="/training-material/hall-of-fame.html">Hall of Fame</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-create-a-branch" class="box-title" aria-label="hands-on box: Create a branch"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create a branch</div>
+  <div class="box-title hands-on-title" id="hands-on-create-a-branch"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create a branch</div>
 
   <ol>
     <li>
@@ -759,23 +745,23 @@ Switched to a new branch 'my_new_branch'
 
 <p>This branch is added to your local copy:</p>
 
-<figure id="figure-5"><img src="../../images/PR_schema_03.png" alt="Creation of a branch on the local copy of the repository. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 5:</span> Creation of a branch on the local copy of the repository</figcaption></figure>
+<figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="../../images/PR_schema_03.png" alt="Creation of a branch on the local copy of the repository. " width="1007" height="872" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Creation of a branch on the local copy of the repository</figcaption></figure>
 
 <h1 id="make-your-changes-on-this-branch">Make your changes on this branch</h1>
 
 <p>You have created your first branch! Now you want to make the change in the <code class="language-plaintext highlighter-rouge">CONTRIBUTING.yaml</code> file. By changing a file in this branch, it will diverge from the <code class="language-plaintext highlighter-rouge">main</code> branch. It will contain data that is only on this new branch:</p>
 
-<figure id="figure-6"><img src="../../images/PR_branches_02.png" alt="Divergence of the branch compared to main. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 6:</span> The changes on your branch will not be on the main branch</figcaption></figure>
+<figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="../../images/PR_branches_02.png" alt="Divergence of the branch compared to main. " width="546" height="90" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> The changes on your branch will not be on the main branch</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-make-changes-in-a-branch" class="box-title" aria-label="hands-on box: Make changes in a branch"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make changes in a branch</div>
+  <div class="box-title hands-on-title" id="hands-on-make-changes-in-a-branch"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Make changes in a branch</div>
 
   <ol>
     <li>Open with your favorite text editor the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file that is on your computer</li>
     <li>
       <p>Add yourself in the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file</p>
 
-      <p>You should use your GitHub use<span class="notranslate">rna</span>me and add it followed by <code class="language-plaintext highlighter-rouge">:</code> at the correct position given the alphabetical order</p>
+      <p>You should use your GitHub username and add it followed by <code class="language-plaintext highlighter-rouge">:</code> at the correct position given the alphabetical order</p>
     </li>
     <li>Save the file</li>
     <li>
@@ -809,7 +795,7 @@ $ git commit -m "Add ..."
 <p>The changes you made on your branch are only on the local copy of the repository. To propagate them online, you need to push them on your fork on GitHub:</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-push-the-changes" class="box-title" aria-label="hands-on box: Push the changes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Push the changes</div>
+  <div class="box-title hands-on-title" id="hands-on-push-the-changes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Push the changes</div>
 
   <ol>
     <li>
@@ -819,7 +805,7 @@ $ git commit -m "Add ..."
 </code></pre></div>      </div>
 
       <blockquote class="details">
-        <div id="details-quot-push-origin-quot" class="box-title"><button type="button" aria-controls="details-quot-push-origin-quot-contents" aria-expanded="true" aria-label="Toggle details box: &quot;push origin&quot;"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: &quot;push origin&quot;<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title details-title" id="details-quot-push-origin-quot"><button class="gtn-boxify-button details" type="button" aria-controls="details-quot-push-origin-quot" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: &quot;push origin&quot;<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>When you <code class="language-plaintext highlighter-rouge">git push</code>ed, you specified <code class="language-plaintext highlighter-rouge">origin</code>. Git repositories can know that forks exist in multiple places. When you clone one, it creates a “remote” (a remote repository) which it names <code class="language-plaintext highlighter-rouge">origin</code>, set to the URL that you used when you cloned. By having multiple remotes, you can manage more complex workflows.</p>
       </blockquote>
     </li>
@@ -829,7 +815,7 @@ $ git commit -m "Add ..."
         <li>
           <p>Click on <strong>Branch: main</strong> (left)</p>
 
-          <p><img src="../../images/PR_branch_github.png" alt="Selecting branch on GitHub. " loading="lazy" /></p>
+          <p><img src="../../images/PR_branch_github.png" alt="Selecting branch on GitHub. " width="309" height="152" loading="lazy" /></p>
         </li>
         <li>
           <p>Select the branch “my_new_branch”</p>
@@ -841,38 +827,50 @@ $ git commit -m "Add ..."
 
 </blockquote>
 
-<figure id="figure-7"><img src="../../images/PR_schema_04.png" alt="Pushing changes to the fork from the local copy. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 7:</span> Pushing changes from the local copy to the fork on GitHub</figcaption></figure>
+<figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="../../images/PR_schema_04.png" alt="Pushing changes to the fork from the local copy. " width="1171" height="872" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Pushing changes from the local copy to the fork on GitHub</figcaption></figure>
 
 <h1 id="open-a-pull-request">Open a pull request</h1>
 
 <p>You pushed your changes to GitHub, but currently they are only on your fork. You want to have these changes in the main GitHub repository in order to appear on our <a href="/training-material/hall-of-fame.html">Hall of Fame</a> online. You can’t add or push directly the main GitHub repository, so you need to create what we call a pull request:</p>
 
-<figure id="figure-8"><img src="../../images/PR_schema_05.png" alt="Pull request. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 8:</span> Pull Requests provide a way to notify project maintainers about the changes you'd like them to consider</figcaption></figure>
+<figure id="figure-8" style="max-width: 90%; margin:auto;"><img src="../../images/PR_schema_05.png" alt="Pull request. " width="1007" height="1012" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 8</strong>:</span> Pull Requests provide a way to notify project maintainers about the changes you'd like them to consider</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-create-a-pull-request" class="box-title" aria-label="hands-on box: Create a pull request"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create a pull request</div>
+  <div class="box-title hands-on-title" id="hands-on-create-a-pull-request"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create a pull request</div>
 
   <ol>
     <li>Go to your GitHub repository</li>
     <li>
       <p>Click on <strong>Compare &amp; pull request</strong></p>
 
-      <p><img src="../../images/PR_button.png" alt="&quot;Opening a pull request&quot;. " loading="lazy" /></p>
+      <p><img src="../../images/PR_button.png" alt="&quot;Opening a pull request&quot;. " width="988" height="74" loading="lazy" /></p>
     </li>
     <li>
       <p>Check that the selected branch are correct: <strong>main</strong> on the left and your branch name on the right</p>
 
-      <p><img src="../../images/PR_branch_check.png" alt="Branches in PR. " loading="lazy" /></p>
+      <p><img src="../../images/PR_branch_check.png" alt="Branches in PR. " width="989" height="59" loading="lazy" /></p>
     </li>
     <li>
       <p>Fill in the pull request description</p>
 
-      <p><img src="../../images/PR_description.png" alt="PR description. " loading="lazy" /></p>
+      <p><img src="../../images/PR_description.png" alt="PR description. " width="713" height="390" loading="lazy" /></p>
 
       <ol>
         <li>Add a title for the Pull Request</li>
         <li>Add a message explaining the changes you made (Be kind <i class="fa fa-smile-o" aria-hidden="true"></i>)</li>
-        <li>Click on <strong>Create pull request</strong></li>
+        <li>
+          <p>Click on <strong>Create pull request</strong> or switch to <strong>Create draft pull request</strong> from the dropdown menu</p>
+
+          <p><img src="../../images/PR_create_menu.png" alt="Create pull request dropdown in the GitHub interface is shown, the draft pull request button option is highlighted. " width="362" height="239" loading="lazy" /></p>
+
+          <blockquote class="details">
+            <div class="box-title details-title" id="details-quot-draft-pull-requests-quot"><button class="gtn-boxify-button details" type="button" aria-controls="details-quot-draft-pull-requests-quot" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: &quot;Draft pull requests&quot;<span class="fold-unfold fa fa-minus-square"></span></button></div>
+            <p><a href="https://github.blog/2019-02-14-introducing-draft-pull-requests/#tag-your-work-in-progress">Creating a pull request as a draft</a> serves as an indication that you are still working on the content.
+ Reviewers may comment on the current state and give general feedback, but they will know that they are not looking at the final version of your contribution.</p>
+
+            <p>In the Galaxy Training Material repository we have also disabled the computationally most expensive automated tests on draft pull requests, and we encourage you to use the draft stage as a small contribution to sustainable computing.</p>
+          </blockquote>
+        </li>
       </ol>
     </li>
     <li>Go to <strong>Pull requests</strong> to check if it is there</li>
@@ -888,10 +886,10 @@ $ git commit -m "Add ..."
 
 <h1 id="make-the-requested-changes">Make the requested changes</h1>
 
-<p>One of the reviewers of your pull request asked you to add your name after your GitHub use<span class="notranslate">rna</span>me in the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file</p>
+<p>One of the reviewers of your pull request asked you to add your name after your GitHub username in the <code class="language-plaintext highlighter-rouge">CONTRIBUTORS.yaml</code> file</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-make-further-changes" class="box-title" aria-label="hands-on box: Make further changes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make further changes</div>
+  <div class="box-title hands-on-title" id="hands-on-make-further-changes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Make further changes</div>
 
   <ol>
     <li>
@@ -948,21 +946,21 @@ $ git commit -m "Add ..."
   <li>
     <p>Yellow (with circle)</p>
 
-    <p><img src="../../images/PR_test_yellow.png" alt="Running. " loading="lazy" /></p>
+    <p><img src="../../images/PR_test_yellow.png" alt="Running. " width="696" height="93" loading="lazy" /></p>
 
     <p>The tests are still running</p>
   </li>
   <li>
     <p>Red (with cross)</p>
 
-    <p><img src="../../images/PR_test_red.png" alt="Failed tests. " loading="lazy" /></p>
+    <p><img src="../../images/PR_test_red.png" alt="Failed tests. " width="698" height="94" loading="lazy" /></p>
 
     <p>When it is red, you can investigate why by clicking on <strong>Details</strong>. You will be redirected on <a href="http://travis-ci.com/">Travis</a> where you can see the logs of the tests. Get in touch with us on <a href="https://gitter.im/Galaxy-Training-Network/Lobby">Gitter</a> if you need help to understand the issue.</p>
   </li>
   <li>
     <p>Green (with tick)</p>
 
-    <p><img src="../../images/PR_test_green.png" alt="Passed tests. " loading="lazy" /></p>
+    <p><img src="../../images/PR_test_green.png" alt="Passed tests. " width="697" height="51" loading="lazy" /></p>
 
     <p>The tests passed. Good job!</p>
 
@@ -975,7 +973,7 @@ $ git commit -m "Add ..."
 <p>You now want to work on a new tutorial or make some other new changes. However since you get a local copy, some changes have happened to the original GitHub repository. You need then to update your local copy of the repository before changing anything.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-update-the-local-copy" class="box-title" aria-label="hands-on box: Update the local copy"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Update the local copy</div>
+  <div class="box-title hands-on-title" id="hands-on-update-the-local-copy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Update the local copy</div>
 
   <ol>
     <li>
@@ -987,18 +985,18 @@ $ git commit -m "Add ..."
     <li>
       <p>Add a reference to the original GitHub repository</p>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git remote add <span class="notranslate">upstream</span> https://github.com/<span class="notranslate">galaxy</span>project/training-material.git
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git remote add upstream https://github.com/galaxyproject/training-material.git
 </code></pre></div>      </div>
 
       <blockquote class="comment">
-        <div id="comment-error-quot-remote-upstream-already-exists-quot" class="box-title" aria-label="comment box: Error &quot;remote upstream already exists&quot;"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Error &quot;remote <span class="notranslate">upstream</span> already exists&quot;</div>
-        <p>If you have done step 2 before and try to <code class="language-plaintext highlighter-rouge">remote add</code> again, git will tell you that a “remote <span class="notranslate">upstream</span> already exists”. In this case you can safely continue to step 4.</p>
+        <div class="box-title comment-title" id="comment-error-quot-remote-upstream-already-exists-quot"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Error &quot;remote upstream already exists&quot;</div>
+        <p>If you have done step 2 before and try to <code class="language-plaintext highlighter-rouge">remote add</code> again, git will tell you that a “remote upstream already exists”. In this case you can safely continue to step 4.</p>
       </blockquote>
     </li>
     <li>
       <p>Update the local copy of the repository by “pulling” in the content of the original GitHub repository</p>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git pull <span class="notranslate">upstream</span> main
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git pull upstream main
 </code></pre></div>      </div>
     </li>
   </ol>
@@ -1015,7 +1013,7 @@ Reviewers can now approve and merge your pull request.</p>
 <p>Because this was just a practice pull request, let’s close it again.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-close-the-pull-request" class="box-title" aria-label="hands-on box: Close the Pull Request"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Close the Pull Request</div>
+  <div class="box-title hands-on-title" id="hands-on-close-the-pull-request"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Close the Pull Request</div>
 
   <p>Once you have run through all these steps, please close the pull request again.</p>
 
@@ -1034,7 +1032,7 @@ Reviewers can now approve and merge your pull request.</p>
 
 <p>With this tutorial, you have learned some basics <code class="language-plaintext highlighter-rouge">git</code> commands and principles:</p>
 
-<figure id="figure-9"><img src="../../images/PR_global_schema.png" alt="Summary of the links between GitHub, fork and local repository. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 9:</span> Summary of the links between GitHub, fork and local repository</figcaption></figure>
+<figure id="figure-9" style="max-width: 90%; margin:auto;"><img src="../../images/PR_global_schema.png" alt="Summary of the links between GitHub, fork and local repository. " width="1380" height="1012" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 9</strong>:</span> Summary of the links between GitHub, fork and local repository</figcaption></figure>
 
 <p>You also learned the GitHub flow and its cycle:</p>
 
@@ -1051,7 +1049,7 @@ Reviewers can now approve and merge your pull request.</p>
 <p>You can now contribute and help us to improve our tutorials!</p>
 
 <blockquote class="details">
-  <div id="details-git-in-depth" class="box-title"><button type="button" aria-controls="details-git-in-depth-contents" aria-expanded="true" aria-label="Toggle details box: Git in Depth"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Git in Depth<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-git-in-depth"><button class="gtn-boxify-button details" type="button" aria-controls="details-git-in-depth" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Git in Depth<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>This tutorial was a quick introduction to explain the basics of contributing to the training material. We recommend that everyone follow a more detailed git tutorials:</p>
   <ul>
     <li><a href="http://swcarpentry.github.io/git-novice/">Software Carpentry tutorial</a> which explains a bit more in detail some git commands and the concept of remote, local and stagging</li>
@@ -1061,10 +1059,12 @@ Reviewers can now approve and merge your pull request.</p>
   <p>You should also download, print and keep always with you the <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf">Git Cheat Sheet</a></p>
 </blockquote>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Work on your fork</p>
@@ -1105,38 +1105,18 @@ Reviewers can now approve and merge your pull request.</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Contributing with GitHub via command-line (Contributing to the Galaxy Training Material)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Contributing with GitHub via command-line (Contributing to the Galaxy Training Material)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Cyril Monjeaud, Bérénice Batut,  <b>Contributing with GitHub via command-line (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Cyril Monjeaud, Bérénice Batut,  <b>Contributing with GitHub via command-line (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1148,7 +1128,7 @@ Reviewers can now approve and merge your pull request.</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1157,28 +1137,31 @@ Reviewers can now approve and merge your pull request.</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{contributing-github-command-line-contribution,
 author = "Cyril Monjeaud and Bérénice Batut",
-title = "Contributing with GitHub via command-line (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Contributing with GitHub via command-line (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1186,170 +1169,134 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
+                    <div class="box-title">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
                     
                         
-                            
-                    <li><a href="/training-material/topics/contributing/slides/introduction.html">Overview of the Galaxy Training Material</a></li>
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">Adding auto-generated video to your slides</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-quiz/tutorial.html">Adding Quizzes to your Tutorial</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">Contributing with GitHub via its interface</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial/tutorial.html">Creating a new tutorial</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html">Creating content in Markdown</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/introduction/slides.html">Overview of the Galaxy Training Material</a></li>
                                 
-                            
                         
                     
                         
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">Creating Interactive Galaxy Tours</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-slides/slides.html">Creating Slides</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">Contributing with GitHub via its interface</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-quiz/tutorial.html">Adding Quizzes to your Tutorial</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">Adding auto-generated video to your slides</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/schemas/tutorial.html">GTN Metadata</a></li>
                                 
-                            
                         
                     
                         
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">Including a new topic</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-technical/tutorial.html">Tools, Data, and Workflows for tutorials</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html">Creating content in Markdown</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">Including a new topic</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">Creating Interactive Galaxy Tours</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">Updating diffs in admin training</a></li>
                                 
-                            
                         
                     
                     </ol>
@@ -1358,49 +1305,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/contributing/tutorials/github-command-line-contribution/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00064">https://gxy.io/GTN:T00064</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/contributing/tutorials/github-command-line-contribution/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

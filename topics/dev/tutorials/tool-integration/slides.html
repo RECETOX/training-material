@@ -1,41 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Tool development and integration into Galaxy</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-integration/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Tool development and integration into Galaxy">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-04-21 09:13:05 +0000">
+<meta name="DC.creator" content="Saskia Hiltemann">
+<meta name="DC.creator" content="Bérénice Batut">
+<meta name="DC.creator" content="Anthony Bretaudeau">
+<meta name="DC.creator" content="John Chilton">
+<meta name="DC.creator" content="Nicola Soranzo">
+<meta name="DC.creator" content="Björn Grüning">
+<meta name="DC.creator" content="Gildas Le Corguillé">
 
+        
+        
+        
+        
+        <meta name="description" content="Galaxy is an open-source project. Everyone can contribute..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Tool development and integration into Galaxy" />
+        <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Tool development and integration into Galaxy</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Galaxy is an open-source project. Everyone can contribute..." />
-    <meta property="og:title" content="Galaxy Training: Tool development and integration into Galaxy" />
-    <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-integration/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -60,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2021-07-10 14:34:40 +0000",
+  "dateModified": "2023-04-21 09:13:05 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Tool development and integration into Galaxy",
   "interactivityType": "mixed",
@@ -86,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -113,6 +151,7 @@
   "name": "Slides for 'Tool development and integration into Galaxy' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-integration/slides.html",
   "timeRequired": "PT6H",
+  "teaches": "Learn what a tool is and its structure\n - Use the Planemo utilities to develop a tool\n - Deal with the dependencies\n - Write functional tests\n - Make a tool ready for publishing in a ToolShed",
   "keywords": "dev",
   "description": "The questions this  addresses are:\n - What is a tool for Galaxy?\n - How to write a best-practice tool?\n - How to deal with the tool environment?\n\n\nThe objectives are:\n - Learn what a tool is and its structure\n - Use the Planemo utilities to develop a tool\n - Deal with the dependencies\n - Write functional tests\n - Make a tool ready for publishing in a ToolShed\n\n",
   "inLanguage": {
@@ -125,8 +164,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
@@ -148,8 +187,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
@@ -171,8 +210,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
@@ -194,8 +233,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
@@ -217,8 +256,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
@@ -240,8 +279,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
@@ -263,169 +302,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
-      "name": "Gildas Le Corguillé",
-      "image": "https://avatars.githubusercontent.com/lecorguille",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
-      "name": "Saskia Hiltemann",
-      "image": "https://avatars.githubusercontent.com/shiltemann",
-      "description": "Researcher at Erasmus Medical Center",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3803-468X",
-      "orcid": "https://orcid.org/0000-0003-3803-468X"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "name": "Anthony Bretaudeau",
-      "image": "https://avatars.githubusercontent.com/abretaud",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-0914-2470",
-      "orcid": "https://orcid.org/0000-0003-0914-2470"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "name": "John Chilton",
-      "image": "https://avatars.githubusercontent.com/jmchilton",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6794-0756",
-      "orcid": "https://orcid.org/0000-0002-6794-0756"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "name": "Nicola Soranzo",
-      "image": "https://avatars.githubusercontent.com/nsoranzo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3627-5340",
-      "orcid": "https://orcid.org/0000-0003-3627-5340"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "name": "Björn Grüning",
-      "image": "https://avatars.githubusercontent.com/bgruening",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-3079-6586",
-      "orcid": "https://orcid.org/0000-0002-3079-6586"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
@@ -448,13 +326,27 @@
       "name": "Development in Galaxy",
       "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
       "url": "https://training.galaxyproject.org/training-material/topics/dev/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Galaxy tools"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -477,7 +369,7 @@ class: center, middle, inverse
 
 
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" class="cover-logo"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
 
 
 # Tool development and integration into Galaxy
@@ -486,42 +378,17 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
-
-
-
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
-<a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/abretaud?s=27" alt="Avatar">Anthony Bretaudeau</a>
-
-
-
-<a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/jmchilton?s=27" alt="Avatar">John Chilton</a>
-
-
-
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
-<a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=27" alt="Avatar">Gildas Le Corguillé</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a><a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jmchilton?s=36" alt="Avatar" width="36" height="36">John Chilton</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=36" alt="Avatar" width="36" height="36">Gildas Le Corguillé</a>
 	</div>
 
 </div>
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00051">gxy.io/GTN:S00051</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -597,7 +464,7 @@ Useful when presenting.
 
 ## Tools in the Galaxy UI
 
-![Screenshot of galaxy with the three main panels labelled list of available tools on left, 'wrapper' in center, and history with results as datasets on right](../../images/galaxy_instance_detailed_screenshot.png)
+![Screenshot of galaxy with the three main panels labelled list of available tools on left, &apos;wrapper&apos; in center, and history with results as datasets on right](../../images/galaxy_instance_detailed_screenshot.png)
 
 ---
 
@@ -606,7 +473,7 @@ Useful when presenting.
 ![Screenshot of tool interface in Galaxy for GraPhlAn showing a variety of input types like file selection, select, text, numbers.](../../images/graphlan_screenshot.png)
 
 ```bash
-graphlan.py --format &quot;png&quot; --size 7 input_tree.txt png_image.png
+graphlan.py --format png --size 7 &apos;input_tree.txt&apos; &apos;png_image.png&apos;
 ```
 
 ---
@@ -648,7 +515,7 @@ Link between the Galaxy UI and the underlying tool:
 
 ## Tool execution
 
-![The previous image, but the input parameter named 'mystring' is shown pointing to its place in the command block. Same for the output pointing to the command block. An overlay shows the Job Command Line /bin/echo Hello world you are amazing &gt; a/path.dat](../../images/wrapper_big_picture_2.png)
+![The previous image, but the input parameter named &apos;mystring&apos; is shown pointing to its place in the command block. Same for the output pointing to the command block. An overlay shows the Job Command Line /bin/echo Hello world you are amazing &gt; a/path.dat](../../images/wrapper_big_picture_2.png)
 
 ---
 
@@ -661,6 +528,38 @@ Link between the Galaxy UI and the underlying tool:
 ## Tool XML
 
 Galaxy tool XML format is formally defined in a XML Schema Definition (XSD), used to generate the corresponding [online documentation](https://docs.galaxyproject.org/en/latest/dev/schema.html)
+
+---
+
+## XML Editor
+
+You are free to use your prefered code editor to write Galaxy tools.
+
+If you use Visual Studio Code (or Codium), we recommend to install the [dedicated extension](https://marketplace.visualstudio.com/items?itemName=davelopez.galaxy-tools).
+
+It provides XML validation, tags and attributes completion, help/documentation on hover, and other smart features to assist in following best practices.
+
+![An animation showing someone writing a tool XML file, while being assisted by the VSCode extension.](../../images/vscode_tool.gif)
+
+---
+
+## `tool`
+
+```xml
+&lt;tool id=&quot;graphlan&quot; name=&quot;GraPhlAn&quot; version=&quot;1.1.3+galaxy2&quot; profile=&quot;22.05&quot;&gt;
+```
+- `id`: unique identifier of your tool, should contain only `[a-z0-9_-]`
+- `name`: shown to the user, displayed in the tool box
+- `version`: the version of the wrapped tool, followed by a `+galaxyX` suffix for wrapper version
+- `profile`: minimum Galaxy version that should be required to run this tool (IUC recommends not older than 1 year)
+
+???
+
+- The top level `tool` tag defines the tool naming and version
+- The `id` attribute is the unique identifier of your tool, it should contain only letters, digits, underscores or dashes
+- The `name` attribute is shown to the user and displayed in the tool box
+- The `version` attribute contains the version of the wrapped tool, followed by a `+galaxyX` suffix for wrapper version
+- The `profile` attribute should be set to the minimum Galaxy version that should be required to run this tool (IUC recommends not older than 1 year)
 
 ---
 
@@ -686,7 +585,7 @@ If the script is provided with the tool xml:
     &lt;requirement type=&quot;package&quot; version=&quot;2.7&quot;&gt;python&lt;/requirement&gt;
 &lt;/requirements&gt;
 &lt;command&gt;&lt;![CDATA[
-python '$__tool_directory__/graphlan.py'
+python &apos;$__tool_directory__/graphlan.py&apos;
 --format $format
 ...
 ]]&gt;&lt;/command&gt;
@@ -701,7 +600,9 @@ python '$__tool_directory__/graphlan.py'
 
 ## `inputs` &gt; `param` to `command`
 
-Parameters are directly linked to variables in `&lt;command&gt;`
+Parameters are directly linked to variables in `&lt;command&gt;` by the `name` or `argument` attribute
+
+Parameters can be optional or required.
 
 ```xml
 &lt;command&gt;&lt;![CDATA[
@@ -710,7 +611,7 @@ graphlan.py
 #if str($dpi):
     --dpi $dpi
 #end if
-'$input_tree'
+&apos;$input_tree&apos;
 ...
 ]]&gt;&lt;/command&gt;
 &lt;inputs&gt;
@@ -725,8 +626,9 @@ graphlan.py
 
 ???
 
-- `name` or `argument` identifies a parameter (details of `argument` later)
-- Parameters can have different types (`data`, `data_collection`, `integer`, `float`, `text`, `select`, `boolean`, `color`, `data_column`,...)
+- The `name` or `argument` attribute identifies a parameter (details of `argument` later).
+- Parameters have different types (`data`, `data_collection`, `integer`, `float`, `text`, `select`, `boolean`, `color`, `data_column`,...)
+  and can be optional.
 
 ---
 
@@ -744,17 +646,16 @@ graphlan.py
 
 ## `inputs` &gt; `param` &gt; `integer` | `float`
 
-![Screenshot of the float input, it's just an input field set to 7.](../../images/input_integer.png)
+![Screenshot of an integer input, it&apos;s just an input field set to 7.](../../images/input_integer.png)
 
 ```xml
 &lt;param name=&quot;...&quot; type=&quot;integer&quot; value=&quot;7&quot; label=&quot;...&quot; help=&quot;...&quot;/&gt;
 ```
 
-![Screenshot of the float input again, but this time a slider appears due to addition of min and max](../../images/input_integer_range.png)
+![Screenshot of a float input from the cd_hit tool. This time also a slider appears due to addition of min and max](../../images/input_float_range.png)
 
 ```xml
-&lt;param name=&quot;...&quot; type=&quot;float&quot; min=&quot;0&quot; max=&quot;10&quot; value=&quot;1&quot; label=&quot;...&quot;
-    help=&quot;...&quot;/&gt;
+&lt;param name=&quot;...&quot; type=&quot;float&quot; min=&quot;0.4&quot; max=&quot;1.0&quot; value=&quot;0.9&quot; label=&quot;...&quot; help=&quot;...&quot;/&gt;
 ```
 
 ???
@@ -766,7 +667,7 @@ graphlan.py
 
 ## `inputs` &gt; `param` &gt; `text`
 
-![Screenshot of a textbox](../../images/input_text.png)
+![Screenshot of a textbox from the cd_hit tool.](../../images/input_text.png)
 
 ```xml
 &lt;param name=&quot;...&quot; type=&quot;text&quot; value=&quot;...&quot; label=&quot;...&quot; help=&quot;...&quot;/&gt;
@@ -776,13 +677,11 @@ graphlan.py
 
 ## `inputs` &gt; `param` &gt; `select`
 
-![Screenshot of a select drop down with several image formats.](../../images/input_select.png)
+![Screenshot of a select drop down with several image formats from the bedtools_bedtoigv tool.](../../images/input_select.png)
 
 ```xml
-&lt;param name=&quot;...&quot; type=&quot;select&quot; label=&quot;...&quot; help=&quot;...&quot;&gt;
+&lt;param name=&quot;...&quot; type=&quot;select&quot; label=&quot;...&quot;&gt;
     &lt;option value=&quot;png&quot; selected=&quot;true&quot;&gt;PNG&lt;/option&gt;
-    &lt;option value=&quot;pdf&quot;&gt;PDF&lt;/option&gt;
-    &lt;option value=&quot;ps&quot;&gt;PS&lt;/option&gt;
     &lt;option value=&quot;eps&quot;&gt;EPS&lt;/option&gt;
     &lt;option value=&quot;svg&quot;&gt;SVG&lt;/option&gt;
 &lt;/param&gt;
@@ -823,7 +722,7 @@ If no `option` has `selected=&quot;true&quot;`, the first one is selected by def
 
 ## `inputs` &gt; `param` &gt; `boolean`
 
-![A yes/no box is shown](../../images/input_boolean.png)
+![A yes/no switch from the bg_sortmerna tool.](../../images/input_boolean.png)
 
 ```xml
 &lt;param name=&quot;...&quot; type=&quot;boolean&quot; checked=&quot;false&quot; truevalue=&quot;--log&quot; falsevalue=&quot;&quot;
@@ -836,14 +735,17 @@ class: reduce70
 
 ## `inputs` &gt; `param` &gt; `conditional`
 
-.image-75[ ![Two screenshots are shown side by side. In the left a select box is set to Paired and two file inputs appear below. On the right the same select box is set to single, and only a single file input appears below it.](../../images/input_conditional.png) ]
+.pull-left[![Screenshot of a conditional select box set to Paired, and two file inputs appear below it.](../../images/input_conditional.png)]
+.pull-right[![Screenshot of a conditional select box set to Single, and only a single file input appears below it.](../../images/input_conditional_single.png)]
+
+&lt;br style=&quot;clear:left;&quot;/&gt;
 
 ```xml
 &lt;command&gt;&lt;![CDATA[
-#if $fastq_input.selector == 'paired':
-    '$fastq_input.input1' '$fastq_input.input2'
+#if $fastq_input.selector == &apos;paired&apos;:
+    &apos;$fastq_input.input1&apos; &apos;$fastq_input.input2&apos;
 #else:
-    '$fastq_input.input'
+    &apos;$fastq_input.input&apos;
 #end if
 ]]&gt;&lt;/command&gt;
 &lt;inputs&gt;
@@ -896,13 +798,7 @@ It makes sense to use a `&lt;repeat&gt;` block only if it contains multiple rela
 
 ## `outputs`
 
-Which files the tool will produce as output?
-
-![Screenshot of a galaxy history with three outputs.](../../images/output.png)
-
----
-
-## `outputs`
+.image-25[![Screenshot of a galaxy history with two outputs.](../../images/output.png)]
 
 ```xml
 &lt;outputs&gt;
@@ -1025,8 +921,8 @@ Always quote `text` and `data` parameters and output `data` in `&lt;command&gt;`
 &lt;command&gt;&lt;![CDATA[
 graphlan.py
 ...
-'$input_tree'
-'$png_output_image'
+&apos;$input_tree&apos;
+&apos;$png_output_image&apos;
 ]]&gt;&lt;/command&gt;
 ```
 
@@ -1043,13 +939,15 @@ Use `&amp;&amp;` to concatenate them
 ```xml
 &lt;command&gt;&lt;![CDATA[
 graphlan.py
---format '$format'
+--format &apos;$format&apos;
 &amp;&amp;
 echo &quot;Yeah it worked!&quot;
 ]]&gt;&lt;/command&gt;
 ```
 
 &lt;small&gt;The job will exit on the first error encountered.&lt;/small&gt;
+
+&lt;small&gt;You can use `&amp;&amp;` or `;` if using a `profile` &gt;= 20.09 (the `set -e` shell directive is now used by default).&lt;/small&gt;
 
 ---
 
@@ -1105,22 +1003,22 @@ Creates a skeleton of xml file
 ```bash
 $ mkdir new_tool
 $ cd new_tool
-$ planemo tool_init --id 'some_short_id' --name 'My super tool'
+$ planemo tool_init --id &apos;some_short_id&apos; --name &apos;My super tool&apos;
 ```
 
 Complicated version:
 
 ```bash
-$ planemo tool_init --id 'samtools_sort' --name 'Samtools sort' \
-          --description 'order of storing aligned sequences' \
-          --requirement 'samtools@1.3.1' \
-          --example_command &quot;samtools sort -o '1_sorted.bam' '1.bam'&quot; \
+$ planemo tool_init --id &apos;samtools_sort&apos; --name &apos;Samtools sort&apos; \
+          --description &apos;order of storing aligned sequences&apos; \
+          --requirement &apos;samtools@1.3.1&apos; \
+          --example_command &quot;samtools sort -o &apos;1_sorted.bam&apos; &apos;1.bam&apos;&quot; \
           --example_input 1.bam \
           --example_output 1_sorted.bam \
           --test_case \
-          --version_command 'samtools --version | head -1' \
-          --help_from_command 'samtools sort' \
-          --doi '10.1093/bioinformatics/btp352'
+          --version_command &apos;samtools --version | head -1&apos; \
+          --help_from_command &apos;samtools sort&apos; \
+          --doi &apos;10.1093/bioinformatics/btp352&apos;
 ```
 
 ---
@@ -1129,15 +1027,10 @@ class: packed
 
 ##.image-25[![planemo logo again](../../images/planemo-logo.png)]
 
-`planemo lint`
-
-Checks the syntax of a tool
+`planemo lint`: Checks the syntax of a tool
 
 ```bash
 $ planemo lint
-```
-
-```bash
 Linting tool /opt/galaxy/tools/seqtk_seq.xml
 Applying linter tests... CHECK
 .. CHECK: 1 test(s) found.
@@ -1189,19 +1082,8 @@ Building Galaxy Tools
 ## Functional tests
 
 - Functional testing is a quality assurance (QA) process.
-- The tests comfort developers and users that the tools can run across different servers/architectures. And that the latest modifications don't break older features.
+- The tests comfort developers and users that the tools can run across different servers/architectures. And that the latest modifications don&apos;t break older features.
 - Tools are tested by feeding them inputs and parameters and verifying the outputs (typically a diff)
-
----
-
-## Good practices
-
-1. Build tests using inputs/parameters/outputs
-2. Run the tests --&gt; Failed --&gt; Coffee
-3. Develop
-4. Run the tests --&gt; Failed --&gt; Coffee
-5. Develop
-6. Run the tests --&gt; Succeed --&gt; Beer
 
 ---
 
@@ -1266,7 +1148,7 @@ graphlan/
 
 - `diff` is the default
 - `ftype` also checks the output datatype
-- With `md5` the test output file doesn't need to be distributed (useful for big output files)
+- With `md5` the test output file doesn&apos;t need to be distributed (useful for big output files)
 - `lines_diff` is useful for tools that output version number, current date, ...
 - `sim_size` is useful for binary files that vary at each execution (e.g. PDF)
 
@@ -1341,7 +1223,7 @@ Runs all functional tests
 $ planemo test
 ```
 
-An HTML report is automatically created with logs in case of failing test
+An HTML report (`tool_test_output.html`) is automatically created with logs in case of failing test
 
 ---
 
@@ -1492,7 +1374,7 @@ ncbi_blastn_wrapper.xml
 
 ```xml
 &lt;command&gt;
-blastn -query '$query' @THREADS@ [...]
+blastn -query &apos;$query&apos; @THREADS@ [...]
 &lt;/command&gt;
 ```
 
@@ -1528,11 +1410,12 @@ trinity.xml
 ```xml
 &lt;macros&gt;
     &lt;token name=&quot;@TOOL_VERSION@&quot;&gt;1.2&lt;/token&gt;
+    &lt;token name=&quot;@VERSION_SUFFIX@&quot;&gt;3&lt;/token&gt;
 &lt;/macros&gt;
 ```
 
 ```xml
-&lt;tool id=&quot;seqtk_seq&quot; name=&quot;Convert to FASTA (seqtk)&quot; version=&quot;@TOOL_VERSION@+galaxy3&quot;&gt;
+&lt;tool id=&quot;seqtk_seq&quot; name=&quot;Convert to FASTA&quot; version=&quot;@TOOL_VERSION@+galaxy@VERSION_SUFFIX@&quot;&gt;
     &lt;requirements&gt;
         &lt;requirement type=&quot;package&quot; version=&quot;@TOOL_VERSION@&quot;&gt;seqtk&lt;/requirement&gt;
     &lt;/requirements&gt;
@@ -1549,18 +1432,18 @@ This means: the 3rd revision of the Galaxy tool for Seqtk 1.2 .
 ```xml
 &lt;command&gt;&lt;![CDATA[
 # Email’s numeric ID (id column of galaxy_user table in the database)
-echo '$__user_id__'
+echo &apos;$__user_id__&apos;
 
 # User’s email address
-echo '$__user_email__'
+echo &apos;$__user_email__&apos;
 
 # The galaxy.app.UniverseApplication instance, gives access to all other configuration file variables.
 # Should be used as a last resort, may go away in future releases.
-echo '$__app__.config.user_library_import_dir'
+echo &apos;$__app__.config.user_library_import_dir&apos;
 
 # Check a dataset type
-#if $input1.is_of_type('gff'):
-    echo 'input1 type is ${input1.datatype}'
+#if $input1.is_of_type(&apos;gff&apos;):
+    echo &apos;input1 type is ${input1.datatype}&apos;
 #end if
 ]]&gt;&lt;/command&gt;
 ```
@@ -1654,7 +1537,7 @@ Usage
 
 ## Dataset collections as input
 
-Mapping over:
+Mapping over (1 job per collection element):
 
 ```xml
 &lt;param name=&quot;inputs&quot; type=&quot;data&quot; format=&quot;bam&quot; label=&quot;Input BAM(s)&quot; /&gt;
@@ -1663,8 +1546,8 @@ Mapping over:
 ![The normal file selector is shown however now the collection input is clicked.](../../images/input_data_collection.png)
 
 Single execution:
-- accepted with `multiple=&quot;true&quot;`
-- or accept only collections:
+- accepted with `multiple=&quot;true&quot;` as described in previous slides
+- or you can accept only collections:
 
 ```xml
 &lt;param name=&quot;inputs&quot; type=&quot;data_collection&quot; collection_type=&quot;list|paired|list:paired|...&quot;
@@ -1672,11 +1555,10 @@ Single execution:
 ```
 
 ```xml
-&lt;command&gt;&lt;![CDATA[
-...
+&lt;command&gt;&lt;![CDATA[ ...
 #for $input in $inputs
-    --input '$input'
-    --sample_name '$input.element_identifier'
+    --input &apos;$input&apos;
+    --sample_name &apos;$input.element_identifier&apos;
 #end for
 ]]&gt;&lt;/command&gt;
 ```
@@ -1708,7 +1590,7 @@ Unknown number of files:
 
 ---
 
-## Use multiple CPUs
+## Using multiple CPUs
 
 ![Screenshot of two xml files. In the top is the jb_conf.xml where a command line job submission specification indicates that it will be submitted with 4 threads. A single tool, ncbi blastn wrapper is assigned to that destination. In the second xml file the blastn command uses the GALAXY_SLOTS variable to control how many threads are supplied to the tool.](../../images/job_conf.xml_2.png)
 
@@ -1792,8 +1674,8 @@ Adding to an existing GitHub repository (IUC, GalaxyP, ...)
 Using your own GitHub repository
 
 - Reasons: ownership, specific practices, exotic tools
-- Follow the same structure
-- Use `.travis.yml` to automate tests and publishing
+- Follow the same structure as IUC
+- Automate tests and ToolShed publishing by reusing `.github/` configuration
 
 ---
 
@@ -1803,6 +1685,7 @@ Using planemo by hand
 
 - Ok for few tools
 - Makes contributing harder
+- Not recommended
 
 [Check out our tutorial to publish to the ToolShed using Planemo](/training-material/topics/dev/tutorials/toolshed/slides.html)
 
@@ -1811,8 +1694,6 @@ Using planemo by hand
 ## Continuous Integration
 
 .image-50[![Github logo](../../images/github_logo.png)]
-
-.image-50[![Travis CI logo](../../images/travis_ci_logo.png)]
 
 .image-50[![Planemo logo](../../images/planemo-logo.png)]
 
@@ -1823,22 +1704,37 @@ Using planemo by hand
 ## Continuous Integration
 
 - Create a Pull Request on a GitHub repository
-- Tests are automatically run on Travis
+- Tests are automatically run on GitHub Actions
 - Other contributors review your tool
-- The Pull Request is accepted when all lights are green
+- The Pull Request is accepted when all the lights are green
 - The tool is automatically uploaded to the ToolShed
 
 ---
 
-## GitHub side
+## GitHub Actions configuration
 
-![Screenshot of a .travis.yml file with badges and logos over it. It runs several planemo commands during before install, install, and script portions.](../../images/github_travis_github.png)
+GitHub Actions configured in the `.github/` directory
+
+![Screenshot of a CI configuration file. It runs several planemo commands during before install, install, and script portions.](../../images/github_actions_iuc.png)
+
+Uses a standard GitHub Action developed on https://github.com/galaxyproject/planemo-ci-action
 
 ---
 
-## Travis CI side
+## GitHub Actions execution
 
-![Screenshot of travis CI shown a tool test passing.](../../images/github_travis_travis.png)
+![Screenshot of a CI execution showing a tool test passing.](../../images/github_actions_executed1.png)
+![Screenshot of a CI execution showing details of test logs.](../../images/github_actions_executed2.png)
+
+---
+
+## GitHub Actions: test reports
+
+Downloadable HTML report, open it with a web browser to see the details
+
+.pull-left[![Screenshot of a CI execution artifacts, with a link to download an HTML report of the tests.](../../images/github_actions_artifacts.png)]
+
+.pull-right[![Screenshot of an example of HTML report of the tests.](../../images/github_actions_artifacts2.png)]
 
 ---
 
@@ -1909,80 +1805,6 @@ Applying linter readme... CHECK
 […]
 ```
 
----
-
-.image-50[![Ansible logo](../../../../shared/images/ansible_logo.png)]
-
-.image-50[![Conda logo](../../../../shared/images/conda_logo.png)]
-
-.image-50[![Docker logo](../../../../shared/images/docker_logo.png)]
-
----
-
-## Docker Galaxy Flavors
-
-![Galaxy docker logo, the docker logo with several containers replaced by galaxy logos.](../../images/galaxydocker_logo.png)
-
-.footnote[[Docker Galaxy Stable](https://github.com/bgruening/docker-galaxy-stable)]
-
----
-
-## Docker Galaxy Flavors
-
-Dockerfile
-
-```yaml
-# Galaxy - My own flavour
-# VERSION       0.1
-
-FROM quay.io/bgruening/galaxy:16.07
-
-MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com
-
-ENV GALAXY_CONFIG_BRAND deepTools
-
-# Adding the tool definitions to the container
-ADD my_tool_list.yml $GALAXY_ROOT/my_tool_list.yml
-
-# Install deepTools
-RUN install-tools $GALAXY_ROOT/my_tool_list.yml
-```
-
----
-
-## Docker Galaxy Flavors
-
-`tool_list.yml`
-
-```yaml
-api_key: admin
-galaxy_instance: http://127.0.0.1:8080/
-tools:
-- name: fastqc
-  owner: devteam
-  tool_panel_section_id: cshl_library_information
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-  revisions:
-    - '8c650f7f76e9'  # v0.62
-    - 'd2cf2c0c8a11'  # v0.63
-- name: suite_deeptools
-  owner: bgruening
-  tool_panel_section_label: 'deepTools'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-  revisions:
-    - '7f5562625ae2'
-```
-
----
-
-## Docker Galaxy Flavors
-
-RUN
-
-```bash
-docker run -d -p 8080:80 galaxy-deeptools
-```
-
 
 
 
@@ -1998,7 +1820,7 @@ docker run -d -p 8080:80 galaxy-deeptools
 
 - Use GitHub
 
-- Use Travis
+- Use GitHub Actions
 
 - No more excuse to develop crappy Galaxy tools
 
@@ -2036,35 +1858,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
-
-
-
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
-<a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/abretaud?s=27" alt="Avatar">Anthony Bretaudeau</a>
-
-
-
-<a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/jmchilton?s=27" alt="Avatar">John Chilton</a>
-
-
-
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
-<a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=27" alt="Avatar">Gildas Le Corguillé</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a><a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jmchilton?s=36" alt="Avatar" width="36" height="36">John Chilton</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=36" alt="Avatar" width="36" height="36">Gildas Le Corguillé</a>
 	</div>
 
 </div>
@@ -2072,7 +1866,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 
 <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 </div>
@@ -2082,10 +1876,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -2097,7 +1891,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -2109,6 +1903,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

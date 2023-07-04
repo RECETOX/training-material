@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,47 +8,284 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Python - Flow Control" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-09-28 13:13:58 +0000" />
-<meta name="DC.creator" content="The Carpentries" />
-<meta name="DC.creator" content="Helena Rasche" />
-<meta name="DC.creator" content="Donny Vrins" />
-<meta name="DC.creator" content="Bazante Sanders" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Python - Flow Control">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-02-13 13:04:13 +0000">
+<meta name="DC.creator" content="The Carpentries">
+<meta name="DC.creator" content="Helena Rasche">
+<meta name="DC.creator" content="Donny Vrins">
+<meta name="DC.creator" content="Bazante Sanders">
 
         
         
         
         
+        <meta name="description" content="These lessons will help you get your feet in data science...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Python - Flow Control">
+        <meta property="og:description" content="These lessons will help you get your feet in data science...">
         
-        <meta name="description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Python - Flow Control" />
-        <meta property="og:description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-02-13 13:04:13 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Python - Flow Control",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Foundations of Data Science",
+    "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
+    "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Python - Flow Control' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html",
+  "timeRequired": "PT40M",
+  "teaches": "Write conditional statements including `if`, `elif`, and `else` branches.\n - Correctly evaluate expressions containing `and` and `or`.",
+  "keywords": "data-science, jupyter-notebook",
+  "description": "The questions this  addresses are:\n - How can my programs do different things based on data values?\n\n\nThe objectives are:\n - Write conditional statements including `if`, `elif`, and `else` branches.\n - Correctly evaluate expressions containing `and` and `or`.\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
+      "name": "The Carpentries",
+      "image": "https://avatars.githubusercontent.com/carpentries",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "name": "Helena Rasche",
+      "image": "https://avatars.githubusercontent.com/hexylena",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9760-8992",
+      "orcid": "https://orcid.org/0000-0001-9760-8992"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
+      "name": "Donny Vrins",
+      "image": "https://avatars.githubusercontent.com/dirowa",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
+      "name": "Bazante Sanders",
+      "image": "https://avatars.githubusercontent.com/bazante1",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Foundations of Data Science",
+      "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
+      "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
+    }
+  ],
+  "educationalLevel": "Beginner",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "jupyter-notebook"
+    }
+  ],
+  "abstract": "\"Flow Control\" is how we describe when we change the flow of code's execution, based on some conditions. Here we'll learn how to take different actions depending on what data out program sees, or how to run code only if some condition is true."
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,38 +301,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-flow/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-flow/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-flow/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-flow/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-flow/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-flow/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -115,9 +324,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/data-science/faqs/" title="Check our FAQs for the Foundations of Data Science topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -135,7 +346,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-flow/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -164,27 +374,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -196,13 +393,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/python-flow/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/python-flow/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/python-flow/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/python-flow/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/python-flow/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/python-flow/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -215,7 +412,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -229,8 +426,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -247,320 +449,26 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-09-28 13:13:58 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Python - Flow Control",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Foundations of Data Science",
-    "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-    "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Python - Flow Control' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html",
-  "timeRequired": "PT40M",
-  "keywords": "data-science, jupyter-notebook",
-  "description": "The questions this  addresses are:\n - How can my programs do different things based on data values?\n\n\nThe objectives are:\n - Write conditional statements including `if`, `elif`, and `else` branches.\n - Correctly evaluate expressions containing `and` and `or`.\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "name": "The Carpentries",
-      "image": "https://avatars.githubusercontent.com/carpentries",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "name": "Donny Vrins",
-      "image": "https://avatars.githubusercontent.com/dirowa",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "name": "Bazante Sanders",
-      "image": "https://avatars.githubusercontent.com/bazante1",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "name": "The Carpentries",
-      "image": "https://avatars.githubusercontent.com/carpentries",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "name": "Donny Vrins",
-      "image": "https://avatars.githubusercontent.com/dirowa",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "name": "Bazante Sanders",
-      "image": "https://avatars.githubusercontent.com/bazante1",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Foundations of Data Science",
-      "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-      "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-    }
-  ],
-  "educationalLevel": "Beginner"
-}
-</script>
-
-<section class="tutorial topic-data-science">
+<article class="tutorial topic-data-science">
     <h1 data-toc-skip>Python - Flow Control</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=27" alt="Avatar">The Carpentries</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
-<a href="/training-material/hall-of-fame/dirowa/" class="contributor-badge contributor-dirowa"><img src="https://avatars.githubusercontent.com/dirowa?s=27" alt="Avatar">Donny Vrins</a>
-
-
-
-<a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=27" alt="Avatar">Bazante Sanders</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=36" alt="Avatar" width="36" height="36">The Carpentries</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/dirowa/" class="contributor-badge contributor-dirowa"><img src="https://avatars.githubusercontent.com/dirowa?s=36" alt="Avatar" width="36" height="36">Donny Vrins</a><a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=36" alt="Avatar" width="36" height="36">Bazante Sanders</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -659,14 +567,18 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 13, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00088">https://gxy.io/GTN:T00088</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -676,13 +588,14 @@
             </div>
             <div class="col-sm-10">
                  
+                <section aria-label="Tutorial Notebook access information" id="tutorial-notebook">
                      
                      
                      
                      
                     
                         <blockquote class="comment">
-                            <div class="box-title" aria-label="comment box">Best viewed in a Jupyter Notebook</div>
+                            <div class="box-title">Best viewed in a Jupyter Notebook</div>
                             <p>
                                 This tutorial is best viewed in a Jupyter notebook! You can load this notebook one of the following ways<!--, or you can click to run it in MyBinder-->
                             </p>
@@ -692,6 +605,12 @@
                                 <a href="https://mybinder.org/v2/gh/galaxyproject/training-material/main?filepath=training-material%2Ftopics%2Fdata-science%2Ftutorials%2Fpython-flow%2Ftutorial.md.ipynb" title="Launch notebook on MyBinder"><img src="https://mybinder.org/badge_logo.svg" alt="My Binder Logo"/></a>
                             </p>
                             -->
+                            
+                            <p><b>Run on the GTN with JupyterLite (in-browser computations)</b>
+                                <ol>
+                                    <li><a href="/training-material/jupyter/lab/index.html?path=data-science-python-flow.ipynb">Click to Launch JupyterLite</a></li>
+                                </ol>
+                            </p>
                             
                             <p><b>Launching the notebook in Jupyter in Galaxy</b>
                                 <ol>
@@ -709,19 +628,21 @@
                             </p>
                         </blockquote>
                     
-                 
+                </section>
+                
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <p>“Flow Control” is how we describe when we change the flow of code’s execution, based on some conditions. Here we’ll learn how to take different actions depending on what data out program sees, or how to run code only if some condition is true.</p>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
   <p>This tutorial is <strong>significantly</strong> based on <a href="https://carpentries.org">the Carpentries</a> <a href="https://swcarpentry.github.io/python-novice-inflammation/">Programming with Python</a> and <a href="https://swcarpentry.github.io/python-novice-gapminder/">Plotting and Programming in Python</a>, which are licensed CC-BY 4.0.</p>
 
-  <p>Adaptations have been made to make this work better in a GTN/<span class="notranslate">Galaxy</span> environment.</p>
+  <p>Adaptations have been made to make this work better in a GTN/Galaxy environment.</p>
 </blockquote>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -752,18 +673,18 @@
 
 <p>They’re all “binary” comparators, we can only compare two values at a time.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="mi">37</span> <span class="o">&lt;</span> <span class="mi">38</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="mi">38</span> <span class="o">&lt;</span> <span class="mi">38</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="mi">38</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="mi">37</span> <span class="o">&lt;</span> <span class="mi">38</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="mi">38</span> <span class="o">&lt;</span> <span class="mi">38</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="mi">38</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>These print out <code class="language-plaintext highlighter-rouge">True</code> or <code class="language-plaintext highlighter-rouge">False</code>, these are the two possible values of the <a href="https://en.wikipedia.org/wiki/Boolean_algebra"><em>boolean</em></a> datatype in Python.</p>
 
 <p>We can use <code class="language-plaintext highlighter-rouge">&lt;=</code> to check if it’s less than or equal to:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="mi">19</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="mi">20</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="mi">21</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="mi">19</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="mi">20</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="mi">21</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>And we can use <code class="language-plaintext highlighter-rouge">==</code> for comparing numbers in Python</p>
@@ -781,10 +702,10 @@ print(22 != 33)
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="mi">37</span>
 <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'greater'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'greater'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'not greater'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'done'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'not greater'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">'done'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>The second line of this code uses the keyword <code class="language-plaintext highlighter-rouge">if</code> to tell Python that we want to make a choice.
@@ -795,20 +716,20 @@ If the test is false,
 the body of the <code class="language-plaintext highlighter-rouge">else</code> is executed instead, and “not greater” is printed.
 Only one or the other is ever executed before continuing on with program execution to print “done”:</p>
 
-<p><img src="../../images/python-flowchart-conditional.png" alt="A flowchart diagram of the if-else construct that tests if variable num is greater than 100. " loading="lazy" /></p>
+<p><img src="../../images/python-flowchart-conditional.png" alt="A flowchart diagram of the if-else construct that tests if variable num is greater than 100. " width="338" height="268" loading="lazy" /></p>
 
 <p>Conditional statements don’t have to include an <code class="language-plaintext highlighter-rouge">else</code>. If there isn’t one,
 Python simply does nothing if the test is false:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="mi">53</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'before conditional...'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">'before conditional...'</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is greater than 100'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'...after conditional'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is greater than 100'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">'...after conditional'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-if-behaviour" class="box-title" aria-label="question box: If behaviour"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: If behaviour</div>
+  <div class="box-title question-title" id="question-if-behaviour"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: If behaviour</div>
 
   <p>Try changing the <code class="language-plaintext highlighter-rouge">num</code> value and see what happens for different values.</p>
 
@@ -821,7 +742,7 @@ Python simply does nothing if the test is false:</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>Condition is activated!</li>
       <li>Nothing, but not because it is a float! Because it’s less than 100</li>
@@ -848,7 +769,7 @@ else:
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-if-elif-elif-elif-else" class="box-title"><button type="button" aria-controls="tip-if-elif-elif-elif-else-contents" aria-expanded="true" aria-label="Toggle tip box: If/Elif/Elif/Elif/Else:"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: If/Elif/Elif/Elif/Else:<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-if-elif-elif-elif-else"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-if-elif-elif-elif-else" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: If/Elif/Elif/Elif/Else:<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>if/elif/else cases follow these rules:</p>
 
   <ul>
@@ -865,11 +786,11 @@ else:
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
 
 <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is positive'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is positive'</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is zero'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is zero'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is negative'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s"> is negative'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><strong>NB</strong>: To test for equality we use a double equals sign <code class="language-plaintext highlighter-rouge">==</code>
@@ -882,14 +803,14 @@ rather than a single equals sign <code class="language-plaintext highlighter-rou
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'both parts are true'</span><span class="p">)</span>
+<span class="nf">if </span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'both parts are true'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'at least one part is false'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'at least one part is false'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-predict-what-happens" class="box-title" aria-label="question box: Predict what happens"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Predict what happens</div>
+  <div class="box-title question-title" id="question-predict-what-happens"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Predict what happens</div>
   <p>Predict the outcomes of the following values of <code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> above. Predicting what you think the code will do is a useful skill to practice</p>
   <ol>
     <li>a = 0; b = -1</li>
@@ -899,7 +820,7 @@ rather than a single equals sign <code class="language-plaintext highlighter-rou
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>at least one part is false</li>
       <li>at least one part is false</li>
@@ -913,12 +834,12 @@ rather than a single equals sign <code class="language-plaintext highlighter-rou
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'at least one test is true'</span><span class="p">)</span>
+<span class="nf">if </span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">b</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'at least one test is true'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-true-and-false" class="box-title"><button type="button" aria-controls="tip-true-and-false-contents" aria-expanded="true" aria-label="Toggle tip box: `True` and `False`"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: `True` and `False`<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-true-and-false"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-true-and-false" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: `True` and `False`<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p><code class="language-plaintext highlighter-rouge">True</code> and <code class="language-plaintext highlighter-rouge">False</code> are special words in Python called <code class="language-plaintext highlighter-rouge">booleans</code>,
 which represent truth values. A statement such as <code class="language-plaintext highlighter-rouge">1 &lt; 0</code> returns
 the value <code class="language-plaintext highlighter-rouge">False</code>, while <code class="language-plaintext highlighter-rouge">-1 &lt; 0</code> returns the value <code class="language-plaintext highlighter-rouge">True</code>.</p>
@@ -929,28 +850,28 @@ In fact, <em>any</em> value can be used in an <code class="language-plaintext hi
 check, for instance, if a string is empty or if some data is provided:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="s">''</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'empty string is true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'empty string is true'</span><span class="p">)</span>
 <span class="k">if</span> <span class="s">'word'</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'word is true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'word is true'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>You can also use it to check if a list is empty or full:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">[]:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'empty list is true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'empty list is true'</span><span class="p">)</span>
 <span class="k">if</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'non-empty list is true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'non-empty list is true'</span><span class="p">)</span>
 <span class="c1"># The last statement is equivalent to:
-</span><span class="k">if</span> <span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'non-empty list is true'</span><span class="p">)</span>
+</span><span class="k">if</span> <span class="nf">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'non-empty list is true'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Or you can check if a number is zero, or non-zero:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'zero is true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'zero is true'</span><span class="p">)</span>
 <span class="k">if</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'one is true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'one is true'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="inverting-conditions">Inverting Conditions</h2>
@@ -963,11 +884,11 @@ that you formulated in the previous question.
 <code class="language-plaintext highlighter-rouge">not</code> is a <code class="language-plaintext highlighter-rouge">unary</code> (not <code class="language-plaintext highlighter-rouge">binary</code>) operator: it only takes a single value</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="ow">not</span> <span class="s">''</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'empty string is not true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'empty string is not true'</span><span class="p">)</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="s">'word'</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'word is not true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'word is not true'</span><span class="p">)</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="ow">not</span> <span class="bp">True</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'not not True is true'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">'not not True is true'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="ranges">Ranges</h2>
@@ -977,13 +898,13 @@ that you formulated in the previous question.
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">quality_score</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># Try out different values!
 </span>
 <span class="k">if</span> <span class="n">quality_score</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Your data is a bit sus"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Your data is a bit sus"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="mi">20</span> <span class="o">&lt;</span> <span class="n">quality_score</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Hey that looks ok"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hey that looks ok"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="mi">4</span> <span class="o">&lt;</span> <span class="n">quality_score</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Oh you did nanopore sequencing"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Oh you did nanopore sequencing"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"It shouldn't be *that* bad. Try again."</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"It shouldn't be *that* bad. Try again."</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>There are two important points here:</p>
@@ -996,7 +917,7 @@ that you formulated in the previous question.
 <h2 id="exercises">Exercises</h2>
 
 <blockquote class="question">
-  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <p><code class="language-plaintext highlighter-rouge">if</code>s, <code class="language-plaintext highlighter-rouge">elif</code>s and <code class="language-plaintext highlighter-rouge">else</code>s get evaluated in blocks. Look at the following code and list the lines that are part of a single block.</p>
 
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.  if x:
@@ -1016,7 +937,7 @@ that you formulated in the previous question.
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>“Blocks” of if/elif/elses</p>
     <ul>
       <li>must start with an <code class="language-plaintext highlighter-rouge">if</code></li>
@@ -1039,7 +960,7 @@ that you formulated in the previous question.
 </span></code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-how-many-paths" class="box-title" aria-label="question box: How Many Paths?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: How Many Paths?</div>
+  <div class="box-title question-title" id="question-how-many-paths"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: How Many Paths?</div>
 
   <p>Consider this code:</p>
 
@@ -1062,7 +983,7 @@ Why did you pick this answer?</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>C gets printed because the first two conditions, <code class="language-plaintext highlighter-rouge">4 &gt; 5</code> and <code class="language-plaintext highlighter-rouge">4 == 5</code>, are not true,
 but <code class="language-plaintext highlighter-rouge">4 &lt; 5</code> is true.</p>
   </blockquote>
@@ -1072,7 +993,7 @@ but <code class="language-plaintext highlighter-rouge">4 &lt; 5</code> is true.<
 </span></code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-close-enough" class="box-title" aria-label="question box: Close Enough"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Close Enough</div>
+  <div class="box-title question-title" id="question-close-enough"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Close Enough</div>
 
   <p>Write some conditions that print <code class="language-plaintext highlighter-rouge">True</code> if the variable <code class="language-plaintext highlighter-rouge">a</code> is within <code class="language-plaintext highlighter-rouge">10</code> of the variable <code class="language-plaintext highlighter-rouge">b</code>
 and <code class="language-plaintext highlighter-rouge">False</code> otherwise.
@@ -1080,10 +1001,10 @@ Compare your implementation with your partner’s:
 do you get the same answer for all possible pairs of numbers?</p>
 
   <blockquote class="tip">
-    <div id="tip-abs" class="box-title"><button type="button" aria-controls="tip-abs-contents" aria-expanded="true" aria-label="Toggle tip box: abs"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: abs<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title tip-title" id="tip-abs"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-abs" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: abs<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>There is a [built-in function <code class="language-plaintext highlighter-rouge">abs</code>][abs-function] that returns the absolute value of
 a number:</p>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">))</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">))</span>
 </code></pre></div>    </div>
 
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>12
@@ -1091,7 +1012,7 @@ a number:</p>
   </blockquote>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: 1"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 1<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: 1<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 5
 b = 5.1
 
@@ -1103,7 +1024,7 @@ else:
   </blockquote>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: 2"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 2<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: 2<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(abs(a - b) &lt;= 10)
 </code></pre></div>    </div>
 
@@ -1116,7 +1037,7 @@ have string representations which can be printed.</p>
 </span></code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-pitfalls" class="box-title" aria-label="question box: Pitfalls"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Pitfalls</div>
+  <div class="box-title question-title" id="question-pitfalls"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Pitfalls</div>
 
   <p>A <em>integer</em> number between 0 and 100 will be provided to this function. Answer these two questions:</p>
 
@@ -1141,7 +1062,7 @@ elif 57 &lt; num &lt;= 86:
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>No, it won’t. 32 is the only value there that doesn’t print anything. You can either do <code class="language-plaintext highlighter-rouge">x &lt; 57</code> and later <code class="language-plaintext highlighter-rouge">57 &lt;= x</code> to test the bigger and smaller values, or you can make use <code class="language-plaintext highlighter-rouge">x &lt; 57</code> and <code class="language-plaintext highlighter-rouge">56 &lt; x</code>, which have the same results, but <strong>only with integers</strong>. If your code accepted a float, e.g. <code class="language-plaintext highlighter-rouge">56.5</code>, both of those tests would be true. So <code class="language-plaintext highlighter-rouge">x &lt; 57</code> and later <code class="language-plaintext highlighter-rouge">57 &lt;= x</code> is the preferred way to write that.</li>
       <li><code class="language-plaintext highlighter-rouge">86</code> is the most obvious solution to this, the programmer added a check specifically to see if the value was 86, but instead it’s caught by the previous case.</li>
@@ -1151,28 +1072,30 @@ elif 57 &lt; num &lt;= 86:
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">num</span> <span class="o">=</span> <span class="mi">42</span> <span class="c1"># Randomly chosen so the code will execute, try changing it around.
 </span><span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"great score"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"great score"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Very cold"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Very cold"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">86</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Almost"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Almost"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">86</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"It's exactly this value!"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"It's exactly this value!"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="mi">32</span> <span class="o">&lt;</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">58</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Getting warmer"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Getting warmer"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="mi">57</span> <span class="o">&lt;</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="mi">86</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Everything else goes here"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Everything else goes here"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-why-a-synthetic-example-like-this" class="box-title"><button type="button" aria-controls="tip-why-a-synthetic-example-like-this-contents" aria-expanded="true" aria-label="Toggle tip box: Why a synthetic example like this?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Why a synthetic example like this?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-  <p>Complicated if/elif/else cases are common in code, you need to be able to spot these sort of issues. For example there are large if/else cases in the <a href="https://github.com/galaxyproject/galaxy/blob/9143dd7ca46d150ebfb26febbe187979f682da51/tools/stats/grouping.py#L153-L176"><span class="notranslate">Galaxy</span> codebase</a>, sometimes nested even, and being ale to predict their behaviour is really important to being able to work with the code. <a href="https://github.com/galaxyproject/galaxy/blob/9143dd7ca46d150ebfb26febbe187979f682da51/tools/stats/grouping.py#L185-L195">Missing else cases</a> are sometimes important, sometimes a bug, sometimes just the code hasn’t been implemented yet, which is why we always write good code comments!</p>
+  <div class="box-title tip-title" id="tip-why-a-synthetic-example-like-this"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-why-a-synthetic-example-like-this" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Why a synthetic example like this?<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <p>Complicated if/elif/else cases are common in code, you need to be able to spot these sort of issues. For example there are large if/else cases in the <a href="https://github.com/galaxyproject/galaxy/blob/9143dd7ca46d150ebfb26febbe187979f682da51/tools/stats/grouping.py#L153-L176">Galaxy codebase</a>, sometimes nested even, and being ale to predict their behaviour is really important to being able to work with the code. <a href="https://github.com/galaxyproject/galaxy/blob/9143dd7ca46d150ebfb26febbe187979f682da51/tools/stats/grouping.py#L185-L195">Missing else cases</a> are sometimes important, sometimes a bug, sometimes just the code hasn’t been implemented yet, which is why we always write good code comments!</p>
 </blockquote>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Use <code class="language-plaintext highlighter-rouge">if condition</code> to start a conditional statement, <code class="language-plaintext highlighter-rouge">elif condition</code> to provide additional tests, and <code class="language-plaintext highlighter-rouge">else</code> to provide a default.</p>
@@ -1222,38 +1145,18 @@ elif 57 &lt; num &lt;= 86:
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Python - Flow Control (Foundations of Data Science)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Python - Flow Control (Foundations of Data Science)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">The Carpentries, Helena Rasche, Donny Vrins, Bazante Sanders,  <b>Python - Flow Control (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            The Carpentries, Helena Rasche, Donny Vrins, Bazante Sanders,  <b>Python - Flow Control (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1265,7 +1168,7 @@ elif 57 &lt; num &lt;= 86:
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1274,28 +1177,31 @@ elif 57 &lt; num &lt;= 86:
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{data-science-python-flow,
 author = "The Carpentries and Helena Rasche and Donny Vrins and Bazante Sanders",
-title = "Python - Flow Control (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Python - Flow Control (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-flow/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1303,11 +1209,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1316,6 +1222,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
@@ -1323,49 +1230,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 </blockquote>
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/data-science/tutorials/python-flow/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00088">https://gxy.io/GTN:T00088</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-flow/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

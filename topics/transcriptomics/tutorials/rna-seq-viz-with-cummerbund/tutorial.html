@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,251 +8,67 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Visualization of RNA-Seq results with CummeRbund" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Andrea Bagnacani" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Visualization of RNA-Seq results with CummeRbund" />
-        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Visualization of RNA-Seq results with CummeRbund">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-11-18 10:50:07 +0000">
+<meta name="DC.creator" content="Andrea Bagnacani">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for all kinds of transcriptomics analysis.">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Visualization of RNA-Seq results with CummeRbund">
+        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis.">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -277,7 +93,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2022-11-18 10:50:07 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Visualization of RNA-Seq results with CummeRbund",
   "interactivityType": "mixed",
@@ -303,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -330,6 +150,7 @@
   "name": "Hands-on for 'Visualization of RNA-Seq results with CummeRbund' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Manage RNA-Seq results\n - Extract genes for producing differential gene expression analysis visualizations\n - Visualize meaningful information",
   "keywords": "transcriptomics",
   "description": "The questions this  addresses are:\n - How are RNA-Seq results stored?\n - Why are visualization techniques needed?\n - How to select genes for visualizing meaningful results of differential gene expression analysis?\n\n\nThe objectives are:\n - Manage RNA-Seq results\n - Extract genes for producing differential gene expression analysis visualizations\n - Visualize meaningful information\n\n",
   "inLanguage": {
@@ -417,31 +238,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bagnacan/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bagnacan/",
-      "name": "Andrea Bagnacani",
-      "image": "https://avatars.githubusercontent.com/bagnacan",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bagnacan/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bagnacan/",
@@ -472,31 +270,209 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-transcriptomics">
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-transcriptomics">
     <h1 data-toc-skip>Visualization of RNA-Seq results with CummeRbund</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/bagnacan/" class="contributor-badge contributor-bagnacan"><img src="https://avatars.githubusercontent.com/bagnacan?s=27" alt="Avatar">Andrea Bagnacani</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/bagnacan/" class="contributor-badge contributor-bagnacan"><img src="https://avatars.githubusercontent.com/bagnacan?s=36" alt="Avatar" width="36" height="36">Andrea Bagnacani</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -551,6 +527,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -568,6 +546,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -621,7 +601,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/1001880">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -630,26 +610,16 @@
             
 
             
-                <li class="btn btn-default supporting_material">
-<a class="topic-icon" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tours/" title="Galaxy interactive tour" >
-    <i class="fas fa-magic" aria-hidden="true"></i> Tours
-</a>
-
-</li>
-            
 
             
 
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -675,34 +645,73 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00302">https://gxy.io/GTN:T00302</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -713,23 +722,24 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
-<p><span class="notranslate">RNA</span>-Seq analysis helps researchers annotate new genes and splice variants, and provides cell- and context-specific quantification of gene <span class="notranslate">expression</span>. <span class="notranslate">RNA</span>-Seq data, however, are complex and require both computer science and mathematical knowledge to be managed and interpreted.</p>
+<p>RNA-Seq analysis helps researchers annotate new genes and splice variants, and provides cell- and context-specific quantification of gene expression. RNA-Seq data, however, are complex and require both computer science and mathematical knowledge to be managed and interpreted.</p>
 
-<p>Visualization techniques are key to overcome the complexity of <span class="notranslate">RNA</span>-Seq data, and represent valuable tools to gather information and insights.</p>
+<p>Visualization techniques are key to overcome the complexity of RNA-Seq data, and represent valuable tools to gather information and insights.</p>
 
-<p>In this tutorial we will visualize <span class="notranslate">RNA</span>-seq data from the <a href="http://cole-trapnell-lab.github.io/cufflinks/cuffdiff/">CuffDiff</a> tool.</p>
+<p>In this tutorial we will visualize RNA-seq data from the <a href="http://cole-trapnell-lab.github.io/cufflinks/cuffdiff/">CuffDiff</a> tool.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
 <ol id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
-  <li><a href="#reasons-for-visualizing-rna-seq-results" id="markdown-toc-reasons-for-visualizing-rna-seq-results">Reasons for visualizing <span class="notranslate">RNA</span>-Seq results</a></li>
-  <li><a href="#importing-rna-seq-result-data" id="markdown-toc-importing-rna-seq-result-data">Importing <span class="notranslate">RNA</span>-Seq result data</a></li>
+  <li><a href="#reasons-for-visualizing-rna-seq-results" id="markdown-toc-reasons-for-visualizing-rna-seq-results">Reasons for visualizing RNA-Seq results</a></li>
+  <li><a href="#importing-rna-seq-result-data" id="markdown-toc-importing-rna-seq-result-data">Importing RNA-Seq result data</a></li>
   <li><a href="#filtering-and-sorting" id="markdown-toc-filtering-and-sorting">Filtering and sorting</a></li>
   <li><a href="#cummerbund" id="markdown-toc-cummerbund">CummeRbund</a></li>
   <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
@@ -737,82 +747,85 @@
 
 </blockquote>
 
-<h1 id="reasons-for-visualizing-rna-seq-results">Reasons for visualizing <span class="notranslate">RNA</span>-Seq results</h1>
+<h1 id="reasons-for-visualizing-rna-seq-results">Reasons for visualizing RNA-Seq results</h1>
 
-<p>To make sense of the available <span class="notranslate">RNA</span>-Seq data, and overview the condition-specific gene <span class="notranslate">expression</span> levels of the provided samples, we need to visualize our results. Here we will use <a href="http://compbio.mit.edu/cummeRbund/">CummeRbund</a>.</p>
+<p>To make sense of the available RNA-Seq data, and overview the condition-specific gene expression levels of the provided samples, we need to visualize our results. Here we will use <a href="http://compbio.mit.edu/cummeRbund/">CummeRbund</a>.</p>
 
-<p>CummeRbund is an open-source tool that simplifies the analysis of a CuffDiff <span class="notranslate">RNA</span>-Seq output. In particular, it helps researchers with:</p>
+<p>CummeRbund is an open-source tool that simplifies the analysis of a CuffDiff RNA-Seq output. In particular, it helps researchers with:</p>
 <ul>
   <li>managing, integrating, and visualizing the data produced by CuffDiff</li>
   <li>simplifying data exploration</li>
-  <li>providing a bird’s-eye view of the <span class="notranslate">expression</span> analysis by describing relationships betweeen genes, transcripts, transcription start sites, and protein-coding regions</li>
+  <li>providing a bird’s-eye view of the expression analysis by describing relationships betweeen genes, transcripts, transcription start sites, and protein-coding regions</li>
   <li>exploring subfeatures of individual genes or gene-sets</li>
   <li>creating publication-ready plots</li>
 </ul>
 
-<p>A typical <span class="notranslate">workflow</span> for the visualization of <span class="notranslate">RNA</span>-Seq data involving CummeRbund:</p>
+<p>A typical workflow for the visualization of RNA-Seq data involving CummeRbund:</p>
 
-<p><img src="../../images/cummerbund-rna-seq-viz-with-cummerbund.png" alt="workflow. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/cummerbund-rna-seq-viz-with-cummerbund.png" alt="workflow. " width="3502" height="1126" loading="lazy" /></p>
 
-<p>CummeRbund <span class="notranslate">reads</span> your <span class="notranslate">RNA</span>-Seq results from a <a href="https://www.sqlite.org/">SQLite</a> database. This database has to be created using CuffDiff’s SQLite output option.</p>
+<p>CummeRbund reads your RNA-Seq results from a <a href="https://www.sqlite.org/">SQLite</a> database. This database has to be created using CuffDiff’s SQLite output option.</p>
 
 <blockquote class="details">
-  <div id="details-sqlite-output-with-cuffdiff" class="box-title"><button type="button" aria-controls="details-sqlite-output-with-cuffdiff-contents" aria-expanded="true" aria-label="Toggle details box: SQLite output with CuffDiff"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: SQLite output with CuffDiff<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-sqlite-output-with-cuffdiff"><button class="gtn-boxify-button details" type="button" aria-controls="details-sqlite-output-with-cuffdiff" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: SQLite output with CuffDiff<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Instruct CuffDiff to organize its output in a SQLite database to be read CummeRbund.</p>
 
-  <p><img src="../../images/cummerbund-cuffdiff-set-sqlite.png" alt="SQLite output. " loading="lazy" /></p>
+  <p><img src="../../images/transcriptomics_images/cummerbund-cuffdiff-set-sqlite.png" alt="SQLite output. " width="600" height="122" loading="lazy" /></p>
 </blockquote>
 
-<h1 id="importing-rna-seq-result-data">Importing <span class="notranslate">RNA</span>-Seq result data</h1>
+<h1 id="importing-rna-seq-result-data">Importing RNA-Seq result data</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Create a new history</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Import the <a href="https://zenodo.org/record/1001880/files/CuffDiff_SQLite_database.sqlite"><code class="language-plaintext highlighter-rouge">CuffDiff SQLite</code></a> dataset</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
-      <p>Rename the dataset to “<span class="notranslate">RNA</span>-Seq SQLite result data”</p>
+      <p>Rename the dataset to “RNA-Seq SQLite result data”</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-dataset" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field  to <code class="language-plaintext highlighter-rouge"><span class="notranslate">RNA</span>-Seq SQLite result data</code></li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a dataset<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field  to <code class="language-plaintext highlighter-rouge">RNA-Seq SQLite result data</code></li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
-  <p>By default, when data is imported via its link, <span class="notranslate">Galaxy</span> names it with its URL.</p>
+  <p>By default, when data is imported via its link, Galaxy names it with its URL.</p>
 </blockquote>
 
 <p>CuffDiff’s output data is organized in a SQLite database, so we need to extract it to be able to see what it looks like.</p>
 
-<p>For this tutorial, we are interested in CuffDiff’s tested transcripts for differential <span class="notranslate">expression</span>.</p>
+<p>For this tutorial, we are interested in CuffDiff’s tested transcripts for differential expression.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-extract-cuffdiff-results" class="box-title" aria-label="hands-on box: Extract CuffDiff results"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Extract CuffDiff results</div>
+  <div class="box-title hands-on-title" id="hands-on-extract-cuffdiff-results"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Extract CuffDiff results</div>
 
   <ol>
     <li><strong>Extract CuffDiff</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
-        <li><em>“Select tables to output”</em>: <code class="language-plaintext highlighter-rouge">Transcript differential <span class="notranslate">expression</span> testing</code></li>
+        <li><em>“Select tables to output”</em>: <code class="language-plaintext highlighter-rouge">Transcript differential expression testing</code></li>
       </ul>
     </li>
     <li>
       <p>Inspect the table</p>
 
       <blockquote class="tip">
-        <div id="tip-inspecting-the-content-of-a-file-in-galaxy" class="box-title"><button type="button" aria-controls="tip-inspecting-the-content-of-a-file-in-galaxy-contents" aria-expanded="true" aria-label="Toggle tip box: Inspecting the content of a file in Galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Inspecting the content of a file in <span class="notranslate">Galaxy</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-inspecting-the-content-of-a-file-in-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-inspecting-the-content-of-a-file-in-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Inspecting the content of a file in Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ul>
-          <li>Click on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon (“View data”) on the right of the file name in the history</li>
+          <li>Click on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (eye) icon (“View data”) on the right of the file name in the history</li>
           <li>Inspect the content of the file</li>
         </ul>
       </blockquote>
@@ -839,17 +852,17 @@
     </li>
     <li><em>value_1</em>: The gene’s FPKM in sample_1</li>
     <li><em>value_2</em>: The gene’s FPKM in sample_2</li>
-    <li><em>log2(fold_change)</em>: The log<sub>2</sub> of the fold change (sample_1/sample_2). This reports the <span class="notranslate">expression</span> difference between condition one (sample_1) and condition two (sample_2)</li>
+    <li><em>log2(fold_change)</em>: The log<sub>2</sub> of the fold change (sample_1/sample_2). This reports the expression difference between condition one (sample_1) and condition two (sample_2)</li>
     <li><em>test_stat</em>: The test statistic’s value, used to determine the significance of the observed change in FPKM</li>
     <li><em>p_value</em>: The uncorrected p-value of the test statistic</li>
     <li><em>q_value</em>: The False-discovery-rate-adjusted p-value of the test statistic</li>
-    <li><em>significant</em>: “yes” or “no”, depending on whether the p_value is greater then the FDR after Benjamini-Hochberg correction for multiple-testing. This tells whether the difference between the <span class="notranslate">expression</span> levels in condition one (sample_1) and condition two (sample_2) is significant</li>
+    <li><em>significant</em>: “yes” or “no”, depending on whether the p_value is greater then the FDR after Benjamini-Hochberg correction for multiple-testing. This tells whether the difference between the expression levels in condition one (sample_1) and condition two (sample_2) is significant</li>
   </ul>
 
   <p>We want to keep only the <em>significant differentially expressed</em> genes.</p>
 
   <blockquote class="question">
-    <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <ol>
       <li>How to retain only the significant differentially expressed genes?</li>
@@ -857,7 +870,7 @@
     </ol>
 
     <blockquote class="solution">
-      <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
       <ol>
         <li>We need to filter on the column storing the record’s significance</li>
         <li>Column 14</li>
@@ -868,10 +881,10 @@
 
 <h1 id="filtering-and-sorting">Filtering and sorting</h1>
 
-<p>We now want to highlight the transcripts whose <span class="notranslate">expression</span> difference, the log<sub>2</sub>(fold_change), has been statistically assessed as both high and significant.</p>
+<p>We now want to highlight the transcripts whose expression difference, the log<sub>2</sub>(fold_change), has been statistically assessed as both high and significant.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-extract-cuffdiff-s-significant-differentially-expressed-genes" class="box-title" aria-label="hands-on box: Extract CuffDiff's significant differentially expressed genes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Extract CuffDiff's significant differentially expressed genes</div>
+  <div class="box-title hands-on-title" id="hands-on-extract-cuffdiff-s-significant-differentially-expressed-genes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Extract CuffDiff's significant differentially expressed genes</div>
 
   <ol>
     <li><strong>Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -882,16 +895,16 @@
       </ul>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
         <ol>
           <li>What column stores the information of significance for each record?</li>
-          <li>Which conditional <span class="notranslate">expression</span> has to be set to filter all records on the selected column?</li>
+          <li>Which conditional expression has to be set to filter all records on the selected column?</li>
           <li>How many rows are allocated for the table’s header?</li>
           <li>How many entries were originally stored in the table? And how many after the filtering operation?</li>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>Column 14</li>
             <li>c14==’yes’</li>
@@ -906,8 +919,8 @@
   <p>Review the meaning of each column, and look at your data.</p>
 
   <ul>
-    <li>The differential <span class="notranslate">expression</span> values are stored in column 10</li>
-    <li>The statistical score, assessing the differential <span class="notranslate">expression</span> significance, is stored in column 13
+    <li>The differential expression values are stored in column 10</li>
+    <li>The statistical score, assessing the differential expression significance, is stored in column 13
  We will sort all records on the basis of their Q-score (column 13) and log<sub>2</sub>(fold_change).</li>
   </ul>
 
@@ -923,13 +936,13 @@
       </ul>
 
       <blockquote class="question">
-        <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
         <ol>
           <li>Which gene transcript has been statistically assessed as both high and significant?</li>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>1 LIMCH1</p>
         </blockquote>
       </blockquote>
@@ -941,14 +954,14 @@
 
 <p>CummeRbund generates two outputs:</p>
 <ul>
-  <li>The plot, which visualizes our <span class="notranslate">RNA</span>-Seq results of interest</li>
+  <li>The plot, which visualizes our RNA-Seq results of interest</li>
   <li>The <a href="http://had.co.nz/ggplot2/">ggplot</a> object responsible for generating the plot</li>
 </ul>
 
 <p>In this section we will parametrize CummeRbund to create different kinds of plots from our input data.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-visualization" class="box-title" aria-label="hands-on box: Visualization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Visualization</div>
+  <div class="box-title hands-on-title" id="hands-on-visualization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Visualization</div>
 
   <ol>
     <li><strong>CummeRbund</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -957,9 +970,9 @@
           <ul>
             <li><em>“Width”</em>: <code class="language-plaintext highlighter-rouge">800</code></li>
             <li><em>“Height”</em>: <code class="language-plaintext highlighter-rouge">600</code></li>
-            <li><em>“Plot type”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">Expression</span> Plot</code>
+            <li><em>“Plot type”</em>: <code class="language-plaintext highlighter-rouge">Expression Plot</code>
               <ul>
-                <li><em>“<span class="notranslate">Expression</span> levels to plot”</em>:<code class="language-plaintext highlighter-rouge">Isoforms</code></li>
+                <li><em>“Expression levels to plot”</em>:<code class="language-plaintext highlighter-rouge">Isoforms</code></li>
                 <li><em>“Gene ID”</em>: <code class="language-plaintext highlighter-rouge">NDUFV1</code></li>
               </ul>
             </li>
@@ -972,14 +985,14 @@
 
 <p>The input data used to create the visualization comprise 3 conditions: <em>hits7</em> (Patient 1), <em>hits8</em> (Patient 2), and <em>hits9</em> (Control).</p>
 
-<p>Our first CummeRbund plot is the “<span class="notranslate">Expression</span> Plot” of the isoforms of gene NDUFV1, which shows the <span class="notranslate">expression</span> differences of isoforms NM_001166102 and NM_007103 among the three conditions. Error bars capture the variability of the distribution of FPKM values: the broader the distribution of FPKM values, the larger the corresponding error bar.</p>
+<p>Our first CummeRbund plot is the “Expression Plot” of the isoforms of gene NDUFV1, which shows the expression differences of isoforms NM_001166102 and NM_007103 among the three conditions. Error bars capture the variability of the distribution of FPKM values: the broader the distribution of FPKM values, the larger the corresponding error bar.</p>
 
-<p><img src="../../images/cummerbund-expression-plot.png" alt="Expression plot. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/cummerbund-expression-plot.png" alt="Expression plot. " width="800" height="600" loading="lazy" /></p>
 
-<p>Our plot has a modest number of isoforms, and is therefore easy to read. However, with a high number of isoforms and <span class="notranslate">expression</span> variability among different conditions, the plot can look very busy. We can therefore change the visualization type by selecting another type of plot. Let’s change visualization.</p>
+<p>Our plot has a modest number of isoforms, and is therefore easy to read. However, with a high number of isoforms and expression variability among different conditions, the plot can look very busy. We can therefore change the visualization type by selecting another type of plot. Let’s change visualization.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-visualization-1" class="box-title" aria-label="hands-on box: Visualization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Visualization</div>
+  <div class="box-title hands-on-title" id="hands-on-visualization-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Visualization</div>
 
   <ol>
     <li><strong>CummeRbund</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -988,9 +1001,9 @@
           <ul>
             <li><em>“Width”</em>: <code class="language-plaintext highlighter-rouge">800</code></li>
             <li><em>“Height”</em>: <code class="language-plaintext highlighter-rouge">600</code></li>
-            <li><em>“Plot type”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">Expression</span> Bar Plot</code>
+            <li><em>“Plot type”</em>: <code class="language-plaintext highlighter-rouge">Expression Bar Plot</code>
               <ul>
-                <li><em>“<span class="notranslate">Expression</span> levels to plot”</em>:<code class="language-plaintext highlighter-rouge">Isoforms</code></li>
+                <li><em>“Expression levels to plot”</em>:<code class="language-plaintext highlighter-rouge">Isoforms</code></li>
                 <li><em>“Gene ID”</em>: <code class="language-plaintext highlighter-rouge">NDUFV1</code></li>
               </ul>
             </li>
@@ -1001,21 +1014,21 @@
   </ol>
 </blockquote>
 
-<p><img src="../../images/cummerbund-expression-bar-plot.png" alt="Expression bar plot. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/cummerbund-expression-bar-plot.png" alt="Expression bar plot. " width="800" height="600" loading="lazy" /></p>
 
-<p>The <span class="notranslate">Expression</span> Bar Plot of gene NDUFV1’s replicates NM_001166102 and NM_007103, shows the <span class="notranslate">expression</span> changes across the three aforementioned conditions.</p>
+<p>The Expression Bar Plot of gene NDUFV1’s replicates NM_001166102 and NM_007103, shows the expression changes across the three aforementioned conditions.</p>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-  <p>These plots are shown also in <a href="https://vimeo.com/channels/884356/128265982">this</a> <span class="notranslate">Galaxy</span> video tutorial.</p>
+  <p>These plots are shown also in <a href="https://vimeo.com/channels/884356/128265982">this</a> Galaxy video tutorial.</p>
 </blockquote>
 
-<p>Let’s now create a heatmap to plot the <span class="notranslate">expression</span> levels of the significant differentially expressed gene isoforms obtained from our filter and sort operations.
+<p>Let’s now create a heatmap to plot the expression levels of the significant differentially expressed gene isoforms obtained from our filter and sort operations.
 As a showcase example, let’s consider only the top 5 differentially expressed genes.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-visualization-2" class="box-title" aria-label="hands-on box: Visualization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Visualization</div>
+  <div class="box-title hands-on-title" id="hands-on-visualization-2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Visualization</div>
 
   <ol>
     <li><strong>CummeRbund</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1026,7 +1039,7 @@ As a showcase example, let’s consider only the top 5 differentially expressed 
             <li><em>“Height”</em>: <code class="language-plaintext highlighter-rouge">600</code></li>
             <li><em>“Plot type”</em>: <code class="language-plaintext highlighter-rouge">Heatmap</code>
               <ul>
-                <li><em>“<span class="notranslate">Expression</span> levels to plot”</em>: <code class="language-plaintext highlighter-rouge">Isoforms</code></li>
+                <li><em>“Expression levels to plot”</em>: <code class="language-plaintext highlighter-rouge">Isoforms</code></li>
                 <li><em>“Gene ID”</em>: <code class="language-plaintext highlighter-rouge">LIMCH1</code></li>
                 <li><em>“Gene ID”</em>: <code class="language-plaintext highlighter-rouge">IFNL2</code></li>
                 <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <strong>Insert Genes</strong>
@@ -1050,25 +1063,27 @@ As a showcase example, let’s consider only the top 5 differentially expressed 
 
 </blockquote>
 
-<p><img src="../../images/cummerbund-heatmap.png" alt="Expression bar plot. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/cummerbund-heatmap.png" alt="Expression bar plot. " width="800" height="600" loading="lazy" /></p>
 
 <p>Heatmap of significant differentially expressed isoforms of genes LIMCH1, IFNL2, CXCL11, NUB1. Differences in up- and down-regulation of certain gene isoforms across Patient 1 (hits7), Patient 2 (hits8), and Control (hits9), are visible in the lower and upper part of the heatmap.</p>
 
 <blockquote class="comment">
-  <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-  <p>For more sophisticated visualizations of your <span class="notranslate">RNA</span>-Seq analysis results, try selecting different CummeRbund plot options and parametrizations. Have a look also at CummeRbund’s <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">manual</a>. Alte<span class="notranslate">rna</span>tively, you can modify a plot’s style by changing CummeRbund’s R output! CummeRbund’s R outputs are <em>ggplot</em> objects. Look <a href="https://github.com/tidyverse/ggplot2">here</a> to learn how to change fonts, colors, error bars, and more.</p>
+  <p>For more sophisticated visualizations of your RNA-Seq analysis results, try selecting different CummeRbund plot options and parametrizations. Have a look also at CummeRbund’s <a href="http://compbio.mit.edu/cummeRbund/manual_2_0.html">manual</a>. Alternatively, you can modify a plot’s style by changing CummeRbund’s R output! CummeRbund’s R outputs are <em>ggplot</em> objects. Look at the <a href="https://github.com/tidyverse/ggplot2">ggplot2 documentation</a> to learn how to change fonts, colors, error bars, and more.</p>
 </blockquote>
 
 <h1 id="conclusion">Conclusion</h1>
 
 <p>Visualization tools help researchers making sense of data, providing a bird’s-eye view of the underlying analysis results.
-In this tutorial we overviewed the advantages of visualizing <span class="notranslate">RNA</span>-Seq results with CummeRbund, and gained insights on CuffDiff’s big-data output by plotting information relative to the most significant differentially expressed genes in our <span class="notranslate">RNA</span>-Seq analysis.</p>
+In this tutorial we overviewed the advantages of visualizing RNA-Seq results with CummeRbund, and gained insights on CuffDiff’s big-data output by plotting information relative to the most significant differentially expressed genes in our RNA-Seq analysis.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Extract information from a SQLite CuffDiff database</p>
@@ -1106,38 +1121,18 @@ In this tutorial we overviewed the advantages of visualizing <span class="notran
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Visualization of RNA-Seq results with CummeRbund (Transcriptomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Visualization of RNA-Seq results with CummeRbund (Transcriptomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Andrea Bagnacani,  <b>Visualization of RNA-Seq results with CummeRbund (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Andrea Bagnacani,  <b>Visualization of RNA-Seq results with CummeRbund (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1149,7 +1144,7 @@ In this tutorial we overviewed the advantages of visualizing <span class="notran
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1158,28 +1153,31 @@ In this tutorial we overviewed the advantages of visualizing <span class="notran
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{transcriptomics-rna-seq-viz-with-cummerbund,
 author = "Andrea Bagnacani",
-title = "Visualization of RNA-Seq results with CummeRbund (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Visualization of RNA-Seq results with CummeRbund (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1187,11 +1185,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1200,49 +1198,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00302">https://gxy.io/GTN:T00302</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/rna-seq-viz-with-cummerbund/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

@@ -1,8 +1,9 @@
 {
   "layout": "tutorial_hands_on",
   "title": "Calling very rare variants",
+  "subtopic": "introduction",
   "zenodo_link": "",
-  "enable": false,
+  "draft": true,
   "questions": [
     "What frequency of variants is so low that it is obscured by sequencing error rate?",
     "What are the different types of consensus sequences produced from duplex sequencing?"
@@ -22,17 +23,178 @@
       "email": "anton@nekrut.org",
       "joined": "2017-09",
       "id": "nekrut",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/nekrut.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/nekrut.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/"
     },
     {
       "name": "Nick Stoler",
       "twitter": "NickStoler",
       "joined": "2018-07",
       "id": "NickSto",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/NickSto.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/NickSto.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/NickSto/"
     }
   ],
+  "short_id": "T00310",
   "url": "/topics/variant-analysis/tutorials/dunovo/tutorial.html",
   "topic_name": "variant-analysis",
-  "tutorial_name": "dunovo"
+  "tutorial_name": "dunovo",
+  "dir": "topics/variant-analysis/tutorials/dunovo",
+  "id": "variant-analysis/dunovo",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": false,
+  "workflows": [
+    {
+      "workflow": "dunovo.ga",
+      "tests": false,
+      "url": "https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/workflows/dunovo.ga",
+      "path": "topics/variant-analysis/tutorials/dunovo/workflows/dunovo.ga",
+      "wfid": "variant-analysis-dunovo",
+      "wfname": "dunovo",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/variant-analysis-dunovo/versions/dunovo",
+      "license": null,
+      "creators": [
+
+      ],
+      "test_results": null
+    },
+    {
+      "workflow": "variant-calling.ga",
+      "tests": false,
+      "url": "https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dunovo/workflows/variant-calling.ga",
+      "path": "topics/variant-analysis/tutorials/dunovo/workflows/variant-calling.ga",
+      "wfid": "variant-analysis-dunovo",
+      "wfname": "variant-calling",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/variant-analysis-dunovo/versions/variant-calling",
+      "license": null,
+      "creators": [
+
+      ],
+      "test_results": null
+    }
+  ],
+  "api": "https://training.galaxyproject.org/training-material/api/topics/variant-analysis/tutorials/dunovo/tutorial.json",
+  "tools": [
+    "Filter1",
+    "toolshed.g2.bx.psu.edu/repos/blankenberg/naive_variant_caller/naive_variant_caller/0.0.4",
+    "toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.17.1",
+    "toolshed.g2.bx.psu.edu/repos/devteam/freebayes/bamleftalign/1.1.0.46-0",
+    "toolshed.g2.bx.psu.edu/repos/nick/allele_counts/allele_counts_1/1.2",
+    "toolshed.g2.bx.psu.edu/repos/nick/dunovo/align_families/2.15",
+    "toolshed.g2.bx.psu.edu/repos/nick/dunovo/correct_barcodes/2.15",
+    "toolshed.g2.bx.psu.edu/repos/nick/dunovo/dunovo/2.15",
+    "toolshed.g2.bx.psu.edu/repos/nick/dunovo/make_families/2.15",
+    "toolshed.g2.bx.psu.edu/repos/nick/sequence_content_trimmer/sequence_content_trimmer/0.1"
+  ],
+  "supported_servers": {
+    "exact": [
+      {
+        "url": "https://usegalaxy.be/",
+        "name": "UseGalaxy.be",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org",
+        "name": "UseGalaxy.org (Main)",
+        "usegalaxy": "true"
+      }
+    ],
+    "inexact": [
+
+    ]
+  },
+  "topic_name_human": "Variant Analysis",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "naive_variant_caller",
+        "owner": "blankenberg",
+        "revisions": "6be51647d31a",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "bwa",
+        "owner": "devteam",
+        "revisions": "3fe632431b68",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "freebayes",
+        "owner": "devteam",
+        "revisions": "156b60c1530f",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "allele_counts",
+        "owner": "nick",
+        "revisions": "411adeff1eec",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "dunovo",
+        "owner": "nick",
+        "revisions": "9dc43bf7d1db",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "dunovo",
+        "owner": "nick",
+        "revisions": "9dc43bf7d1db",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "dunovo",
+        "owner": "nick",
+        "revisions": "9dc43bf7d1db",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "dunovo",
+        "owner": "nick",
+        "revisions": "9dc43bf7d1db",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "sequence_content_trimmer",
+        "owner": "nick",
+        "revisions": "7f170cb06e2e",
+        "tool_panel_section_label": "Variant Analysis",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: naive_variant_caller\n  owner: blankenberg\n  revisions: 6be51647d31a\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bwa\n  owner: devteam\n  revisions: 3fe632431b68\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: freebayes\n  owner: devteam\n  revisions: 156b60c1530f\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: allele_counts\n  owner: nick\n  revisions: 411adeff1eec\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: dunovo\n  owner: nick\n  revisions: 9dc43bf7d1db\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: dunovo\n  owner: nick\n  revisions: 9dc43bf7d1db\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: dunovo\n  owner: nick\n  revisions: 9dc43bf7d1db\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: dunovo\n  owner: nick\n  revisions: 9dc43bf7d1db\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: sequence_content_trimmer\n  owner: nick\n  revisions: 7f170cb06e2e\n  tool_panel_section_label: Variant Analysis\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "tags": [
+    "work-in-progress"
+  ]
 }

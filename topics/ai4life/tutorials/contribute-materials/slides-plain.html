@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Contribute to the BioImage.IO models</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/ai4life/tutorials/contribute-materials/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Contribute to the BioImage.IO models">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-07-04 07:38:20 +0000">
+<meta name="DC.creator" content="Caterina Fuster-Barceló">
+
+        
+        
+        
+        
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Contribute to the BioImage.IO models">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/hall-of-fame" title="Hall of Fame">
+                           <i class="fas fa-users" aria-hidden="true"></i><span class="visually-hidden">hall-of-fame</span> Contributors
+                        </a>
+
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/ai4life/tutorials/contribute-materials/slides.html" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/ai4life/tutorials/contribute-materials/slides-plain.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+            </a>
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/ai4life/tutorials/contribute-materials/slides-plain.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/ai4life/tutorials/contribute-materials/slides-plain.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/ai4life/tutorials/contribute-materials/slides-plain.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        <section class="tutorial">
+	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/ai4life/tutorials/contribute-materials/slides.html">View markdown source on GitHub</a>
+	<h1>Contribute to the BioImage.IO models</h1>
+		<h2>Contributors</h2>
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/cfusterbarcelo/" class="contributor-badge contributor-cfusterbarcelo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/cfusterbarcelo?s=36" alt="Avatar" width="36" height="36">Caterina Fuster-Barceló</a>
+	</div>
+
+</div>
+
+
+		
+		<h2>Questions</h2>
+		<ul>
+		
+		<li><p>What is contained in a BioImage.IO model?</p>
+</li>
+		
+		<li><p>Which are the requirements to contribute?</p>
+</li>
+		
+		<li><p>How to contribute?</p>
+</li>
+		
+		</ul>
+		
+
+		
+		<h2>Objectives</h2>
+		<ul>
+		
+		<li><p>Get to know how to contribute with models to the BioImage.IO</p>
+</li>
+		
+		</ul>
+		
+
+		
+
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 4, 2023 </div>
+
+	<hr />
+
+
+	<h2 id="what-is-a-bioimageio-model">What is a BioImage.IO model?</h2>
+
+<p>A BioImage.IO model contains:</p>
+<ul>
+  <li>A trained model in the correct format</li>
+  <li>Example input image</li>
+  <li>Example output</li>
+  <li>An example cover image for visual representation of the model in the zoo</li>
+  <li>Resource description file specifications</li>
+</ul>
+
+<p><span>Speaker Notes</span>
+A BioImage.IO model is a zip file containing all the items, technical description and metadata of the model, together with the trained architecture of the model.
+Hence, a BioImage.IO model contains different items such as the trained model, an example input image as a numpy array, an example output (also as a numpy array), an example cover image and, particularlly, a resource description file specifications as a r d f . yaml.
+—</p>
+
+<h2 id="model-contribution-requirements">Model contribution requirements</h2>
+
+<ul>
+  <li>Follow the <a href="https://bioimage.io/docs/#/bioimageio_model_spec">BioImage.IO Model RDF Specification</a> with <code class="language-plaintext highlighter-rouge">format_version&gt;= 0.4.5</code></li>
+  <li>The model is expected to be cross-compatible among the <a href="https://github.com/bioimage-io/spec-bioimage-io/blob/main/supported_formats_and_operations.md#consumers">consumer software</a>, and should always run on at least one.</li>
+  <li>The model should be well documented (i.e., human readable name and rich description tailored for life-scientists, citations)</li>
+  <li>The model should be public and can be used by anyone under the chosen licensing conditions.</li>
+</ul>
+
+<p><span>Speaker Notes</span>
+If you want to contribute with models, there are some requirements that need to be followed. For example, you have to follow the bioimage.io model Resource Description File Specification with a certain format version.
+The model is expected to be cross-compatible among the consumer software. It also should be well documented and, of course, it has to be public and can be used by anyone unde the chosen licensing conditions.
+—</p>
+
+<h2 id="model-contribution-guidelines">Model contribution guidelines</h2>
+
+<ol>
+  <li>Create a BioImage.IO model</li>
+  <li>Upload the model to the BioImage Model Zoo</li>
+</ol>
+
+<p><span>Speaker Notes</span>
+To contribute with a model to the BioImage Model Zoo you will only need to follow two steps. Let’s see them closely!
+—</p>
+
+<h3 id="create-a-bioimageio-model">Create a BioImage.IO model</h3>
+
+<p>Two steps:</p>
+<ol>
+  <li>Choose one way to create your model (automatically or manually)</li>
+  <li>Check that the model is correctly created</li>
+</ol>
+
+<p><span>Speaker Notes</span>
+Firstly, you will need to create a Bioimage.io model. To do so, you will need to create the model and check that it is correct. To create the model, you will have to choose if you want to do it automatically or manually. After that, you will have to check that the model is correctly created.
+—</p>
+
+<h4 id="create-a-bioimageio-model-create-your-model">Create a BioImage.IO model: Create your model</h4>
+
+<ul>
+  <li>Automatic export of the model using the <a href="https://github.com/bioimage-io/core-bioimage-io-python">bioimage.core python library</a> (recomended). Example code <a href="https://github.com/bioimage-io/core-bioimage-io-python/blob/main/example/model_creation.ipynb">here</a>.</li>
+  <li>The main function to build the model is <code class="language-plaintext highlighter-rouge">bioimageio.core.build_model</code></li>
+  <li>Manual generation of the model.</li>
+  <li>Creating the <a href="https://bioimage.io/docs/#/bioimageio_model_spec">BioImage.IO Model Resource Description File Specifications</a> (rdf.yaml file)</li>
+  <li>Some examples can be found on the Bioimage Model Zoo webpage.</li>
+</ul>
+
+<p><span>Speaker Notes</span>
+When creating your model, the first step would consist in choosing how to create this model: you can either do an automatic expoert of the model using the bioimageio.core python library (the recommended option with an example code available) or to generate the model manually.
+If you choose to do it manually, you will have to create the r d f . yaml file where there exist mandatory or optional fields on it. In the Bioimage Model Zoo webpage you can find different examples.
+—</p>
+
+<h4 id="create-a-bioimageio-model-check-that-the-model-is-correctly-created">Create a BioImage.IO model: Check that the model is correctly created</h4>
+
+<ul>
+  <li>Static Validation of the model format using the bioimage.core python library
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bioimageio validate /../rdf.yaml
+</code></pre></div>    </div>
+  </li>
+  <li>Dynamic Validation of the model’s deployment
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bioimageio test-model --weights tensorflow_saved_model_bundle --device cpu /.../rdf.yaml
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><span>Speaker Notes</span>
+Then, you will need to check that the model is correctly created. To do so, you should perform a static and dynamic validation of the model format by executing those commands in the terminal.
+—</p>
+
+<h3 id="upload-the-model-to-the-bioimage-model-zoo">Upload the model to the BioImage Model Zoo</h3>
+
+<p>In the bioimage.IO click on the Upload button.</p>
+
+<p><img src="../../images/contribute_model.png" alt="Contribute Models" /></p>
+
+<p><span>Speaker Notes</span>
+Now it is time to upload your crated model through several new steps that you need to follow.
+—</p>
+
+<h4 id="upload-the-model-log-in-to-zenodo">Upload the model: Log in to Zenodo</h4>
+
+<p>Log in to Zenodo and give access to the BioEngine application.</p>
+
+<p><img src="../../images/contribute_model.png" alt="Contribute Models" /></p>
+
+<p><span>Speaker Notes</span>
+The first step will be to log in to Zenodo and give access to the BioEngine application. You will see an automatic message once you are logged in. If not, refresh the page. This step needs to be done only for the first time you upload a model.
+—</p>
+
+<h4 id="upload-your-model-upload-your-model-rdf">Upload your model: Upload your model RDF</h4>
+
+<p><img src="../../images/contribute_model_upload_1.png" alt="Contribute Models-Upload model rdf" /></p>
+
+<p><span>Speaker Notes</span>
+The second step will be to upload your model r d f as you see in the image.
+—</p>
+
+<h4 id="upload-your-model-complete-fields">Upload your model: Complete fields</h4>
+
+<p><img src="../../images/contribute_model_upload_2.png" alt="Contribute Models-Complete Fields" /></p>
+
+<p><span>Speaker Notes</span>
+Then you will have to complete all the missing fields as in the image shown here.
+—</p>
+
+<h4 id="upload-your-model-complete-fields-1">Upload your model: Complete fields</h4>
+
+<p><img src="../../images/contribute_model_upload_3.png" alt="Contribute Models-Complete Fields" /></p>
+
+<p><span>Speaker Notes</span>
+And here.
+—</p>
+
+<h4 id="upload-your-model-pull-request">Upload your model: pull request</h4>
+
+<ol>
+  <li>A <a href="https://github.com/bioimage-io/collection-bioimage-io/pulls/bioimageiobot">Pull Request (PR)</a> will be generated</li>
+  <li>Continious Integration (CI) workflow test</li>
+  <li>Review by a maintainer from the BioImage.IO terminal</li>
+</ol>
+
+<p><span>Speaker Notes</span>
+A pull request (PR) is generated (this process may take some minutes). In the PR, the model is tested by a Continuous Integration (CI) workflow for its technical correctness. and reviewed by a maintainer from the BioImage.IO team. This PR is aimed for further discussions between model contributors and the BioImage.IO team.
+—</p>
+
+<h4 id="upload-your-model-you-are-done">Upload your model: you are done!</h4>
+
+<p>If everything went as it should be, your model will be uploaded and displayed in the webpage!</p>
+
+<p><span>Speaker Notes</span>
+Once the model passes all checks and has the approval of a maintainer, it will be added to the BioImage.IO collection and displayed in the webpage (this process may take some minutes).
+—</p>
+
+<h2 id="additional-information">Additional information</h2>
+
+<ul>
+  <li><a href="https://bioimage.io/docs/#/contribute_models/README?id=how-to-get-most-of-your-model-documentation">How to get most of your model documentation</a></li>
+  <li><a href="https://bioimage.io/docs/#/contribute_models/README?id=considerations-for-the-model-description-file-format_versiongt030">Considerations for the model description file</a></li>
+</ul>
+
+<p><span>Speaker Notes</span>
+Remember that you can always read our documentation or additional information on this topic or others in our resources.
+For example, you could check how to get most of your model documentation and considerations for the model description file.
+—</p>
+
+
+	<hr />
+
+
+
+
+
+
+
+
+<h2>Thank you!</h2>
+
+This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
+
+
+
+<img src="/training-material/topics/ai4life/images/AI4Life-logo_giraffe-nodes.png" alt="page logo" style="height: 100px;"/>
+
+
+
+This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</section>
+
+
+
+
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/ai4life/tutorials/contribute-materials/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>

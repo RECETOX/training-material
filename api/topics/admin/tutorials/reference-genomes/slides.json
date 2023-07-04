@@ -1,27 +1,118 @@
 {
   "layout": "tutorial_slides",
-  "logo": "assets/images/gat.png",
   "title": "Reference Genomes in Galaxy",
-  "contributors": [
+  "zenodo_link": "",
+  "questions": null,
+  "objectives": [
+    "Have an understanding of the way in which Galaxy stores and uses reference data",
+    "Be able to download and use data managers to add a reference genome and its pre-calculated indices into the Galaxy reference data system",
+    "Use an Ansible playbook for all of the above"
+  ],
+  "time_estimation": "1h",
+  "key_points": [
+    "Understand how Galaxy stores and uses its reference data",
+    "Understand how to manually add a reference genome and tool indices if required",
+    "Understand and how to use data managers to make all of this much much easier"
+  ],
+  "contributions": {
+    "authorship": [
+      "slugger70",
+      "afgane"
+    ],
+    "editing": [
+      "hexylena",
+      "natefoo"
+    ]
+  },
+  "requirements": [
     {
-      "name": "Daniel Blankenberg",
-      "twitter": "dblankenberg",
-      "orcid": "0000-0002-6833-9049",
-      "joined": "2018-07",
-      "id": "blankenberg",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/blankenberg.json"
-    },
-    {
-      "name": "Simon Gladman",
-      "email": "simon.gladman@unimelb.edu.au",
-      "joined": "2017-09",
-      "elixir_node": "au",
-      "id": "slugger70",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/slugger70.json"
+      "type": "internal",
+      "topic_name": "admin",
+      "tutorials": [
+        "ansible",
+        "ansible-galaxy"
+      ]
     }
   ],
   "subtopic": "data",
+  "short_id": "S00021",
   "url": "/topics/admin/tutorials/reference-genomes/slides.html",
   "topic_name": "admin",
-  "tutorial_name": "reference-genomes"
+  "tutorial_name": "reference-genomes",
+  "dir": "topics/admin/tutorials/reference-genomes",
+  "id": "admin/reference-genomes",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/admin/tutorials/reference-genomes/tutorial.json",
+  "tools": [
+    "toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa/0.7.17.5",
+    "toolshed.g2.bx.psu.edu/repos/devteam/data_manager_bwa_mem_index_builder/bwa_mem_index_builder_data_manager/0.0.5",
+    "toolshed.g2.bx.psu.edu/repos/devteam/data_manager_fetch_genome_dbkeys_all_fasta/data_manager_fetch_genome_all_fasta_dbkey/0.0.4"
+  ],
+  "supported_servers": {
+    "exact": [
+
+    ],
+    "inexact": [
+
+    ]
+  },
+  "topic_name_human": "Galaxy Server administration",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "bwa",
+        "owner": "devteam",
+        "revisions": "e188dc7a68e6",
+        "tool_panel_section_label": "Galaxy Server administration",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "data_manager_bwa_mem_index_builder",
+        "owner": "devteam",
+        "revisions": "9e993022c762",
+        "tool_panel_section_label": "Galaxy Server administration",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "data_manager_fetch_genome_dbkeys_all_fasta",
+        "owner": "devteam",
+        "revisions": "4d3eff1bc421",
+        "tool_panel_section_label": "Galaxy Server administration",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: bwa\n  owner: devteam\n  revisions: e188dc7a68e6\n  tool_panel_section_label: Galaxy Server administration\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: data_manager_bwa_mem_index_builder\n  owner: devteam\n  revisions: 9e993022c762\n  tool_panel_section_label: Galaxy Server administration\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: data_manager_fetch_genome_dbkeys_all_fasta\n  owner: devteam\n  revisions: 4d3eff1bc421\n  tool_panel_section_label: Galaxy Server administration\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "contributors": [
+    "blankenberg",
+    "slugger70"
+  ],
+  "logo": "assets/images/gat.png",
+  "redirect_from": [
+    "/short/admin/reference-genomes/slides",
+    "/short/S00021"
+  ]
 }

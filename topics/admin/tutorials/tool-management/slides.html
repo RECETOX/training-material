@@ -1,41 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Galaxy Tool Management with Ephemeris</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/tool-management/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Galaxy Tool Management with Ephemeris">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-04-18 12:09:34 +0000">
+<meta name="DC.creator" content="Marius van den Beek">
+<meta name="DC.creator" content="Catherine Bromhead">
+<meta name="DC.creator" content="Martin Čech">
+<meta name="DC.creator" content="Simon Gladman">
+<meta name="DC.creator" content="Helena Rasche">
+<meta name="DC.creator" content="Nicola Soranzo">
 
+        
+        
+        
+        
+        <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Galaxy Tool Management with Ephemeris" />
+        <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/gat.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Galaxy Tool Management with Ephemeris</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:title" content="Galaxy Training: Galaxy Tool Management with Ephemeris" />
-    <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/tool-management/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -60,7 +93,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2021-04-06 11:50:17 +0000",
+  "dateModified": "2023-04-18 12:09:34 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Galaxy Tool Management with Ephemeris",
   "interactivityType": "mixed",
@@ -86,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -124,8 +161,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/mvdbeek/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/mvdbeek/",
@@ -145,8 +182,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cat-bro/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cat-bro/",
@@ -166,8 +203,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/martenson/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/martenson/",
@@ -181,14 +218,16 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9318-1781",
+      "orcid": "https://orcid.org/0000-0002-9318-1781"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/slugger70/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/slugger70/",
@@ -202,14 +241,16 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-6100-4385",
+      "orcid": "https://orcid.org/0000-0002-6100-4385"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
@@ -231,140 +272,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "name": "Nicola Soranzo",
-      "image": "https://avatars.githubusercontent.com/nsoranzo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3627-5340",
-      "orcid": "https://orcid.org/0000-0003-3627-5340"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/mvdbeek/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/mvdbeek/",
-      "name": "Marius van den Beek",
-      "image": "https://avatars.githubusercontent.com/mvdbeek",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cat-bro/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cat-bro/",
-      "name": "Catherine Bromhead",
-      "image": "https://avatars.githubusercontent.com/cat-bro",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/martenson/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/martenson/",
-      "name": "Martin Čech",
-      "image": "https://avatars.githubusercontent.com/martenson",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/slugger70/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/slugger70/",
-      "name": "Simon Gladman",
-      "image": "https://avatars.githubusercontent.com/slugger70",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
@@ -390,12 +299,19 @@
       "description": "Resources related to configuration and maintenance of Galaxy servers",
       "url": "https://training.galaxyproject.org/training-material/topics/admin/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "## Galaxy tools"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -431,38 +347,17 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/mvdbeek/" class="contributor-badge contributor-mvdbeek"><img src="https://avatars.githubusercontent.com/mvdbeek?s=27" alt="Avatar">Marius van den Beek</a>
-
-
-
-<a href="/training-material/hall-of-fame/cat-bro/" class="contributor-badge contributor-cat-bro"><img src="https://avatars.githubusercontent.com/cat-bro?s=27" alt="Avatar">Catherine Bromhead</a>
-
-
-
-<a href="/training-material/hall-of-fame/martenson/" class="contributor-badge contributor-martenson"><img src="https://avatars.githubusercontent.com/martenson?s=27" alt="Avatar">Martin Čech</a>
-
-
-
-<a href="/training-material/hall-of-fame/slugger70/" class="contributor-badge contributor-slugger70"><img src="https://avatars.githubusercontent.com/slugger70?s=27" alt="Avatar">Simon Gladman</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/mvdbeek/" class="contributor-badge contributor-mvdbeek"><img src="https://avatars.githubusercontent.com/mvdbeek?s=36" alt="Avatar" width="36" height="36">Marius van den Beek</a><a href="/training-material/hall-of-fame/cat-bro/" class="contributor-badge contributor-cat-bro"><img src="https://avatars.githubusercontent.com/cat-bro?s=36" alt="Avatar" width="36" height="36">Catherine Bromhead</a><a href="/training-material/hall-of-fame/martenson/" class="contributor-badge contributor-martenson"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/martenson?s=36" alt="Avatar" width="36" height="36">Martin Čech</a><a href="/training-material/hall-of-fame/slugger70/" class="contributor-badge contributor-slugger70"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/slugger70?s=36" alt="Avatar" width="36" height="36">Simon Gladman</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a>
 	</div>
 
 </div>
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00025">gxy.io/GTN:S00025</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -653,12 +548,12 @@ It contains some metadata for each tool.
 
 ???
 
-The tool shed is Galaxy's app store.
+The tool shed is Galaxy&apos;s app store.
 
-It's a free service hosts repositories containing Galaxy tools
+It&apos;s a free service hosts repositories containing Galaxy tools
 and can be found at this URL.
 
-It's not a development platform: tools are usually maintained
+It&apos;s not a development platform: tools are usually maintained
 in open source github repos and uploaded to the toolshed.
 
 ---
@@ -697,7 +592,7 @@ Toolshed tools can be installed through the admin UI but using ephemeris is reco
 ## How to add tools manually
 
 - To add a local tool by hand:
-  - Add an entry to tool_conf.xml pointing to the local tool's xml file
+  - Add an entry to tool_conf.xml pointing to the local tool&apos;s xml file
   - if `tool_conf.xml` does not exist it can be copied from `tool_conf.xml.sample`
 - To add local tools with the [galaxyproject.galaxy Ansible role][galaxy-role]:
   - Set `galaxy_local_tools` to the local tool paths
@@ -713,7 +608,7 @@ Toolshed tools can be installed through the admin UI but using ephemeris is reco
 
 Tools can be added manually to the tool_conf.xml file.
 
-If this doesn't exist it can be copied from the default file tool_conf.xml.sample.
+If this doesn&apos;t exist it can be copied from the default file tool_conf.xml.sample.
 
 There is also a variable in the galaxy ansible role for adding these.
 
@@ -730,7 +625,7 @@ The dependecies need to be installed separately.
 ???
 
 An administrator can look up any tool from the main toolshed in the
-admin panel and click the 'Install' button.
+admin panel and click the &apos;Install&apos; button.
 
 ---
 
@@ -754,7 +649,7 @@ This is important for reproducibility.
 
 If you use a tool in an analysis on a public galaxy server it will be there forever.
 
-If you need to rerun your analysis in a year's time, the tool you have used will still
+If you need to rerun your analysis in a year&apos;s time, the tool you have used will still
 be there even if a is a newer revision of the tool has been installed.
 
 ---
@@ -794,7 +689,7 @@ commented out entry for the test toolshed.
 ## What happens when installing a repo from the Tool Shed
 
 * The repository is downloaded
-* If needed, the tool's dependencies are installed
+* If needed, the tool&apos;s dependencies are installed
 * If needed, reference data tables are installed
 * An entry for each tool is created in the Galaxy database
 * The tools are added to `shed_tool_conf.xml`
@@ -803,7 +698,7 @@ commented out entry for the test toolshed.
 
 The repository is downloaded
 
-The tool's dependencies are installed if needed (they may already be there)
+The tool&apos;s dependencies are installed if needed (they may already be there)
 
 If needed, reference data tables are installed
 
@@ -879,25 +774,25 @@ unless an admin API key is provided.
 
 ```yaml
 tools:
-- name: 'column_maker'
-  owner: 'devteam'
-  tool_panel_section_label: 'Text Manipulation'
+- name: &apos;column_maker&apos;
+  owner: &apos;devteam&apos;
+  tool_panel_section_label: &apos;Text Manipulation&apos;
   revisions:
-  - '464b9305180e'	# 1.2.0
-  tool_shed_url: 'toolshed.g2.bx.psu.edu'
-- name: 'bwa'
-  owner: 'devteam'
+  - &apos;464b9305180e&apos;	# 1.2.0
+  tool_shed_url: &apos;toolshed.g2.bx.psu.edu&apos;
+- name: &apos;bwa&apos;
+  owner: &apos;devteam&apos;
   revisions:
-  - '051eba708f43'  # 0.7.15.2
-  - '4d82cf59895e'  # 0.7.16.2
-  tool_panel_section_label: 'Mapping'
-  tool_shed_url: 'toolshed.g2.bx.psu.edu'
-- name: 'tabular_to_fasta'
-  owner: 'devteam'
+  - &apos;051eba708f43&apos;  # 0.7.15.2
+  - &apos;4d82cf59895e&apos;  # 0.7.16.2
+  tool_panel_section_label: &apos;Mapping&apos;
+  tool_shed_url: &apos;toolshed.g2.bx.psu.edu&apos;
+- name: &apos;tabular_to_fasta&apos;
+  owner: &apos;devteam&apos;
   revisions:
-  - '0b4e36026794'  # v1.1.0
-  tool_panel_section_label: 'Convert Formats'
-  tool_shed_url: 'toolshed.g2.bx.psu.edu'
+  - &apos;0b4e36026794&apos;  # v1.1.0
+  tool_panel_section_label: &apos;Convert Formats&apos;
+  tool_shed_url: &apos;toolshed.g2.bx.psu.edu&apos;
 ```
 
 ???
@@ -951,7 +846,7 @@ They can specify the name, owner and section label or provide a yaml list of too
 (1)
 ```yaml
 shed-tools install -g &lt;galaxy url&gt; -a &lt;api key&gt; \
-  --name circos --owner iuc --section_label 'Graph/Display Data'
+  --name circos --owner iuc --section_label &apos;Graph/Display Data&apos;
 ```
 
 (2)
@@ -978,10 +873,10 @@ These two examples are equivalent to each other.
 The advantage of the second approach is that many tools be listed
 in tools.yml to be installed at the same time
 
-The argument 'revisions' can also be provided to install a
+The argument &apos;revisions&apos; can also be provided to install a
 specific revision or more than one revision of the repository.
 
-In the absence of a 'revisions' argument, shed-tools will 
+In the absence of a &apos;revisions&apos; argument, shed-tools will 
 install the latest revision of the tool.
 
 ---
@@ -1093,7 +988,7 @@ items:
 
 ???
 
-A yaml file describing two folders with one file each to upload to galaxy's shared data.
+A yaml file describing two folders with one file each to upload to galaxy&apos;s shared data.
 
 Contains instructions to download the file contents from public URLs
 
@@ -1104,17 +999,17 @@ Contains instructions to download the file contents from public URLs
 
 ```console
 $ galaxy-wait -g http://localhost:8080 -v
-[00] Galaxy not up yet... HTTPConnectionPool(host='localhost', port=8080):
+[00] Galaxy not up yet... HTTPConnectionPool(host=&apos;localhost&apos;, port=8080):
 	 Max retries exceeded with url: /api/version (Caused
-[01] Galaxy not up yet... HTTPConnectionPool(host='localhost', port=8080):
+[01] Galaxy not up yet... HTTPConnectionPool(host=&apos;localhost&apos;, port=8080):
 	 Max retries exceeded with url: /api/version (Caused
-[02] Galaxy not up yet... HTTPConnectionPool(host='localhost', port=8080):
+[02] Galaxy not up yet... HTTPConnectionPool(host=&apos;localhost&apos;, port=8080):
 	 Max retries exceeded with url: /api/version (Caused
-[03] Galaxy not up yet... HTTPConnectionPool(host='localhost', port=8080):
+[03] Galaxy not up yet... HTTPConnectionPool(host=&apos;localhost&apos;, port=8080):
 	 Max retries exceeded with url: /api/version (Caused
-[04] Galaxy not up yet... HTTPConnectionPool(host='localhost', port=8080):
+[04] Galaxy not up yet... HTTPConnectionPool(host=&apos;localhost&apos;, port=8080):
 	 Max retries exceeded with url: /api/version (Caused
-[05] Galaxy not up yet... HTTPConnectionPool(host='localhost', port=8080):
+[05] Galaxy not up yet... HTTPConnectionPool(host=&apos;localhost&apos;, port=8080):
 	 Max retries exceeded with url: /api/version (Caused
 
 Galaxy Version: 17.05
@@ -1129,7 +1024,7 @@ If the server is ready it will return straight away.
 If not it will keep sending requests.
 
 This is useful if you want to run any of the other commands such as shed-tools
-install and you don't know whether Galaxy will be ready.
+install and you don&apos;t know whether Galaxy will be ready.
 
 ---
 
@@ -1160,14 +1055,14 @@ A tool shed repository containing one tool: remove_beginning.
 
 The repository contains
 - a perl script that is executed from code in the wrapper
-- test input and output for the tool's tests
+- test input and output for the tool&apos;s tests
 - a metadata file for the toolshed.
 
 ---
 class: normal
 ## `.shed.yml` file
 
-Contains repository's metadata.
+Contains repository&apos;s metadata.
 
 ```yaml
 categories:
@@ -1188,7 +1083,7 @@ The tool name and owner are set in the metadata file.
 
 The file also contains the development url for the tool. 
 
-The development URL is displayed in the toolshed as a link to the tool's files within its development environment.
+The development URL is displayed in the toolshed as a link to the tool&apos;s files within its development environment.
 
 This is the github repo you would go to raise an issue the the tool or make a pull request to improve the tool.
 
@@ -1251,8 +1146,8 @@ These can be run from the admin panel or using ephemeri
 ## Suite repositories
 
 - Suites can be used to split up a set of tools into multiple repositories
-  - A suite is a single repository that 'depends' on many others
-  - When you install the suite, all 'dependency repositories' will be installed too
+  - A suite is a single repository that &apos;depends&apos; on many others
+  - When you install the suite, all &apos;dependency repositories&apos; will be installed too
 - With a tweak to `.shed.yml`, [Planemo](https://planemo.readthedocs.io) can upload a directory of tools to the TS as a suite of separate tools
 - Examples: suite_samtools, suite_hicexplorer
 
@@ -1268,62 +1163,15 @@ Installing samtools_suite will result in all of these samtools repositories bein
 
 ---
 
-## Tool dependency resolution
+## Resolving Galaxy Tool Dependencies
 
-* We aim to make Galaxy resolver-independent, with a preference for [conda](https://conda.io/) and containers
-* What resolver is going to be used for the tool dependencies is determined at runtime
-according to the order specified in `dependency_resolvers_conf.xml`.
-
-```xml
-&lt;dependency_resolvers&gt;
-  &lt;tool_shed_packages /&gt;
-  &lt;galaxy_packages /&gt;
-  &lt;conda /&gt;
-  &lt;galaxy_packages versionless=&quot;true&quot; /&gt;
-  &lt;conda versionless=&quot;true&quot; /&gt;
-&lt;!-- other resolvers
-  &lt;lmod /&gt;
-  &lt;lmod versionless=&quot;true&quot; /&gt;
-  &lt;modules modulecmd=&quot;/opt/Modules/3.2.9/bin/modulecmd&quot; /&gt;
-  &lt;modules modulecmd=&quot;/opt/Modules/3.2.9/bin/modulecmd&quot; versionless=&quot;true&quot; default_indicator=&quot;default&quot; /&gt;
-  &lt;tool_shed_tap /&gt;
-  &lt;homebrew /&gt;
---&gt;
-&lt;/dependency_resolvers&gt;
-```
-
-[Full documentation](https://docs.galaxyproject.org/en/master/admin/dependency_resolvers.html)
-
-???
-
-Without going into detail, at run-time Galaxy will look for installed dependencies
-in an order determined by the dependency_resolvers.conf.xml file.
-
-The file shown on this slide is the default configuration.
-
-Given a set of requirements, Galaxy will look first for an installed toolshed package that meets those requirements.
-
-If galaxy finds this it will source the package and look no further.
-
-If galaxy does not find this it will look for
-- a galaxy package with the required version,
-- followed by a conda package with the required version,
-- followed by a galaxy package of any version,
-- followed by a conda package of any version.
-
-Typically the packages to run the tool will be conda packages.
-
----
-
-## Using containers for Tool Dependencies
-
-- Galaxy can also use **Docker** or **Singularity** containers to resolve dependencies
+- The recommended method for resolving tool dependencies is with containers: **Apptainer/Singularity** or **Docker**
+- It is also possible to use **Conda** to resolve dependencies.
 - You can read more about this in the [Tool Dependencies and Containers slides](../../../dev/tutorials/containers/slides.html)
 
 ???
 
-A more recent development in Galaxy is the use of Docker or Singularity containers to resolve dependencies
-and there is some further reading on this.
+The preferred method for resolving tool dependencies is through containers. Apptainer particularly works well in the context of cluster jobs. It is also possible to use non-container dependency resolution methods. There is further reading available on this topic.
 
 
 
@@ -1355,31 +1203,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/mvdbeek/" class="contributor-badge contributor-mvdbeek"><img src="https://avatars.githubusercontent.com/mvdbeek?s=27" alt="Avatar">Marius van den Beek</a>
-
-
-
-<a href="/training-material/hall-of-fame/cat-bro/" class="contributor-badge contributor-cat-bro"><img src="https://avatars.githubusercontent.com/cat-bro?s=27" alt="Avatar">Catherine Bromhead</a>
-
-
-
-<a href="/training-material/hall-of-fame/martenson/" class="contributor-badge contributor-martenson"><img src="https://avatars.githubusercontent.com/martenson?s=27" alt="Avatar">Martin Čech</a>
-
-
-
-<a href="/training-material/hall-of-fame/slugger70/" class="contributor-badge contributor-slugger70"><img src="https://avatars.githubusercontent.com/slugger70?s=27" alt="Avatar">Simon Gladman</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/mvdbeek/" class="contributor-badge contributor-mvdbeek"><img src="https://avatars.githubusercontent.com/mvdbeek?s=36" alt="Avatar" width="36" height="36">Marius van den Beek</a><a href="/training-material/hall-of-fame/cat-bro/" class="contributor-badge contributor-cat-bro"><img src="https://avatars.githubusercontent.com/cat-bro?s=36" alt="Avatar" width="36" height="36">Catherine Bromhead</a><a href="/training-material/hall-of-fame/martenson/" class="contributor-badge contributor-martenson"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/martenson?s=36" alt="Avatar" width="36" height="36">Martin Čech</a><a href="/training-material/hall-of-fame/slugger70/" class="contributor-badge contributor-slugger70"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/slugger70?s=36" alt="Avatar" width="36" height="36">Simon Gladman</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a>
 	</div>
 
 </div>
@@ -1399,10 +1223,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -1414,7 +1238,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -1426,6 +1250,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

@@ -1,7 +1,5 @@
 {
   "layout": "tutorial_slides",
-  "logo": "GTN",
-  "class": "enlarge120",
   "title": "De Bruijn Graph Assembly",
   "zenodo_link": "https://doi.org/10.5281/zenodo.582600",
   "questions": [
@@ -14,6 +12,7 @@
     "Perform an assembly using the SPAdes assembler."
   ],
   "time_estimation": "2h",
+  "level": "Introductory",
   "key_points": [
     "We learned about how the choice of k-mer size will affect assembly outcomes",
     "We learned about the strategies that assemblers use to make reference genomes",
@@ -21,16 +20,133 @@
     "You should use SPAdes or another more modern assembler than Velvet for actual assemblies now."
   ],
   "contributors": [
-    {
-      "name": "Simon Gladman",
-      "email": "simon.gladman@unimelb.edu.au",
-      "joined": "2017-09",
-      "elixir_node": "au",
-      "id": "slugger70",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/slugger70.json"
-    }
+    "slugger70"
   ],
+  "short_id": "S00032",
   "url": "/topics/assembly/tutorials/debruijn-graph-assembly/slides.html",
   "topic_name": "assembly",
-  "tutorial_name": "debruijn-graph-assembly"
+  "tutorial_name": "debruijn-graph-assembly",
+  "dir": "topics/assembly/tutorials/debruijn-graph-assembly",
+  "id": "assembly/debruijn-graph-assembly",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": true,
+  "workflows": [
+    {
+      "workflow": "debruijn-graph.ga",
+      "tests": true,
+      "url": "https://training.galaxyproject.org/training-material/topics/assembly/tutorials/debruijn-graph-assembly/workflows/debruijn-graph.ga",
+      "path": "topics/assembly/tutorials/debruijn-graph-assembly/workflows/debruijn-graph.ga",
+      "wfid": "assembly-debruijn-graph-assembly",
+      "wfname": "debruijn-graph",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/assembly-debruijn-graph-assembly/versions/debruijn-graph",
+      "license": null,
+      "creators": [
+
+      ],
+      "test_results": null
+    }
+  ],
+  "api": "https://training.galaxyproject.org/training-material/api/topics/assembly/tutorials/debruijn-graph-assembly/tutorial.json",
+  "tools": [
+    "toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1",
+    "toolshed.g2.bx.psu.edu/repos/nml/spades/spades/3.12.0+galaxy1",
+    "toolshed.g2.bx.psu.edu/repos/simon-gladman/velvetoptimiser/velvetoptimiser/2.2.6"
+  ],
+  "supported_servers": {
+    "exact": [
+      {
+        "url": "https://galaxy.mesocentre.uca.fr",
+        "name": "Galaxy@AuBi",
+        "usegalaxy": "false"
+      },
+      {
+        "url": "https://galaxy.genouest.org",
+        "name": "Galaxy@GenOuest",
+        "usegalaxy": "false"
+      },
+      {
+        "url": "https://usegalaxy.be/",
+        "name": "UseGalaxy.be",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.eu",
+        "name": "UseGalaxy.eu",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.no/",
+        "name": "UseGalaxy.no",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org",
+        "name": "UseGalaxy.org (Main)",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org.au",
+        "name": "UseGalaxy.org.au",
+        "usegalaxy": "true"
+      }
+    ],
+    "inexact": [
+
+    ]
+  },
+  "topic_name_human": "Assembly",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "fasta_stats",
+        "owner": "iuc",
+        "revisions": "9c620a950d3a",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "spades",
+        "owner": "nml",
+        "revisions": "b7829778729f",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "velvetoptimiser",
+        "owner": "simon-gladman",
+        "revisions": "37d88f41c810",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: fasta_stats\n  owner: iuc\n  revisions: 9c620a950d3a\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: spades\n  owner: nml\n  revisions: b7829778729f\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: velvetoptimiser\n  owner: simon-gladman\n  revisions: 37d88f41c810\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "logo": "GTN",
+  "class": "enlarge120",
+  "redirect_from": [
+    "/short/assembly/debruijn-graph-assembly/slides",
+    "/short/S00032"
+  ]
 }

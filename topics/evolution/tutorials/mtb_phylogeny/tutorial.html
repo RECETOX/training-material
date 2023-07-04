@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,46 +8,313 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Tree thinking for tuberculosis evolution and epidemiology" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Christoph Stritt" />
-<meta name="DC.creator" content="Daniela Brites" />
-<meta name="DC.creator" content="Galo A. Goig" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Tree thinking for tuberculosis evolution and epidemiology">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-16 11:14:15 +0000">
+<meta name="DC.creator" content="Christoph Stritt">
+<meta name="DC.creator" content="Daniela Brites">
+<meta name="DC.creator" content="Galo A. Goig">
 
         
         
         
         
+        <meta name="description" content="phylogenetics">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Tree thinking for tuberculosis evolution and epidemiology">
+        <meta property="og:description" content="phylogenetics">
         
-        <meta name="description" content="phylogenetics" />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Tree thinking for tuberculosis evolution and epidemiology" />
-        <meta property="og:description" content="phylogenetics" />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-05-16 11:14:15 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Tree thinking for tuberculosis evolution and epidemiology",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Evolution",
+    "description": "phylogenetics",
+    "url": "https://training.galaxyproject.org/training-material/topics/evolution/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Tree thinking for tuberculosis evolution and epidemiology' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html",
+  "timeRequired": "PT1H",
+  "teaches": "Understand the basic concepts behind phylogenetic trees, as applied to *Mycobacterium tuberculosis*\n - Be able to read and interrogate a phylogeny encountered in the literature",
+  "keywords": "evolution, prokaryote, one-health, phylogenetics",
+  "description": "The questions this  addresses are:\n - What information can I get from a phylogenetic tree?\n - How do I estimate a phylogeny?\n\n\nThe objectives are:\n - Understand the basic concepts behind phylogenetic trees, as applied to *Mycobacterium tuberculosis*\n - Be able to read and interrogate a phylogeny encountered in the literature\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "competencyRequired": [
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
+      "name": "Introduction to Galaxy Analyses",
+      "description": "Introduction to Galaxy Analyses",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/tb-variant-analysis/tutorial.html",
+      "name": "M. tuberculosis Variant Analysis",
+      "description": "Hands-on for 'M. tuberculosis Variant Analysis' tutorial",
+      "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html",
+      "name": "Identifying tuberculosis transmission links: from SNPs to transmission clusters",
+      "description": "Hands-on for 'Identifying tuberculosis transmission links: from SNPs to transmission clusters' tutorial",
+      "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    }
+  ],
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cstritt/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cstritt/",
+      "name": "Christoph Stritt",
+      "image": "https://avatars.githubusercontent.com/cstritt",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dbrites/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dbrites/",
+      "name": "Daniela Brites",
+      "image": "https://avatars.githubusercontent.com/dbrites",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/GaloGS/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/GaloGS/",
+      "name": "Galo A. Goig",
+      "image": "https://avatars.githubusercontent.com/GaloGS",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Evolution",
+      "description": "phylogenetics",
+      "url": "https://training.galaxyproject.org/training-material/topics/evolution/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3299",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3299",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3299"
+    }
+  ],
+  "educationalLevel": "Beginner",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "prokaryote"
+    },
+    {
+      "@type": "Thing",
+      "name": "one-health"
+    },
+    {
+      "@type": "Thing",
+      "name": "phylogenetics"
+    }
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,38 +330,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/evolution/tutorials/mtb_phylogeny/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/evolution/tutorials/mtb_phylogeny/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/evolution/tutorials/mtb_phylogeny/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/evolution/tutorials/mtb_phylogeny/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/evolution/tutorials/mtb_phylogeny/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/evolution/tutorials/mtb_phylogeny/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -114,9 +353,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/evolution/faqs/" title="Check our FAQs for the Evolution topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -134,7 +375,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/evolution/tutorials/mtb_phylogeny/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -163,27 +403,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -195,13 +422,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/evolution/tutorials/mtb_phylogeny/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/evolution/tutorials/mtb_phylogeny/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/evolution/tutorials/mtb_phylogeny/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/evolution/tutorials/mtb_phylogeny/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/evolution/tutorials/mtb_phylogeny/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/evolution/tutorials/mtb_phylogeny/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -214,7 +441,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -228,8 +455,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -246,280 +478,44 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 14:23:35 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Tree thinking for tuberculosis evolution and epidemiology",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Evolution",
-    "description": "phylogenetics",
-    "url": "https://training.galaxyproject.org/training-material/topics/evolution/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Tree thinking for tuberculosis evolution and epidemiology' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html",
-  "timeRequired": "PT1H",
-  "keywords": "evolution, prokaryotes, phylogenetics, evolution, work-in-progress",
-  "description": "The questions this  addresses are:\n - What information can I get from a phylogenetic tree?\n - How do I estimate a phylogeny?\n\n\nThe objectives are:\n - Understand the basic concepts behind phylogenetic trees, as applied to *Mycobacterium tuberculosis*\n - Be able to read and interrogate a phylogeny encountered in the literature\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cstritt/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cstritt/",
-      "name": "Christoph Stritt",
-      "image": "https://avatars.githubusercontent.com/cstritt",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dbrites/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dbrites/",
-      "name": "Daniela Brites",
-      "image": "https://avatars.githubusercontent.com/dbrites",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/GaloGS/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/GaloGS/",
-      "name": "Galo A. Goig",
-      "image": "https://avatars.githubusercontent.com/GaloGS",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/cstritt/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/cstritt/",
-      "name": "Christoph Stritt",
-      "image": "https://avatars.githubusercontent.com/cstritt",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dbrites/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dbrites/",
-      "name": "Daniela Brites",
-      "image": "https://avatars.githubusercontent.com/dbrites",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/GaloGS/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/GaloGS/",
-      "name": "Galo A. Goig",
-      "image": "https://avatars.githubusercontent.com/GaloGS",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Evolution",
-      "description": "phylogenetics",
-      "url": "https://training.galaxyproject.org/training-material/topics/evolution/"
-    }
-  ],
-  "educationalLevel": "Beginner"
-}
-</script>
-
-<section class="tutorial topic-evolution">
+<article class="tutorial topic-evolution">
     <h1 data-toc-skip>Tree thinking for tuberculosis evolution and epidemiology</h1>
     
-    <div class="alert alert-warning" role="alert">
-        <h4 class="alert-heading">Under Development!</h4>
-        <p>This tutorial is not in its final state. The content may change a lot in the next months.
-        Because of this status, it is also not listed in the topic pages.</p>
-    </div>
-    
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/cstritt/" class="contributor-badge contributor-cstritt"><img src="https://avatars.githubusercontent.com/cstritt?s=27" alt="Avatar">Christoph Stritt</a>
+		
+<table class="contributions">
+	
+	<tr>
+		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/cstritt/" class="contributor-badge contributor-cstritt"><img src="https://avatars.githubusercontent.com/cstritt?s=36" alt="Avatar" width="36" height="36">Christoph Stritt</a><a href="/training-material/hall-of-fame/dbrites/" class="contributor-badge contributor-dbrites"><img src="https://avatars.githubusercontent.com/dbrites?s=36" alt="Avatar" width="36" height="36">Daniela Brites</a><a href="/training-material/hall-of-fame/GaloGS/" class="contributor-badge contributor-GaloGS"><img src="https://avatars.githubusercontent.com/GaloGS?s=36" alt="Avatar" width="36" height="36">Galo A. Goig</a>
+		</td>
+	</tr>
+	
 
 
+	
 
-<a href="/training-material/hall-of-fame/dbrites/" class="contributor-badge contributor-dbrites"><img src="https://avatars.githubusercontent.com/dbrites?s=27" alt="Avatar">Daniela Brites</a>
+	
+	<tr>
+		<td><abbr title="These people edited the text, either for spelling and grammar, flow, GTN-fit, or other similar editing categories">Editor(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/wm75?s=36" alt="Avatar" width="36" height="36">Wolfgang Maier</a></td>
+	</tr>
+	
 
+	
 
+	
 
-<a href="/training-material/hall-of-fame/GaloGS/" class="contributor-badge contributor-GaloGS"><img src="https://avatars.githubusercontent.com/GaloGS?s=27" alt="Avatar">Galo A. Goig</a>
-
+	
+</table>
 
 
 	</div>
@@ -528,9 +524,9 @@
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -568,6 +564,90 @@
     </li>
 
         
+    <li>
+    
+        
+        
+        <a href="/training-material/topics/variant-analysis">Variant Analysis</a>
+        
+            <ul>
+                
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            
+                            <li> M. tuberculosis Variant Analysis:
+                            
+                            
+                                
+                                     <a href="/training-material/topics/variant-analysis/tutorials/tb-variant-analysis/tutorial.html"><i class="fas fa-laptop" aria-hidden="true"></i><span class="visually-hidden">tutorial</span> hands-on</a>
+                                
+                            
+                            </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                
+            </ul>
+        
+    
+    </li>
+
+    <li>
+    
+        
+        
+        <a href="/training-material/topics/evolution">Evolution</a>
+        
+            <ul>
+                
+                    
+                        
+                    
+                        
+                            
+                            <li> Identifying tuberculosis transmission links: from SNPs to transmission clusters:
+                            
+                            
+                                
+                                     <a href="/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html"><i class="fas fa-laptop" aria-hidden="true"></i><span class="visually-hidden">tutorial</span> hands-on</a>
+                                
+                            
+                            </li>
+                        
+                    
+                
+            </ul>
+        
+    
+    </li>
+
         </ul>
         
 
@@ -601,7 +681,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/6010176">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -611,8 +691,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/evolution/tutorials/mtb_phylogeny/workflows/" title="Workflows" alt="Tree thinking for tuberculosis evolution and epidemiology workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/evolution/tutorials/mtb_phylogeny/workflows/" title="Tree thinking for tuberculosis evolution and epidemiology workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -649,202 +729,73 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main)
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/evolution/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxytrakr.org/" title="GalaxyTrakr">
-            GalaxyTrakr
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://virology.usegalaxy.eu/" title="Virology">
-            Virology
-        </a>
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 16, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00144">https://gxy.io/GTN:T00144</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -855,6 +806,7 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <p><em>“Nothing in biology makes sense except in the light of evolution.”</em> — Theodosius Dobzhansky, 1973</p>
@@ -865,11 +817,22 @@
 
 <p>This tutorial provides an introduction to phylogenetic trees in the context of whole genome sequencing of <em>Mycobacterium tuberculosis</em> strains. Phylogenetics is a vast topic, and we can only scratch its surface here. For those motivated to delve deeper into the topic, the <a href="#resources">Resources section</a> contains links and reading suggestions.</p>
 
-<h1 id="basic-concepts-how-to-read-a-phylogeny">Basic concepts: How to read a phylogeny</h1>
-<p>Below are two phylogenies of the <em>Mycobacterium tuberculosis</em> complex (MTBC) to illustrate some basic vocabulary and concepts. If the following sounds a bit too esoteric, revisit the previous step of the course, the <a href="https://www.ebi.ac.uk/training/online/courses/introduction-to-phylogenetics/">introduction to phylogenetics</a>.</p>
+<h2 id="basic-concepts-how-to-read-a-phylogeny">Basic concepts: How to read a phylogeny</h2>
 
-<h2 id="rooted-trees-and-tree-topology">Rooted trees and tree topology</h2>
-<p>These trees look rather different at a first glance, but they are identical except for one key aspect: tree A is <strong>rooted</strong> while tree B is not.</p>
+<p>Below are two phylogenies of the <em>Mycobacterium tuberculosis</em> complex (MTBC) to illustrate some basic vocabulary and concepts.</p>
+
+<blockquote class="details">
+  <div class="box-title details-title" id="details-need-a-more-thorough-introduction-to-the-topic"><button class="gtn-boxify-button details" type="button" aria-controls="details-need-a-more-thorough-introduction-to-the-topic" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Need a more thorough introduction to the topic?<span class="fold-unfold fa fa-minus-square"></span></button></div>
+
+  <p>If the following discussion sounds a bit too esoteric, you might be interested in a more thorough introduction to the topic of phylogeny like provided, for example, by the <a href="https://www.ebi.ac.uk/training/online/courses/introduction-to-phylogenetics/">introduction to phylogenetics</a> from the <a href="https://www.ebi.ac.uk/training/on-demand?facets=type:Online%20tutorial">EMBL-EBI collection of online tutorials</a>.</p>
+
+</blockquote>
+
+<h3 id="rooted-trees-and-tree-topology">Rooted trees and tree topology</h3>
+
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><div style="overflow-x: auto"><object data="./images/mtbc_1strainPerLineage.nwk.COMB.svg" type="image/svg+xml" alt="Phylogeny. ">Phylogeny.</object></div><small><a target="_blank" href="./images/mtbc_1strainPerLineage.nwk.COMB.svg">Open image in new tab</a></small><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Rooted [A] and unrooted [B] phylogeny of the MTBC. Some basic tree vocabulary is shown in red.</figcaption></figure>
+
+<p>The trees in figure 1 look rather different at a first glance, but they are identical except for one key aspect: tree A is <strong>rooted</strong> while tree B is not.</p>
 
 <p>What is the difference between the two? First, let’s state what is the same in the two trees: the tree <strong>topology</strong>, that is, the relative branching order. The same groupings are present in the two trees: they both contain the same information about the <strong>relatedness</strong> of strains. An example: TB isolated from Peruvian mummies is most similar to <em>M. pinnipedii</em> known from marine mammals; they share a most recent common ancestor. This can be seen in the rooted as well as in the unrooted tree.</p>
 
@@ -877,29 +840,28 @@
 
 <p>The best way to root a tree is by including an <strong>outgroup</strong>: a species or lineage which we know <em>a priori</em> to lay outside the phylogeny we’re interested in. <em>M. canettii</em> usually serves this purpose for studying the MTBC, but you can also root, for example, a phylogeny of lineage 2 by including a lineage 4 strain.</p>
 
-<figure id="figure-1"><img src="./images/mtbc_1strainPerLineage.nwk.COMB.svg" alt="Phylogeny. " width="800" loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Rooted [A] and unrooted [B] phylogeny of the MTBC. Some basic tree vocabulary is shown in red.</figcaption></figure>
+<h3 id="branch-lengths">Branch lengths</h3>
 
-<h2 id="branch-lengths">Branch lengths</h2>
-<p>Besides relatedness and direction, a third important piece of information contained in a phylogeny is the branch length. When a phylogeny was estimated from <span class="notranslate">DNA</span> or protein sequences, branch lengths usually reflect the evolutionary distance between nodes in the tree. This information can be used to translate distance in terms of expected nucleotide changes into years, and thus to connect evolutionary change to historical events.</p>
+<p>Besides relatedness and direction, a third important piece of information contained in a phylogeny is the branch length. When a phylogeny has been estimated from DNA or protein sequences, branch lengths usually reflect the evolutionary distance between nodes in the tree. This information can be used to translate distance in terms of expected nucleotide changes into years, and thus to connect evolutionary change to historical events.</p>
 
-<p>As branch lengths reflect evolutionary distances, they can also be used to identify transmission clusters and outbreaks. Below is a (rooted) tree of the Central Asian Clade (CAC), which is part of lineage 2 (<span class="citation"><a href="#Eldholm2016">Eldholm <i>et al.</i> 2016</a></span>). The orange color highlights the Afghan strain family within the CAC. At the bottom of the tree, note the clade with short branch lengths. This is how one would expect an outbreak to look in a phylogenetic tree: a set of strains clustering together and separated by extremely short branches, reflecting their almost identical genomes.</p>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="./images/eldholm2016_tree.png" alt="Phylogeny. " width="310" height="734" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Phylogeny of the central Asian clade, including the Oslo outbreak. Modified Eldholm et al. 2016.</figcaption></figure>
 
-<figure id="figure-2"><img src="./images/eldholm2016_tree.png" alt="Phylogeny. " width="200" loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Phylogeny of the central Asian clade, including the Oslo outbreak. Modified Eldholm et al. 2016.</figcaption></figure>
+<p>As branch lengths reflect evolutionary distances, they can also be used to identify transmission clusters and outbreaks. Figure 2 shows a (rooted) tree of the Central Asian Clade (CAC), which is part of lineage 2 (<span class="citation"><a href="#Eldholm2016">Eldholm <i>et al.</i> 2016</a></span>). The orange color highlights the Afghan strain family within the CAC. At the bottom of the tree, note the clade with short branch lengths. This is how one would expect an outbreak to look in a phylogenetic tree: a set of strains clustering together and separated by extremely short branches, reflecting their almost identical genomes.</p>
 
 <blockquote class="comment">
-  <div id="comment-phylogenetics-with-i-mycobacterium-tuberculosis-i" class="box-title" aria-label="comment box: Phylogenetics with &lt;i&gt;Mycobacterium tuberculosis&lt;/i&gt;"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Phylogenetics with <i>Mycobacterium tuberculosis</i></div>
+  <div class="box-title comment-title" id="comment-phylogenetics-with-i-mycobacterium-tuberculosis-i"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Phylogenetics with <i>Mycobacterium tuberculosis</i></div>
 
   <p>Phylogenetics with MTB has some particularities rarely encountered with other organisms.</p>
 
   <ol>
     <li>
-      <p>There seems to be <strong>no horizontal gene transfer</strong> (HGT) in the MTBC. HGT complicates phylogenetic inference in many bacteria because a piece of <span class="notranslate">DNA</span> introduced by HGT has a different history and thus phylogeny than genes not affected by HGT.</p>
+      <p>There seems to be <strong>no horizontal gene transfer</strong> (HGT) in the MTBC. HGT complicates phylogenetic inference in many bacteria because a piece of DNA introduced by HGT has a different history and thus phylogeny than genes not affected by HGT.</p>
     </li>
     <li>
       <p>There is <strong>little genetic diversity</strong> in the MTBC: any two strains differ by only around 2,500 SNPs over the whole genome. To achieve a good resolution of recent evolution (e.g. during an outbreak), whole genome sequences are thus extremely useful.</p>
     </li>
     <li>
-      <p>A large proportion of <span class="notranslate">DNA</span> polymorphisms in the MTBC are <strong>singletons</strong>, that is, variants present only in a single strain. This adds to the problem of low diversity, since singletons are not informative about tree topology.</p>
+      <p>A large proportion of DNA polymorphisms in the MTBC are <strong>singletons</strong>, that is, variants present only in a single strain. This adds to the problem of low diversity, since singletons are not informative about tree topology.</p>
     </li>
     <li>
       <p>In this workshop, and indeed in many studies of the MTBC, SNPs are called not against the reference strain H37Rv, but against a reconstructed ancestral genome. This means that the number of SNPs identified does not reflect the evolutionary distance from some random strain like H37Rv, but from the most recent common ancestor of the MTBC. Take a look at Figure 3 in <span class="citation"><a href="#Goig2018">Goig <i>et al.</i> 2018</a></span> to see how this affects the number of SNPs identified in a genome. Below we will see that this has implications for the interpretation of a tree.</p>
@@ -908,191 +870,344 @@
 
 </blockquote>
 
-<h1 id="the-alignment">The alignment</h1>
-<p>Aligned <span class="notranslate">DNA</span> or protein sequences are the starting material for phylogenetic inference with molecular data. Here we will make use of the single nucleotide polymorphisms (SNPs) you obtained in the previous <a href="/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html">tutorial on transmission clusters</a>, reflecting the diversity of 19 MTBC strains and 1 strain of <em>M. canettii</em>. The latter is included as outgroup, allowing us to root the phylogeny.</p>
+<h2 id="infering-phylogeny-from-snp-alignments">Infering phylogeny from SNP alignments</h2>
 
-<p>Recall that the alignment here was generated using SNPs called from reference-aligned short <span class="notranslate">reads</span>. Below is a snapshot of a SNP alignment. Each row is a different strain, each column a position in the reference genome. Because this alignment is based on SNPs, it contains <em>only variable positions</em>. This is important to keep in mind. Genetic distances between strains will be hugely overestimated if we leave out all the positions which show no variation. In exercise 6 below, we will see a way to correct for this.</p>
+<p>Aligned DNA or protein sequences are the starting material for phylogenetic inference with molecular data.</p>
 
-<p><img src="./images/MEGA_alignment.png" alt="Alignment. " width="500" loading="lazy" /></p>
+<p>In this tutorial we will explore the phylogenetic relationship between 19 MTBC strains and 1 strain of <em>M. canettii</em>, where the latter is included as outgroup, allowing us to root the phylogeny. Our starting point will be an alignment of all SNPs identified from whole-genome sequencing data of these 20 strains. This <em>SNP alignment</em> was generated by</p>
+
+<ol>
+  <li>mapping short sequenced reads from each sample to the infered sequence of the most recent common ancestor of the MTBC as the reference</li>
+  <li>calling variants against that reference from the mapped reads of each sample</li>
+  <li>incorporating the SNP variants of each sample into the reference to obtain a consensus genome of that sample</li>
+  <li>combining the consensus genomes into a single multi-sequence fasta dataset</li>
+  <li>discarding bases found to be identical in all samples from all sequences</li>
+</ol>
 
 <blockquote class="comment">
-  <div id="comment-the-alternative-approach-genome-assembly" class="box-title" aria-label="comment box: The alternative approach: genome assembly"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: The alte<span class="notranslate">rna</span>tive approach: genome assembly</div>
+  <div class="box-title comment-title" id="comment-recommended-tutorials"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Recommended tutorials</div>
 
-  <p>A frequently used alte<span class="notranslate">rna</span>tive approach to obtain a phylogeny from short read data is to a) assemble the genomes (see the numerous <a href="https://training.galaxyproject.org/training-material/topics/assembly"><span class="notranslate">Galaxy</span> tutorials</a> on this topic), b) annotate genes, c) extract genes present in all strains (the “core” genes), d) align the core genes. This approach underlies core genome multilocus sequence typing (cgMLST), which is often used to genotype bacterial pathogens (e.g. <span class="citation"><a href="#Zhou2021">Zhou <i>et al.</i> 2021</a></span>).</p>
+  <p>Steps 1 and 2 are explained in detail in the tutorial <a href="/training-material/topics/variant-analysis/tutorials/tb-variant-analysis/tutorial.html">MTB variant analysis</a>.
+Steps 3 - 5 are conducted for the exact same 20 samples used here in the <a href="/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html">tutorial on transmission clusters</a>.</p>
+
+  <p>If you want to gain a complete understanding of the whole process of sequencing-based analysis of MTBC strains, we recommend you, if you have not done so yet, to work through these two tutorials in the order above before continuing with this one here.</p>
 
 </blockquote>
 
+<p>Figure 3 shows a snapshot of an illustrative SNP alignment.
+Each row in the alignment represents a different strain, each column a position in the reference genome.</p>
+
+<figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="./images/MEGA_alignment.png" alt="Alignment. " width="1478" height="840" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Illustrative example of a SNP alignment. Note the absence of conserved positions.</figcaption></figure>
+
+<p>Because this alignment is based on SNPs, it contains <em>only variable positions</em>. This is important to keep in mind! Genetic distances between strains will be hugely overestimated if we leave out all the positions which show no variation!</p>
+
+<p>Near the end of this tutorial, we will show and discuss ways to correct for this.</p>
+
+<blockquote class="comment">
+  <div class="box-title comment-title" id="comment-the-alternative-approach-genome-assembly"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: The alternative approach: genome assembly</div>
+
+  <p>A frequently used alternative approach to obtain a phylogeny from short read data is to a) assemble the genomes (see the numerous <a href="https://training.galaxyproject.org/training-material/topics/assembly">Galaxy tutorials</a> on this topic), b) annotate genes, c) extract genes present in all strains (the “core” genes), d) align the core genes. This approach underlies core genome multilocus sequence typing (cgMLST), which is often used to genotype bacterial pathogens (e.g. <span class="citation"><a href="#Zhou2021">Zhou <i>et al.</i> 2021</a></span>).</p>
+
+</blockquote>
+
+<p>With this bit of introduction you should, hopefully, be prepared to follow the flow and purpose of the analysis presented here.</p>
+
+<blockquote class="agenda">
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
+
+  <p>In this tutorial, we will cover:</p>
+
+<ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>    <ol>
+      <li><a href="#basic-concepts-how-to-read-a-phylogeny" id="markdown-toc-basic-concepts-how-to-read-a-phylogeny">Basic concepts: How to read a phylogeny</a></li>
+      <li><a href="#infering-phylogeny-from-snp-alignments" id="markdown-toc-infering-phylogeny-from-snp-alignments">Infering phylogeny from SNP alignments</a></li>
+    </ol>
+  </li>
+  <li><a href="#phylogenetic-analysis-of-mtbc-strains-with-galaxy-and-rstudio" id="markdown-toc-phylogenetic-analysis-of-mtbc-strains-with-galaxy-and-rstudio">Phylogenetic analysis of MTBC strains with Galaxy and Rstudio</a>    <ol>
+      <li><a href="#get-the-data" id="markdown-toc-get-the-data">Get the data</a></li>
+      <li><a href="#estimate-a-phylogeny" id="markdown-toc-estimate-a-phylogeny">Estimate a phylogeny</a></li>
+      <li><a href="#visualize-and-manipulate-the-tree" id="markdown-toc-visualize-and-manipulate-the-tree">Visualize and manipulate the tree</a></li>
+      <li><a href="#plot-the-raxml-output" id="markdown-toc-plot-the-raxml-output">Plot the RAxML output</a></li>
+      <li><a href="#root-the-tree" id="markdown-toc-root-the-tree">Root the tree</a></li>
+      <li><a href="#create-tree-with-lineage-as-tip-label-instead-of-strain-name" id="markdown-toc-create-tree-with-lineage-as-tip-label-instead-of-strain-name">Create tree with lineage as tip label instead of strain name</a></li>
+      <li><a href="#first-round-of-exercises" id="markdown-toc-first-round-of-exercises">First round of exercises</a></li>
+      <li><a href="#map-a-trait-onto-the-tree" id="markdown-toc-map-a-trait-onto-the-tree">Map a trait onto the tree</a></li>
+      <li><a href="#exercises-continued" id="markdown-toc-exercises-continued">Exercises continued</a></li>
+      <li><a href="#date-the-phylogeny-advanced" id="markdown-toc-date-the-phylogeny-advanced">Date the phylogeny (advanced)</a></li>
+      <li><a href="#final-exercise" id="markdown-toc-final-exercise">Final exercise</a></li>
+    </ol>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+  <li><a href="#resources" id="markdown-toc-resources">Resources</a>    <ol>
+      <li><a href="#books" id="markdown-toc-books">Books</a></li>
+      <li><a href="#useful-links" id="markdown-toc-useful-links">Useful links</a></li>
+    </ol>
+  </li>
+</ol>
+
+</blockquote>
+
+<h1 id="phylogenetic-analysis-of-mtbc-strains-with-galaxy-and-rstudio">Phylogenetic analysis of MTBC strains with Galaxy and Rstudio</h1>
+
 <h2 id="get-the-data">Get the data</h2>
+
+<p>If you have worked at least through the first part of the <a href="/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html">tutorial on transmission clusters</a> before coming here, you are all set.</p>
+
+<p>You can continue working in the same history you created for the other tutorial, or copy the <em>SNP alignment</em> (the output of <strong>Finds SNP sites</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>) over to a new one, and can safely skip the following first hands-on part.</p>
+
+<p>If you are not interested in that other tutorial, here are the instructions for setting up a history for the analysis here, and for obtaining a copy of the SNP alignment from <a href="https://zenodo.org/record/6010176">Zenodo</a>.</p>
+
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-obtain-your-data" class="box-title" aria-label="hands-on box: Obtain your data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Obtain your data</div>
+  <div class="box-title hands-on-title" id="hands-on-create-a-new-history-and-prepare-the-input-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create a new history and prepare the input data</div>
 
   <ol>
     <li>
-      <p>Make sure you have an empty analysis history. Give it a name.</p>
+      <p>Create a new history for this analysis</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
-      <p>Import the following files from <a href="https://zenodo.org/record/6010176">Zenodo</a> or from the shared data library</p>
+      <p>Give the history a suitable name</p>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name: <code class="language-plaintext highlighter-rouge">MTB tree thinking tutorial</code></li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name: <code class="language-plaintext highlighter-rouge">MTB tree thinking tutorial</code></li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
+    </li>
+    <li>
+      <p><span class="tool" data-tool="upload1" title="Upload tool" aria-role="link"><strong>Upload</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: upload1</span></span> a version of the SNP alignment via this URL</p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/6010176/files/SNP_alignment.fasta
 </code></pre></div>      </div>
 
+      <p>and make sure the dataset format is set to <code class="language-plaintext highlighter-rouge">fasta</code>.</p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Change <strong>Type (set all):</strong> from “Auto-detect” to <code class="language-plaintext highlighter-rouge">fasta</code></p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
+    </li>
+    <li>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/1.1.2" title="Replace Text in entire line tool" aria-role="link"><strong>Replace Text in entire line</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/1.1.2</span></span> to clean up the aligned sequence names</p>
+
+      <ul>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“File to process”</em>: the uploaded SNP alignment</li>
+        <li>In <i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“1. Replacement”</em>:
+          <ul>
+            <li><em>“Find pattern”</em>: <code class="language-plaintext highlighter-rouge">^(&gt;.+)\.fastq.*</code></li>
+            <li><em>“Replace with”</em>: <code class="language-plaintext highlighter-rouge">\1</code></li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>From just a brief inspection of the downloaded SNP alignment, you should see that the sequence names in that file carry a <code class="language-plaintext highlighter-rouge">.fastq.vcf</code> or <code class="language-plaintext highlighter-rouge">.fastq.gz.vcf</code> suffix on the actual sample names.
+The above replacement operation, drops these unnecessary endings, which we would otherwise carry over to all outputs generated in the analysis.</p>
+    </li>
+    <li>
+      <p>When the Replace Text tool run is finished, <strong>rename</strong> the output dataset to, for example, <strong>SNP alignment</strong></p>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a dataset<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field  to <code class="language-plaintext highlighter-rouge">SNP alignment</code></li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Take a look at the alignment</p>
+
+      <p>Click on the dataset that you just renamed to expand it in the history, then click on <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> <strong>Visualize</strong> and try both, the “Editor” and the “Multiple Sequence Alignment”.</p>
+
+      <p>Can you see one of the MTBC particularities mentioned above, the predominance of singletons?</p>
+
+      <p>How many sites are there in the alignment?</p>
+
+      <p>Also take a look at the M. canettii sequence: being the outgroup, it has a large number of SNPs.</p>
     </li>
   </ol>
 
-  <p>Once the file is loaded, select it in the history on the right. Click on the ‘Visualize’ icon and and try both, the ‘Editor’ and the ‘Multiple Sequence Alignment’. Can you see one of the MTBC particularities mentioned above, the predominance of singletons? How many sites are there in the alignment? Also take a look at the M. canettii sequence: being the outgroup, it has a large number of SNPs.</p>
-
 </blockquote>
 
-<h1 id="estimate-a-phylogeny">Estimate a phylogeny</h1>
+<h2 id="estimate-a-phylogeny">Estimate a phylogeny</h2>
+
 <p>There are numerous methods to infer phylogenetic trees, but the most frequently used with large-scale molecular data are based on maximum likelihood and Bayesian inference. The details of how these methods construct trees from an alignment are beyond the scope of this introductory course. To be able to read trees, it is not necessary to know the statistical and computational details of how the trees are estimated. The books listed in the <a href="#resources">Resources</a> section provide in-depth introductions into the different principles of phylogenetic inference, in particular Baum &amp; Smith 2013 and Yang 2014.</p>
 
 <p>In this tutorial, we will use the maximum likelihood method <a href="https://cme.h-its.org/exelixis/web/software/raxml/">RAxML</a> to estimate a phylogenetic tree for the 20 strains.</p>
 
 <p>An aspect we ignore in this tutorial is the uncertainty involved in phylogenetic inference. While RAxML will deliver a single tree, not all aspects of this tree are equally well supported by the data. This uncertainty can be quantified through <strong>bootstrapping</strong>, a procedure where a large number of trees are estimated from random samples of the original data. If a certain split in the original tree is present in all the bootstrapped trees, then we can be confident about this split. Published phylogenies should always include a measure of uncertainty, while for this tutorial you will have to believe me that we are looking at a solid phylogeny…</p>
 
-<h2 id="hands-on">Hands-on</h2>
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-estimate-a-phylogeny-for-20-mtbc-strains" class="box-title" aria-label="hands-on box: Estimate a phylogeny for 20 MTBC strains"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Estimate a phylogeny for 20 MTBC strains</div>
+  <div class="box-title hands-on-title" id="hands-on-estimate-a-phylogeny-for-20-mtbc-strains"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Estimate a phylogeny for 20 MTBC strains</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/raxml/raxml/8.2.4+galaxy2" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/raxml/raxml/8.2.4+galaxy2"><strong>Phyogenetic reconstruction with RAxML</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/raxml/raxml/8.2.4+<span class="notranslate">galaxy</span>2</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/raxml/raxml/8.2.12+galaxy0" title="Phyogenetic reconstruction with RAxML tool" aria-role="link"><strong>Phyogenetic reconstruction with RAxML</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/raxml/raxml/8.2.12+galaxy0</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Source file with aligned sequences”</em>: <code class="language-plaintext highlighter-rouge">output</code> (Input dataset)</li>
         <li><em>“Model type”</em>: <code class="language-plaintext highlighter-rouge">Nucleotide</code></li>
         <li><em>“RAxML options to use”</em>: <code class="language-plaintext highlighter-rouge">Required options only</code></li>
       </ul>
     </li>
-    <li>The RAxML output we are interested in is the “Best-scoring ML tree”. Select it in you <span class="notranslate">Galaxy</span> history and take a look at it with the different visualization options offered by <span class="notranslate">Galaxy</span>.</li>
+    <li>
+      <p>The RAxML output we are interested in is the <em>“Best-scoring ML tree”</em>.</p>
+
+      <p>Select it in you Galaxy history and take a look at it with the different <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> visualization options offered by Galaxy.</p>
+
+      <figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="./images/tree_unrooted_galaxy_vis.png" alt="Unrooted tree Galaxy visualization. " width="500" height="746" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> (Unrooted) RAxML tree in Galaxy's Phylogenetic Tree Visualization</figcaption></figure>
+    </li>
   </ol>
 
 </blockquote>
 
-<h1 id="visualize-and-manipulate-the-tree">Visualize and manipulate the tree</h1>
+<h2 id="visualize-and-manipulate-the-tree">Visualize and manipulate the tree</h2>
+
 <p>Phylogenetic trees are great tools because they are at the same time quantitative (we can do calculations on branch lengths, estimate uncertainty of a tree topology etc.) and visually appealing, allowing to actually “see” biologically interesting patterns. Often this requires some tweaking of the tree, for example by coloring parts of the tree according to some background information we have about the samples.</p>
 
-<p>We will use R to plot and manipulate the phylogeny obtained from RAxML. The code to produce the figures is shown in the boxes below. You can execute it by starting RStudio within <span class="notranslate">Galaxy</span>, as explained in the box below. This is <strong>not required to finish this tutorial</strong>, the different trees resulting from executing the code are shown below. But if you have used R before, it might be worthwhile to go through the code, modify it, and explore the numerous phylogenetics packages and functions in R.</p>
+<p>We will use R to plot and manipulate the phylogeny obtained from RAxML. We will provide you with the exact code to produce the figures we need, and, conveniently, you can run this code from an RStudio session that you can start as an interactive tool inside Galaxy.</p>
+
+<blockquote class="details">
+  <div class="box-title details-title" id="details-can-i-use-my-own-coding-environment"><button class="gtn-boxify-button details" type="button" aria-controls="details-can-i-use-my-own-coding-environment" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Can I use my own coding environment?<span class="fold-unfold fa fa-minus-square"></span></button></div>
+
+  <p>If you have worked with R or RStudio previously, feel free to use any kind of coding environment for exploring and manipulating the RAxML tree we have produced - just download it from your history and import it into any R session you have access to.</p>
+
+</blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-starting-rstudio" class="box-title" aria-label="hands-on box: Starting RStudio"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Starting RStudio</div>
+  <div class="box-title hands-on-title" id="hands-on-starting-an-rstudio-session-and-setting-things-up"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Starting an RStudio session and setting things up</div>
 
   <ol>
     <li>
-      <p>Note the history number of the “Best-scoring ML tree”</p>
+      <p>Note the dataset number (the number in front of and separated with a <strong>:</strong> from the dataset name) of the <em>“Best-scoring ML tree”</em> output of RAxML</p>
     </li>
     <li>
-      <p><span class="tool" data-tool="interactive_tool_rstudio" title="Tested with interactive_tool_rstudio"><strong>RStudio</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_rstudio</span></span>  in <span class="notranslate">Galaxy</span> provides some special functions such as <code class="language-plaintext highlighter-rouge">gx_get</code> to import and export files from your history.</p>
+      <p>Run <span class="tool" data-tool="interactive_tool_rstudio" title="RStudio tool" aria-role="link"><strong>RStudio</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_rstudio</span></span></p>
 
       <!--SNIPPET-->
-      <blockquote class="notranslate hands_on">  <div id="hands-on-launch-rstudio" class="box-title" aria-label="hands_on box: Launch RStudio"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Launch RStudio</div>  <p>Depending on which server you are using, you may be able to run RStudio directly in <span class="notranslate">Galaxy</span>. If that is not available, RStudio Cloud can be an alte<span class="notranslate">rna</span>tive.</p>  <blockquote class="tip">  <tip-title>Launch RStudio in <span class="notranslate">Galaxy</span></tip-title>  <p>Currently RStudio in <span class="notranslate">Galaxy</span> is only available on <a href="https://usegalaxy.eu">Use<span class="notranslate">Galaxy</span>.eu</a> and <a href="https://usegalaxy.org">Use<span class="notranslate">Galaxy</span>.org</a></p>  <ol>    <li>Open the Rstudio tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by clicking <a href="https://usegalaxy.eu/?tool_id=interactive_tool_rstudio">here to launch RStudio</a></li>    <li>Click Execute</li>    <li>The tool will start running and will stay running permanently</li>    <li>Click on the “User” menu at the top and go to “Active InteractiveTools” and locate the RStudio instance you started.</li>  </ol></blockquote>  <blockquote class="tip">  <tip-title>Launch RStudio Cloud if not available on <span class="notranslate">Galaxy</span></tip-title>  <p>If RStudio is not available on the <span class="notranslate">Galaxy</span> instance:</p>  <ol>    <li>Register for <a href="https://client.login.rstudio.cloud/oauth/login?show_auth=0&amp;show_login=1&amp;show_setup=1">RStudio Cloud</a>, or login if you already have an account</li>    <li>Create a new project</li>  </ol></blockquote></blockquote>
+      <blockquote class="notranslate hands_on">   <div class="box-title hands_on-title" id="hands-on-launch-rstudio"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Launch RStudio</div>   <p>Depending on which server you are using, you may be able to run RStudio directly in Galaxy. If that is not available, RStudio Cloud can be an alternative.</p>   <blockquote class="tip">   <div class="box-title tip-title" id="tip-launch-rstudio-in-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-launch-rstudio-in-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Launch RStudio in Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Currently RStudio in Galaxy is only available on <a href="https://usegalaxy.eu">UseGalaxy.eu</a> and <a href="https://usegalaxy.org">UseGalaxy.org</a></p>   <ol>     <li>Open the Rstudio tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by clicking <a href="https://usegalaxy.eu/?tool_id=interactive_tool_rstudio">here to launch RStudio</a></li>     <li>Click Run Tool</li>     <li>The tool will start running and will stay running permanently</li>     <li>Click on the “User” menu at the top and go to “Active InteractiveTools” and locate the RStudio instance you started.</li>   </ol> </blockquote>   <blockquote class="tip">   <div class="box-title tip-title" id="tip-launch-rstudio-cloud-if-not-available-on-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-launch-rstudio-cloud-if-not-available-on-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Launch RStudio Cloud if not available on Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>If RStudio is not available on the Galaxy instance:</p>   <ol>     <li>Register for <a href="https://client.login.rstudio.cloud/oauth/login?show_auth=0&amp;show_login=1&amp;show_setup=1">RStudio Cloud</a>, or login if you already have an account</li>     <li>Create a new project</li>   </ol> </blockquote> </blockquote>
+      <p><!--END_SNIPPET--></p>
+    </li>
+    <li>Install and use the <a href="https://cran.r-project.org/web/packages/ape/index.html">ape R package</a>
+      <ol>
+        <li>Click on the <strong>Terminal</strong> tab (at the top of the Rstudio window)</li>
+        <li>
+          <p>Execute the command: <code class="language-plaintext highlighter-rouge">conda install r-ape</code></p>
+
+          <p>This will install the ape package into the environment of the running session.</p>
+        </li>
+        <li>
+          <p>When the previous step has finished, switch back to the <strong>Console</strong> tab and run the command</p>
+
+          <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="s2">"ape"</span><span class="p">)</span><span class="w">
+</span></code></pre></div>          </div>
+
+          <p>You might get a warning about R versions, which you can ignore.</p>
+        </li>
+      </ol>
     </li>
     <li>
-      <p>Install the <a href="https://cran.r-project.org/web/packages/ape/index.html">ape R package</a></p>
-      <ul>
-        <li>Click on the <strong>Terminal</strong> tab (top of the Rstudio window)
-          <ul>
-            <li>Execute the command: <code class="language-plaintext highlighter-rouge">conda install r-ape</code></li>
-          </ul>
-        </li>
-        <li>Once done, switch back to the <strong>Console</strong> tab
-          <ul>
-            <li>Type: <code class="language-plaintext highlighter-rouge">library("ape")</code></li>
-            <li>You might get a warning about R versions, we can ignore that in our case.</li>
-          </ul>
-        </li>
-      </ul>
+      <p>Import the RAxML *“Best-scoring ML tree into the Rstudio session</p>
+
+      <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">treefile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gx_get</span><span class="p">(</span><span class="c1">###)</span><span class="w">
+</span></code></pre></div>      </div>
+
+      <p>where you have to replace <code class="language-plaintext highlighter-rouge">###</code> with the dataset number of the RAxML output in your history.</p>
     </li>
   </ol>
 
 </blockquote>
 
 <h2 id="plot-the-raxml-output">Plot the RAxML output</h2>
-<p>The RAxML output includes the “Best-scoring ML tree” in your <span class="notranslate">Galaxy</span> history. The code below imports this tree into a <span class="notranslate">Galaxy</span> instance of RStudio and plots the tree.</p>
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load ape, an R package for phylogenetics</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">ape</span><span class="p">)</span><span class="w">
+<p>We have now set up our R session and are ready to start exploring the tree interactively.</p>
 
-</span><span class="c1"># Load the tree from <span class="notranslate">Galaxy</span>: in the first line below, replace x with the number of the "Best-scoring ML tree" in your <span class="notranslate">Galaxy</span> history (see box above).</span><span class="w">
-</span><span class="n">treefile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gx_get</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
-</span><span class="n">tree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.tree</span><span class="p">(</span><span class="n">treefile</span><span class="p">)</span><span class="w">
+<p>As a first step we would like to parse the tree information from the imported dataset and plot the tree.</p>
 
-</span><span class="c1"># Plot the tree</span><span class="w">
-</span><span class="n">plot</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="w">
+<blockquote class="comment">
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-</span></code></pre></div></div>
-<p><img src="./images/tree_unrooted.svg" alt="Unrooted tree. " width="600" loading="lazy" /></p>
-
-<blockquote class="question">
-  <div id="question-exercise-1" class="box-title" aria-label="question box: Exercise 1"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Exercise 1</div>
-
-  <ol>
-    <li>Take a look at the tree generated by RAxML. Is it rooted or unrooted? What is the strain far apart from all other strains?</li>
-  </ol>
-
-  <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: 1"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 1<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-
-    <ol>
-      <li>The tree is unrooted, and the outlier strain is <em>M. canettii</em>, our outgroup. The much longer branch leading to this strange shows that many SNPs separate <em>M. canettii</em> from the common ancestor of the MTBC.</li>
-    </ol>
-
-  </blockquote>
+  <p>If you are experienced with R, you are encouraged also to start playing with all the code from here on, to modify it, and to explore the numerous phylogenetics packages and functions available in R.</p>
 
 </blockquote>
 
+<blockquote class="hands-on">
+  <div class="box-title hands-on-title" id="hands-on-parse-the-tree-and-plot-it"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Parse the tree and plot it</div>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Parse the tree</span><span class="w">
+</span><span class="n">tree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.tree</span><span class="p">(</span><span class="n">treefile</span><span class="p">)</span><span class="w">
+</span><span class="c1"># Plot it</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="w">
+</span></code></pre></div>  </div>
+
+  <blockquote class="question">
+    <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+
+    <ol>
+      <li>Take a look at the tree generated by RAxML. Is it rooted or unrooted? What is the strain far apart from all other strains?</li>
+    </ol>
+
+    <blockquote class="solution">
+      <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: 1<span class="fold-unfold fa fa-minus-square"></span></button></div>
+
+      <p><img src="./images/tree_unrooted.svg" alt="Unrooted tree. " width="449" height="234" loading="lazy" /></p>
+
+      <ol>
+        <li>The tree is unrooted, and the outlier strain is <em>M. canettii</em>, our outgroup. The much longer branch leading to this strain shows that many SNPs separate <em>M. canettii</em> from the common ancestor of the MTBC.</li>
+      </ol>
+
+    </blockquote>
+  </blockquote>
+</blockquote>
+
 <h2 id="root-the-tree">Root the tree</h2>
-<p>To make the phylogeny better interpretable, we will now root it and add some additional information. First, we root the tree and then exclude the canettii strain, such that patterns within the MTBC become more clear.</p>
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Root the tree</span><span class="w">
-</span><span class="n">tree_rooted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">root</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="s2">"ERR313115.fastq.vcf"</span><span class="p">)</span><span class="w">
+<p>To make the phylogeny more interpretable, we will now root the tree using the <em>M. canettii</em> strain as the outgroup, then exclude that strain, such that patterns <em>within</em> the MTBC become clearer.</p>
 
-</span><span class="c1"># Remove the outgroup to make distances within MTB more clear</span><span class="w">
-</span><span class="n">tree_rooted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">drop.tip</span><span class="p">(</span><span class="n">tree_rooted</span><span class="p">,</span><span class="w"> </span><span class="s2">"ERR313115.fastq.vcf"</span><span class="p">)</span><span class="w">
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-root-the-tree-and-drop-its-outgroup"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Root the tree and drop its outgroup</div>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Root the tree</span><span class="w">
+</span><span class="n">tree_rooted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">root</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="s2">"ERR313115"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Remove the outgroup to make distances within MTB clearer</span><span class="w">
+</span><span class="n">tree_rooted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">drop.tip</span><span class="p">(</span><span class="n">tree_rooted</span><span class="p">,</span><span class="w"> </span><span class="s2">"ERR313115"</span><span class="p">)</span><span class="w">
 </span><span class="n">tree_rooted</span><span class="o">$</span><span class="n">root.edge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.005</span><span class="w">
 </span><span class="n">plot</span><span class="p">(</span><span class="n">tree_rooted</span><span class="p">,</span><span class="w"> </span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">0.6</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
+</span></code></pre></div>  </div>
+</blockquote>
 
-<p><img src="./images/tree_rooted.svg" alt="Rooted tree. " width="600" loading="lazy" /></p>
+<p><img src="./images/tree_rooted.svg" alt="Rooted tree. " width="522" height="429" loading="lazy" /></p>
 
 <p>This already looks better, the tree topology stands out more clearly now, and we can identify groups of closely related strains.</p>
 
-<h2 id="show-the-different-lineages-present-in-the-sample">Show the different lineages present in the sample</h2>
-<p>A first piece of information we now want to add to the phylogeny is to which lineage the strains belong. This will allow us to assess whether our tree is consistent with the known phylogeny of the MTBC, shown in Figure 1A, and to visualize which lineages are present in our sample. The information to which lineage a strain belongs can be found in the output of TB-profiler, as obtained in the <a href="/training-material/topics/variant-analysis/tutorials/tb-variant-analysis/tutorial.html">tutorial on TB variant analysis</a>.</p>
+<h2 id="create-tree-with-lineage-as-tip-label-instead-of-strain-name">Create tree with lineage as tip label instead of strain name</h2>
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Assign lineages to samples, as identified by TB-profiler</span><span class="w">
+<p>A first piece of information we now want to add to the phylogeny is to which lineage the strains belong. This will allow us to assess whether our tree is consistent with the known phylogeny of the MTBC, shown in Figure 1A, and to visualize which lineages are present in our sample. The information to which lineage a strain belongs can be found in the output of TB-profiler, as explained in the <a href="/training-material/topics/variant-analysis/tutorials/tb-variant-analysis/tutorial.html">tutorial on TB variant analysis</a>.</p>
+
+<blockquote class="hands-on">
+  <div class="box-title hands-on-title" id="hands-on-generate-a-tree-with-lineage-labels"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Generate a tree with lineage labels</div>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Assign lineages to samples, as identified by TB-profiler</span><span class="w">
 
 </span><span class="n">mtbc_lineages</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w">
-</span><span class="s2">"ERR181435.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L7"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR313115.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"canettii"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR551620.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L5"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR1203059.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L5"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2659153.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"orygis"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2704678.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L3"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2704679.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L1"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2704687.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L6"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR5987300.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR5987352.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L4"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362078.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362138.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362139.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L4"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362156.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362253.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362333.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362484.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L4"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362653.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"SRR998584.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L5"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"SRR13046689.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bovis"</span><span class="w">
+  </span><span class="s2">"ERR181435"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L7"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR313115"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"canettii"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR551620"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR1203059"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2659153"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"orygis"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2704678"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2704679"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2704687"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L6"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR5987300"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR5987352"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L4"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362078"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362138"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362139"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L4"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362156"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362253"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362333"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362484"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L4"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362653"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"SRR998584"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"L5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"SRR13046689"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bovis"</span><span class="w">
 </span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># Create tree with lineage as tip label instead of strain name</span><span class="w">
-
+</span><span class="c1"># Replace the tree labels</span><span class="w">
 </span><span class="n">tree_lineages</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tree_rooted</span><span class="w">
 </span><span class="n">tree_lineages</span><span class="o">$</span><span class="n">tip.label</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">mtbc_lineages</span><span class="p">[</span><span class="n">tree_rooted</span><span class="o">$</span><span class="n">tip.label</span><span class="p">])</span><span class="w">
 
@@ -1111,35 +1226,37 @@
 
 </span><span class="n">pal_lineages</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">color_code_lineages</span><span class="p">[</span><span class="n">tree_lineages</span><span class="o">$</span><span class="n">tip.label</span><span class="p">])</span><span class="w">
 
+</span><span class="c1"># Plot the old and new tree version next to each other</span><span class="w">
 </span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">))</span><span class="w">
-</span><span class="n">plot</span><span class="p">(</span><span class="n">tree_rooted</span><span class="p">,</span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">tree_rooted</span><span class="p">,</span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
 </span><span class="n">plot</span><span class="p">(</span><span class="n">tree_lineages</span><span class="p">,</span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">tip.color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pal_lineages</span><span class="p">,</span><span class="w"> </span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span></code></pre></div>  </div>
 
-</span></code></pre></div></div>
+  <blockquote class="question">
+    <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
-<p><img src="./images/tree_rooted_lineages.svg" alt="Colored lineages. " width="600" loading="lazy" /></p>
+    <p>Looking at the different lineages present in the tree, does our phylogeny make sense? Or asked differently: does our phylogeny show the same branching patterns between lineages as the established phylogeny in Fig. 1A?</p>
 
-<blockquote class="question">
-  <div id="question-exercise-2" class="box-title" aria-label="question box: Exercise 2"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Exercise 2</div>
+    <blockquote class="solution">
+      <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: 2<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>Looking at the different lineages present in the tree, does our phylogeny make sense? Or asked differently: does our phylogeny show the same branching patterns between lineages as the established phylogeny in Fig. 1A?</p>
+      <p><img src="./images/tree_rooted_lineages.svg" alt="Colored lineages. " width="473" height="286" loading="lazy" /></p>
 
-  <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: 2"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 2<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <p>There is indeed a problem with our phylogeny: one L2 and one L5 strain do not cluster with the other strains of these lineages. Instead, they appear near the root of the tree, with very short (ERR5987300) to non-existent (ERR1203059) branches. Other parts of the tree are consistent with Fig. 1A, suggesting that we can focus our first round of troubleshooting on these two strains.</p>
 
-    <p>There is indeed a problem with our phylogeny: one L2 and one L5 strain do not cluster with the other strains of these lineages. Instead, they appear near the root of the tree, with very short (ERR5987300) to non-existent (ERR1203059) branches. Other parts of the tree are consistent with Fig. 1A, suggesting that we can focus our first round of troubleshooting on these two strains.</p>
-
+    </blockquote>
   </blockquote>
-
 </blockquote>
 
-<blockquote class="question">
-  <div id="question-exercise-3" class="box-title" aria-label="question box: Exercise 3"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Exercise 3</div>
+<h2 id="first-round-of-exercises">First round of exercises</h2>
 
-  <p>An important part of bioinformatics consists in trying to find out whether a surprizing observation has biological significance — or reflects a mistake somewhere in the numerous steps leading to the result. Have we just discovered two new lineages of MTB, or did we commit a stupid mistake? To find out, take a look a the TB-profiler and the VCF files for the two strange strains, which should be present in your <span class="notranslate">Galaxy</span> history from the previous tutorials. Compare them with “normal” strains. Do you notice something?</p>
+<blockquote class="question">
+  <div class="box-title question-title" id="question-exercise-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Exercise 1</div>
+
+  <p>An important part of bioinformatics consists in trying to find out whether a surprising observation has biological significance — or reflects a mistake somewhere in the numerous steps leading to the result. Have we just discovered two new lineages of MTB, or did we commit a stupid mistake? To find out, take a look a the TB-profiler and the VCF files for the two strange strains, which should be present in your Galaxy history if you’ve followed the previous tutorial. Compare them with “normal” strains. Do you notice something?</p>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: 3"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 3<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The VCF files hold an important hint to explain our puzzling observation: ERR1203059.vcf contains not a single SNP, ERR5987300.vcf only 81 SNPs. By contrast, the other strains have between 750 and 1250 SNPs. What happened here? To find out, we would have to take a closer look at the steps leading from BAM to VCF files. One possibility is that the sequencing depth for these samples was so low that most SNPs were filtered out because they did not pass the quality filtering.</p>
 
@@ -1148,9 +1265,9 @@
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-exercise-4" class="box-title" aria-label="question box: Exercise 4"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Exercise 4</div>
+  <div class="box-title question-title" id="question-exercise-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Exercise 2</div>
 
-  <p>Recall the clusters identified in the previous tutorial, reproduced below. How do these clusters show up in the phylogenetic tree? What additional information does the tree contain?</p>
+  <p>In the <a href="/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html">tutorial on transmission clusters</a> two clusters of samples got identified and are reproduced below. How do these clusters show up in the phylogenetic tree? What additional information does the tree contain?</p>
 
   <table>
     <thead>
@@ -1196,7 +1313,7 @@
   </table>
 
   <blockquote class="solution">
-    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: 4"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 4<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>Clusters 10 and 12 appear as clades of closely related strains in the phylogeny: cluster 12 being part of lineage 2, cluster 10 of lineage 4. The phylogeny additionally reveals that cluster 12 is part of a larger clade of rather closely related lineage 2 strains. While clustering with a fixed SNP threshold produces a binary outcome (clustered/unclustered), the phylogeny reveals the gradual nature of relatedness. With a more permissive SNP threshold for clustering, or a different pipeline to call SNPs, we might well identify a larger cluster of L2 strains.</p>
 
@@ -1206,33 +1323,36 @@
 
 <h2 id="map-a-trait-onto-the-tree">Map a trait onto the tree</h2>
 
-<p>Phylogenies are particularly useful when combined with additional information. For our 19 MTB strains, for example, we might know such things as the country of origin, the sampling date, or various phenotypes determined in the lab, for example the virulence of the strains in an animal model. By <span class="notranslate">mapping</span> this additional information onto the phylogeny, we can gain insights into how, where and when these traits evolved.</p>
+<p>Phylogenies are particularly useful when combined with additional information. For our 19 MTB strains, for example, we might know such things as the country of origin, the sampling date, or various phenotypes determined in the lab, for example the virulence of the strains in an animal model. By mapping this additional information onto the phylogeny, we can gain insights into how, where and when these traits evolved.</p>
 
-<p>For our 20 samples, a trait you previously identified is the DR profile. Let us map this trait onto the tree and see if we can learn something from the observed patterns.</p>
+<p>For our 20 samples, a trait you previously identified (if you have been doing the <a href="/training-material/topics/evolution/tutorials/mtb_transmission/tutorial.html">tutorial on transmission clusters</a>, is the DR profile. Let us map this trait onto the tree and see if we can learn something from the observed patterns.</p>
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Same as above, but with DR profiles instead of lineages</span><span class="w">
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-generate-a-tree-with-dr-profiles-as-labels"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Generate a tree with DR profiles as labels</div>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Same as before, but with DR profiles instead of lineages</span><span class="w">
 
 </span><span class="n">mtbc_dr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="w">
-</span><span class="s2">"ERR181435.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR313115.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR551620.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR1203059.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2659153.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2704678.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2704679.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR2704687.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR5987300.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreXDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR5987352.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreMDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362078.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362138.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362139.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreMDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362156.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreXDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362253.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362333.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreXDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362484.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreMDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"ERR6362653.fastq.gz.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"SRR998584.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"SRR13046689.fastq.vcf"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Other"</span><span class="w">
+  </span><span class="s2">"ERR181435"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR313115"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR551620"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR1203059"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2659153"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2704678"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2704679"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR2704687"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR5987300"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreXDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR5987352"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreMDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362078"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362138"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362139"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreMDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362156"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreXDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362253"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362333"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreXDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362484"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"PreMDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ERR6362653"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MDR"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"SRR998584"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sensitive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"SRR13046689"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Other"</span><span class="w">
 </span><span class="p">)</span><span class="w">
 
 </span><span class="n">tree_dr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tree_rooted</span><span class="w">
@@ -1243,27 +1363,31 @@
   </span><span class="n">PreXDR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#0000ff"</span><span class="p">,</span><span class="w">
   </span><span class="n">PreMDR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#a000cc"</span><span class="p">,</span><span class="w">
   </span><span class="n">MDR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#ff0000"</span><span class="p">,</span><span class="w">
-  </span><span class="n">Other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#663200"</span><span class="p">)</span><span class="w">
+  </span><span class="n">Other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#663200"</span><span class="w">
+</span><span class="p">)</span><span class="w">
 
 </span><span class="n">pal_dr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">color_code_dr</span><span class="p">[</span><span class="n">tree_dr</span><span class="o">$</span><span class="n">tip.label</span><span class="p">])</span><span class="w">
 
 </span><span class="n">par</span><span class="p">(</span><span class="n">mfrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">))</span><span class="w">
-</span><span class="n">plot</span><span class="p">(</span><span class="n">tree_rooted</span><span class="p">,</span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">)</span><span class="w">
+</span><span class="n">plot</span><span class="p">(</span><span class="n">tree_rooted</span><span class="p">,</span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
 </span><span class="n">plot</span><span class="p">(</span><span class="n">tree_dr</span><span class="p">,</span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="n">tip.color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pal_dr</span><span class="p">,</span><span class="w"> </span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span></code></pre></div>  </div>
 
-</span></code></pre></div></div>
+</blockquote>
 
-<p><img src="./images/tree_rooted_dr.svg" alt="Colored DR profiles. " width="600" loading="lazy" /></p>
+<h2 id="exercises-continued">Exercises continued</h2>
 
 <blockquote class="question">
-  <div id="question-exercise-5" class="box-title" aria-label="question box: Exercise 5"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Exercise 5</div>
+  <div class="box-title question-title" id="question-exercise-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Exercise 3</div>
 
-  <p>In the previous tutorial on clustering, you have come across the hypothesis that unclustered cases of DR represent <em>de novo</em> evolution of DR, while clustered cases of DR represent instances of DR transmission. Looking at lineage 2 in the phylogeny above, does this hypothesis hold? How many times would MDR have evolved independently in lineage 2? Is there an alte<span class="notranslate">rna</span>tive explanation for the prevalence of MDR in lineage 2?</p>
+  <p>In the previous tutorial on clustering, you have come across the hypothesis that unclustered cases of DR represent <em>de novo</em> evolution of DR, while clustered cases of DR represent instances of DR transmission. Looking at lineage 2 in the phylogeny above, does this hypothesis hold? How many times would MDR have evolved independently in lineage 2? Is there an alternative explanation for the prevalence of MDR in lineage 2?</p>
 
   <blockquote class="solution">
-    <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: 5"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 5<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-    <p>MDR would have evolved three times according to the clustering perspective mentioned above: once in cluster 12, once in ERR6362078, and once in ERR6362653. The phylogeny suggest a simpler alte<span class="notranslate">rna</span>tive: MDR could have been already present in the common ancestor of the six L2 strains in our sample; it could have evolved only once, along the long branch leading from the split from lineage 3 to the most recent common ancestor of the six samples. This picture, however, might change with a more extensive sampling of lineage 2. Six samples are hardly sufficient to make claims about the prevalence and evolution of MDR in lineage 2. As for the interpretation of clustering, sampling design is crucial for the interpretation of phylogenies and should always be kept in mind in order to avoid overinterpretation.</p>
+    <p><img src="./images/tree_rooted_dr.svg" alt="Colored DR profiles. " width="490" height="286" loading="lazy" /></p>
+
+    <p>MDR would have evolved three times according to the clustering perspective mentioned above: once in cluster 12, once in ERR6362078, and once in ERR6362653. The phylogeny suggest a simpler alternative: MDR could have been already present in the common ancestor of the six L2 strains in our sample; it could have evolved only once, along the long branch leading from the split from lineage 3 to the most recent common ancestor of the six samples. This picture, however, might change with a more extensive sampling of lineage 2. Six samples are hardly sufficient to make claims about the prevalence and evolution of MDR in lineage 2. As for the interpretation of clustering, sampling design is crucial for the interpretation of phylogenies and should always be kept in mind in order to avoid overinterpretation.</p>
 
   </blockquote>
 
@@ -1288,7 +1412,10 @@
   </li>
 </ul>
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rescale branch lengths (here called edge lenghts)</span><span class="w">
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-rescale-branches"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Rescale branches</div>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rescale branch lengths (here called edge lenghts)</span><span class="w">
 </span><span class="n">genome_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4411532</span><span class="w">
 </span><span class="n">alignment_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">18077</span><span class="w">
 </span><span class="n">invariant_sites</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">genome_size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">alignment_length</span><span class="w">
@@ -1303,14 +1430,19 @@
 </span><span class="n">plot</span><span class="p">(</span><span class="n">tree_rescaled</span><span class="p">,</span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="n">root.edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"rescaled"</span><span class="p">)</span><span class="w">
 </span><span class="n">axisPhylo</span><span class="p">()</span><span class="w">
 </span><span class="n">dev.off</span><span class="p">()</span><span class="w">
+</span></code></pre></div>  </div>
 
-</span></code></pre></div></div>
+</blockquote>
+
 <p>Look at the scale bars of the two trees. Accounting for invariable sites has a huge effect on phylogenetic distances!</p>
 
-<p><img src="./images/tree_rescaled.svg" alt="Rescaled phylogeny. " width="600" loading="lazy" /></p>
+<p><img src="./images/tree_rescaled.svg" alt="Rescaled phylogeny. " width="436" height="300" loading="lazy" /></p>
 
-<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's also remove the two outlier strains, they would cause troubles and are anyway useless</span><span class="w">
-</span><span class="n">tree_rescaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">drop.tip</span><span class="p">(</span><span class="n">tree_rescaled</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ERR1203059.fastq.vcf"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ERR5987300.fastq.vcf"</span><span class="p">))</span><span class="w">
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-remove-outliers-perform-dates-estimation-and-plot-with-time-scale"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Remove outliers, perform dates estimation and plot with time-scale</div>
+
+  <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Let's also remove the two outlier strains, they would cause troubles and are anyway useless</span><span class="w">
+</span><span class="n">tree_rescaled</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">drop.tip</span><span class="p">(</span><span class="n">tree_rescaled</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"ERR1203059"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ERR5987300"</span><span class="p">))</span><span class="w">
 
 </span><span class="c1"># Estimate dates: translate phylogenetic distance into years by assuming a mutation rate and the number of generations per year</span><span class="w">
 </span><span class="n">mutation_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.01e-10</span><span class="w">
@@ -1321,19 +1453,23 @@
   </span><span class="n">tree_rescaled</span><span class="p">,</span><span class="w">
   </span><span class="n">node.dates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">tree_rescaled</span><span class="o">$</span><span class="n">tip.label</span><span class="p">)),</span><span class="w"> </span><span class="c1"># set sampling dates to 0</span><span class="w">
   </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">mutation_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">generations_per_year</span><span class="p">)</span><span class="w"> </span><span class="c1"># mutation rate per year</span><span class="w">
-  </span><span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
 
 </span><span class="n">tree_rescaled</span><span class="o">$</span><span class="n">edge.length</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">node.date</span><span class="p">[</span><span class="n">tree_rescaled</span><span class="o">$</span><span class="n">edge</span><span class="p">[,</span><span class="w"> </span><span class="m">2</span><span class="p">]]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">node.date</span><span class="p">[</span><span class="n">tree_rescaled</span><span class="o">$</span><span class="n">edge</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="p">]]</span><span class="w">
 </span><span class="n">tree_rescaled</span><span class="o">$</span><span class="n">tip.label</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">mtbc_lineages</span><span class="p">[</span><span class="n">tree_rescaled</span><span class="o">$</span><span class="n">tip.label</span><span class="p">])</span><span class="w">
 
 </span><span class="n">plot</span><span class="p">(</span><span class="n">tree_rescaled</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dated phylogeny (years)"</span><span class="p">)</span><span class="w">
 </span><span class="n">axisPhylo</span><span class="p">()</span><span class="w">
-</span></code></pre></div></div>
+</span></code></pre></div>  </div>
 
-<p><img src="./images/tree_dated.svg" alt="Dated phylogeny. " width="600" loading="lazy" /></p>
+</blockquote>
+
+<p><img src="./images/tree_dated.svg" alt="Dated phylogeny. " width="406" height="333" loading="lazy" /></p>
+
+<h2 id="final-exercise">Final exercise</h2>
 
 <blockquote class="question">
-  <div id="question-exercise-6-advanced" class="box-title" aria-label="question box: Exercise 6 (advanced)"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Exercise 6 (advanced)</div>
+  <div class="box-title question-title" id="question-exercise-4-advanced"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Exercise 4 (advanced)</div>
 
   <ol>
     <li>
@@ -1345,11 +1481,11 @@
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-6" class="box-title"><button type="button" aria-controls="solution-6-contents" aria-expanded="true" aria-label="Toggle solution box: 6"><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution: 6<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>
-        <p>About 5 % of the MTB reference genome consists of repetitive or otherwise complicated regions where <span class="notranslate">mapping</span> and SNP calling cannot be done reliably. Most SNP calling pipelines exclude such regions, also the one used in this course. Rather than to assume that these regions are invariant, we should ignore them in our calculations. By not doing this, genomes seem more similar than they are; we underestimate phylogenetic distances.</p>
+        <p>About 5 % of the MTB reference genome consists of repetitive or otherwise complicated regions where mapping and SNP calling cannot be done reliably. Most SNP calling pipelines exclude such regions, also the one used in this course. Rather than to assume that these regions are invariant, we should ignore them in our calculations. By not doing this, genomes seem more similar than they are; we underestimate phylogenetic distances.</p>
       </li>
       <li>
         <p>A rate 10 times higher implies that there will be 10 times more mutations observed in the same time span, or, the other way around, that it will take a time span 10 times shorter to observe the same number of mutations. The timescale of the phylogeny would thus shift one order of magnitude, to hundreds rather than thousands of years. As this example shows, there are considerable uncertainties associated with molecular dating. This is also true for more sophisticated methods (see <span class="citation"><a href="#Menardo2019">Menardo <i>et al.</i> 2019</a></span> for a recent discussion of molecular dating with MTB).</p>
@@ -1359,6 +1495,10 @@
   </blockquote>
 
 </blockquote>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Any phylogenetic analysis requires careful exploration of results and an understanding of its limitations to avoid overinterpretaion. The combination of Galaxy and R accessed through an interactive tool is very powerful because the Galaxy platform provides the compute resources and tools necessary to calculate the phylogenetic tree, and offers straightforward access to RStudio. The flexibility of R and its packages then lets you take a deep dive into the results.</p>
 
 <h1 id="resources">Resources</h1>
 <p>To develop a deeper understanding of phylogenetic trees, there is no better way than estimating phylogenies yourself — and work through a book on the topic in your own mind’s pace.</p>
@@ -1378,7 +1518,9 @@
   <li><a href="https://plato.stanford.edu/entries/phylogenetic-inference/">Phylogenetic Inference in the Stanford Encyclopedia</a></li>
 </ul>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
 
                 <h1>Frequently Asked Questions</h1>
@@ -1407,38 +1549,18 @@
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Tree thinking for tuberculosis evolution and epidemiology (Evolution)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Tree thinking for tuberculosis evolution and epidemiology (Evolution)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Christoph Stritt, Daniela Brites, Galo A. Goig,  <b>Tree thinking for tuberculosis evolution and epidemiology (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html">https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Christoph Stritt, Daniela Brites, Galo A. Goig,  <b>Tree thinking for tuberculosis evolution and epidemiology (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html">https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1450,7 +1572,7 @@
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1459,40 +1581,46 @@
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{evolution-mtb_phylogeny,
 author = "Christoph Stritt and Daniela Brites and Galo A. Goig",
-title = "Tree thinking for tuberculosis evolution and epidemiology (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Tree thinking for tuberculosis evolution and epidemiology (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/evolution/tutorials/mtb_phylogeny/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
 
                 
+                
+
+                
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1501,49 +1629,89 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/evolution/tutorials/mtb_phylogeny/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: raxml
+  owner: iuc
+  revisions: ea30d3089354
+  tool_panel_section_label: Evolution
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: raxml
+  owner: iuc
+  revisions: 73a469f7dc96
+  tool_panel_section_label: Evolution
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00144">https://gxy.io/GTN:T00144</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/evolution/tutorials/mtb_phylogeny/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

@@ -1,41 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Connecting Galaxy to a compute cluster</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/connect-to-compute-cluster/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Connecting Galaxy to a compute cluster">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-04-20 15:15:50 +0000">
+<meta name="DC.creator" content="Nate Coraor">
+<meta name="DC.creator" content="Björn Grüning">
+<meta name="DC.creator" content="Nicola Soranzo">
+<meta name="DC.creator" content="Helena Rasche">
 
+        
+        
+        
+        
+        <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Connecting Galaxy to a compute cluster" />
+        <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/gat.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Connecting Galaxy to a compute cluster</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:title" content="Galaxy Training: Connecting Galaxy to a compute cluster" />
-    <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/connect-to-compute-cluster/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -60,7 +91,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2021-04-06 11:50:17 +0000",
+  "dateModified": "2023-04-20 15:15:50 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Connecting Galaxy to a compute cluster",
   "interactivityType": "mixed",
@@ -86,6 +117,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -112,8 +147,9 @@
   "learningResourceType": "slides",
   "name": "Slides for 'Connecting Galaxy to a compute cluster' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/admin/tutorials/connect-to-compute-cluster/slides.html",
+  "teaches": "Understand all components of the Galaxy job running stack\n - Understand how the job conf controls Galaxy's jobs subsystem\n - Know how to map tools to job destinations\n - The various ways in which tools can be mapped to destinations, both statically and dynamically",
   "keywords": "admin, features",
-  "description": "The questions this  addresses are:\n - How to connect Galaxy to a compute cluster?\n - How can I configure job dependent resources, like cores, memory for my DRM?\n\n\nThe objectives are:\n - Understand all components of the Galaxy job running stack\n - Understand how the `job_conf.xml` file controls Galaxy's jobs subsystem\n - Know how to map tools to job destinations\n - The various ways in which tools can be mapped to destinations, both statically and dynamically\n\n",
+  "description": "The questions this  addresses are:\n - How to connect Galaxy to a compute cluster?\n - How can I configure job dependent resources, like cores, memory for my DRM?\n\n\nThe objectives are:\n - Understand all components of the Galaxy job running stack\n - Understand how the job conf controls Galaxy's jobs subsystem\n - Know how to map tools to job destinations\n - The various ways in which tools can be mapped to destinations, both statically and dynamically\n\n",
   "inLanguage": {
     "@type": "Language",
     "name": "English",
@@ -124,8 +160,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
@@ -139,14 +175,16 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0001-8083-2963",
+      "orcid": "https://orcid.org/0000-0001-8083-2963"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
@@ -168,8 +206,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
@@ -191,100 +229,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
-      "name": "Nate Coraor",
-      "image": "https://avatars.githubusercontent.com/natefoo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "name": "Björn Grüning",
-      "image": "https://avatars.githubusercontent.com/bgruening",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-3079-6586",
-      "orcid": "https://orcid.org/0000-0002-3079-6586"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "name": "Nicola Soranzo",
-      "image": "https://avatars.githubusercontent.com/nsoranzo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3627-5340",
-      "orcid": "https://orcid.org/0000-0003-3627-5340"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
@@ -310,12 +256,22 @@
       "description": "Resources related to configuration and maintenance of Galaxy servers",
       "url": "https://training.galaxyproject.org/training-material/topics/admin/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "features"
+    }
+  ],
+  "abstract": "# Galaxy Job Configuration"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -351,21 +307,20 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="https://avatars.githubusercontent.com/natefoo?s=27" alt="Avatar">Nate Coraor</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
+		
+	
+<ul class="text-list">
+			
+			<li>
+				<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/natefoo?s=36" alt="Avatar" width="36" height="36">Nate Coraor</a>
+			<li>
+				<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a>
+			<li>
+				<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a>
+			<li>
+				<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a></li>
+</ul>
+	
 
 
 	</div>
@@ -374,7 +329,10 @@ class: center, middle, inverse
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00005">gxy.io/GTN:S00005</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -432,7 +390,7 @@ Useful when presenting.
 
 - Understand all components of the Galaxy job running stack
 
-- Understand how the `job_conf.xml` file controls Galaxy's jobs subsystem
+- Understand how the job conf controls Galaxy&apos;s jobs subsystem
 
 - Know how to map tools to job destinations
 
@@ -444,25 +402,24 @@ Useful when presenting.
 
 # Galaxy Job Configuration
 
-- Configured in `config/job_conf.xml`
-- XML format with macro support
+- Configured in `job_config` in `galaxy.yml`, `group_vars/galaxyservers.yml`, and `files/galaxy/config/tpv*.yml`
 - Major components:
-  - **Plugins**: distributed resource manager (DRM) modules to load
-  - **Handlers**: job handler processes managing the lifecycle of jobs
-  - **Destinations**: where to send jobs, and what parameters to run those jobs with
+  - **Runners**: distributed resource manager (DRM) modules to load
+  - **Handlers**: dedicated Galaxy server processes managing the lifecycle of jobs
+  - **Environments** (aka &quot;destinations&quot;): where to send jobs, and what parameters to run those jobs with
   - **Tool** to destination/handler mappings
   - **Resource** selection mappings: give users job execution options on the tool form
   - **Limits**: job runtime limits, e.g. the max number of concurrent jobs
 
 ???
 
-- The job_conf file is a very powerul galaxy configuration piece critical to smooth cluster operation.
-- Written in XML it connects your server with the available cluster resources.
+- The job_conf file is a very powerful galaxy configuration piece critical to smooth cluster operation.
+- Written in YML, it connects your server with the available cluster resources.
 - You can configure it in myriad ways.
 - Study the advanced sample provided with codebase once you get a basic understanding.
 - There are several major components of the job conf file.
-- Plugins, handlers, destinations, tools, resources, and limits.
-- We'll go into detail on each of these in the tutorial.
+- Plugins, handlers, environments (destinations), tools, resources, and limits.
+- We&apos;ll go into detail on each of these in the tutorial.
 
 ---
 
@@ -482,17 +439,21 @@ Can restart Galaxy without interrupting jobs
 
 ---
 
-# Plugins
+# Runners
 
 Correspond to job runner plugins in [lib/galaxy/jobs/runners](https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/jobs/runners)
 
 .left[Plugins for:]
 - local
 - Slurm (DRMAA subclass)
-- DRMAA: SGE, PBS Pro, LSF, Torque
+- DRMAA (Distributed Resource Management Application API)
+  - SGE
+  - PBS Pro
+  - LSF
+  - Torque
 - HTCondor
 - Torque: Using the `pbs_python` library
-- Pulsar: Galaxy's own remote job management system
+- Pulsar: Galaxy&apos;s own remote job management system
 - Command Line Interface (CLI) via SSH
 - Kubernetes
 - Go-Docker
@@ -516,19 +477,15 @@ Correspond to job runner plugins in [lib/galaxy/jobs/runners](https://github.com
 - DRMAA is an interface that many distributed resource managers provide.
 - Galaxy can use DRMAA to interact with these in an agnostic manner.
 - However, there are more underlying technologies that you are going to depend on.
-- You don't need to have an in-depth understanding to run cluster deployment correctly.
+- You don&apos;t need to have an in-depth understanding to run cluster deployment correctly.
 
 ---
 
 # Handlers
 
-Define which Galaxy processes are job handlers
+Control how jobs are assigned to handlers (use `db-skip-locked`)
 
-- `id` attribute should match the `--server-name` param value of a process
-- Dedicated handlers can be reserved, e.g. for small, high throughput jobs
-- The list of plugins that are loaded by a job handler can be limited using `&lt;plugin&gt;` subelements (e.g. when the DRMAA plugin needs to be loaded with different library paths)
-- Not defined in `job_conf.xml` when using *job handler mules*
-- Defines how jobs are assigned to individual processes (use `db-skip-locked` !)
+Can statically define handler configuration (uncommon)
 
 ???
 
@@ -540,7 +497,9 @@ Define which Galaxy processes are job handlers
 
 ---
 
-# Destinations
+# Environments
+
+Formerly &quot;Destinations&quot;
 
 Define *how* jobs should be run
 
@@ -551,7 +510,7 @@ Define *how* jobs should be run
 
 ???
 
-- The destination section of the job configuration file is a map that defines which jobs go where.
+- The environments section of the job configuration is a map that defines which jobs go where.
 - Jobs from any destination, can be processed by any plugin.
 - Every job will find a path through this configuration and eventually get dispatched to the matching runner.
 - These destinations can specify things like environment variables or resource requirements.
@@ -560,17 +519,17 @@ Define *how* jobs should be run
 
 # The default job configuration
 
-.left[`config/job_conf.xml.sample_basic`:]
-```xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;job_conf&gt;
-    &lt;plugins&gt;
-        &lt;plugin id=&quot;local&quot; type=&quot;runner&quot; load=&quot;galaxy.jobs.runners.local:LocalJobRunner&quot; workers=&quot;4&quot;/&gt;
-    &lt;/plugins&gt;
-    &lt;destinations&gt;
-        &lt;destination id=&quot;local&quot; runner=&quot;local&quot;/&gt;
-    &lt;/destinations&gt;
-&lt;/job_conf&gt;
+```yml
+runners:
+  local:
+    load: galaxy.jobs.runners.local:LocalJobRunner
+    workers: 4
+
+execution:
+  default: local
+  environments:
+    local:
+      runner: local
 ```
 
 ???
@@ -583,30 +542,31 @@ Define *how* jobs should be run
 
 # Job Config - Tags
 
-Both destinations and handlers can be grouped by **tags**
+Both environments and handlers can be grouped by **tags**
 
 - Allows random selection from multiple resources
-- Allows concurrency limits at the destination group level
+- Allows concurrency limits at the environment group level
 
 ???
 
-- Tags can be applied to both destinations and handlers.
-- This permits selecting randomly amongst the handlers or destinations.
+- Tags can be applied to both environments and handlers.
+- This permits selecting randomly amongst the handlers or environments.
 - Tags can help the load distribution.
+- Tags can also be used for concurrency limits that apply across multiple environments.
 
 ---
 
 # Job Environment
 
-`&lt;env&gt;` tag in destinations: configure the job exec environment
+`env` key in environments: configure the job execution environment
 
-| tag syntax | function |
+| syntax | function |
 | ---- | ---- |
-| `&lt;env id=&quot;NAME&quot;&gt;VALUE&lt;/env&gt;` | Set `$NAME` to `VALUE` |
-| `&lt;env file=&quot;/path/to/file&quot; /&gt;` | Source shell file at `/path/to/file` |
-| `&lt;env exec=&quot;CMD&quot; /&gt;` | Execute `CMD` |
+| `- {name: NAME, value: VALUE}` | Set `$NAME` to `VALUE` |
+| `- {file: /path/to/file}` | Source shell file at `/path/to/file` |
+| `- {execute: CMD}` | Execute `CMD` |
 
-Source and command execution will be handled on the remote destination, don't need to work on the Galaxy server
+Source and command execution will be handled on the remote destination, don&apos;t need to work on the Galaxy server
 
 ???
 
@@ -638,8 +598,8 @@ Available limits
 
 - Number of active jobs per registered user
 - Number of active jobs per unregistered user
-- Number of active jobs per registered user in a specified destination or destination tag
-- Number of total active jobs in a specified destination or destination tag
+- Number of active jobs per registered user in a specified environment or environment tag
+- Number of total active jobs in a specified environment or environment tag
 
 ???
 
@@ -653,12 +613,12 @@ Available limits
 
 Most job plugins require a **shared filesystem** between the Galaxy server and compute.
 
-The exception is **Pulsar**. More on this in *Using heterogeneous compute resources*
+The exception is **Pulsar**. More on this in *Running Jobs on Remote Resources with Pulsar*.
 
 ???
 
 - Most DRMs require a shared filesystem to ensure datasets are available to the jobs.
-- Galaxy's Pulsar does not, and can be used in situations where no shared filesystem is available.
+- Galaxy&apos;s Pulsar does not, and can be used in situations where no shared filesystem is available.
 
 ---
 
@@ -673,7 +633,7 @@ Our simple example works because of two important principles:
   - Job working directory
   - Input and output datasets
 
-The first can be worked around with symlinks or Pulsar embedded (later)
+The first can be worked around with symlinks, copies, or Pulsar embedded
 
 The second can be worked around with Pulsar REST/MQ (with a performance/throughput penalty)
 
@@ -702,28 +662,30 @@ Tool configs: Consume `\${GALAXY_SLOTS:-4}`
 
 - For multiprocessing to be available both the tool and the Galaxy tool wrapper need to support it.
 - You need to understand what tools are being run and set destinations for them with the appropriate specification.
-- You'll need to check for presence of GALAXY_SLOTS in the tool wrappers and tool macros to see if the tool supports multiple threads.
+- You&apos;ll need to check for presence of GALAXY_SLOTS in the tool wrappers and tool macros to see if the tool supports multiple threads.
 
 ---
 
 # Memory requirements
 
-For **Slurm only**, Galaxy will set `$GALAXY_MEMORY_MB` and `$GALAXY_MEMORY_MB_PER_SLOT` as integers.
+For **Slurm and Gridengine only**, Galaxy will set `$GALAXY_MEMORY_MB` and `$GALAXY_MEMORY_MB_PER_SLOT` as integers.
 
 **Other DRMs:** Please PR the [appropriate code](https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/runners/util/job_script/MEMORY_STATEMENT.sh).
 
 For Java tools, be sure to set `-Xmx`, e.g.:
 
-```xml
-&lt;destination id=&quot;foo&quot; ...&gt;
-    &lt;env id=&quot;_JAVA_OPTIONS&quot;&gt;-Xmx4096m&lt;/env&gt;
-&lt;/destination&gt;
+```yml
+    java_cluster:
+      runner: drmaa
+      env:
+        - name: &apos;_JAVA_OPTIONS&apos;
+          value: &apos;-Xmx6G&apos;
 ```
 
 ???
 
 - Memory requirements can be set as well.
-- For some tools, you'll need to additionally provide environment variables to specify memory limits.
+- For some tools, you&apos;ll need to additionally provide environment variables to specify memory limits.
 - This is different per DRM.
 
 ---
@@ -744,7 +706,7 @@ See: [Cluster documentation](https://wiki.galaxyproject.org/Admin/Config/Perform
 
 ---
 
-## Job Config - Mapping Tools to Destinations
+## Job Config - Mapping Tools to Environments
 
 Problem: Tool A uses single core, Tool B uses multiple
 - Both submit to the same cluster
@@ -752,41 +714,44 @@ Problem: Tool A uses single core, Tool B uses multiple
 
 ???
 
-- Mapping tools to destinations is the heart of the job configuration.
+- Mapping tools to environments is the heart of the job configuration.
 - This permits you to define which tools go to which destinations, and what resources they need.
 
 ---
 
-## Job Config - Mapping Tools to Destinations
+## Job Config - Mapping Tools to Environments
 
 Solution:
 
-```xml
-    &lt;destinations default=&quot;single&quot;&gt;
-        &lt;destination id=&quot;single&quot; runner=&quot;slurm&quot; /&gt;
-        &lt;destination id=&quot;multi&quot; runner=&quot;slurm&quot;&gt;
-            &lt;param id=&quot;nativeSpecification&quot;&gt;--ntasks=4&lt;/param&gt;
-        &lt;/destination&gt;
-    &lt;/destinations&gt;
-    &lt;tools&gt;
-        &lt;tool id=&quot;hisat2&quot; destination=&quot;multi&quot;/&gt;
-    &lt;/tools&gt;
+```yml
+execution:
+  default: singlecore_slurm
+  environments:
+    singlecore_slurm:
+      runner: slurm
+
+    multicore_slurm:
+      runner: slurm
+      native_specification: &apos;--ntasks=4&apos;
+tools:
+- id: hisat2
+  handler: multicore_slurm
 ```
 
 ???
 
-- Here is an example mapping the hisat2 tool to a definition named multi.
-- The multi destination specifies that 4 cores should be allocated for each job, and uses the slurm plugin.
+- Here is an example mapping the hisat2 tool to an environment named multicore_slurm.
+- The multicore environment specifies that 4 cores should be allocated for each job, and uses the slurm plugin.
 
 ---
 
 # The Dynamic Job Runner
 
-For when basic tool-to-destination mapping isn't enough
+For when basic tool-to-environment mapping isn&apos;t enough
 
 ???
 
-- However this static mapping sometimes isn't sufficient.
+- However this static mapping sometimes isn&apos;t sufficient.
 - Here a dynamic mapping can be used instead.
 - Galaxy has several different methods for accomplishing this.
 
@@ -799,33 +764,24 @@ A special built-in job runner plugin
 Map jobs to destinations on more than just tool IDs
 
 .left[Two types:]
-- Dynamic Tool Destinations
-- Python function
+- Total Perspective Vortex (TPV)
+- Arbitrary Python function
 
 See: [Dynamic Destination Mapping](https://docs.galaxyproject.org/en/master/admin/jobs.html#dynamic-destination-mapping)
 
 ???
 
-- There are two built in ways to do this: dynamic tool destinations, and custom Python functions.
-- We will cover both of these in the tutorial.
+- There are two built in ways to do this: TPV and custom Python functions.
 
 ---
 
-## Dynamic Tool Destinations
+## Total Perspective Vortex (TPV)
 
-.left[Configurable mappings without programming:]
-- YAML format config file `tool_destinations.yml`
-- Map based on tool ID plus:
-  - Input dataset size(s)
-  - Input dataset number of records
-  - User
-- Maps to static destinations defined in job config
+Powerful, fully dynamic tool-to-environment mapping based on tool, user, resource requirements, tags, and more.
 
-???
+Discussed in detail in [its own tutorial](https://training.galaxyproject.org/training-material/topics/admin/tutorials/job-destinations/tutorial.html).
 
-- The Dynamic Tool Destinations are written as a yaml file.
-- You can easily write rules based on file input sizes or number of inputs or user information.
-- This can be used to determine memory and cpu allocations.
+See also: [TPV Documentation](https://total-perspective-vortex.readthedocs.io/).
 
 ---
 
@@ -846,7 +802,6 @@ See: [Dynamic Destination Mapping](https://docs.galaxyproject.org/en/master/admi
 
 ???
 
-- If Dynamic Tool Destinations are insufficiently flexible, then custom Python functions can be written.
 - These can use any arbitrary information you want.
 - They have full access to submitter information, job parameters, and any other resource you might want.
 - They can dynamically modify destination parameters during runtime.
@@ -861,9 +816,7 @@ See: [Dynamic Destination Mapping](https://docs.galaxyproject.org/en/master/admi
 
 - Galaxy supports a variety of different DRMs.
 
-- Dynamic Tool Destinations are a convenient way to map
-
-- Job resource parameters can allow you to give your users control over job resource requirements, if they are knowledgeable about the tools and compute resources available to them.
+- Total Perspective Vortex is a convenient way to map
 
 
 
@@ -880,21 +833,28 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="https://avatars.githubusercontent.com/natefoo?s=27" alt="Avatar">Nate Coraor</a>
+		
+<table class="contributions">
+	
+	<tr>
+		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/natefoo?s=36" alt="Avatar" width="36" height="36">Nate Coraor</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a>
+		</td>
+	</tr>
+	
 
 
+	
 
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
+	
 
+	
 
+	
 
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
+	
+</table>
 
 
 	</div>
@@ -909,6 +869,9 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
   
 
 
+	
+
+
 </div>
 
 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
@@ -916,10 +879,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -931,7 +894,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -943,6 +906,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

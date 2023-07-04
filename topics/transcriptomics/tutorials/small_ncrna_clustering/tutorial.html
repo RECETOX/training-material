@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,251 +8,67 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Small Non-coding RNA Clustering using BlockClust" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Pavankumar Videm" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Small Non-coding RNA Clustering using BlockClust" />
-        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Small Non-coding RNA Clustering using BlockClust">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-11-17 15:55:06 +0000">
+<meta name="DC.creator" content="Pavankumar Videm">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for all kinds of transcriptomics analysis.">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Small Non-coding RNA Clustering using BlockClust">
+        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis.">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -277,7 +93,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2022-11-17 15:55:06 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Small Non-coding RNA Clustering using BlockClust",
   "interactivityType": "mixed",
@@ -303,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -330,6 +150,7 @@
   "name": "Hands-on for 'Small Non-coding RNA Clustering using BlockClust' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Difference between mRNA-seq and smallRNA-seq\n - Unsupervised grouping of the adjacent reads into read profiles\n - Look and learn what the shapes of the read profiles represent\n - Clustering of the read profiles by machine learning algorithm",
   "keywords": "transcriptomics",
   "description": "The questions this  addresses are:\n - What do the read profiles of small non-coding RNAs represent?\n - How to cluster the read profiles based on some intrinsic features?\n\n\nThe objectives are:\n - Difference between mRNA-seq and smallRNA-seq\n - Unsupervised grouping of the adjacent reads into read profiles\n - Look and learn what the shapes of the read profiles represent\n - Clustering of the read profiles by machine learning algorithm\n\n",
   "inLanguage": {
@@ -417,8 +238,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
@@ -432,30 +253,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "name": "Pavankumar Videm",
-      "image": "https://avatars.githubusercontent.com/pavanvidem",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-5192-126X",
+      "orcid": "https://orcid.org/0000-0002-5192-126X"
     }
   ],
   "about": [
@@ -472,31 +272,209 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-transcriptomics">
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-transcriptomics">
     <h1 data-toc-skip>Small Non-coding RNA Clustering using BlockClust</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="https://avatars.githubusercontent.com/pavanvidem?s=27" alt="Avatar">Pavankumar Videm</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/pavanvidem?s=36" alt="Avatar" width="36" height="36">Pavankumar Videm</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -551,6 +529,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -568,6 +548,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -611,17 +593,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/transcriptomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/1491876">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -631,8 +609,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/workflows/" title="Workflows" alt="Small Non-coding RNA Clustering using BlockClust workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/workflows/" title="Small Non-coding RNA Clustering using BlockClust workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -645,13 +623,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -677,210 +652,91 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr>
+		</a>
+	</li>
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://clipseq.usegalaxy.eu/" title="CLIP-Explorer">
-            CLIP-Explorer
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
-            Human Cell Atlas
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
-            Single Cell Omics workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 17, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00306">https://gxy.io/GTN:T00306</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -891,20 +747,21 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
-<p>Small Non-coding <span class="notranslate">RNA</span>s (nc<span class="notranslate">RNA</span>s) play a vital role in many cellular processes such as <span class="notranslate">RNA</span> splicing, translation, gene regulation. The small <span class="notranslate">RNA</span>-seq is a type of <span class="notranslate">RNA</span>-seq in which <span class="notranslate">RNA</span> fragments are size selected to capture only short <span class="notranslate">RNA</span>s. One of the most common applications of the small <span class="notranslate">RNA</span>-seq is discovering novel small nc<span class="notranslate">RNA</span>s. <span class="notranslate">Mapping</span> the small <span class="notranslate">RNA</span>-seq data reveals interesting patterns that represent the traces of the small <span class="notranslate">RNA</span> processing.</p>
+<p>Small Non-coding RNAs (ncRNAs) play a vital role in many cellular processes such as RNA splicing, translation, gene regulation. The small RNA-seq is a type of RNA-seq in which RNA fragments are size selected to capture only short RNAs. One of the most common applications of the small RNA-seq is discovering novel small ncRNAs. Mapping the small RNA-seq data reveals interesting patterns that represent the traces of the small RNA processing.</p>
 
-<p>For example, consider the mi<span class="notranslate">RNA</span> biogenesis. The primary mi<span class="notranslate">RNA</span> transcripts are processed by Drosha-complexes and results in hairpin precursor mi<span class="notranslate">RNA</span>s. Then after they transported to the cytoplasm, Dicer slices off the hairpin. One of the <span class="notranslate">RNA</span> strands bound by Argonaute proteins regulates the target m<span class="notranslate">RNA</span> while the other strand is degraded.</p>
+<p>For example, consider the miRNA biogenesis. The primary miRNA transcripts are processed by Drosha-complexes and results in hairpin precursor miRNAs. Then after they transported to the cytoplasm, Dicer slices off the hairpin. One of the RNA strands bound by Argonaute proteins regulates the target mRNA while the other strand is degraded.</p>
 
-<p>The following figure (bottom part of the figure is taken from <a href="https://doi.org/10.1038/nrg3162">DOI: 10.1038/nrg3162</a>) represents one of the small <span class="notranslate">RNA</span> processing patterns. The vertical block bars represent a mapped <span class="notranslate">reads</span> on reference genome. The height of the bars represents the number of <span class="notranslate">reads</span> mapped at that location. <span class="notranslate">Reads</span> in each bubble represent a <em>read profile</em>. In this case, they both are from mi<span class="notranslate">RNA</span>s. From the small <span class="notranslate">RNA</span>-seq, we often see the two processed mi<span class="notranslate">RNA</span> strands after <span class="notranslate">mapping</span>. The mi<span class="notranslate">RNA</span> strand which targets the m<span class="notranslate">RNA</span> is expressed and we see more <span class="notranslate">reads</span> compared to the degraded strand. The gap between those two piles of <span class="notranslate">reads</span> represents the missing hairpin.</p>
+<p>The following figure (bottom part of the figure is taken from <span class="citation"><a href="#Pasquinelli2012">Pasquinelli 2012</a></span>) represents one of the small RNA processing patterns. The vertical block bars represent a mapped reads on reference genome. The height of the bars represents the number of reads mapped at that location. Reads in each bubble represent a <em>read profile</em>. In this case, they both are from miRNAs. From the small RNA-seq, we often see the two processed miRNA strands after mapping. The miRNA strand which targets the mRNA is expressed and we see more reads compared to the degraded strand. The gap between those two piles of reads represents the missing hairpin.</p>
 
-<figure id="figure-1"><img src="../../images/blockclust_profiles.png" alt="read profiles. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Patterns of processing in read profiles</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/transcriptomics_images/blockclust_profiles.png" alt="read profiles. " width="942" height="725" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Patterns of processing in read profiles</figcaption></figure>
 
 <p>In this tutorial, we will learn how to use <strong>BlockClust</strong> to cluster similar processing patterns together.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -913,12 +770,12 @@
   <li><a href="#preprocessing-of-the-data" id="markdown-toc-preprocessing-of-the-data">Preprocessing of the data</a>    <ol>
       <li><a href="#get-data" id="markdown-toc-get-data">Get data</a></li>
       <li><a href="#sort-bam-file" id="markdown-toc-sort-bam-file">Sort BAM file</a></li>
-      <li><a href="#bam-to-bed-of-tags" id="markdown-toc-bam-to-bed-of-tags">BAM to <span class="notranslate">BED</span> of tags</a></li>
+      <li><a href="#bam-to-bed-of-tags" id="markdown-toc-bam-to-bed-of-tags">BAM to BED of tags</a></li>
     </ol>
   </li>
-  <li><a href="#grouping-of-the-adjacent-reads-into-read-profiles" id="markdown-toc-grouping-of-the-adjacent-reads-into-read-profiles">Grouping of the adjacent <span class="notranslate">reads</span> into read profiles</a>    <ol>
-      <li><a href="#sort-the-bed-file-of-tags" id="markdown-toc-sort-the-bed-file-of-tags">Sort the <span class="notranslate">BED</span> file of tags</a></li>
-      <li><a href="#group-reads-into-blocks-and-blockgroups-using-blockbuster" id="markdown-toc-group-reads-into-blocks-and-blockgroups-using-blockbuster">Group <span class="notranslate">reads</span> into blocks and blockgroups using <strong>blockbuster</strong></a></li>
+  <li><a href="#grouping-of-the-adjacent-reads-into-read-profiles" id="markdown-toc-grouping-of-the-adjacent-reads-into-read-profiles">Grouping of the adjacent reads into read profiles</a>    <ol>
+      <li><a href="#sort-the-bed-file-of-tags" id="markdown-toc-sort-the-bed-file-of-tags">Sort the BED file of tags</a></li>
+      <li><a href="#group-reads-into-blocks-and-blockgroups-using-blockbuster" id="markdown-toc-group-reads-into-blocks-and-blockgroups-using-blockbuster">Group reads into blocks and blockgroups using <strong>blockbuster</strong></a></li>
     </ol>
   </li>
   <li><a href="#clustering-with-blockclust" id="markdown-toc-clustering-with-blockclust">Clustering with <strong>BlockClust</strong></a></li>
@@ -928,21 +785,22 @@
 </blockquote>
 
 <h1 id="preprocessing-of-the-data">Preprocessing of the data</h1>
-<p>The data is we use is from human cell line MCF-7 sequenced in single-end on Illumina Genome Analyzer II. <span class="notranslate">Reads</span> are 36nt long and should be sufficiently long enough for this type of data. We start with a BAM file as an input for this tutorial. This BAM file is a result of <span class="notranslate">mapping</span> the <span class="notranslate">reads</span> on human reference genome build hg19 using <strong>segemehl</strong>. If you want to use your own raw sequencing data, please clip the adapters and map to the reference genome.</p>
+<p>The data is we use is from human cell line MCF-7 sequenced in single-end on Illumina Genome Analyzer II. Reads are 36nt long and should be sufficiently long enough for this type of data. We start with a BAM file as an input for this tutorial. This BAM file is a result of mapping the reads on human reference genome build hg19 using <strong>segemehl</strong>. If you want to use your own raw sequencing data, please clip the adapters and map to the reference genome.</p>
 
-<p>In the first step, we convert the BAM file into <span class="notranslate">BED</span> file. This is not a plain file conversion. Hence we cannot use any kind of BAM to <span class="notranslate">BED</span> conversion tools. We use BlockClust tool in the pre-processing mode for this purpose. The resulting <span class="notranslate">BED</span> file contains tags (a tag is a unique read sequence in a deep-sequencing library) and their normalized <span class="notranslate">expression</span> (in column 5), i.e. the ratio of the read count per tag to the number of <span class="notranslate">mapping</span>s on the reference genome.</p>
+<p>In the first step, we convert the BAM file into BED file. This is not a plain file conversion. Hence we cannot use any kind of BAM to BED conversion tools. We use BlockClust tool in the pre-processing mode for this purpose. The resulting BED file contains tags (a tag is a unique read sequence in a deep-sequencing library) and their normalized expression (in column 5), i.e. the ratio of the read count per tag to the number of mappings on the reference genome.</p>
 
 <h2 class="hands_on" id="get-data">Get data</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Import the files from <a href="https://zenodo.org/record/2172221/files/GSM769512.bam">Zenodo</a></p>
@@ -951,29 +809,30 @@
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
-  <p>Why is it mandatory to clip the adapters from the small <span class="notranslate">RNA</span>-seq data?</p>
+  <p>Why is it mandatory to clip the adapters from the small RNA-seq data?</p>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-    <p>Generally, the processed <span class="notranslate">RNA</span> fragments from the small <span class="notranslate">RNA</span>s are about 18-30nt long. If the sequenced read length is longer than the fragment (which is usually the case), the sequencer <span class="notranslate">reads</span> into the 3’ adapter.</p>
+    <p>Generally, the processed RNA fragments from the small RNAs are about 18-30nt long. If the sequenced read length is longer than the fragment (which is usually the case), the sequencer reads into the 3’ adapter.</p>
 
   </blockquote>
 
 </blockquote>
 
 <h2 id="sort-bam-file">Sort BAM file</h2>
-<p>Before continue to BAM to <span class="notranslate">BED</span> conversion we need to sort the alignments in the input BAM file by their positions.</p>
+<p>Before continue to BAM to BED conversion we need to sort the alignments in the input BAM file by their positions.</p>
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-sort-bam" class="box-title" aria-label="hands-on box: Sort BAM"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Sort BAM</div>
+  <div class="box-title hands-on-title" id="hands-on-sort-bam"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Sort BAM</div>
   <ol>
     <li><strong>Samtools sort</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
@@ -984,10 +843,10 @@
 
 </blockquote>
 
-<h2 id="bam-to-bed-of-tags">BAM to <span class="notranslate">BED</span> of tags</h2>
+<h2 id="bam-to-bed-of-tags">BAM to BED of tags</h2>
 <p>Now it is time to do the actual conversion.</p>
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-b-blockclust-b-preprocessing" class="box-title" aria-label="hands-on box: &lt;b&gt;BlockClust&lt;/b&gt; preprocessing"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <b>BlockClust</b> preprocessing</div>
+  <div class="box-title hands-on-title" id="hands-on-b-blockclust-b-preprocessing"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: <b>BlockClust</b> preprocessing</div>
   <ol>
     <li><strong>BlockClust</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
@@ -999,25 +858,25 @@
 
 </blockquote>
 
-<h1 id="grouping-of-the-adjacent-reads-into-read-profiles">Grouping of the adjacent <span class="notranslate">reads</span> into read profiles</h1>
+<h1 id="grouping-of-the-adjacent-reads-into-read-profiles">Grouping of the adjacent reads into read profiles</h1>
 
-<p>Now we group the adjacent <span class="notranslate">reads</span> into so-called blocks and blockgroups using blockbuster tool. In general, each blockgroup should represent a single nc<span class="notranslate">RNA</span> read profile.</p>
+<p>Now we group the adjacent reads into so-called blocks and blockgroups using blockbuster tool. In general, each blockgroup should represent a single ncRNA read profile.</p>
 
-<figure id="figure-2"><img src="../../images/blockclust_blocks.png" alt="blocks of a blockgroup. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Representation of blocks and blockgroups of a read profile</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/transcriptomics_images/blockclust_blocks.png" alt="blocks of a blockgroup. " width="572" height="181" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Representation of blocks and blockgroups of a read profile</figcaption></figure>
 
 <blockquote class="details">
-  <div id="details-more-details-about-the-theory" class="box-title"><button type="button" aria-controls="details-more-details-about-the-theory-contents" aria-expanded="true" aria-label="Toggle details box: More details about the theory"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More details about the theory<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-more-details-about-the-theory"><button class="gtn-boxify-button details" type="button" aria-controls="details-more-details-about-the-theory" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: More details about the theory<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>The idea is to perform peak detection on the signal obtained by counting the number of <span class="notranslate">reads</span> per nucleotide. This signal, spanning adjacent loci, is then modeled with a mixture of Gaussians. An iterative greedy procedure is then used to collect <span class="notranslate">reads</span> that belong to the same block, starting from the largest Gaussian component, and removing them in successive iterations. The tool further assembles a sequence of adjacent blocks into a blockgroup if the blocks are either overlapping or are at a distance smaller than a user-defined threshold. A more detailed explanation is at <a href="http://hoffmann.bioinf.uni-leipzig.de/LIFE/blockbuster.html">the blockbuster website</a></p>
+  <p>The idea is to perform peak detection on the signal obtained by counting the number of reads per nucleotide. This signal, spanning adjacent loci, is then modeled with a mixture of Gaussians. An iterative greedy procedure is then used to collect reads that belong to the same block, starting from the largest Gaussian component, and removing them in successive iterations. The tool further assembles a sequence of adjacent blocks into a blockgroup if the blocks are either overlapping or are at a distance smaller than a user-defined threshold. A more detailed explanation is at <a href="http://hoffmann.bioinf.uni-leipzig.de/LIFE/blockbuster.html">the blockbuster website</a></p>
 
 </blockquote>
 
-<h2 id="sort-the-bed-file-of-tags">Sort the <span class="notranslate">BED</span> file of tags</h2>
+<h2 id="sort-the-bed-file-of-tags">Sort the BED file of tags</h2>
 
-<p>In order to run the blockbuster successfully the input <span class="notranslate">BED</span> file need to be sorted by chromosome, strand, start position and then end positions.</p>
+<p>In order to run the blockbuster successfully the input BED file need to be sorted by chromosome, strand, start position and then end positions.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-sort-the-bed-file" class="box-title" aria-label="hands-on box: Sort the BED file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Sort the <span class="notranslate">BED</span> file</div>
+  <div class="box-title hands-on-title" id="hands-on-sort-the-bed-file"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Sort the BED file</div>
 
   <ol>
     <li><strong>Sort</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1057,16 +916,16 @@
 
 </blockquote>
 
-<h2 id="group-reads-into-blocks-and-blockgroups-using-blockbuster">Group <span class="notranslate">reads</span> into blocks and blockgroups using <strong>blockbuster</strong></h2>
+<h2 id="group-reads-into-blocks-and-blockgroups-using-blockbuster">Group reads into blocks and blockgroups using <strong>blockbuster</strong></h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-blockbuster" class="box-title" aria-label="hands-on box: blockbuster"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: blockbuster</div>
+  <div class="box-title hands-on-title" id="hands-on-blockbuster"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: blockbuster</div>
 
   <ol>
     <li><strong>blockbuster</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“<span class="notranslate">BED</span> file containing read <span class="notranslate">expression</span>s”</em>: output of <strong>Sort</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
-        <li><em>“Type of output”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">reads</span> (blockbuster format)</code></li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BED file containing read expressions”</em>: output of <strong>Sort</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
+        <li><em>“Type of output”</em>: <code class="language-plaintext highlighter-rouge">reads (blockbuster format)</code></li>
       </ul>
     </li>
   </ol>
@@ -1076,9 +935,9 @@
 <h1 id="clustering-with-blockclust">Clustering with <strong>BlockClust</strong></h1>
 <p>Here we use <strong>BlockClust</strong> in clustering mode. All you need here is the output of the <strong>blockbuster</strong>.</p>
 
-<p>Apart from clustering, <strong>BlockClust</strong> has built-in class specific discriminative models for C/D box sno<span class="notranslate">RNA</span>, H/ACA box sno<span class="notranslate">RNA</span>, mi<span class="notranslate">RNA</span>, r<span class="notranslate">RNA</span>, sn<span class="notranslate">RNA</span>, t<span class="notranslate">RNA</span> and Y_<span class="notranslate">RNA</span>. So it can also be used to predict if a read profile might belong to one of the known nc<span class="notranslate">RNA</span> class.</p>
+<p>Apart from clustering, <strong>BlockClust</strong> has built-in class specific discriminative models for C/D box snoRNA, H/ACA box snoRNA, miRNA, rRNA, snRNA, tRNA and Y_RNA. So it can also be used to predict if a read profile might belong to one of the known ncRNA class.</p>
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-clustering" class="box-title" aria-label="hands-on box: clustering"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: clustering</div>
+  <div class="box-title hands-on-title" id="hands-on-clustering"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: clustering</div>
 
   <ol>
     <li><strong>BlockClust</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1099,33 +958,33 @@
 
 <p>The tool produces the following four output files.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">BlockClust: <span class="notranslate">BED</span> of predicted clusters</code> file is the result of Markov cluster algorithm. Each entry in this file represents a blockgroup. The 4th column contains is in the form of <em>annotation:blockgroup_id:cluster_id</em>. The <em>cluster_id</em> represents which cluster the blockgroup belongs to.</p>
+<p>The <code class="language-plaintext highlighter-rouge">BlockClust: BED of predicted clusters</code> file is the result of Markov cluster algorithm. Each entry in this file represents a blockgroup. The 4th column contains is in the form of <em>annotation:blockgroup_id:cluster_id</em>. The <em>cluster_id</em> represents which cluster the blockgroup belongs to.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">BlockClust: Model based predictions <span class="notranslate">BED</span></code> file is the result of classification. Each entry in this file represents a blockgroup. The 4th column contains the annotation of the nc<span class="notranslate">RNA</span> which it overlaps. For the blockgroups which are not overlapped with any known nc<span class="notranslate">RNA</span>s, the prefix <code class="language-plaintext highlighter-rouge">predicted_</code> is added indicating that it is predicted by the <strong>BlockClust</strong> classification models.</p>
+<p>The <code class="language-plaintext highlighter-rouge">BlockClust: Model based predictions BED</code> file is the result of classification. Each entry in this file represents a blockgroup. The 4th column contains the annotation of the ncRNA which it overlaps. For the blockgroups which are not overlapped with any known ncRNAs, the prefix <code class="language-plaintext highlighter-rouge">predicted_</code> is added indicating that it is predicted by the <strong>BlockClust</strong> classification models.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">BlockClust: Hierarchical clustering plot</code> file shows a dendrogram construced based on average linkage clustering.</p>
 
 <p>The <code class="language-plaintext highlighter-rouge">BlockClust: Pairwise similarities</code> file contains the pairwise similarities of all input blockgroups.</p>
 
-<p>Next, we will visualize the read profiles (from the BAM file) and the predictions (<span class="notranslate">BED</span> from <strong>BlockClust</strong>) together.</p>
+<p>Next, we will visualize the read profiles (from the BAM file) and the predictions (BED from <strong>BlockClust</strong>) together.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-visualization" class="box-title" aria-label="hands-on box: visualization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: visualization</div>
+  <div class="box-title hands-on-title" id="hands-on-visualization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: visualization</div>
 
   <ol>
     <li>Install <a href="https://software.broadinstitute.org/software/igv/download">IGV</a> (if not already installed)</li>
     <li>Start IGV locally</li>
     <li>Expand the <i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <code class="language-plaintext highlighter-rouge">GSM769512.bam</code> file</li>
-    <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the <span class="notranslate">reads</span> into the IGV browser</li>
-    <li>Expand the <i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <code class="language-plaintext highlighter-rouge">BlockClust: Model based predictions <span class="notranslate">BED</span></code> file</li>
-    <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the <span class="notranslate">reads</span> into the IGV browser</li>
+    <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the reads into the IGV browser</li>
+    <li>Expand the <i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <code class="language-plaintext highlighter-rouge">BlockClust: Model based predictions BED</code> file</li>
+    <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the reads into the IGV browser</li>
     <li>Go to the location <code class="language-plaintext highlighter-rouge">chr4:90653059-90653141</code> in IGV.</li>
   </ol>
 
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>Do you see any already annotated transcript in that location?</li>
@@ -1134,12 +993,12 @@
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>There is no annotated gene from RefSeq annotation on the same strand.</li>
-      <li>It resembles the mi<span class="notranslate">RNA</span> profiles mentioned in the introduction section. One of the read piles looks like mature mi<span class="notranslate">RNA</span> and the other like mi<span class="notranslate">RNA</span>*.</li>
-      <li>Predicted as a mi<span class="notranslate">RNA</span>.</li>
+      <li>It resembles the miRNA profiles mentioned in the introduction section. One of the read piles looks like mature miRNA and the other like miRNA*.</li>
+      <li>Predicted as a miRNA.</li>
     </ol>
 
   </blockquote>
@@ -1147,7 +1006,7 @@
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>In order for this step to work, you will need to have either IGV or <a href="https://www.java.com/en/download/faq/java_webstart.xml">Java web start</a>
 installed on your machine. However, the questions in this section can also be answered by inspecting the IGV screenshots below.</p>
@@ -1158,12 +1017,14 @@ installed on your machine. However, the questions in this section can also be an
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>In this tutorial, we learned how to use <strong>BlockClust</strong> to cluster real small <span class="notranslate">RNA</span> sequencing read profiles based on their similarity. We also learned that the <strong>BlockClust</strong> can also be used to classify the read profiles based on pre-built classification models.</p>
+<p>In this tutorial, we learned how to use <strong>BlockClust</strong> to cluster real small RNA sequencing read profiles based on their similarity. We also learned that the <strong>BlockClust</strong> can also be used to classify the read profiles based on pre-built classification models.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Small non-coding RNA read profiles are often associate with function</p>
@@ -1190,6 +1051,9 @@ installed on your machine. However, the questions in this section can also be an
 
 
                 
+                <h1 id="bibliography">References</h1>
+                <ol class="bibliography"><li id="Pasquinelli2012">Pasquinelli, A. E., 2012 <b>MicroRNAs and their targets: recognition,  regulation and an emerging reciprocal relationship</b>. Nature Reviews Genetics 13: 271–282. <a href="https://doi.org/10.1038/nrg3162">10.1038/nrg3162</a></li></ol>
+                
 
                 
 
@@ -1198,38 +1062,18 @@ installed on your machine. However, the questions in this section can also be an
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Small Non-coding RNA Clustering using BlockClust (Transcriptomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Small Non-coding RNA Clustering using BlockClust (Transcriptomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Pavankumar Videm,  <b>Small Non-coding RNA Clustering using BlockClust (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Pavankumar Videm,  <b>Small Non-coding RNA Clustering using BlockClust (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1241,7 +1085,7 @@ installed on your machine. However, the questions in this section can also be an
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1250,28 +1094,31 @@ installed on your machine. However, the questions in this section can also be an
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{transcriptomics-small_ncrna_clustering,
 author = "Pavankumar Videm",
-title = "Small Non-coding RNA Clustering using BlockClust (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Small Non-coding RNA Clustering using BlockClust (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1279,11 +1126,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1292,49 +1139,99 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_sort
+  owner: devteam
+  revisions: f56bdb93ae58
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: blockbuster
+  owner: rnateam
+  revisions: 7c7ff7a3503f
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: blockclust
+  owner: rnateam
+  revisions: aab6cf87b40a
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00306">https://gxy.io/GTN:T00306</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/small_ncrna_clustering/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

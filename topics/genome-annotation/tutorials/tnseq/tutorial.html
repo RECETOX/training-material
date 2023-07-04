@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Essential genes detection with Transposon insertion sequencing" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Delphine Lariviere" />
-<meta name="DC.creator" content="Bérénice Batut" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Genome annotation is a multi-level process that includes ..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Essential genes detection with Transposon insertion seque..." />
-        <meta property="og:description" content="Genome annotation is a multi-level process that includes ..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/genome-annotation" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Genome Annotation
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/tnseq/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/tnseq/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/tnseq/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/tnseq/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/tnseq/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/tnseq/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/genome-annotation/faqs/" title="Check our FAQs for the Genome Annotation topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/genome-annotation/tutorials/tnseq/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/genome-annotation/tutorials/tnseq/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/genome-annotation/tutorials/tnseq/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/genome-annotation/tutorials/tnseq/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxy-genome-annotation/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Essential genes detection with Transposon insertion sequencing">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000">
+<meta name="DC.creator" content="Delphine Lariviere">
+<meta name="DC.creator" content="Bérénice Batut">
+
+        
+        
+        
+        
+        <meta name="description" content="Genome annotation is a multi-level process that includes ...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Essential genes detection with Transposon insertion seque...">
+        <meta property="og:description" content="Genome annotation is a multi-level process that includes ...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'Essential genes detection with Transposon insertion sequencing' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html",
   "timeRequired": "PT7H",
+  "teaches": "Understand the read structure of TnSeq analyses\n - Predict Essential genes with Transit\n - Compare gene essentiality in control sample and an different experimental condition",
   "keywords": "genome-annotation, bacteria, tnseq, essential genes",
   "description": "The questions this  addresses are:\n - What is Transposon insertion Sequencing?\n - How to get TA sites Coverage ? \n - How to predict essential genes ?\n\n\nThe objectives are:\n - Understand the read structure of TnSeq analyses\n - Predict Essential genes with Transit\n - Compare gene essentiality in control sample and an different experimental condition\n\n",
   "inLanguage": {
@@ -358,34 +179,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/delphine-l/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/delphine-l/",
       "name": "Delphine Lariviere",
       "image": "https://avatars.githubusercontent.com/delphine-l",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
       "description": "A contributor to the GTN project.",
       "memberOf": [
         {
@@ -395,38 +195,15 @@
           "url": "https://galaxyproject.org/teach/gtn/"
         }
       ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/delphine-l/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/delphine-l/",
-      "name": "Delphine Lariviere",
-      "image": "https://avatars.githubusercontent.com/delphine-l",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      "identifier": "https://orcid.org/0000-0001-6421-3484",
+      "orcid": "https://orcid.org/0000-0001-6421-3484"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
@@ -451,36 +228,228 @@
       "name": "Genome Annotation",
       "description": "Genome annotation is a multi-level process that includes prediction of protein-coding\ngenes, as well as other functional genome units such as structural RNAs, tRNAs,\nsmall RNAs, pseudogenes, control regions, direct and inverted repeats, insertion\nsequences, transposons and other mobile elements.\n",
       "url": "https://training.galaxyproject.org/training-material/topics/genome-annotation/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_0362",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_0362",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0362"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "bacteria"
+    },
+    {
+      "@type": "Thing",
+      "name": "tnseq"
+    },
+    {
+      "@type": "Thing",
+      "name": "essential genes"
+    }
+  ],
+  "abstract": "# Introduction"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-genome-annotation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/genome-annotation" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Genome Annotation
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/genome-annotation/faqs/" title="Check our FAQs for the Genome Annotation topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/genome-annotation/tutorials/tnseq/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/genome-annotation/tutorials/tnseq/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/genome-annotation/tutorials/tnseq/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/genome-annotation/tutorials/tnseq/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-genome-annotation">
     <h1 data-toc-skip>Essential genes detection with Transposon insertion sequencing</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/delphine-l/" class="contributor-badge contributor-delphine-l"><img src="https://avatars.githubusercontent.com/delphine-l?s=27" alt="Avatar">Delphine Lariviere</a>
-
-
-
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/delphine-l/" class="contributor-badge contributor-delphine-l"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/delphine-l?s=36" alt="Avatar" width="36" height="36">Delphine Lariviere</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -550,7 +519,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.2579335">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -560,8 +529,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/genome-annotation/tutorials/tnseq/workflows/" title="Workflows" alt="Essential genes detection with Transposon insertion sequencing workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/genome-annotation/tutorials/tnseq/workflows/" title="Essential genes detection with Transposon insertion sequencing workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -574,13 +543,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/genome-annotation/tutorials/tnseq/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/genome-annotation/tutorials/tnseq/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -606,196 +572,55 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/genome-annotation/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
-            Human Cell Atlas
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://metagenomics.usegalaxy.eu/" title="Metagenomics">
-            Metagenomics
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
-            Single Cell Omics workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://virology.usegalaxy.eu/" title="Virology">
-            Virology
-        </a>
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
@@ -804,12 +629,16 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00179">https://gxy.io/GTN:T00179</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -820,17 +649,18 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <p>In microbiology, identifying links between genotype and phenotype is key to understand bacteria growth and virulence mechanisms, and to identify targets for drugs and vaccines. These analysis are limited by the lack of bacterial genome annotations (<em>e.g.</em> 30% of genes for <em>S. pneumoniae</em> are of unknown function) and by the fact that genotypes often arose from complex composant interactions.</p>
 
 <h2 id="transposon-insertion-sequencing">Transposon insertion Sequencing</h2>
 
-<p>Transposon insertion sequencing is a technique used to functionally annotate bacterial genomes. In this technique, the genome is saturated by insertions of transposons. Transposons are highly regulated, discrete <span class="notranslate">DNA</span> segments that can relocate within the genome. They have a large influence on gene <span class="notranslate">expression</span> and can be used to determine the function of genes.</p>
+<p>Transposon insertion sequencing is a technique used to functionally annotate bacterial genomes. In this technique, the genome is saturated by insertions of transposons. Transposons are highly regulated, discrete DNA segments that can relocate within the genome. They have a large influence on gene expression and can be used to determine the function of genes.</p>
 
-<p>When a transposon inserts itself in a gene, the gene’s function will be disrupted, affecting the fitness (growth) of the bacteria. We can then manipulate transposons for use in insertional mutagenesis, <em>i.e.</em> creation of mutations of <span class="notranslate">DNA</span> by the addition of transposons. The genomes can be then sequenced to locate the transposon insertion site and the function affected by a transposon insertion can be linked to the disrupted gene.</p>
+<p>When a transposon inserts itself in a gene, the gene’s function will be disrupted, affecting the fitness (growth) of the bacteria. We can then manipulate transposons for use in insertional mutagenesis, <em>i.e.</em> creation of mutations of DNA by the addition of transposons. The genomes can be then sequenced to locate the transposon insertion site and the function affected by a transposon insertion can be linked to the disrupted gene.</p>
 
-<figure id="figure-1"><img src="../../images/tnseq/principle_tnseq.png" alt="Illustration of tnseq Method. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Transposon insertion sequencing method (from <a href="#Chao2016"> Chao <i>et al.</i> 2016</a>)</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/tnseq/principle_tnseq.png" alt="Illustration of tnseq Method. " width="1407" height="1090" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Transposon insertion sequencing method (from <a href="#Chao2016"> Chao <i>et al.</i> 2016</a>)</figcaption></figure>
 
 <ol>
   <li>
@@ -841,14 +671,14 @@
   <li>
     <p><strong>Analysis</strong> (<strong>b</strong> in the previous image)</p>
 
-    <p>The sequences are aligned to the reference genome to identify the location of the regions flanking the insertions. The resulting data will show a discrete repartition of <span class="notranslate">reads</span> on each site. If a gene present several insertions, like the two leftmost genes in <em>Condition A</em>, it means that its disruption has little or no impact to the bacterial growth. On the other hand, when a gene shows no insertions at all, like the rightmost gene in <em>Condition A</em>, is means that any disruption in this gene killed the bacteria, meaning it is a gene essential to bacteria survival. If the library is sufficiently saturated, there is a clear threshold between essential and non-essential genes when you analyze the insertion rate per gene.</p>
+    <p>The sequences are aligned to the reference genome to identify the location of the regions flanking the insertions. The resulting data will show a discrete repartition of reads on each site. If a gene present several insertions, like the two leftmost genes in <em>Condition A</em>, it means that its disruption has little or no impact to the bacterial growth. On the other hand, when a gene shows no insertions at all, like the rightmost gene in <em>Condition A</em>, is means that any disruption in this gene killed the bacteria, meaning it is a gene essential to bacteria survival. If the library is sufficiently saturated, there is a clear threshold between essential and non-essential genes when you analyze the insertion rate per gene.</p>
   </li>
 </ol>
 
 <p>Two type of transposon insertion methods exist:</p>
 <ul>
   <li>Gene disruption, where we analyze only the disruptions. This will covered by of this tutorial</li>
-  <li>Regulatory element insertion, where different promoters are inserted by the transposon, and we analyze the change in gene <span class="notranslate">expression</span> in addition to the disruption. This method will be the subject of another tutorial.</li>
+  <li>Regulatory element insertion, where different promoters are inserted by the transposon, and we analyze the change in gene expression in addition to the disruption. This method will be the subject of another tutorial.</li>
 </ul>
 
 <h2 id="building-a-tnseq-library">Building a TnSeq library</h2>
@@ -879,35 +709,35 @@
 
 <p>Independently of the transposon choice we need to be careful about the library complexity. With a large complex library, multiple insertion can be found in every potential locus. The higher density of insertion, the greater precision in identifying limits of regions of interest. If the density of the library is too low, some genes might by chance not be disrupted and mistaken for essential. The advantage of a target specific transposon, like the mariner, in opposition of a Tn5-based transposon inserting randomly, it that the limited number of insertion sites makes it easier to build high complexity libraries.</p>
 
-<p>After selection of the type of transposon, we need to modify it to allow insertion site amplification and sequencing to get a library fitting the transposon insertion. Biases could be introduced during the process due to uneven fragment sizes. To avoid that, we can introduce a Type I restriction site to cleave <span class="notranslate">DNA</span> <span class="notranslate">downstream</span> of transposon, and get uniform fragment sizes and therefore avoid a bias in the representation of the insertions.</p>
+<p>After selection of the type of transposon, we need to modify it to allow insertion site amplification and sequencing to get a library fitting the transposon insertion. Biases could be introduced during the process due to uneven fragment sizes. To avoid that, we can introduce a Type I restriction site to cleave DNA downstream of transposon, and get uniform fragment sizes and therefore avoid a bias in the representation of the insertions.</p>
 
-<p>As we just want to identify the TA site affected by an insertion, we only need the location of the start of the <span class="notranslate">reads</span> and not a good coverage of the entire genome. Long <span class="notranslate">reads</span> are then not so important. On the other hand, a minimum transposon length of 16 bp is necessary for precise <span class="notranslate">mapping</span> on the genome <span class="citation"><a href="#Kwon2015">Kwon <i>et al.</i> 2015</a></span>. We can therefore not use the BsmFI restriction site (11 to 12 bp) but MmeI.</p>
+<p>As we just want to identify the TA site affected by an insertion, we only need the location of the start of the reads and not a good coverage of the entire genome. Long reads are then not so important. On the other hand, a minimum transposon length of 16 bp is necessary for precise mapping on the genome <span class="citation"><a href="#Kwon2015">Kwon <i>et al.</i> 2015</a></span>. We can therefore not use the BsmFI restriction site (11 to 12 bp) but MmeI.</p>
 
-<p><strong>In this tutorial, we are using mariner transposon targeting TA sequences, in ordered to target the whole genome uniformly,</strong> with two specific regions used to specifically sequence the region <span class="notranslate">upstream</span> of the insertion <span class="citation"><a href="#Santiago2015">Santiago <i>et al.</i> 2015</a></span></p>
+<p><strong>In this tutorial, we are using mariner transposon targeting TA sequences, in ordered to target the whole genome uniformly,</strong> with two specific regions used to specifically sequence the region upstream of the insertion <span class="citation"><a href="#Santiago2015">Santiago <i>et al.</i> 2015</a></span></p>
 
-<figure id="figure-2"><img src="../../images/tnseq/tranposon_structure.png" alt="Structure of the transposon containing several parcodes and adapters. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Structure of the transposon containing several parcodes and adapters (from <a href="#Santiago2015"> Santiago <i>et al.</i> 2015</a>)</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/tnseq/tranposon_structure.png" alt="Structure of the transposon containing several parcodes and adapters. " width="1284" height="1045" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Structure of the transposon containing several parcodes and adapters (from <a href="#Santiago2015"> Santiago <i>et al.</i> 2015</a>)</figcaption></figure>
 
-<p>The transposon inserts itself at TA site at the ITR junctions. These ITR junctions have been modified to include a Mme1 restriction site and a NotI restriction site which cut 21 bp <span class="notranslate">upstream</span> the restriction site. These two site are the 5’ and 3’ limits to the genomic <span class="notranslate">DNA</span> we want to sequence.</p>
+<p>The transposon inserts itself at TA site at the ITR junctions. These ITR junctions have been modified to include a Mme1 restriction site and a NotI restriction site which cut 21 bp upstream the restriction site. These two site are the 5’ and 3’ limits to the genomic DNA we want to sequence.</p>
 
 <ol>
   <li>
-    <p>After digestion by NotI restriction enzyme, the fragments are attached to biotinylated adaptors that link to NotI restriction site. The attached fragment are then digested by MMeI at a site <span class="notranslate">upstream</span>, where an Illumina primer is then linked. The sequencing is then done, adding Illumina adaptors and an additional barcode to the read for multiplexed sequencing.</p>
+    <p>After digestion by NotI restriction enzyme, the fragments are attached to biotinylated adaptors that link to NotI restriction site. The attached fragment are then digested by MMeI at a site upstream, where an Illumina primer is then linked. The sequencing is then done, adding Illumina adaptors and an additional barcode to the read for multiplexed sequencing.</p>
   </li>
   <li>
-    <p>An insertion can sometimes be composed of one or more copies of the transposon (multimer). There is therefore a risk to select plasmid backbone sequence. To solve this problem, an additional NotI has been added in the backbone to create different length construct, that can later be filtrated. Different promoters are added with an additional 3 bp barcode to analyze differential <span class="notranslate">expression</span> impact. This type of complex analysis will be covered in a follow-up tutorial.</p>
+    <p>An insertion can sometimes be composed of one or more copies of the transposon (multimer). There is therefore a risk to select plasmid backbone sequence. To solve this problem, an additional NotI has been added in the backbone to create different length construct, that can later be filtrated. Different promoters are added with an additional 3 bp barcode to analyze differential expression impact. This type of complex analysis will be covered in a follow-up tutorial.</p>
   </li>
 </ol>
 
-<p>Because of this complex transposon structure, the <span class="notranslate">reads</span> obtained after sequencing contain a lot of adapters and foreign sequences used to insert and target the transposon. Several steps of preprocessing are then need to extract only the transposon sequence before finding its location on the genome.</p>
+<p>Because of this complex transposon structure, the reads obtained after sequencing contain a lot of adapters and foreign sequences used to insert and target the transposon. Several steps of preprocessing are then need to extract only the transposon sequence before finding its location on the genome.</p>
 
 <h2 id="tnseq-analysis">Tnseq analysis</h2>
 
-<p>Once the genomic sequences are extracted from the initial <span class="notranslate">reads</span> (<em>i.e.</em> remove non genomic sequences from the <span class="notranslate">reads</span>), they need to be located each on the genome to link them to a TA site and genes. To do that we map them to a reference genome, link them to a specific insertion site, and then count the number of insertion for each TA site and identify essential genes of regions.</p>
+<p>Once the genomic sequences are extracted from the initial reads (<em>i.e.</em> remove non genomic sequences from the reads), they need to be located each on the genome to link them to a TA site and genes. To do that we map them to a reference genome, link them to a specific insertion site, and then count the number of insertion for each TA site and identify essential genes of regions.</p>
 
-<p>We will apply this approach in this tutorial using a subset of TnSeq <span class="notranslate">reads</span> from <span class="citation"><a href="#Santiago2015">Santiago <i>et al.</i> 2015</a></span>.</p>
+<p>We will apply this approach in this tutorial using a subset of TnSeq reads from <span class="citation"><a href="#Santiago2015">Santiago <i>et al.</i> 2015</a></span>.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -919,15 +749,15 @@
     </ol>
   </li>
   <li><a href="#data-upload" id="markdown-toc-data-upload">Data upload</a></li>
-  <li><a href="#remove-all-non-genomic-sequences-from-the-sequenced-reads" id="markdown-toc-remove-all-non-genomic-sequences-from-the-sequenced-reads">Remove all non genomic sequences from the sequenced <span class="notranslate">reads</span></a>    <ol>
-      <li><a href="#separate-reads-by-experimental-conditions" id="markdown-toc-separate-reads-by-experimental-conditions">Separate <span class="notranslate">reads</span> by experimental conditions</a></li>
+  <li><a href="#remove-all-non-genomic-sequences-from-the-sequenced-reads" id="markdown-toc-remove-all-non-genomic-sequences-from-the-sequenced-reads">Remove all non genomic sequences from the sequenced reads</a>    <ol>
+      <li><a href="#separate-reads-by-experimental-conditions" id="markdown-toc-separate-reads-by-experimental-conditions">Separate reads by experimental conditions</a></li>
       <li><a href="#remove-adapter-sequence" id="markdown-toc-remove-adapter-sequence">Remove Adapter sequence</a></li>
-      <li><a href="#separate-reads-from-different-transposon-constructs" id="markdown-toc-separate-reads-from-different-transposon-constructs">Separate <span class="notranslate">reads</span> from different transposon constructs</a></li>
+      <li><a href="#separate-reads-from-different-transposon-constructs" id="markdown-toc-separate-reads-from-different-transposon-constructs">Separate reads from different transposon constructs</a></li>
       <li><a href="#remove-the-remaining-transposon-sequence" id="markdown-toc-remove-the-remaining-transposon-sequence">Remove the remaining transposon sequence</a></li>
     </ol>
   </li>
   <li><a href="#count-the-number-of-insertion-per-ta-sites" id="markdown-toc-count-the-number-of-insertion-per-ta-sites">Count the number of insertion per TA sites</a>    <ol>
-      <li><a href="#align-the-reads-to-a-reference-genome" id="markdown-toc-align-the-reads-to-a-reference-genome">Align the <span class="notranslate">reads</span> to a reference genome</a></li>
+      <li><a href="#align-the-reads-to-a-reference-genome" id="markdown-toc-align-the-reads-to-a-reference-genome">Align the reads to a reference genome</a></li>
       <li><a href="#compute-coverage-of-the-genome" id="markdown-toc-compute-coverage-of-the-genome">Compute coverage of the genome</a></li>
       <li><a href="#identify-ta-sites-positions" id="markdown-toc-identify-ta-sites-positions">Identify TA sites positions</a></li>
       <li><a href="#merge-overall-coverage-and-positions-of-ta-sites-to-get-the-coverage-of-each-ta-sites" id="markdown-toc-merge-overall-coverage-and-positions-of-ta-sites-to-get-the-coverage-of-each-ta-sites">Merge overall coverage and positions of TA sites to get the coverage of each TA sites</a></li>
@@ -949,28 +779,30 @@
 <p>Let’s start with uploading the data.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-import-the-data" class="box-title" aria-label="hands-on box: Import the data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Import the data</div>
+  <div class="box-title hands-on-title" id="hands-on-import-the-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Import the data</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial and give it a proper name</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Import from <a href="https://zenodo.org/record/2579335">Zenodo</a> or a data library (ask your instructor):
       <ul>
-        <li>FASTQ file with the Tnseq <span class="notranslate">reads</span>: <code class="language-plaintext highlighter-rouge">Tnseq-Tutorial-<span class="notranslate">reads</span>.fastqsanger.gz</code></li>
-        <li>Set of barcodes to separate <span class="notranslate">reads</span> from different experimental conditions: <code class="language-plaintext highlighter-rouge">condition_barcodes.fasta</code></li>
-        <li>Set of barcodes to separate <span class="notranslate">reads</span> from different transposon constructs: <code class="language-plaintext highlighter-rouge">construct_barcodes.fasta</code></li>
+        <li>FASTQ file with the Tnseq reads: <code class="language-plaintext highlighter-rouge">Tnseq-Tutorial-reads.fastqsanger.gz</code></li>
+        <li>Set of barcodes to separate reads from different experimental conditions: <code class="language-plaintext highlighter-rouge">condition_barcodes.fasta</code></li>
+        <li>Set of barcodes to separate reads from different transposon constructs: <code class="language-plaintext highlighter-rouge">construct_barcodes.fasta</code></li>
         <li>Genome file for <em>Staphylococcus aureus</em>: <code class="language-plaintext highlighter-rouge">staph_aur.fasta</code></li>
         <li>Annotation file for <em>Staphylococcus aureus</em>: <code class="language-plaintext highlighter-rouge">staph_aur.gff3</code></li>
       </ul>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/2579335/files/Tnseq-Tutorial-<span class="notranslate">reads</span>.fastqsanger.gz
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/2579335/files/Tnseq-Tutorial-reads.fastqsanger.gz
 https://zenodo.org/record/2579335/files/condition_barcodes.fasta
 https://zenodo.org/record/2579335/files/construct_barcodes.fasta
 https://zenodo.org/record/2579335/files/staph_aur.fasta
@@ -978,41 +810,44 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-data-from-a-data-library" class="box-title"><button type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>  <ul>  <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>  <li>Navigate to the correct folder as indicated by your instructor</li>  <li>Select the desired files</li>  <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>  <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>  <li>Click on <strong>Import</strong></li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Rename the files</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-dataset" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a dataset<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field</li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
 </blockquote>
 
-<h1 id="remove-all-non-genomic-sequences-from-the-sequenced-reads">Remove all non genomic sequences from the sequenced <span class="notranslate">reads</span></h1>
+<h1 id="remove-all-non-genomic-sequences-from-the-sequenced-reads">Remove all non genomic sequences from the sequenced reads</h1>
 
-<p>Because of the experimental design for transposon insertion sequencing, the raw <span class="notranslate">reads</span> contain a lot of adapters and foreign sequences used to insert and target the transposon. To obtain the core <span class="notranslate">reads</span> that contain only genomic sequence, the <span class="notranslate">reads</span> have to go through several steps (using the <strong>Cutadapt</strong> tool) to remove them and divide the <span class="notranslate">reads</span> per experimental condition and type of transposon:</p>
+<p>Because of the experimental design for transposon insertion sequencing, the raw reads contain a lot of adapters and foreign sequences used to insert and target the transposon. To obtain the core reads that contain only genomic sequence, the reads have to go through several steps (using the <strong>Cutadapt</strong> tool) to remove them and divide the reads per experimental condition and type of transposon:</p>
 
-<figure id="figure-3"><img src="../../images/tnseq/preprocessing.png" alt="Workflow of data pre-processing. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 3:</span> Data pre-processing</figcaption></figure>
+<figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/tnseq/preprocessing.png" alt="Workflow of data pre-processing. " width="920" height="424" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> Data pre-processing</figcaption></figure>
 
 <ol>
-  <li>We separate the <span class="notranslate">reads</span> of each experimental condition based on a 8 bp barcode at the beginning of each read. These barcodes were added to be able to pool different conditions together before the transposon insertion and sequencing.</li>
-  <li>The tail of each set of read is then removed. It immediately follows the 3 bp barcode specific to transposon constructs, and contains illumina adapter sequence and <span class="notranslate">downstream</span></li>
-  <li>To be sure all our <span class="notranslate">reads</span> have been trimmed correctly we filter out the <span class="notranslate">reads</span> too large.</li>
-  <li>We then separate the <span class="notranslate">reads</span> per transposon construct</li>
+  <li>We separate the reads of each experimental condition based on a 8 bp barcode at the beginning of each read. These barcodes were added to be able to pool different conditions together before the transposon insertion and sequencing.</li>
+  <li>The tail of each set of read is then removed. It immediately follows the 3 bp barcode specific to transposon constructs, and contains illumina adapter sequence and downstream</li>
+  <li>To be sure all our reads have been trimmed correctly we filter out the reads too large.</li>
+  <li>We then separate the reads per transposon construct</li>
   <li>We remove the remaining transposon sequence containing MmeI.</li>
 </ol>
 
-<h2 id="separate-reads-by-experimental-conditions">Separate <span class="notranslate">reads</span> by experimental conditions</h2>
+<h2 id="separate-reads-by-experimental-conditions">Separate reads by experimental conditions</h2>
 
 <p>First we divide the initial data set by experimental conditions using the 8 bp barcode added during the Illumina multiplexing protocol.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-inspect-condition-barcodes" class="box-title" aria-label="hands-on box: Inspect condition barcodes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Inspect condition barcodes</div>
+  <div class="box-title hands-on-title" id="hands-on-inspect-condition-barcodes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Inspect condition barcodes</div>
 
   <ol>
     <li>Inspect the <code class="language-plaintext highlighter-rouge">condition_barcodes</code> file</li>
@@ -1031,22 +866,22 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 <p>We can see 2 barcodes there: one for control and one for condition.</p>
 
 <blockquote class="comment">
-  <div id="comment-barcode-symbols-used-by-b-cutadapt-b" class="box-title" aria-label="comment box: Barcode symbols used by &lt;b&gt;Cutadapt&lt;/b&gt;"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Barcode symbols used by <b>Cutadapt</b></div>
+  <div class="box-title comment-title" id="comment-barcode-symbols-used-by-b-cutadapt-b"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Barcode symbols used by <b>Cutadapt</b></div>
 
   <p>The <code class="language-plaintext highlighter-rouge">^</code> at the beginning of the sequence means we want to anchor the barcode at the beginning of the read. To know more about the symbols used by <strong>Cutadapt</strong>, you check the <a href="https://cutadapt.readthedocs.io/en/stable/guide.html#adapter-types"><strong>Cutadapt</strong> manual</a>.</p>
 </blockquote>
 
-<p>We would like now to split our Tnseq <span class="notranslate">reads</span> in <code class="language-plaintext highlighter-rouge">Tnseq-Tutorial-<span class="notranslate">reads</span></code> given the barcodes.</p>
+<p>We would like now to split our Tnseq reads in <code class="language-plaintext highlighter-rouge">Tnseq-Tutorial-reads</code> given the barcodes.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-split-reads-by-condition-barcodes-using-cutadapt" class="box-title" aria-label="hands-on box: Split reads by condition barcodes using Cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Split <span class="notranslate">reads</span> by condition barcodes using Cutadapt</div>
+  <div class="box-title hands-on-title" id="hands-on-split-reads-by-condition-barcodes-using-cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Split reads by condition barcodes using Cutadapt</div>
 
   <ol>
     <li><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
-        <li><em>“Single-end or Paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
+        <li><em>“Single-end or Paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
           <ul>
-            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“FASTQ/A file”</em>: <code class="language-plaintext highlighter-rouge">Tnseq-Tutorial-<span class="notranslate">reads</span></code></li>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“FASTQ/A file”</em>: <code class="language-plaintext highlighter-rouge">Tnseq-Tutorial-reads</code></li>
             <li>In <em>“Read 1 Options”</em>
               <ul>
                 <li>In <em>“5’ (Front) Adapters”</em>
@@ -1075,8 +910,8 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
         <li>In <em>“Output Selector”</em>, select
           <ul>
             <li><em>“Report”</em></li>
-            <li><em>“Multiple output”</em> (to separate the <span class="notranslate">reads</span> into one file per condition)</li>
-            <li><em>“Untrimmed <span class="notranslate">reads</span>”</em> (to write <span class="notranslate">reads</span> that do not contain the adapter to a separate file)</li>
+            <li><em>“Multiple output”</em> (to separate the reads into one file per condition)</li>
+            <li><em>“Untrimmed reads”</em> (to write reads that do not contain the adapter to a separate file)</li>
           </ul>
         </li>
       </ul>
@@ -1088,19 +923,19 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 </blockquote>
 
 <blockquote class="question">
-  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
-    <li>What percentage of <span class="notranslate">reads</span> has been trimmed for the adapter?</li>
-    <li>How many <span class="notranslate">reads</span> have been trimmed for each condition?</li>
-    <li>What should we change if our barcodes were at the end of the <span class="notranslate">reads</span> ?</li>
+    <li>What percentage of reads has been trimmed for the adapter?</li>
+    <li>How many reads have been trimmed for each condition?</li>
+    <li>What should we change if our barcodes were at the end of the reads ?</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
-      <li>100% of the <span class="notranslate">reads</span> were trimmed (line <code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span> with adapters</code>)</li>
+      <li>100% of the reads were trimmed (line <code class="language-plaintext highlighter-rouge">Reads with adapters</code>)</li>
       <li>2,847,018 for control (<code class="language-plaintext highlighter-rouge">CTCAGAAG</code> barcode) and 2,862,108 for condition (<code class="language-plaintext highlighter-rouge">GACGTCAT</code> barcode)</li>
       <li>We should use the option <em>“Insert 3’ (End) Adapters”</em> and anchored them at the end of the read with the symbol <code class="language-plaintext highlighter-rouge">$</code> in our fasta file containing the barcodes.</li>
     </ol>
@@ -1110,15 +945,15 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 
 <h2 id="remove-adapter-sequence">Remove Adapter sequence</h2>
 
-<p>Our <span class="notranslate">reads</span> are now divided by condition. We need to trim their tail containing the Illumina adapters, used for initiating the sequencing (<code class="language-plaintext highlighter-rouge">CGTTATGGCACGC</code>, here). To do so, we remove the adapter and everything <span class="notranslate">downstream</span>, using the end adapter option of <strong>Cutadapt</strong> and not anchor the sequence anywhere. To eliminate <span class="notranslate">reads</span> that might not have been trimmed because of too many mismatches or other reasons, we filter the <span class="notranslate">reads</span> by size, given the known approximate size of the remaining sequences (<strong>how is it computed??</strong>).</p>
+<p>Our reads are now divided by condition. We need to trim their tail containing the Illumina adapters, used for initiating the sequencing (<code class="language-plaintext highlighter-rouge">CGTTATGGCACGC</code>, here). To do so, we remove the adapter and everything downstream, using the end adapter option of <strong>Cutadapt</strong> and not anchor the sequence anywhere. To eliminate reads that might not have been trimmed because of too many mismatches or other reasons, we filter the reads by size, given the known approximate size of the remaining sequences (<strong>how is it computed??</strong>).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-remove-adapter-with-cutadapt" class="box-title" aria-label="hands-on box: Remove Adapter with Cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Remove Adapter with Cutadapt</div>
+  <div class="box-title hands-on-title" id="hands-on-remove-adapter-with-cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Remove Adapter with Cutadapt</div>
 
   <ol>
     <li><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to remove adapters with:
       <ul>
-        <li><em>“Single-end or Paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
+        <li><em>“Single-end or Paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
           <ul>
             <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“FASTQ/A file”</em>: collection output of the previous <strong>Cutadapt</strong></li>
             <li>In <em>“Read 1 Options”</em>
@@ -1153,11 +988,11 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       </ul>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
         <p>What are the outputs at this step?</p>
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>The outputs are two collections: one containing the <span class="notranslate">reads</span> in both conditions, and one containing the <strong>Cutadapt</strong> reports for each condition.</p>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>The outputs are two collections: one containing the reads in both conditions, and one containing the <strong>Cutadapt</strong> reports for each condition.</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1165,17 +1000,17 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       <p>Inspect the generated report files</p>
 
       <blockquote class="question">
-        <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
-        <p>What percentage of the <span class="notranslate">reads</span> contained the adapter?</p>
+        <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+        <p>What percentage of the reads contained the adapter?</p>
         <blockquote class="solution">
-          <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>More than 99% of the <span class="notranslate">reads</span> contained the adapter in both conditions (line <code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span> with adapters</code> in the reports)</p>
+          <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>More than 99% of the reads contained the adapter in both conditions (line <code class="language-plaintext highlighter-rouge">Reads with adapters</code> in the reports)</p>
         </blockquote>
       </blockquote>
     </li>
-    <li><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to filter <span class="notranslate">reads</span> based on length with:
+    <li><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to filter reads based on length with:
       <ul>
-        <li><em>“Single-end or Paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
+        <li><em>“Single-end or Paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
           <ul>
             <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“FASTQ/A file”</em>: collection output of the previous <strong>Cutadapt</strong></li>
           </ul>
@@ -1197,11 +1032,11 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       <p>Inspect the generated report files</p>
 
       <blockquote class="question">
-        <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
-        <p>How many <span class="notranslate">reads</span> where discarded after filtering?</p>
+        <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+        <p>How many reads where discarded after filtering?</p>
         <blockquote class="solution">
-          <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>Less than 2% of the <span class="notranslate">reads</span> were discarded in both conditions (lines <code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span> that were too short</code> and <code class="language-plaintext highlighter-rouge"><span class="notranslate">Reads</span> that were too long</code> in the reports)</p>
+          <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>Less than 2% of the reads were discarded in both conditions (lines <code class="language-plaintext highlighter-rouge">Reads that were too short</code> and <code class="language-plaintext highlighter-rouge">Reads that were too long</code> in the reports)</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1209,32 +1044,32 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 
 </blockquote>
 
-<p>We can see that is both samples the <span class="notranslate">reads</span> have pass the filtering at more than 98%. If this percentage is very low, it means the previous trimming steps is incomplete or faulty.</p>
+<p>We can see that is both samples the reads have pass the filtering at more than 98%. If this percentage is very low, it means the previous trimming steps is incomplete or faulty.</p>
 
-<h2 id="separate-reads-from-different-transposon-constructs">Separate <span class="notranslate">reads</span> from different transposon constructs</h2>
+<h2 id="separate-reads-from-different-transposon-constructs">Separate reads from different transposon constructs</h2>
 
-<p>The constructs used in this experiment contain different strengths and directions of promoters. We use the different constructs as replicates, so we need now to separate the <span class="notranslate">reads</span> based on the construct specific 3 bp barcodes.</p>
+<p>The constructs used in this experiment contain different strengths and directions of promoters. We use the different constructs as replicates, so we need now to separate the reads based on the construct specific 3 bp barcodes.</p>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
-  <p>In addition of disrupting a gene at the location of the insertion, such constructs can modify the <span class="notranslate">expression</span> of either <span class="notranslate">upstream</span> or <span class="notranslate">downstream</span> regions. The analysis of such modification will be studied in another training material, but for now we consider that the construct does not impact the essentiality analysis.</p>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
+  <p>In addition of disrupting a gene at the location of the insertion, such constructs can modify the expression of either upstream or downstream regions. The analysis of such modification will be studied in another training material, but for now we consider that the construct does not impact the essentiality analysis.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-inspect-construct-barcodes" class="box-title" aria-label="hands-on box: Inspect construct barcodes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Inspect construct barcodes</div>
+  <div class="box-title hands-on-title" id="hands-on-inspect-construct-barcodes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Inspect construct barcodes</div>
 
   <ol>
     <li>
       <p>Inspect the <code class="language-plaintext highlighter-rouge">construct_barcodes</code> file</p>
 
       <blockquote class="question">
-        <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>What does the <code class="language-plaintext highlighter-rouge">$</code> mean in the barcode sequence file?</p>
 
         <blockquote class="solution">
-          <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>It means the barcode is anchored at the end of the <span class="notranslate">reads</span>.</p>
+          <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>It means the barcode is anchored at the end of the reads.</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1242,12 +1077,12 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-barcode-split-with-cutadapt" class="box-title" aria-label="hands-on box: Barcode split with Cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Barcode split with Cutadapt</div>
+  <div class="box-title hands-on-title" id="hands-on-barcode-split-with-cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Barcode split with Cutadapt</div>
 
   <ol>
     <li><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
-        <li><em>“Single-end or Paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
+        <li><em>“Single-end or Paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
           <ul>
             <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“FASTQ/A file”</em>: collection output of the previous <strong>Cutadapt</strong></li>
             <li>In <em>“Read 1 Options”</em>
@@ -1277,7 +1112,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
         <li>In <em>“Output Selector”</em>, select
           <ul>
             <li><em>“Report”</em></li>
-            <li><em>“Multiple output”</em> (to separate the <span class="notranslate">reads</span> into one file per condition)</li>
+            <li><em>“Multiple output”</em> (to separate the reads into one file per condition)</li>
           </ul>
         </li>
       </ul>
@@ -1286,13 +1121,13 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       <p>Inspect the report files</p>
 
       <blockquote class="question">
-        <div id="question-5" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
-        <p>Are the <span class="notranslate">reads</span> equally divided between constructs?</p>
+        <p>Are the reads equally divided between constructs?</p>
 
         <blockquote class="solution">
-          <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>When you look at the reports, you can see that most of the <span class="notranslate">reads</span> have been assigned to the <em>blunt</em> construct (<code class="language-plaintext highlighter-rouge">TAC</code> barcode): the blunt construct is the control and does not contain any promoters. This means that there is less negative selective pressure on blunt than the other ones, that have affected flanking region in addition to the disrupted gene at the insertion site. This won’t be a problem here as the tool we use for the essentiality prediction consider the sum of <span class="notranslate">reads</span> in the replicates.</p>
+          <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>When you look at the reports, you can see that most of the reads have been assigned to the <em>blunt</em> construct (<code class="language-plaintext highlighter-rouge">TAC</code> barcode): the blunt construct is the control and does not contain any promoters. This means that there is less negative selective pressure on blunt than the other ones, that have affected flanking region in addition to the disrupted gene at the insertion site. This won’t be a problem here as the tool we use for the essentiality prediction consider the sum of reads in the replicates.</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1304,15 +1139,15 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 
 <h2 id="remove-the-remaining-transposon-sequence">Remove the remaining transposon sequence</h2>
 
-<p>The last remaining transposon sequence in the <span class="notranslate">reads</span> is the linker with the MmeI restriction site (<code class="language-plaintext highlighter-rouge">ACAGGTTGGATGATAAGTCCCCGGTCTATATTGAGAGTAACTACATTT</code>).</p>
+<p>The last remaining transposon sequence in the reads is the linker with the MmeI restriction site (<code class="language-plaintext highlighter-rouge">ACAGGTTGGATGATAAGTCCCCGGTCTATATTGAGAGTAACTACATTT</code>).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-remove-linker-with-cutadapt" class="box-title" aria-label="hands-on box:  Remove Linker with Cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on:  Remove Linker with Cutadapt</div>
+  <div class="box-title hands-on-title" id="hands-on-remove-linker-with-cutadapt"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Remove Linker with Cutadapt</div>
 
   <ol>
     <li><strong>Cutadapt</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
-        <li><em>“Single-end or Paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
+        <li><em>“Single-end or Paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Single-end</code>
           <ul>
             <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“FASTQ/A file”</em>: collection output of the previous <strong>Cutadapt</strong></li>
             <li>In <em>“Read 1 Options”</em>
@@ -1350,21 +1185,21 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
   </ol>
 </blockquote>
 
-<p>Now that we isolated the genomic sequences from the initial <span class="notranslate">reads</span>, we want to align them to count how many insertion have been retained at each TA site.</p>
+<p>Now that we isolated the genomic sequences from the initial reads, we want to align them to count how many insertion have been retained at each TA site.</p>
 
 <h1 id="count-the-number-of-insertion-per-ta-sites">Count the number of insertion per TA sites</h1>
 
-<h2 id="align-the-reads-to-a-reference-genome">Align the <span class="notranslate">reads</span> to a reference genome</h2>
+<h2 id="align-the-reads-to-a-reference-genome">Align the reads to a reference genome</h2>
 
-<p>To identify the location of each TA site to the count them, the first step is to map the <span class="notranslate">reads</span> on the reference genome. We use the <strong>Bowtie</strong>.</p>
+<p>To identify the location of each TA site to the count them, the first step is to map the reads on the reference genome. We use the <strong>Bowtie</strong>.</p>
 
 <blockquote class="comment">
-  <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
-  <p>We could also use <strong>Bowtie2</strong> with an end-to-end option, but <strong>Bowtie</strong> is more suitable for very short <span class="notranslate">reads</span> like ours (16-17 bp).</p>
+  <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
+  <p>We could also use <strong>Bowtie2</strong> with an end-to-end option, but <strong>Bowtie</strong> is more suitable for very short reads like ours (16-17 bp).</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-map-reads-with-bowtie" class="box-title" aria-label="hands-on box: Map reads with Bowtie"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Map <span class="notranslate">reads</span> with Bowtie</div>
+  <div class="box-title hands-on-title" id="hands-on-map-reads-with-bowtie"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Map reads with Bowtie</div>
 
   <ol>
     <li><strong>Map with Bowtie for Illumina</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1378,7 +1213,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
           <ul>
             <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“FASTQ file”</em>: collection output of the last <strong>Cutadapt</strong></li>
             <li><em>“Bowtie settings to use”</em>: <code class="language-plaintext highlighter-rouge">Full parameters list</code></li>
-            <li><em>“Skip the first n <span class="notranslate">reads</span> (-s)”</em>: <code class="language-plaintext highlighter-rouge">0</code></li>
+            <li><em>“Skip the first n reads (-s)”</em>: <code class="language-plaintext highlighter-rouge">0</code></li>
             <li><em>“Maximum number of mismatches permitted in the seed (-n)”</em>: <code class="language-plaintext highlighter-rouge">0</code></li>
             <li><em>“Seed length (-l)”</em>: <code class="language-plaintext highlighter-rouge">17</code></li>
             <li><em>“Whether or not to make Bowtie guarantee that reported singleton alignments are ‘best’ in terms of stratum and in terms of the quality values at the mismatched positions (–best)”</em>: <code class="language-plaintext highlighter-rouge">Use best</code></li>
@@ -1388,11 +1223,11 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       </ul>
 
       <blockquote class="question">
-        <div id="question-6" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
-        <p>Why are we strictly enforcing no mismatch <span class="notranslate">mapping</span>?</p>
+        <div class="box-title question-title" id="question-6"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+        <p>Why are we strictly enforcing no mismatch mapping?</p>
         <blockquote class="solution">
-          <div id="solution-6" class="box-title"><button type="button" aria-controls="solution-6-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>Our <span class="notranslate">reads</span> being very short, the smallest size needs precise <span class="notranslate">mapping</span>, allowing even one mismatch would risk having <span class="notranslate">reads</span> <span class="notranslate">mapping</span> in wrong positions.</p>
+          <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>Our reads being very short, the smallest size needs precise mapping, allowing even one mismatch would risk having reads mapping in wrong positions.</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1400,7 +1235,8 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       <p>Rename your collection for better clarity</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-collection" class="box-title"><button type="button" aria-controls="tip-renaming-a-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on the collection</li>  <li>Click on the name of the collection at the top</li>  <li>Change the name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-collection" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a collection<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the collection</li>   <li>Click on the name of the collection at the top</li>   <li>Change the name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1408,14 +1244,14 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 
 <h2 id="compute-coverage-of-the-genome">Compute coverage of the genome</h2>
 
-<p>We have now our <span class="notranslate">reads</span> mapped on the reference genome. We can compute the genome coverage, <em>i.e.</em> how much the nucleotides of the genome are covered by <span class="notranslate">reads</span>. This information will be later crossed with our TA sites position.</p>
+<p>We have now our reads mapped on the reference genome. We can compute the genome coverage, <em>i.e.</em> how much the nucleotides of the genome are covered by reads. This information will be later crossed with our TA sites position.</p>
 
-<p>In our case, the sequenced <span class="notranslate">reads</span> cover the  5’ region flanking region of the TA site where the transposon inserted. We should not then extract the coverage across the whole <span class="notranslate">reads</span>, as it could cover several TA sites, but only the coverage at the 3’ end of the read:</p>
+<p>In our case, the sequenced reads cover the  5’ region flanking region of the TA site where the transposon inserted. We should not then extract the coverage across the whole reads, as it could cover several TA sites, but only the coverage at the 3’ end of the read:</p>
 
-<figure id="figure-4"><img src="../../images/tnseq/Map_cov.png" alt="A read align to the genome with its 3' end covering half of the TA site. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 4:</span> <span class="notranslate">Mapping</span> read and TA site coverage</figcaption></figure>
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/tnseq/Map_cov.png" alt="A read align to the genome with its 3' end covering half of the TA site. " width="935" height="222" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> Mapping read and TA site coverage</figcaption></figure>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-compute-genome-coverage" class="box-title" aria-label="hands-on box: Compute genome coverage"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Compute genome coverage</div>
+  <div class="box-title hands-on-title" id="hands-on-compute-genome-coverage"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Compute genome coverage</div>
 
   <ol>
     <li><strong>bamCoverage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1423,7 +1259,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“BAM/CRAM file”</em>: collection output of the last <strong>Map with Bowtie for Illumina</strong></li>
         <li><em>“Bin size in bases”</em>: <code class="language-plaintext highlighter-rouge">1</code></li>
         <li><em>“Scaling/Normalization method”</em>: <code class="language-plaintext highlighter-rouge">Do not normalize or scale</code></li>
-        <li><em>“Coverage file format”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">bed</span>graph</code></li>
+        <li><em>“Coverage file format”</em>: <code class="language-plaintext highlighter-rouge">bedgraph</code></li>
         <li><em>“Show advanced options”</em>: <code class="language-plaintext highlighter-rouge">yes</code>
           <ul>
             <li><em>“Ignore missing data?”</em>: <code class="language-plaintext highlighter-rouge">Yes</code> (to get only region with read counts)</li>
@@ -1443,7 +1279,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 <p>As you can see on the <a href="#figure-4">previous figure</a>, the read can cover one side or the other of the TA depending on the direction of insertion of the transposon. Depending on the direction of insertion the coverage will be counted on the leftmost position of the TA site or on the rightmost. As we are not considering strand separately in this analyses, we will consider both count as attached to the leftmost base of the TA site. To do that we will create two list of TA site positions, listing the 5’ end of each TA site for forward and reverse strand, and then merge them to get a global count per TA site.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-ta-sites-coordinates" class="box-title" aria-label="hands-on box: Get TA sites coordinates"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get TA sites coordinates</div>
+  <div class="box-title hands-on-title" id="hands-on-get-ta-sites-coordinates"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get TA sites coordinates</div>
 
   <ol>
     <li><strong>Nucleotide subsequence search</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1458,7 +1294,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
   </ol>
 </blockquote>
 
-<p><strong>Nucleotide subsequence search</strong> generate one <span class="notranslate">BED</span> file with the coordinates of each TA on the genome:</p>
+<p><strong>Nucleotide subsequence search</strong> generate one BED file with the coordinates of each TA on the genome:</p>
 <ol>
   <li>Chrom</li>
   <li>Start</li>
@@ -1470,7 +1306,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 <p>The only information we need here are the positions of the 5’ end of each TA site for each strand.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-forward-and-reverse-strand-positions" class="box-title" aria-label="hands-on box: Get forward and reverse strand positions"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get forward and reverse strand positions</div>
+  <div class="box-title hands-on-title" id="hands-on-get-forward-and-reverse-strand-positions"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get forward and reverse strand positions</div>
 
   <ol>
     <li><strong>Cut columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1484,7 +1320,8 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       <p>Add the <code class="language-plaintext highlighter-rouge">#forward</code> tag to the output</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-adding-a-tag" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the dataset to expand it</li>   <li>Click on <strong>Add Tags</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span></li>   <li>Add a tag  starting with <code class="language-plaintext highlighter-rouge">#</code>     <ul>       <li>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</li>     </ul>   </li>   <li>Press <kbd>Enter</kbd></li>   <li>Check that the tag appears below the dataset name</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li><strong>Cut columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
@@ -1493,9 +1330,9 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“From”</em>: output of <strong>Nucleotide subsequence search</strong></li>
       </ul>
     </li>
-    <li><strong>Compute an <span class="notranslate">expression</span> on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to shift the end position of TA sites  by 1 and get the start of the TA site on the reverse strand with:
+    <li><strong>Compute an expression on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to shift the end position of TA sites  by 1 and get the start of the TA site on the reverse strand with:
       <ul>
-        <li><em>Add <span class="notranslate">expression</span>”</em>: <code class="language-plaintext highlighter-rouge">c2-1</code></li>
+        <li><em>Add expression”</em>: <code class="language-plaintext highlighter-rouge">c2-1</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“as a new column to”</em>: output of <strong>cut</strong></li>
         <li><em>“Round result?”</em>: <code class="language-plaintext highlighter-rouge">yes</code></li>
       </ul>
@@ -1517,7 +1354,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 <p>We have now 2 files containing the coordinates of our TA sites for both strands. We should cross them with the coverage files to get the coverage on both sides of each TA site.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-coverage-of-ta-sites" class="box-title" aria-label="hands-on box:  Get coverage of TA sites"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on:  Get coverage of TA sites</div>
+  <div class="box-title hands-on-title" id="hands-on-get-coverage-of-ta-sites"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on:  Get coverage of TA sites</div>
 
   <ol>
     <li><strong>Join two files</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1535,7 +1372,8 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
       <p>Add <code class="language-plaintext highlighter-rouge">#forward</code> tag to the output collections</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-adding-a-tag-to-a-collection" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-to-a-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag to a collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag to a collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the collection</li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code> in the <code class="language-plaintext highlighter-rouge">Add tags</code> field</p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Press <kbd>Enter</kbd></li>  <li>Check that the tag is appearing below the collection name</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag-to-a-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag-to-a-collection" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag to a collection<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the collection in your history to view it</li>   <li>Click on <strong>Edit</strong> <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> next to the collection name at the top of the history panel</li>   <li>Click on <strong>Add Tags</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span></li>   <li>Add a tag  starting with <code class="language-plaintext highlighter-rouge">#</code>     <ul>       <li>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs any tools using this dataset.</li>     </ul>   </li>   <li>Click <strong>Save</strong> <i class="far fa-save" aria-hidden="true"></i><span class="visually-hidden">galaxy-save</span></li>   <li>Check that the tag appears below the collection name</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li><strong>Cut columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
@@ -1552,12 +1390,12 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 <p>We now have a read count for each nucleotide at the different TA sites. The insertions on the forward strand files are in a different direction than those on the reverse strand file. In our case, we are only interested in studying the gene disruption, and therefore we do not want to consider the directions separately. We can then combine the forward and reverse counts together to get a total count per TA site. In order to do that we need to assign the count of both strand to the same nucleotide, by shifting by one position the count on the reverse strand.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-total-count-per-ta-site" class="box-title" aria-label="hands-on box: Get total count per TA site"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get total count per TA site</div>
+  <div class="box-title hands-on-title" id="hands-on-get-total-count-per-ta-site"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get total count per TA site</div>
 
   <ol>
-    <li><strong>Compute an <span class="notranslate">expression</span> on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to shift the positions of reverse strand counts with:
+    <li><strong>Compute an expression on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to shift the positions of reverse strand counts with:
       <ul>
-        <li><em>Add <span class="notranslate">expression</span>”</em>: <code class="language-plaintext highlighter-rouge">c1-1</code> (to shift the position by 1)</li>
+        <li><em>Add expression”</em>: <code class="language-plaintext highlighter-rouge">c1-1</code> (to shift the position by 1)</li>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“as a new column to”</em>: <strong>Cut</strong> output collection with the tags <code class="language-plaintext highlighter-rouge">reverse</code></li>
         <li><em>“Round result?”</em> : <code class="language-plaintext highlighter-rouge">yes</code></li>
       </ul>
@@ -1596,9 +1434,9 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
         <li><em>“Value to put in unpaired (empty) fields”</em>: <code class="language-plaintext highlighter-rouge">.</code></li>
       </ul>
     </li>
-    <li><strong>Compute an <span class="notranslate">expression</span> on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to get the total read count with:
+    <li><strong>Compute an expression on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to get the total read count with:
       <ul>
-        <li><em>Add <span class="notranslate">expression</span>”</em>: <code class="language-plaintext highlighter-rouge">c2+c3</code> to get the total count</li>
+        <li><em>Add expression”</em>: <code class="language-plaintext highlighter-rouge">c2+c3</code> to get the total count</li>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“as a new column to”</em>: output of <strong>Join two files</strong> with the tags <code class="language-plaintext highlighter-rouge">reverse</code> and <code class="language-plaintext highlighter-rouge">forward</code></li>
         <li><em>“Round result?”</em>: <code class="language-plaintext highlighter-rouge">yes</code></li>
       </ul>
@@ -1628,7 +1466,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-7" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-7"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>Take a look at the output files:</p>
 
@@ -1638,7 +1476,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-7" class="box-title"><button type="button" aria-controls="solution-7-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>The first column contain the position of the TA site, and the second column the number of insertions observed.</li>
       <li>Your five first lines should look like this :
@@ -1658,7 +1496,7 @@ https://zenodo.org/record/2579335/files/staph_aur.gff3
 
 <p>Now that we have the counts of insertions per TA site, we can use them to predict gene essentiality. Several methods exist to identify essential genes of regions. They can be divided in two major categories:</p>
 
-<figure id="figure-5"><img src="../../images/tnseq/type_of_analyses.png" alt="Different types of TnSeq Analyses. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 5:</span> Methods of TnSeq Analyses (from <a href="#Chao2016"> Chao <i>et al.</i> 2016</a>)</figcaption></figure>
+<figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="../../images/tnseq/type_of_analyses.png" alt="Different types of TnSeq Analyses. " width="867" height="711" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Methods of TnSeq Analyses (from <a href="#Chao2016"> Chao <i>et al.</i> 2016</a>)</figcaption></figure>
 
 <ol>
   <li>
@@ -1706,14 +1544,15 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 <p>In order to use transit, we need to create a an annotation file in the <code class="language-plaintext highlighter-rouge">prot_table</code> format, specific to the Transit tool. It can be created this file from a GFF3 from GenBank like the one we uploaded earlier.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-hands-on-create-annotation-file-in-prot-table-format" class="box-title" aria-label="hands-on box: Hands-on : Create annotation file in prot_table format"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on : Create annotation file in prot_table format</div>
+  <div class="box-title hands-on-title" id="hands-on-hands-on-create-annotation-file-in-prot-table-format"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Hands-on : Create annotation file in prot_table format</div>
   <ol>
     <li>Check that the format of <code class="language-plaintext highlighter-rouge">staph_aur.gff3</code> file is <code class="language-plaintext highlighter-rouge">gff3</code> and not <code class="language-plaintext highlighter-rouge">gff</code></li>
     <li>
       <p>Change the datatype if needed</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-changing-the-datatype" class="box-title"><button type="button" aria-controls="tip-changing-the-datatype-contents" aria-expanded="true" aria-label="Toggle tip box: Changing the datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>  <li>Select <code class="language-plaintext highlighter-rouge">gff3</code>    <ul>      <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>    </ul>  </li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-changing-the-datatype"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-changing-the-datatype" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Changing the datatype<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <strong>Convert</strong> tab on the top</li>   <li>In the lower part <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden">galaxy-chart-select-data</span> <strong>Datatypes</strong>, select <code class="language-plaintext highlighter-rouge">gff3</code>     <ul>       <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>     </ul>   </li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li><strong>Convert GFF3 to prot_table for TRANSIT</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
@@ -1732,7 +1571,7 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-predict-gene-essentiality-with-transit" class="box-title" aria-label="hands-on box: Predict gene essentiality with Transit"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Predict gene essentiality with Transit</div>
+  <div class="box-title hands-on-title" id="hands-on-predict-gene-essentiality-with-transit"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Predict gene essentiality with Transit</div>
 
   <ol>
     <li><strong>Gumbel</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1773,17 +1612,17 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 </ul>
 
 <blockquote class="comment">
-  <div id="comment-more-details-about-transit" class="box-title" aria-label="comment box: More details about Transit"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: More details about Transit</div>
+  <div class="box-title comment-title" id="comment-more-details-about-transit"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: More details about Transit</div>
   <p>You can find more information on <a href="https://transit.readthedocs.io/en/latest/transit_methods.html">Transit manual page</a></p>
 </blockquote>
 
 <p>We can obtain the list of genes predicted as essential by filtering on the essentiality call.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-hands-on-get-table-of-essential-genes" class="box-title" aria-label="hands-on box: Hands-on : Get table of essential genes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on : Get table of essential genes</div>
+  <div class="box-title hands-on-title" id="hands-on-hands-on-get-table-of-essential-genes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Hands-on : Get table of essential genes</div>
 
   <ol>
-    <li><strong>Filter data on any column using simple <span class="notranslate">expression</span>s</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
+    <li><strong>Filter data on any column using simple expressions</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Filter”</em>: output of the last <strong>Gumbel</strong></li>
         <li><em>With following condition”</em>: <code class="language-plaintext highlighter-rouge">c9=='E'</code> (to select essential genes)</li>
@@ -1794,12 +1633,12 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-8" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-8"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>How many genes are essential in each conditions?</p>
 
   <blockquote class="solution">
-    <div id="solution-8" class="box-title"><button type="button" aria-controls="solution-8-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>359 genes are essential in control, and 381 in condition.</p>
   </blockquote>
@@ -1811,7 +1650,7 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 <p>Now let’s compare the results between out two conditions.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-separate-files-from-the-collection" class="box-title" aria-label="hands-on box: Separate Files from the collection"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Separate Files from the collection</div>
+  <div class="box-title hands-on-title" id="hands-on-separate-files-from-the-collection"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Separate Files from the collection</div>
 
   <ol>
     <li><strong>Extract Dataset from a list</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to extract 1st file in the collection with:
@@ -1844,7 +1683,7 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 <p>We would like now to get the list of essential gene in both conditions</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-gene-essential-in-both-conditions" class="box-title" aria-label="hands-on box: Get gene essential in both conditions"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get gene essential in both conditions</div>
+  <div class="box-title hands-on-title" id="hands-on-get-gene-essential-in-both-conditions"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get gene essential in both conditions</div>
 
   <ol>
     <li><strong>Join two files</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1863,7 +1702,7 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 <p>Let’s now get the list of essential gene that are different between the two conditions.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-gene-essential-only-in-control" class="box-title" aria-label="hands-on box: Get gene essential only in control"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get gene essential only in control</div>
+  <div class="box-title hands-on-title" id="hands-on-get-gene-essential-only-in-control"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get gene essential only in control</div>
 
   <ol>
     <li><strong>Join two files</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1879,7 +1718,7 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-hands-on-get-gene-essential-only-in-condition" class="box-title" aria-label="hands-on box: Hands-on : Get gene essential only in condition"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on : Get gene essential only in condition</div>
+  <div class="box-title hands-on-title" id="hands-on-hands-on-get-gene-essential-only-in-condition"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Hands-on : Get gene essential only in condition</div>
 
   <ol>
     <li><strong>Join two files</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1895,7 +1734,7 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-9" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-9"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>How many genes are essential in both conditions?</li>
@@ -1904,7 +1743,7 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-9" class="box-title"><button type="button" aria-controls="solution-9-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>320 genes are essential in both conditions.</li>
@@ -1918,31 +1757,35 @@ creating libraries with lower insertion rates. The difference from the Gumbel me
 <h1 id="conclusion">Conclusion</h1>
 
 <p>In this tutorial, we learned how to predict essential genes in different conditions. Although it seems to be a long process, keep in mind that the steps allowing to get the list of TA site does not need to be repeated for each analysis as long as you study the same genome.
-For repetitive analyses, the steps are fewer : <span class="notranslate">mapping</span>, coverage, attribution to TA sites, merging of strands and Transit analysis.</p>
+For repetitive analyses, the steps are fewer : mapping, coverage, attribution to TA sites, merging of strands and Transit analysis.</p>
 
-<p>This tutorial focused on simple gene essentiality prediction in individual samples. You could be interested in intergenic regions as well, or comparing many samples together. Other methods exist in transit for these goals, that follow the same <span class="notranslate">workflow</span>. It is important to look at your data and to perform quality control to evaluate the coverage and sparsity of your data. This will influence not only the choice of method (HMM does not manage sparse data well), but the choice of parameters for your analysis.</p>
+<p>This tutorial focused on simple gene essentiality prediction in individual samples. You could be interested in intergenic regions as well, or comparing many samples together. Other methods exist in transit for these goals, that follow the same workflow. It is important to look at your data and to perform quality control to evaluate the coverage and sparsity of your data. This will influence not only the choice of method (HMM does not manage sparse data well), but the choice of parameters for your analysis.</p>
 
 <p>Once you get this list of gene, it is interesting to verify manually the genes classified as essentials. In order to do that, you can visualize the read mapped on your genome by displaying the bam files in IGV.</p>
 
 <!--SNIPPET-->
-<blockquote class="tip">  <div id="tip-add-genome-and-annotations-to-igv-from-galaxy" class="box-title"><button type="button" aria-controls="tip-add-genome-and-annotations-to-igv-from-galaxy-contents" aria-expanded="true" aria-label="Toggle tip box: Add genome and annotations to IGV from Galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Add genome and annotations to IGV from <span class="notranslate">Galaxy</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Upload a FASTA file with the reference genome and a GFF3 file with its annotation in the history (if not already there)</li>  <li>Install <a href="https://software.broadinstitute.org/software/igv/download">IGV</a> (if not already installed)</li>  <li>Launch IGV on your computer</li>  <li>Expand the FASTA dataset with the genome in the history</li>  <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the genome into the IGV browser</li>  <li>Wait until all <strong>Dataset status</strong> are <code class="language-plaintext highlighter-rouge">ok</code></li>  <li>    <p>Close the window</p>    <p>An alert <code class="language-plaintext highlighter-rouge">ERROR Parameter "file" is required</code> may appear. Ignore it.</p>  </li>  <li>Expand the GFF3 dataset with the annotations of the genome in the history</li>  <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the annotation into the IGV browser</li>  <li>    <p>Switch to the IGV instance</p>    <p>The annotation track should appear. Be careful that all files have the same genome ID</p>  </li></ol></blockquote>
+<blockquote class="tip">   <div class="box-title tip-title" id="tip-add-genome-and-annotations-to-igv-from-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-add-genome-and-annotations-to-igv-from-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Add genome and annotations to IGV from Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Upload a FASTA file with the reference genome and a GFF3 file with its annotation in the history (if not already there)</li>   <li>Install <a href="https://software.broadinstitute.org/software/igv/download">IGV</a> (if not already installed)</li>   <li>Launch IGV on your computer</li>   <li>Expand the FASTA dataset with the genome in the history</li>   <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the genome into the IGV browser</li>   <li>Wait until all <strong>Dataset status</strong> are <code class="language-plaintext highlighter-rouge">ok</code></li>   <li>     <p>Close the window</p>     <p>An alert <code class="language-plaintext highlighter-rouge">ERROR Parameter "file" is required</code> may appear. Ignore it.</p>   </li>   <li>Expand the GFF3 dataset with the annotations of the genome in the history</li>   <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the annotation into the IGV browser</li>   <li>     <p>Switch to the IGV instance</p>     <p>The annotation track should appear. Be careful that all files have the same genome ID</p>   </li> </ol> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <!--SNIPPET-->
-<blockquote class="tip">  <div id="tip-add-mapped-reads-track-to-igv-from-galaxy" class="box-title"><button type="button" aria-controls="tip-add-mapped-reads-track-to-igv-from-galaxy-contents" aria-expanded="true" aria-label="Toggle tip box: Add Mapped reads track to IGV from Galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Add Mapped <span class="notranslate">reads</span> track to IGV from <span class="notranslate">Galaxy</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Install <a href="https://software.broadinstitute.org/software/igv/download">IGV</a> (if not already installed)</li>  <li>Launch IGV on your computer</li>  <li>Check if the reference genome is available on the IGV instance</li>  <li>Expand the BAM dataset with the mapped <span class="notranslate">reads</span> in the history</li>  <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the <span class="notranslate">reads</span> into the IGV browser</li>  <li>    <p>Switch to the IGV instance</p>    <p>The mapped <span class="notranslate">reads</span> track should appear. Be sure that all files have the same genome ID</p>  </li></ol></blockquote>
+<blockquote class="tip">   <div class="box-title tip-title" id="tip-add-mapped-reads-track-to-igv-from-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-add-mapped-reads-track-to-igv-from-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Add Mapped reads track to IGV from Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Install <a href="https://software.broadinstitute.org/software/igv/download">IGV</a> (if not already installed)</li>   <li>Launch IGV on your computer</li>   <li>Check if the reference genome is available on the IGV instance</li>   <li>Expand the BAM dataset with the mapped reads in the history</li>   <li>Click on the <code class="language-plaintext highlighter-rouge">local</code> in <code class="language-plaintext highlighter-rouge">display with IGV</code> to load the reads into the IGV browser</li>   <li>     <p>Switch to the IGV instance</p>     <p>The mapped reads track should appear. Be sure that all files have the same genome ID</p>   </li> </ol> </blockquote>
+<p><!--END_SNIPPET--></p>
 
-<p>When looking at the read <span class="notranslate">mapping</span> at the location of predicted essential genes, you may encounter several situation: Some gene will have no read at all <span class="notranslate">mapping</span> to them, some will have an empty region, while other will have no clearly defined empty region but a very low count of <span class="notranslate">reads</span>, possibly indicating a growth defect induced by the gene disruption.</p>
+<p>When looking at the read mapping at the location of predicted essential genes, you may encounter several situation: Some gene will have no read at all mapping to them, some will have an empty region, while other will have no clearly defined empty region but a very low count of reads, possibly indicating a growth defect induced by the gene disruption.</p>
 
-<figure id="figure-6"><img src="../../images/tnseq/empty_gene.png" alt="Example of Essential gene with no reads mapped. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 6:</span> Example of Essential gene with no <span class="notranslate">reads</span> mapped</figcaption></figure>
-<figure id="figure-7"><img src="../../images/tnseq/low_coverage_gene.png" alt="Example of Essential gene with depleted coverage. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 7:</span> Example of Essential gene with depleted coverage</figcaption></figure>
+<figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="../../images/tnseq/empty_gene.png" alt="Example of Essential gene with no reads mapped. " width="1424" height="1040" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> Example of Essential gene with no reads mapped</figcaption></figure>
+<figure id="figure-7" style="max-width: 90%; margin:auto;"><img src="../../images/tnseq/low_coverage_gene.png" alt="Example of Essential gene with depleted coverage. " width="1230" height="1094" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 7</strong>:</span> Example of Essential gene with depleted coverage</figcaption></figure>
 
 <p>Once you have curated and confirm the genes that appear essential, comparing the annotation of essential genes with the condition of growth will allow you a better understanding of certain mechanism of interest, like the gene involved in resistance to stress for example.</p>
 
 <p>A comparison with published results of essentiality in your organism will be useful but don’t expect to find exactly the same results. The conditions of growth differ from one experiment to another, and can highly influence the detection of essential genes.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>TnSeq is a useful analysis to detect essential genes and conditional essential genes</p>
@@ -1989,38 +1832,18 @@ For repetitive analyses, the steps are fewer : <span class="notranslate">mapping
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Essential genes detection with Transposon insertion sequencing (Genome Annotation)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Essential genes detection with Transposon insertion sequencing (Genome Annotation)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Delphine Lariviere, Bérénice Batut,  <b>Essential genes detection with Transposon insertion sequencing (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html">https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Delphine Lariviere, Bérénice Batut,  <b>Essential genes detection with Transposon insertion sequencing (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html">https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2032,7 +1855,7 @@ For repetitive analyses, the steps are fewer : <span class="notranslate">mapping
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -2041,28 +1864,31 @@ For repetitive analyses, the steps are fewer : <span class="notranslate">mapping
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{genome-annotation-tnseq,
 author = "Delphine Lariviere and Bérénice Batut",
-title = "Essential genes detection with Transposon insertion sequencing (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Essential genes detection with Transposon insertion sequencing (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/tnseq/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2070,11 +1896,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2083,49 +1909,124 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/genome-annotation/tutorials/tnseq/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: deeptools_bam_coverage
+  owner: bgruening
+  revisions: bb1e4f63e0e6
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: find_subsequences
+  owner: bgruening
+  revisions: d882a0a75759
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bowtie_wrappers
+  owner: devteam
+  revisions: b46e7d48076a
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: column_maker
+  owner: devteam
+  revisions: be25c075ed54
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: gff_to_prot
+  owner: iuc
+  revisions: 07d7991bf205
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: transit_gumbel
+  owner: iuc
+  revisions: f50807720df1
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: cutadapt
+  owner: lparsons
+  revisions: 49370cb85f0f
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00179">https://gxy.io/GTN:T00179</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/genome-annotation/tutorials/tnseq/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

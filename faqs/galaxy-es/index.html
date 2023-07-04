@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="utf-8">
@@ -8,43 +8,75 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/faqs/galaxy-es/" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2021-07-27 07:44:46 +0000" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/faqs/galaxy-es/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2021-07-27 07:44:46 +0000">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training" />
-        <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,38 +93,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/galaxy-es/&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/galaxy-es/&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/galaxy-es/&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/galaxy-es/&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/galaxy-es/&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/galaxy-es/&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -128,8 +132,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/faqs/galaxy-es/" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/faqs/galaxy-es/index.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -154,27 +157,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -186,13 +176,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/faqs/galaxy-es/" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/faqs/galaxy-es/">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/faqs/galaxy-es/" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/faqs/galaxy-es/">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/faqs/galaxy-es/" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/faqs/galaxy-es/">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -205,7 +195,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -219,6 +209,7 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
 
@@ -273,7 +264,7 @@
 
 <h4 class="faq-area"> Importación por medio de enlaces <a href="/training-material/faqs/galaxy-es/datasets_import_via_link.html"><i class="fas fa-external-link-alt"></i></a> </h4>
 
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-importación-por-medio-de-enlaces" class="box-title"><button type="button" aria-controls="tip-importación-por-medio-de-enlaces-contents" aria-expanded="true" aria-label="Toggle tip box: Importación por medio de enlaces"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Importación por medio de enlaces<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copia los enlaces</li>  <li>    <p>Abre el manejador de carga de datos de <span class="notranslate">Galaxy</span> (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> en la parte superior derecha del panel de herramientas)</p>  </li>  <li>Selecciona ‘Pegar/Traer datos’ <strong>Paste/Fetch Data</strong></li>  <li>    <p>Copia los enlaces en el campo de textos</p>  </li>  <li>    <p>Presiona ‘Iniciar’ <strong>Start</strong></p>  </li>  <li>    <p><strong>Close</strong> Cierra la ventana.</p>  </li>  <li><span class="notranslate">Galaxy</span> utiliza los URLs como nombres de forma predeterminada , así que los tendrás que cambiar a algunos que sean más útiles o informativos.the window</li></ul></blockquote>
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-importación-por-medio-de-enlaces"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importación-por-medio-de-enlaces" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Importación por medio de enlaces<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copia los enlaces</li>   <li>     <p>Abre el manejador de carga de datos de Galaxy (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> en la parte superior derecha del panel de herramientas)</p>   </li>   <li>Selecciona ‘Pegar/Traer datos’ <strong>Paste/Fetch Data</strong></li>   <li>     <p>Copia los enlaces en el campo de textos</p>   </li>   <li>     <p>Presiona ‘Iniciar’ <strong>Start</strong></p>   </li>   <li>     <p><strong>Close</strong> Cierra la ventana.</p>   </li>   <li>Galaxy utiliza los URLs como nombres de forma predeterminada , así que los tendrás que cambiar a algunos que sean más útiles o informativos. the window</li> </ul> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -286,8 +277,8 @@
 
 
 <h4 class="faq-area"> Cambiar el tipo de datos <a href="/training-material/faqs/galaxy-es/datasets_change_datatype.html"><i class="fas fa-external-link-alt"></i></a> </h4>
-<span class="notranslate">Galaxy</span> will try to autodetect the datatype of your files, but you may need to manually set this occasionally.
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-cambiar-el-tipo-de-datos" class="box-title"><button type="button" aria-controls="tip-cambiar-el-tipo-de-datos-contents" aria-expanded="true" aria-label="Toggle tip box: Cambiar el tipo de datos"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Cambiar el tipo de datos<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Selecciona sobre el <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>icono del lápiz</strong> para editar los atributos del conjunto de datos</li>  <li>Selecciona en la pestaña <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> en la parte superior del panel central</li>  <li>Selecciona  tu tipo de datos</li>  <li>Da clic en el botón <strong>Change datatype</strong></li></ul></blockquote>
+Galaxy will try to autodetect the datatype of your files, but you may need to manually set this occasionally.
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-cambiar-el-tipo-de-datos"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-cambiar-el-tipo-de-datos" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Cambiar el tipo de datos<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Selecciona sobre el <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>icono del lápiz</strong> para editar los atributos del conjunto de datos</li>   <li>Selecciona en la pestaña <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden">galaxy-chart-select-data</span> <strong>Datatypes</strong> en la parte superior del panel central</li>   <li>Selecciona  tu tipo de datos</li>   <li>Da clic en el botón <strong>Change datatype</strong></li> </ul> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -301,7 +292,7 @@
 
 <h4 class="faq-area"> Uso del cuaderno de apuntes para ver varios conjuntos de datos <a href="/training-material/faqs/galaxy-es/features_scratchbook.html"><i class="fas fa-external-link-alt"></i></a> </h4>
 
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-uso-del-cuaderno-de-apuntes-para-ver-varios-conjuntos-de-datos" class="box-title"><button type="button" aria-controls="tip-uso-del-cuaderno-de-apuntes-para-ver-varios-conjuntos-de-datos-contents" aria-expanded="true" aria-label="Toggle tip box: Uso del cuaderno de apuntes para ver varios conjuntos de datos"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Uso del cuaderno de apuntes para ver varios conjuntos de datos<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Si deseas ver dos o más conjuntos de datos al mismo tiempo, puedes usar la función <strong>Scratchbook</strong> en <span class="notranslate">Galaxy</span>:    1. <strong>Haz clic</strong> en el icono <em>Scratchbook</em> <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-scratchbook</span> en la barra de menú superior.       - Debería aparecer ver una pequeña marca de verificación en el icono    2. <strong>Ver</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> un conjunto de datos haciendo clic en el icono de ojo <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> para ver el resultado.       - Deberías ver la salida en una ventana emergente sobre <span class="notranslate">Galaxy</span>       - Puedes cambiar el tamaño de esta ventana arrastrando la esquina inferior derecha    3. <strong>Haz clic</strong> fuera del archivo para salir del Scratchbook    4. <strong>Ver</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> un segundo conjunto de datos de tu historial       - Ahora deberías poder ver una segunda ventana con el nuevo conjunto de datos       - Esto hace que sea más fácil comparar las dos salidas.    5. Repite estos pasos para todos los archivos que desees comparar.    6. Puedes desactivar <strong>Scratchbook</strong> <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-scratchbook</span> haciendo clic en el icono nuevamente.</p></blockquote>
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-uso-del-cuaderno-de-apuntes-para-ver-varios-conjuntos-de-datos"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-uso-del-cuaderno-de-apuntes-para-ver-varios-conjuntos-de-datos" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Uso del cuaderno de apuntes para ver varios conjuntos de datos<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Si deseas ver dos o más conjuntos de datos al mismo tiempo, puedes usar la función <strong>Scratchbook</strong> en Galaxy:     1. <strong>Haz clic</strong> en el icono <em>Scratchbook</em> <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden">galaxy-scratchbook</span> en la barra de menú superior.        - Debería aparecer ver una pequeña marca de verificación en el icono     2. <strong>Ver</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> un conjunto de datos haciendo clic en el icono de ojo <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> para ver el resultado.        - Deberías ver la salida en una ventana emergente sobre Galaxy        - Puedes cambiar el tamaño de esta ventana arrastrando la esquina inferior derecha     3. <strong>Haz clic</strong> fuera del archivo para salir del Scratchbook     4. <strong>Ver</strong> <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> un segundo conjunto de datos de tu historial        - Ahora deberías poder ver una segunda ventana con el nuevo conjunto de datos        - Esto hace que sea más fácil comparar las dos salidas.     5. Repite estos pasos para todos los archivos que desees comparar.     6. Puedes desactivar <strong>Scratchbook</strong> <i class="fas fa-th" aria-hidden="true"></i><span class="visually-hidden">galaxy-scratchbook</span> haciendo clic en el icono nuevamente.</p> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -315,14 +306,14 @@
 
 <h4 class="faq-area"> Cambiando el nombre de un historial <a href="/training-material/faqs/galaxy-es/histories_rename.html"><i class="fas fa-external-link-alt"></i></a> </h4>
 
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-cambiando-el-nombre-de-un-historial" class="box-title"><button type="button" aria-controls="tip-cambiando-el-nombre-de-un-historial-contents" aria-expanded="true" aria-label="Toggle tip box: Cambiando el nombre de un historial"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Cambiando el nombre de un historial<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Haz clic sobre  <strong>Unnamed history</strong> (o el nombre que tenga el historial sobre el que estás trabajando) (<strong>Haz clic para cambiar el nombre del historial</strong>) en la parte superior de tu panel de historial</li>  <li>Escribe el nombre nuevo</li>  <li>Pulsa <kbd>Enter</kbd></li></ol></blockquote>
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-cambiando-el-nombre-de-un-historial"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-cambiando-el-nombre-de-un-historial" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Cambiando el nombre de un historial<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Haz clic sobre  <strong>Unnamed history</strong> (o el nombre que tenga el historial sobre el que estás trabajando) (<strong>Haz clic para cambiar el nombre del historial</strong>) en la parte superior de tu panel de historial</li>   <li>Escribe el nombre nuevo</li>   <li>Pulsa <kbd>Enter</kbd></li> </ol> </blockquote> <!--END_SNIPPET-->
 
 
 
 
 <h4 class="faq-area"> Para la creación de un historial nuevo <a href="/training-material/faqs/galaxy-es/histories_create_new.html"><i class="fas fa-external-link-alt"></i></a> </h4>
-Los historiales son una parte importante de <span class="notranslate">Galaxy</span>, la mayoría de la gente utiliza un historial para cada análisis nuevo. Asegúrate siempre de darle buenos nombres a tus historiales, de tal forma que después puedas encontrar fácilmente tus resultados.
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-para-la-creación-de-un-historial-nuevo" class="box-title"><button type="button" aria-controls="tip-para-la-creación-de-un-historial-nuevo-contents" aria-expanded="true" aria-label="Toggle tip box: Para la creación de un historial nuevo"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Para la creación de un historial nuevo<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Haz click sobre el icono <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> en la parte superior del panel de historiales.</p></blockquote>
+Los historiales son una parte importante de Galaxy, la mayoría de la gente utiliza un historial para cada análisis nuevo. Asegúrate siempre de darle buenos nombres a tus historiales, de tal forma que después puedas encontrar fácilmente tus resultados.
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-para-la-creación-de-un-historial-nuevo"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-para-la-creación-de-un-historial-nuevo" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Para la creación de un historial nuevo<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Haz click sobre el icono <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> en la parte superior del panel de historiales.</p> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -335,8 +326,8 @@ Los historiales son una parte importante de <span class="notranslate">Galaxy</sp
 
 
 <h4 class="faq-area"> Compartiendo un historial <a href="/training-material/faqs/galaxy-es/histories_sharing.html"><i class="fas fa-external-link-alt"></i></a> </h4>
-Puedes compartir tu trabajo en <span class="notranslate">Galaxy</span>. Hay varias formas de dar acceso a tus historiales a otros usuarios.
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-compartiendo-un-historial" class="box-title"><button type="button" aria-controls="tip-compartiendo-un-historial-contents" aria-expanded="true" aria-label="Toggle tip box: Compartiendo un historial"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Compartiendo un historial<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Compartir tu historial permite a otros importar y acceder a los conjuntos de datos, parámetros y pasos de tu historial.</p>  <ol>  <li><strong>Compartir a través de un enlace</strong>    <ul>      <li>Abre el menú <strong>Opciones de historial</strong> <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> (icono de engranaje) en la parte superior del panel de historial        <ul>          <li><i class="fas fa-toggle-on" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-toggle</span> <strong>Hacer que el historial sea accesible</strong></li>          <li>Aparecerá un <strong>Compartir enlace</strong> que puedes dar a otros usuarios.</li>        </ul>      </li>      <li>Cualquiera que tenga este enlace puede ver y copiar tu historial.</li>    </ul>  </li>  <li><strong>Publica tu historial</strong>    <ul>      <li><i class="fas fa-toggle-on" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-toggle</span> <strong>Hacer que el historial esté disponible públicamente en Historias publicadas</strong></li>      <li>Cualquiera en este servidor <span class="notranslate">Galaxy</span> podrá ver tu historial en el menú <em>Datos compartidos</em></li>    </ul>  </li>  <li><strong>Comparte solo con otro usuario</strong>.    <ul>      <li>Haz clic en el botón <strong>Compartir con un usuario</strong> en la parte inferior</li>      <li>Ingresa una dirección de correo electrónico del usuario con el que deseas compartir</li>      <li>Tu historial se compartirá solo con este usuario.</li>    </ul>  </li>  <li><strong>Encontrar historiales que otros han compartido conmigo</strong>    <ul>      <li>Haz clic en el menú <strong>Usuario</strong> en la barra superior</li>      <li>Selecciona <strong>Historiales compartidos conmigo</strong></li>      <li>Aquí verás todos los historiales que otros han compartido contigo directamente** Nota: ** Si deseas realizar cambios en tu historial sin afectar la versión compartida, crea una copia mediante al ícono <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> <em>Opciones de historial</em> en tu historial y haciendo clic en <em>Copiar</em></li>    </ul>  </li></ol></blockquote>
+Puedes compartir tu trabajo en Galaxy. Hay varias formas de dar acceso a tus historiales a otros usuarios.
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-compartiendo-un-historial"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-compartiendo-un-historial" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Compartiendo un historial<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Compartir tu historial permite a otros importar y acceder a los conjuntos de datos, parámetros y pasos de tu historial.</p>   <ol>   <li><strong>Compartir a través de un enlace</strong>     <ul>       <li>Abre el menú <strong>Opciones de historial</strong> <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> (icono de engranaje) en la parte superior del panel de historial         <ul>           <li><i class="fas fa-toggle-on" aria-hidden="true"></i><span class="visually-hidden">galaxy-toggle</span> <strong>Hacer que el historial sea accesible</strong></li>           <li>Aparecerá un <strong>Compartir enlace</strong> que puedes dar a otros usuarios.</li>         </ul>       </li>       <li>Cualquiera que tenga este enlace puede ver y copiar tu historial.</li>     </ul>   </li>   <li><strong>Publica tu historial</strong>     <ul>       <li><i class="fas fa-toggle-on" aria-hidden="true"></i><span class="visually-hidden">galaxy-toggle</span> <strong>Hacer que el historial esté disponible públicamente en Historias publicadas</strong></li>       <li>Cualquiera en este servidor Galaxy podrá ver tu historial en el menú <em>Datos compartidos</em></li>     </ul>   </li>   <li><strong>Comparte solo con otro usuario</strong>.     <ul>       <li>Haz clic en el botón <strong>Compartir con un usuario</strong> en la parte inferior</li>       <li>Ingresa una dirección de correo electrónico del usuario con el que deseas compartir</li>       <li>Tu historial se compartirá solo con este usuario.</li>     </ul>   </li>   <li><strong>Encontrar historiales que otros han compartido conmigo</strong>     <ul>       <li>Haz clic en el menú <strong>Usuario</strong> en la barra superior</li>       <li>Selecciona <strong>Historiales compartidos conmigo</strong></li>       <li>Aquí verás todos los historiales que otros han compartido contigo directamente ** Nota: ** Si deseas realizar cambios en tu historial sin afectar la versión compartida, crea una copia mediante al ícono <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <em>Opciones de historial</em> en tu historial y haciendo clic en <em>Copiar</em></li>     </ul>   </li> </ol> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -350,7 +341,7 @@ Puedes compartir tu trabajo en <span class="notranslate">Galaxy</span>. Hay vari
 
 <h4 class="faq-area"> Para volver a ejecutar una herramienta <a href="/training-material/faqs/galaxy-es/tools_rerun.html"><i class="fas fa-external-link-alt"></i></a> </h4>
 
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-para-volver-a-ejecutar-una-herramienta" class="box-title"><button type="button" aria-controls="tip-para-volver-a-ejecutar-una-herramienta-contents" aria-expanded="true" aria-label="Toggle tip box: Para volver a ejecutar una herramienta"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Para volver a ejecutar una herramienta<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li><strong>Expande</strong> uno de los conjuntos de datos de la salida de la herramienta haciendo clic sobre él</li>  <li><strong>Selecciona</strong> volver a ejecutar <i class="fas fa-redo" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-refresh</span> de la herramienta</li></ol>  <p>Esto es de utilidad si quieres volver a correr la herramienta variando ligeramente los valores de los parámetros, o si deseas verificar la configuración de parámetros que utilizaste.</p></blockquote>
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-para-volver-a-ejecutar-una-herramienta"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-para-volver-a-ejecutar-una-herramienta" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Para volver a ejecutar una herramienta<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li><strong>Expande</strong> uno de los conjuntos de datos de la salida de la herramienta haciendo clic sobre él</li>   <li><strong>Selecciona</strong> volver a ejecutar <i class="fas fa-redo" aria-hidden="true"></i><span class="visually-hidden">galaxy-refresh</span> de la herramienta</li> </ol>   <p>Esto es de utilidad si quieres volver a correr la herramienta variando ligeramente los valores de los parámetros, o si deseas verificar la configuración de parámetros que utilizaste.</p> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -363,8 +354,8 @@ Puedes compartir tu trabajo en <span class="notranslate">Galaxy</span>. Hay vari
 
 
 <h4 class="faq-area"> Extraer un flujo de trabajo de tu historial <a href="/training-material/faqs/galaxy-es/workflows_extract_from_history.html"><i class="fas fa-external-link-alt"></i></a> </h4>
-<span class="notranslate">Galaxy</span> puede crear automáticamente un flujo de trabajo basado en un análisis almacenado en tu historial. Esto significa que una vez que hayas realizado un análisis manualmente, puedes extraer fácilmente un flujo de trabajo para repetirlo con diferentes datos.
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-extraer-un-flujo-de-trabajo-de-tu-historial" class="box-title"><button type="button" aria-controls="tip-extraer-un-flujo-de-trabajo-de-tu-historial-contents" aria-expanded="true" aria-label="Toggle tip box: Extraer un flujo de trabajo de tu historial"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Consejo: Extraer un flujo de trabajo de tu historial<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Elimina cualquier trabajo fallido o no deseado de tu historial.</li>  <li>Haz clic en <strong>Opciones de historial</strong> (icono de engranaje <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span>) en la parte superior del panel de historial.</li>  <li>Selecciona <strong>Extraer flujo de trabajo</strong></li>  <li>Verifica los pasos, ingresa un nombre para tu flujo de trabajo y presiona el botón <strong>Crear flujo de trabajo</strong>.</li></ol></blockquote>
+Galaxy puede crear automáticamente un flujo de trabajo basado en un análisis almacenado en tu historial. Esto significa que una vez que hayas realizado un análisis manualmente, puedes extraer fácilmente un flujo de trabajo para repetirlo con diferentes datos.
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-extraer-un-flujo-de-trabajo-de-tu-historial"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-extraer-un-flujo-de-trabajo-de-tu-historial" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Consejo: Extraer un flujo de trabajo de tu historial<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Elimina cualquier trabajo fallido o no deseado de tu historial.</li>   <li>Haz clic en <strong>Opciones de historial</strong> (icono de engranaje <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span>) en la parte superior del panel de historial.</li>   <li>Selecciona <strong>Extraer flujo de trabajo</strong></li>   <li>Verifica los pasos, ingresa un nombre para tu flujo de trabajo y presiona el botón <strong>Crear flujo de trabajo</strong>.</li> </ol> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -408,7 +399,7 @@ add a button, include configuration options:
 
 
 
-<a href="https://help.galaxyproject.org" class="btn btn-square-medium btn-purple"><div><span class="notranslate">Galaxy</span> Help Forum</div></a>
+<a href="https://help.galaxyproject.org" class="btn btn-square-medium btn-purple"><div>Galaxy Help Forum</div></a>
 
 
 
@@ -418,56 +409,48 @@ add a button, include configuration options:
 </section>
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/faqs/galaxy-es/index.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/3e099f33f0b616ddeef76c2a1ee9871ebbceb042">3e099f33f0b616ddeef76c2a1ee9871ebbceb042</a></p>
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

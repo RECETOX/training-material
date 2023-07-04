@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="De novo transcriptome reconstruction with RNA-Seq" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Mallory Freeberg" />
-<meta name="DC.creator" content="Mo Heydarian" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: De novo transcriptome reconstruction with RNA-Seq" />
-        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/de-novo/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/de-novo/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/de-novo/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/de-novo/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/de-novo/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/de-novo/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/de-novo/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/de-novo/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/de-novo/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/de-novo/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="De novo transcriptome reconstruction with RNA-Seq">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-11-28 11:01:03 +0000">
+<meta name="DC.creator" content="Mallory Freeberg">
+<meta name="DC.creator" content="Mo Heydarian">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for all kinds of transcriptomics analysis.">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: De novo transcriptome reconstruction with RNA-Seq">
+        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis.">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -278,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2022-11-28 11:01:03 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "De novo transcriptome reconstruction with RNA-Seq",
   "interactivityType": "mixed",
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'De novo transcriptome reconstruction with RNA-Seq' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html",
   "timeRequired": "PT6H",
+  "teaches": "Analysis of RNA sequencing data using a reference genome\n - Reconstruction of transcripts without reference transcriptome (de novo)\n - Analysis of differentially expressed genes",
   "keywords": "transcriptomics",
   "description": "The questions this  addresses are:\n - What genes are differentially expressed between G1E cells and megakaryocytes?\n - How can we generate a transcriptome de novo from RNA sequencing data?\n\n\nThe objectives are:\n - Analysis of RNA sequencing data using a reference genome\n - Reconstruction of transcripts without reference transcriptome (de novo)\n - Analysis of differentially expressed genes\n\n",
   "inLanguage": {
@@ -418,8 +239,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/malloryfreeberg/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/malloryfreeberg/",
@@ -433,14 +254,16 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0003-2949-3921",
+      "orcid": "https://orcid.org/0000-0003-2949-3921"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/moheydarian/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/moheydarian/",
@@ -454,51 +277,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/malloryfreeberg/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/malloryfreeberg/",
-      "name": "Mallory Freeberg",
-      "image": "https://avatars.githubusercontent.com/malloryfreeberg",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/moheydarian/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/moheydarian/",
-      "name": "Mo Heydarian",
-      "image": "https://avatars.githubusercontent.com/moheydarian",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0001-9449-9364",
+      "orcid": "https://orcid.org/0000-0001-9449-9364"
     }
   ],
   "about": [
@@ -515,24 +296,227 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-transcriptomics">
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/de-novo/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/de-novo/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/de-novo/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/de-novo/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-transcriptomics">
     <h1 data-toc-skip>De novo transcriptome reconstruction with RNA-Seq</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/malloryfreeberg/" class="contributor-badge contributor-malloryfreeberg"><img src="https://avatars.githubusercontent.com/malloryfreeberg?s=27" alt="Avatar">Mallory Freeberg</a>
+		
+<table class="contributions">
+	
+	<tr>
+		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/malloryfreeberg/" class="contributor-badge contributor-malloryfreeberg"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/malloryfreeberg?s=36" alt="Avatar" width="36" height="36">Mallory Freeberg</a><a href="/training-material/hall-of-fame/moheydarian/" class="contributor-badge contributor-moheydarian"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/moheydarian?s=36" alt="Avatar" width="36" height="36">Mo Heydarian</a>
+		</td>
+	</tr>
+	
 
 
+	
 
-<a href="/training-material/hall-of-fame/moheydarian/" class="contributor-badge contributor-moheydarian"><img src="https://avatars.githubusercontent.com/moheydarian?s=27" alt="Avatar">Mo Heydarian</a>
+	
+	<tr>
+		<td><abbr title="These people edited the text, either for spelling and grammar, flow, GTN-fit, or other similar editing categories">Editor(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/jxtx/" class="contributor-badge contributor-jxtx"><img src="https://avatars.githubusercontent.com/jxtx?s=36" alt="Avatar" width="36" height="36">James Taylor</a></td>
+	</tr>
+	
 
+	
+
+	
+
+	
+</table>
 
 
 	</div>
@@ -541,9 +525,9 @@
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -595,6 +579,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -612,6 +598,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -655,17 +643,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/transcriptomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/254485#.WKODmRIrKRu">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -675,34 +659,24 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/de-novo/workflows/" title="Workflows" alt="De novo transcriptome reconstruction with RNA-Seq workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/de-novo/workflows/" title="De novo transcriptome reconstruction with RNA-Seq workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
             
 
             
-                <li class="btn btn-default supporting_material">
-<a class="topic-icon" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/tutorials/de-novo/tours/" title="Galaxy interactive tour" >
-    <i class="fas fa-magic" aria-hidden="true"></i> Tours
-</a>
-
-</li>
-            
 
             
 
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/de-novo/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/de-novo/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -721,7 +695,10 @@
 
 
   
-  <li class="btn btn-default supporting_material">
+<!-- GTN Video Library true -->
+  
+<li class="btn btn-default supporting_material">
+  
     <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Latest recordings of this tutorial in the GTN Video Library">
         <i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span>&nbsp;Recordings
     </a>
@@ -743,7 +720,9 @@
         
         
     </ul>
-   </li>
+  
+</li>
+  
    
 
 
@@ -752,222 +731,97 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://clipseq.usegalaxy.eu/" title="CLIP-Explorer">
-            CLIP-Explorer
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://humancellatlas.usegalaxy.eu/" title="Human Cell Atlas">
-            Human Cell Atlas
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://plants.usegalaxy.eu/" title="Plant Anaylsis Workbench">
-            Plant Anaylsis Workbench
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://singlecell.usegalaxy.eu/" title="Single Cell Omics workbench">
-            Single Cell Omics workbench
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 28, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00289">https://gxy.io/GTN:T00289</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -978,16 +832,17 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
-<p>The data provided here are part of a <span class="notranslate">Galaxy</span> tutorial that analyzes <span class="notranslate">RNA</span>-seq data from a study published by <em>Wu et al.</em> in 2014 <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4248312/">DOI:10.1101/gr.164830.113</a>. The goal of this study was to investigate “the dynamics of occupancy and the role in gene regulation of the transcription factor Tal1, a critical regulator of hematopoiesis, at multiple stages of hematopoietic differentiation.” To this end, <span class="notranslate">RNA</span>-seq libraries were constructed from multiple mouse cell types including G1E - a GATA-null immortalized cell line derived from targeted disruption of GATA-1 in mouse embryonic stem cells - and megakaryocytes. This <span class="notranslate">RNA</span>-seq data was used to determine differential gene <span class="notranslate">expression</span> between G1E and megakaryocytes and later correlated with Tal1 occupancy. This dataset (GEO Accession: GSE51338) consists of biological replicate, paired-end, poly(A) selected <span class="notranslate">RNA</span>-seq libraries. Because of the long processing time for the large original files, we have downsampled the original raw data files to include only <span class="notranslate">reads</span> that align to chromosome 19 and a subset of interesting genomic loci identified by Wu <em>et al</em>.</p>
+<p>The data provided here are part of a Galaxy tutorial that analyzes RNA-seq data from a study published by <em>Wu et al.</em> in 2014 <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4248312/">DOI:10.1101/gr.164830.113</a>. The goal of this study was to investigate “the dynamics of occupancy and the role in gene regulation of the transcription factor Tal1, a critical regulator of hematopoiesis, at multiple stages of hematopoietic differentiation.” To this end, RNA-seq libraries were constructed from multiple mouse cell types including G1E - a GATA-null immortalized cell line derived from targeted disruption of GATA-1 in mouse embryonic stem cells - and megakaryocytes. This RNA-seq data was used to determine differential gene expression between G1E and megakaryocytes and later correlated with Tal1 occupancy. This dataset (GEO Accession: GSE51338) consists of biological replicate, paired-end, poly(A) selected RNA-seq libraries. Because of the long processing time for the large original files, we have downsampled the original raw data files to include only reads that align to chromosome 19 and a subset of interesting genomic loci identified by Wu <em>et al</em>.</p>
 
 <h1 id="analysis-strategy">Analysis strategy</h1>
 
-<p>The goal of this exercise is to identify what transcripts are present in the G1E and megakaryocyte cellular states and which transcripts are differentially expressed between the two states. We will use a <em>de novo</em> transcript reconstruction strategy to infer transcript structures from the mapped <span class="notranslate">reads</span> in the absence of the actual annotated transcript structures. This will allow us to identify novel transcripts and novel isoforms of known transcripts, as well as identify differentially expressed transcripts.</p>
+<p>The goal of this exercise is to identify what transcripts are present in the G1E and megakaryocyte cellular states and which transcripts are differentially expressed between the two states. We will use a <em>de novo</em> transcript reconstruction strategy to infer transcript structures from the mapped reads in the absence of the actual annotated transcript structures. This will allow us to identify novel transcripts and novel isoforms of known transcripts, as well as identify differentially expressed transcripts.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -998,12 +853,12 @@
       <li><a href="#quality-control" id="markdown-toc-quality-control">Quality control</a></li>
     </ol>
   </li>
-  <li><a href="#mapping" id="markdown-toc-mapping"><span class="notranslate">Mapping</span></a></li>
+  <li><a href="#mapping" id="markdown-toc-mapping">Mapping</a></li>
   <li><a href="#de-novo-transcript-reconstruction" id="markdown-toc-de-novo-transcript-reconstruction">De novo transcript reconstruction</a></li>
   <li><a href="#transcriptome-assembly" id="markdown-toc-transcriptome-assembly">Transcriptome assembly</a></li>
-  <li><a href="#analysis-of-the-differential-gene-expression" id="markdown-toc-analysis-of-the-differential-gene-expression">Analysis of the differential gene <span class="notranslate">expression</span></a>    <ol>
-      <li><a href="#count-the-number-of-reads-per-transcript" id="markdown-toc-count-the-number-of-reads-per-transcript">Count the number of <span class="notranslate">reads</span> per transcript</a></li>
-      <li><a href="#perform-differential-gene-expression-testing" id="markdown-toc-perform-differential-gene-expression-testing">Perform differential gene <span class="notranslate">expression</span> testing</a></li>
+  <li><a href="#analysis-of-the-differential-gene-expression" id="markdown-toc-analysis-of-the-differential-gene-expression">Analysis of the differential gene expression</a>    <ol>
+      <li><a href="#count-the-number-of-reads-per-transcript" id="markdown-toc-count-the-number-of-reads-per-transcript">Count the number of reads per transcript</a></li>
+      <li><a href="#perform-differential-gene-expression-testing" id="markdown-toc-perform-differential-gene-expression-testing">Perform differential gene expression testing</a></li>
     </ol>
   </li>
   <li><a href="#visualization" id="markdown-toc-visualization">Visualization</a></li>
@@ -1014,30 +869,32 @@
 
 <h2 id="data-upload">Data upload</h2>
 
-<p>Due to the large size of this dataset, we have downsampled it to only include <span class="notranslate">reads</span> <span class="notranslate">mapping</span> to chromosome 19 and certain loci with relevance to hematopoeisis. This data is available at <a href="https://zenodo.org/record/583140#.WSW3NhPyub8"><code class="language-plaintext highlighter-rouge">Zenodo</code></a>, where you can find the forward and reverse <span class="notranslate">reads</span> corresponding to replicate <span class="notranslate">RNA</span>-seq libraries from G1E and megakaryocyte cells and an annotation file of RefSeq transcripts we will use to generate our transcriptome database.</p>
+<p>Due to the large size of this dataset, we have downsampled it to only include reads mapping to chromosome 19 and certain loci with relevance to hematopoeisis. This data is available at <a href="https://zenodo.org/record/583140#.WSW3NhPyub8"><code class="language-plaintext highlighter-rouge">Zenodo</code></a>, where you can find the forward and reverse reads corresponding to replicate RNA-seq libraries from G1E and megakaryocyte cells and an annotation file of RefSeq transcripts we will use to generate our transcriptome database.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
-      <p>Create a new history for this <span class="notranslate">RNA</span>-seq exercise</p>
+      <p>Create a new history for this RNA-seq exercise</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Open the data upload manager (Get Data -&gt; Upload file)</li>
-    <li>Copy and paste the links for the <span class="notranslate">reads</span> and annotation file</li>
+    <li>Copy and paste the links for the reads and annotation file</li>
     <li>Select <strong>Paste/Fetch Data</strong></li>
     <li>Paste the link(s) into the text field</li>
     <li>Change the datatype of the read files to <strong>fastqsanger</strong></li>
     <li>Change the datatype of the annotation file to <strong>gtf</strong> and assign the Genome as <strong>mm10</strong></li>
     <li>Press <strong>Start</strong></li>
     <li>
-      <p>Rename the files in your history to retain just the necessary information (<em>e.g.</em> “G1E R1 forward <span class="notranslate">reads</span>”)</p>
+      <p>Rename the files in your history to retain just the necessary information (<em>e.g.</em> “G1E R1 forward reads”)</p>
     </li>
     <li>
       <p>Import the data from <a href="https://zenodo.org/record/583140">Zenodo</a> <a href="https://zenodo.org/record/583140"><img src="https://zenodo.org/badge/DOI/10.123/GTNdenovoRNAseq.svg" alt="DOI. " loading="lazy" /></a></p>
@@ -1056,7 +913,8 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
       <p>You will need to fetch the link to the annotation file yourself ;)</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1067,22 +925,22 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 <p>For quality control, we use similar tools as described in <a href="/training-material/topics/sequence-analysis/">NGS-QC tutorial</a>: <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> and <a href="http://www.usadellab.org/cms/?page=trimmomatic">Trimmomatic</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-quality-control" class="box-title" aria-label="hands-on box: Quality control"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Quality control</div>
+  <div class="box-title hands-on-title" id="hands-on-quality-control"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Quality control</div>
 
   <ol>
     <li>
-      <p><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">FastQC</code> on the forward and reverse read files to assess the quality of the <span class="notranslate">reads</span>.</p>
+      <p><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">FastQC</code> on the forward and reverse read files to assess the quality of the reads.</p>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>What is the read length?</li>
-          <li>Is there anything interesting about the quality of the base calls based on the position in the <span class="notranslate">reads</span>?</li>
+          <li>Is there anything interesting about the quality of the base calls based on the position in the reads?</li>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The read length is 99 bp</li>
             <li>The quality of base calls declines throughout a sequencing run.</li>
@@ -1091,10 +949,10 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
       </blockquote>
     </li>
     <li>
-      <p><strong>Trimmomatic</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Trim off the low quality bases from the ends of the <span class="notranslate">reads</span> to increase <span class="notranslate">mapping</span> efficiency. Run <code class="language-plaintext highlighter-rouge">Trimmomatic</code> on each pair of forward and reverse <span class="notranslate">reads</span> with the following settings:</p>
+      <p><strong>Trimmomatic</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Trim off the low quality bases from the ends of the reads to increase mapping efficiency. Run <code class="language-plaintext highlighter-rouge">Trimmomatic</code> on each pair of forward and reverse reads with the following settings:</p>
 
       <ul>
-        <li><em>“Single-end or paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Paired-end (two separate input files)</code>
+        <li><em>“Single-end or paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Paired-end (two separate input files)</code>
           <ul>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input FASTQ file (R1/first of pair)”</em>: <code class="language-plaintext highlighter-rouge">G1E_rep1 forward read</code></li>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input FASTQ file (R2/second of pair)”</em>: <code class="language-plaintext highlighter-rouge">G1E_rep1 reverse read</code></li>
@@ -1104,25 +962,25 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
       </ul>
     </li>
     <li>
-      <p><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Re-run <code class="language-plaintext highlighter-rouge">FastQC</code> on trimmed <span class="notranslate">reads</span> and inspect the differences.</p>
+      <p><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Re-run <code class="language-plaintext highlighter-rouge">FastQC</code> on trimmed reads and inspect the differences.</p>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>What is the read length?</li>
-          <li>Is there anything interesting about the quality of the base calls based on the position in the <span class="notranslate">reads</span>?</li>
+          <li>Is there anything interesting about the quality of the base calls based on the position in the reads?</li>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The read lengths range from 1 to 99 bp after trimming</li>
-            <li>The average quality of base calls does not drop off as sharply at the 3’ ends of <span class="notranslate">reads</span>.</li>
+            <li>The average quality of base calls does not drop off as sharply at the 3’ ends of reads.</li>
           </ol>
         </blockquote>
       </blockquote>
-      <p><img src="../../images/BeforeAndAfterTrimming.png" alt="Before and after trimming comparison. " loading="lazy" /></p>
+      <p><img src="../../images/transcriptomics_images/BeforeAndAfterTrimming.png" alt="Before and after trimming comparison. " width="960" height="540" loading="lazy" /></p>
     </li>
     <li>
       <p><strong>Trimmomatic</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">Trimmomatic</code> on the remaining forward/reverse read pairs with the same parameters.</p>
@@ -1131,35 +989,35 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 
 </blockquote>
 
-<p>Now that we have trimmed our <span class="notranslate">reads</span> and are fortunate that there is a reference genome assembly for mouse, we will align our trimmed <span class="notranslate">reads</span> to the genome.</p>
+<p>Now that we have trimmed our reads and are fortunate that there is a reference genome assembly for mouse, we will align our trimmed reads to the genome.</p>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-  <p>Instead of running a single tool multiple times on all your data, would you rather run a single tool on multiple datasets at once? Check out the <a href="https://galaxyproject.org/tutorials/collections/">dataset collections</a> feature of <span class="notranslate">Galaxy</span>!</p>
+  <p>Instead of running a single tool multiple times on all your data, would you rather run a single tool on multiple datasets at once? Check out the <a href="https://galaxyproject.org/tutorials/collections/">dataset collections</a> feature of Galaxy!</p>
 </blockquote>
 
-<h1 id="mapping"><span class="notranslate">Mapping</span></h1>
+<h1 id="mapping">Mapping</h1>
 
-<p>To make sense of the <span class="notranslate">reads</span>, their positions within mouse genome must be determined. This process is known as aligning or ‘<span class="notranslate">mapping</span>’ the <span class="notranslate">reads</span> to the reference genome.</p>
+<p>To make sense of the reads, their positions within mouse genome must be determined. This process is known as aligning or ‘mapping’ the reads to the reference genome.</p>
 
 <blockquote class="comment">
-  <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-  <p>Do you want to learn more about the principles behind <span class="notranslate">mapping</span>? Follow our <a href="/training-material/topics/sequence-analysis/">training</a></p>
+  <p>Do you want to learn more about the principles behind mapping? Follow our <a href="/training-material/topics/sequence-analysis/">training</a></p>
 </blockquote>
 
-<p>In the case of a eukaryotic transcriptome, most <span class="notranslate">reads</span> originate from processed m<span class="notranslate">RNA</span>s lacking introns. Therefore, they cannot be simply mapped back to the genome as we normally do for <span class="notranslate">reads</span> derived from <span class="notranslate">DNA</span> sequences. Instead, the <span class="notranslate">reads</span> must be separated into two categories:</p>
+<p>In the case of a eukaryotic transcriptome, most reads originate from processed mRNAs lacking introns. Therefore, they cannot be simply mapped back to the genome as we normally do for reads derived from DNA sequences. Instead, the reads must be separated into two categories:</p>
 
 <ul>
-  <li><span class="notranslate">Reads</span> contained within mature exons - these align perfectly to the reference genome</li>
-  <li><span class="notranslate">Reads</span> that span splice junctions in the mature m<span class="notranslate">RNA</span> - these align with gaps to the reference genome</li>
+  <li>Reads contained within mature exons - these align perfectly to the reference genome</li>
+  <li>Reads that span splice junctions in the mature mRNA - these align with gaps to the reference genome</li>
 </ul>
 
-<p>Spliced mappers have been developed to efficiently map transcript-derived <span class="notranslate">reads</span> against genomes. <a href="https://ccb.jhu.edu/software/hisat2/index.shtml"><code class="language-plaintext highlighter-rouge">HISAT</code></a> is an accurate and fast tool for <span class="notranslate">mapping</span> spliced <span class="notranslate">reads</span> to a genome. Another popular spliced aligner is <a href="https://ccb.jhu.edu/software/tophat/index.shtml"><code class="language-plaintext highlighter-rouge">TopHat</code></a>, but we will be using <code class="language-plaintext highlighter-rouge">HISAT</code> in this tutorial.</p>
+<p>Spliced mappers have been developed to efficiently map transcript-derived reads against genomes. <a href="https://ccb.jhu.edu/software/hisat2/index.shtml"><code class="language-plaintext highlighter-rouge">HISAT</code></a> is an accurate and fast tool for mapping spliced reads to a genome. Another popular spliced aligner is <a href="https://ccb.jhu.edu/software/tophat/index.shtml"><code class="language-plaintext highlighter-rouge">TopHat</code></a>, but we will be using <code class="language-plaintext highlighter-rouge">HISAT</code> in this tutorial.</p>
 
 <blockquote class="comment">
-  <div id="comment-2" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
   <p>As it is sometimes quite difficult to determine which settings correspond to those of other programs, the following table might be helpful to identify the library type:</p>
 
   <table>
@@ -1220,7 +1078,7 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-spliced-mapping" class="box-title" aria-label="hands-on box: Spliced mapping"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Spliced <span class="notranslate">mapping</span></div>
+  <div class="box-title hands-on-title" id="hands-on-spliced-mapping"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Spliced mapping</div>
 
   <ol>
     <li><strong>HISAT2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">HISAT2</code> on one forward/reverse read pair and modify the following settings:
@@ -1230,7 +1088,7 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select a reference genome”</em>: <code class="language-plaintext highlighter-rouge">Mouse (Mus Musculus): mm10</code></li>
           </ul>
         </li>
-        <li><em>“Single-end or paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Paired-end</code>
+        <li><em>“Single-end or paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Paired-end</code>
           <ul>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“FASTA/Q file #1”</em>: Trimmomatic on G1E_rep1 forward read (R1 paired)</li>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“FASTA/Q file #2”</em>: Trimmomatic on G1E_rep1 reverse read (R2 paired)</li>
@@ -1258,10 +1116,10 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 </blockquote>
 
 <h1 id="de-novo-transcript-reconstruction">De novo transcript reconstruction</h1>
-<p>Now that we have mapped our <span class="notranslate">reads</span> to the mouse genome with <code class="language-plaintext highlighter-rouge">HISAT</code>, we want to determine transcript structures that are represented by the aligned <span class="notranslate">reads</span>. This is called <em>de novo</em> transcriptome reconstruction. This unbiased approach permits the comprehensive identification of all transcripts present in a sample, including annotated genes, novel isoforms of annotated genes, and novel genes. While common gene/transcript databases are quite large, they are not comprehensive, and the <em>de novo</em> transcriptome reconstruction approach ensures complete transcriptome(s) identification from the experimental samples. The leading tool for transcript reconstruction is <code class="language-plaintext highlighter-rouge">Stringtie</code>. Here, we will use <code class="language-plaintext highlighter-rouge">Stringtie</code> to predict transcript structures based on the <span class="notranslate">reads</span> aligned by <code class="language-plaintext highlighter-rouge">HISAT</code>.</p>
+<p>Now that we have mapped our reads to the mouse genome with <code class="language-plaintext highlighter-rouge">HISAT</code>, we want to determine transcript structures that are represented by the aligned reads. This is called <em>de novo</em> transcriptome reconstruction. This unbiased approach permits the comprehensive identification of all transcripts present in a sample, including annotated genes, novel isoforms of annotated genes, and novel genes. While common gene/transcript databases are quite large, they are not comprehensive, and the <em>de novo</em> transcriptome reconstruction approach ensures complete transcriptome(s) identification from the experimental samples. The leading tool for transcript reconstruction is <code class="language-plaintext highlighter-rouge">Stringtie</code>. Here, we will use <code class="language-plaintext highlighter-rouge">Stringtie</code> to predict transcript structures based on the reads aligned by <code class="language-plaintext highlighter-rouge">HISAT</code>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-transcriptome-reconstruction" class="box-title" aria-label="hands-on box: Transcriptome reconstruction"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Transcriptome reconstruction</div>
+  <div class="box-title hands-on-title" id="hands-on-transcriptome-reconstruction"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Transcriptome reconstruction</div>
 
   <ol>
     <li><strong>Stringtie</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">Stringtie</code> on the <code class="language-plaintext highlighter-rouge">HISAT2</code> alignments using the default parameters.
@@ -1276,10 +1134,10 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 
 <h1 id="transcriptome-assembly">Transcriptome assembly</h1>
 
-<p>We just generated four transcriptomes with <code class="language-plaintext highlighter-rouge">Stringtie</code> representing each of the four <span class="notranslate">RNA</span>-seq libraries we are analyzing. Since these were generated in the absence of a reference transcriptome, and we ultimately would like to know what transcript structure corresponds to which annotated transcript (if any), we have to make a <strong>transcriptome database</strong>. We will use the tool <code class="language-plaintext highlighter-rouge">Stringtie - Merge</code> to combine redundant transcript structures across the four samples and the RefSeq reference. Once we have merged our transcript structures, we will use <code class="language-plaintext highlighter-rouge">GFFcompare</code> to annotate the transcripts of our newly created transcriptome so we know the relationship of each transcript to the RefSeq reference.</p>
+<p>We just generated four transcriptomes with <code class="language-plaintext highlighter-rouge">Stringtie</code> representing each of the four RNA-seq libraries we are analyzing. Since these were generated in the absence of a reference transcriptome, and we ultimately would like to know what transcript structure corresponds to which annotated transcript (if any), we have to make a <strong>transcriptome database</strong>. We will use the tool <code class="language-plaintext highlighter-rouge">Stringtie - Merge</code> to combine redundant transcript structures across the four samples and the RefSeq reference. Once we have merged our transcript structures, we will use <code class="language-plaintext highlighter-rouge">GFFcompare</code> to annotate the transcripts of our newly created transcriptome so we know the relationship of each transcript to the RefSeq reference.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-transcriptome-assembly" class="box-title" aria-label="hands-on box: Transcriptome assembly"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Transcriptome assembly</div>
+  <div class="box-title hands-on-title" id="hands-on-transcriptome-assembly"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Transcriptome assembly</div>
 
   <ol>
     <li><strong>Stringtie-merge</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">Stringtie-merge</code> on the <code class="language-plaintext highlighter-rouge">Stringtie</code> assembled transcripts along with the RefSeq annotation file we imported earlier.
@@ -1316,7 +1174,7 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-note-transcript-categorization-used-by-gffcompare" class="box-title" aria-label="comment box: Note: Transcript categorization used by `GFFcompare`"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Note: Transcript categorization used by `GFFcompare`</div>
+  <div class="box-title comment-title" id="comment-note-transcript-categorization-used-by-gffcompare"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Note: Transcript categorization used by `GFFcompare`</div>
 
   <table>
     <thead>
@@ -1356,7 +1214,7 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
       </tr>
       <tr>
         <td style="text-align: center">e</td>
-        <td style="text-align: left">Single exon transfrag overlapping a reference exon and at least 10 bp of a reference intron, indicating a possible pre-m<span class="notranslate">RNA</span> fragment.</td>
+        <td style="text-align: left">Single exon transfrag overlapping a reference exon and at least 10 bp of a reference intron, indicating a possible pre-mRNA fragment.</td>
       </tr>
       <tr>
         <td style="text-align: center">i</td>
@@ -1374,24 +1232,24 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
   </table>
 </blockquote>
 
-<h1 id="analysis-of-the-differential-gene-expression">Analysis of the differential gene <span class="notranslate">expression</span></h1>
+<h1 id="analysis-of-the-differential-gene-expression">Analysis of the differential gene expression</h1>
 
 <p>We just generated a transriptome database that represents the transcripts present in the G1E and megakaryocytes samples. This database provides the location of our transcripts with non-redundant identifiers, as well as information regarding the origin of the transcript.</p>
 
-<p>We now want to identify which transcripts are differentially expressed between the G1E and megakaryocyte cellular states. To do this we will implement a counting approach using <code class="language-plaintext highlighter-rouge">FeatureCounts</code> to count <span class="notranslate">reads</span> per transcript. Then we will provide this information to <code class="language-plaintext highlighter-rouge">DESeq2</code> to generate normalized transcript counts (abundance estimates) and significance testing for differential <span class="notranslate">expression</span>.</p>
+<p>We now want to identify which transcripts are differentially expressed between the G1E and megakaryocyte cellular states. To do this we will implement a counting approach using <code class="language-plaintext highlighter-rouge">FeatureCounts</code> to count reads per transcript. Then we will provide this information to <code class="language-plaintext highlighter-rouge">DESeq2</code> to generate normalized transcript counts (abundance estimates) and significance testing for differential expression.</p>
 
-<h2 id="count-the-number-of-reads-per-transcript">Count the number of <span class="notranslate">reads</span> per transcript</h2>
+<h2 id="count-the-number-of-reads-per-transcript">Count the number of reads per transcript</h2>
 
-<p>To compare the abundance of transcripts between different cellular states, the first essential step is to quantify the number of <span class="notranslate">reads</span> per transcript. <a href="http://bioinf.wehi.edu.au/featureCounts/"><code class="language-plaintext highlighter-rouge">FeatureCounts</code></a> is one of the most popular tools for counting <span class="notranslate">reads</span> in genomic features. In our case, we’ll be using <code class="language-plaintext highlighter-rouge">FeatureCounts</code> to count <span class="notranslate">reads</span> aligning in exons of our <code class="language-plaintext highlighter-rouge">GFFCompare</code> generated transcriptome database.</p>
+<p>To compare the abundance of transcripts between different cellular states, the first essential step is to quantify the number of reads per transcript. <a href="http://bioinf.wehi.edu.au/featureCounts/"><code class="language-plaintext highlighter-rouge">FeatureCounts</code></a> is one of the most popular tools for counting reads in genomic features. In our case, we’ll be using <code class="language-plaintext highlighter-rouge">FeatureCounts</code> to count reads aligning in exons of our <code class="language-plaintext highlighter-rouge">GFFCompare</code> generated transcriptome database.</p>
 
-<p>The recommended mode is “union”, which counts overlaps even if a read only shares parts of its sequence with a genomic feature and disregards <span class="notranslate">reads</span> that overlap more than one feature.</p>
+<p>The recommended mode is “union”, which counts overlaps even if a read only shares parts of its sequence with a genomic feature and disregards reads that overlap more than one feature.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-counting-the-number-of-reads-per-transcript" class="box-title" aria-label="hands-on box: Counting the number of reads per transcript"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Counting the number of <span class="notranslate">reads</span> per transcript</div>
+  <div class="box-title hands-on-title" id="hands-on-counting-the-number-of-reads-per-transcript"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Counting the number of reads per transcript</div>
 
   <ol>
     <li>
-      <p><strong>FeatureCounts</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">FeatureCounts</code> on the aligned <span class="notranslate">reads</span> (<code class="language-plaintext highlighter-rouge">HISAT2</code> output) using the <code class="language-plaintext highlighter-rouge">GFFCompare</code> transcriptome database as the annotation file.</p>
+      <p><strong>FeatureCounts</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">FeatureCounts</code> on the aligned reads (<code class="language-plaintext highlighter-rouge">HISAT2</code> output) using the <code class="language-plaintext highlighter-rouge">GFFCompare</code> transcriptome database as the annotation file.</p>
 
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Alignment file”</em>: <code class="language-plaintext highlighter-rouge">four HISAT2 aligned read files</code></li>
@@ -1401,9 +1259,9 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
             <li><em>“Gene annotation file”</em>: <code class="language-plaintext highlighter-rouge">the annotated transcripts GTF file output by GFFCompare</code></li>
           </ul>
         </li>
-        <li><em>“Options for paired-end <span class="notranslate">reads</span>”</em>
+        <li><em>“Options for paired-end reads”</em>
           <ul>
-            <li><em>“Count fragments instead of <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">Enabled; fragments (or templates) wil be counted instead of <span class="notranslate">reads</span></code></li>
+            <li><em>“Count fragments instead of reads”</em>: <code class="language-plaintext highlighter-rouge">Enabled; fragments (or templates) wil be counted instead of reads</code></li>
           </ul>
         </li>
         <li><em>“Advanced options”</em>
@@ -1417,11 +1275,11 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 
 </blockquote>
 
-<h2 id="perform-differential-gene-expression-testing">Perform differential gene <span class="notranslate">expression</span> testing</h2>
+<h2 id="perform-differential-gene-expression-testing">Perform differential gene expression testing</h2>
 
-<p>Transcript <span class="notranslate">expression</span> is estimated from read counts, and attempts are made to correct for variability in measurements using replicates. This is absolutely essential to obtaining accurate results. We recommend having at least two biological replicates.</p>
+<p>Transcript expression is estimated from read counts, and attempts are made to correct for variability in measurements using replicates. This is absolutely essential to obtaining accurate results. We recommend having at least two biological replicates.</p>
 
-<p><a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html"><code class="language-plaintext highlighter-rouge">DESeq2</code></a> is a great tool for differential gene <span class="notranslate">expression</span> analysis. It accepts read counts produced by <code class="language-plaintext highlighter-rouge">FeatureCounts</code> and applies size factor normalization:</p>
+<p><a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html"><code class="language-plaintext highlighter-rouge">DESeq2</code></a> is a great tool for differential gene expression analysis. It accepts read counts produced by <code class="language-plaintext highlighter-rouge">FeatureCounts</code> and applies size factor normalization:</p>
 
 <ul>
   <li>Computation for each gene of the geometric mean of read counts across all samples</li>
@@ -1430,7 +1288,7 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 </ul>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
     <li><strong>DESeq2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">DESeq2</code> with the following parameters:
@@ -1450,7 +1308,7 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
           </ul>
 
           <blockquote class="comment">
-            <div id="comment-3" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+            <div class="box-title comment-title" id="comment-3"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
             <p>You can select several files by holding down the CTRL (or COMMAND) key and clicking on the desired files</p>
           </blockquote>
@@ -1476,20 +1334,20 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 </ol>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-1" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
     <li>
-      <p><strong>Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">Filter</code> to extract genes with a significant change in gene <span class="notranslate">expression</span> (adjusted <em>p</em>-value less than 0.05) between treated and untreated samples</p>
+      <p><strong>Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">Filter</code> to extract genes with a significant change in gene expression (adjusted <em>p</em>-value less than 0.05) between treated and untreated samples</p>
 
       <blockquote class="question">
-        <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
-        <p>How many transcripts have a significant change in <span class="notranslate">expression</span> between these conditions?</p>
+        <p>How many transcripts have a significant change in expression between these conditions?</p>
 
         <blockquote class="solution">
-          <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>To filter, use “c7&lt;0.05”. And we get 249 transcripts with a significant change in gene <span class="notranslate">expression</span> between the G1E and megakaryocyte cellular states.</p>
+          <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>To filter, use “c7&lt;0.05”. And we get 249 transcripts with a significant change in gene expression between the G1E and megakaryocyte cellular states.</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1497,18 +1355,18 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
       <p><strong>Filter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Determine how many transcripts are up or down regulated in the G1E state.</p>
 
       <blockquote class="comment">
-        <div id="comment-4" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
-        <p>Rename your datasets for the <span class="notranslate">downstream</span> analyses</p>
+        <div class="box-title comment-title" id="comment-4"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
+        <p>Rename your datasets for the downstream analyses</p>
       </blockquote>
 
       <blockquote class="question">
-        <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>Are there more upregulated or downregulated genes in the treated samples?</p>
 
         <blockquote class="solution">
-          <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>To obtain the up-regulated genes in the G1E state, we filter the previously generated file (with the significant change in transcript <span class="notranslate">expression</span>) with the <span class="notranslate">expression</span> “c3&gt;0” (the log2 fold changes must be greater than 0). We obtain 102  genes (40.9% of the genes with a significant change in gene <span class="notranslate">expression</span>). For the down-regulated genes in the G1E state, we did the inverse and we find 149 transcripts (59% of the genes with a significant change in transcript <span class="notranslate">expression</span>).</p>
+          <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>To obtain the up-regulated genes in the G1E state, we filter the previously generated file (with the significant change in transcript expression) with the expression “c3&gt;0” (the log2 fold changes must be greater than 0). We obtain 102  genes (40.9% of the genes with a significant change in gene expression). For the down-regulated genes in the G1E state, we did the inverse and we find 149 transcripts (59% of the genes with a significant change in transcript expression).</p>
         </blockquote>
       </blockquote>
     </li>
@@ -1521,29 +1379,29 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
   <li>
     <p>Histogram of <em>p</em>-values for all tests</p>
 
-    <p><img src="../../images/Deseq2_histogram3.png" alt="DESeq2 histogram. " loading="lazy" /></p>
+    <p><img src="/training-material/topics/transcriptomics/images/transcriptomics_images/Deseq2_histogram3.png" alt="DESeq2 histogram. " width="1050" height="1050" loading="lazy" /></p>
   </li>
   <li>
-    <p><a href="https://en.wikipedia.org/wiki/MA_plot">MA plot</a>: global view of the relationship between the <span class="notranslate">expression</span> change of conditions (log ratios, M), the average <span class="notranslate">expression</span> strength of the genes (average mean, A), and the ability of the algorithm to detect differential gene <span class="notranslate">expression</span>. The genes that passed the significance threshold (adjusted p-value &lt; 0.1) are colored in red.</p>
+    <p><a href="https://en.wikipedia.org/wiki/MA_plot">MA plot</a>: global view of the relationship between the expression change of conditions (log ratios, M), the average expression strength of the genes (average mean, A), and the ability of the algorithm to detect differential gene expression. The genes that passed the significance threshold (adjusted p-value &lt; 0.1) are colored in red.</p>
 
-    <p><img src="../../images/Deseq2_MAplot3.png" alt="MA plot. " loading="lazy" /></p>
+    <p><img src="/training-material/topics/transcriptomics/images/transcriptomics_images/Deseq2_MAplot3.png" alt="MA plot. " width="1050" height="1050" loading="lazy" /></p>
   </li>
   <li>
     <p>Principal Component Analysis (<a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a>) and the first two axes</p>
 
-    <p><img src="../../images/Deseq2_PCA3.png" alt="Principal component analysis output. " loading="lazy" /></p>
+    <p><img src="/training-material/topics/transcriptomics/images/transcriptomics_images/Deseq2_PCA3.png" alt="Principal component analysis output. " width="1050" height="1050" loading="lazy" /></p>
 
     <p>Each replicate is plotted as an individual data point. This type of plot is useful for visualizing the overall effect of experimental covariates and batch effects.</p>
   </li>
   <li>
     <p>Heatmap of sample-to-sample distance matrix: overview over similarities and dissimilarities between samples</p>
 
-    <p><img src="../../images/Deseq2_heatmap3.png" alt="Heatmap of sample-to-sample distance matrix. " loading="lazy" /></p>
+    <p><img src="/training-material/topics/transcriptomics/images/transcriptomics_images/Deseq2_heatmap3.png" alt="Heatmap of sample-to-sample distance matrix. " width="1050" height="1050" loading="lazy" /></p>
   </li>
   <li>
     <p>Dispersion estimates: gene-wise estimates (black), the fitted values (red), and the final maximum a posteriori estimates used in testing (blue)</p>
 
-    <p><img src="../../images/Deseq2_dispersion3.png" alt="Dispersion estimates. " loading="lazy" /></p>
+    <p><img src="/training-material/topics/transcriptomics/images/transcriptomics_images/Deseq2_dispersion3.png" alt="Dispersion estimates. " width="1050" height="1050" loading="lazy" /></p>
 
     <p>This dispersion plot is typical, with the final estimates shrunk from the gene-wise estimates towards the fitted estimates. Some gene-wise estimates are flagged as outliers and not shrunk towards the fitted value. The amount of shrinkage can be more or less than seen here, depending on the sample size, the number of coefficients, the row mean and the variability of the gene-wise estimates.</p>
   </li>
@@ -1552,12 +1410,12 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 <p>For more information about <code class="language-plaintext highlighter-rouge">DESeq2</code> and its outputs, you can have a look at <a href="https://www.bioconductor.org/packages/release/bioc/manuals/DESeq2/man/DESeq2.pdf"><code class="language-plaintext highlighter-rouge">DESeq2</code> documentation</a>.</p>
 
 <h1 id="visualization">Visualization</h1>
-<p>Now that we have a list of transcript <span class="notranslate">expression</span> levels and their differential <span class="notranslate">expression</span> levels, it is time to visually inspect our transcript structures and the <span class="notranslate">reads</span> they were predicted from. It is a good practice to visually inspect (and present) loci with transcripts of interest. Fortunately, there is a built-in genome browser in <span class="notranslate">Galaxy</span>, <strong>Trackster</strong>, that make this task simple (and even fun!).</p>
+<p>Now that we have a list of transcript expression levels and their differential expression levels, it is time to visually inspect our transcript structures and the reads they were predicted from. It is a good practice to visually inspect (and present) loci with transcripts of interest. Fortunately, there is a built-in genome browser in Galaxy, <strong>Trackster</strong>, that make this task simple (and even fun!).</p>
 
-<p>In this last section, we will convert our aligned read data from BAM format to bigWig format to simplify observing where our stranded <span class="notranslate">RNA</span>-seq data aligned to. We’ll then initiate a session on Trackster, load it with our data, and visually inspect our interesting loci.</p>
+<p>In this last section, we will convert our aligned read data from BAM format to bigWig format to simplify observing where our stranded RNA-seq data aligned to. We’ll then initiate a session on Trackster, load it with our data, and visually inspect our interesting loci.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-converting-aligned-read-files-to-bigwig-format" class="box-title" aria-label="hands-on box: Converting aligned read files to bigWig format"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Converting aligned read files to bigWig format</div>
+  <div class="box-title hands-on-title" id="hands-on-converting-aligned-read-files-to-bigwig-format"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Converting aligned read files to bigWig format</div>
 
   <ol>
     <li><strong>bamCoverage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Run <code class="language-plaintext highlighter-rouge">bamCoverage</code> on all four aligned read files (<code class="language-plaintext highlighter-rouge">HISAT2</code> output) with the following parameters:
@@ -1566,33 +1424,33 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
         <li><em>“Effective genome size”</em>: ‘mm9 (2150570000)’’</li>
         <li><em>“Advanced options”</em>
           <ul>
-            <li><em>“Only include <span class="notranslate">reads</span> originating from fragments from the forward or reverse strand”</em>: ‘forward’</li>
+            <li><em>“Only include reads originating from fragments from the forward or reverse strand”</em>: ‘forward’</li>
           </ul>
         </li>
       </ul>
     </li>
     <li>
-      <p><strong>Rename</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Rename the outputs to reflect the origin of the <span class="notranslate">reads</span> and that they represent the <span class="notranslate">reads</span> <span class="notranslate">mapping</span> to the PLUS strand.</p>
+      <p><strong>Rename</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Rename the outputs to reflect the origin of the reads and that they represent the reads mapping to the PLUS strand.</p>
     </li>
     <li><strong>bamCoverage</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Repeat Step 1 except changing the following parameter:
       <ul>
-        <li><em>“Only include <span class="notranslate">reads</span> originating from fragments from the forward or reverse strand”</em>: ‘reverse’</li>
+        <li><em>“Only include reads originating from fragments from the forward or reverse strand”</em>: ‘reverse’</li>
       </ul>
     </li>
-    <li><strong>Rename</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Rename the outputs to reflect the origin of the <span class="notranslate">reads</span> and that they represent the <span class="notranslate">reads</span> <span class="notranslate">mapping</span> to the MINUS strand.</li>
+    <li><strong>Rename</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Rename the outputs to reflect the origin of the reads and that they represent the reads mapping to the MINUS strand.</li>
   </ol>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-trackster-based-visualization" class="box-title" aria-label="hands-on box: Trackster based visualization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Trackster based visualization</div>
+  <div class="box-title hands-on-title" id="hands-on-trackster-based-visualization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Trackster based visualization</div>
 
   <ol>
-    <li><strong>Viz</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: On the center console at the top of the <span class="notranslate">Galaxy</span> interface, choose “ Visualization” -&gt; “New track browser”
+    <li><strong>Viz</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: On the center console at the top of the Galaxy interface, choose “ Visualization” -&gt; “New track browser”
       <ul>
         <li>Name your visualization someting descriptive under “Browser name:”</li>
         <li>Choose “Mouse Dec. 2011 (GRCm38/mm10) (mm10)” as the “Reference genome build (dbkey)</li>
         <li>Click “Create” to initiate your Trackster session
-<img src="../../images/Trackster_opening_window.png" alt="Trackster opening window. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/Trackster_opening_window.png" alt="Trackster opening window. " width="1264" height="361" loading="lazy" /></li>
       </ul>
     </li>
     <li><strong>Viz</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Click “Add datasets to visualization”
@@ -1631,16 +1489,16 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
       <p><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Repeat the previous step on the other three bigWig files representing the minus strand.</p>
     </li>
     <li><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Adjust the track height of the bigWig files to be consistent for each set of plus strand and minus strand tracks.
-<img src="../../images/Hoxb13_locus_screenshot.png" alt="Adjusting the track height. " loading="lazy" /></li>
+<img src="../../images/transcriptomics_images/Hoxb13_locus_screenshot.png" alt="Adjusting the track height. " width="1754" height="716" loading="lazy" /></li>
     <li><i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Direct Trackster to the coordinates: chr11:96191452-96206029, what do you see?</li>
   </ol>
 
   <blockquote class="question">
-    <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
     <p>what do you see?</p>
 
     <blockquote class="solution">
-      <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
       <ol>
         <li>There are two clusters of transcripts that are exclusively expressed in the G1E background</li>
         <li>The left-most transcript is the Hoxb13 transcript</li>
@@ -1653,14 +1511,16 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>In this tutorial, we have analyzed <span class="notranslate">RNA</span> sequencing data to extract useful information, such as which genes are expressed in the G1E and megakaryocyte cellular states and which of these genes are differentially expressed between the two cellular states. In addition, we identified unannotated genes that are expressed in a cell-state dependent manner and at a locus with relevance to differentiation and development. To identify these transcripts, we analyzed <span class="notranslate">RNA</span> sequence datasets using a de novo transcriptome reconstruction <span class="notranslate">RNA</span>-seq data analysis approach. This approach can be summed up with the following scheme:</p>
+<p>In this tutorial, we have analyzed RNA sequencing data to extract useful information, such as which genes are expressed in the G1E and megakaryocyte cellular states and which of these genes are differentially expressed between the two cellular states. In addition, we identified unannotated genes that are expressed in a cell-state dependent manner and at a locus with relevance to differentiation and development. To identify these transcripts, we analyzed RNA sequence datasets using a de novo transcriptome reconstruction RNA-seq data analysis approach. This approach can be summed up with the following scheme:</p>
 
-<p><img src="../../images/schematic_for_RNAseq_de_novo_tutorial.png" alt="RNAseq de novo tutorial workflow. " loading="lazy" /></p>
+<p><img src="../../images/transcriptomics_images/schematic_for_RNAseq_de_novo_tutorial.png" alt="RNAseq de novo tutorial workflow. " width="960" height="540" loading="lazy" /></p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>De novo transcriptome reconstruction is the ideal approach for identifying differentially expressed known and novel transcripts.</p>
@@ -1698,38 +1558,18 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=De novo transcriptome reconstruction with RNA-Seq (Transcriptomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=De novo transcriptome reconstruction with RNA-Seq (Transcriptomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Mallory Freeberg, Mo Heydarian,  <b>De novo transcriptome reconstruction with RNA-Seq (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Mallory Freeberg, Mo Heydarian,  <b>De novo transcriptome reconstruction with RNA-Seq (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1741,7 +1581,7 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1750,40 +1590,46 @@ https://zenodo.org/record/583140/files/RefSeq_reference_GTF_%28DSv2%29
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{transcriptomics-de-novo,
 author = "Mallory Freeberg and Mo Heydarian",
-title = "De novo transcriptome reconstruction with RNA-Seq (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "De novo transcriptome reconstruction with RNA-Seq (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/de-novo/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
 
                 
+                
+
+                
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1792,49 +1638,124 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/transcriptomics/tutorials/de-novo/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: deeptools_bam_coverage
+  owner: bgruening
+  revisions: 7a7fd0f5f15d
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fastqc
+  owner: devteam
+  revisions: e7b2202befea
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deseq2
+  owner: iuc
+  revisions: '0696db066a5b'
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: featurecounts
+  owner: iuc
+  revisions: a37612abf7f9
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: gffcompare
+  owner: iuc
+  revisions: 0f710191a66d
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: hisat2
+  owner: iuc
+  revisions: a86e80d3c09c
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: stringtie
+  owner: iuc
+  revisions: eba36e001f45
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: stringtie
+  owner: iuc
+  revisions: eba36e001f45
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trimmomatic
+  owner: pjbriggs
+  revisions: 898b67846b47
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00289">https://gxy.io/GTN:T00289</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/de-novo/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

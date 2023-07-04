@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,251 +8,67 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Genome annotation with Maker (short)" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-08-22 19:31:27 +0000" />
-<meta name="DC.creator" content="Anthony Bretaudeau" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Genome annotation is a multi-level process that includes ..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Genome annotation with Maker (short)" />
-        <meta property="og:description" content="Genome annotation is a multi-level process that includes ..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/genome-annotation" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Genome Annotation
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/genome-annotation/faqs/" title="Check our FAQs for the Genome Annotation topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxy-genome-annotation/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Genome annotation with Maker (short)">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-08-22 19:31:27 +0000">
+<meta name="DC.creator" content="Anthony Bretaudeau">
+
+        
+        
+        
+        
+        <meta name="description" content="Genome annotation is a multi-level process that includes ...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Genome annotation with Maker (short)">
+        <meta property="og:description" content="Genome annotation is a multi-level process that includes ...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -303,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -330,6 +150,7 @@
   "name": "Hands-on for 'Genome annotation with Maker (short)' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html",
   "timeRequired": "PT2H",
+  "teaches": "Load genome into Galaxy\n - Annotate genome with Maker\n - Evaluate annotation quality with BUSCO\n - View annotations in JBrowse",
   "keywords": "genome-annotation, eukaryote",
   "description": "The questions this  addresses are:\n - How to annotate an eukaryotic genome?\n - How to evaluate and visualize annotated genomic features?\n\n\nThe objectives are:\n - Load genome into Galaxy\n - Annotate genome with Maker\n - Evaluate annotation quality with BUSCO\n - View annotations in JBrowse\n\n",
   "inLanguage": {
@@ -357,33 +178,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "name": "Anthony Bretaudeau",
-      "image": "https://avatars.githubusercontent.com/abretaud",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-0914-2470",
-      "orcid": "https://orcid.org/0000-0003-0914-2470"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
@@ -408,33 +204,220 @@
       "name": "Genome Annotation",
       "description": "Genome annotation is a multi-level process that includes prediction of protein-coding\ngenes, as well as other functional genome units such as structural RNAs, tRNAs,\nsmall RNAs, pseudogenes, control regions, direct and inverted repeats, insertion\nsequences, transposons and other mobile elements.\n",
       "url": "https://training.galaxyproject.org/training-material/topics/genome-annotation/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_0362",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_0362",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0362"
     }
   ],
-  "educationalLevel": "Intermediate"
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "eukaryote"
+    }
+  ],
+  "abstract": "{% include topics/genome-annotation/tutorials/annotation-with-maker/content.md short=true %}"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-genome-annotation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/genome-annotation" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Genome Annotation
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/genome-annotation/faqs/" title="Check our FAQs for the Genome Annotation topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-genome-annotation">
     <h1 data-toc-skip>Genome annotation with Maker (short)</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/abretaud?s=27" alt="Avatar">Anthony Bretaudeau</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -505,17 +488,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/genome-annotation/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.4406623">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -525,8 +504,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/workflows/" title="Workflows" alt="Genome annotation with Maker (short) workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/workflows/" title="Genome annotation with Maker (short) workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -539,13 +518,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -571,160 +547,55 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr>
+		</a>
+	</li>
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/genome-annotation/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
@@ -733,12 +604,16 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Aug 22, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00167">https://gxy.io/GTN:T00167</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -749,8 +624,9 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 
-<h1 class="no_toc" id="introduction">Introduction</h1>
+<h1 id="introduction">Introduction</h1>
 
 <p>Genome annotation of eukaryotes is a little more complicated than for prokaryotes: eukaryotic genomes are usually larger than prokaryotes, with more genes. The sequences determining the beginning and the end of a gene are generally less conserved than the prokaryotic ones. Many genes also contain introns, and the limits of these introns (acceptor and donor sites) are not highly conserved.</p>
 
@@ -758,18 +634,18 @@
 
 <p>Maker is able to annotate both prokaryotes and eukaryotes. It works by aligning as many evidences as possible along the genome sequence, and then reconciliating all these signals to determine probable gene structures.</p>
 
-<p>The evidences can be transcript or protein sequences from the same (or closely related) organism. These sequences can come from public databases (like NR or GenBank) or from your own experimental data (transcriptome assembly from an <span class="notranslate">RNA</span>Seq experiment for example). Maker is also able to take into account repeated elements.</p>
+<p>The evidences can be transcript or protein sequences from the same (or closely related) organism. These sequences can come from public databases (like NR or GenBank) or from your own experimental data (transcriptome assembly from an RNASeq experiment for example). Maker is also able to take into account repeated elements.</p>
 
 <p>Maker uses ab-initio predictors (like <a href="http://bioinf.uni-greifswald.de/augustus/">Augustus</a> or <a href="https://github.com/KorfLab/SNAP">SNAP</a>) to improve its predictions: these software tools are able to make gene structure predictions by analysing only the genome sequence with a statistical model.</p>
 
 <p>In this tutorial you will learn how to perform a genome annotation, and how to evaluate its quality. Finally, you will learn how to use the <a href="http://jbrowse.org/">JBrowse</a> genome browser to visualise the results.</p>
 
-<p>More information about Maker can be found <a href="http://www.yandell-lab.org/software/maker.html">here</a>.</p>
+<p>More information about Maker can be found <a href="http://www.yandell-lab.org/software/maker.html">on their website</a>.</p>
 
 <p>This tutorial was inspired by the MAKER Tutorial for <a href="http://weatherby.genetics.utah.edu/MAKER/wiki/index.php/MAKER_Tutorial_for_WGS_Assembly_and_Annotation_Winter_School_2018">WGS Assembly and Annotation Winter School 2018</a>, don’t hesitate to consult it for more information on Maker, and on how to run it with command line.</p>
 
 <blockquote class="comment">
-  <comment-title>Note: Two versions of this tutorial</comment-title>
+  <div class="box-title comment-title" id="comment-note-two-versions-of-this-tutorial"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Note: Two versions of this tutorial</div>
 
   <p>Because this tutorial consists of many steps, we have made two versions of it, one long and one short.</p>
 
@@ -780,11 +656,12 @@ to learn how to perform the training steps, please see the <a href="/training-ma
 </blockquote>
 
 <blockquote class="agenda">
-  <agenda-title></agenda-title>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#data-upload" id="markdown-toc-data-upload">Data upload</a></li>
   <li><a href="#genome-quality-evaluation" id="markdown-toc-genome-quality-evaluation">Genome quality evaluation</a></li>
   <li><a href="#maker" id="markdown-toc-maker">Maker</a></li>
@@ -792,6 +669,7 @@ to learn how to perform the training steps, please see the <a href="/training-ma
   <li><a href="#busco" id="markdown-toc-busco">Busco</a></li>
   <li><a href="#improving-gene-naming" id="markdown-toc-improving-gene-naming">Improving gene naming</a></li>
   <li><a href="#visualising-the-results" id="markdown-toc-visualising-the-results">Visualising the results</a></li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
   <li><a href="#whats-next" id="markdown-toc-whats-next">What’s next?</a></li>
 </ol>
 
@@ -810,14 +688,15 @@ to learn how to perform the training steps, please see the <a href="/training-ma
 <p>Maker will align the transcript and protein sequences on the genome sequence to determine gene positions.</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Data upload</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Create and name a new history for this tutorial.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Import the following files from <a href="https://doi.org/10.5281/zenodo.4406623">Zenodo</a> or from the shared data library</p>
@@ -830,16 +709,20 @@ https://zenodo.org/api/files/647ad552-19a8-46d9-aad8-f81f56860582/snap_training_
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-data-from-a-data-library" class="box-title"><button type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>  <ul>  <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>  <li>Navigate to the correct folder as indicated by your instructor</li>  <li>Select the desired files</li>  <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>  <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>  <li>Click on <strong>Import</strong></li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Rename the datasets</li>
     <li>
       <p>Check that the datatype for  <code class="language-plaintext highlighter-rouge">augustus_training_2.tar.gz</code> is set to <code class="language-plaintext highlighter-rouge">augustus</code></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-changing-the-datatype" class="box-title"><button type="button" aria-controls="tip-changing-the-datatype-contents" aria-expanded="true" aria-label="Toggle tip box: Changing the datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>  <li>Select <code class="language-plaintext highlighter-rouge">augustus</code>    <ul>      <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>    </ul>  </li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-changing-the-datatype"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-changing-the-datatype" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Changing the datatype<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <strong>Convert</strong> tab on the top</li>   <li>In the lower part <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden">galaxy-chart-select-data</span> <strong>Datatypes</strong>, select <code class="language-plaintext highlighter-rouge">augustus</code>     <ul>       <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>     </ul>   </li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -848,7 +731,7 @@ https://zenodo.org/api/files/647ad552-19a8-46d9-aad8-f81f56860582/snap_training_
 <p>You have the following main datasets:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">S_pombe_trinity_assembly.fasta</code> contains EST sequences from <em>S. pombe</em>, assembled from <span class="notranslate">RNA</span>Seq data with Trinity</li>
+  <li><code class="language-plaintext highlighter-rouge">S_pombe_trinity_assembly.fasta</code> contains EST sequences from <em>S. pombe</em>, assembled from RNASeq data with Trinity</li>
   <li><code class="language-plaintext highlighter-rouge">Swissprot_no_S_pombe.fasta</code> contains a subset of the SwissProt protein sequence database (public sequences from <em>S. pombe</em> were removed to stay as close as possible to real-life analysis)</li>
   <li><code class="language-plaintext highlighter-rouge">S_pombe_chrIII.fasta</code> contains only the third chromosome from the full genome of <em>S. pombe</em></li>
 </ul>
@@ -862,10 +745,10 @@ https://zenodo.org/api/files/647ad552-19a8-46d9-aad8-f81f56860582/snap_training_
 <p>Before running the full annotation process, you need first to evaluate the quality of the sequence. It will give you a good idea of what you can expect from it at the end of the annotation.</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Get genome sequence statistics</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-get-genome-sequence-statistics"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get genome sequence statistics</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1"><strong>Fasta Statistics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1" title="Fasta Statistics tool" aria-role="link"><strong>Fasta Statistics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/fasta_stats/fasta-stats/1.0.1</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“fasta or multifasta file”</em>: select <code class="language-plaintext highlighter-rouge">S_pombe_chrIII.fasta</code> from your history</li>
       </ul>
@@ -885,7 +768,7 @@ https://zenodo.org/api/files/647ad552-19a8-46d9-aad8-f81f56860582/snap_training_
 <p>These statistics are useful to detect obvious problems in the genome assembly, but it gives no information about the quality of the sequence content. We want to evaluate if the genome sequence contains all the genes we expect to find in the considered species, and if their sequence are correct.</p>
 
 <blockquote class="comment">
-  <comment-title></comment-title>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>Keep in mind that we are running this tutorial only on the chromosome III instead of the whole genome.</p>
 
@@ -896,10 +779,10 @@ https://zenodo.org/api/files/647ad552-19a8-46d9-aad8-f81f56860582/snap_training_
 <p>We will first run this tool on the genome sequence to evaluate its quality.</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Run Busco on the genome</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-run-busco-on-the-genome"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Run Busco on the genome</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4"><strong>Busco</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4" title="Busco tool" aria-role="link"><strong>Busco</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Sequences to analyse”</em>: select <code class="language-plaintext highlighter-rouge">S_pombe_chrIII.fasta</code> from your history</li>
         <li><em>“Mode”</em>: <code class="language-plaintext highlighter-rouge">Genome</code></li>
@@ -907,7 +790,7 @@ https://zenodo.org/api/files/647ad552-19a8-46d9-aad8-f81f56860582/snap_training_
       </ul>
 
       <blockquote class="comment">
-        <comment-title></comment-title>
+        <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>We select <code class="language-plaintext highlighter-rouge">Fungi</code> as we will annotate the genome of <em>Schizosaccharomyces pombe</em> which belongs to the Fungi kingdom. It is usually better to select the most specific lineage for the species you study. Large lineages (like Metazoa) will consist of fewer genes, but with a strong support. More specific lineages (like Hymenoptera) will have more genes, but with a weaker support (has they are found in fewer genomes).</p>
       </blockquote>
@@ -927,12 +810,12 @@ https://zenodo.org/api/files/647ad552-19a8-46d9-aad8-f81f56860582/snap_training_
 <p><img src="../../images/busco_genome_summary.png" alt="BUSCO genome summary" title="Example of BUSCO short summary (not from this tutorial). Here BUSCO searched for 290 genes in a genome, and found 282 of them complete (269 in single-copy, and 13 duplicated). 5 where found but are fragmented, and 3 were not found at all." /></p>
 
 <blockquote class="question">
-  <question-title></question-title>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>Do you think the genome quality is good enough for performing the annotation?</p>
 
   <blockquote class="solution">
-    <solution-title></solution-title>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The genome consists of the expected number of chromosome sequences (1), with very few N, which is the ideal case.
 As we only analysed chromosome III, many BUSCO genes are missing, but still ~100 are found as complete single copy, and very few are found fragmented, which means that our genome have a good quality, at least on this single chromosome. That’s a very good material to perform an annotation.</p>
@@ -942,7 +825,7 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 </blockquote>
 
 <blockquote class="comment">
-  <comment-title></comment-title>
+  <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>Keep in mind that we are running this tutorial only on the chromosome III instead of the whole genome. The BUSCO result will also show a lot of missing genes: it is expected as all the BUSCO genes that are not on the chromosome III cannot be found by the tool.</p>
 
@@ -953,17 +836,17 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 <p>Let’s run Maker to predict gene models! Maker will use align <a href="https://en.wikipedia.org/wiki/Expressed_sequence_tag">ESTs</a> and proteins to the genome, and it will run ab initio predictors (SNAP and Augustus) using pre-trained models for this organism (have a look at the <a href="/training-material/topics/genome-annotation/tutorials/annotation-with-maker/tutorial.html">longer version of tutorial</a> to understand how they were trained).</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Annotation with Maker</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-annotation-with-maker"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Annotation with Maker</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Maker tool" aria-role="link"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Genome to annotate”</em>: select <code class="language-plaintext highlighter-rouge">S_pombe_chrIII.fasta</code> from your history</li>
         <li><em>“Organism type”</em>: <code class="language-plaintext highlighter-rouge">Eukaryotic</code></li>
         <li><em>“Re-annotate using an existing Maker annotation”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
         <li>In <em>“EST evidences (for best results provide at least one of these)”</em>:
           <ul>
-            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“ESTs or assembled c<span class="notranslate">DNA</span>”</em>: <code class="language-plaintext highlighter-rouge">S_pombe_trinity_assembly.fasta</code></li>
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“ESTs or assembled cDNA”</em>: <code class="language-plaintext highlighter-rouge">S_pombe_trinity_assembly.fasta</code></li>
           </ul>
         </li>
         <li>In <em>“Protein evidences (for best results provide at least one of these)”</em>:
@@ -989,7 +872,7 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
       </ul>
 
       <blockquote class="comment">
-        <comment-title></comment-title>
+        <div class="box-title comment-title" id="comment-3"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>For this tutorial repeat masking is disabled, which is not the recommended setting. When doing a real-life annotation, you should either use <a href="https://www.dfam.org">Dfam</a> or provide your own repeats library.</p>
       </blockquote>
@@ -1013,12 +896,12 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 <p>First, use the <code class="language-plaintext highlighter-rouge">Genome annotation statistics</code> that will compute some general statistics on the annotation.</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Get annotation statistics</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-get-annotation-statistics"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get annotation statistics</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jcvi_gff_stats/jcvi_gff_stats/0.8.4" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/jcvi_gff_stats/jcvi_gff_stats/0.8.4"><strong>Genome annotation statistics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/jcvi_gff_stats/jcvi_gff_stats/0.8.4</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jcvi_gff_stats/jcvi_gff_stats/0.8.4" title="Genome annotation statistics tool" aria-role="link"><strong>Genome annotation statistics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/jcvi_gff_stats/jcvi_gff_stats/0.8.4</span></span> with the following parameters:
       <ul>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Annotation to analyse”</em>: <code class="language-plaintext highlighter-rouge">final annotation</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span> )</li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Annotation to analyse”</em>: <code class="language-plaintext highlighter-rouge">final annotation</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Maker tool" aria-role="link"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span>)</li>
         <li><em>“Reference genome”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history</code>
           <ul>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Corresponding genome sequence”</em>: select <code class="language-plaintext highlighter-rouge">S_pombe_chrIII.fasta</code> from your history</li>
@@ -1031,7 +914,7 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 </blockquote>
 
 <blockquote class="question">
-  <question-title></question-title>
+  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>How many genes where predicted by Maker?</li>
@@ -1039,7 +922,7 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
   </ol>
 
   <blockquote class="solution">
-    <solution-title></solution-title>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>864 genes</li>
@@ -1054,15 +937,15 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 
 <p>Just as we did for the genome at the beginning, we can use BUSCO to check the quality of this Maker annotation. Instead of looking for known genes in the genome sequence, BUSCO will inspect the transcript sequences of the genes predicted by Maker. This will allow us to see if Maker was able to properly identify the set of genes that Busco found in the genome sequence at the beginning of this tutorial.</p>
 
-<p>First we need to compute all the transcript sequences from the Maker annotation, using <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1"><strong>GFFread</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1</span></span> . This tool will compute the sequence of each transcript that was predicted by <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span>  and write them all in a FASTA file.</p>
+<p>First we need to compute all the transcript sequences from the Maker annotation, using <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1" title="GFFread tool" aria-role="link"><strong>GFFread</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1</span></span>. This tool will compute the sequence of each transcript that was predicted by <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Maker tool" aria-role="link"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span> and write them all in a FASTA file.</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Extract transcript sequences</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-extract-transcript-sequences"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Extract transcript sequences</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1"><strong>GFFread</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1" title="GFFread tool" aria-role="link"><strong>GFFread</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1</span></span> with the following parameters:
       <ul>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input GFF3 or GTF feature file”</em>: <code class="language-plaintext highlighter-rouge">final annotation</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span> )</li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input GFF3 or GTF feature file”</em>: <code class="language-plaintext highlighter-rouge">final annotation</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Maker tool" aria-role="link"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span>)</li>
         <li><em>“Reference Genome”</em>: <code class="language-plaintext highlighter-rouge">select </code>S_pombe_chrIII.fasta<code class="language-plaintext highlighter-rouge"> from your history</code>
           <ul>
             <li><em>“Select fasta outputs”</em>:
@@ -1084,12 +967,12 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 <p>Now run BUSCO with the predicted transcript sequences:</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Run BUSCO</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-run-busco"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Run BUSCO</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4"><strong>Busco</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4" title="Busco tool" aria-role="link"><strong>Busco</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/busco/busco/4.1.4</span></span> with the following parameters:
       <ul>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Sequences to analyse”</em>: <code class="language-plaintext highlighter-rouge">exons</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1"><strong>GFFread</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1</span></span> )</li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Sequences to analyse”</em>: <code class="language-plaintext highlighter-rouge">exons</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1" title="GFFread tool" aria-role="link"><strong>GFFread</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/gffread/gffread/2.2.1.1</span></span>)</li>
         <li><em>“Mode”</em>: <code class="language-plaintext highlighter-rouge">Transcriptome</code></li>
         <li><em>“Lineage”</em>: <code class="language-plaintext highlighter-rouge">Fungi</code></li>
       </ul>
@@ -1099,12 +982,12 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 </blockquote>
 
 <blockquote class="question">
-  <question-title></question-title>
+  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>How do the BUSCO statistics compare to the ones at the genome level?</p>
 
   <blockquote class="solution">
-    <solution-title></solution-title>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>128 complete single-copy, 0 duplicated, 10 fragmented, 620 missing. This is in fact better than what BUSCO found in the genome sequence. That means the quality of this annotation is very good (by default BUSCO in genome mode can miss some genes, the advanced options can improve this at the cost of computing time). (Results can be very slightly different in your own history, it’s normal).</p>
 
@@ -1117,18 +1000,18 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 <p>If you look at the content of the <code class="language-plaintext highlighter-rouge">final annotation</code> dataset, you will notice that the gene names are long, complicated, and not very readable. That’s because Maker assign them automatic names based on the way it computed each gene model. We are now going to automatically assign more readable names.</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Change gene names</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-change-gene-names"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Change gene names</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11"><strong>Map annotation ids</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11" title="Map annotation ids tool" aria-role="link"><strong>Map annotation ids</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11</span></span> with the following parameters:
       <ul>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Maker annotation where to change ids”</em>: <code class="language-plaintext highlighter-rouge">final annotation</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span> )</li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Maker annotation where to change ids”</em>: <code class="language-plaintext highlighter-rouge">final annotation</code> (output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11" title="Maker tool" aria-role="link"><strong>Maker</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/maker/maker/2.31.11</span></span>)</li>
         <li><em>“Prefix for ids”</em>: <code class="language-plaintext highlighter-rouge">TEST_</code></li>
         <li><em>“Justify numeric ids to this length”</em>: <code class="language-plaintext highlighter-rouge">6</code></li>
       </ul>
 
       <blockquote class="comment">
-        <comment-title></comment-title>
+        <div class="box-title comment-title" id="comment-4"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>Genes will be renamed to look like: <code class="language-plaintext highlighter-rouge">TEST_001234</code>. You can replace <code class="language-plaintext highlighter-rouge">TEST_</code> by anything you like, usually an uppercase short prefix.</p>
       </blockquote>
@@ -1141,20 +1024,20 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 
 <h1 id="visualising-the-results">Visualising the results</h1>
 
-<p>With <span class="notranslate">Galaxy</span>, you can visualize the annotation you have generated using JBrowse. This allows you to navigate along the chromosomes of the genome and see the structure of each predicted gene.</p>
+<p>With Galaxy, you can visualize the annotation you have generated using JBrowse. This allows you to navigate along the chromosomes of the genome and see the structure of each predicted gene.</p>
 
 <blockquote class="notranslate hands_on">
-  <hands-on-title>Visualize annotations in JBrowse</hands-on-title>
+  <div class="box-title hands-on-title" id="hands-on-visualize-annotations-in-jbrowse"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Visualize annotations in JBrowse</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.10+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.10+galaxy0"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.10+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.10+galaxy0" title="JBrowse tool" aria-role="link"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.10+galaxy0</span></span> with the following parameters:
       <ul>
         <li><em>“Reference genome to display”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history</code>
           <ul>
             <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select the reference genome”</em>: select <code class="language-plaintext highlighter-rouge">S_pombe_chrIII.fasta</code> from your history</li>
           </ul>
         </li>
-        <li><em>“JBrowse-in-<span class="notranslate">Galaxy</span> Action”</em>: <code class="language-plaintext highlighter-rouge">New JBrowse Instance</code></li>
+        <li><em>“JBrowse-in-Galaxy Action”</em>: <code class="language-plaintext highlighter-rouge">New JBrowse Instance</code></li>
         <li>In <em>“Track Group”</em>:
           <ul>
             <li>Click on <em>“Insert Track Group”</em>:</li>
@@ -1167,10 +1050,10 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
                     <li>In <em>“1: Annotation Track”</em>:
                       <ul>
                         <li>
-                          <p><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/<span class="notranslate">BED</span> Features</code></p>
+                          <p><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/BED Features</code></p>
                         </li>
                         <li>
-                          <p><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“GFF/GFF3/<span class="notranslate">BED</span> Track Data”</em>: select the output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11"><strong>Map annotation ids</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11</span></span></p>
+                          <p><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“GFF/GFF3/BED Track Data”</em>: select the output of <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11" title="Map annotation ids tool" aria-role="link"><strong>Map annotation ids</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/maker_map_ids/maker_map_ids/2.31.11</span></span></p>
                         </li>
                       </ul>
                     </li>
@@ -1188,7 +1071,7 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 
 <p>Enable the track on the left side of JBrowse, then navigate along the genome and look at the genes that were predicted by Maker.</p>
 
-<h1 class="no_toc" id="conclusion">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
 
 <p>Congratulations, you finished this tutorial! You learned how to annotate an eukaryotic genome using Maker, how to evaluate the quality of the annotation, and how to visualize it using the JBrowse genome browser.</p>
 
@@ -1199,10 +1082,12 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 <p>An automatic annotation of an eukaryotic genome is rarely perfect. If you inspect some predicted genes, you will probably find some mistakes made by Maker, e.g. wrong exon/intron limits, splitted genes, or merged genes. Setting up a manual curation project using <a href="http://genomearchitect.org/">Apollo</a> helps a lot to manually fix these errors. Check out the <a href="/training-material/topics/genome-annotation/tutorials/apollo-euk/tutorial.html">Apollo tutorial</a> for more details.</p>
 
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Maker allows to annotate a eukaryotic genome.</p>
@@ -1237,38 +1122,18 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Genome annotation with Maker (short) (Genome Annotation)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Genome annotation with Maker (short) (Genome Annotation)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Anthony Bretaudeau,  <b>Genome annotation with Maker (short) (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html">https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Anthony Bretaudeau,  <b>Genome annotation with Maker (short) (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html">https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1280,7 +1145,7 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1289,28 +1154,31 @@ As we only analysed chromosome III, many BUSCO genes are missing, but still ~100
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{genome-annotation-annotation-with-maker-short,
 author = "Anthony Bretaudeau",
-title = "Genome annotation with Maker (short) (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Genome annotation with Maker (short) (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1318,11 +1186,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1331,49 +1199,114 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: gffread
+  owner: devteam
+  revisions: 0232f19d300f
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: busco
+  owner: iuc
+  revisions: 1440ae06552f
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: jbrowse
+  owner: iuc
+  revisions: 2bb2e07a7a21
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: jcvi_gff_stats
+  owner: iuc
+  revisions: 8cffbd184762
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: maker
+  owner: iuc
+  revisions: 96ac930d84fa
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: maker_map_ids
+  owner: iuc
+  revisions: 326f9c294b09
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fasta_stats
+  owner: simon-gladman
+  revisions: 20ca2574216a
+  tool_panel_section_label: Genome Annotation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00167">https://gxy.io/GTN:T00167</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/genome-annotation/tutorials/annotation-with-maker-short/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

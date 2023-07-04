@@ -1,7 +1,18 @@
 {
   "layout": "tutorial_slides",
-  "logo": "assets/images/gat.png",
   "title": "Galaxy and Celery",
+  "zenodo_link": "",
+  "questions": null,
+  "objectives": [
+    "Have an understanding of what Celery is and how it works",
+    "Install Redis",
+    "Configure and start Celery workers",
+    "Install Flower to the Galaxy venv and configure it",
+    "Use an Ansible playbook for all of the above.",
+    "Monitor a Celery task using the Flower dashboard"
+  ],
+  "time_estimation": "1h",
+  "key_points": null,
   "contributions": {
     "authorship": [
       "mira-miracoli"
@@ -10,27 +21,121 @@
       "hexylena"
     ]
   },
+  "requirements": [
+    {
+      "type": "internal",
+      "topic_name": "admin",
+      "tutorials": [
+        "ansible",
+        "ansible-galaxy",
+        "pulsar"
+      ]
+    }
+  ],
   "subtopic": "jobs",
+  "tags": [
+    "ansible",
+    "git-gat"
+  ],
+  "short_id": "S00003",
   "url": "/topics/admin/tutorials/celery/slides.html",
   "topic_name": "admin",
   "tutorial_name": "celery",
+  "dir": "topics/admin/tutorials/celery",
+  "id": "admin/celery",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/admin/tutorials/celery/tutorial.json",
+  "tools": [
+
+  ],
+  "supported_servers": {
+    "exact": [
+
+    ],
+    "inexact": [
+      {
+        "name": "UseGalaxy.eu",
+        "url": "https://usegalaxy.eu",
+        "usegalaxy": true
+      },
+      {
+        "name": "UseGalaxy.org",
+        "url": "https://usegalaxy.org",
+        "usegalaxy": true
+      },
+      {
+        "name": "UseGalaxy.org.au",
+        "url": "https://usegalaxy.org.au",
+        "usegalaxy": true
+      }
+    ]
+  },
+  "topic_name_human": "Galaxy Server administration",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools: []\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
   "contributors": [
     {
       "name": "Mira Kuntz",
+      "orcid": "0000-0003-4302-5091",
+      "matrix": "mira-miracoli:matrix.org",
+      "email": "kuntzm@informatik.uni-freiburg.de",
       "joined": "2022-07",
+      "elixir_node": "de",
       "id": "mira-miracoli",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/mira-miracoli.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/mira-miracoli.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/mira-miracoli/"
     },
     {
       "name": "Helena Rasche",
-      "email": "helena.rasche@gmail.com",
+      "email": "hexylena@galaxians.org",
       "orcid": "0000-0001-9760-8992",
       "maintainer_contact": "gitter",
-      "gitter": "hexylena",
+      "matrix": "hexylena:matrix.org",
       "joined": "2017-09",
       "elixir_node": "nl",
+      "fediverse": "https://galaxians.garden/hexylena",
+      "fediverse_flavor": "akkoma",
+      "contact_for_training": false,
+      "location": {
+        "country": "NL",
+        "lat": 51.91,
+        "lon": 4.46
+      },
       "id": "hexylena",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
     }
+  ],
+  "logo": "assets/images/gat.png",
+  "redirect_from": [
+    "/short/admin/celery/slides",
+    "/short/S00003"
   ]
 }

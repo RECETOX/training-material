@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,254 +8,70 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Biomarker candidate identification" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Florence Combes" />
-<meta name="DC.creator" content="David Christiany" />
-<meta name="DC.creator" content="Valentin Loux" />
-<meta name="DC.creator" content="Yves Vandenbrouck" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for proteomics workflows in Galaxy" />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Biomarker candidate identification" />
-        <meta property="og:description" content="Training material for proteomics workflows in Galaxy" />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/proteomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Proteomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/biomarker_selection/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/biomarker_selection/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/biomarker_selection/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/biomarker_selection/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/biomarker_selection/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/biomarker_selection/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/proteomics/faqs/" title="Check our FAQs for the Proteomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/biomarker_selection/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/proteomics/tutorials/biomarker_selection/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/proteomics/tutorials/biomarker_selection/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/proteomics/tutorials/biomarker_selection/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Biomarker candidate identification">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000">
+<meta name="DC.creator" content="Florence Combes">
+<meta name="DC.creator" content="David Christiany">
+<meta name="DC.creator" content="Valentin Loux">
+<meta name="DC.creator" content="Yves Vandenbrouck">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for proteomics workflows in Galaxy">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Biomarker candidate identification">
+        <meta property="og:description" content="Training material for proteomics workflows in Galaxy">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -306,6 +122,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -333,6 +153,7 @@
   "name": "Hands-on for 'Biomarker candidate identification' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Build a workflow implementing a strategy for the selection of tissue-leakage biomarkers using ProteoRE",
   "keywords": "proteomics, DDA, human",
   "description": "The questions this  addresses are:\n - How to mine public databases to retrieve info?\n - How to build a selection strategy by applying successive biochemical/cellular criteria to a list of gene/protein?\n - How to select biomarkers candidates using experimental information (transcriptomics & proteomics) and annotation from public databases?\n\n\nThe objectives are:\n - Build a workflow implementing a strategy for the selection of tissue-leakage biomarkers using ProteoRE\n\n",
   "inLanguage": {
@@ -360,8 +181,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/combesf/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/combesf/",
@@ -381,8 +202,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/davidchristiany/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/davidchristiany/",
@@ -402,8 +223,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/vloux/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/vloux/",
@@ -423,94 +244,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/yvandenb/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/yvandenb/",
-      "name": "Yves Vandenbrouck",
-      "image": "https://avatars.githubusercontent.com/yvandenb",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/combesf/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/combesf/",
-      "name": "Florence Combes",
-      "image": "https://avatars.githubusercontent.com/combesf",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/davidchristiany/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/davidchristiany/",
-      "name": "David Christiany",
-      "image": "https://avatars.githubusercontent.com/davidchristiany",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/vloux/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/vloux/",
-      "name": "Valentin Loux",
-      "image": "https://avatars.githubusercontent.com/vloux",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/yvandenb/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/yvandenb/",
@@ -541,43 +276,216 @@
       "termCode": "topic_0121",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0121"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "DDA"
+    },
+    {
+      "@type": "Thing",
+      "name": "human"
+    }
+  ],
+  "abstract": "# Introduction"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-proteomics">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/proteomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Proteomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/proteomics/faqs/" title="Check our FAQs for the Proteomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/biomarker_selection/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/proteomics/tutorials/biomarker_selection/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/proteomics/tutorials/biomarker_selection/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/proteomics/tutorials/biomarker_selection/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-proteomics">
     <h1 data-toc-skip>Biomarker candidate identification</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/combesf/" class="contributor-badge contributor-combesf"><img src="https://avatars.githubusercontent.com/combesf?s=27" alt="Avatar">Florence Combes</a>
-
-
-
-<a href="/training-material/hall-of-fame/davidchristiany/" class="contributor-badge contributor-davidchristiany"><img src="https://avatars.githubusercontent.com/davidchristiany?s=27" alt="Avatar">David Christiany</a>
-
-
-
-<a href="/training-material/hall-of-fame/vloux/" class="contributor-badge contributor-vloux"><img src="https://avatars.githubusercontent.com/vloux?s=27" alt="Avatar">Valentin Loux</a>
-
-
-
-<a href="/training-material/hall-of-fame/yvandenb/" class="contributor-badge contributor-yvandenb"><img src="https://avatars.githubusercontent.com/yvandenb?s=27" alt="Avatar">Yves Vandenbrouck</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/combesf/" class="contributor-badge contributor-combesf"><img src="https://avatars.githubusercontent.com/combesf?s=36" alt="Avatar" width="36" height="36">Florence Combes</a><a href="/training-material/hall-of-fame/davidchristiany/" class="contributor-badge contributor-davidchristiany"><img src="https://avatars.githubusercontent.com/davidchristiany?s=36" alt="Avatar" width="36" height="36">David Christiany</a><a href="/training-material/hall-of-fame/vloux/" class="contributor-badge contributor-vloux"><img src="https://avatars.githubusercontent.com/vloux?s=36" alt="Avatar" width="36" height="36">Valentin Loux</a><a href="/training-material/hall-of-fame/yvandenb/" class="contributor-badge contributor-yvandenb"><img src="https://avatars.githubusercontent.com/yvandenb?s=36" alt="Avatar" width="36" height="36">Yves Vandenbrouck</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -631,10 +539,6 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/proteomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
 
@@ -642,8 +546,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/proteomics/tutorials/biomarker_selection/workflows/" title="Workflows" alt="Biomarker candidate identification workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/proteomics/tutorials/biomarker_selection/workflows/" title="Biomarker candidate identification workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -656,13 +560,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/proteomics/tutorials/biomarker_selection/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/proteomics/tutorials/biomarker_selection/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -688,156 +589,49 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/proteomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
@@ -846,12 +640,16 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00213">https://gxy.io/GTN:T00213</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -862,17 +660,18 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <p>A biomarker is a measurable biological component that can be routinely detected in clinical practice and reflects a disease state,
 response to therapeutic treatment, or other relevant biological state.</p>
 
-<p><a href="http://www.proteore.org">ProteoRE <span class="notranslate">Galaxy</span> instance</a> provides necessary tools to execute a complete biomarkers selection pipeline.
+<p><a href="http://www.proteore.org">ProteoRE Galaxy instance</a> provides necessary tools to execute a complete biomarkers selection pipeline.
 In this tutorial we introduce successively the tools of this pipeline, and guide you to execute them in order to complete the entire
 pipeline on a concrete example. This strategy is described by <span class="citation"><a href="#Nguyen2019">Nguyen <i>et al.</i> 2019</a></span>.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -902,10 +701,11 @@ Our use-case here is to identify candidate biomarkers for myocardial infarction 
   <li>detection in LC-MS/MS experiments already done</li>
 </ul>
 
-<figure id="figure-1"><img src="../../images/pipeline.png" alt="Overview of the pipeline described in this tutorial. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Pipeline of the tutorial, from Nguyen et al., as of in 2019.</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/pipeline.png" alt="Overview of the pipeline described in this tutorial. " width="920" height="745" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Pipeline of the tutorial, from Nguyen et al., as of in 2019.</figcaption></figure>
 
 <!--SNIPPET-->
-<blockquote class="comment">  <div id="comment-results-may-vary" class="box-title" aria-label="comment box: Results may vary"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Results may vary</div>  <p>Your results may be slightly different from the ones presented in this tutorial due to differing versions of tools, reference data, exte<span class="notranslate">rna</span>l databases, or because of stochastic processes in the algorithms.</p></blockquote>
+<blockquote class="comment">   <div class="box-title comment-title" id="comment-results-may-vary"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Results may vary</div>   <p>Your results may be slightly different from the ones presented in this tutorial due to differing versions of tools, reference data, external databases, or because of stochastic processes in the algorithms.</p> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <h1 id="selection-of-tissue-specific-proteins">Selection of tissue-specific proteins</h1>
 
@@ -913,21 +713,22 @@ Our use-case here is to identify candidate biomarkers for myocardial infarction 
 <a href="https://www.proteinatlas.org/">The Human Protein Atlas</a> (HPA) (Publication: <span class="citation"><a href="#Uhln2005">Uhlén <i>et al.</i> 2005</a></span>)</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-build-tissue-specific-expression-dataset-based-on-immunohistochemistry" class="box-title" aria-label="hands-on box: Build tissue-specific expression dataset based on ImmunoHistoChemistry"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Build tissue-specific <span class="notranslate">expression</span> dataset based on ImmunoHistoChemistry</div>
+  <div class="box-title hands-on-title" id="hands-on-build-tissue-specific-expression-dataset-based-on-immunohistochemistry"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Build tissue-specific expression dataset based on ImmunoHistoChemistry</div>
 
   <ol>
     <li>
       <p><strong>Create a new history</strong> and give it a name.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
-      <p><strong>Build tissue-specific <span class="notranslate">expression</span> dataset</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:</p>
+      <p><strong>Build tissue-specific expression dataset</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:</p>
       <ul>
-        <li><em>“Experimental data source (antibody- or <span class="notranslate">RNA</span>seq-based)”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">Expression</span> profiles based on immunohistochemistry</code></li>
+        <li><em>“Experimental data source (antibody- or RNAseq-based)”</em>: <code class="language-plaintext highlighter-rouge">Expression profiles based on immunohistochemistry</code></li>
         <li><em>“Select tissue”</em>: <code class="language-plaintext highlighter-rouge">Heart muscle</code></li>
-        <li><em>“<span class="notranslate">Expression</span> level”</em>: <code class="language-plaintext highlighter-rouge">High</code> and <code class="language-plaintext highlighter-rouge">Medium</code></li>
+        <li><em>“Expression level”</em>: <code class="language-plaintext highlighter-rouge">High</code> and <code class="language-plaintext highlighter-rouge">Medium</code></li>
         <li><em>“Reliability score”</em>: <code class="language-plaintext highlighter-rouge">Enhanced</code> and <code class="language-plaintext highlighter-rouge">Supported</code></li>
       </ul>
     </li>
@@ -936,21 +737,21 @@ Our use-case here is to identify candidate biomarkers for myocardial infarction 
   <blockquote class="comment">
     <h3 id="output">Output</h3>
     <ul>
-      <li><strong>Tissue-specific <span class="notranslate">expression</span> from IHC</strong> (1596 lines): List of the selected proteins.
+      <li><strong>Tissue-specific expression from IHC</strong> (1596 lines): List of the selected proteins.
 6 columns: ‘Gene’, ‘Gene name’ and the retrieved info from HPA.</li>
     </ul>
   </blockquote>
 </blockquote>
 
-<p>We will now rerun the same tool but to select transcripts according to their <span class="notranslate">expression</span> profile.</p>
+<p>We will now rerun the same tool but to select transcripts according to their expression profile.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-build-tissue-specific-expression-dataset-based-on-rnaseq" class="box-title" aria-label="hands-on box: Build tissue-specific expression dataset based on RNAseq"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Build tissue-specific <span class="notranslate">expression</span> dataset based on <span class="notranslate">RNA</span>seq</div>
+  <div class="box-title hands-on-title" id="hands-on-build-tissue-specific-expression-dataset-based-on-rnaseq"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Build tissue-specific expression dataset based on RNAseq</div>
 
   <ol>
-    <li><strong>Build tissue-specific <span class="notranslate">expression</span> dataset</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Build tissue-specific expression dataset</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“Experimental data source (antibody- or <span class="notranslate">RNA</span>seq-based)”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">RNA</span> levels based on <span class="notranslate">RNA</span>-seq experiments</code></li>
+        <li><em>“Experimental data source (antibody- or RNAseq-based)”</em>: <code class="language-plaintext highlighter-rouge">RNA levels based on RNA-seq experiments</code></li>
         <li><em>“Select tissue”</em>: <code class="language-plaintext highlighter-rouge">Heart muscle</code></li>
       </ul>
     </li>
@@ -959,23 +760,23 @@ Our use-case here is to identify candidate biomarkers for myocardial infarction 
   <blockquote class="comment">
     <h3 id="output-1">Output</h3>
     <ul>
-      <li><strong>Tissue-specific <span class="notranslate">expression</span> from <span class="notranslate">RNA</span>seq</strong> (19613 lines): List of the selected transcripts.
+      <li><strong>Tissue-specific expression from RNAseq</strong> (19613 lines): List of the selected transcripts.
 4 columns: ‘Gene’, ‘Gene name’ and the retrieved info from HPA.</li>
     </ul>
   </blockquote>
 </blockquote>
 
 <p>This second list must be reduced by removing transcripts that are not highly enriched in heart muscle.
-To do so, a filter is applied on the <span class="notranslate">expression</span> value provided by HPA and measured in TPM (last column of the output file).
+To do so, a filter is applied on the expression value provided by HPA and measured in TPM (last column of the output file).
 In ProteoRE we’ll use the “Filter by keywords and/or numerical value” tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filter-on-expression-value-criterion" class="box-title" aria-label="hands-on box: Filter on expression value criterion"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter on <span class="notranslate">expression</span> value criterion</div>
+  <div class="box-title hands-on-title" id="hands-on-filter-on-expression-value-criterion"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Filter on expression value criterion</div>
 
   <ol>
     <li><strong>Filter by keywords and/or numerical value</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“Input File”</em>: <code class="language-plaintext highlighter-rouge">Tissue-specific <span class="notranslate">expression</span> from <span class="notranslate">RNA</span>Seq</code> from the previous step</li>
+        <li><em>“Input File”</em>: <code class="language-plaintext highlighter-rouge">Tissue-specific expression from RNASeq</code> from the previous step</li>
         <li><em>“Operation”</em>: <code class="language-plaintext highlighter-rouge">Discard</code></li>
         <li>In <em>“Filter by numerical value”</em>:
           <ul>
@@ -998,25 +799,25 @@ In ProteoRE we’ll use the “Filter by keywords and/or numerical value” tool
   </ol>
 
   <blockquote class="question">
-    <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+    <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
     <p>How many lines are there in the file of heart transcripts
 with a TPM value &gt;10 ?</p>
 
     <blockquote class="solution">
-      <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
       <p>5257 lines.</p>
     </blockquote>
   </blockquote>
 
 </blockquote>
 
-<p>We have now 2 datasets of heart-muscle proteins/transcripts, based on IHC (Immonohistochemistry) data or <a href="https://statquest.org/2015/07/09/rpkm-fpkm-and-tpm-clearly-explained/">TPM</a> (<span class="notranslate">Expression</span> level expressed in Transcripts Per Million) value.</p>
+<p>We have now 2 datasets of heart-muscle proteins/transcripts, based on IHC (Immonohistochemistry) data or <a href="https://statquest.org/2015/07/09/rpkm-fpkm-and-tpm-clearly-explained/">TPM</a> (Expression level expressed in Transcripts Per Million) value.</p>
 
-<p>We want now to select candidate biomarkers that are expressed in the heart muscle according to <strong>both</strong> IHC and <span class="notranslate">RNA</span>-seq data, using the Jvenn tool.</p>
+<p>We want now to select candidate biomarkers that are expressed in the heart muscle according to <strong>both</strong> IHC and RNA-seq data, using the Jvenn tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-venn-diagram" class="box-title" aria-label="hands-on box: Venn diagram"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Venn diagram</div>
+  <div class="box-title hands-on-title" id="hands-on-venn-diagram"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Venn diagram</div>
 
   <ol>
     <li><strong>Venn diagram</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1027,7 +828,7 @@ with a TPM value &gt;10 ?</p>
               <ul>
                 <li><em>“Enter your list”</em>: <code class="language-plaintext highlighter-rouge">Input file containing your list</code>
                   <ul>
-                    <li><em>“Select your file”</em>: <code class="language-plaintext highlighter-rouge">Tissue-specific <span class="notranslate">expression</span> from IHC</code></li>
+                    <li><em>“Select your file”</em>: <code class="language-plaintext highlighter-rouge">Tissue-specific expression from IHC</code></li>
                     <li><em>“Enter the name of this list”</em>: <code class="language-plaintext highlighter-rouge">heart IHC</code></li>
                   </ul>
                 </li>
@@ -1037,8 +838,8 @@ with a TPM value &gt;10 ?</p>
               <ul>
                 <li><em>“Enter your list”</em>: <code class="language-plaintext highlighter-rouge">Input file containing your list</code>
                   <ul>
-                    <li><em>“Select your file”</em>: <code class="language-plaintext highlighter-rouge">Filtered tissue-specific <span class="notranslate">expression</span> from <span class="notranslate">RNA</span>seq</code></li>
-                    <li><em>“Enter the name of this list”</em>: <code class="language-plaintext highlighter-rouge">heart <span class="notranslate">RNA</span>seq</code></li>
+                    <li><em>“Select your file”</em>: <code class="language-plaintext highlighter-rouge">Filtered tissue-specific expression from RNAseq</code></li>
+                    <li><em>“Enter the name of this list”</em>: <code class="language-plaintext highlighter-rouge">heart RNAseq</code></li>
                   </ul>
                 </li>
               </ul>
@@ -1048,27 +849,27 @@ with a TPM value &gt;10 ?</p>
       </ul>
     </li>
     <li>
-      <p>Examine <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> the Venn diagram output:</p>
+      <p>Examine <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> the Venn diagram output:</p>
 
-      <p><img src="../../images/biomarker-selection/jVenn_chart-tuto2.png" alt="Venn diagram output. " loading="lazy" /></p>
+      <p><img src="../../images/biomarker-selection/jVenn_chart-tuto2.png" alt="Venn diagram output. " width="500" height="695" loading="lazy" /></p>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
-        <p>How many IDs are common to both IHC and <span class="notranslate">RNA</span>-seq data?</p>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
+        <p>How many IDs are common to both IHC and RNA-seq data?</p>
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>931 candidate biomarkers are detected by both IHC and <span class="notranslate">RNA</span>-seq data.</p>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>931 candidate biomarkers are detected by both IHC and RNA-seq data.</p>
         </blockquote>
       </blockquote>
     </li>
   </ol>
 </blockquote>
 
-<p>For greater clarity we’ll keep only the column with those 931 candidate biomarkers detected in both IHC and <span class="notranslate">RNA</span>-seq data in the
+<p>For greater clarity we’ll keep only the column with those 931 candidate biomarkers detected in both IHC and RNA-seq data in the
 rest of our pipeline.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-obtain-list-of-candidate-biomarkers" class="box-title" aria-label="hands-on box: Obtain list of candidate biomarkers"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Obtain list of candidate biomarkers</div>
+  <div class="box-title hands-on-title" id="hands-on-obtain-list-of-candidate-biomarkers"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Obtain list of candidate biomarkers</div>
 
   <ol>
     <li><strong>Cut</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1112,34 +913,35 @@ rest of our pipeline.</p>
       <p>Let’s rename the 931 IDs dataset in “heart931” for simplification.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-dataset" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a dataset<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field</li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
 </blockquote>
 
 <p>The pipeline will then continue based on these 931 candidates, from which we have to select biomarkers that are
-highly specific to the heart using additional <span class="notranslate">expression</span> data (still from HPA).</p>
+highly specific to the heart using additional expression data (still from HPA).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-add-expression-data" class="box-title" aria-label="hands-on box: Add expression data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Add <span class="notranslate">expression</span> data</div>
+  <div class="box-title hands-on-title" id="hands-on-add-expression-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Add expression data</div>
 
   <ol>
-    <li><strong>Add <span class="notranslate">expression</span> data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Add expression data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><em>“Enter your IDs (Ensembl gene IDs only, e.g. ENSG00000064787)”</em>: <code class="language-plaintext highlighter-rouge">Input file containing your IDs</code>
           <ul>
             <li><em>“Select your file”</em>: <code class="language-plaintext highlighter-rouge">Heart931</code> output we created in the previous step</li>
           </ul>
         </li>
-        <li>In <em>“<span class="notranslate">RNA</span>seq/Ab-based <span class="notranslate">expression</span> data”</em>:
+        <li>In <em>“RNAseq/Ab-based expression data”</em>:
           <ul>
             <li><em>“Select information to add to your list”</em>:
               <ul>
                 <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <code class="language-plaintext highlighter-rouge">Gene name</code></li>
                 <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <code class="language-plaintext highlighter-rouge">Gene description</code></li>
-                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <code class="language-plaintext highlighter-rouge"><span class="notranslate">RNA</span> tissue category</code></li>
-                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <code class="language-plaintext highlighter-rouge"><span class="notranslate">RNA</span> tissue specificity abundance in Transcript Per Million</code></li>
+                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <code class="language-plaintext highlighter-rouge">RNA tissue category</code></li>
+                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <code class="language-plaintext highlighter-rouge">RNA tissue specificity abundance in Transcript Per Million</code></li>
               </ul>
             </li>
           </ul>
@@ -1152,23 +954,23 @@ highly specific to the heart using additional <span class="notranslate">expressi
 
 <p>We wish to focus on transcripts that have been classed as (according to the HPA definition):</p>
 <ul>
-  <li><strong>Tissue enriched</strong> (<span class="notranslate">expression</span> in one tissue at least fivefold higher than all other tissues),</li>
+  <li><strong>Tissue enriched</strong> (expression in one tissue at least fivefold higher than all other tissues),</li>
   <li><strong>Group enriched</strong> (fivefold higher average TPM in a group of two to to seven tissues compared to all other tissues) and</li>
   <li><strong>Tissue enhanced</strong> (fivefold higher average TPM in one or more tissues/cell lines compared to the mean TPM for all tissues)</li>
 </ul>
 
-<p>This information is listed in the column 4 : <em>“<span class="notranslate">RNA</span> tissue category”</em> of the result dataset.</p>
+<p>This information is listed in the column 4 : <em>“RNA tissue category”</em> of the result dataset.</p>
 
 <p>Let’s use <strong>Filter by keywords and/or numerical value</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to select the candidate biomarkers based on this
-<em>“<span class="notranslate">RNA</span> tissue category”</em> criterion.</p>
+<em>“RNA tissue category”</em> criterion.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filter-by-keywords-and-or-numerical-value" class="box-title" aria-label="hands-on box: Filter by keywords and/or numerical value"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter by keywords and/or numerical value</div>
+  <div class="box-title hands-on-title" id="hands-on-filter-by-keywords-and-or-numerical-value"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Filter by keywords and/or numerical value</div>
 
   <ol>
     <li><strong>Filter by keywords and/or numerical value</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“Input file”</em>: output from <strong>Add <span class="notranslate">expression</span> data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
+        <li><em>“Input file”</em>: output from <strong>Add expression data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
         <li>In <em>“Filter by keywords”</em>:
           <ul>
             <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Filter by keywords”</em>
@@ -1194,12 +996,12 @@ highly specific to the heart using additional <span class="notranslate">expressi
         <h3 id="output-2">Output</h3>
         <ul>
           <li>
-            <p><strong>Filtered Add_<span class="notranslate">expression</span>_data</strong>: output list of the heart biomarkers with <span class="notranslate">RNA</span> tissue category
+            <p><strong>Filtered Add_expression_data</strong>: output list of the heart biomarkers with RNA tissue category
 containing “enriched” or “enhanced” (115 lines = what we are interested in)</p>
           </li>
           <li>
-            <p><strong>Filtered Add_<span class="notranslate">expression</span>_data - discarded lines</strong>: output list of the heart biomarkers with
-<span class="notranslate">RNA</span> tissue category NOT containing “enriched” or “enhanced” (not what we are interested in)</p>
+            <p><strong>Filtered Add_expression_data - discarded lines</strong>: output list of the heart biomarkers with
+RNA tissue category NOT containing “enriched” or “enhanced” (not what we are interested in)</p>
           </li>
         </ul>
       </blockquote>
@@ -1208,13 +1010,14 @@ containing “enriched” or “enhanced” (115 lines = what we are interested 
       <p>Let’s rename the filtered dataset <strong>heart115</strong></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-dataset-1" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-1-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a dataset<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field</li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
 </blockquote>
 
-<p>We now have identified 115 candidates considered to have significantly higher <span class="notranslate">expression</span> in heart muscle according to HPA criteria.</p>
+<p>We now have identified 115 candidates considered to have significantly higher expression in heart muscle according to HPA criteria.</p>
 
 <h1 id="annotation-with-biochemical-and-cellular-features">Annotation with biochemical and cellular features</h1>
 
@@ -1225,7 +1028,7 @@ Thus we will retrieve protein features from neXtProt to retrieve those informati
 candidates to their corresponding UniProt accession number. The tool <strong>ID Converter</strong> is what we need to do so.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-id-converter" class="box-title" aria-label="hands-on box: ID Converter"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: ID Converter</div>
+  <div class="box-title hands-on-title" id="hands-on-id-converter"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: ID Converter</div>
 
   <ol>
     <li><strong>ID Converter</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1264,7 +1067,7 @@ according to the version number of Uniprot.</p>
 For this purpose, we use the <strong>Add protein features</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> ProteoRE tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-add-protein-features" class="box-title" aria-label="hands-on box: Add protein features"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Add protein features</div>
+  <div class="box-title hands-on-title" id="hands-on-add-protein-features"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Add protein features</div>
 
   <ol>
     <li><strong>Add protein features</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1305,7 +1108,7 @@ were added (at the end). These columns present TMDomains, Subcell Location and D
 no transmembrane domains by running the Filter by keywords and/or numerical value tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filter-by-keywords-and-or-numerical-value-1" class="box-title" aria-label="hands-on box: Filter by keywords and/or numerical value"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter by keywords and/or numerical value</div>
+  <div class="box-title hands-on-title" id="hands-on-filter-by-keywords-and-or-numerical-value-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Filter by keywords and/or numerical value</div>
 
   <ol>
     <li><strong>Filter by keywords and/or numerical value</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1363,7 +1166,7 @@ LS MS/MS experiments.</p>
 <h1 id="check-for-previous-detection-by-lc-msms-experiments">Check for previous detection by LC-MS/MS experiments</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-get-ms-ms-observations-in-tissue-fluid" class="box-title" aria-label="hands-on box: Get MS/MS observations in tissue/fluid"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get MS/MS observations in tissue/fluid</div>
+  <div class="box-title hands-on-title" id="hands-on-get-ms-ms-observations-in-tissue-fluid"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get MS/MS observations in tissue/fluid</div>
 
   <ol>
     <li><strong>Get MS/MS observations in tissue/fluid</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1394,7 +1197,7 @@ were added with the info of number of times peptides were seen by MS/MS.</p>
 <p>Let’s now keep only proteins that have already been seen by MS/MS in the plasma (last column of the file).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filter-for-proteins-seen-in-the-plasma" class="box-title" aria-label="hands-on box: Filter for proteins seen in the plasma"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter for proteins seen in the plasma</div>
+  <div class="box-title hands-on-title" id="hands-on-filter-for-proteins-seen-in-the-plasma"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Filter for proteins seen in the plasma</div>
 
   <ol>
     <li><strong>Filter by keywords and/or numerical value</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1443,19 +1246,21 @@ output list of proteins with no peptides seen in the plasma</li>
 <em>NB: Please be aware that, due to databases update, number of biomarkers you end up with can be different from 21 that we obtain here.</em></p>
 
 <p>Briefly and from a biological point of view, 3 of these proteins exhibit a relative low detection level in the plasma
-compared to heart muscle tissue, and are reported with a very high heart-muscle-specific <span class="notranslate">RNA</span> abundance.
+compared to heart muscle tissue, and are reported with a very high heart-muscle-specific RNA abundance.
 These potential mechanistic biomarkers of myocardial infarction include (i) cardiac Troponin I type 3 (TNNI3 (P19429))
 that is routinely used as the most specific marker of myocardial injury and (ii) the heart-type fatty acid-binding protein
 (FABP3 (P05413)) that has been proposed as a diagnostic and prognostic marker for acute and chronic cardiac injury.</p>
 
-<p>Extraction of a <span class="notranslate">workflow</span> from your history is valuable for analyses reproducibility and traceability.
-Moreover, a <span class="notranslate">workflow</span> can also be made reusable with modifiable parameters, and as a result this strategy can
+<p>Extraction of a workflow from your history is valuable for analyses reproducibility and traceability.
+Moreover, a workflow can also be made reusable with modifiable parameters, and as a result this strategy can
 be applied to other types of tissue injury (e.g. brain, liver, kidney).</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Public proteomics databases are useful resources for annotation of biomarker candidates</p>
@@ -1491,38 +1296,18 @@ be applied to other types of tissue injury (e.g. brain, liver, kidney).</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Biomarker candidate identification (Proteomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Biomarker candidate identification (Proteomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Florence Combes, David Christiany, Valentin Loux, Yves Vandenbrouck,  <b>Biomarker candidate identification (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html">https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Florence Combes, David Christiany, Valentin Loux, Yves Vandenbrouck,  <b>Biomarker candidate identification (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html">https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1534,7 +1319,7 @@ be applied to other types of tissue injury (e.g. brain, liver, kidney).</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1543,28 +1328,31 @@ be applied to other types of tissue injury (e.g. brain, liver, kidney).</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{proteomics-biomarker_selection,
 author = "Florence Combes and David Christiany and Valentin Loux and Yves Vandenbrouck",
-title = "Biomarker candidate identification (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Biomarker candidate identification (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/biomarker_selection/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1572,11 +1360,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1585,49 +1373,119 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/proteomics/tutorials/biomarker_selection/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: text_processing
+  owner: bgruening
+  revisions: 288462ec2630
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: proteore_expression_rnaseq_abbased
+  owner: proteore
+  revisions: dbeabf9bf091
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: proteore_filter_keywords_values
+  owner: proteore
+  revisions: 33ca9ba2495a
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: proteore_id_converter
+  owner: proteore
+  revisions: b6607b7e683f
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: proteore_ms_observation_pepatlas
+  owner: proteore
+  revisions: 299eb4a62e0c
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: proteore_prot_features
+  owner: proteore
+  revisions: 8df559ad14a7
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: proteore_tissue_specific_expression_data
+  owner: proteore
+  revisions: 3e65e0249976
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: proteore_venn_diagram
+  owner: proteore
+  revisions: d1fd04dcb13a
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00213">https://gxy.io/GTN:T00213</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/biomarker_selection/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

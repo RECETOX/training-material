@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,253 +8,69 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Distributed Object Storage" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Nate Coraor" />
-<meta name="DC.creator" content="Helena Rasche" />
-<meta name="DC.creator" content="Gianmauro Cuccuru" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Distributed Object Storage" />
-        <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/admin" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Galaxy Server administration
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/object-store/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/object-store/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/object-store/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/object-store/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/object-store/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/object-store/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/object-store/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/object-store/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/admin/tutorials/object-store/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/admin/tutorials/object-store/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/admin/tutorials/object-store/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxyproject/admins'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Distributed Object Storage">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-11-28 09:55:50 +0000">
+<meta name="DC.creator" content="Nate Coraor">
+<meta name="DC.creator" content="Helena Rasche">
+<meta name="DC.creator" content="Gianmauro Cuccuru">
+
+        
+        
+        
+        
+        <meta name="description" content="Resources related to configuration and maintenance of Gal...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Distributed Object Storage">
+        <meta property="og:description" content="Resources related to configuration and maintenance of Gal...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -279,7 +95,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2022-11-28 09:55:50 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Distributed Object Storage",
   "interactivityType": "mixed",
@@ -305,6 +121,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -332,6 +152,7 @@
   "name": "Hands-on for 'Distributed Object Storage' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html",
   "timeRequired": "PT30M",
+  "teaches": "Setup Galaxy with both the Hierarachical and Distributed Object Storages",
   "keywords": "admin, ansible, storage",
   "description": "The questions this  addresses are:\n - How does Galaxy locate data?\n - How can I have Galaxy use multiple storage locations?\n\n\nThe objectives are:\n - Setup Galaxy with both the Hierarachical and Distributed Object Storages\n\n",
   "inLanguage": {
@@ -406,8 +227,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
@@ -421,14 +242,16 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0001-8083-2963",
+      "orcid": "https://orcid.org/0000-0001-8083-2963"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
@@ -450,57 +273,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/gmauro/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/gmauro/",
       "name": "Gianmauro Cuccuru",
       "image": "https://avatars.githubusercontent.com/gmauro",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/natefoo/",
-      "name": "Nate Coraor",
-      "image": "https://avatars.githubusercontent.com/natefoo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
       "description": "A contributor to the GTN project.",
       "memberOf": [
         {
@@ -510,29 +289,8 @@
           "url": "https://galaxyproject.org/teach/gtn/"
         }
       ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/gmauro/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/gmauro/",
-      "name": "Gianmauro Cuccuru",
-      "image": "https://avatars.githubusercontent.com/gmauro",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      "identifier": "https://orcid.org/0000-0002-5335-545X",
+      "orcid": "https://orcid.org/0000-0002-5335-545X"
     }
   ],
   "about": [
@@ -542,39 +300,216 @@
       "description": "Resources related to configuration and maintenance of Galaxy servers",
       "url": "https://training.galaxyproject.org/training-material/topics/admin/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "ansible"
+    },
+    {
+      "@type": "Thing",
+      "name": "storage"
+    }
+  ],
+  "abstract": "> <div class="box-title warning-title" id="warning-switching-object-store-types-will-cause-issues"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: switching object store types will cause issues</div>"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-admin">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/admin" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Galaxy Server administration
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/object-store/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/object-store/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/admin/tutorials/object-store/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/admin/tutorials/object-store/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/admin/tutorials/object-store/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-admin">
     <h1 data-toc-skip>Distributed Object Storage</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="https://avatars.githubusercontent.com/natefoo?s=27" alt="Avatar">Nate Coraor</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
-<a href="/training-material/hall-of-fame/gmauro/" class="contributor-badge contributor-gmauro"><img src="https://avatars.githubusercontent.com/gmauro?s=27" alt="Avatar">Gianmauro Cuccuru</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/natefoo?s=36" alt="Avatar" width="36" height="36">Nate Coraor</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/gmauro/" class="contributor-badge contributor-gmauro"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/gmauro?s=36" alt="Avatar" width="36" height="36">Gianmauro Cuccuru</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -608,6 +543,24 @@
         
             <ul>
                 
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -700,17 +653,17 @@
                     
                         
                     
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
                 
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -811,8 +764,6 @@
                     
                         
                     
-                        
-                    
                 
             </ul>
         
@@ -851,13 +802,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/admin/tutorials/object-store/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/admin/tutorials/object-store/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -883,14 +831,18 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 28, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00016">https://gxy.io/GTN:T00016</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -901,21 +853,22 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <blockquote class="warning">
-  <div id="warning-switching-object-store-types-will-cause-issues" class="box-title" aria-label="warning box: switching object store types will cause issues"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: switching object store types will cause issues</div>
+  <div class="box-title warning-title" id="warning-switching-object-store-types-will-cause-issues-1"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: switching object store types will cause issues</div>
   <p>Do not run this tutorial on your production instance! We will switch between object stores during this tutorial which has serious implications for production servers.</p>
 </blockquote>
 
 <h1 id="expanding-storage">Expanding Storage</h1>
 
-<p>You may find that your <span class="notranslate">Galaxy</span> files directory has run out of space, but you don’t want to move all of the files from one filesystem to another. One solution to this problem is to use <span class="notranslate">Galaxy</span>’s hierarchical object store to add an additional file space for <span class="notranslate">Galaxy</span>.</p>
+<p>You may find that your Galaxy files directory has run out of space, but you don’t want to move all of the files from one filesystem to another. One solution to this problem is to use Galaxy’s hierarchical object store to add an additional file space for Galaxy.</p>
 
-<p>Alte<span class="notranslate">rna</span>tively, you may wish to write new datasets to more than one filesystem. For this, you can use <span class="notranslate">Galaxy</span>’s distributed object store.</p>
+<p>Alternatively, you may wish to write new datasets to more than one filesystem. For this, you can use Galaxy’s distributed object store.</p>
 
-<p>This tutorial assumes you have done the “Ansible for installing <span class="notranslate">Galaxy</span>” tutorial, it references the base configuration set up in that tutorial in numerous places.</p>
+<p>This tutorial assumes you have done the “Ansible for installing Galaxy” tutorial, it references the base configuration set up in that tutorial in numerous places.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
 <ol id="markdown-toc">
   <li><a href="#expanding-storage" id="markdown-toc-expanding-storage">Expanding Storage</a></li>
@@ -929,30 +882,30 @@
 
 <h1 id="hierarchical-object-store">Hierarchical Object Store</h1>
 
-<p>First, note that your <span class="notranslate">Galaxy</span> datasets have been created thus far in the directory <code class="language-plaintext highlighter-rouge">/data</code>, due to <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_config: <span class="notranslate">galaxy</span>: file_path</code>. In some cases, we run out of storage in a particular location. <span class="notranslate">Galaxy</span> allows us to add additional storage locations where it will create new datasets, while still looking in the old locations for old datasets. You will not have to migrate any of your datasets, and can just “plug and play” with new storage pools.</p>
+<p>First, note that your Galaxy datasets have been created thus far in the directory <code class="language-plaintext highlighter-rouge">/data</code>, due to <code class="language-plaintext highlighter-rouge">galaxy_config: galaxy: file_path</code>. In some cases, we run out of storage in a particular location. Galaxy allows us to add additional storage locations where it will create new datasets, while still looking in the old locations for old datasets. You will not have to migrate any of your datasets, and can just “plug and play” with new storage pools.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-adding-hierarchical-storage" class="box-title" aria-label="hands-on box: Adding Hierarchical Storage"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Adding Hierarchical Storage</div>
+  <div class="box-title hands-on-title" id="hands-on-adding-hierarchical-storage"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Adding Hierarchical Storage</div>
 
   <ol>
     <li>
       <p>Open your group variables file and set the <code class="language-plaintext highlighter-rouge">object_store_config_file</code> variable:</p>
 
-      <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na"><span class="notranslate">galaxy</span>_config</span><span class="pi">:</span>
-  <span class="na"><span class="notranslate">galaxy</span></span><span class="pi">:</span>
-    <span class="na">object_store_config_file</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s"><span class="notranslate">galaxy</span>_config_dir</span><span class="nv"> </span><span class="s">}}/object_store_conf.xml"</span>
+      <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">galaxy_config</span><span class="pi">:</span>
+  <span class="na">galaxy</span><span class="pi">:</span>
+    <span class="na">object_store_config_file</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">galaxy_config_dir</span><span class="nv"> </span><span class="s">}}/object_store_conf.xml"</span>
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>In your group variables file, add it to the <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_config_templates</code> section:</p>
+      <p>In your group variables file, add it to the <code class="language-plaintext highlighter-rouge">galaxy_config_templates</code> section:</p>
 
-      <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na"><span class="notranslate">galaxy</span>_config_templates</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">src</span><span class="pi">:</span> <span class="s">templates/<span class="notranslate">galaxy</span>/config/object_store_conf.xml.j2</span>
-    <span class="na">dest</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s"><span class="notranslate">galaxy</span>_config.<span class="notranslate">galaxy</span>.object_store_config_file</span><span class="nv"> </span><span class="s">}}"</span>
+      <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">galaxy_config_templates</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">src</span><span class="pi">:</span> <span class="s">templates/galaxy/config/object_store_conf.xml.j2</span>
+    <span class="na">dest</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{</span><span class="nv"> </span><span class="s">galaxy_config.galaxy.object_store_config_file</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Create and edit <code class="language-plaintext highlighter-rouge">templates/<span class="notranslate">galaxy</span>/config/object_store_conf.xml.j2</code> with the following contents:</p>
+      <p>Create and edit <code class="language-plaintext highlighter-rouge">templates/galaxy/config/object_store_conf.xml.j2</code> with the following contents:</p>
 
       <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;object_store</span> <span class="na">type=</span><span class="s">"hierarchical"</span><span class="nt">&gt;</span>
@@ -970,32 +923,32 @@
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Add a <code class="language-plaintext highlighter-rouge">pre_task</code> in your playbook <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>.yml</code> file to create the <code class="language-plaintext highlighter-rouge">/data2</code> folder <a href="https://docs.ansible.com/ansible/2.9/modules/file_module.html">using the file module</a>.</p>
+      <p>Add a <code class="language-plaintext highlighter-rouge">pre_task</code> in your playbook <code class="language-plaintext highlighter-rouge">galaxy.yml</code> file to create the <code class="language-plaintext highlighter-rouge">/data2</code> folder <a href="https://docs.ansible.com/ansible/2.9/modules/file_module.html">using the file module</a>.</p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    - name: Create the second storage directory
       file:
-        owner: <span class="notranslate">galaxy</span>
-        group: <span class="notranslate">galaxy</span>
+        owner: galaxy
+        group: galaxy
         path: /data2
         state: directory
         mode: '0755'
 </code></pre></div>      </div>
 
-      <p>We’ve hardcoded the user/group because creating a storage directory is unusual. In normal practice someone provides you with an NFS mount and you will simply point your <span class="notranslate">Galaxy</span> there.</p>
+      <p>We’ve hardcoded the user/group because creating a storage directory is unusual. In normal practice someone provides you with an NFS mount and you will simply point your Galaxy there.</p>
     </li>
     <li>
-      <p>Run the playbook and restart <span class="notranslate">Galaxy</span></p>
+      <p>Run the playbook and restart Galaxy</p>
     </li>
     <li>
-      <p>Run a couple of jobs after <span class="notranslate">Galaxy</span> has restarted.</p>
+      <p>Run a couple of jobs after Galaxy has restarted.</p>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>Where is the data now stored?</p>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
           <p>You should see <code class="language-plaintext highlighter-rouge">/data2</code> in the <code class="language-plaintext highlighter-rouge">Full Path</code>, if not, something went wrong. Check that your “order” is correct</p>
 
@@ -1009,14 +962,14 @@
 
 <h1 id="distributed-object-store">Distributed Object Store</h1>
 
-<p>Rather than searching a hierarchy of object stores until the dataset is found, <span class="notranslate">Galaxy</span> can store the ID (in the database) of the object store in which a dataset is located when the dataset is created. This allows <span class="notranslate">Galaxy</span> to write to more than one object store for new datasets.</p>
+<p>Rather than searching a hierarchy of object stores until the dataset is found, Galaxy can store the ID (in the database) of the object store in which a dataset is located when the dataset is created. This allows Galaxy to write to more than one object store for new datasets.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-distributed-object-store" class="box-title" aria-label="hands-on box: Distributed Object Store"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Distributed Object Store</div>
+  <div class="box-title hands-on-title" id="hands-on-distributed-object-store"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Distributed Object Store</div>
 
   <ol>
     <li>
-      <p>Edit your <code class="language-plaintext highlighter-rouge">templates/<span class="notranslate">galaxy</span>/config/object_store_conf.xml.j2</code> file and replace the contents with:</p>
+      <p>Edit your <code class="language-plaintext highlighter-rouge">templates/galaxy/config/object_store_conf.xml.j2</code> file and replace the contents with:</p>
 
       <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;object_store</span> <span class="na">type=</span><span class="s">"distributed"</span><span class="nt">&gt;</span>
@@ -1034,7 +987,7 @@
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Run the playbook, restart <span class="notranslate">Galaxy</span></p>
+      <p>Run the playbook, restart Galaxy</p>
     </li>
     <li>
       <p>Run 4 or so jobs, and check where the output appear. You should see that they are split relatively evenly between the two data directories.</p>
@@ -1043,17 +996,17 @@
 
 </blockquote>
 
-<p>Sites like Use<span class="notranslate">Galaxy</span>.eu use the distributed object store in order to balance dataset storage across 10 different storage pools.</p>
+<p>Sites like UseGalaxy.eu use the distributed object store in order to balance dataset storage across 10 different storage pools.</p>
 
 <blockquote class="details">
-  <div id="details-more-documentation" class="box-title"><button type="button" aria-controls="details-more-documentation-contents" aria-expanded="true" aria-label="Toggle details box: More documentation"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: More documentation<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-more-documentation"><button class="gtn-boxify-button details" type="button" aria-controls="details-more-documentation" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: More documentation<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>More information can be found in the <a href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/config/sample/object_store_conf.xml.sample">sample file</a>.</p>
 
 </blockquote>
 
-<blockquote class="details">
-  <div id="tip-can-i-distribute-objects-based-on-the-user" class="box-title"><button type="button" aria-controls="tip-can-i-distribute-objects-based-on-the-user-contents" aria-expanded="true" aria-label="Toggle tip box: Can I distribute objects based on the user?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Can I distribute objects based on the user?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+<blockquote class="tip">
+  <div class="box-title tip-title" id="tip-can-i-distribute-objects-based-on-the-user"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-can-i-distribute-objects-based-on-the-user" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Can I distribute objects based on the user?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Yes! You must write your own dynamic job handler code to handle this.
 See <a href="https://github.com/galaxyproject/galaxy/pull/6552">PR#6552</a> and <a href="https://github.com/galaxyproject/galaxy/pull/10233">PR#10233</a></p>
@@ -1065,18 +1018,18 @@ some example code, and we can include this as a training module for everyone.</p
 </blockquote>
 
 <blockquote class="warning">
-  <div id="warning-switching-object-store-types-will-cause-issues-1" class="box-title" aria-label="warning box: switching object store types will cause issues"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: switching object store types will cause issues</div>
-  <p>We have switched between two different object stores here, but this is not supported. If you need to do this, you will need to update datasets in <span class="notranslate">Galaxy</span>’s database. Any datasets that were created as hierarchical will lack the <code class="language-plaintext highlighter-rouge">object_store_id</code>, and you will need to supply the correct one. Do not just blindly copy these instructions, please understand what they do before running them and talk to us on <a href="http://gitter.im/galaxyproject/Lobby">Gitter</a> for more help</p>
+  <div class="box-title warning-title" id="warning-switching-object-store-types-will-cause-issues-2"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: switching object store types will cause issues</div>
+  <p>We have switched between two different object stores here, but this is not supported. If you need to do this, you will need to update datasets in Galaxy’s database. Any datasets that were created as hierarchical will lack the <code class="language-plaintext highlighter-rouge">object_store_id</code>, and you will need to supply the correct one. Do not just blindly copy these instructions, please understand what they do before running them and talk to us on <a href="http://gitter.im/galaxyproject/Lobby">Gitter</a> for more help</p>
 
   <ol>
     <li>
-      <p>Move the datasets to their new location: <code class="language-plaintext highlighter-rouge">sudo -u <span class="notranslate">galaxy</span> rsync -avr /hierarchical/000/ /distributed/000/</code></p>
+      <p>Move the datasets to their new location: <code class="language-plaintext highlighter-rouge">sudo -u galaxy rsync -avr /hierarchical/000/ /distributed/000/</code></p>
     </li>
     <li>
-      <p>Update the database: <code class="language-plaintext highlighter-rouge">sudo -Hu <span class="notranslate">galaxy</span> psql <span class="notranslate">galaxy</span> -c "UPDATE dataset SET object_store_id='data';" </code></p>
+      <p>Update the database: <code class="language-plaintext highlighter-rouge">sudo -Hu galaxy psql galaxy -c "UPDATE dataset SET object_store_id='data';" </code></p>
     </li>
     <li>
-      <p>Restart your <span class="notranslate">Galaxy</span></p>
+      <p>Restart your Galaxy</p>
     </li>
   </ol>
 
@@ -1089,7 +1042,7 @@ some example code, and we can include this as a training module for everyone.</p
 <p>we will set up a local S3-compatible object store, and then talk to the API of this service.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-setting-up-an-s3-compatible-object-store" class="box-title" aria-label="hands-on box: Setting up an S3-compatible Object Store"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Setting up an S3-compatible Object Store</div>
+  <div class="box-title hands-on-title" id="hands-on-setting-up-an-s3-compatible-object-store"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Setting up an S3-compatible Object Store</div>
 
   <ol>
     <li>
@@ -1100,7 +1053,7 @@ some example code, and we can include this as a training module for everyone.</p
 </code></pre></div>      </div>
     </li>
     <li>
-      <p><code class="language-plaintext highlighter-rouge">ansible-<span class="notranslate">galaxy</span> install -p roles -r requirements.yml</code></p>
+      <p><code class="language-plaintext highlighter-rouge">ansible-galaxy install -p roles -r requirements.yml</code></p>
     </li>
     <li>
       <p>Edit your group variables to configure the object store:</p>
@@ -1111,15 +1064,15 @@ minio_secret_key: "my-super-extra-top-secret-key"
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Edit your playbook and add the minio role <strong>before</strong> <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>project.<span class="notranslate">galaxy</span></code>:</p>
+      <p>Edit your playbook and add the minio role <strong>before</strong> <code class="language-plaintext highlighter-rouge">galaxyproject.galaxy</code>:</p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    - atosatto.minio
 </code></pre></div>      </div>
 
-      <p><span class="notranslate">Galaxy</span> will need to use the bucket, and will want it to be there when it boots, so we need to setup the object store first.</p>
+      <p>Galaxy will need to use the bucket, and will want it to be there when it boots, so we need to setup the object store first.</p>
     </li>
     <li>
-      <p>Edit the <code class="language-plaintext highlighter-rouge">templates/<span class="notranslate">galaxy</span>/config/object_store_conf.xml.j2</code>, and configure the object store as one of the hierarchical backends. The object store does not play nicely with the distributed backend during training preparation. Additionally, reset the orders of the disk backends to be higher than the order of the swift backend.</p>
+      <p>Edit the <code class="language-plaintext highlighter-rouge">templates/galaxy/config/object_store_conf.xml.j2</code>, and configure the object store as one of the hierarchical backends. The object store does not play nicely with the distributed backend during training preparation. Additionally, reset the orders of the disk backends to be higher than the order of the swift backend.</p>
 
       <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@@ -1,13 +1,21 @@</span>
  &lt;?xml version="1.0"?&gt;
@@ -1138,29 +1091,30 @@ minio_secret_key: "my-super-extra-top-secret-key"
          &lt;/backend&gt;
 <span class="gi">+        &lt;object_store id="swifty" type="swift" order="0"&gt;
 +            &lt;auth access_key="{{ minio_access_key }}" secret_key="{{ minio_secret_key }}" /&gt;
-+            &lt;bucket name="<span class="notranslate">galaxy</span>" use_reduced_redundancy="False" max_chunk_size="250"/&gt;
++            &lt;bucket name="galaxy" use_reduced_redundancy="False" max_chunk_size="250"/&gt;
 +            &lt;connection host="127.0.0.1" port="9091" is_secure="False" conn_path="" multipart="True"/&gt;
-+            &lt;cache path="{{ <span class="notranslate">galaxy</span>_mutable_data_dir }}/database/object_store_cache" size="1000" /&gt;
-+            &lt;extra_dir type="job_work" path="{{ <span class="notranslate">galaxy</span>_mutable_data_dir }}/database/job_working_directory_swift"/&gt;
-+            &lt;extra_dir type="temp" path="{{ <span class="notranslate">galaxy</span>_mutable_data_dir }}/database/tmp_swift"/&gt;
++            &lt;cache path="{{ galaxy_mutable_data_dir }}/database/object_store_cache" size="1000" /&gt;
++            &lt;extra_dir type="job_work" path="{{ galaxy_mutable_data_dir }}/database/job_working_directory_swift"/&gt;
++            &lt;extra_dir type="temp" path="{{ galaxy_mutable_data_dir }}/database/tmp_swift"/&gt;
 +        &lt;/object_store&gt;
 </span>     &lt;/backends&gt;
  &lt;/object_store&gt;
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-how-to-read-a-diff" class="box-title"><button type="button" aria-controls="tip-how-to-read-a-diff-contents" aria-expanded="true" aria-label="Toggle tip box: How to read a Diff"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: How to read a Diff<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>If you haven’t worked with diffs before, this can be something quite new or different.</p>  <p>If we have two files, let’s say a grocery list, in two files. We’ll call them ‘a’ and ‘b’.</p>  <blockquote class="code-2col">  <blockquote class="code-in">    <code-in-title>Old</code-in-title>    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat old<br />🍎<br />🍐<br />🍊<br />🍋<br />🍒<br />🥑<br /></code></pre></div>    </div>  </blockquote>  <blockquote class="code-out">    <code-out-title>New</code-out-title>    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat new<br />🍎<br />🍐<br />🍊<br />🍋<br />🍍<br />🥑<br /></code></pre></div>    </div>  </blockquote></blockquote>  <p>We can see that they have some different entries. We’ve removed 🍒 because they’re awful, and replaced them with an 🍍</p>  <p>Diff lets us compare these files</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff old new<br />5c5<br />&lt; 🍒<br /><span class="nt">---</span><br /><span class="o">&gt;</span> 🍍<br /></code></pre></div></div>  <p>Here we see that 🍒 is only in a, and 🍍 is only in b. But otherwise the files are identical.</p>  <p>There are a couple different formats to diffs, one is the ‘unified diff’</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> old new<br /><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:06:36.340962616 +0100<br />@@ <span class="nt">-3</span>,4 +3,4 @@<br /> 🍊<br /> 🍋<br />-🍒<br />+🍍<br /> 🥑<br /></code></pre></div></div>  <p>This is basically what you see in the training materials which gives you a lot of context about the changes:</p>  <ul>  <li><code class="language-plaintext highlighter-rouge">--- old</code> is the ‘old’ file in our view</li>  <li><code class="language-plaintext highlighter-rouge">+++ new</code> is the ‘new’ file</li>  <li>@@ these lines tell us where the change occurs and how many lines are added or removed.</li>  <li>Lines starting with a - are removed from our ‘new’ file</li>  <li>Lines with a + have been added.</li></ul>  <p>So when you go to apply these diffs to your files in the training:</p>  <ol>  <li>Ignore the header</li>  <li>Remove lines starting with - from your file</li>  <li>Add lines starting with + to your file</li></ol>  <p>The other lines (🍊/🍋 and 🥑) above just provide “context”, they help you know where a change belongs in a file, but <strong>should not be edited</strong> when you’re making the above change. Given the above diff, you would find a line with a 🍒, and replace it with a 🍍</p>  <h4 id="added--removed-lines">Added &amp; Removed Lines</h4>  <p>Removals are very easy to spot, we just have removed lines</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:10:14.370722802 +0100<br />@@ <span class="nt">-4</span>,3 +4,2 @@<br /> 🍋<br /> 🍒<br />-🥑<br /></code></pre></div></div>  <p>And additions likewise are very easy, just add a new line, between the other lines in your file.</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:11:11.422135393 +0100<br />@@ <span class="nt">-1</span>,3 +1,4 @@<br /> 🍎<br />+🍍<br /> 🍐<br /> 🍊<br /></code></pre></div></div>  <h4 id="completely-new-files">Completely new files</h4>  <p>Completely new files look a bit different, there the “old” file is <code class="language-plaintext highlighter-rouge">/dev/null</code>, the empty file in a Linux machine.</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> /dev/null old<br /><span class="nt">---</span> /dev/null	2022-02-15 11:47:16.100000270 +0100<br />+++ old	2022-02-16 14:06:19.697132568 +0100<br />@@ <span class="nt">-0</span>,0 +1,6 @@<br />+🍎<br />+🍐<br />+🍊<br />+🍋<br />+🍒<br />+🥑<br /></code></pre></div></div>  <p>And removed files are similar, except with the new file being /dev/null</p>  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ /dev/null	2022-02-15 11:47:16.100000270 +0100<br />@@ <span class="nt">-1</span>,6 +0,0 @@<br />-🍎<br />-🍐<br />-🍊<br />-🍋<br />-🍒<br />-🥑<br /></code></pre></div></div></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-how-to-read-a-diff"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-how-to-read-a-diff" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: How to read a Diff<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>If you haven’t worked with diffs before, this can be something quite new or different.</p>   <p>If we have two files, let’s say a grocery list, in two files. We’ll call them ‘a’ and ‘b’.</p>   <blockquote class="code-2col">   <blockquote class="code-in">     <div class="box-title code-in-title" id="code-in-old"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Old</div>     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat old<br />🍎<br />🍐<br />🍊<br />🍋<br />🍒<br />🥑<br /></code></pre></div>    </div>   </blockquote>   <blockquote class="code-out">     <div class="box-title code-out-title" id="code-out-new"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output: New</div>     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat new<br />🍎<br />🍐<br />🍊<br />🍋<br />🍍<br />🥑<br /></code></pre></div>    </div>   </blockquote> </blockquote>   <p>We can see that they have some different entries. We’ve removed 🍒 because they’re awful, and replaced them with an 🍍</p>   <p>Diff lets us compare these files</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff old new<br />5c5<br />&lt; 🍒<br /><span class="nt">---</span><br /><span class="o">&gt;</span> 🍍<br /></code></pre></div></div>   <p>Here we see that 🍒 is only in a, and 🍍 is only in b. But otherwise the files are identical.</p>   <p>There are a couple different formats to diffs, one is the ‘unified diff’</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> old new<br /><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:06:36.340962616 +0100<br />@@ <span class="nt">-3</span>,4 +3,4 @@<br /> 🍊<br /> 🍋<br />-🍒<br />+🍍<br /> 🥑<br /></code></pre></div></div>   <p>This is basically what you see in the training materials which gives you a lot of context about the changes:</p>   <ul>   <li><code class="language-plaintext highlighter-rouge">--- old</code> is the ‘old’ file in our view</li>   <li><code class="language-plaintext highlighter-rouge">+++ new</code> is the ‘new’ file</li>   <li>@@ these lines tell us where the change occurs and how many lines are added or removed.</li>   <li>Lines starting with a - are removed from our ‘new’ file</li>   <li>Lines with a + have been added.</li> </ul>   <p>So when you go to apply these diffs to your files in the training:</p>   <ol>   <li>Ignore the header</li>   <li>Remove lines starting with - from your file</li>   <li>Add lines starting with + to your file</li> </ol>   <p>The other lines (🍊/🍋 and 🥑) above just provide “context”, they help you know where a change belongs in a file, but <strong>should not be edited</strong> when you’re making the above change. Given the above diff, you would find a line with a 🍒, and replace it with a 🍍</p>   <h4 id="added--removed-lines">Added &amp; Removed Lines</h4>   <p>Removals are very easy to spot, we just have removed lines</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:10:14.370722802 +0100<br />@@ <span class="nt">-4</span>,3 +4,2 @@<br /> 🍋<br /> 🍒<br />-🥑<br /></code></pre></div></div>   <p>And additions likewise are very easy, just add a new line, between the other lines in your file.</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ new	2022-02-16 14:11:11.422135393 +0100<br />@@ <span class="nt">-1</span>,3 +1,4 @@<br /> 🍎<br />+🍍<br /> 🍐<br /> 🍊<br /></code></pre></div></div>   <h4 id="completely-new-files">Completely new files</h4>   <p>Completely new files look a bit different, there the “old” file is <code class="language-plaintext highlighter-rouge">/dev/null</code>, the empty file in a Linux machine.</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>diff <span class="nt">-U2</span> /dev/null old<br /><span class="nt">---</span> /dev/null	2022-02-15 11:47:16.100000270 +0100<br />+++ old	2022-02-16 14:06:19.697132568 +0100<br />@@ <span class="nt">-0</span>,0 +1,6 @@<br />+🍎<br />+🍐<br />+🍊<br />+🍋<br />+🍒<br />+🥑<br /></code></pre></div></div>   <p>And removed files are similar, except with the new file being /dev/null</p>   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">---</span> old	2022-02-16 14:06:19.697132568 +0100<br />+++ /dev/null	2022-02-15 11:47:16.100000270 +0100<br />@@ <span class="nt">-1</span>,6 +0,0 @@<br />-🍎<br />-🍐<br />-🍊<br />-🍋<br />-🍒<br />-🥑<br /></code></pre></div></div> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Run the playbook.</p>
     </li>
     <li>
-      <p><span class="notranslate">Galaxy</span> should now be configure to use the object store!</p>
+      <p>Galaxy should now be configure to use the object store!</p>
     </li>
     <li>
-      <p>When the playbook is done, upload a dataset to <span class="notranslate">Galaxy</span>, and check if it shows up in the bucket:</p>
+      <p>When the playbook is done, upload a dataset to Galaxy, and check if it shows up in the bucket:</p>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo ls /minio-test/<span class="notranslate">galaxy</span>/000/
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo ls /minio-test/galaxy/000/
 dataset_24.dat
 </code></pre></div>      </div>
     </li>
@@ -1171,25 +1125,25 @@ dataset_24.dat
 <h1 id="dropbox">Dropbox</h1>
 
 <p>Dropbox is a well-known cloud storage service where you can store and share files with anyone.
-As of <a href="https://github.com/galaxyproject/galaxy/pull/9888">20.09</a>, <span class="notranslate">Galaxy</span> has support for a couple of different file storage backends, including NextCloud (via webdavfs) and Dropbox.</p>
+As of <a href="https://github.com/galaxyproject/galaxy/pull/9888">20.09</a>, Galaxy has support for a couple of different file storage backends, including NextCloud (via webdavfs) and Dropbox.</p>
 
-<p>This tutorial will help you setup the connection between <span class="notranslate">Galaxy</span> and Dropbox, allowing your users to add their account details and then access their Dropbox data within <span class="notranslate">Galaxy</span></p>
+<p>This tutorial will help you setup the connection between Galaxy and Dropbox, allowing your users to add their account details and then access their Dropbox data within Galaxy</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-configure-galaxy-to-access-the-dropbox-service" class="box-title" aria-label="hands-on box: Configure Galaxy to access the Dropbox service"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Configure <span class="notranslate">Galaxy</span> to access the Dropbox service</div>
+  <div class="box-title hands-on-title" id="hands-on-configure-galaxy-to-access-the-dropbox-service"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Configure Galaxy to access the Dropbox service</div>
 
   <ol>
     <li>
-      <p>If the folder does not exist, create <code class="language-plaintext highlighter-rouge">templates/<span class="notranslate">galaxy</span>/config</code> next to your <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>.yml</code> playbook.</p>
+      <p>If the folder does not exist, create <code class="language-plaintext highlighter-rouge">templates/galaxy/config</code> next to your <code class="language-plaintext highlighter-rouge">galaxy.yml</code> playbook.</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p templates/<span class="notranslate">galaxy</span>/config
+        <div class="box-title code-in-title" id="code-in-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p templates/galaxy/config
 </code></pre></div>        </div>
       </blockquote>
     </li>
     <li>
-      <p>Create <code class="language-plaintext highlighter-rouge">templates/<span class="notranslate">galaxy</span>/config/file_sources_conf.yml</code> with the following contents:</p>
+      <p>Create <code class="language-plaintext highlighter-rouge">templates/galaxy/config/file_sources_conf.yml</code> with the following contents:</p>
 
       <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">dropbox</span>
   <span class="na">id</span><span class="pi">:</span> <span class="s">dropbox</span>
@@ -1199,7 +1153,7 @@ As of <a href="https://github.com/galaxyproject/galaxy/pull/9888">20.09</a>, <sp
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Create <code class="language-plaintext highlighter-rouge">templates/<span class="notranslate">galaxy</span>/config/user_preferences_extra_conf.yml</code> with the following contents:</p>
+      <p>Create <code class="language-plaintext highlighter-rouge">templates/galaxy/config/user_preferences_extra_conf.yml</code> with the following contents:</p>
 
       <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">preferences</span><span class="pi">:</span>
     <span class="na">dropbox</span><span class="pi">:</span>
@@ -1212,48 +1166,49 @@ As of <a href="https://github.com/galaxyproject/galaxy/pull/9888">20.09</a>, <sp
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Inform the <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>project.<span class="notranslate">galaxy</span></code> role of where you would like the <code class="language-plaintext highlighter-rouge">file_sources_conf.yml</code> and <code class="language-plaintext highlighter-rouge">user_preferences_extra_conf.yml</code> to reside, by setting it in your <code class="language-plaintext highlighter-rouge">group_vars/<span class="notranslate">galaxy</span>servers.yml</code>:</p>
+      <p>Inform the <code class="language-plaintext highlighter-rouge">galaxyproject.galaxy</code> role of where you would like the <code class="language-plaintext highlighter-rouge">file_sources_conf.yml</code> and <code class="language-plaintext highlighter-rouge">user_preferences_extra_conf.yml</code> to reside, by setting it in your <code class="language-plaintext highlighter-rouge">group_vars/galaxyservers.yml</code>:</p>
 
-      <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="gi">+++ b/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="p">@@ -35,6 +35,8 @@</span> <span class="notranslate">galaxy</span>_config:
-     tool_data_path: "{{ <span class="notranslate">galaxy</span>_mutable_data_dir }}/tool-data"
-     job_config_file: "{{ <span class="notranslate">galaxy</span>_config_dir }}/job_conf.yml"
-<span class="gi">+    file_sources_config_file: "{{ <span class="notranslate">galaxy</span>_config_dir }}/file_sources_conf.yml"
-+    user_preferences_extra_conf_path: "{{ <span class="notranslate">galaxy</span>_config_dir }}/user_preferences_extra_conf.yml"
+      <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/galaxyservers.yml
+</span><span class="gi">+++ b/group_vars/galaxyservers.yml
+</span><span class="p">@@ -35,6 +35,8 @@</span> galaxy_config:
+     tool_data_path: "{{ galaxy_mutable_data_dir }}/tool-data"
+     job_config_file: "{{ galaxy_config_dir }}/job_conf.yml"
+<span class="gi">+    file_sources_config_file: "{{ galaxy_config_dir }}/file_sources_conf.yml"
++    user_preferences_extra_conf_path: "{{ galaxy_config_dir }}/user_preferences_extra_conf.yml"
 </span></code></pre></div>      </div>
     </li>
     <li>
-      <p>Deploy the new config files using the <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_config_files</code> var (also from the <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>project.<span class="notranslate">galaxy</span></code> role) in your group vars:</p>
+      <p>Deploy the new config files using the <code class="language-plaintext highlighter-rouge">galaxy_config_files</code> var (also from the <code class="language-plaintext highlighter-rouge">galaxyproject.galaxy</code> role) in your group vars:</p>
 
-      <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="gi">+++ b/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="p">@@ -65,6 +67,12 @@</span> <span class="notranslate">galaxy</span>_config_templates:
-   - src: templates/<span class="notranslate">galaxy</span>/config/job_conf.yml.j2
-     dest: "{{ <span class="notranslate">galaxy</span>_config.<span class="notranslate">galaxy</span>.job_config_file }}"
+      <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/galaxyservers.yml
+</span><span class="gi">+++ b/group_vars/galaxyservers.yml
+</span><span class="p">@@ -65,6 +67,12 @@</span> galaxy_config_templates:
+   - src: templates/galaxy/config/job_conf.yml.j2
+     dest: "{{ galaxy_config.galaxy.job_config_file }}"
     
-<span class="gi">+<span class="notranslate">galaxy</span>_config_files:
-+  - src: files/<span class="notranslate">galaxy</span>/config/user_preferences_extra_conf.yml
-+    dest: "{{ <span class="notranslate">galaxy</span>_config.<span class="notranslate">galaxy</span>.user_preferences_extra_conf_path }}"
-+  - src: files/<span class="notranslate">galaxy</span>/config/file_sources_conf.yml
-+    dest: "{{ <span class="notranslate">galaxy</span>_config.<span class="notranslate">galaxy</span>.file_sources_config_file }}"
+<span class="gi">+galaxy_config_files:
++  - src: files/galaxy/config/user_preferences_extra_conf.yml
++    dest: "{{ galaxy_config.galaxy.user_preferences_extra_conf_path }}"
++  - src: files/galaxy/config/file_sources_conf.yml
++    dest: "{{ galaxy_config.galaxy.file_sources_config_file }}"
 +
 </span></code></pre></div>      </div>
     </li>
     <li>
-      <p>Run the playbook. At the very end, you should see output like the following indicating that <span class="notranslate">Galaxy</span> has been restarted:</p>
+      <p>Run the playbook. At the very end, you should see output like the following indicating that Galaxy has been restarted:</p>
 
       <blockquote class="code-2col">
         <blockquote class="code-in">
-          <div id="code-in-bash-1" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook <span class="notranslate">galaxy</span>.yml
+          <div class="box-title code-in-title" id="code-in-bash-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+          <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook galaxy.yml
 </code></pre></div>          </div>
         </blockquote>
+
         <blockquote class="code-out">
-          <div id="code-in-output" class="box-title" aria-label="code-in box: Output"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Output</div>
+          <div class="box-title code-out-title" id="code-out-output"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output: Output</div>
           <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-RUNNING HANDLER [restart <span class="notranslate">galaxy</span>] ****************************************
-changed: [gat-88.training.<span class="notranslate">galaxy</span>project.eu]
+RUNNING HANDLER [restart galaxy] ****************************************
+changed: [gat-88.training.galaxyproject.eu]
 </code></pre></div>          </div>
         </blockquote>
       </blockquote>
@@ -1262,33 +1217,35 @@ changed: [gat-88.training.<span class="notranslate">galaxy</span>project.eu]
 
 </blockquote>
 
-<p>Now we are ready to configure a <span class="notranslate">Galaxy</span>’s user account to upload dataset from Dropbox to the <span class="notranslate">Galaxy</span> server.</p>
+<p>Now we are ready to configure a Galaxy’s user account to upload dataset from Dropbox to the Galaxy server.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-configure-galaxy-to-access-the-dropbox-service-1" class="box-title" aria-label="hands-on box: Configure Galaxy to access the Dropbox service"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Configure <span class="notranslate">Galaxy</span> to access the Dropbox service</div>
+  <div class="box-title hands-on-title" id="hands-on-configure-galaxy-to-access-the-dropbox-service-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Configure Galaxy to access the Dropbox service</div>
 
   <ol>
     <li>
       <p>Generate a Dropbox access token following the <a href="https://www.dropbox.com/lp/developers/reference/oauth-guide">Dropbox Oauth guide</a></p>
     </li>
-    <li>Add the Dropbox access token in the <span class="notranslate">Galaxy</span>’s user preferences
+    <li>Add the Dropbox access token in the Galaxy’s user preferences
       <ul>
         <li>Go to https://&lt;server&gt;/user/information</li>
         <li>Here you will find the form user will fill in with his own Dropbox access token:
-<img src="../../images/storage_dropbox_form.png" alt="user preferences form. " loading="lazy" /></li>
+<img src="../../images/storage_dropbox_form.png" alt="user preferences form. " width="1243" height="490" loading="lazy" /></li>
       </ul>
     </li>
     <li>Click the upload icon toward the top left corner.
 You will have a new “Choose remote files” button that will open the remote files windows with the link to reach your Dropbox files:
- <img src="../../images/storage_dropbox_remote_files_window.png" alt="remote files window. " loading="lazy" /></li>
+ <img src="../../images/storage_dropbox_remote_files_window.png" alt="remote files window. " width="912" height="628" loading="lazy" /></li>
   </ol>
 
 </blockquote>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>The distributed object store configuration allows you to easily expand that storage that is attached to your Galaxy.</p>
@@ -1320,38 +1277,18 @@ You will have a new “Choose remote files” button that will open the remote f
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Distributed Object Storage (Galaxy Server administration)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Distributed Object Storage (Galaxy Server administration)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Nate Coraor, Helena Rasche, Gianmauro Cuccuru,  <b>Distributed Object Storage (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html">https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Nate Coraor, Helena Rasche, Gianmauro Cuccuru,  <b>Distributed Object Storage (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html">https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1363,7 +1300,7 @@ You will have a new “Choose remote files” button that will open the remote f
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1372,28 +1309,31 @@ You will have a new “Choose remote files” button that will open the remote f
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{admin-object-store,
 author = "Nate Coraor and Helena Rasche and Gianmauro Cuccuru",
-title = "Distributed Object Storage (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Distributed Object Storage (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/admin/tutorials/object-store/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1401,11 +1341,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1414,49 +1354,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/admin/tutorials/object-store/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00016">https://gxy.io/GTN:T00016</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/object-store/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

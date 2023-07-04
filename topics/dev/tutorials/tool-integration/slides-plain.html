@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,50 +8,82 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-integration/slides-plain.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Tool development and integration into Galaxy" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-11-25 01:19:34 +0000" />
-<meta name="DC.creator" content="Saskia Hiltemann" />
-<meta name="DC.creator" content="Bérénice Batut" />
-<meta name="DC.creator" content="Anthony Bretaudeau" />
-<meta name="DC.creator" content="John Chilton" />
-<meta name="DC.creator" content="Nicola Soranzo" />
-<meta name="DC.creator" content="Björn Grüning" />
-<meta name="DC.creator" content="Gildas Le Corguillé" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
         
-        
-        
-        
-        
-        <meta name="description" content="Galaxy is an open-source project. Everyone can contribute..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Tool development and integration into Galaxy" />
-        <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/tool-integration/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
 
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Tool development and integration into Galaxy">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-07-04 07:38:21 +0000">
+<meta name="DC.creator" content="Saskia Hiltemann">
+<meta name="DC.creator" content="Bérénice Batut">
+<meta name="DC.creator" content="Anthony Bretaudeau">
+<meta name="DC.creator" content="John Chilton">
+<meta name="DC.creator" content="Nicola Soranzo">
+<meta name="DC.creator" content="Björn Grüning">
+<meta name="DC.creator" content="Gildas Le Corguillé">
+
+        
+        
+        
+        
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Tool development and integration into Galaxy">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,38 +100,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-integration/slides-plain.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-integration/slides-plain.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-integration/slides-plain.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-integration/slides-plain.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-integration/slides-plain.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/tool-integration/slides-plain.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -119,10 +123,6 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
-        <a class="dropdown-item" href="/training-material/topics/dev/faqs/" title="Check our FAQs for the Development in Galaxy topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
         </a>
@@ -139,8 +139,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/tool-integration/slides-plain.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/dev/tutorials/tool-integration/slides.html" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -165,27 +164,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -197,13 +183,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/dev/tutorials/tool-integration/slides-plain.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/dev/tutorials/tool-integration/slides-plain.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/dev/tutorials/tool-integration/slides-plain.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/dev/tutorials/tool-integration/slides-plain.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/dev/tutorials/tool-integration/slides-plain.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/dev/tutorials/tool-integration/slides-plain.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -216,7 +202,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -230,6 +216,7 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section class="tutorial">
 	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/dev/tutorials/tool-integration/slides.html">View markdown source on GitHub</a>
@@ -238,35 +225,7 @@
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
-
-
-
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
-<a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/abretaud?s=27" alt="Avatar">Anthony Bretaudeau</a>
-
-
-
-<a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/jmchilton?s=27" alt="Avatar">John Chilton</a>
-
-
-
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
-<a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=27" alt="Avatar">Gildas Le Corguillé</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a><a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jmchilton?s=36" alt="Avatar" width="36" height="36">John Chilton</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=36" alt="Avatar" width="36" height="36">Gildas Le Corguillé</a>
 	</div>
 
 </div>
@@ -312,7 +271,7 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Nov 25, 2022 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 4, 2023 </div>
 
 	<hr />
 
@@ -331,7 +290,7 @@
 
 <p><img src="../../images/graphlan_screenshot.png" alt="Screenshot of tool interface in Galaxy for GraPhlAn showing a variety of input types like file selection, select, text, numbers." /></p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>graphlan.py <span class="nt">--format</span> <span class="s2">"png"</span> <span class="nt">--size</span> 7 input_tree.txt png_image.png
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>graphlan.py <span class="nt">--format</span> png <span class="nt">--size</span> 7 <span class="s1">'input_tree.txt'</span> <span class="s1">'png_image.png'</span>
 </code></pre></div></div>
 
 <hr />
@@ -395,6 +354,41 @@
 
 <hr />
 
+<h2 id="xml-editor">XML Editor</h2>
+
+<p>You are free to use your prefered code editor to write Galaxy tools.</p>
+
+<p>If you use Visual Studio Code (or Codium), we recommend to install the <a href="https://marketplace.visualstudio.com/items?itemName=davelopez.galaxy-tools">dedicated extension</a>.</p>
+
+<p>It provides XML validation, tags and attributes completion, help/documentation on hover, and other smart features to assist in following best practices.</p>
+
+<p><img src="../../images/vscode_tool.gif" alt="An animation showing someone writing a tool XML file, while being assisted by the VSCode extension." /></p>
+
+<hr />
+
+<h2 id="tool"><code class="language-plaintext highlighter-rouge">tool</code></h2>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tool</span> <span class="na">id=</span><span class="s">"graphlan"</span> <span class="na">name=</span><span class="s">"GraPhlAn"</span> <span class="na">version=</span><span class="s">"1.1.3+galaxy2"</span> <span class="na">profile=</span><span class="s">"22.05"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id</code>: unique identifier of your tool, should contain only <code class="language-plaintext highlighter-rouge">[a-z0-9_-]</code></li>
+  <li><code class="language-plaintext highlighter-rouge">name</code>: shown to the user, displayed in the tool box</li>
+  <li><code class="language-plaintext highlighter-rouge">version</code>: the version of the wrapped tool, followed by a <code class="language-plaintext highlighter-rouge">+galaxyX</code> suffix for wrapper version</li>
+  <li><code class="language-plaintext highlighter-rouge">profile</code>: minimum Galaxy version that should be required to run this tool (IUC recommends not older than 1 year)</li>
+</ul>
+
+<p><span>Speaker Notes</span></p>
+
+<ul>
+  <li>The top level <code class="language-plaintext highlighter-rouge">tool</code> tag defines the tool naming and version</li>
+  <li>The <code class="language-plaintext highlighter-rouge">id</code> attribute is the unique identifier of your tool, it should contain only letters, digits, underscores or dashes</li>
+  <li>The <code class="language-plaintext highlighter-rouge">name</code> attribute is shown to the user and displayed in the tool box</li>
+  <li>The <code class="language-plaintext highlighter-rouge">version</code> attribute contains the version of the wrapped tool, followed by a <code class="language-plaintext highlighter-rouge">+galaxyX</code> suffix for wrapper version</li>
+  <li>The <code class="language-plaintext highlighter-rouge">profile</code> attribute should be set to the minimum Galaxy version that should be required to run this tool (IUC recommends not older than 1 year)</li>
+</ul>
+
+<hr />
+
 <h2 id="command"><code class="language-plaintext highlighter-rouge">command</code></h2>
 
 <p>How to invoke the tool?</p>
@@ -432,7 +426,9 @@ python '$__tool_directory__/graphlan.py'
 
 <h2 id="inputs--param-to-command"><code class="language-plaintext highlighter-rouge">inputs</code> &gt; <code class="language-plaintext highlighter-rouge">param</code> to <code class="language-plaintext highlighter-rouge">command</code></h2>
 
-<p>Parameters are directly linked to variables in <code class="language-plaintext highlighter-rouge">&lt;command&gt;</code></p>
+<p>Parameters are directly linked to variables in <code class="language-plaintext highlighter-rouge">&lt;command&gt;</code> by the <code class="language-plaintext highlighter-rouge">name</code> or <code class="language-plaintext highlighter-rouge">argument</code> attribute</p>
+
+<p>Parameters can be optional or required.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;command&gt;</span><span class="cp">&lt;![CDATA[
 graphlan.py
@@ -458,8 +454,9 @@ graphlan.py
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">name</code> or <code class="language-plaintext highlighter-rouge">argument</code> identifies a parameter (details of <code class="language-plaintext highlighter-rouge">argument</code> later)</li>
-  <li>Parameters can have different types (<code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">data_collection</code>, <code class="language-plaintext highlighter-rouge">integer</code>, <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">text</code>, <code class="language-plaintext highlighter-rouge">select</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">color</code>, <code class="language-plaintext highlighter-rouge">data_column</code>,…)</li>
+  <li>The <code class="language-plaintext highlighter-rouge">name</code> or <code class="language-plaintext highlighter-rouge">argument</code> attribute identifies a parameter (details of <code class="language-plaintext highlighter-rouge">argument</code> later).</li>
+  <li>Parameters have different types (<code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">data_collection</code>, <code class="language-plaintext highlighter-rouge">integer</code>, <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">text</code>, <code class="language-plaintext highlighter-rouge">select</code>, <code class="language-plaintext highlighter-rouge">boolean</code>, <code class="language-plaintext highlighter-rouge">color</code>, <code class="language-plaintext highlighter-rouge">data_column</code>,…)
+and can be optional.</li>
 </ul>
 
 <hr />
@@ -477,15 +474,14 @@ graphlan.py
 
 <h2 id="inputs--param--integer--float"><code class="language-plaintext highlighter-rouge">inputs</code> &gt; <code class="language-plaintext highlighter-rouge">param</code> &gt; <code class="language-plaintext highlighter-rouge">integer</code> | <code class="language-plaintext highlighter-rouge">float</code></h2>
 
-<p><img src="../../images/input_integer.png" alt="Screenshot of the float input, it's just an input field set to 7." /></p>
+<p><img src="../../images/input_integer.png" alt="Screenshot of an integer input, it's just an input field set to 7." /></p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"integer"</span> <span class="na">value=</span><span class="s">"7"</span> <span class="na">label=</span><span class="s">"..."</span> <span class="na">help=</span><span class="s">"..."</span><span class="nt">/&gt;</span>
 </code></pre></div></div>
 
-<p><img src="../../images/input_integer_range.png" alt="Screenshot of the float input again, but this time a slider appears due to addition of min and max" /></p>
+<p><img src="../../images/input_float_range.png" alt="Screenshot of a float input from the cd_hit tool. This time also a slider appears due to addition of min and max" /></p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"float"</span> <span class="na">min=</span><span class="s">"0"</span> <span class="na">max=</span><span class="s">"10"</span> <span class="na">value=</span><span class="s">"1"</span> <span class="na">label=</span><span class="s">"..."</span>
-    <span class="na">help=</span><span class="s">"..."</span><span class="nt">/&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"float"</span> <span class="na">min=</span><span class="s">"0.4"</span> <span class="na">max=</span><span class="s">"1.0"</span> <span class="na">value=</span><span class="s">"0.9"</span> <span class="na">label=</span><span class="s">"..."</span> <span class="na">help=</span><span class="s">"..."</span><span class="nt">/&gt;</span>
 </code></pre></div></div>
 
 <p><span>Speaker Notes</span></p>
@@ -499,7 +495,7 @@ graphlan.py
 
 <h2 id="inputs--param--text"><code class="language-plaintext highlighter-rouge">inputs</code> &gt; <code class="language-plaintext highlighter-rouge">param</code> &gt; <code class="language-plaintext highlighter-rouge">text</code></h2>
 
-<p><img src="../../images/input_text.png" alt="Screenshot of a textbox" /></p>
+<p><img src="../../images/input_text.png" alt="Screenshot of a textbox from the cd_hit tool." /></p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">"..."</span> <span class="na">label=</span><span class="s">"..."</span> <span class="na">help=</span><span class="s">"..."</span><span class="nt">/&gt;</span>
 </code></pre></div></div>
@@ -508,12 +504,10 @@ graphlan.py
 
 <h2 id="inputs--param--select"><code class="language-plaintext highlighter-rouge">inputs</code> &gt; <code class="language-plaintext highlighter-rouge">param</code> &gt; <code class="language-plaintext highlighter-rouge">select</code></h2>
 
-<p><img src="../../images/input_select.png" alt="Screenshot of a select drop down with several image formats." /></p>
+<p><img src="../../images/input_select.png" alt="Screenshot of a select drop down with several image formats from the bedtools_bedtoigv tool." /></p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"select"</span> <span class="na">label=</span><span class="s">"..."</span> <span class="na">help=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"select"</span> <span class="na">label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"png"</span> <span class="na">selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>PNG<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"pdf"</span><span class="nt">&gt;</span>PDF<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"ps"</span><span class="nt">&gt;</span>PS<span class="nt">&lt;/option&gt;</span>
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"eps"</span><span class="nt">&gt;</span>EPS<span class="nt">&lt;/option&gt;</span>
     <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"svg"</span><span class="nt">&gt;</span>SVG<span class="nt">&lt;/option&gt;</span>
 <span class="nt">&lt;/param&gt;</span>
@@ -552,7 +546,7 @@ graphlan.py
 
 <h2 id="inputs--param--boolean"><code class="language-plaintext highlighter-rouge">inputs</code> &gt; <code class="language-plaintext highlighter-rouge">param</code> &gt; <code class="language-plaintext highlighter-rouge">boolean</code></h2>
 
-<p><img src="../../images/input_boolean.png" alt="A yes/no box is shown" /></p>
+<p><img src="../../images/input_boolean.png" alt="A yes/no switch from the bg_sortmerna tool." /></p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"..."</span> <span class="na">type=</span><span class="s">"boolean"</span> <span class="na">checked=</span><span class="s">"false"</span> <span class="na">truevalue=</span><span class="s">"--log"</span> <span class="na">falsevalue=</span><span class="s">""</span>
     <span class="na">label=</span><span class="s">"..."</span> <span class="na">help=</span><span class="s">"..."</span> <span class="nt">/&gt;</span>
@@ -564,7 +558,10 @@ graphlan.py
 
 <h2 id="inputs--param--conditional"><code class="language-plaintext highlighter-rouge">inputs</code> &gt; <code class="language-plaintext highlighter-rouge">param</code> &gt; <code class="language-plaintext highlighter-rouge">conditional</code></h2>
 
-<p>.image-75[ <img src="../../images/input_conditional.png" alt="Two screenshots are shown side by side. In the left a select box is set to Paired and two file inputs appear below. On the right the same select box is set to single, and only a single file input appears below it." /> ]</p>
+<p>.pull-left[<img src="../../images/input_conditional.png" alt="Screenshot of a conditional select box set to Paired, and two file inputs appear below it." />]
+.pull-right[<img src="../../images/input_conditional_single.png" alt="Screenshot of a conditional select box set to Single, and only a single file input appears below it." />]</p>
+
+<p><br style="clear:left;" /></p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;command&gt;</span><span class="cp">&lt;![CDATA[
 #if $fastq_input.selector == 'paired':
@@ -622,13 +619,7 @@ graphlan.py
 
 <h2 id="outputs"><code class="language-plaintext highlighter-rouge">outputs</code></h2>
 
-<p>Which files the tool will produce as output?</p>
-
-<p><img src="../../images/output.png" alt="Screenshot of a galaxy history with three outputs." /></p>
-
-<hr />
-
-<h2 id="outputs-1"><code class="language-plaintext highlighter-rouge">outputs</code></h2>
+<p>.image-25[<img src="../../images/output.png" alt="Screenshot of a galaxy history with two outputs." />]</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;outputs&gt;</span>
     <span class="nt">&lt;data</span> <span class="na">name=</span><span class="s">"tree"</span> <span class="na">format=</span><span class="s">"txt"</span> <span class="na">label=</span><span class="s">"${tool.name} on ${on_string}: Tree"</span> <span class="nt">/&gt;</span>
@@ -770,6 +761,8 @@ echo "Yeah it worked!"
 
 <p><small>The job will exit on the first error encountered.</small></p>
 
+<p><small>You can use <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> or <code class="language-plaintext highlighter-rouge">;</code> if using a <code class="language-plaintext highlighter-rouge">profile</code> &gt;= 20.09 (the <code class="language-plaintext highlighter-rouge">set -e</code> shell directive is now used by default).</small></p>
+
 <hr />
 
 <h2 id="param-argument">Param argument</h2>
@@ -850,14 +843,10 @@ echo "Yeah it worked!"
 
 <p>##.image-25[<img src="../../images/planemo-logo.png" alt="planemo logo again" />]</p>
 
-<p><code class="language-plaintext highlighter-rouge">planemo lint</code></p>
-
-<p>Checks the syntax of a tool</p>
+<p><code class="language-plaintext highlighter-rouge">planemo lint</code>: Checks the syntax of a tool</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>planemo lint
-</code></pre></div></div>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Linting tool /opt/galaxy/tools/seqtk_seq.xml
+Linting tool /opt/galaxy/tools/seqtk_seq.xml
 Applying linter tests... CHECK
 .. CHECK: 1 <span class="nb">test</span><span class="o">(</span>s<span class="o">)</span> found.
 Applying linter output... CHECK
@@ -911,19 +900,6 @@ Applying linter citations... CHECK
   <li>The tests comfort developers and users that the tools can run across different servers/architectures. And that the latest modifications don’t break older features.</li>
   <li>Tools are tested by feeding them inputs and parameters and verifying the outputs (typically a diff)</li>
 </ul>
-
-<hr />
-
-<h2 id="good-practices">Good practices</h2>
-
-<ol>
-  <li>Build tests using inputs/parameters/outputs</li>
-  <li>Run the tests –&gt; Failed –&gt; Coffee</li>
-  <li>Develop</li>
-  <li>Run the tests –&gt; Failed –&gt; Coffee</li>
-  <li>Develop</li>
-  <li>Run the tests –&gt; Succeed –&gt; Beer</li>
-</ol>
 
 <hr />
 
@@ -1054,7 +1030,7 @@ Applying linter citations... CHECK
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>planemo <span class="nb">test</span>
 </code></pre></div></div>
 
-<p>An HTML report is automatically created with logs in case of failing test</p>
+<p>An HTML report (<code class="language-plaintext highlighter-rouge">tool_test_output.html</code>) is automatically created with logs in case of failing test</p>
 
 <hr />
 
@@ -1235,10 +1211,11 @@ blastn -query '$query' @THREADS@ [...]
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;macros&gt;</span>
     <span class="nt">&lt;token</span> <span class="na">name=</span><span class="s">"@TOOL_VERSION@"</span><span class="nt">&gt;</span>1.2<span class="nt">&lt;/token&gt;</span>
+    <span class="nt">&lt;token</span> <span class="na">name=</span><span class="s">"@VERSION_SUFFIX@"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/token&gt;</span>
 <span class="nt">&lt;/macros&gt;</span>
 </code></pre></div></div>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tool</span> <span class="na">id=</span><span class="s">"seqtk_seq"</span> <span class="na">name=</span><span class="s">"Convert to FASTA (seqtk)"</span> <span class="na">version=</span><span class="s">"@TOOL_VERSION@+galaxy3"</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;tool</span> <span class="na">id=</span><span class="s">"seqtk_seq"</span> <span class="na">name=</span><span class="s">"Convert to FASTA"</span> <span class="na">version=</span><span class="s">"@TOOL_VERSION@+galaxy@VERSION_SUFFIX@"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;requirements&gt;</span>
         <span class="nt">&lt;requirement</span> <span class="na">type=</span><span class="s">"package"</span> <span class="na">version=</span><span class="s">"@TOOL_VERSION@"</span><span class="nt">&gt;</span>seqtk<span class="nt">&lt;/requirement&gt;</span>
     <span class="nt">&lt;/requirements&gt;</span>
@@ -1365,7 +1342,7 @@ echo '$__app__.config.user_library_import_dir'
 
 <h2 id="dataset-collections-as-input">Dataset collections as input</h2>
 
-<p>Mapping over:</p>
+<p>Mapping over (1 job per collection element):</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"inputs"</span> <span class="na">type=</span><span class="s">"data"</span> <span class="na">format=</span><span class="s">"bam"</span> <span class="na">label=</span><span class="s">"Input BAM(s)"</span> <span class="nt">/&gt;</span>
 </code></pre></div></div>
@@ -1374,16 +1351,15 @@ echo '$__app__.config.user_library_import_dir'
 
 <p>Single execution:</p>
 <ul>
-  <li>accepted with <code class="language-plaintext highlighter-rouge">multiple="true"</code></li>
-  <li>or accept only collections:</li>
+  <li>accepted with <code class="language-plaintext highlighter-rouge">multiple="true"</code> as described in previous slides</li>
+  <li>or you can accept only collections:</li>
 </ul>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;param</span> <span class="na">name=</span><span class="s">"inputs"</span> <span class="na">type=</span><span class="s">"data_collection"</span> <span class="na">collection_type=</span><span class="s">"list|paired|list:paired|..."</span>
     <span class="na">format=</span><span class="s">"bam"</span> <span class="na">label=</span><span class="s">"Input BAM(s)"</span> <span class="nt">/&gt;</span>
 </code></pre></div></div>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;command&gt;</span><span class="cp">&lt;![CDATA[
-...
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;command&gt;</span><span class="cp">&lt;![CDATA[ ...
 #for $input in $inputs
     --input '$input'
     --sample_name '$input.element_identifier'
@@ -1417,7 +1393,7 @@ echo '$__app__.config.user_library_import_dir'
 
 <hr />
 
-<h2 id="use-multiple-cpus">Use multiple CPUs</h2>
+<h2 id="using-multiple-cpus">Using multiple CPUs</h2>
 
 <p><img src="../../images/job_conf.xml_2.png" alt="Screenshot of two xml files. In the top is the jb_conf.xml where a command line job submission specification indicates that it will be submitted with 4 threads. A single tool, ncbi blastn wrapper is assigned to that destination. In the second xml file the blastn command uses the GALAXY_SLOTS variable to control how many threads are supplied to the tool." /></p>
 
@@ -1514,8 +1490,8 @@ echo '$__app__.config.user_library_import_dir'
 
 <ul>
   <li>Reasons: ownership, specific practices, exotic tools</li>
-  <li>Follow the same structure</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">.travis.yml</code> to automate tests and publishing</li>
+  <li>Follow the same structure as IUC</li>
+  <li>Automate tests and ToolShed publishing by reusing <code class="language-plaintext highlighter-rouge">.github/</code> configuration</li>
 </ul>
 
 <hr />
@@ -1527,6 +1503,7 @@ echo '$__app__.config.user_library_import_dir'
 <ul>
   <li>Ok for few tools</li>
   <li>Makes contributing harder</li>
+  <li>Not recommended</li>
 </ul>
 
 <p><a href="/training-material/topics/dev/tutorials/toolshed/slides.html">Check out our tutorial to publish to the ToolShed using Planemo</a></p>
@@ -1536,8 +1513,6 @@ echo '$__app__.config.user_library_import_dir'
 <h2 id="continuous-integration">Continuous Integration</h2>
 
 <p>.image-50[<img src="../../images/github_logo.png" alt="Github logo" />]</p>
-
-<p>.image-50[<img src="../../images/travis_ci_logo.png" alt="Travis CI logo" />]</p>
 
 <p>.image-50[<img src="../../images/planemo-logo.png" alt="Planemo logo" />]</p>
 
@@ -1549,23 +1524,38 @@ echo '$__app__.config.user_library_import_dir'
 
 <ul>
   <li>Create a Pull Request on a GitHub repository</li>
-  <li>Tests are automatically run on Travis</li>
+  <li>Tests are automatically run on GitHub Actions</li>
   <li>Other contributors review your tool</li>
-  <li>The Pull Request is accepted when all lights are green</li>
+  <li>The Pull Request is accepted when all the lights are green</li>
   <li>The tool is automatically uploaded to the ToolShed</li>
 </ul>
 
 <hr />
 
-<h2 id="github-side">GitHub side</h2>
+<h2 id="github-actions-configuration">GitHub Actions configuration</h2>
 
-<p><img src="../../images/github_travis_github.png" alt="Screenshot of a .travis.yml file with badges and logos over it. It runs several planemo commands during before install, install, and script portions." /></p>
+<p>GitHub Actions configured in the <code class="language-plaintext highlighter-rouge">.github/</code> directory</p>
+
+<p><img src="../../images/github_actions_iuc.png" alt="Screenshot of a CI configuration file. It runs several planemo commands during before install, install, and script portions." /></p>
+
+<p>Uses a standard GitHub Action developed on https://github.com/galaxyproject/planemo-ci-action</p>
 
 <hr />
 
-<h2 id="travis-ci-side">Travis CI side</h2>
+<h2 id="github-actions-execution">GitHub Actions execution</h2>
 
-<p><img src="../../images/github_travis_travis.png" alt="Screenshot of travis CI shown a tool test passing." /></p>
+<p><img src="../../images/github_actions_executed1.png" alt="Screenshot of a CI execution showing a tool test passing." />
+<img src="../../images/github_actions_executed2.png" alt="Screenshot of a CI execution showing details of test logs." /></p>
+
+<hr />
+
+<h2 id="github-actions-test-reports">GitHub Actions: test reports</h2>
+
+<p>Downloadable HTML report, open it with a web browser to see the details</p>
+
+<p>.pull-left[<img src="../../images/github_actions_artifacts.png" alt="Screenshot of a CI execution artifacts, with a link to download an HTML report of the tests." />]</p>
+
+<p>.pull-right[<img src="../../images/github_actions_artifacts2.png" alt="Screenshot of an example of HTML report of the tests." />]</p>
 
 <hr />
 
@@ -1633,77 +1623,6 @@ Applying linter readme... CHECK
 <span class="o">[</span>…]
 </code></pre></div></div>
 
-<hr />
-
-<p>.image-50[<img src="../../../../shared/images/ansible_logo.png" alt="Ansible logo" />]</p>
-
-<p>.image-50[<img src="../../../../shared/images/conda_logo.png" alt="Conda logo" />]</p>
-
-<p>.image-50[<img src="../../../../shared/images/docker_logo.png" alt="Docker logo" />]</p>
-
-<hr />
-
-<h2 id="docker-galaxy-flavors">Docker Galaxy Flavors</h2>
-
-<p><img src="../../images/galaxydocker_logo.png" alt="Galaxy docker logo, the docker logo with several containers replaced by galaxy logos." /></p>
-
-<p>.footnote[<a href="https://github.com/bgruening/docker-galaxy-stable">Docker Galaxy Stable</a>]</p>
-
-<hr />
-
-<h2 id="docker-galaxy-flavors-1">Docker Galaxy Flavors</h2>
-
-<p>Dockerfile</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Galaxy - My own flavour</span>
-<span class="c1"># VERSION       0.1</span>
-
-<span class="s">FROM quay.io/bgruening/galaxy:16.07</span>
-
-<span class="s">MAINTAINER Björn A. Grüning, bjoern.gruening@gmail.com</span>
-
-<span class="s">ENV GALAXY_CONFIG_BRAND deepTools</span>
-
-<span class="c1"># Adding the tool definitions to the container</span>
-<span class="s">ADD my_tool_list.yml $GALAXY_ROOT/my_tool_list.yml</span>
-
-<span class="c1"># Install deepTools</span>
-<span class="s">RUN install-tools $GALAXY_ROOT/my_tool_list.yml</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="docker-galaxy-flavors-2">Docker Galaxy Flavors</h2>
-
-<p><code class="language-plaintext highlighter-rouge">tool_list.yml</code></p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">api_key</span><span class="pi">:</span> <span class="s">admin</span>
-<span class="na">galaxy_instance</span><span class="pi">:</span> <span class="s">http://127.0.0.1:8080/</span>
-<span class="na">tools</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">fastqc</span>
-  <span class="na">owner</span><span class="pi">:</span> <span class="s">devteam</span>
-  <span class="na">tool_panel_section_id</span><span class="pi">:</span> <span class="s">cshl_library_information</span>
-  <span class="na">tool_shed_url</span><span class="pi">:</span> <span class="s">https://toolshed.g2.bx.psu.edu</span>
-  <span class="na">revisions</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s1">'</span><span class="s">8c650f7f76e9'</span>  <span class="c1"># v0.62</span>
-    <span class="pi">-</span> <span class="s1">'</span><span class="s">d2cf2c0c8a11'</span>  <span class="c1"># v0.63</span>
-<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">suite_deeptools</span>
-  <span class="na">owner</span><span class="pi">:</span> <span class="s">bgruening</span>
-  <span class="na">tool_panel_section_label</span><span class="pi">:</span> <span class="s1">'</span><span class="s">deepTools'</span>
-  <span class="na">tool_shed_url</span><span class="pi">:</span> <span class="s">https://toolshed.g2.bx.psu.edu</span>
-  <span class="na">revisions</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s1">'</span><span class="s">7f5562625ae2'</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="docker-galaxy-flavors-3">Docker Galaxy Flavors</h2>
-
-<p>RUN</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">-p</span> 8080:80 galaxy-deeptools
-</code></pre></div></div>
-
 
 	<hr />
 
@@ -1720,7 +1639,7 @@ Applying linter readme... CHECK
 
 <li>Use GitHub</li>
 
-<li>Use Travis</li>
+<li>Use GitHub Actions</li>
 
 <li>No more excuse to develop crappy Galaxy tools</li>
 
@@ -1753,7 +1672,7 @@ Follow one of our recommended follow-up trainings:
 This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
 
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
@@ -1764,56 +1683,48 @@ This material is licensed under the <a rel="license" href="https://creativecommo
 
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/dev/tutorials/tool-integration/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/3e099f33f0b616ddeef76c2a1ee9871ebbceb042">3e099f33f0b616ddeef76c2a1ee9871ebbceb042</a></p>
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

@@ -1,7 +1,5 @@
 {
   "layout": "tutorial_slides",
-  "logo": "GTN",
-  "class": "enlarge120",
   "title": "An Introduction to Genome Assembly",
   "zenodo_link": "https://doi.org/10.5281/zenodo.582600",
   "questions": [
@@ -12,22 +10,229 @@
     "examine the output of the assembly."
   ],
   "time_estimation": "30m",
+  "level": "Introductory",
   "key_points": [
     "We assembled some Illumina fastq reads into contigs using a short read assembler called Velvet",
     "We showed what effect one of the key assembly parameters, the k-mer size, has on the assembly",
     "It looks as though there are some exploitable patterns in the metric data vs the k-mer size."
   ],
   "contributors": [
-    {
-      "name": "Simon Gladman",
-      "email": "simon.gladman@unimelb.edu.au",
-      "joined": "2017-09",
-      "elixir_node": "au",
-      "id": "slugger70",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/slugger70.json"
-    }
+    "slugger70"
   ],
+  "short_id": "S00033",
   "url": "/topics/assembly/tutorials/general-introduction/slides.html",
   "topic_name": "assembly",
-  "tutorial_name": "general-introduction"
+  "tutorial_name": "general-introduction",
+  "dir": "topics/assembly/tutorials/general-introduction",
+  "id": "assembly/general-introduction",
+  "video_library": {
+    "tutorial": null,
+    "slides": {
+      "description": "This lecture walks you through the basic concepts involved in assembling a genome from short-read sequencing data.",
+      "materials": [
+        {
+          "link": "topics/assembly/tutorials/general-introduction/slides.html",
+          "title": "An Introduction to Genome Assembly",
+          "type": "Slides"
+        }
+      ],
+      "tags": [
+        "assembly"
+      ],
+      "type": "Lecture",
+      "versions": [
+        {
+          "captions": [
+            "shiltemann",
+            "hexylena"
+          ],
+          "date": "2021-02-15",
+          "galaxy_version": "21.01",
+          "length": "25M",
+          "link": "-EX_G1griZE",
+          "speakers": [
+            "slugger70"
+          ]
+        }
+      ],
+      "gtn_id": "assembly/general-introduction",
+      "title": "An Introduction to Genome Assembly",
+      "captioned": true
+    },
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": true,
+  "workflows": [
+    {
+      "workflow": "assembly-general-introduction.ga",
+      "tests": true,
+      "url": "https://training.galaxyproject.org/training-material/topics/assembly/tutorials/general-introduction/workflows/assembly-general-introduction.ga",
+      "path": "topics/assembly/tutorials/general-introduction/workflows/assembly-general-introduction.ga",
+      "wfid": "assembly-general-introduction",
+      "wfname": "assembly-general-introduction",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/assembly-general-introduction/versions/assembly-general-introduction",
+      "license": null,
+      "creators": [
+
+      ],
+      "test_results": null
+    }
+  ],
+  "api": "https://training.galaxyproject.org/training-material/api/topics/assembly/tutorials/general-introduction/tutorial.json",
+  "tools": [
+    "toolshed.g2.bx.psu.edu/repos/devteam/fastq_paired_end_interlacer/fastq_paired_end_interlacer/1.2.0.1+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+    "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/velvet/velvetg/1.2.10.1",
+    "toolshed.g2.bx.psu.edu/repos/devteam/velvet/velvetg/1.2.10.2",
+    "toolshed.g2.bx.psu.edu/repos/devteam/velvet/velveth/1.2.10.1",
+    "toolshed.g2.bx.psu.edu/repos/devteam/velvet/velveth/1.2.10.3",
+    "toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.11+galaxy1",
+    "toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.7",
+    "toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.2.0+galaxy1"
+  ],
+  "supported_servers": {
+    "exact": [
+      {
+        "url": "https://usegalaxy.org",
+        "name": "UseGalaxy.org (Main)",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org.au",
+        "name": "UseGalaxy.org.au",
+        "usegalaxy": "true"
+      }
+    ],
+    "inexact": [
+      {
+        "url": "https://galaxy.mesocentre.uca.fr",
+        "name": "Galaxy@AuBi",
+        "usegalaxy": "false"
+      },
+      {
+        "url": "https://galaxy.genouest.org",
+        "name": "Galaxy@GenOuest",
+        "usegalaxy": "false"
+      },
+      {
+        "url": "https://usegalaxy.be/",
+        "name": "UseGalaxy.be",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.eu",
+        "name": "UseGalaxy.eu",
+        "usegalaxy": "true"
+      }
+    ]
+  },
+  "topic_name_human": "Assembly",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "fastq_paired_end_interlacer",
+        "owner": "devteam",
+        "revisions": "2ccb8dcabddc",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "fastqc",
+        "owner": "devteam",
+        "revisions": "e7b2202befea",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "fastqc",
+        "owner": "devteam",
+        "revisions": "3d0c7bdf12f5",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "velvet",
+        "owner": "devteam",
+        "revisions": "5da9a0e2fb2d",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "velvet",
+        "owner": "devteam",
+        "revisions": "920677cd220f",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "velvet",
+        "owner": "devteam",
+        "revisions": "5da9a0e2fb2d",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "velvet",
+        "owner": "devteam",
+        "revisions": "920677cd220f",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "multiqc",
+        "owner": "iuc",
+        "revisions": "abfd8a6544d7",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "multiqc",
+        "owner": "iuc",
+        "revisions": "b2f1f75d49c4",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "quast",
+        "owner": "iuc",
+        "revisions": "59db8ea8c845",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "quast",
+        "owner": "iuc",
+        "revisions": "72472698a2df",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: fastq_paired_end_interlacer\n  owner: devteam\n  revisions: 2ccb8dcabddc\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: e7b2202befea\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: 3d0c7bdf12f5\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: velvet\n  owner: devteam\n  revisions: 5da9a0e2fb2d\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: velvet\n  owner: devteam\n  revisions: 920677cd220f\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: velvet\n  owner: devteam\n  revisions: 5da9a0e2fb2d\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: velvet\n  owner: devteam\n  revisions: 920677cd220f\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: multiqc\n  owner: iuc\n  revisions: abfd8a6544d7\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: multiqc\n  owner: iuc\n  revisions: b2f1f75d49c4\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: quast\n  owner: iuc\n  revisions: 59db8ea8c845\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: quast\n  owner: iuc\n  revisions: 72472698a2df\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "logo": "GTN",
+  "class": "enlarge120",
+  "redirect_from": [
+    "/short/assembly/general-introduction/slides",
+    "/short/S00033"
+  ]
 }

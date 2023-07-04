@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,44 +8,215 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Version Control with Git" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 09:58:03 +0000" />
-<meta name="DC.creator" content="Sofoklis Keisaris" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Version Control with Git">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-17 17:21:19 +0000">
+<meta name="DC.creator" content="Sofoklis Keisaris">
 
         
         
         
         
+        <meta name="description" content="These lessons will help you get your feet in data science...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Version Control with Git">
+        <meta property="og:description" content="These lessons will help you get your feet in data science...">
         
-        <meta name="description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Version Control with Git" />
-        <meta property="og:description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-05-17 17:21:19 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Version Control with Git",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Foundations of Data Science",
+    "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
+    "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Version Control with Git' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html",
+  "timeRequired": "PT65M",
+  "teaches": "Understand the benefits of an automated version control system.\n - Understand the basics of how automated version control systems work.\n - Configure `git` the first time it is used on a computer.\n - Understand the meaning of the `--global` configuration flag.\n - Create a local Git repository.\n - Describe the purpose of the `.git` directory.\n - Go through the modify-add-commit cycle for one or more files.\n - Explain where information is stored at each stage of that cycle.\n - Distinguish between descriptive and non-descriptive commit messages.\n - Explain what the HEAD of a repository is and how to use it.\n - Identify and use Git commit numbers.\n - Compare various versions of tracked files.\n - Restore old versions of files.",
+  "keywords": "data-science",
+  "description": "The questions this  addresses are:\n - What is version control and why should I use it?\n - How do I get set up to use Git?\n - Where does Git store information?\n - How do I record changes in Git?\n - How do I check the status of my version control repository?\n - How do I record notes about what changes I made and why?\n - How can I identify old versions of files?\n - How do I review my changes?\n - How can I recover old versions of files?\n\n\nThe objectives are:\n - Understand the benefits of an automated version control system.\n - Understand the basics of how automated version control systems work.\n - Configure `git` the first time it is used on a computer.\n - Understand the meaning of the `--global` configuration flag.\n - Create a local Git repository.\n - Describe the purpose of the `.git` directory.\n - Go through the modify-add-commit cycle for one or more files.\n - Explain where information is stored at each stage of that cycle.\n - Distinguish between descriptive and non-descriptive commit messages.\n - Explain what the HEAD of a repository is and how to use it.\n - Identify and use Git commit numbers.\n - Compare various versions of tracked files.\n - Restore old versions of files.\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/Sofokli5/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/Sofokli5/",
+      "name": "Sofoklis Keisaris",
+      "image": "https://avatars.githubusercontent.com/Sofokli5",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-4833-4726",
+      "orcid": "https://orcid.org/0000-0002-4833-4726"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Foundations of Data Science",
+      "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
+      "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "Version control is a way of tracking the change history of a project, and `git` is one of the most popular systems for doing that! This tutorial will guide you through the basics of using git for version control."
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,38 +232,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/bash-git/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/bash-git/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/bash-git/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/bash-git/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/bash-git/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/bash-git/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -112,9 +255,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/data-science/faqs/" title="Check our FAQs for the Foundations of Data Science topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -132,7 +277,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/bash-git/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -161,27 +305,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -193,13 +324,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/bash-git/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/bash-git/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/bash-git/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/bash-git/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/bash-git/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/bash-git/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -212,7 +343,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -226,8 +357,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -244,114 +380,13 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 09:58:03 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Version Control with Git",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Foundations of Data Science",
-    "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-    "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Version Control with Git' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html",
-  "timeRequired": "PT65M",
-  "keywords": "data-science",
-  "description": "The questions this  addresses are:\n - What is version control and why should I use it?\n - How do I get set up to use Git?\n - Where does Git store information?\n - How do I record changes in Git?\n - How do I check the status of my version control repository?\n - How do I record notes about what changes I made and why?\n - How can I identify old versions of files?\n - How do I review my changes?\n - How can I recover old versions of files?\n\n\nThe objectives are:\n - Understand the benefits of an automated version control system.\n - Understand the basics of how automated version control systems work.\n - Configure `git` the first time it is used on a computer.\n - Understand the meaning of the `--global` configuration flag.\n - Create a local Git repository.\n - Describe the purpose of the `.git` directory.\n - Go through the modify-add-commit cycle for one or more files.\n - Explain where information is stored at each stage of that cycle.\n - Distinguish between descriptive and non-descriptive commit messages.\n - Explain what the HEAD of a repository is and how to use it.\n - Identify and use Git commit numbers.\n - Compare various versions of tracked files.\n - Restore old versions of files.\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Foundations of Data Science",
-      "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
-      "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
-    }
-  ]
-}
-</script>
-
-<section class="tutorial topic-data-science">
+<article class="tutorial topic-data-science">
     <h1 data-toc-skip>Version Control with Git</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
@@ -361,11 +396,7 @@
 	<tr>
 		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
 		<td>
-			
-<a href="/training-material/hall-of-fame/Sofokli5/" class="contributor-badge contributor-Sofokli5"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/Sofokli5?s=27" alt="Avatar">Sofoklis Keisaris</a>
-
-
-
+			<a href="/training-material/hall-of-fame/Sofokli5/" class="contributor-badge contributor-Sofokli5"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/Sofokli5?s=36" alt="Avatar" width="36" height="36">Sofoklis Keisaris</a>
 		</td>
 	</tr>
 	
@@ -377,19 +408,7 @@
 	<tr>
 		<td><abbr title="These people edited the text, either for spelling and grammar, flow, GTN-fit, or other similar editing categories">Editor(s)</abbr></td>
 		<td>
-			
-<a href="/training-material/hall-of-fame/fpsom/" class="contributor-badge contributor-fpsom"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/fpsom?s=27" alt="Avatar">Fotis E. Psomopoulos</a>
-
-
-
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-</td>
+			<a href="/training-material/hall-of-fame/fpsom/" class="contributor-badge contributor-fpsom"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/fpsom?s=36" alt="Avatar" width="36" height="36">Fotis E. Psomopoulos</a><a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a></td>
 	</tr>
 	
 
@@ -407,9 +426,9 @@
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -500,14 +519,18 @@
 
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 17, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00072">https://gxy.io/GTN:T00072</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -518,10 +541,11 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <p>Version control is a way of tracking the change history of a project, and <code class="language-plaintext highlighter-rouge">git</code> is one of the most popular systems for doing that! This tutorial will guide you through the basics of using git for version control.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, you will learn how to create a git repo, and begin working with it.</p>
 
@@ -547,7 +571,7 @@ to keep track of what one person did and when.
 Even if you aren’t collaborating with other people,
 automated version control is much better than this situation:</p>
 
-<figure id="figure-1"><img src="../../images/bash-git/phd101212s.png" alt="Cartoon titled 'final'.doc, showing a grad student and their advisor going through multiple revisions. The first named final.doc, then final_rev.2.doc, final_rev.6.comments.doc, a long filename with the revision number 18, until a final filename, revision 22, with special characters indicating frustration where the file name includes the text 'why did I come to grad school'." loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/bash-git/phd101212s.png" alt="Cartoon titled 'final'.doc, showing a grad student and their advisor going through multiple revisions. The first named final.doc, then final_rev.2.doc, final_rev.6.comments.doc, a long filename with the revision number 18, until a final filename, revision 22, with special characters indicating frustration where the file name includes the text 'why did I come to grad school'." width="600" height="800" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com</figcaption></figure>
 
 <p>We’ve all been in this situation before: it seems unnecessary to have
 multiple nearly-identical versions of the same document. Some word
@@ -563,19 +587,19 @@ think of it as a recording of your progress: you can rewind to start at the base
 document and play back each change you made, eventually arriving at your
 more recent version.</p>
 
-<p><img src="../../images/bash-git/play-changes.svg" alt="Changes Are Saved Sequentially, graphic shows three documents with text being added in each new revision." loading="lazy" /></p>
+<p><img src="../../images/bash-git/play-changes.svg" alt="Changes Are Saved Sequentially, graphic shows three documents with text being added in each new revision." width="615" height="196" loading="lazy" /></p>
 
 <p>Once you think of changes as separate from the document itself, you
 can then think about “playing back” different sets of changes on the base document, ultimately
 resulting in different versions of that document. For example, two users can make independent
 sets of changes on the same document.</p>
 
-<p><img src="../../images/bash-git/versions.svg" alt="Different Versions Can be Saved, showing a document splitting into two, with different changes." loading="lazy" /></p>
+<p><img src="../../images/bash-git/versions.svg" alt="Different Versions Can be Saved, showing a document splitting into two, with different changes." width="384" height="354" loading="lazy" /></p>
 
 <p>Unless multiple users make changes to the same section of the document - a conflict - you can
 incorporate two sets of changes into the same base document.</p>
 
-<p><img src="../../images/bash-git/merge.svg" alt="Multiple Versions Can be Merged, shows two documents with different changes merging into a final document with both changes." loading="lazy" /></p>
+<p><img src="../../images/bash-git/merge.svg" alt="Multiple Versions Can be Merged, shows two documents with different changes merging into a final document with both changes." width="398" height="382" loading="lazy" /></p>
 
 <p>A version control system is a tool that keeps track of these changes for us,
 effectively creating different versions of our files. It allows us to decide
@@ -587,7 +611,7 @@ Repositories can be kept in sync across different computers, facilitating
 collaboration among different people.</p>
 
 <blockquote class="tip">
-  <div id="tip-the-long-history-of-version-control-systems" class="box-title"><button type="button" aria-controls="tip-the-long-history-of-version-control-systems-contents" aria-expanded="true" aria-label="Toggle tip box: The Long History of Version Control Systems"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: The Long History of Version Control Systems<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-the-long-history-of-version-control-systems"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-the-long-history-of-version-control-systems" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: The Long History of Version Control Systems<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Automated version control systems are nothing new.
 Tools like <a href="https://en.wikipedia.org/wiki/Revision_Control_System">RCS</a>, <a href="https://en.wikipedia.org/wiki/Concurrent_Versions_System">CVS</a>, or <a href="https://en.wikipedia.org/wiki/Apache_Subversion">Subversion</a> have been around since the early 1980s and are used by
@@ -602,7 +626,7 @@ the same files concurrently.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-paper-writing" class="box-title" aria-label="question box: Paper Writing"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Paper Writing</div>
+  <div class="box-title question-title" id="question-paper-writing"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Paper Writing</div>
 
   <ul>
     <li>
@@ -618,13 +642,13 @@ history of those changes?</p>
   </ul>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ul>
       <li>
         <p>Recovering the excellent version is only possible if you created a copy
 of the old version of the paper. The danger of losing good versions
-often leads to the problematic <span class="notranslate">workflow</span> illustrated in the PhD Comics
+often leads to the problematic workflow illustrated in the PhD Comics
 cartoon at the top of this page.</p>
       </li>
       <li>
@@ -644,20 +668,21 @@ problems.</p>
   </blockquote>
 </blockquote>
 
-<p>Before diving in the tutorial, we need to open <span class="tool" data-tool="interactive_tool_rstudio" title="Tested with interactive_tool_rstudio"><strong>RStudio</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_rstudio</span></span> . If you do not know how or never interacted with RStudio, please follow the <a href="/training-material/topics/galaxy-interface/tutorials/rstudio/tutorial.html">dedicated tutorial</a>.</p>
+<p>Before diving in the tutorial, we need to open <span class="tool" data-tool="interactive_tool_rstudio" title="RStudio tool" aria-role="link"><strong>RStudio</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_rstudio</span></span>. If you do not know how or never interacted with RStudio, please follow the <a href="/training-material/topics/galaxy-interface/tutorials/rstudio/tutorial.html">dedicated tutorial</a>.</p>
 
 <!--SNIPPET-->
-<blockquote class="notranslate hands_on">  <div id="hands-on-launch-rstudio" class="box-title" aria-label="hands_on box: Launch RStudio"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Launch RStudio</div>  <p>Depending on which server you are using, you may be able to run RStudio directly in <span class="notranslate">Galaxy</span>. If that is not available, RStudio Cloud can be an alte<span class="notranslate">rna</span>tive.</p>  <blockquote class="tip">  <tip-title>Launch RStudio in <span class="notranslate">Galaxy</span></tip-title>  <p>Currently RStudio in <span class="notranslate">Galaxy</span> is only available on <a href="https://usegalaxy.eu">Use<span class="notranslate">Galaxy</span>.eu</a> and <a href="https://usegalaxy.org">Use<span class="notranslate">Galaxy</span>.org</a></p>  <ol>    <li>Open the Rstudio tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by clicking <a href="https://usegalaxy.eu/?tool_id=interactive_tool_rstudio">here to launch RStudio</a></li>    <li>Click Execute</li>    <li>The tool will start running and will stay running permanently</li>    <li>Click on the “User” menu at the top and go to “Active InteractiveTools” and locate the RStudio instance you started.</li>  </ol></blockquote>  <blockquote class="tip">  <tip-title>Launch RStudio Cloud if not available on <span class="notranslate">Galaxy</span></tip-title>  <p>If RStudio is not available on the <span class="notranslate">Galaxy</span> instance:</p>  <ol>    <li>Register for <a href="https://client.login.rstudio.cloud/oauth/login?show_auth=0&amp;show_login=1&amp;show_setup=1">RStudio Cloud</a>, or login if you already have an account</li>    <li>Create a new project</li>  </ol></blockquote></blockquote>
+<blockquote class="notranslate hands_on">   <div class="box-title hands_on-title" id="hands-on-launch-rstudio"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Launch RStudio</div>   <p>Depending on which server you are using, you may be able to run RStudio directly in Galaxy. If that is not available, RStudio Cloud can be an alternative.</p>   <blockquote class="tip">   <div class="box-title tip-title" id="tip-launch-rstudio-in-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-launch-rstudio-in-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Launch RStudio in Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Currently RStudio in Galaxy is only available on <a href="https://usegalaxy.eu">UseGalaxy.eu</a> and <a href="https://usegalaxy.org">UseGalaxy.org</a></p>   <ol>     <li>Open the Rstudio tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by clicking <a href="https://usegalaxy.eu/?tool_id=interactive_tool_rstudio">here to launch RStudio</a></li>     <li>Click Run Tool</li>     <li>The tool will start running and will stay running permanently</li>     <li>Click on the “User” menu at the top and go to “Active InteractiveTools” and locate the RStudio instance you started.</li>   </ol> </blockquote>   <blockquote class="tip">   <div class="box-title tip-title" id="tip-launch-rstudio-cloud-if-not-available-on-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-launch-rstudio-cloud-if-not-available-on-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Launch RStudio Cloud if not available on Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>If RStudio is not available on the Galaxy instance:</p>   <ol>     <li>Register for <a href="https://client.login.rstudio.cloud/oauth/login?show_auth=0&amp;show_login=1&amp;show_setup=1">RStudio Cloud</a>, or login if you already have an account</li>     <li>Create a new project</li>   </ol> </blockquote> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-installing-git" class="box-title" aria-label="hands-on box: Installing git"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Installing git</div>
+  <div class="box-title hands-on-title" id="hands-on-installing-git"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Installing git</div>
   <p>The R Console and other interactive tools like RStudio are great for prototyping code and exploring data, but sooner or later we will want to use our program in a pipeline or run it in a shell script to process thousands of data files. This is one of those cases and, in order to do that, we will use the terminal provided by the RStudio itself.
 We go to “Tools” and pick the “Shell…” option and we are good to go. Our workspace is the left, terminal window that just opened.</p>
 
   <p>Fortunately, <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> is already installed. Miniconda is a package manager that simplifies the installation processes. We can and will use it to install every essential package for our tutorial. However, it is of critical importance that we do that in an new environment within our existing base and install our packages in said environment.</p>
 
   <blockquote class="code-in">
-    <div id="code-in-environment-and-packages" class="box-title" aria-label="code-in box: Environment and Packages"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Environment and Packages</div>
+    <div class="box-title code-in-title" id="code-in-environment-and-packages"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Environment and Packages</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>conda create <span class="nt">-n</span> name_of_your_env nano git
 <span class="nv">$ </span>conda activate name_of_your_env
 </code></pre></div>    </div>
@@ -710,7 +735,7 @@ where <code class="language-plaintext highlighter-rouge">verb</code> is what we 
 Sherlock sets up his new laptop:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-setting-up-with-bash" class="box-title" aria-label="code-in box: Setting up with bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Setting up with bash</div>
+  <div class="box-title code-in-title" id="code-in-setting-up-with-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Setting up with bash</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> user.name <span class="s2">"Sherlock Holmes"</span>
 <span class="nv">$ </span>git config <span class="nt">--global</span> user.email <span class="s2">"sherlock@baker.street"</span>
 </code></pre></div>  </div>
@@ -727,13 +752,13 @@ after this lesson will include this information.</p>
 <p>For this lesson, we will be interacting with <a href="https://github.com/">GitHub</a> and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review <a href="https://help.github.com/articles/keeping-your-email-address-private/">GitHub’s instructions for keeping your email address private</a>.</p>
 
 <blockquote class="tip">
-  <div id="tip-keeping-your-email-private" class="box-title"><button type="button" aria-controls="tip-keeping-your-email-private-contents" aria-expanded="true" aria-label="Toggle tip box: Keeping your email private"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Keeping your email private<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-keeping-your-email-private"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-keeping-your-email-private" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Keeping your email private<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>If you choose to use a private email address with GitHub, then use that same email address for the <code class="language-plaintext highlighter-rouge">user.email</code> value, e.g. <code class="language-plaintext highlighter-rouge">use<span class="notranslate">rna</span>me@users.noreply.github.com</code> replacing <code class="language-plaintext highlighter-rouge">use<span class="notranslate">rna</span>me</code> with your GitHub one.</p>
+  <p>If you choose to use a private email address with GitHub, then use that same email address for the <code class="language-plaintext highlighter-rouge">user.email</code> value, e.g. <code class="language-plaintext highlighter-rouge">username@users.noreply.github.com</code> replacing <code class="language-plaintext highlighter-rouge">username</code> with your GitHub one.</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-line-endings" class="box-title"><button type="button" aria-controls="tip-line-endings-contents" aria-expanded="true" aria-label="Toggle tip box: Line Endings"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Line Endings<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-line-endings"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-line-endings" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Line Endings<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>As with other keys, when you hit <kbd>Enter</kbd> or <kbd></kbd> or on Macs, <kbd>Return</kbd>, on your keyboard,
 your computer encodes this input as a character.
@@ -749,7 +774,7 @@ using the <code class="language-plaintext highlighter-rouge">core.autocrlf</code
 The following settings are recommended:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-settings-with-bash" class="box-title" aria-label="code-in box: Settings with bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Settings with bash</div>
+    <div class="box-title code-in-title" id="code-in-settings-with-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Settings with bash</div>
     <p>On macOS and Linux:</p>
 
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> core.autocrlf input
@@ -838,7 +863,7 @@ The following settings are recommended:</p>
 <p>It is possible to reconfigure the text editor for Git whenever you want to change it.</p>
 
 <blockquote class="tip">
-  <div id="tip-exiting-vim" class="box-title"><button type="button" aria-controls="tip-exiting-vim-contents" aria-expanded="true" aria-label="Toggle tip box: Exiting Vim"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Exiting Vim<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-exiting-vim"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-exiting-vim" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Exiting Vim<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Note that Vim is the default editor for many programs. If you haven’t used Vim before and wish to exit a session without saving
 your changes, press <kbd>Esc</kbd> then type <code class="language-plaintext highlighter-rouge">:q!</code> and hit <kbd>Enter</kbd> or <kbd></kbd> or on Macs, <kbd>Return</kbd>.
 If you want to save your changes and quit, press <kbd>Esc</kbd> then type <code class="language-plaintext highlighter-rouge">:wq</code> and hit <kbd>Enter</kbd> or <kbd></kbd> or on Macs, <kbd>Return</kbd>.</p>
@@ -849,13 +874,13 @@ initialize any new repository.  Sherlock decides to use that feature to set it t
 it matches the cloud service he will eventually use.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-configure-the-name-of-the-created-branch" class="box-title" aria-label="code-in box: Configure the name of the created branch"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Configure the name of the created branch</div>
+  <div class="box-title code-in-title" id="code-in-configure-the-name-of-the-created-branch"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Configure the name of the created branch</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> init.defaultBranch main
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-default-git-branch-naming" class="box-title"><button type="button" aria-controls="tip-default-git-branch-naming-contents" aria-expanded="true" aria-label="Toggle tip box: Default Git branch naming"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Default Git branch naming<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-default-git-branch-naming"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-default-git-branch-naming" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Default Git branch naming<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Source file changes are associated with a “branch.”
 For new learners in this lesson, it’s enough to know that branches exist, and this lesson uses one branch.
@@ -882,7 +907,7 @@ to use the settings for every project, in your user account, on this computer.</
 <p>You can check your settings at any time:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-checking-your-settings" class="box-title" aria-label="code-in box: Checking your settings"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Checking your settings</div>
+  <div class="box-title code-in-title" id="code-in-checking-your-settings"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Checking your settings</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--list</span>
 </code></pre></div>  </div>
 </blockquote>
@@ -891,21 +916,21 @@ to use the settings for every project, in your user account, on this computer.</
 same commands to choose another editor or update your email address.</p>
 
 <blockquote class="tip">
-  <div id="tip-proxy" class="box-title"><button type="button" aria-controls="tip-proxy-contents" aria-expanded="true" aria-label="Toggle tip box: Proxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Proxy<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-proxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-proxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Proxy<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>In some networks you need to use a
 <a href="https://en.wikipedia.org/wiki/Proxy_server">proxy</a>. If this is the case, you
 may also need to tell Git about the proxy:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-git-and-proxy" class="box-title" aria-label="code-in box: Git and proxy"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Git and proxy</div>
+    <div class="box-title code-in-title" id="code-in-git-and-proxy"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Git and proxy</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> http.proxy proxy-url
 <span class="nv">$ </span>git config <span class="nt">--global</span> https.proxy proxy-url
 </code></pre></div>    </div>
   </blockquote>
 
   <blockquote class="code-in">
-    <div id="code-in-to-disable-the-proxy-use" class="box-title" aria-label="code-in box: To disable the proxy, use"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: To disable the proxy, use</div>
+    <div class="box-title code-in-title" id="code-in-to-disable-the-proxy-use"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: To disable the proxy, use</div>
 
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">--global</span> <span class="nt">--unset</span> http.proxy
 <span class="nv">$ </span>git config <span class="nt">--global</span> <span class="nt">--unset</span> https.proxy
@@ -914,13 +939,13 @@ may also need to tell Git about the proxy:</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-git-help-and-manual" class="box-title"><button type="button" aria-controls="tip-git-help-and-manual-contents" aria-expanded="true" aria-label="Toggle tip box: Git Help and Manual"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Git Help and Manual<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-git-help-and-manual"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-git-help-and-manual" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Git Help and Manual<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Always remember that if you forget the subcommands or options of a <code class="language-plaintext highlighter-rouge">git</code> command, you can access the relevant list of options typing <code class="language-plaintext highlighter-rouge">git &lt;command&gt; -h</code> or access the corresponding Git manual by typing
 <code class="language-plaintext highlighter-rouge">git &lt;command&gt; --help</code>, e.g.:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-access-help" class="box-title" aria-label="code-in box: Access help "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Access help</div>
+    <div class="box-title code-in-title" id="code-in-access-help"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Access help</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git config <span class="nt">-h</span>
 <span class="nv">$ </span>git config <span class="nt">--help</span>
 </code></pre></div>    </div>
@@ -930,8 +955,8 @@ may also need to tell Git about the proxy:</p>
 
   <p>More generally, you can get the list of available <code class="language-plaintext highlighter-rouge">git</code> commands and further resources of the Git manual typing:</p>
 
-  <blockquote>
-    <div id="code-in-access-available-commands" class="box-title" aria-label="code-in box: Access available commands"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Access available commands</div>
+  <blockquote class="code-in">
+    <div class="box-title code-in-title" id="code-in-access-available-commands"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Access available commands</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git <span class="nb">help</span>
 </code></pre></div>    </div>
   </blockquote>
@@ -945,12 +970,12 @@ we can start using it.</p>
 
 <p>We will continue with the story of Sherlock who is investigating a crime and is collecting information about suspects.</p>
 
-<p><img src="../../images/bash-git/sherlock_git.png" alt="Cartoon of sherlock examining the git logo with his magnifying glass." loading="lazy" /></p>
+<p><img src="../../images/bash-git/sherlock_git.png" alt="Cartoon of sherlock examining the git logo with his magnifying glass." width="968" height="864" loading="lazy" /></p>
 
 <p>First, let’s create a directory for our work and then move into that directory:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-create-a-workspace" class="box-title" aria-label="code-in box: Create a workspace"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Create a workspace</div>
+  <div class="box-title code-in-title" id="code-in-create-a-workspace"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Create a workspace</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>suspects
 <span class="nv">$ </span><span class="nb">cd </span>suspects
 </code></pre></div>  </div>
@@ -960,7 +985,7 @@ we can start using it.</p>
 – a place where Git can store versions of our files:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-turn-our-workspace-into-directory" class="box-title" aria-label="code-in box: Turn our workspace into directory"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Turn our workspace into directory</div>
+  <div class="box-title code-in-title" id="code-in-turn-our-workspace-into-directory"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Turn our workspace into directory</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git init
 </code></pre></div>  </div>
 </blockquote>
@@ -976,7 +1001,7 @@ repository are completely separate processes.</p>
 it appears that nothing has changed:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-show-directory-content" class="box-title" aria-label="code-in box: Show directory content"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Show directory content</div>
+  <div class="box-title code-in-title" id="code-in-show-directory-content"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Show directory content</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span>
 </code></pre></div>  </div>
 </blockquote>
@@ -985,13 +1010,13 @@ it appears that nothing has changed:</p>
 we can see that Git has created a hidden directory within <code class="language-plaintext highlighter-rouge">suspects</code> called <code class="language-plaintext highlighter-rouge">.git</code>:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-show-everything-in-our-directory" class="box-title" aria-label="code-in box: Show everything in our directory"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Show everything in our directory</div>
+  <div class="box-title code-in-title" id="code-in-show-everything-in-our-directory"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Show everything in our directory</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-a</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.	..	.git
 </code></pre></div>  </div>
 </blockquote>
@@ -1005,13 +1030,13 @@ This might be the default branch depending on your settings and version
 of git.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-rename-the-branch" class="box-title" aria-label="code-in box: Rename the branch"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Rename the branch</div>
+  <div class="box-title code-in-title" id="code-in-rename-the-branch"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Rename the branch</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout <span class="nt">-b</span> main
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-1" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-1"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Switched to a new branch 'main'
 </code></pre></div>  </div>
 </blockquote>
@@ -1020,13 +1045,13 @@ of git.</p>
 by asking Git to tell us the status of our project:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-check" class="box-title" aria-label="code-in box: Check"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check</div>
+  <div class="box-title code-in-title" id="code-in-check"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-2" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-2"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 
 No commits yet
@@ -1043,7 +1068,7 @@ wording of the output might be slightly different.</p>
 <p>Along with tracking information about suspects (the project we have already created), Sherlock would also like to track information specific clues. So, Sherlock creates a <code class="language-plaintext highlighter-rouge">clues</code> project inside his <code class="language-plaintext highlighter-rouge">suspects</code> project with the following sequence of commands:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-create-a-project-within-a-project" class="box-title" aria-label="code-in box: Create a project within a project"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Create a project within a project</div>
+  <div class="box-title code-in-title" id="code-in-create-a-project-within-a-project"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Create a project within a project</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> ~/Desktop   <span class="c"># return to Desktop directory</span>
 <span class="nv">$ </span><span class="nb">cd </span>suspects     <span class="c"># go into suspects directory, which is already a Git repository</span>
 <span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-a</span>          <span class="c"># ensure the .git subdirectory is still present in the suspects directory</span>
@@ -1054,12 +1079,12 @@ wording of the output might be slightly different.</p>
 </code></pre></div>  </div>
 </blockquote>
 
-<blockquote>
-  <div id="question-tracking-in-a-subdirectory" class="box-title" aria-label="question box: Tracking in a subdirectory"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Tracking in a subdirectory</div>
+<blockquote class="question">
+  <div class="box-title question-title" id="question-tracking-in-a-subdirectory"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Tracking in a subdirectory</div>
   <p>Is the <code class="language-plaintext highlighter-rouge">git init</code> command, run inside the <code class="language-plaintext highlighter-rouge">clues</code> subdirectory, required for tracking files stored in the <code class="language-plaintext highlighter-rouge">clues</code> subdirectory?</p>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>No. Sherlock does not need to make the <code class="language-plaintext highlighter-rouge">clues</code> subdirectory a Git repository
 because the <code class="language-plaintext highlighter-rouge">suspects</code> repository will track all files, sub-directories, and
@@ -1070,8 +1095,8 @@ to the <code class="language-plaintext highlighter-rouge">suspects</code> direct
   </blockquote>
 </blockquote>
 
-<blockquote class="question tip">
-  <div id="tip-quot-nested-quot-repositories" class="box-title"><button type="button" aria-controls="tip-quot-nested-quot-repositories-contents" aria-expanded="true" aria-label="Toggle tip box: &quot;Nested&quot; repositories"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: &quot;Nested&quot; repositories<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+<blockquote class="tip">
+  <div class="box-title tip-title" id="tip-quot-nested-quot-repositories"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-quot-nested-quot-repositories" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: &quot;Nested&quot; repositories<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Additionally, Git repositories can interfere with each other if they are “nested”:
 the outer repository will try to version-control
 the inner repository. Therefore, it’s best to create each new Git
@@ -1081,12 +1106,12 @@ like the following, you are good to go to create a new repository as shown
 above:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-before-creating-a-new-repository" class="box-title" aria-label="code-in box: Before creating a new repository"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Before creating a new repository</div>
+    <div class="box-title code-in-title" id="code-in-before-creating-a-new-repository"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Before creating a new repository</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>    </div>
   </blockquote>
   <blockquote class="code-out">
-    <div id="code-out-3" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+    <div class="box-title code-out-title" id="code-out-3"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fatal: Not a git repository (or any of the parent directories): .git
 </code></pre></div>    </div>
   </blockquote>
@@ -1100,17 +1125,17 @@ above:</p>
 
 <p>Removing files from a Git repository needs to be done with caution. But we have not learned yet how to tell Git to track a particular file; we will learn this in the next episode. Files that are not tracked by Git can easily be removed like any other “ordinary” files with</p>
 <blockquote class="code-in">
-  <div id="code-in-remove-files" class="box-title" aria-label="code-in box: Remove files "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Remove files</div>
+  <div class="box-title code-in-title" id="code-in-remove-files"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Remove files</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">rm </span>filename
 </code></pre></div>  </div>
 </blockquote>
 
-<p>Similarly a directory can be removed using <code class="language-plaintext highlighter-rouge">rm -r di<span class="notranslate">rna</span>me</code> or <code class="language-plaintext highlighter-rouge">rm -rf di<span class="notranslate">rna</span>me</code>. If the files or folder being removed in this fashion are tracked by Git, then their removal becomes another change that we will need to track, as we will see later.</p>
+<p>Similarly a directory can be removed using <code class="language-plaintext highlighter-rouge">rm -r dirname</code> or <code class="language-plaintext highlighter-rouge">rm -rf dirname</code>. If the files or folder being removed in this fashion are tracked by Git, then their removal becomes another change that we will need to track, as we will see later.</p>
 
 <p>Git keeps all of its files in the <code class="language-plaintext highlighter-rouge">.git</code> directory. To recover from this little mistake, Sherlock can just remove the <code class="language-plaintext highlighter-rouge">.git</code> folder in the clues subdirectory by running the following command from inside the <code class="language-plaintext highlighter-rouge">suspects</code> directory:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-remove-the-git-folder" class="box-title" aria-label="code-in box: Remove the `.git` folder"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Remove the `.git` folder</div>
+  <div class="box-title code-in-title" id="code-in-remove-the-git-folder"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Remove the `.git` folder</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">rm</span> <span class="nt">-rf</span> clues/.git
 </code></pre></div>  </div>
 </blockquote>
@@ -1123,7 +1148,7 @@ above:</p>
 You should be in the <code class="language-plaintext highlighter-rouge">suspects</code> directory.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-check-directory" class="box-title" aria-label="code-in box: Check directory"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check directory</div>
+  <div class="box-title code-in-title" id="code-in-check-directory"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check directory</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> ~/suspects
 </code></pre></div>  </div>
 </blockquote>
@@ -1134,7 +1159,7 @@ you can use whatever editor you like.
 In particular, this does not have to be the <code class="language-plaintext highlighter-rouge">core.editor</code> you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be <code class="language-plaintext highlighter-rouge">nano</code>). For a refresher on text editors, check out <a href="https://swcarpentry.github.io/shell-novice/03-create/">“Which Editor?”</a> in <a href="https://swcarpentry.github.io/shell-novice/">The Unix Shell</a> lesson.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-edit-file-with-nano-in-bash" class="box-title" aria-label="code-in box: Edit file with nano in bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Edit file with nano in bash</div>
+  <div class="box-title code-in-title" id="code-in-edit-file-with-nano-in-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Edit file with nano in bash</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano colonel.txt
 </code></pre></div>  </div>
 </blockquote>
@@ -1147,13 +1172,13 @@ In particular, this does not have to be the <code class="language-plaintext high
 <p>Let’s first verify that the file was properly created by running the list command (<code class="language-plaintext highlighter-rouge">ls</code>):</p>
 
 <blockquote class="code-in">
-  <div id="code-in-check-new-file" class="box-title" aria-label="code-in box: Check new file"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check new file</div>
+  <div class="box-title code-in-title" id="code-in-check-new-file"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check new file</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-4" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-4"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>colonel.txt
 </code></pre></div>  </div>
 </blockquote>
@@ -1161,13 +1186,13 @@ In particular, this does not have to be the <code class="language-plaintext high
 <p><code class="language-plaintext highlighter-rouge">colonel.txt</code> contains a single line, which we can see by running:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-inspect-the-new-file" class="box-title" aria-label="code-in box: Inspect the new file"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Inspect the new file</div>
+  <div class="box-title code-in-title" id="code-in-inspect-the-new-file"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Inspect the new file</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-5" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-5"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No alibi for the night of murder.
 </code></pre></div>  </div>
 </blockquote>
@@ -1176,13 +1201,13 @@ In particular, this does not have to be the <code class="language-plaintext high
 Git tells us that it’s noticed the new file:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-check-1" class="box-title" aria-label="code-in box: Check"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check</div>
+  <div class="box-title code-in-title" id="code-in-check-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-6" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-6"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 
 No commits yet
@@ -1199,7 +1224,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>The “untracked files” message means that there’s a file in the directory that Git isn’t keeping track of. We can tell Git to track a file using <code class="language-plaintext highlighter-rouge">git add</code>:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-track-file" class="box-title" aria-label="code-in box: Track file"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Track file</div>
+  <div class="box-title code-in-title" id="code-in-track-file"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Track file</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add colonel.txt
 </code></pre></div>  </div>
 </blockquote>
@@ -1207,13 +1232,13 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>and then check that the right thing happened:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-check-2" class="box-title" aria-label="code-in box: Check"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check</div>
+  <div class="box-title code-in-title" id="code-in-check-2"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-7" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-7"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 
 No commits yet
@@ -1229,13 +1254,13 @@ Changes to be committed:
 <p>Git now knows that it’s supposed to keep track of <code class="language-plaintext highlighter-rouge">colonel.txt</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-record-changes-as-a-commit-with-a-descriptive-title" class="box-title" aria-label="code-in box: Record changes as a commit with a descriptive title"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Record changes as a commit with a descriptive title</div>
+  <div class="box-title code-in-title" id="code-in-record-changes-as-a-commit-with-a-descriptive-title"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Record changes as a commit with a descriptive title</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Start notes for colonel Smith as a suspect"</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-8" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-8"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[main (root-commit) f22b25e] Start notes on colonel Smith as a suspect
 1 file changed, 1 insertion(+)
 create mode 100644 colonel.txt
@@ -1259,14 +1284,14 @@ changes made in the commit. Generally, the message should complete the sentence 
 If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.</commit></p>
 
 <blockquote class="code-in">
-  <div id="code-in-if-we-run-git-status-now" class="box-title" aria-label="code-in box: If we run `git status` now:"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: If we run `git status` now:</div>
+  <div class="box-title code-in-title" id="code-in-if-we-run-git-status-now"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: If we run `git status` now:</div>
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-9" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-9"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 nothing to commit, working directory clean
 </code></pre></div>  </div>
@@ -1277,13 +1302,13 @@ If we want to know what we’ve done recently,
 we can ask Git to show us the project’s history using <code class="language-plaintext highlighter-rouge">git log</code>:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-access-project-s-history" class="box-title" aria-label="code-in box: Access project's history"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Access project's history</div>
+  <div class="box-title code-in-title" id="code-in-access-project-s-history"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Access project's history</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-10" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-10"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Sherlock Holmes &lt;sherlock@baker.street&gt;
 Date:   Thu Aug 22 09:51:46 2013 -0400
@@ -1302,7 +1327,7 @@ when it was created,
 and the log message Git was given when the commit was created.</p>
 
 <blockquote class="tip">
-  <div id="tip-where-are-my-changes" class="box-title"><button type="button" aria-controls="tip-where-are-my-changes-contents" aria-expanded="true" aria-label="Toggle tip box: Where Are My Changes?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Where Are My Changes?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-where-are-my-changes"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-where-are-my-changes" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Where Are My Changes?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>If we run <code class="language-plaintext highlighter-rouge">ls</code> at this point, we will still see just one file called <code class="language-plaintext highlighter-rouge">colonel.txt</code>.
 That’s because Git saves information about files’ history
@@ -1316,14 +1341,14 @@ so that our filesystem doesn’t become cluttered
 you may use a different editor, and don’t need to <code class="language-plaintext highlighter-rouge">cat</code>.)</p>
 
 <blockquote class="code-in">
-  <div id="code-in-edit-with-nano" class="box-title" aria-label="code-in box: Edit with nano"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Edit with nano</div>
+  <div class="box-title code-in-title" id="code-in-edit-with-nano"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Edit with nano</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano colonel.txt
 <span class="nv">$ </span><span class="nb">cat </span>colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-11" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-11"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No alibi for the night of murder.
 No clear motive. Seems high unlikely.
 </code></pre></div>  </div>
@@ -1333,13 +1358,13 @@ No clear motive. Seems high unlikely.
 it tells us that a file, it already knows about, has been modified:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-find-about-current-status" class="box-title" aria-label="code-in box: Find about current status"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Find about current status</div>
+  <div class="box-title code-in-title" id="code-in-find-about-current-status"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Find about current status</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-12" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-12"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 Changes not staged for commit:
  (use "git add &lt;file&gt;..." to update what will be committed)
@@ -1363,13 +1388,13 @@ This shows us the differences between the current state
 of the file and the most recently saved version:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-review-the-changes" class="box-title" aria-label="code-in box: Review the changes "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Review the changes</div>
+  <div class="box-title code-in-title" id="code-in-review-the-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Review the changes</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-13" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-13"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/colonel.txt b/colonel.txt
 index df0654a..315bf3a 100644
 --- a/colonel.txt
@@ -1401,13 +1426,13 @@ the <code class="language-plaintext highlighter-rouge">+</code> marker in the fi
 <p>After reviewing our change, it’s time to commit it:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-commit-after-checking-changes" class="box-title" aria-label="code-in box: Commit after checking changes"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Commit after checking changes</div>
+  <div class="box-title code-in-title" id="code-in-commit-after-checking-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Commit after checking changes</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Add concerns about existence of motive for colonel"</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-14" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-14"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
@@ -1424,14 +1449,14 @@ Git won’t commit because we didn’t use <code class="language-plaintext highl
 Let’s fix that:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-first-add-then-commit" class="box-title" aria-label="code-in box: First `add` then `commit`"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: First `add` then `commit`</div>
+  <div class="box-title code-in-title" id="code-in-first-add-then-commit"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: First `add` then `commit`</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add colonel.txt
 <span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Add concerns about existence of motive for colonel"</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-15" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-15"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[main 34961b1] Add concerns about existence of motive for colonel
  1 file changed, 1 insertion(+)
 </code></pre></div>  </div>
@@ -1455,7 +1480,7 @@ the current <a href="https://git-scm.com/docs/gitglossary#def_changeset">changes
 but not yet committed.</p>
 
 <blockquote class="tip">
-  <div id="tip-staging-area" class="box-title"><button type="button" aria-controls="tip-staging-area-contents" aria-expanded="true" aria-label="Toggle tip box: Staging Area"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Staging Area<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-staging-area"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-staging-area" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Staging Area<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>If you think of Git as taking snapshots of changes over the life of a project,
 <code class="language-plaintext highlighter-rouge">git add</code> specifies <em>what</em> will go in a snapshot
@@ -1475,7 +1500,7 @@ or you might find yourself searching for “git undo commit” more
 than you would like!</p>
 </blockquote>
 
-<p><img src="../../images/bash-git/git-staging-area.svg" alt="The Git Staging Area cartoon, a document is shown going into the staging area via &quot;git add&quot;, and then into the repository via &quot;git commit&quot;." loading="lazy" /></p>
+<p><img src="../../images/bash-git/git-staging-area.svg" alt="The Git Staging Area cartoon, a document is shown going into the staging area via &quot;git add&quot;, and then into the repository via &quot;git commit&quot;." width="622" height="218" loading="lazy" /></p>
 
 <p>Let’s watch as our changes to a file move from our editor
 to the staging area
@@ -1484,14 +1509,14 @@ First,
 we’ll add another line to the file:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-add-and-review-new-line-with-nano-and-cat" class="box-title" aria-label="code-in box: Add and review new line with `nano` and `cat`"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Add and review new line with `nano` and `cat`</div>
+  <div class="box-title code-in-title" id="code-in-add-and-review-new-line-with-nano-and-cat"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Add and review new line with `nano` and `cat`</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano colonel.txt
 <span class="nv">$ </span><span class="nb">cat </span>colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-16" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-16"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No alibi for the night of murder.
 No clear motive. Seems high unlikely.
 Fingerprints on victims glasses.
@@ -1499,13 +1524,13 @@ Fingerprints on victims glasses.
 </blockquote>
 
 <blockquote class="code-in">
-  <div id="code-in-review-changes" class="box-title" aria-label="code-in box: Review changes"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Review changes</div>
+  <div class="box-title code-in-title" id="code-in-review-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Review changes</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-17" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-17"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/colonel.txt b/colonel.txt
 index 315bf3a..b36abfd 100644
 --- a/colonel.txt
@@ -1524,7 +1549,7 @@ Now let’s put that change in the staging area
 and see what <code class="language-plaintext highlighter-rouge">git diff</code> reports:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-see-changes" class="box-title" aria-label="code-in box: See changes"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: See changes</div>
+  <div class="box-title code-in-title" id="code-in-see-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: See changes</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add colonel.txt
 <span class="nv">$ </span>git diff
 </code></pre></div>  </div>
@@ -1538,13 +1563,13 @@ However,
 if we do this:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-see-what-is-in-the-staging-area" class="box-title" aria-label="code-in box: See what is in the staging area"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: See what is in the staging area</div>
+  <div class="box-title code-in-title" id="code-in-see-what-is-in-the-staging-area"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: See what is in the staging area</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff <span class="nt">--staged</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-18" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-18"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/colonel.txt b/colonel.txt
 index 315bf3a..b36abfd 100644
 --- a/colonel.txt
@@ -1562,39 +1587,39 @@ and what’s in the staging area.
 Let’s save our changes:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-save-changes" class="box-title" aria-label="code-in box: Save changes"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Save changes</div>
+  <div class="box-title code-in-title" id="code-in-save-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Save changes</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Make notes about colonel's fingerprints"</span>
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-19" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-19"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[main 005937f] Make notes about colonel's fingerprints
  1 file changed, 1 insertion(+)
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-in">
-  <div id="code-in-check-new-status" class="box-title" aria-label="code-in box: Check new status"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check new status</div>
+  <div class="box-title code-in-title" id="code-in-check-new-status"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check new status</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-20" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-20"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 nothing to commit, working directory clean
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-in">
-  <div id="code-in-and-look-at-the-history-of-what-we-ve-done-so-far" class="box-title" aria-label="code-in box: and look at the history of what we've done so far: "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: and look at the history of what we've done so far:</div>
+  <div class="box-title code-in-title" id="code-in-and-look-at-the-history-of-what-we-ve-done-so-far"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: and look at the history of what we've done so far:</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-21" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-21"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -&gt; main)
 Author: Holmes Sherlock &lt;Holmes@tran.sylvan.ia&gt;
 Date:   Thu Aug 22 10:14:07 2013 -0400
@@ -1616,7 +1641,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-word-based-diffing" class="box-title"><button type="button" aria-controls="tip-word-based-diffing-contents" aria-expanded="true" aria-label="Toggle tip box: Word-based diffing"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Word-based diffing<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-word-based-diffing"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-word-based-diffing" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Word-based diffing<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Sometimes, e.g. in the case of the text documents a line-wise
 diff is too coarse. That is where the <code class="language-plaintext highlighter-rouge">--color-words</code> option of
@@ -1625,7 +1650,7 @@ words using colors.</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-paging-the-log" class="box-title"><button type="button" aria-controls="tip-paging-the-log-contents" aria-expanded="true" aria-label="Toggle tip box: Paging the Log"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Paging the Log<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-paging-the-log"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-paging-the-log" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Paging the Log<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>When the output of <code class="language-plaintext highlighter-rouge">git log</code> is too long to fit in your screen,
 <code class="language-plaintext highlighter-rouge">git</code> uses a program to split it into pages of the size of your screen.
@@ -1643,7 +1668,7 @@ Navigate through matches pressing <kbd>N</kbd>.</li>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-limit-log-size" class="box-title"><button type="button" aria-controls="tip-limit-log-size-contents" aria-expanded="true" aria-label="Toggle tip box: Limit Log Size"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Limit Log Size<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-limit-log-size"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-limit-log-size" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Limit Log Size<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>To avoid having <code class="language-plaintext highlighter-rouge">git log</code> cover your entire terminal screen, you can limit the
 number of commits that Git lists by using <code class="language-plaintext highlighter-rouge">-N</code>, where <code class="language-plaintext highlighter-rouge">N</code> is the number of
@@ -1651,13 +1676,13 @@ commits that you want to view. For example, if you only want information from
 the last commit you can use:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-see-specific-number-of-commits" class="box-title" aria-label="code-in box: See specific number of commits"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: See specific number of commits</div>
+    <div class="box-title code-in-title" id="code-in-see-specific-number-of-commits"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: See specific number of commits</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">-1</span>
 </code></pre></div>    </div>
   </blockquote>
 
   <blockquote class="code-out">
-    <div id="code-out-22" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+    <div class="box-title code-out-title" id="code-out-22"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -&gt; main)
 Author: Sherlock Holmes &lt;sherlock@baker.street&gt;
 Date:   Thu Aug 22 10:14:07 2013 -0400
@@ -1670,13 +1695,13 @@ Date:   Thu Aug 22 10:14:07 2013 -0400
 <code class="language-plaintext highlighter-rouge">--oneline</code> option:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-see-only-basic-information" class="box-title" aria-label="code-in box: See only basic information"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: See only basic information</div>
+    <div class="box-title code-in-title" id="code-in-see-only-basic-information"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: See only basic information</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git log --oneline
 </code></pre></div>    </div>
   </blockquote>
 
   <blockquote class="code-out">
-    <div id="code-out-23" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+    <div class="box-title code-out-title" id="code-out-23"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>005937f (HEAD -&gt; main) Make notes about colonel's fingerprints
 34961b1 Add concerns about existence of motive for colonel
 f22b25e Start notes on colonel as a base
@@ -1690,12 +1715,12 @@ current <code class="language-plaintext highlighter-rouge">HEAD</code>, the curr
 <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-References">other Git references</a>:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-extra-options" class="box-title" aria-label="code-in box: Extra options"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Extra options</div>
+    <div class="box-title code-in-title" id="code-in-extra-options"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Extra options</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">--oneline</span> <span class="nt">--graph</span>
 </code></pre></div>    </div>
   </blockquote>
   <blockquote class="code-out">
-    <div id="code-out-24" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+    <div class="box-title code-out-title" id="code-out-24"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* 005937f (HEAD -&gt; main) Make notes about colonel's fingerprints
 * 34961b1 Add concerns about existence of motive for colonel
 * f22b25e Start notes on colonel as a base
@@ -1704,7 +1729,7 @@ current <code class="language-plaintext highlighter-rouge">HEAD</code>, the curr
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-directories" class="box-title"><button type="button" aria-controls="tip-directories-contents" aria-expanded="true" aria-label="Toggle tip box: Directories "><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Directories<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-directories"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-directories" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Directories<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Two important facts you should know about directories in Git.</p>
 
@@ -1714,7 +1739,7 @@ current <code class="language-plaintext highlighter-rouge">HEAD</code>, the curr
 Try it for yourself:</p>
 
       <blockquote class="code-in">
-        <div id="code-in-test-directory-tracking" class="box-title" aria-label="code-in box: Test directory tracking  "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Test directory tracking</div>
+        <div class="box-title code-in-title" id="code-in-test-directory-tracking"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Test directory tracking</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>mysteries
 <span class="nv">$ </span>git status
 <span class="nv">$ </span>git add mysteries
@@ -1722,14 +1747,12 @@ Try it for yourself:</p>
 </code></pre></div>        </div>
       </blockquote>
 
-      <blockquote>
-        <p>Note, our newly created empty directory <code class="language-plaintext highlighter-rouge">mysteries</code> does not appear in
+      <p>Note, our newly created empty directory <code class="language-plaintext highlighter-rouge">mysteries</code> does not appear in
 the list of untracked files even if we explicitly add it (<em>via</em> <code class="language-plaintext highlighter-rouge">git add</code>) to our
 repository. This is the reason why you will sometimes see <code class="language-plaintext highlighter-rouge">.gitkeep</code> files
 in otherwise empty directories. Unlike <code class="language-plaintext highlighter-rouge">.gitignore</code>, these files are not special
 and their sole purpose is to populate a directory so that Git adds it to
 the repository. In fact, you can name such files anything you like.</p>
-      </blockquote>
     </li>
     <li>
       <p>If you create a directory in your Git repository and populate it with files,
@@ -1740,7 +1763,7 @@ you can add all files in the directory at once by:</p>
 
       <p>Try it for yourself:</p>
       <blockquote class="code-in">
-        <div id="code-in-add-multiple-files" class="box-title" aria-label="code-in box: Add multiple files"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Add multiple files</div>
+        <div class="box-title code-in-title" id="code-in-add-multiple-files"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Add multiple files</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch </span>mysteries/belgravia mysteries/reichenbachfall
 <span class="nv">$ </span>git status
 <span class="nv">$ </span>git add mysteries
@@ -1751,7 +1774,7 @@ you can add all files in the directory at once by:</p>
       <p>Before moving on, we will commit these changes.</p>
 
       <blockquote class="code-in">
-        <div id="code-in-commit-the-new-changes" class="box-title" aria-label="code-in box: Commit the new changes"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Commit the new changes</div>
+        <div class="box-title code-in-title" id="code-in-commit-the-new-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Commit the new changes</div>
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git commit -m "Add some initial thoughts on mysteries"
 </code></pre></div>        </div>
       </blockquote>
@@ -1765,12 +1788,12 @@ we first need to add the changed files to the staging area
 (<code class="language-plaintext highlighter-rouge">git add</code>) and then commit the staged changes to the
 repository (<code class="language-plaintext highlighter-rouge">git commit</code>):</p>
 
-<p><img src="../../images/bash-git/git-committing.svg" alt="The Git Commit Workflow. " loading="lazy" /></p>
+<p><img src="../../images/bash-git/git-committing.svg" alt="The Git Commit Workflow. " width="622" height="355" loading="lazy" /></p>
 
 <h1 id="lets-put-us-to-the-test">Let’s put us to the test</h1>
 
 <blockquote class="question">
-  <div id="question-choosing-a-commit-message" class="box-title" aria-label="question box: Choosing a Commit Message"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Choosing a Commit Message</div>
+  <div class="box-title question-title" id="question-choosing-a-commit-message"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Choosing a Commit Message</div>
 
   <p>Which of the following commit messages would be most appropriate for the
 last commit made to <code class="language-plaintext highlighter-rouge">colonel.txt</code>?</p>
@@ -1782,7 +1805,7 @@ last commit made to <code class="language-plaintext highlighter-rouge">colonel.t
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>Answer 1 is not descriptive enough, and the purpose of the commit is unclear;
 and answer 2 is redundant to using “git diff” to see what changed in this commit;
 but answer 3 is good: short, descriptive, and imperative.</p>
@@ -1790,7 +1813,7 @@ but answer 3 is good: short, descriptive, and imperative.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-committing-changes-to-git" class="box-title" aria-label="question box: Committing Changes to Git"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Committing Changes to Git</div>
+  <div class="box-title question-title" id="question-committing-changes-to-git"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Committing Changes to Git</div>
 
   <p>Which command(s) below would save the changes of <code class="language-plaintext highlighter-rouge">myfile.txt</code>
 to my local Git repository?</p>
@@ -1817,7 +1840,7 @@ $ git commit -m "my recent changes"
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
       <li>Would only create a commit if files have already been staged.</li>
@@ -1829,7 +1852,7 @@ $ git commit -m "my recent changes"
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-committing-multiple-files" class="box-title" aria-label="question box: Committing Multiple Files"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Committing Multiple Files</div>
+  <div class="box-title question-title" id="question-committing-multiple-files"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Committing Multiple Files</div>
 
   <p>The staging area can hold changes from any number of files
 that you want to commit as a single snapshot.</p>
@@ -1843,44 +1866,44 @@ and commit those changes.</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The output below from <code class="language-plaintext highlighter-rouge">cat colonel.txt</code> reflects only content added during
 this exercise. Your output may vary.</p>
 
     <p>First we make our changes to the <code class="language-plaintext highlighter-rouge">colonel.txt</code> and <code class="language-plaintext highlighter-rouge">judge.txt</code> files:</p>
     <blockquote class="code-in">
-      <div id="code-in-edit-colonel-txt" class="box-title" aria-label="code-in box: Edit `colonel.txt`"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Edit `colonel.txt`</div>
+      <div class="box-title code-in-title" id="code-in-edit-colonel-txt"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Edit `colonel.txt`</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano colonel.txt
 <span class="nv">$ </span><span class="nb">cat </span>colonel.txt
 </code></pre></div>      </div>
     </blockquote>
     <blockquote class="code-out">
-      <div id="code-out-25" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+      <div class="box-title code-out-title" id="code-out-25"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Maybe judge Brown should also be considerable as a suspect.
 </code></pre></div>      </div>
     </blockquote>
     <blockquote class="code-in">
-      <div id="code-in-create-and-edit-judge-txt" class="box-title" aria-label="code-in box: Create and edit `judge.txt`"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Create and edit `judge.txt`</div>
+      <div class="box-title code-in-title" id="code-in-create-and-edit-judge-txt"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Create and edit `judge.txt`</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano judge.txt
 <span class="nv">$ </span><span class="nb">cat </span>judge.txt
 </code></pre></div>      </div>
     </blockquote>
     <blockquote class="code-out">
-      <div id="code-out-26" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+      <div class="box-title code-out-title" id="code-out-26"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Judge seems like a nice guy, but has a shady past.
 </code></pre></div>      </div>
     </blockquote>
 
     <p>Now you can add both files to the staging area. We can do that in one line:</p>
     <blockquote class="code-in">
-      <div id="code-in-add-both-files" class="box-title" aria-label="code-in box: Add both files"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Add both files</div>
+      <div class="box-title code-in-title" id="code-in-add-both-files"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Add both files</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add colonel.txt judge.txt
 </code></pre></div>      </div>
     </blockquote>
 
     <blockquote class="code-in">
-      <div id="code-in-or-with-multiple-commands" class="box-title" aria-label="code-in box: Or with multiple commands: "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Or with multiple commands:</div>
+      <div class="box-title code-in-title" id="code-in-or-with-multiple-commands"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Or with multiple commands:</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add colonel.txt
 <span class="nv">$ </span>git add judge.txt
 </code></pre></div>      </div>
@@ -1888,12 +1911,12 @@ this exercise. Your output may vary.</p>
 
     <p>Now the files are ready to commit. You can check that using <code class="language-plaintext highlighter-rouge">git status</code>. If you are ready to commit use:</p>
     <blockquote class="code-in">
-      <div id="code-in-commit-changes" class="box-title" aria-label="code-in box: Commit changes"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Commit changes</div>
+      <div class="box-title code-in-title" id="code-in-commit-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Commit changes</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Write plans to start a base on judge"</span>
 </code></pre></div>      </div>
     </blockquote>
     <blockquote class="code-out">
-      <div id="code-out-27" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+      <div class="box-title code-out-title" id="code-out-27"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[main cc127c2]
  Write plans to start a base on judge
  2 files changed, 2 insertions(+)
@@ -1904,7 +1927,7 @@ this exercise. Your output may vary.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-bio-repository" class="box-title" aria-label="question box: `bio` Repository"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: `bio` Repository</div>
+  <div class="box-title question-title" id="question-bio-repository"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: `bio` Repository</div>
 
   <ol>
     <li>Create a new Git repository on your computer called <code class="language-plaintext highlighter-rouge">bio</code>.</li>
@@ -1916,11 +1939,11 @@ between its updated state and its original state.</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>If needed, move out of the <code class="language-plaintext highlighter-rouge">suspects</code> folder:</p>
     <blockquote class="code-in">
-      <div id="code-in-change-directory" class="box-title" aria-label="code-in box: Change directory"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Change directory</div>
+      <div class="box-title code-in-title" id="code-in-change-directory"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Change directory</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> ..
 </code></pre></div>      </div>
     </blockquote>
@@ -1934,7 +1957,7 @@ between its updated state and its original state.</li>
     </blockquote>
 
     <blockquote class="code-in">
-      <div id="code-in-initialise-git" class="box-title" aria-label="code-in box: Initialise git:"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Initialise git:</div>
+      <div class="box-title code-in-title" id="code-in-initialise-git"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Initialise git:</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git init
 </code></pre></div>      </div>
     </blockquote>
@@ -1943,7 +1966,7 @@ between its updated state and its original state.</li>
 Once in place, add and commit it to the repository:</p>
 
     <blockquote class="code-in">
-      <div id="code-in-create-file-and-edit-it" class="box-title" aria-label="code-in box: Create file and edit it"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Create file and edit it</div>
+      <div class="box-title code-in-title" id="code-in-create-file-and-edit-it"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Create file and edit it</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add me.txt
 <span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Add biography file"</span>
 </code></pre></div>      </div>
@@ -1954,7 +1977,7 @@ To display the differences
 between its updated state and its original state, use <code class="language-plaintext highlighter-rouge">git diff</code>:</p>
 
     <blockquote class="code-in">
-      <div id="code-in-display-the-differences" class="box-title" aria-label="code-in box: Display the differences"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Display the differences</div>
+      <div class="box-title code-in-title" id="code-in-display-the-differences"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Display the differences</div>
       <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff me.txt
 </code></pre></div>      </div>
     </blockquote>
@@ -1972,14 +1995,14 @@ progress by looking, so let’s do that using our <code class="language-plaintex
 let’s make a change to <code class="language-plaintext highlighter-rouge">colonel.txt</code>, adding yet another line.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-edit-colonel-txt-1" class="box-title" aria-label="code-in box: Edit `colonel.txt`"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Edit `colonel.txt`</div>
+  <div class="box-title code-in-title" id="code-in-edit-colonel-txt-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Edit `colonel.txt`</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano colonel.txt
 <span class="nv">$ </span><span class="nb">cat </span>colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-28" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-28"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No alibi for the night of murder.
 No clear motive. Seems high unlikely.
 Fingerprints on victims glasses.
@@ -1990,13 +2013,13 @@ Maybe judge Brown should also be considerable as a suspect.
 <p>Now, let’s see what we get.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-display-the-changes" class="box-title" aria-label="code-in box: Display the changes"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Display the changes</div>
+  <div class="box-title code-in-title" id="code-in-display-the-changes"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Display the changes</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff HEAD colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-29" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-29"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/colonel.txt b/colonel.txt
 index b36abfd..0848c8d 100644
 --- a/colonel.txt
@@ -2016,7 +2039,7 @@ that by adding <code class="language-plaintext highlighter-rouge">~1</code>
 to refer to the commit one before <code class="language-plaintext highlighter-rouge">HEAD</code>.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-refer-to-previous-commits" class="box-title" aria-label="code-in box: Refer to previous commits"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Refer to previous commits</div>
+  <div class="box-title code-in-title" id="code-in-refer-to-previous-commits"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Refer to previous commits</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff HEAD~1 colonel.txt
 </code></pre></div>  </div>
 </blockquote>
@@ -2025,13 +2048,13 @@ to refer to the commit one before <code class="language-plaintext highlighter-ro
 again, but with the notation <code class="language-plaintext highlighter-rouge">HEAD~1</code>, <code class="language-plaintext highlighter-rouge">HEAD~2</code>, and so on, to refer to them:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-refer-to-previous-commits-1" class="box-title" aria-label="code-in box: Refer to previous commits"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Refer to previous commits</div>
+  <div class="box-title code-in-title" id="code-in-refer-to-previous-commits-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Refer to previous commits</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff HEAD~3 colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-30" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-30"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/colonel.txt b/colonel.txt
 index df0654a..b36abfd 100644
 --- a/colonel.txt
@@ -2049,13 +2072,13 @@ well as the commit message, rather than the <em>differences</em> between a commi
 working directory that we see by using <code class="language-plaintext highlighter-rouge">git diff</code>.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-git-show-and-git-diff-differences" class="box-title" aria-label="code-in box: `git show` and `git diff` differences "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: `git show` and `git diff` differences</div>
+  <div class="box-title code-in-title" id="code-in-git-show-and-git-diff-differences"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: `git show` and `git diff` differences</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git show HEAD~3 colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-31" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-31"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Sherlock Holmes &lt;sherlock@baker.street&gt;
 Date:   Thu Aug 22 09:51:46 2013 -0400
@@ -2092,13 +2115,13 @@ Our first commit was given the ID
 so let’s try this:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-display-specific-commit" class="box-title" aria-label="code-in box: Display specific commit"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Display specific commit</div>
+  <div class="box-title code-in-title" id="code-in-display-specific-commit"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Display specific commit</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-32" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-32"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/colonel.txt b/colonel.txt
 index df0654a..93a3e13 100644
 --- a/colonel.txt
@@ -2116,13 +2139,13 @@ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters (typically seven for normal size projects):</p>
 
 <blockquote class="code-in">
-  <div id="code-in-shorter-alternative" class="box-title" aria-label="code-in box: Shorter alternative"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Shorter alte<span class="notranslate">rna</span>tive</div>
+  <div class="box-title code-in-title" id="code-in-shorter-alternative"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Shorter alternative</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git diff f22b25e colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-33" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-33"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diff --git a/colonel.txt b/colonel.txt
 index df0654a..93a3e13 100644
 --- a/colonel.txt
@@ -2145,13 +2168,13 @@ Let’s suppose we change our mind about the last update to
 but those changes haven’t been staged:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-check-3" class="box-title" aria-label="code-in box: Check"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check</div>
+  <div class="box-title code-in-title" id="code-in-check-3"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-34" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-34"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
@@ -2167,14 +2190,14 @@ no changes added to commit (use "git add" and/or "git commit -a")
 by using <code class="language-plaintext highlighter-rouge">git checkout</code>:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-restore-with-git-checkout" class="box-title" aria-label="code-in box: Restore with `git checkout`"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Restore with `git checkout`</div>
+  <div class="box-title code-in-title" id="code-in-restore-with-git-checkout"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Restore with `git checkout`</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout HEAD colonel.txt
 <span class="nv">$ </span><span class="nb">cat </span>colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-35" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-35"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No alibi for the night of murder.
 No clear motive. Seems high unlikely.
 Fingerprints on victims glasses.
@@ -2190,31 +2213,31 @@ If we want to go back even further,
 we can use a commit identifier instead:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-restrore-specific-commit" class="box-title" aria-label="code-in box: Restrore specific commit"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Restrore specific commit</div>
+  <div class="box-title code-in-title" id="code-in-restrore-specific-commit"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Restrore specific commit</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout f22b25e colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-in">
-  <div id="code-in-check-4" class="box-title" aria-label="code-in box: Check"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check</div>
+  <div class="box-title code-in-title" id="code-in-check-4"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-36" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-36"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>No alibi for the night of murder.
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-in">
-  <div id="code-in-check-5" class="box-title" aria-label="code-in box: Check"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Check</div>
+  <div class="box-title code-in-title" id="code-in-check-5"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Check</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="code-out">
-  <div id="code-out-37" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+  <div class="box-title code-out-title" id="code-out-37"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch main
 Changes to be committed:
   (use "git reset HEAD &lt;file&gt;..." to unstage)
@@ -2229,13 +2252,13 @@ Again, we can put things back the way they were
 by using <code class="language-plaintext highlighter-rouge">git checkout</code>:</p>
 
 <blockquote class="code-in">
-  <div id="code-in-restore" class="box-title" aria-label="code-in box: Restore "><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Restore</div>
+  <div class="box-title code-in-title" id="code-in-restore"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Restore</div>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout HEAD colonel.txt
 </code></pre></div>  </div>
 </blockquote>
 
 <blockquote class="warning">
-  <div id="warning-don-t-lose-your-head" class="box-title" aria-label="warning box: Don't Lose Your HEAD"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Don't Lose Your HEAD</div>
+  <div class="box-title warning-title" id="warning-don-t-lose-your-head"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Don't Lose Your HEAD</div>
 
   <p>Above we used</p>
 
@@ -2248,13 +2271,13 @@ your intentions if you are not accurate with the typing. For example,
 if you forget <code class="language-plaintext highlighter-rouge">colonel.txt</code> in the previous command.</p>
 
   <blockquote class="code-in">
-    <div id="code-in-error-recipe" class="box-title" aria-label="code-in box: Error recipe"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Error recipe</div>
+    <div class="box-title code-in-title" id="code-in-error-recipe"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Error recipe</div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git checkout f22b25e
 </code></pre></div>    </div>
   </blockquote>
 
   <blockquote class="code-out">
-    <div id="code-out-38" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+    <div class="box-title code-out-title" id="code-out-38"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Note: checking out 'f22b25e'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -2283,15 +2306,15 @@ the commit in which we made the change we’re trying to discard.
 In the example below, we want to retrieve the state from before the most
 recent commit (<code class="language-plaintext highlighter-rouge">HEAD~1</code>), which is commit <code class="language-plaintext highlighter-rouge">f22b25e</code>:</p>
 
-<p><img src="../../images/bash-git/git-checkout.svg" alt="Git Checkout. " loading="lazy" /></p>
+<p><img src="../../images/bash-git/git-checkout.svg" alt="Git Checkout. " width="622" height="355" loading="lazy" /></p>
 
 <p>So, to put it all together,
 here’s how Git works in cartoon form:</p>
 
-<p><img src="../../images/bash-git/git_staging.svg" alt="https://figshare.com/articles/How_Git_works_a_cartoon/1328266. " loading="lazy" /></p>
+<p><img src="../../images/bash-git/git_staging.svg" alt="https://figshare.com/articles/How_Git_works_a_cartoon/1328266. " width="551" height="407" loading="lazy" /></p>
 
 <blockquote class="tip">
-  <div id="tip-simplifying-the-common-case" class="box-title"><button type="button" aria-controls="tip-simplifying-the-common-case-contents" aria-expanded="true" aria-label="Toggle tip box: Simplifying the Common Case"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Simplifying the Common Case<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-simplifying-the-common-case"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-simplifying-the-common-case" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Simplifying the Common Case<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>If you read the output of <code class="language-plaintext highlighter-rouge">git status</code> carefully,
 you’ll see that it includes this hint:</p>
@@ -2317,7 +2340,7 @@ on the other hand,
 moving backward and forward in time becomes much easier.</p>
 
 <blockquote class="question">
-  <div id="question-recovering-older-versions-of-a-file" class="box-title" aria-label="question box: Recovering Older Versions of a File"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Recovering Older Versions of a File</div>
+  <div class="box-title question-title" id="question-recovering-older-versions-of-a-file"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Recovering Older Versions of a File</div>
 
   <p>Jennifer has made changes to the Python script that she has been working on for weeks, and the
 modifications she made this morning “broke” the script and it no longer runs. She has spent
@@ -2346,7 +2369,7 @@ let her recover the last committed version of her Python script called
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-6" class="box-title"><button type="button" aria-controls="solution-6-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The answer is (5)-Both 2 and 4.</p>
 
@@ -2368,7 +2391,7 @@ As discussed above, you are left in a <em>detached</em> <code class="language-pl
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-reverting-a-commit" class="box-title" aria-label="question box: Reverting a Commit"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Reverting a Commit</div>
+  <div class="box-title question-title" id="question-reverting-a-commit"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Reverting a Commit</div>
 
   <p>Jennifer is collaborating with colleagues on her Python script.  She
 realizes her last commit to the project’s repository contained an error, and
@@ -2402,7 +2425,7 @@ what is the missing command?</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-7" class="box-title"><button type="button" aria-controls="solution-7-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The command <code class="language-plaintext highlighter-rouge">git log</code> lists project history with commit IDs.</p>
 
@@ -2413,7 +2436,7 @@ else has committed changes to the repository.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-understanding-workflow-and-history" class="box-title" aria-label="question box: Understanding Workflow and History"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Understanding <span class="notranslate">Workflow</span> and History</div>
+  <div class="box-title question-title" id="question-understanding-workflow-and-history"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Understanding Workflow and History</div>
 
   <p>What is the output of the last command in</p>
 
@@ -2447,7 +2470,7 @@ judge has enemies in the city
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-8" class="box-title"><button type="button" aria-controls="solution-8-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The answer is 2.</p>
 
@@ -2470,7 +2493,7 @@ has only one line.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-checking-understanding-of-git-diff" class="box-title" aria-label="question box: Checking Understanding of `git diff"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Checking Understanding of `git diff</div>
+  <div class="box-title question-title" id="question-checking-understanding-of-git-diff"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Checking Understanding of `git diff</div>
 
   <p>Consider this command: <code class="language-plaintext highlighter-rouge">git diff HEAD~9 colonel.txt</code>. What do you predict this command
 will do if you execute it? What happens when you do execute it? Why?</p>
@@ -2481,7 +2504,7 @@ and what does happen?</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-getting-rid-of-staged-changes" class="box-title" aria-label="question box: Getting Rid of Staged Changes"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Getting Rid of Staged Changes</div>
+  <div class="box-title question-title" id="question-getting-rid-of-staged-changes"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Getting Rid of Staged Changes</div>
 
   <p><code class="language-plaintext highlighter-rouge">git checkout</code> can be used to restore a previous commit when unstaged changes have
 been made, but will it also work for changes that have been staged but not committed?
@@ -2490,7 +2513,7 @@ you can remove your change.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-explore-and-summarize-histories" class="box-title" aria-label="question box: Explore and Summarize Histories"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Explore and Summarize Histories</div>
+  <div class="box-title question-title" id="question-explore-and-summarize-histories"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Explore and Summarize Histories</div>
 
   <p>Exploring history is an important part of Git, and often it is a challenge to find
 the right commit ID, especially if the commit is from several months ago.</p>
@@ -2501,7 +2524,7 @@ When you type <code class="language-plaintext highlighter-rouge">git log</code>,
 How can you narrow down the search?</p>
 
   <blockquote class="solution">
-    <div id="solution-9" class="box-title"><button type="button" aria-controls="solution-9-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>Recall that the <code class="language-plaintext highlighter-rouge">git diff</code> command allows us to explore one specific file,
 e.g., <code class="language-plaintext highlighter-rouge">git diff colonel.txt</code>. We can apply a similar idea here.</p>
 
@@ -2528,10 +2551,12 @@ the difference between each commit.</p>
   </blockquote>
 </blockquote>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Version control is like an unlimited ‘undo’.</p>
@@ -2593,38 +2618,18 @@ the difference between each commit.</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Version Control with Git (Foundations of Data Science)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Version Control with Git (Foundations of Data Science)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">,  <b>Version Control with Git (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Sofoklis Keisaris,  <b>Version Control with Git (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2636,7 +2641,7 @@ the difference between each commit.</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -2645,28 +2650,31 @@ the difference between each commit.</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{data-science-bash-git,
 author = "Sofoklis Keisaris",
-title = "Version Control with Git (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Version Control with Git (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/bash-git/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2709,11 +2717,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2722,49 +2730,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/data-science/tutorials/bash-git/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00072">https://gxy.io/GTN:T00072</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/bash-git/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

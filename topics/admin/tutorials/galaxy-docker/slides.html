@@ -1,41 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Docker and Galaxy</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/galaxy-docker/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Docker and Galaxy">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-10-18 08:58:35 +0000">
+<meta name="DC.creator" content="Bérénice Batut">
+<meta name="DC.creator" content="Björn Grüning">
 
+        
+        
+        
+        
+        <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Docker and Galaxy" />
+        <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/gat.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Docker and Galaxy</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:title" content="Galaxy Training: Docker and Galaxy" />
-    <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/galaxy-docker/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -86,6 +115,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -113,6 +146,7 @@
   "name": "Slides for 'Docker and Galaxy' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/admin/tutorials/galaxy-docker/slides.html",
   "timeRequired": "PT1H",
+  "teaches": "Docker basics\n - Galaxy Docker image (usage)\n - Galaxy Docker (internals)\n - Galaxy flavours",
   "keywords": "admin",
   "description": "The questions this  addresses are:\n - Why Docker? What is it?\n - How to use Docker?\n - How to integrate Galaxy in Docker to facilitate its deployment?\n\n\nThe objectives are:\n - Docker basics\n - Galaxy Docker image (usage)\n - Galaxy Docker (internals)\n - Galaxy flavours\n\n",
   "inLanguage": {
@@ -125,8 +159,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
@@ -148,56 +182,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "name": "Björn Grüning",
-      "image": "https://avatars.githubusercontent.com/bgruening",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-3079-6586",
-      "orcid": "https://orcid.org/0000-0002-3079-6586"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
@@ -223,12 +209,19 @@
       "description": "Resources related to configuration and maintenance of Galaxy servers",
       "url": "https://training.galaxyproject.org/training-material/topics/admin/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "### Preparing Admin Training VMs"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -264,22 +257,17 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a>
 	</div>
 
 </div>
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00011">gxy.io/GTN:S00011</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -349,7 +337,7 @@ Useful when presenting.
 
 ### Preparing Admin Training VMs
 
-If you're falling along on Galaxy Admin Training VMs, you will need to setup Docker.
+If you&apos;re falling along on Galaxy Admin Training VMs, you will need to setup Docker.
 
 You can modify your Ansible setup to configure this as described at [bit.ly/gxadmin-docker-playbook](http://bit.ly/gxadmin-docker-playbook).
 
@@ -361,7 +349,7 @@ sudo supervisorctl stop galaxy
 
 ???
 
-TODO: Remove this slide after the training, it isn't general.
+TODO: Remove this slide after the training, it isn&apos;t general.
 
 ---
 
@@ -503,7 +491,7 @@ Similar resource isolation and allocation benefits
 
 ### The client
 
-![A command line is explained, docker is the program you're using, run is the subcommand that creates and runs a container, and hello-world is the image you want to load.](../../images/docker_command.png)
+![A command line is explained, docker is the program you&apos;re using, run is the subcommand that creates and runs a container, and hello-world is the image you want to load.](../../images/docker_command.png)
 
 ???
 
@@ -524,7 +512,7 @@ Client: to talk with Docker
 Image:
 - recipe that tell how to build your container
 - A filesystem and parameters to use at runtime
-- snapshot of the content of a container: it doesn't have state and never changes once built
+- snapshot of the content of a container: it doesn&apos;t have state and never changes once built
 
 Container
 - a running instance of an image
@@ -600,7 +588,7 @@ For more examples and ideas, visit:
 
 ```sh
 $ docker run docker/whalesay cowsay Galaxy
-Unable to find image 'docker/whalesay:latest' locally
+Unable to find image &apos;docker/whalesay:latest&apos; locally
 latest: Pulling from docker/whalesay
 e190868d63f8: Pull complete
 909cd34c6fd7: Pull complete
@@ -659,7 +647,7 @@ Run a command in a new container
   --net=default                   Connect a container to a network
   ...
   -P, --publish-all               Publish all exposed ports to random ports
-  -p, --publish=[]                Publish a container's port(s) to the host
+  -p, --publish=[]                Publish a container&apos;s port(s) to the host
   --privileged                    Give extended privileges to this container
   --rm                            Automatically remove the container when it exits
   -t, --tty                       Allocate a pseudo-TTY
@@ -703,7 +691,7 @@ $ docker run -i -t
     -e &quot;NONUSE=reports&quot;
     -e &quot;GALAXY_CONFIG_ADMIN_USERS=albert@einstein.gov&quot;
     -e &quot;GALAXY_CONFIG_MASTER_API_KEY=83D4jaba7330aDKHkakjGa937&quot;
-    -e &quot;GALAXY_CONFIG_BRAND='My own Galaxy flavour'&quot;
+    -e &quot;GALAXY_CONFIG_BRAND=&apos;My own Galaxy flavour&apos;&quot;
     -e &quot;GALAXY_LOGGING=full&quot;
 
     bgruening/galaxy-stable:18.05
@@ -901,14 +889,14 @@ cowsay Galaxy
 ```sh
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-7179e85085ef        docker/whalesay     &quot;/bin/sh -c 'while tr&quot;   12 minutes ago      Up 2 seconds                            agitated_lovelace
+7179e85085ef        docker/whalesay     &quot;/bin/sh -c &apos;while tr&quot;   12 minutes ago      Up 2 seconds                            agitated_lovelace
 $
 $ docker ps -a
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                        PORTS               NAMES
 7de97f8dd5eb        docker/whalesay        &quot;/bin/bash&quot;              4 minutes ago       Exited (0) About a minute ago                       trusting_swanson
 9218bbee9c48        docker/whalesay        &quot;/bin/bash&quot;              5 minutes ago       Exited (0) 4 minutes ago                            evil_swirles
-7179e85085ef        docker/whalesay        &quot;/bin/sh -c 'while tr&quot;   13 minutes ago      Up 55 seconds                                       agitated_lovelace
-ad275579c454        ubuntu                 &quot;/bin/sh -c 'while tr&quot;   15 minutes ago      Exited (137) 13 minutes ago                         condescending_mestorf
+7179e85085ef        docker/whalesay        &quot;/bin/sh -c &apos;while tr&quot;   13 minutes ago      Up 55 seconds                                       agitated_lovelace
+ad275579c454        ubuntu                 &quot;/bin/sh -c &apos;while tr&quot;   15 minutes ago      Exited (137) 13 minutes ago                         condescending_mestorf
 66179c4d16da        ubuntu                 &quot;/bin/bash&quot;              About an hour ago   Exited (130) 15 minutes ago                         determined_pasteur
 27386c8b69b3        ubuntu                 &quot;/bin/sh&quot;                About an hour ago   Exited (0) About an hour ago                        lonely_ramanujan
 4cfefa19e6fa        docker/whalesay        &quot;/bin/bash&quot;              About an hour ago   Exited (0) About an hour ago                        thirsty_chandrasekhar
@@ -950,7 +938,7 @@ Need a Dockerfile. I will describe it later. Here it is just to give you a broad
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-1&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands on! (1)&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands on! (1)&lt;/div&gt;
+&lt;hands-on-title&gt;Hands on! (1)&lt;/hands-on-title&gt;
 
 Play with `quay.io/biocontainers/samtools:1.3--1`
 
@@ -964,7 +952,7 @@ Play with `quay.io/biocontainers/samtools:1.3--1`
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-2&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands on! (2)&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands on! (2)&lt;/div&gt;
+&lt;hands-on-title&gt;Hands on! (2)&lt;/hands-on-title&gt;
 
 Play with `quay.io/biocontainers/samtools:1.3--1`
 
@@ -1022,7 +1010,7 @@ Review of the commands
 
 ---
 
-### But Don't Do it Manually, Use Biocontainers
+### But Don&apos;t Do it Manually, Use Biocontainers
 
 [Tool Dependencies and Containers](/training-material/topics/dev/tutorials/containers/slides.html)
 
@@ -1054,7 +1042,7 @@ https://github.com/bgruening/docker-galaxy-stable
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands on!&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands on!&lt;/div&gt;
+&lt;hands-on-title&gt;Hands on!&lt;/hands-on-title&gt;
 
 Launch a Galaxy Docker Container and try to
 
@@ -1133,7 +1121,7 @@ tools:
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-1&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands on!&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands on!&lt;/div&gt;
+&lt;hands-on-title&gt;Hands on!&lt;/hands-on-title&gt;
 
 Create a Galaxy Flavour
 
@@ -1173,15 +1161,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a>
 	</div>
 
 </div>
@@ -1201,10 +1181,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -1216,7 +1196,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -1228,6 +1208,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

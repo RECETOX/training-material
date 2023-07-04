@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,44 +8,76 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/news/2022/06/02/workflow-reports-tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="New Tutorial: Workflow Reports" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-06-02 12:13:17 +0000" />
-<meta name="DC.creator" content="Saskia Hiltemann" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/news/2022/06/02/workflow-reports-tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="New Tutorial: Workflow Reports">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-18 11:55:15 +0000">
+<meta name="DC.creator" content="Saskia Hiltemann">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: New Tutorial: Workflow Reports">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: New Tutorial: Workflow Reports" />
-        <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-materialtopics/galaxy-interface/tutorials/workflow-reports/images/invocations-list.png">
 
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,38 +94,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/news/2022/06/02/workflow-reports-tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/news/2022/06/02/workflow-reports-tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/news/2022/06/02/workflow-reports-tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/news/2022/06/02/workflow-reports-tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/news/2022/06/02/workflow-reports-tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/news/2022/06/02/workflow-reports-tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -129,8 +133,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/news/2022/06/02/workflow-reports-tutorial.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/news/_posts/2022-06-02-workflow-reports-tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -155,27 +158,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -187,13 +177,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/news/2022/06/02/workflow-reports-tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/news/2022/06/02/workflow-reports-tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/news/2022/06/02/workflow-reports-tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/news/2022/06/02/workflow-reports-tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/news/2022/06/02/workflow-reports-tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/news/2022/06/02/workflow-reports-tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -206,7 +196,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -220,19 +210,40 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section>
   <h1>New Tutorial: Workflow Reports</h1>
 
-  
+  <article>
+
 
 <div class="newsitem">
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
+		
+<table class="contributions">
+	
+	<tr>
+		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a>
+		</td>
+	</tr>
+	
 
+
+	
+
+	
+
+	
+
+	
+
+	
+</table>
 
 
 	</div>
@@ -241,17 +252,22 @@
 
 
 
-<button class="label label-default tutorial_tag" id="new tutorial" style="background-color: hsl(46, 80.0%, 85%); color: #333; border: 1px solid hsl(46, 80.0%, 45%)" title="new tutorial">new tutorial</button>
+<span class="label label-default tutorial_tag" id="new tutorial" style="--color-primary: #ffcea4; --color-darker: #ffaf45; --color-dimmed: #ffbe7e;">new tutorial</span>
 
-<button class="label label-default tutorial_tag" id="Galaxy Tips & Tricks" style="background-color: hsl(241, 80.0%, 85%); color: #333; border: 1px solid hsl(241, 80.0%, 45%)" title="Galaxy Tips & Tricks">Galaxy Tips & Tricks</button>
+<span class="label label-default tutorial_tag" id="Galaxy Tips & Tricks" style="--color-primary: #b9dbff; --color-darker: #84c5ff; --color-dimmed: #a0d0ff;">Galaxy Tips & Tricks</span>
 
 
 <hr/>
 
 <div class="row">
   <div class="col-md-8">
-    <p class="text-muted">
-      Posted on: 2 June 2022
+    <p class="text-muted" style="display: inline-flex; width: 100%; justify-content: space-between;">
+      <span>Posted on: 2 June 2022</span>
+      <span>
+        
+        <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a class="badge badge-info" href="https://gxy.io/GTN:N00036">https://gxy.io/GTN:N00036</a>
+        
+      </span>
     </p>
 
     <p>Workflow reports are a great Galaxy feature that enable you to define summary reports for any workflow to display the most important results in a single view. This tutorial will guide you through the basics of viewing, customizing, and sharing such workflow reports!</p>
@@ -263,16 +279,19 @@
     
 
     
-    <a href="/training-material/topics/galaxy-interface/tutorials/workflow-reports/tutorial.html" class="btn btn-primary">View Tutorial</a>
+    <a href="/training-material/topics/galaxy-interface/tutorials/workflow-reports/tutorial.html" class="btn btn-primary">View Material</a>
     
 
+    
+
+    
     
 
     
   </div>
 
   <div class="col-md-4">
-    <img alt="Access the workflow report from the invocations menu" src="/training-material/topics/galaxy-interface/tutorials/workflow-reports/images/invocations-list.png" width="300" loading="lazy"/>
+    <img alt="Access the workflow report from the invocations menu" src="/training-material/topics/galaxy-interface/tutorials/workflow-reports/images/invocations-list.png" width="300"/>
   </div>
 </div>
 </div>
@@ -291,14 +310,14 @@
   "description": "<p>Workflow reports are a great Galaxy feature that enable you to define summary reports for any work",
   "articleBody": "<p>Workflow reports are a great Galaxy feature that enable you to define summary reports for any workflow to display the most important results in a single view. This tutorial will guide you through the basics of viewing, customizing, and sharing such workflow reports!</p>\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/TmZzfaKf1V0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen=\"\"></iframe>\n<p><br /></p>\n",
   "datePublished": "2022-06-02 00:00:00 +0000",
-  "dateModified": "2022-06-02 12:13:17 +0000",
+  "dateModified": "2023-05-18 11:55:15 +0000",
   "author": [
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
@@ -352,61 +371,167 @@
   "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users."
 }
 </script>
+</article>
+
+<hr/>
+<h2>Recent News</h2>
+<a href="/training-material/news.html">See all news</a>
+
+<div>
+
+
+
+	<article>
+	<h3>
+		<a href="https://ai4life.eurobioimaging.eu/ai4life-teams-up-with-galaxy-training-network-gtn-to-enhance-training-resources/">AI4Life teams up with GTN to enhance training resources</a>
+	</h3>
+	<p>
+	27 June 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #d5d3ff; --color-darker: #bbb8ff; --color-dimmed: #c8c6ff;">new topic</span>
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #ffc6f3; --color-darker: #ff9fed; --color-dimmed: #ffb3ef;">new community</span>
+	
+	</p>
+	<p class="card-text">
+		
+		This is an external post, please follow the link to read it.
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/06/21/fair.html">ELIXIR-UK Fellow Launches New FAIR Data Management Training</a>
+	</h3>
+	<p>
+	21 June 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #d5d3ff; --color-darker: #bbb8ff; --color-dimmed: #c8c6ff;">new topic</span>
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #ffcea4; --color-darker: #ffaf45; --color-dimmed: #ffbe7e;">new tutorial</span>
+	
+	</p>
+	<p class="card-text">
+		
+		Katarzyna Kamieniecka (University of Bradford), a member of the ELIXIR-UK Fellowship Programme, has just launched a new series of lessons to improve {FAIR} data management in the life sciences. The lessons are designed to help researchers and research support staff understand the principles of FAIR data management and apply them to their own work.
+
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/06/07/pan-galactic-search.html">New Feature: Pan-Galactic Tool Search</a>
+	</h3>
+	<p>
+	7 June 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #d3d4ff; --color-darker: #b8b9ff; --color-dimmed: #c5c7ff;">new feature</span>
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #fff6c7; --color-darker: #f1dc00; --color-dimmed: #ffe92f;">gtn</span>
+	
+	</p>
+	<p class="card-text">
+		
+		Did you ever want to run a tool, but not know where it might be available?
+The GTN has you covered with the Pan-Galactic Tool Search that is now available.
+
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/06/01/hart.html">GTN Celebrates Pride Month: Alan Hart & M. Tuberculosis</a>
+	</h3>
+	<p>
+	1 June 2023 &nbsp;
+	
+	</p>
+	<p class="card-text">
+		
+		June is Pride Month in the US and countries around the world. We have automatically activated the new Progress Pride theme on the home page (Click to Activate) if you hadn’t already selected a theme.
+
+		
+	</p>
+</article>
+
+
+	<article>
+	<h3>
+		<a href="/training-material/news/2023/05/15/isoform-usage-training.html">New Galaxy training: Genome-wide alternative splicing analysis</a>
+	</h3>
+	<p>
+	15 May 2023 &nbsp;
+	
+	<span class="label label-default tutorial_tag" style="--color-primary: #ffcea4; --color-darker: #ffaf45; --color-dimmed: #ffbe7e;">new tutorial</span>
+	
+	</p>
+	<p class="card-text">
+		
+		The GTN hosts a new training for analyzing alternative splicing at genome-wide scale!
+
+		
+	</p>
+</article>
+
+
+</div>
 
 
 </section>
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:N00036">https://gxy.io/GTN:N00036</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/news/_posts/2022-06-02-workflow-reports-tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/3e099f33f0b616ddeef76c2a1ee9871ebbceb042">3e099f33f0b616ddeef76c2a1ee9871ebbceb042</a></p>
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

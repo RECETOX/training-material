@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,48 +8,315 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Motivation and Demotivation" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Bérénice Batut" />
-<meta name="DC.creator" content="Fotis E. Psomopoulos" />
-<meta name="DC.creator" content="Allegra Via" />
-<meta name="DC.creator" content="Patricia Palagi" />
-<meta name="DC.creator" content="ELIXIR Goblet Train the Trainers" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Motivation and Demotivation">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-06-16 09:43:23 +0000">
+<meta name="DC.creator" content="Bérénice Batut">
+<meta name="DC.creator" content="Fotis E. Psomopoulos">
+<meta name="DC.creator" content="Allegra Via">
+<meta name="DC.creator" content="Patricia Palagi">
+<meta name="DC.creator" content="ELIXIR Goblet Train the Trainers">
 
         
         
         
         
+        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Motivation and Demotivation">
+        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co...">
         
-        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Motivation and Demotivation" />
-        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-06-16 09:43:23 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Motivation and Demotivation",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Teaching and Hosting Galaxy training",
+    "description": "Galaxy is a great solution to train the bioinformatics concepts:\nnumerous bioinformatics tools are available (almost 5,000 in the ToolShed), it\ncan be used by people without any computer science skills, it trains to use\ntechnology, outlining available resources and efforts that have made them\naccessible to researchers, it is scalable.<br>\n\nThe Galaxy community via the Galaxy Training Network supports instructors and\nworkshop organizers using with a series of recommandations (tutorials below) and\nregular discussion meetings.\n",
+    "url": "https://training.galaxyproject.org/training-material/topics/teaching/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Motivation and Demotivation' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html",
+  "timeRequired": "PT60M",
+  "teaches": "List factors of motivation and demotivation\n - Identify what instructors can do to motivate and avoid demotivating learners",
+  "keywords": "teaching",
+  "description": "The questions this  addresses are:\n - What is motivation and demotivation?\n - How do motivation and demotivation impact learning processes?\n - What can instructors do to motivate learners?\n\n\nThe objectives are:\n - List factors of motivation and demotivation\n - Identify what instructors can do to motivate and avoid demotivating learners\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "competencyRequired": [
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/learning-principles/tutorial.html",
+      "name": "Principles of learning and how they apply to training and teaching",
+      "description": "Hands-on for 'Principles of learning and how they apply to training and teaching' tutorial",
+      "learningResourceType": "hands-on tutorial",
+      "interactivityType": "expositive",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    }
+  ],
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "name": "Bérénice Batut",
+      "image": "https://avatars.githubusercontent.com/bebatut",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9852-1987",
+      "orcid": "https://orcid.org/0000-0001-9852-1987"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/fpsom/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/fpsom/",
+      "name": "Fotis E. Psomopoulos",
+      "image": "https://avatars.githubusercontent.com/fpsom",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0002-0222-4273",
+      "orcid": "https://orcid.org/0000-0002-0222-4273"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/allegravia/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/allegravia/",
+      "name": "Allegra Via",
+      "image": "https://avatars.githubusercontent.com/allegravia",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/ppalagi/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/ppalagi/",
+      "name": "Patricia Palagi",
+      "image": "https://avatars.githubusercontent.com/ppalagi",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/elixir-goblet-ttt/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/elixir-goblet-ttt/",
+      "name": "ELIXIR Goblet Train the Trainers",
+      "image": "https://avatars.githubusercontent.com/elixir-goblet-ttt",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Teaching and Hosting Galaxy training",
+      "description": "Galaxy is a great solution to train the bioinformatics concepts:\nnumerous bioinformatics tools are available (almost 5,000 in the ToolShed), it\ncan be used by people without any computer science skills, it trains to use\ntechnology, outlining available resources and efforts that have made them\naccessible to researchers, it is scalable.<br>\n\nThe Galaxy community via the Galaxy Training Network supports instructors and\nworkshop organizers using with a series of recommandations (tutorials below) and\nregular discussion meetings.\n",
+      "url": "https://training.galaxyproject.org/training-material/topics/teaching/"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,38 +332,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/teaching/tutorials/motivation_demotivation/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/teaching/tutorials/motivation_demotivation/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/teaching/tutorials/motivation_demotivation/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/teaching/tutorials/motivation_demotivation/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/teaching/tutorials/motivation_demotivation/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/teaching/tutorials/motivation_demotivation/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -116,9 +355,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/teaching/faqs/" title="Check our FAQs for the Teaching and Hosting Galaxy training topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -136,7 +377,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/teaching/tutorials/motivation_demotivation/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -165,27 +405,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -197,13 +424,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/teaching/tutorials/motivation_demotivation/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/teaching/tutorials/motivation_demotivation/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/teaching/tutorials/motivation_demotivation/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/teaching/tutorials/motivation_demotivation/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/teaching/tutorials/motivation_demotivation/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/teaching/tutorials/motivation_demotivation/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -216,7 +443,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -230,8 +457,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -248,131 +480,13 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 14:23:35 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Motivation and Demotivation",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Teaching and Hosting Galaxy training",
-    "description": "Galaxy is a great solution to train the bioinformatics concepts:\nnumerous bioinformatics tools are available (almost 5,000 in the ToolShed), it\ncan be used by people without any computer science skills, it trains to use\ntechnology, outlining available resources and efforts that have made them\naccessible to researchers, it is scalable.<br>\n\nThe Galaxy community via the Galaxy Training Network supports instructors and\nworkshop organizers using with a series of recommandations (tutorials below) and\nregular discussion meetings.\n",
-    "url": "https://training.galaxyproject.org/training-material/topics/teaching/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Motivation and Demotivation' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html",
-  "timeRequired": "PT60M",
-  "keywords": "teaching",
-  "description": "The questions this  addresses are:\n - What is motivation and demotivation?\n - How do motivation and demotivation impact learning processes?\n - What can instructors do to motivate learners?\n\n\nThe objectives are:\n - List factors of motivation and demotivation\n - Identify what instructors can do to motivate and avoid demotivating learners\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/learning-principles/tutorial.html",
-      "name": "Principles of learning and how they apply to training and teaching",
-      "description": "Hands-on for 'Principles of learning and how they apply to training and teaching' tutorial",
-      "learningResourceType": "hands-on tutorial",
-      "interactivityType": "expositive",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Teaching and Hosting Galaxy training",
-      "description": "Galaxy is a great solution to train the bioinformatics concepts:\nnumerous bioinformatics tools are available (almost 5,000 in the ToolShed), it\ncan be used by people without any computer science skills, it trains to use\ntechnology, outlining available resources and efforts that have made them\naccessible to researchers, it is scalable.<br>\n\nThe Galaxy community via the Galaxy Training Network supports instructors and\nworkshop organizers using with a series of recommandations (tutorials below) and\nregular discussion meetings.\n",
-      "url": "https://training.galaxyproject.org/training-material/topics/teaching/"
-    }
-  ]
-}
-</script>
-
-<section class="tutorial topic-teaching">
+<article class="tutorial topic-teaching">
     <h1 data-toc-skip>Motivation and Demotivation</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
@@ -382,27 +496,7 @@
 	<tr>
 		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
 		<td>
-			
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
-<a href="/training-material/hall-of-fame/fpsom/" class="contributor-badge contributor-fpsom"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/fpsom?s=27" alt="Avatar">Fotis E. Psomopoulos</a>
-
-
-
-<a href="/training-material/hall-of-fame/allegravia/" class="contributor-badge contributor-allegravia"><img src="https://avatars.githubusercontent.com/allegravia?s=27" alt="Avatar">Allegra Via</a>
-
-
-
-<a href="/training-material/hall-of-fame/ppalagi/" class="contributor-badge contributor-ppalagi"><img src="https://avatars.githubusercontent.com/ppalagi?s=27" alt="Avatar">Patricia Palagi</a>
-
-
-
-<a href="/training-material/hall-of-fame/elixir-goblet-ttt/" class="contributor-badge contributor-elixir-goblet-ttt"><img src="https://avatars.githubusercontent.com/elixir-goblet-ttt?s=27" alt="Avatar">ELIXIR Goblet Train the Trainers</a>
-
-
-
+			<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/fpsom/" class="contributor-badge contributor-fpsom"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/fpsom?s=36" alt="Avatar" width="36" height="36">Fotis E. Psomopoulos</a><a href="/training-material/hall-of-fame/allegravia/" class="contributor-badge contributor-allegravia"><img src="https://avatars.githubusercontent.com/allegravia?s=36" alt="Avatar" width="36" height="36">Allegra Via</a><a href="/training-material/hall-of-fame/ppalagi/" class="contributor-badge contributor-ppalagi"><img src="https://avatars.githubusercontent.com/ppalagi?s=36" alt="Avatar" width="36" height="36">Patricia Palagi</a><a href="/training-material/hall-of-fame/elixir-goblet-ttt/" class="contributor-badge contributor-elixir-goblet-ttt"><img src="https://avatars.githubusercontent.com/elixir-goblet-ttt?s=36" alt="Avatar" width="36" height="36">ELIXIR Goblet Train the Trainers</a>
 		</td>
 	</tr>
 	
@@ -426,9 +520,9 @@
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -492,10 +586,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
                             
                             <li> Principles of learning and how they apply to training and teaching:
                             
@@ -505,6 +595,10 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -537,14 +631,18 @@
 
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jun 16, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00282">https://gxy.io/GTN:T00282</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -555,14 +653,15 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <p>In order to facilitate learning, we had to learn (a bit) how learning works. But motivation is key to learning. If we want to enhance motivation, we have to learn a bit how motivation works.
 Motivation is personal and it is very difficult to work with demotivated learners. Often, teachers cannot do much with deep lack of motivation. Here, we want to see what can trainers do to enhance motivation.
 Adult learners usually come motivated to courses and the point is to not demotivate them.</p>
 
-<blockquote class="tip">
-  <div id="comment-resources-reading-recommendation" class="box-title" aria-label="comment box: Resources / Reading recommendation"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Resources / Reading recommendation</div>
+<blockquote class="comment">
+  <div class="box-title comment-title" id="comment-resources-reading-recommendation"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Resources / Reading recommendation</div>
 
   <p>This tutorial is significantly based on the 3rd session of ELIXIR Train the Trainer curriculum, but also:</p>
   <ul>
@@ -581,7 +680,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 </blockquote>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -594,8 +693,14 @@ Adult learners usually come motivated to courses and the point is to not demotiv
       <li><a href="#learning-environment" id="markdown-toc-learning-environment">Learning environment</a></li>
     </ol>
   </li>
-  <li><a href="#demotivation" id="markdown-toc-demotivation">Demotivation</a></li>
-  <li><a href="#strategies-to-improve-motivation-and-avoid-demotivation" id="markdown-toc-strategies-to-improve-motivation-and-avoid-demotivation">Strategies to improve motivation and avoid demotivation</a></li>
+  <li><a href="#demotivation" id="markdown-toc-demotivation">Demotivation</a>    <ol>
+      <li><a href="#things-you-should-not-do-as-instructors" id="markdown-toc-things-you-should-not-do-as-instructors">Things you should not do as instructors</a></li>
+    </ol>
+  </li>
+  <li><a href="#strategies-to-improve-motivation-and-avoid-demotivation" id="markdown-toc-strategies-to-improve-motivation-and-avoid-demotivation">Strategies to improve motivation and avoid demotivation</a>    <ol>
+      <li><a href="#what-can-we-do-to-increase-learners-motivation" id="markdown-toc-what-can-we-do-to-increase-learners-motivation">What can we do to increase learners’ motivation?</a></li>
+    </ol>
+  </li>
   <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
@@ -616,27 +721,28 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 
 <p>Motivation influences <strong>direction</strong>, <strong>intensity</strong>, <strong>persistence</strong> and <strong>quality</strong> of the learning behaviors.</p>
 
-<!-- >> <div id="hands-on-recall-a-motivating-learning-experience-5-min-silent-reflection" class="box-title" aria-label="hands-on box: Recall a motivating learning experience (5 min - Silent reflection)"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Recall a motivating learning experience (5 min - Silent reflection)</div>
->
-> Write in the shared notes about a **motivating** experience in your life (as a learner) and how it impacted you
->
->
-{: .hands_on}-->
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-recall-a-motivating-learning-experience-i-class-quot-fas-fa-hourglass-half-quot-aria-hidden-quot-true-quot-i-span-class-quot-visually-hidden-quot-time-span-5-min-silent-reflection"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Recall a motivating learning experience - <i class=&quot;fas fa-hourglass-half&quot; aria-hidden=&quot;true&quot;></i><span class=&quot;visually-hidden&quot;>time</span> 5 min - Silent reflection</div>
 
-<div>
-  <blockquote class="question">
-    <h3 id="question-quiz-recall-a-motivating-learning-experience"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Quiz: Recall a motivating learning experience</h3>
-    <p>Check your knowledge with a quiz!</p>
+  <p>Write in the shared notes about a <strong>motivating</strong> experience in your life (as a learner) and how it impacted you</p>
 
-    <ul>
-      <li><a href="/training-material/quiz/quiz.html?mode=self&amp;quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml">Self Study Mode</a> - do the quiz at your own pace, to check your understanding.</li>
-      <li><a href="/training-material/quiz/quiz.html?mode=teacher&amp;quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml">Classroom Mode</a> - do the quiz synchronously with a classroom of students.</li>
-    </ul>
-  </blockquote>
+</blockquote>
+
+<!--
+
+
+<div markdown="1">
+> <div class="box-title" aria-label="quiz box: Recall a motivating learning experience"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Quiz: Recall a motivating learning experience</div>
+> Check your knowledge with a quiz!
+>
+>  - [Self Study Mode](/training-material/quiz/quiz.html?mode=self&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml) - do the quiz at your own pace, to check your understanding.
+>  - [Classroom Mode](/training-material/quiz/quiz.html?mode=teacher&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml) - do the quiz synchronously with a classroom of students.
+{: .question}
 </div>
+-->
 
 <blockquote class="tip">
-  <div id="tip-for-trainer" class="box-title"><button type="button" aria-controls="tip-for-trainer-contents" aria-expanded="true" aria-label="Toggle tip box: For trainer"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: For trainer<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-for-trainer"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-for-trainer" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: For trainer<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The trainer will comment learners’ motivating experiences, trying to identify and highlight “patterns of motivation”. Key features of motivation (value, expectancy, environment) could be introduced starting from learners’ experiences.</p>
 
@@ -652,7 +758,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 
 <p>To say that someone is motivated tells us little unless we say what the person is motivated to do. Thus, <strong>goals</strong> serve as the basic organising feature of motivated behaviour. They act as the compass that guides and directs a broad range of purposeful actions.</p>
 
-<p><img src="images/motivation_concept_map_l2.png" alt="2 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; is written between &quot;Goals&quot; and &quot;Motivation&quot;. " loading="lazy" /></p>
+<p><img src="images/motivation_concept_map_l2.png" alt="2 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; is written between &quot;Goals&quot; and &quot;Motivation&quot;. " width="7901" height="1951" loading="lazy" /></p>
 
 <p>Researcher have identified different categories of goals whose the type influence behavior</p>
 <ul>
@@ -672,7 +778,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 </ul>
 
 <blockquote class="details">
-  <div id="details-performance-goals-vs-learning-goals" class="box-title"><button type="button" aria-controls="details-performance-goals-vs-learning-goals-contents" aria-expanded="true" aria-label="Toggle details box: Performance goals vs Learning goals"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Performance goals vs Learning goals<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-performance-goals-vs-learning-goals"><button class="gtn-boxify-button details" type="button" aria-controls="details-performance-goals-vs-learning-goals" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Performance goals vs Learning goals<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>When guided by performance goals, students concerned with normative standards try to do what is necessary to demonstrate competence to</p>
   <ol>
@@ -695,7 +801,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 
 <p>What is also playing an important role in motivation? The importance of the goals, the <strong>subjective value</strong> of the goals, i.e. the value a learner attributes to the goals. A lack of of perceived value leads to a lack of motivation-</p>
 
-<p><img src="./images/motivation_concept_map_l3.png" alt="3 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it,, an blue one with &quot;Value. A goal's importance&quot; written in it. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 1 arrow from &quot;Value&quot; to &quot;Motivation&quot;. " loading="lazy" /></p>
+<p><img src="./images/motivation_concept_map_l3.png" alt="3 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it,, an blue one with &quot;Value. A goal's importance&quot; written in it. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 1 arrow from &quot;Value&quot; to &quot;Motivation&quot;. " width="7901" height="1951" loading="lazy" /></p>
 
 <p>There are 3 main sources of values</p>
 <ul>
@@ -739,7 +845,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 
 <p><strong>Expectancies</strong>, or expectations for successful attainment of that goal, are the goals and outcomes that people believe they can achieve. It has to do with the feeling of achieving a goal. When you have goals, value and expectancy, you can achieve motivation:</p>
 
-<p><img src="./images/motivation_concept_map_l4.png" alt="4 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it, an blue one with &quot;Value. A goal's importance&quot; written in it, an orange one with &quot;Expectancy / Efficacy&quot; in it. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 2 arrows from &quot;Value&quot; and &quot;Expectancy&quot; to &quot;Motivation&quot;. " loading="lazy" /></p>
+<p><img src="./images/motivation_concept_map_l4.png" alt="4 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it, an blue one with &quot;Value. A goal's importance&quot; written in it, an orange one with &quot;Expectancy / Efficacy&quot; in it. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 2 arrows from &quot;Value&quot; and &quot;Expectancy&quot; to &quot;Motivation&quot;. " width="7901" height="1951" loading="lazy" /></p>
 
 <p>We describe two forms of expectancies that help inform our understanding of motivated behavior:</p>
 <ul>
@@ -763,7 +869,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 
 <p>With goals, value and expectancy, motivation leads to a <strong>goal directed behaviour</strong> which is key to support <strong>learning and performance</strong>.</p>
 
-<p><img src="images/motivation_concept_map_l6.png" alt="6 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it, an blue one with &quot;Value. A goal's importance&quot; written in it, an orange one with &quot;Expectancy / Efficacy&quot; in it, a yellow one with &quot;Goal-directed behavior&quot; in it, a light blue with &quot;Learning and Performance&quot; written. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 2 arrows from &quot;Value&quot; and &quot;Expectancy&quot; to &quot;Motivation&quot;. 1 arrow  from &quot;Motivation&quot; to &quot;Goal-directed behavior&quot; with &quot;Leads to&quot; written below. 1 arrow from &quot;Goal-directed behavior&quot; to &quot;Learning and Performance&quot; with &quot;Supports&quot; written below. " loading="lazy" /></p>
+<p><img src="images/motivation_concept_map_l6.png" alt="6 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it, an blue one with &quot;Value. A goal's importance&quot; written in it, an orange one with &quot;Expectancy / Efficacy&quot; in it, a yellow one with &quot;Goal-directed behavior&quot; in it, a light blue with &quot;Learning and Performance&quot; written. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 2 arrows from &quot;Value&quot; and &quot;Expectancy&quot; to &quot;Motivation&quot;. 1 arrow  from &quot;Motivation&quot; to &quot;Goal-directed behavior&quot; with &quot;Leads to&quot; written below. 1 arrow from &quot;Goal-directed behavior&quot; to &quot;Learning and Performance&quot; with &quot;Supports&quot; written below. " width="7901" height="1951" loading="lazy" /></p>
 
 <p>Value and Expectancy are then two key pillars of motivation but that they’re are not sufficient to be fully motivated to learn.</p>
 
@@ -771,7 +877,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 
 <p>There is a third pillar of motivation, which is the learning context or environment.</p>
 
-<p><img src="images/motivation_concept_map_l7.png" alt="7 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it, an blue one with &quot;Value. A goal's importance&quot; written in it, an orange one with &quot;Expectancy / Efficacy&quot; in it, a yellow one with &quot;Goal-directed behavior&quot; in it, a light blue with &quot;Learning and Performance&quot; written, a lila one with &quot;Environment&quot; written. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 3 arrows from &quot;Value&quot;, &quot;Expectancy&quot; and &quot;Environment&quot; to &quot;Motivation&quot;. 1 arrow  from &quot;Motivation&quot; to &quot;Goal-directed behavior&quot; with &quot;Leads to&quot; written below. 1 arrow from &quot;Goal-directed behavior&quot; to &quot;Learning and Performance&quot; with &quot;Supports&quot; written below. " loading="lazy" /></p>
+<p><img src="images/motivation_concept_map_l7.png" alt="7 main boxes: a grey one with &quot;Goals&quot; written in it, a green one with &quot;Motivation&quot; in it, an blue one with &quot;Value. A goal's importance&quot; written in it, an orange one with &quot;Expectancy / Efficacy&quot; in it, a yellow one with &quot;Goal-directed behavior&quot; in it, a light blue with &quot;Learning and Performance&quot; written, a lila one with &quot;Environment&quot; written. 5 smaller boxes stacked on each other on the left of the &quot;Goals&quot; box with &quot;Performance goals&quot;, &quot;Social goals&quot;, &quot;Learning goals&quot;, &quot;Work-avoidant goals&quot;, &quot;Affective goals&quot; written inside. &quot;Basic features of&quot; written between &quot;Goals&quot; and &quot;Motivation&quot;. 3 arrows from &quot;Value&quot;, &quot;Expectancy&quot; and &quot;Environment&quot; to &quot;Motivation&quot;. 1 arrow  from &quot;Motivation&quot; to &quot;Goal-directed behavior&quot; with &quot;Leads to&quot; written below. 1 arrow from &quot;Goal-directed behavior&quot; to &quot;Learning and Performance&quot; with &quot;Supports&quot; written below. " width="7901" height="1951" loading="lazy" /></p>
 
 <p><strong>Principle 6</strong>: Students’ current level of development interacts with the social, emotional, and intellectual climate of the course to impact learning (<span class="citation"><a href="#ambrose2010learning">Ambrose <i>et al.</i> 2010</a></span>)</p>
 
@@ -785,7 +891,7 @@ Adult learners usually come motivated to courses and the point is to not demotiv
     <p>stereotypes</p>
 
     <blockquote class="details">
-      <div id="details-examples-of-stereotypes" class="box-title"><button type="button" aria-controls="details-examples-of-stereotypes-contents" aria-expanded="true" aria-label="Toggle details box: Examples of stereotypes"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Examples of stereotypes<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-examples-of-stereotypes"><button class="gtn-boxify-button details" type="button" aria-controls="details-examples-of-stereotypes" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Examples of stereotypes<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>Providing extra or less support to groups of students based on the belief that, in certain disciplines, some groups are not very gifted whereas others are innately talented (e.g. women are not strong in the STEMs or Asians are good at math) represents a type of bias very difficult to detect and it is a subtle form of racial stereotype (see e.g., https://theconversation.com/asians-are-good-at-math-why-dressing-up-racism-as-a-compliment-just-doesnt-add-up-128731, https://www.hepg.org/her-home/issues/harvard-educational-review-volume-89,-issue-4/herarticle/asians-are-good-at-math-is-not-a-compliment)</p>
 
@@ -797,9 +903,9 @@ Adult learners usually come motivated to courses and the point is to not demotiv
     <p>mindset (growth vs fixed mindset)</p>
 
     <blockquote class="details">
-      <div id="details-about-mindset-from-cite-dweck2006mindset" class="box-title">&lt;button type="button" aria-controls="details-about-mindset-from-cite-dweck2006mindset-contents" aria-expanded="true" aria-label="Toggle details box: About mindset (from <span class="citation"><a href="#dweck2006mindset">Dweck 2006</a></span>)"&gt;<i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: About mindset (from <span class="citation"><a href="#dweck2006mindset">Dweck 2006</a></span>)<span role="button" class="fold-unfold fa fa-minus-square"></span>&lt;/button&gt;</div>
+      <div class="box-title details-title" id="details-about-mindset-from-dweck-2006"><button class="gtn-boxify-button details" type="button" aria-controls="details-about-mindset-from-dweck-2006" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: About mindset (from Dweck 2006)<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-      <p>Someone with a <strong>growth mindset</strong> views intelligence, abilities, and talents as lea<span class="notranslate">rna</span>ble and capable of improvement through effort. On the other hand, someone with a <strong>fixed mindset</strong> views those same traits as inherently stable and unchangeable over time.</p>
+      <p>Someone with a <strong>growth mindset</strong> views intelligence, abilities, and talents as learnable and capable of improvement through effort. On the other hand, someone with a <strong>fixed mindset</strong> views those same traits as inherently stable and unchangeable over time.</p>
 
       <p>Mindset is an outgrowth of the age-old nature vs. nurture debate (that is, how much of our ability and personality are hardwired into us, and how much is the result of how we’re raised?). Recent studies suggest nurture is more important than nature—that growing up in a safe, secure, and inspirational environment outweighs innate abilities and behaviors. <span class="citation"><a href="#dweck2006mindset">Dweck 2006</a></span> agrees with this assessment: The crux of her argument in Mindset is that we can continue to improve throughout our lives by nurturing our growth, and that doing so far outweighs whatever natural talents we do or don’t possess.</p>
 
@@ -818,11 +924,11 @@ Adult learners usually come motivated to courses and the point is to not demotiv
   <li>The environment is <strong>supportive</strong></li>
 </ul>
 
-<figure id="figure-1"><img src="images/environment_perception.png" alt="3 level matrix . " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Interactive effects of environment, efficacy, and value on motivation. Source: <span class="citation"><a href="#ambrose2010learning">Ambrose <i>et al.</i> 2010</a></span></figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="images/environment_perception.png" alt="3 level matrix . " width="814" height="516" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Interactive effects of environment, efficacy, and value on motivation. Source: <span class="citation"><a href="#ambrose2010learning">Ambrose <i>et al.</i> 2010</a></span></figcaption></figure>
 
 <blockquote class="details">
-  <div id="details-about-figure-quot-interactive-effects-of-environment-efficacy-and-value-on-motivation-quot-from-cite-ambrose2010learning" class="box-title">&lt;button type="button" aria-controls="details-about-figure-quot-interactive-effects-of-environment-efficacy-and-value-on-motivation-quot-from-cite-ambrose2010learning-contents" aria-expanded="true" aria-label="Toggle details box: About Figure &quot;Interactive effects of environment, efficacy, and value on motivation&quot; from <span class="citation"><a href="#ambrose2010learning">Ambrose <i>et al.</i> 2010</a></span>"&gt;<i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: About Figure &quot;Interactive effects of environment, efficacy, and value on motivation&quot; from <span class="citation"><a href="#ambrose2010learning">Ambrose <i>et al.</i> 2010</a></span><span role="button" class="fold-unfold fa fa-minus-square"></span>&lt;/button&gt;</div>
-
+  <div class="box-title details-title" id="details-about-figure-quot-interactive-effects-of-environment-efficacy-and-value-on-motivation-quot-from-ambrose-2010"><button class="gtn-boxify-button details" type="button" aria-controls="details-about-figure-quot-interactive-effects-of-environment-efficacy-and-value-on-motivation-quot-from-ambrose-2010" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: About Figure &quot;Interactive effects of environment, efficacy, and value on motivation&quot; (from Ambrose 2010)<span class="fold-unfold fa fa-minus-square"></span></button></div>
+  <p>From <span class="citation"><a href="#ambrose2010learning">Ambrose <i>et al.</i> 2010</a></span>:</p>
   <ol>
     <li>If no value and no expectation, leaners will reject learning with disengagement and even anger</li>
     <li>If high expectancies but no valuem: the task is doable but unimportant, learners will evade and have difficulty to pay attention</li>
@@ -848,25 +954,28 @@ Adult learners usually come motivated to courses and the point is to not demotiv
 Adult learners usually come motivated to courses and the point is to not demotivate them.
 In many cases, to not de-motivate learners is an excellent way to support motivation.</p>
 
-<!-- >> <div id="hands-on-recall-a-demotivating-experience-5-min-silent-reflection" class="box-title" aria-label="hands-on box: Recall a demotivating experience (5 min - Silent reflection)"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Recall a demotivating experience (5 min - Silent reflection)</div>
->
-> Write in the shared notes about a **demotivating** experience in your life (as a learner) and how it impacted you
->
-{: .hands_on}-->
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-recall-a-demotivating-experience-i-class-quot-fas-fa-hourglass-half-quot-aria-hidden-quot-true-quot-i-span-class-quot-visually-hidden-quot-time-span-5-min-silent-reflection"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Recall a demotivating experience - <i class=&quot;fas fa-hourglass-half&quot; aria-hidden=&quot;true&quot;></i><span class=&quot;visually-hidden&quot;>time</span> 5 min - Silent reflection</div>
 
-<div>
-  <blockquote class="question">
-    <h3 id="question-quiz-recall-a-demotivating-learning-experience"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Quiz: Recall a demotivating learning experience</h3>
-    <p>Check your knowledge with a quiz!</p>
+  <p>Write in the shared notes about a <strong>demotivating</strong> experience in your life (as a learner) and how it impacted you</p>
 
-    <ul>
-      <li><a href="/training-material/quiz/quiz.html?mode=self&amp;quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/demotivating_learning_experience.yaml">Self Study Mode</a> - do the quiz at your own pace, to check your understanding.</li>
-      <li><a href="/training-material/quiz/quiz.html?mode=teacher&amp;quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/demotivating_learning_experience.yaml">Classroom Mode</a> - do the quiz synchronously with a classroom of students.</li>
-    </ul>
-  </blockquote>
+</blockquote>
+
+<!--
+
+
+<div markdown="1">
+> <div class="box-title" aria-label="quiz box: Recall a demotivating learning experience"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Quiz: Recall a demotivating learning experience</div>
+> Check your knowledge with a quiz!
+>
+>  - [Self Study Mode](/training-material/quiz/quiz.html?mode=self&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/demotivating_learning_experience.yaml) - do the quiz at your own pace, to check your understanding.
+>  - [Classroom Mode](/training-material/quiz/quiz.html?mode=teacher&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/demotivating_learning_experience.yaml) - do the quiz synchronously with a classroom of students.
+{: .question}
 </div>
+-->
 
-<p><strong>Things you should not do as instructors</strong></p>
+<h2 id="things-you-should-not-do-as-instructors">Things you should not do as instructors</h2>
+
 <ul>
   <li>Tell learners they are rubbish because they use a technology, etc</li>
   <li>Say negative things about a technology or applications</li>
@@ -877,7 +986,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
     <p>Use diminishing language “just”, “simply”, “obviously”, “don’t you know?”</p>
 
     <blockquote class="details">
-      <div id="details-about-dismissive-language" class="box-title"><button type="button" aria-controls="details-about-dismissive-language-contents" aria-expanded="true" aria-label="Toggle details box: About dismissive language"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: About dismissive language<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-about-dismissive-language"><button class="gtn-boxify-button details" type="button" aria-controls="details-about-dismissive-language" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: About dismissive language<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>Unaware usage of dismissive language (like “just”, “easy”, etc.) or of apparently “innocent” terms from the point of view of the “white heterosexual male” may be demotivating and / or offensive to certain minority groups (non white and / or non heterosexual and / or non male).</p>
 
@@ -887,7 +996,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
     <p>Hinder autonomy</p>
 
     <blockquote class="details">
-      <div id="details-why-taking-over-the-learner-s-keyboard-hinder-autonomy" class="box-title"><button type="button" aria-controls="details-why-taking-over-the-learner-s-keyboard-hinder-autonomy-contents" aria-expanded="true" aria-label="Toggle details box: Why taking over the learner's keyboard hinder autonomy?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Why taking over the learner's keyboard hinder autonomy?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-why-taking-over-the-learner-s-keyboard-hinder-autonomy"><button class="gtn-boxify-button details" type="button" aria-controls="details-why-taking-over-the-learner-s-keyboard-hinder-autonomy" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Why taking over the learner's keyboard hinder autonomy?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>It is rarely a good idea to type anything for your learners</p>
 
@@ -901,7 +1010,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
     <p>Feign surprise with “I cannot believe you do not know X” or “You have never heard of Y?”</p>
 
     <blockquote class="details">
-      <div id="details-why-may-feigning-surprise-trigger-demotivation" class="box-title"><button type="button" aria-controls="details-why-may-feigning-surprise-trigger-demotivation-contents" aria-expanded="true" aria-label="Toggle details box: Why may feigning surprise trigger demotivation?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Why may feigning surprise trigger demotivation?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-why-may-feigning-surprise-trigger-demotivation"><button class="gtn-boxify-button details" type="button" aria-controls="details-why-may-feigning-surprise-trigger-demotivation" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Why may feigning surprise trigger demotivation?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>Saying things like “I cannot believe you do not know X” or “You have never heard of Y?” signals to the learner that they do not have some required pre-knowledge of the material you are teaching, that they do not belong at the workshop, and it may prevent them from asking questions in the future.</p>
 
@@ -912,7 +1021,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
 <p>It can be difficult to avoid these demotivators entirely. Teaching yourself to avoid these types of comments takes practice, but is well worth the effort. No one likes to be made fun of.</p>
 
 <blockquote class="details">
-  <div id="details-systemic-and-psychological-demotivators" class="box-title"><button type="button" aria-controls="details-systemic-and-psychological-demotivators-contents" aria-expanded="true" aria-label="Toggle details box: Systemic and psychological demotivators"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Systemic and psychological demotivators<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-systemic-and-psychological-demotivators"><button class="gtn-boxify-button details" type="button" aria-controls="details-systemic-and-psychological-demotivators" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Systemic and psychological demotivators<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Other factors can contribute to demotivation. Some of which are either <strong>systemic</strong>, or <strong>built into our psychological makeup</strong> as human beings. We cannot always control these demotivators - often they come from outside the classroom - but we can be aware of them, and take certain actions to lessen their impact by thinking carefully about the language that we use and how we interact with our learners.</p>
 
@@ -921,7 +1030,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
       <p><strong>Stereotype threat</strong>: Reminding people of negative stereotypes, even in subtle ways, can make them anxious about the risk of confirming those stereotypes, in turn reducing their performance. Clearest examples in computing are gender-related</p>
 
       <blockquote class="tip">
-        <div id="tip-what-can-you-as-instructor" class="box-title"><button type="button" aria-controls="tip-what-can-you-as-instructor-contents" aria-expanded="true" aria-label="Toggle tip box: What can you as instructor?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: What can you as instructor?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-what-can-you-as-instructor"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-what-can-you-as-instructor" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: What can you as instructor?<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <ul>
           <li>Avoid thinking in terms of a deficit model, use a systems approach</li>
           <li>Not highlight people based on their identity with a minority group: draws attention to the stereotype</li>
@@ -933,7 +1042,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
       <p><strong>Impostor syndrome</strong>: Belief that one is not good enough for a job or position, and that one’s achievements are due to luck rather than talent or skill (<a href="https://adainitiative.org/continue-our-work/impostor-syndrome-training/">Resources for teaching about and dealing with imposter syndrome</a>)</p>
 
       <blockquote class="tip">
-        <div id="tip-what-can-you-as-instructor-1" class="box-title"><button type="button" aria-controls="tip-what-can-you-as-instructor-1-contents" aria-expanded="true" aria-label="Toggle tip box: What can you as instructor?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: What can you as instructor?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-what-can-you-as-instructor-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-what-can-you-as-instructor-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: What can you as instructor?<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <ul>
           <li>Sharing stories of mistakes that you have made or things you struggled to learn</li>
           <li>Emphasize that you want questions</li>
@@ -945,7 +1054,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
       <p><strong>Accessibility issue</strong>: It helps everyone to provide proper captioning of images, for example, benefits people with no or limited vision by giving screen readers something to say, but it also makes the images more findable by exposing their content to search engines.</p>
 
       <blockquote class="tip">
-        <div id="tip-what-can-you-as-instructor-2" class="box-title"><button type="button" aria-controls="tip-what-can-you-as-instructor-2-contents" aria-expanded="true" aria-label="Toggle tip box: What can you as instructor?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: What can you as instructor?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-what-can-you-as-instructor-2"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-what-can-you-as-instructor-2" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: What can you as instructor?<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <ul>
           <li>Know what you need to do
             <ul>
@@ -964,7 +1073,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
       <p><strong>Inclusivity</strong>: Policy of including people who might otherwise be excluded or marginalized</p>
 
       <blockquote class="tip">
-        <div id="tip-what-can-you-as-instructor-3" class="box-title"><button type="button" aria-controls="tip-what-can-you-as-instructor-3-contents" aria-expanded="true" aria-label="Toggle tip box: What can you as instructor?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: What can you as instructor?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-what-can-you-as-instructor-3"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-what-can-you-as-instructor-3" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: What can you as instructor?<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <ul>
           <li>Read Lee’s paper <a href="https://docs.google.com/document/d/1hLivou9-_wmsZuzKI2pCGQu0KHVIgYfJSaYhvTgO0Wo/edit?usp=sharing">“What can I do today to create a more inclusive community in CS?”</a></li>
           <li>Ask learners to email you before the workshop to explain how they believe the training could help them achieve their goals</li>
@@ -984,7 +1093,7 @@ In many cases, to not de-motivate learners is an excellent way to support motiva
 <p>Motivation is personal and it is very difficult to work with demotivated learners. Often, teachers cannot do much with deep lack of motivation.
 But this is not always true: <strong>there are things a trainer can do to support learners’ motivation and to NOT demotivate them</strong>. For example, using stereotypes will demotivate minority-status individuals.</p>
 
-<p><strong>What can we do to increase learners’ motivation?</strong></p>
+<h2 id="what-can-we-do-to-increase-learners-motivation">What can we do to increase learners’ motivation?</h2>
 
 <p>We can act to establish or reinforce the value of goals, we can help build positive expectancies and we can definitely create an environment that supports motivation.</p>
 
@@ -995,7 +1104,7 @@ But this is not always true: <strong>there are things a trainer can do to suppor
     <p><strong>Establish value</strong>: Increase the value that students place on the goals and activities identified and created for students</p>
 
     <blockquote class="details">
-      <div id="details-strategies-to-establish-value" class="box-title"><button type="button" aria-controls="details-strategies-to-establish-value-contents" aria-expanded="true" aria-label="Toggle details box: Strategies to Establish value"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Strategies to Establish value<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-strategies-to-establish-value"><button class="gtn-boxify-button details" type="button" aria-controls="details-strategies-to-establish-value" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Strategies to Establish value<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <ol>
         <li><strong>Connect the material to learners’ interests</strong>: More motivated with material that interests them or has relevance for important aspects of their lives
@@ -1019,7 +1128,7 @@ But this is not always true: <strong>there are things a trainer can do to suppor
     </blockquote>
 
     <blockquote class="tip">
-      <div id="tip-the-carpentries-approach-teach-most-useful-first" class="box-title"><button type="button" aria-controls="tip-the-carpentries-approach-teach-most-useful-first-contents" aria-expanded="true" aria-label="Toggle tip box: The Carpentries approach: Teach most useful first"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: The Carpentries approach: Teach most useful first<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title tip-title" id="tip-the-carpentries-approach-teach-most-useful-first"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-the-carpentries-approach-teach-most-useful-first" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: The Carpentries approach: Teach most useful first<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <p>Learners do something that <em>they</em> think is useful in their daily work within 15 minutes of starting each lesson.</p>
 
@@ -1030,7 +1139,7 @@ But this is not always true: <strong>there are things a trainer can do to suppor
     <p><strong>Build positive expectancies</strong>: Strengthen students’ expectancies</p>
 
     <blockquote class="details">
-      <div id="details-strategies-to-build-positive-expectancies" class="box-title"><button type="button" aria-controls="details-strategies-to-build-positive-expectancies-contents" aria-expanded="true" aria-label="Toggle details box: Strategies to Build positive expectancies"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Strategies to Build positive expectancies<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-strategies-to-build-positive-expectancies"><button class="gtn-boxify-button details" type="button" aria-controls="details-strategies-to-build-positive-expectancies" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Strategies to Build positive expectancies<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <ol>
         <li>
@@ -1060,7 +1169,7 @@ But this is not always true: <strong>there are things a trainer can do to suppor
     <p><strong>Create an environment that supports motivation</strong></p>
 
     <blockquote class="details">
-      <div id="details-strategies-to-create-an-environment-that-supports-motivation" class="box-title"><button type="button" aria-controls="details-strategies-to-create-an-environment-that-supports-motivation-contents" aria-expanded="true" aria-label="Toggle details box: Strategies to Create an environment that supports motivation"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Strategies to Create an environment that supports motivation<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="box-title details-title" id="details-strategies-to-create-an-environment-that-supports-motivation"><button class="gtn-boxify-button details" type="button" aria-controls="details-strategies-to-create-an-environment-that-supports-motivation" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Strategies to Create an environment that supports motivation<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
       <ol>
         <li>
@@ -1100,14 +1209,14 @@ But this is not always true: <strong>there are things a trainer can do to suppor
 </ol>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-strategies-to-improve-motivation-15-min-groups-of-2-people" class="box-title" aria-label="hands-on box: Strategies to improve motivation - _⏰ 15 min - Groups of 2 people_"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Strategies to improve motivation - _⏰ 15 min - Groups of 2 people_</div>
+  <div class="box-title hands-on-title" id="hands-on-strategies-to-improve-motivation-i-class-quot-fas-fa-hourglass-half-quot-aria-hidden-quot-true-quot-i-span-class-quot-visually-hidden-quot-time-span-15-min-groups-of-2-people"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Strategies to improve motivation - <i class=&quot;fas fa-hourglass-half&quot; aria-hidden=&quot;true&quot;></i><span class=&quot;visually-hidden&quot;>time</span> 15 min - Groups of 2 people</div>
 
   <ul>
     <li>
       <p>Pick 1 strategy associated with <strong>establishing value</strong>, <strong>building positive expectancies</strong> and/or <strong>creating an environment that supports motivation value and expectancies</strong></p>
 
       <blockquote class="details">
-        <div id="details-strategies" class="box-title"><button type="button" aria-controls="details-strategies-contents" aria-expanded="true" aria-label="Toggle details box: Strategies"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Strategies<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title details-title" id="details-strategies"><button class="gtn-boxify-button details" type="button" aria-controls="details-strategies" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Strategies<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ol>
           <li><strong>Establish value</strong>
@@ -1213,10 +1322,12 @@ But this is not always true: <strong>there are things a trainer can do to suppor
   <li>Remember, it is much more important to be smart than to <em>look</em> smart</li>
 </ul>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>To have fully MOTIVATED learners, it is important that learners see the value, learner self-efficacy is high and the environment is supportive</p>
@@ -1235,33 +1346,25 @@ But this is not always true: <strong>there are things a trainer can do to suppor
                 <h1 data-toc-skip>Quizzes</h1>
                 <p>Check your understanding with these quizzes</p>
                     
-                    <h2>Recall a motivating learning experience</h2>
-                    <div class="contributors-line">
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-</div>
-                    <ul>
-                        <li>
-                            <a href="/training-material/quiz/quiz.html?mode=self&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml">Self Study Mode</a> - do the quiz at your own pace, to check your understanding.
-                        </li>
-                        <li>
-                            <a href="/training-material/quiz/quiz.html?mode=teacher&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml">Classroom Mode</a> - do the quiz synchronously with a classroom of students.
-                        </li>
-                    </ul>
-                    
                     <h2>Recall a demotivating learning experience</h2>
-                    <div class="contributors-line">
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-</div>
+                    <div class="contributors-line"><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a></div>
                     <ul>
                         <li>
                             <a href="/training-material/quiz/quiz.html?mode=self&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/demotivating_learning_experience.yaml">Self Study Mode</a> - do the quiz at your own pace, to check your understanding.
                         </li>
                         <li>
                             <a href="/training-material/quiz/quiz.html?mode=teacher&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/demotivating_learning_experience.yaml">Classroom Mode</a> - do the quiz synchronously with a classroom of students.
+                        </li>
+                    </ul>
+                    
+                    <h2>Recall a motivating learning experience</h2>
+                    <div class="contributors-line"><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a></div>
+                    <ul>
+                        <li>
+                            <a href="/training-material/quiz/quiz.html?mode=self&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml">Self Study Mode</a> - do the quiz at your own pace, to check your understanding.
+                        </li>
+                        <li>
+                            <a href="/training-material/quiz/quiz.html?mode=teacher&quiz=/training-material/topics/teaching/tutorials/motivation_demotivation/quiz/motivating_learning_experience.yaml">Classroom Mode</a> - do the quiz synchronously with a classroom of students.
                         </li>
                     </ul>
                     
@@ -1288,42 +1391,18 @@ But this is not always true: <strong>there are things a trainer can do to suppor
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Motivation and Demotivation (Teaching and Hosting Galaxy training)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Motivation and Demotivation (Teaching and Hosting Galaxy training)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
                         <li id="citation-text">
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-,  <b>Motivation and Demotivation (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html">https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html</a> Online; accessed TODAY
+                            Bérénice Batut, Fotis E. Psomopoulos, Allegra Via, Patricia Palagi, ELIXIR Goblet Train the Trainers,  <b>Motivation and Demotivation (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html">https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1335,7 +1414,7 @@ But this is not always true: <strong>there are things a trainer can do to suppor
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1344,28 +1423,31 @@ But this is not always true: <strong>there are things a trainer can do to suppor
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{teaching-motivation_demotivation,
 author = "Bérénice Batut and Fotis E. Psomopoulos and Allegra Via and Patricia Palagi and ELIXIR Goblet Train the Trainers",
-title = "Motivation and Demotivation (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Motivation and Demotivation (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/teaching/tutorials/motivation_demotivation/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1397,11 +1479,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1410,49 +1492,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/teaching/tutorials/motivation_demotivation/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00282">https://gxy.io/GTN:T00282</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/teaching/tutorials/motivation_demotivation/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

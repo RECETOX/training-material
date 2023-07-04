@@ -26,7 +26,8 @@
   "tags": [
     "illumina",
     "assembly",
-    "amr"
+    "amr",
+    "one-health"
   ],
   "contributions": {
     "authorship": [
@@ -58,32 +59,206 @@
       ]
     }
   ],
+  "short_id": "T00036",
   "url": "/topics/assembly/tutorials/mrsa-illumina/tutorial.html",
   "topic_name": "assembly",
   "tutorial_name": "mrsa-illumina",
+  "dir": "topics/assembly/tutorials/mrsa-illumina",
+  "id": "assembly/mrsa-illumina",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": false,
+  "workflows": [
+    {
+      "workflow": "main_workflow.ga",
+      "tests": false,
+      "url": "https://training.galaxyproject.org/training-material/topics/assembly/tutorials/mrsa-illumina/workflows/main_workflow.ga",
+      "path": "topics/assembly/tutorials/mrsa-illumina/workflows/main_workflow.ga",
+      "wfid": "assembly-mrsa-illumina",
+      "wfname": "main_workflow",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/assembly-mrsa-illumina/versions/main_workflow",
+      "license": null,
+      "creators": [
+
+      ],
+      "test_results": null
+    }
+  ],
+  "api": "https://training.galaxyproject.org/training-material/api/topics/assembly/tutorials/mrsa-illumina/tutorial.json",
+  "tools": [
+    "CONVERTER_bz2_to_uncompressed",
+    "Grep1",
+    "toolshed.g2.bx.psu.edu/repos/crs4/prokka/prokka/1.14.5+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.3.4.3+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.72+galaxy1",
+    "toolshed.g2.bx.psu.edu/repos/iuc/bandage/bandage_image/0.8.1+galaxy2",
+    "toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.10+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/multiqc/multiqc/1.9",
+    "toolshed.g2.bx.psu.edu/repos/iuc/quast/quast/5.0.2+galaxy1",
+    "toolshed.g2.bx.psu.edu/repos/iuc/shovill/shovill/1.1.0+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/tbl2gff3/tbl2gff3/1.2",
+    "toolshed.g2.bx.psu.edu/repos/nml/staramr/staramr_search/0.7.1+galaxy2",
+    "toolshed.g2.bx.psu.edu/repos/pjbriggs/trimmomatic/trimmomatic/0.38.1",
+    "upload1"
+  ],
+  "supported_servers": {
+    "exact": [
+      {
+        "url": "https://usegalaxy.eu",
+        "name": "UseGalaxy.eu",
+        "usegalaxy": "true"
+      }
+    ],
+    "inexact": [
+
+    ]
+  },
+  "topic_name_human": "Assembly",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "prokka",
+        "owner": "crs4",
+        "revisions": "111884f0d912",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "bowtie2",
+        "owner": "devteam",
+        "revisions": "749c918495f7",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "fastqc",
+        "owner": "devteam",
+        "revisions": "e7b2202befea",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "bandage",
+        "owner": "iuc",
+        "revisions": "b2860df42e16",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "jbrowse",
+        "owner": "iuc",
+        "revisions": "6cd09d7b5f37",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "jbrowse",
+        "owner": "iuc",
+        "revisions": "17359b808b01",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "multiqc",
+        "owner": "iuc",
+        "revisions": "c1a4b5f3b432",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "quast",
+        "owner": "iuc",
+        "revisions": "ebb0dcdb621a",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "shovill",
+        "owner": "iuc",
+        "revisions": "83ead2be47b2",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "tbl2gff3",
+        "owner": "iuc",
+        "revisions": "4a7f4b0cc0a3",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "staramr",
+        "owner": "nml",
+        "revisions": "2fd4d4c9c5c2",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "trimmomatic",
+        "owner": "pjbriggs",
+        "revisions": "d94aff5ee623",
+        "tool_panel_section_label": "Assembly",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: prokka\n  owner: crs4\n  revisions: 111884f0d912\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bowtie2\n  owner: devteam\n  revisions: 749c918495f7\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqc\n  owner: devteam\n  revisions: e7b2202befea\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: bandage\n  owner: iuc\n  revisions: b2860df42e16\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: jbrowse\n  owner: iuc\n  revisions: 6cd09d7b5f37\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: jbrowse\n  owner: iuc\n  revisions: 17359b808b01\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: multiqc\n  owner: iuc\n  revisions: c1a4b5f3b432\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: quast\n  owner: iuc\n  revisions: ebb0dcdb621a\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: shovill\n  owner: iuc\n  revisions: 83ead2be47b2\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: tbl2gff3\n  owner: iuc\n  revisions: 4a7f4b0cc0a3\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: staramr\n  owner: nml\n  revisions: 2fd4d4c9c5c2\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: trimmomatic\n  owner: pjbriggs\n  revisions: d94aff5ee623\n  tool_panel_section_label: Assembly\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
   "contributors": [
     {
       "name": "Bazante Sanders",
       "joined": "2020-12",
       "id": "bazante1",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/bazante1.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/bazante1.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/"
     },
     {
       "name": "Helena Rasche",
-      "email": "helena.rasche@gmail.com",
+      "email": "hexylena@galaxians.org",
       "orcid": "0000-0001-9760-8992",
       "maintainer_contact": "gitter",
-      "gitter": "hexylena",
+      "matrix": "hexylena:matrix.org",
       "joined": "2017-09",
       "elixir_node": "nl",
+      "fediverse": "https://galaxians.garden/hexylena",
+      "fediverse_flavor": "akkoma",
+      "contact_for_training": false,
+      "location": {
+        "country": "NL",
+        "lat": 51.91,
+        "lon": 4.46
+      },
       "id": "hexylena",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/hexylena.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/"
     },
     {
       "name": "Bazante Sanders",
       "joined": "2020-12",
       "id": "bazante1",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/bazante1.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/bazante1.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/"
     },
     {
       "name": "Saskia Hiltemann",
@@ -91,28 +266,38 @@
       "email": "saskia.hiltemann@gmail.com",
       "twitter": "shiltemann",
       "linkedin": "shiltemann",
-      "gitter": "shiltemann",
+      "matrix": "shiltemann:matrix.org",
       "orcid": "0000-0003-3803-468X",
       "joined": "2017-09",
       "bio": "Researcher at Erasmus Medical Center",
       "elixir_node": "nl",
+      "contact_for_training": true,
+      "location": {
+        "country": "NL",
+        "lat": 51.912,
+        "lon": 4.462
+      },
       "id": "shiltemann",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/shiltemann.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/shiltemann.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/"
     },
     {
       "name": "Miaomiao Zhou",
       "email": "m.zhou1@avans.nl",
       "joined": "2020-12",
+      "orcid": "0000-0003-4426-1758",
       "id": "miaomiaozhou88",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/miaomiaozhou88.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/miaomiaozhou88.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/miaomiaozhou88/"
     },
     {
       "name": "Avans Hogeschool",
       "joined": "2020-11",
       "funder": true,
       "funding_statement": "A number of our employees contribute directly to the Galaxy Training Network and seek to make our higher education learning materials more accessible to a wider audience through the GTN platform. <a href=\"https://avans.nl/\">avans.nl</a>",
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/avans-atgm.json",
       "id": "avans-atgm",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/avans-atgm.json"
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/avans-atgm/"
     }
   ]
 }

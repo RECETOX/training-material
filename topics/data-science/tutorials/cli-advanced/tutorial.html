@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,255 +8,71 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Advanced CLI in Galaxy" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 11:10:21 +0000" />
-<meta name="DC.creator" content="The Carpentries" />
-<meta name="DC.creator" content="Helena Rasche" />
-<meta name="DC.creator" content="Bazante Sanders" />
-<meta name="DC.creator" content="Erasmus+ Programme" />
-<meta name="DC.creator" content="Avans Hogeschool" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Advanced CLI in Galaxy" />
-        <meta property="og:description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/data-science" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Foundations of Data Science
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/cli-advanced/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/cli-advanced/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/cli-advanced/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/cli-advanced/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/cli-advanced/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/cli-advanced/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/data-science/faqs/" title="Check our FAQs for the Foundations of Data Science topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/cli-advanced/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/cli-advanced/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/cli-advanced/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/cli-advanced/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Advanced CLI in Galaxy">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-01-24 13:14:34 +0000">
+<meta name="DC.creator" content="The Carpentries">
+<meta name="DC.creator" content="Helena Rasche">
+<meta name="DC.creator" content="Bazante Sanders">
+<meta name="DC.creator" content="Erasmus+ Programme">
+<meta name="DC.creator" content="Avans Hogeschool">
+
+        
+        
+        
+        
+        <meta name="description" content="These lessons will help you get your feet in data science...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Advanced CLI in Galaxy">
+        <meta property="og:description" content="These lessons will help you get your feet in data science...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -281,7 +97,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 11:10:21 +0000",
+  "dateModified": "2023-01-24 13:14:34 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Advanced CLI in Galaxy",
   "interactivityType": "mixed",
@@ -307,6 +123,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -334,6 +154,7 @@
   "name": "Hands-on for 'Advanced CLI in Galaxy' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html",
   "timeRequired": "PT2H",
+  "teaches": "Redirect a command's output to a file.\n - Process a file instead of keyboard input using redirection.\n - Construct command pipelines with two or more stages.\n - Explain what usually happens if a program or pipeline isn't given any input to process.\n - Explain Unix's 'small pieces, loosely joined' philosophy.\n - Write a loop that applies one or more commands separately to each file in a set of files.\n - Trace the values taken on by a loop variable during execution of the loop.\n - Explain the difference between a variable's name and its value.\n - Explain why spaces and some punctuation characters shouldn't be used in file names.\n - Demonstrate how to see what commands have recently been executed.\n - Re-run recently executed commands without retyping them.\n - Use `grep` to select lines from text files that match simple patterns.\n - Use `find` to find files and directories whose names match simple patterns.\n - Use the output of one command as the command-line argument(s) to another command.\n - Explain what is meant by 'text' and 'binary' files, and why many common tools don't handle the latter well.",
   "keywords": "data-science, bash, jupyter-notebook",
   "description": "The questions this  addresses are:\n - How can I combine existing commands to do new things?\n - How can I perform the same actions on many different files?\n - How can I find files?\n - How can I find things in files?\n\n\nThe objectives are:\n - Redirect a command's output to a file.\n - Process a file instead of keyboard input using redirection.\n - Construct command pipelines with two or more stages.\n - Explain what usually happens if a program or pipeline isn't given any input to process.\n - Explain Unix's 'small pieces, loosely joined' philosophy.\n - Write a loop that applies one or more commands separately to each file in a set of files.\n - Trace the values taken on by a loop variable during execution of the loop.\n - Explain the difference between a variable's name and its value.\n - Explain why spaces and some punctuation characters shouldn't be used in file names.\n - Demonstrate how to see what commands have recently been executed.\n - Re-run recently executed commands without retyping them.\n - Use `grep` to select lines from text files that match simple patterns.\n - Use `find` to find files and directories whose names match simple patterns.\n - Use the output of one command as the command-line argument(s) to another command.\n - Explain what is meant by 'text' and 'binary' files, and why many common tools don't handle the latter well.\n\n",
   "inLanguage": {
@@ -363,8 +184,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
@@ -384,8 +205,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
@@ -407,8 +228,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
@@ -428,8 +249,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
@@ -449,117 +270,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/avans-atgm/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/avans-atgm/",
-      "name": "Avans Hogeschool",
-      "image": "https://avatars.githubusercontent.com/avans-atgm",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "name": "The Carpentries",
-      "image": "https://avatars.githubusercontent.com/carpentries",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "name": "Bazante Sanders",
-      "image": "https://avatars.githubusercontent.com/bazante1",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "name": "Erasmus+ Programme",
-      "image": "https://avatars.githubusercontent.com/erasmusplus",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/avans-atgm/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/avans-atgm/",
@@ -582,49 +294,224 @@
       "name": "Foundations of Data Science",
       "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
       "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
   ],
-  "educationalLevel": "Intermediate"
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "bash"
+    },
+    {
+      "@type": "Thing",
+      "name": "jupyter-notebook"
+    }
+  ],
+  "abstract": "This tutorial will walk you through the basics of how to use the Unix command line."
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-data-science">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/data-science" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Foundations of Data Science
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/data-science/faqs/" title="Check our FAQs for the Foundations of Data Science topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/cli-advanced/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/cli-advanced/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/cli-advanced/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/cli-advanced/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-data-science">
     <h1 data-toc-skip>Advanced CLI in Galaxy</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=27" alt="Avatar">The Carpentries</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
-<a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=27" alt="Avatar">Bazante Sanders</a>
-
-
-
-<a href="/training-material/hall-of-fame/erasmusplus/" class="contributor-badge contributor-erasmusplus"><img src="https://avatars.githubusercontent.com/erasmusplus?s=27" alt="Avatar">Erasmus+ Programme</a>
-
-
-
-<a href="/training-material/hall-of-fame/avans-atgm/" class="contributor-badge contributor-avans-atgm"><img src="https://avatars.githubusercontent.com/avans-atgm?s=27" alt="Avatar">Avans Hogeschool</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=36" alt="Avatar" width="36" height="36">The Carpentries</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=36" alt="Avatar" width="36" height="36">Bazante Sanders</a><a href="/training-material/hall-of-fame/erasmusplus/" class="contributor-badge contributor-erasmusplus"><img src="https://www.erasmusplus.nl/assets/images/logo.png" alt="Avatar" width="36" height="36">Erasmus+ Programme</a><a href="/training-material/hall-of-fame/avans-atgm/" class="contributor-badge contributor-avans-atgm"><img src="https://avatars.githubusercontent.com/avans-atgm?s=36" alt="Avatar" width="36" height="36">Avans Hogeschool</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -718,6 +605,12 @@
                         
                     
                         
+                    
+                        
+                    
+                        
+                    
+                        
                             
                             <li> CLI basics:
                             
@@ -727,6 +620,8 @@
                                 
                             
                             </li>
+                        
+                    
                         
                     
                         
@@ -842,13 +737,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/data-science/tutorials/cli-advanced/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/data-science/tutorials/cli-advanced/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -874,14 +766,18 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 24, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00074">https://gxy.io/GTN:T00074</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -891,13 +787,14 @@
             </div>
             <div class="col-sm-10">
                  
+                <section aria-label="Tutorial Notebook access information" id="tutorial-notebook">
                      
                      
                      
                      
                     
                         <blockquote class="comment">
-                            <div class="box-title" aria-label="comment box">Best viewed in a Jupyter Notebook</div>
+                            <div class="box-title">Best viewed in a Jupyter Notebook</div>
                             <p>
                                 This tutorial is best viewed in a Jupyter notebook! You can load this notebook one of the following ways<!--, or you can click to run it in MyBinder-->
                             </p>
@@ -924,19 +821,21 @@
                             </p>
                         </blockquote>
                     
-                 
+                </section>
+                
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <p>This tutorial will walk you through the basics of how to use the Unix command line.</p>
 
 <blockquote class="comment">
-  <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-  <p>This tutorial is <strong>significantly</strong> based on <a href="https://carpentries.org">the Carpentries</a> <a href="https://swcarpentry.github.io/shell-novice/">“The Unix Shell”</a> lesson, which is licensed CC-BY 4.0. Adaptations have been made to make this work better in a GTN/<span class="notranslate">Galaxy</span> environment.</p>
+  <p>This tutorial is <strong>significantly</strong> based on <a href="https://carpentries.org">the Carpentries</a> <a href="https://swcarpentry.github.io/shell-novice/">“The Unix Shell”</a> lesson, which is licensed CC-BY 4.0. Adaptations have been made to make this work better in a GTN/Galaxy environment.</p>
 
 </blockquote>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -951,9 +850,9 @@
       <li><a href="#nelles-pipeline-checking-files" id="markdown-toc-nelles-pipeline-checking-files">Nelle’s Pipeline: Checking Files</a></li>
     </ol>
   </li>
-  <li><a href="#loops" id="markdown-toc-loops">Loops</a>    <ol>
+  <li><a href="#loops" id="markdown-toc-loops">Loops</a></li>
+  <li><a href="#dont-do-this" id="markdown-toc-dont-do-this">Don’t do this.</a>    <ol>
       <li><a href="#nelles-pipeline-processing-files" id="markdown-toc-nelles-pipeline-processing-files">Nelle’s Pipeline: Processing Files</a></li>
-      <li><a href="#beginning-and-end" id="markdown-toc-beginning-and-end">Beginning and End</a></li>
     </ol>
   </li>
   <li><a href="#finding-things" id="markdown-toc-finding-things">Finding Things</a></li>
@@ -1003,7 +902,7 @@ the output shows only the number of lines per file:</p>
 only the number of characters or the number of words in the files.</p>
 
 <blockquote class="tip">
-  <div id="tip-why-isn-t-it-doing-anything" class="box-title"><button type="button" aria-controls="tip-why-isn-t-it-doing-anything-contents" aria-expanded="true" aria-label="Toggle tip box: Why Isn't It Doing Anything?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Why Isn't It Doing Anything?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-why-isn-t-it-doing-anything"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-why-isn-t-it-doing-anything" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Why Isn't It Doing Anything?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>What happens if a command is supposed to process a file, but we
 don’t give it a filename? For example, what if we type:</p>
@@ -1042,7 +941,7 @@ silently overwritten, which may lead to data loss and thus requires
 some caution.</p>
 
 <blockquote class="tip">
-  <div id="tip-no-code-gt-code-on-an-azerty-keyboard" class="box-title"><button type="button" aria-controls="tip-no-code-gt-code-on-an-azerty-keyboard-contents" aria-expanded="true" aria-label="Toggle tip box: No &lt;code&gt;&gt;&lt;/code&gt; on an AZERTY keyboard?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: No <code>&gt;</code> on an AZERTY keyboard?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-no-code-gt-code-on-an-azerty-keyboard"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-no-code-gt-code-on-an-azerty-keyboard" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: No <code>&gt;</code> on an AZERTY keyboard?<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>You can rewrite this using the tee command which writes out a file, while also showing the output to <code class="language-plaintext highlighter-rouge">stdout</code>.</p>
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">wc</span> <span class="nt">-l</span> <span class="k">*</span>.pdb | <span class="nb">tee </span>lengths.txt
 </code></pre></div>  </div>
@@ -1064,7 +963,7 @@ so <code class="language-plaintext highlighter-rouge">cat</code> just shows us w
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-output-page-by-page" class="box-title"><button type="button" aria-controls="tip-output-page-by-page-contents" aria-expanded="true" aria-label="Toggle tip box: Output Page by Page"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Output Page by Page<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-output-page-by-page"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-output-page-by-page" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Output Page by Page<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>We’ll continue to use <code class="language-plaintext highlighter-rouge">cat</code> in this lesson, for convenience and consistency,
 but it has the disadvantage that it always dumps the whole file onto your screen.
@@ -1081,7 +980,7 @@ or back one by pressing <code class="language-plaintext highlighter-rouge">b</co
 But first we’ll use an exercise to learn a little about the sort command:</p>
 
 <blockquote class="question">
-  <div id="question-what-does-sort-n-do" class="box-title" aria-label="question box: What Does `sort -n` Do?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: What Does `sort -n` Do?</div>
+  <div class="box-title question-title" id="question-what-does-sort-n-do"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: What Does `sort -n` Do?</div>
 
   <p>The file <code class="language-plaintext highlighter-rouge">shell-lesson-data/numbers.txt</code>
 contains the following lines:</p>
@@ -1114,7 +1013,7 @@ contains the following lines:</p>
   <p>Explain why <code class="language-plaintext highlighter-rouge">-n</code> has this effect.</p>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The <code class="language-plaintext highlighter-rouge">-n</code> option specifies a numerical rather than an alphanumerical sort.</p>
   </blockquote>
 </blockquote>
@@ -1144,7 +1043,7 @@ Since <code class="language-plaintext highlighter-rouge">sorted-lengths.txt</cod
 the output of <code class="language-plaintext highlighter-rouge">head</code> must be the file with the fewest lines.</p>
 
 <blockquote class="tip">
-  <div id="tip-redirecting-to-the-same-file" class="box-title"><button type="button" aria-controls="tip-redirecting-to-the-same-file-contents" aria-expanded="true" aria-label="Toggle tip box: Redirecting to the same file"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Redirecting to the same file<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-redirecting-to-the-same-file"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-redirecting-to-the-same-file" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Redirecting to the same file<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>It’s a very bad idea to try redirecting
 the output of a command that operates on a file
@@ -1159,7 +1058,7 @@ the contents of <code class="language-plaintext highlighter-rouge">lengths.txt</
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-what-does-mean" class="box-title" aria-label="question box: What Does `&gt;&gt;` Mean?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: What Does `&gt;&gt;` Mean?</div>
+  <div class="box-title question-title" id="question-what-does-gt-gt-mean"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: What Does `&gt;&gt;` Mean?</div>
 
   <p>We have seen the use of <code class="language-plaintext highlighter-rouge">&gt;</code>, but there is a similar operator <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>
 which works slightly differently.
@@ -1167,13 +1066,13 @@ We’ll learn about the differences between these two operators by printing some
 We can use the <code class="language-plaintext highlighter-rouge">echo</code> command to print strings e.g.</p>
 
   <blockquote class="code-in">
-    <div id="code-in-bash" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+    <div class="box-title code-in-title" id="code-in-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo The echo command prints text
 </code></pre></div>    </div>
   </blockquote>
 
   <blockquote class="code-out">
-    <div id="code-out" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+    <div class="box-title code-out-title" id="code-out"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The echo command prints text
 </code></pre></div>    </div>
   </blockquote>
@@ -1181,7 +1080,7 @@ We can use the <code class="language-plaintext highlighter-rouge">echo</code> co
   <p>Now test the commands below to reveal the difference between the two operators:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-bash-1" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+    <div class="box-title code-in-title" id="code-in-bash-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo hello &gt; testfile01.txt
 </code></pre></div>    </div>
   </blockquote>
@@ -1189,7 +1088,7 @@ We can use the <code class="language-plaintext highlighter-rouge">echo</code> co
   <p>and:</p>
 
   <blockquote class="code-in">
-    <div id="code-in-bash-2" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+    <div class="box-title code-in-title" id="code-in-bash-2"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo hello &gt;&gt; testfile02.txt
 </code></pre></div>    </div>
   </blockquote>
@@ -1212,7 +1111,7 @@ but appends the string to the file if it already exists
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-appending-data" class="box-title" aria-label="question box: Appending Data"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Appending Data</div>
+  <div class="box-title question-title" id="question-appending-data"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Appending Data</div>
 
   <p>We have already met the <code class="language-plaintext highlighter-rouge">head</code> command, which prints lines from the start of a file.
 <code class="language-plaintext highlighter-rouge">tail</code> is similar, but prints lines from the end of a file instead.</p>
@@ -1233,7 +1132,7 @@ $ tail -n 2 animals.txt &gt;&gt; animals-subset.txt
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>Option 3 is correct.
 For option 1 to be correct we would only run the <code class="language-plaintext highlighter-rouge">head</code> command.
 For option 2 to be correct we would only run the <code class="language-plaintext highlighter-rouge">tail</code> command.
@@ -1286,7 +1185,7 @@ the calculation is ‘head of sort of line count of <code class="language-plaint
 
 <p>The redirection and pipes used in the last few commands are illustrated below:</p>
 
-<p><img src="../../images/carpentries-cli/redirects-and-pipes.svg" alt="Redirects and Pipes of different commands. " loading="lazy" /></p>
+<p><img src="../../images/carpentries-cli/redirects-and-pipes.svg" alt="Redirects and Pipes of different commands. " width="800" height="560" loading="lazy" /></p>
 
 <p><code class="language-plaintext highlighter-rouge">wc -l *.pdb</code> will direct the output to the shell. <code class="language-plaintext highlighter-rouge">wc -l *.pdb &gt; lengths</code> will
 direct output to the file lengths. <code class="language-plaintext highlighter-rouge">wc -l *.pdb | sort -n | head -n 1</code> will
@@ -1295,7 +1194,7 @@ command, the output of the sort command is the input to the head command and
 the output of the head command is directed to the shell</p>
 
 <blockquote class="question">
-  <div id="question-piping-commands-together" class="box-title" aria-label="question box: Piping Commands Together"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Piping Commands Together</div>
+  <div class="box-title question-title" id="question-piping-commands-together"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Piping Commands Together</div>
 
   <p>In our current directory, we want to find the 3 files which have the least number of
 lines. Which command listed below would work?</p>
@@ -1308,7 +1207,7 @@ lines. Which command listed below would work?</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>Option 4 is the solution.
 The pipe character <code class="language-plaintext highlighter-rouge">|</code> is used to connect the output from one command to
 the input of another.
@@ -1335,14 +1234,14 @@ they read from standard input,
 do something with what they’ve read,
 and write to standard output.</p>
 
-<p>The key is that any program that <span class="notranslate">reads</span> lines of text from standard input
+<p>The key is that any program that reads lines of text from standard input
 and writes lines of text to standard output
 can be combined with every other program that behaves this way as well.
 You can <em>and should</em> write your programs this way
 so that you and other people can put those programs into pipes to multiply their power.</p>
 
 <blockquote class="question">
-  <div id="question-pipe-reading-comprehension" class="box-title" aria-label="question box: Pipe Reading Comprehension"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Pipe Reading Comprehension</div>
+  <div class="box-title question-title" id="question-pipe-reading-comprehension"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Pipe Reading Comprehension</div>
 
   <p>A file called <code class="language-plaintext highlighter-rouge">animals.txt</code> (in the <code class="language-plaintext highlighter-rouge">shell-lesson-data/data</code> folder) contains the following data:</p>
 
@@ -1364,7 +1263,7 @@ so that you and other people can put those programs into pipes to multiply their
   <p>Hint: build the pipeline up one command at a time to test your understanding</p>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The <code class="language-plaintext highlighter-rouge">head</code> command extracts the first 5 lines from <code class="language-plaintext highlighter-rouge">animals.txt</code>.
 Then, the last 3 lines are extracted from the previous 5 by using the <code class="language-plaintext highlighter-rouge">tail</code> command.
 With the <code class="language-plaintext highlighter-rouge">sort -r</code> command those 3 lines are sorted in reverse order and finally,
@@ -1382,7 +1281,7 @@ The file should contain the following lines:</p>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-pipe-construction" class="box-title" aria-label="question box: Pipe Construction"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Pipe Construction</div>
+  <div class="box-title question-title" id="question-pipe-construction"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Pipe Construction</div>
 
   <p>For the file <code class="language-plaintext highlighter-rouge">animals.txt</code> from the previous exercise, consider the following command:</p>
 
@@ -1412,7 +1311,7 @@ out what animals the file contains (without any duplicates in their
 names)?</p>
 
   <blockquote class="solution">
-    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cut -d , -f 2 animals.txt | sort | uniq
 </code></pre></div>    </div>
   </blockquote>
@@ -1422,7 +1321,7 @@ names)?</p>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-which-pipe" class="box-title" aria-label="question box: Which Pipe?"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Which Pipe?</div>
+  <div class="box-title question-title" id="question-which-pipe"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Which Pipe?</div>
 
   <p>The file <code class="language-plaintext highlighter-rouge">animals.txt</code> contains 8 lines of data formatted as follows:</p>
 
@@ -1447,7 +1346,7 @@ a table that shows the total count of each type of animal in the file?</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>Option 4. is the correct answer.
 If you have difficulty understanding why, try running the commands, or sub-sections of
 the pipelines (make sure you are in the <code class="language-plaintext highlighter-rouge">shell-lesson-data/data</code> directory).</p>
@@ -1510,11 +1409,11 @@ Since it’s too late to get the information any other way,
 she must exclude those two files from her analysis.
 She could delete them using <code class="language-plaintext highlighter-rouge">rm</code>,
 but there are actually some analyses she might do later where depth doesn’t matter,
-so instead, she’ll have to be careful later on to select files using the wildcard <span class="notranslate">expression</span>s
+so instead, she’ll have to be careful later on to select files using the wildcard expressions
 <code class="language-plaintext highlighter-rouge">NENE*A.txt NENE*B.txt</code>.</p>
 
 <blockquote class="question">
-  <div id="question-removing-unneeded-files" class="box-title" aria-label="question box: Removing Unneeded Files"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Removing Unneeded Files</div>
+  <div class="box-title question-title" id="question-removing-unneeded-files"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Removing Unneeded Files</div>
 
   <p>Suppose you want to delete your processed data files, and only keep
 your raw files and processing script to save storage.
@@ -1530,7 +1429,7 @@ and <em>only</em> the processed data files?</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-6" class="box-title"><button type="button" aria-controls="solution-6-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-6"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-6" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>This would remove <code class="language-plaintext highlighter-rouge">.txt</code> files with one-character names</li>
       <li>This is correct answer</li>
@@ -1562,7 +1461,7 @@ into the creatures directory.</p>
 </code></pre></div></div>
 
 <p>The structure of these files is the same: the common name, classification, and updated date are
-presented on the first three lines, with <span class="notranslate">DNA</span> sequences on the following lines.
+presented on the first three lines, with DNA sequences on the following lines.
 Let’s look at the files:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">head</span> <span class="nt">-n</span> 5 basilisk.dat minotaur.dat unicorn.dat
@@ -1588,7 +1487,7 @@ done
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-follow-the-prompt" class="box-title"><button type="button" aria-controls="tip-follow-the-prompt-contents" aria-expanded="true" aria-label="Toggle tip box: Follow the Prompt"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Follow the Prompt<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-follow-the-prompt"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-follow-the-prompt" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Follow the Prompt<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The shell prompt changes from <code class="language-plaintext highlighter-rouge">$</code> to <code class="language-plaintext highlighter-rouge">&gt;</code> and back again as we were
 typing in our loop. The second prompt, <code class="language-plaintext highlighter-rouge">&gt;</code>, is different to remind
@@ -1605,7 +1504,7 @@ Inside the loop,
 we call for the variable’s value by putting <code class="language-plaintext highlighter-rouge">$</code> in front of it.
 The <code class="language-plaintext highlighter-rouge">$</code> tells the shell interpreter to treat
 the variable as a variable name and substitute its value in its place,
-rather than treat it as text or an exte<span class="notranslate">rna</span>l command.</p>
+rather than treat it as text or an external command.</p>
 
 <p>In this example, the list is three filenames: <code class="language-plaintext highlighter-rouge">basilisk.dat</code>, <code class="language-plaintext highlighter-rouge">minotaur.dat</code>, and <code class="language-plaintext highlighter-rouge">unicorn.dat</code>.
 Each time the loop iterates, it will assign a file name to the variable <code class="language-plaintext highlighter-rouge">filename</code>
@@ -1625,7 +1524,7 @@ and <code class="language-plaintext highlighter-rouge">tail</code> on the output
 Since the list was only three items, the shell exits the <code class="language-plaintext highlighter-rouge">for</code> loop.</p>
 
 <blockquote class="tip">
-  <div id="tip-same-symbols-different-meanings" class="box-title"><button type="button" aria-controls="tip-same-symbols-different-meanings-contents" aria-expanded="true" aria-label="Toggle tip box: Same Symbols, Different Meanings"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Same Symbols, Different Meanings<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-same-symbols-different-meanings"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-same-symbols-different-meanings" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Same Symbols, Different Meanings<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Here we see <code class="language-plaintext highlighter-rouge">&gt;</code> being used as a shell prompt, whereas <code class="language-plaintext highlighter-rouge">&gt;</code> is also
 used to redirect output.
@@ -1665,14 +1564,14 @@ if we wrote this loop as:</p>
 
 <p>it would work exactly the same way.</p>
 
-<p><strong>Don’t do this.</strong></p>
+<h1 id="dont-do-this">Don’t do this.</h1>
 
 <p>Programs are only useful if people can understand them,
 so meaningless names (like <code class="language-plaintext highlighter-rouge">x</code>) or misleading names (like <code class="language-plaintext highlighter-rouge">temperature</code>)
 increase the odds that the program won’t do what its readers think it does.</p>
 
 <blockquote class="question">
-  <div id="question-variables-in-loops" class="box-title" aria-label="question box: Variables in Loops"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Variables in Loops</div>
+  <div class="box-title question-title" id="question-variables-in-loops"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Variables in Loops</div>
 
   <p>This exercise refers to the <code class="language-plaintext highlighter-rouge">shell-lesson-data/molecules</code> directory.
 <code class="language-plaintext highlighter-rouge">ls</code> gives the following output:</p>
@@ -1699,7 +1598,7 @@ done
   <p>Why do these two loops give different outputs?</p>
 
   <blockquote class="solution">
-    <div id="solution-7" class="box-title"><button type="button" aria-controls="solution-7-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-7"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-7" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The first code block gives the same output on each iteration through
 the loop.
 Bash expands the wildcard <code class="language-plaintext highlighter-rouge">*.pdb</code> within the loop body (as well as
@@ -1738,7 +1637,7 @@ propane.pdb
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-limiting-sets-of-files" class="box-title" aria-label="question box: Limiting Sets of Files"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Limiting Sets of Files</div>
+  <div class="box-title question-title" id="question-limiting-sets-of-files"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Limiting Sets of Files</div>
 
   <p>What would be the output of running the following loop in thei
 <code class="language-plaintext highlighter-rouge">shell-lesson-data/molecules</code> directory?</p>
@@ -1757,7 +1656,7 @@ done
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-8" class="box-title"><button type="button" aria-controls="solution-8-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-8"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-8" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>4 is the correct answer. <code class="language-plaintext highlighter-rouge">*</code> matches zero or more characters, so any file name starting with
 the letter c, followed by zero or more other characters will be matched.</p>
   </blockquote>
@@ -1779,7 +1678,7 @@ done
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-9" class="box-title"><button type="button" aria-controls="solution-9-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-9"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-9" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>4 is the correct answer. <code class="language-plaintext highlighter-rouge">*</code> matches zero or more characters, so a file name with zero or more
 characters before a letter c and zero or more characters after the letter c will be matched.</p>
   </blockquote>
@@ -1789,7 +1688,7 @@ characters before a letter c and zero or more characters after the letter c will
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-saving-to-a-file-in-a-loop-part-one" class="box-title" aria-label="question box: Saving to a File in a Loop - Part One"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Saving to a File in a Loop - Part One</div>
+  <div class="box-title question-title" id="question-saving-to-a-file-in-a-loop-part-one"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Saving to a File in a Loop - Part One</div>
 
   <p>In the <code class="language-plaintext highlighter-rouge">shell-lesson-data/molecules</code> directory, what is the effect of this loop?</p>
 
@@ -1811,7 +1710,7 @@ and the text from <code class="language-plaintext highlighter-rouge">propane.pdb
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-10" class="box-title"><button type="button" aria-controls="solution-10-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-10"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-10" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>1 is correct. The text from each file in turn gets written to the <code class="language-plaintext highlighter-rouge">alkanes.pdb</code> file.
 However, the file gets overwritten on each loop iteration, so the final content of <code class="language-plaintext highlighter-rouge">alkanes.pdb</code>
 is the text from the <code class="language-plaintext highlighter-rouge">propane.pdb</code> file.</p>
@@ -1822,7 +1721,7 @@ is the text from the <code class="language-plaintext highlighter-rouge">propane.
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-saving-to-a-file-in-a-loop-part-two" class="box-title" aria-label="question box: Saving to a File in a Loop - Part Two"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Saving to a File in a Loop - Part Two</div>
+  <div class="box-title question-title" id="question-saving-to-a-file-in-a-loop-part-two"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Saving to a File in a Loop - Part Two</div>
 
   <p>Also in the <code class="language-plaintext highlighter-rouge">shell-lesson-data/molecules</code> directory,
 what would be the output of the following loop?</p>
@@ -1844,7 +1743,7 @@ and <code class="language-plaintext highlighter-rouge">propane.pdb</code> would 
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-11" class="box-title"><button type="button" aria-controls="solution-11-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-11"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-11" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>3 is the correct answer. <code class="language-plaintext highlighter-rouge">&gt;&gt;</code> appends to a file, rather than overwriting it with the redirected
 output from a command.
 Given the output from the <code class="language-plaintext highlighter-rouge">cat</code> command has been redirected, nothing is printed to the screen.</p>
@@ -1898,7 +1797,7 @@ from whatever file is being processed
 (assuming the file has at least 100 lines).</p>
 
 <blockquote class="tip">
-  <div id="tip-spaces-in-names" class="box-title"><button type="button" aria-controls="tip-spaces-in-names-contents" aria-expanded="true" aria-label="Toggle tip box: Spaces in Names"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Spaces in Names<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-spaces-in-names"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-spaces-in-names" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Spaces in Names<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Spaces are used to separate the elements of the list
 that we are going to loop over. If one of those elements
@@ -1996,7 +1895,7 @@ As such we can check what commands <em>would be</em> run in the unmodified loop.
 shows what happens when the modified loop is executed, and demonstrates how the
 judicious use of <code class="language-plaintext highlighter-rouge">echo</code> is a good debugging technique.</p>
 
-<p><img src="../../images/carpentries-cli/shell_script_for_loop_flow_chart.svg" alt="The for loop 'for filename in *.dat; do echo cp $filename original-$filename; done' will successively assign the names of all '*.dat' files in your current directory to the variable '$filename' and then execute the command. With the files 'basilisk.dat', 'minotaur.dat' and 'unicorn.dat' in the current directory the loop will successively call the echo command three times and print three lines: 'cp basislisk.dat original-basilisk.dat', then 'cp minotaur.dat original-minotaur.dat' and finally 'cp unicorn.dat original-unicorn.dat'. " loading="lazy" /></p>
+<p><img src="../../images/carpentries-cli/shell_script_for_loop_flow_chart.svg" alt="The for loop 'for filename in *.dat; do echo cp $filename original-$filename; done' will successively assign the names of all '*.dat' files in your current directory to the variable '$filename' and then execute the command. With the files 'basilisk.dat', 'minotaur.dat' and 'unicorn.dat' in the current directory the loop will successively call the echo command three times and print three lines: 'cp basislisk.dat original-basilisk.dat', then 'cp minotaur.dat original-minotaur.dat' and finally 'cp unicorn.dat original-unicorn.dat'. " width="10" height="5" loading="lazy" /></p>
 
 <h2 id="nelles-pipeline-processing-files">Nelle’s Pipeline: Processing Files</h2>
 
@@ -2037,7 +1936,7 @@ so she modifies her loop to do that:</p>
 but now she’s sure she can select the right files and generate the right output filenames.</p>
 
 <blockquote class="tip">
-  <div id="tip-top-terminal-tip-re-running-previous-commands" class="box-title"><button type="button" aria-controls="tip-top-terminal-tip-re-running-previous-commands-contents" aria-expanded="true" aria-label="Toggle tip box: Top Terminal Tip: Re-running previous commands"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Top Terminal Tip: Re-running previous commands<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-top-terminal-tip-re-running-previous-commands"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-top-terminal-tip-re-running-previous-commands" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Top Terminal Tip: Re-running previous commands<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Typing in commands over and over again is becoming tedious,
 though,
 and Nelle is worried about making mistakes,
@@ -2070,7 +1969,7 @@ and edits it to read:</p>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <h2 id="beginning-and-end">Beginning and End</h2>
+  <div class="box-title tip-title" id="tip-beginning-and-end"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-beginning-and-end" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Beginning and End<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>We can move to the beginning of a line in the shell by typing <kbd>Ctrl</kbd>+<kbd>A</kbd>
 and to the end using <kbd>Ctrl</kbd>+<kbd>E</kbd>.</p>
@@ -2091,7 +1990,7 @@ It looks good,
 so she decides to get some coffee and catch up on her reading.</p>
 
 <blockquote class="tip">
-  <div id="tip-those-who-know-history-can-choose-to-repeat-it" class="box-title"><button type="button" aria-controls="tip-those-who-know-history-can-choose-to-repeat-it-contents" aria-expanded="true" aria-label="Toggle tip box: Those Who Know History Can Choose to Repeat It"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Those Who Know History Can Choose to Repeat It<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-those-who-know-history-can-choose-to-repeat-it"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-those-who-know-history-can-choose-to-repeat-it" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Those Who Know History Can Choose to Repeat It<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Another way to repeat previous work is to use the <code class="language-plaintext highlighter-rouge">history</code> command to
 get a list of the last few hundred commands that have been executed, and
@@ -2113,7 +2012,7 @@ repeat one of those commands. For example, if Nelle types this:</p>
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-other-history-commands" class="box-title"><button type="button" aria-controls="tip-other-history-commands-contents" aria-expanded="true" aria-label="Toggle tip box: Other History Commands"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Other History Commands<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-other-history-commands"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-other-history-commands" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Other History Commands<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>There are a number of other shortcut commands for getting at the history.</p>
 
@@ -2134,7 +2033,7 @@ quicker than doing <kbd>↑</kbd> and editing the command-line.</li>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-doing-a-dry-run" class="box-title" aria-label="question box: Doing a Dry Run"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Doing a Dry Run</div>
+  <div class="box-title question-title" id="question-doing-a-dry-run"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Doing a Dry Run</div>
 
   <p>A loop is a way to do many things at once — or to make many mistakes at
 once if it does the wrong thing. One way to check what a loop <em>would</em> do
@@ -2154,7 +2053,7 @@ done
 want to run?</p>
 
   <blockquote class="code-in">
-    <div id="code-in-version-1" class="box-title" aria-label="code-in box: Version 1"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Version 1</div>
+    <div class="box-title code-in-title" id="code-in-version-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Version 1</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for datafile in *.pdb
 do
     echo cat $datafile &gt;&gt; all.pdb
@@ -2163,7 +2062,7 @@ done
   </blockquote>
 
   <blockquote class="code-in">
-    <div id="code-in-version-2" class="box-title" aria-label="code-in box: Version 2"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Version 2</div>
+    <div class="box-title code-in-title" id="code-in-version-2"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Version 2</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for datafile in *.pdb
 do
     echo "cat $datafile &gt;&gt; all.pdb"
@@ -2172,7 +2071,7 @@ done
   </blockquote>
 
   <blockquote class="solution">
-    <div id="tip-solution" class="box-title"><button type="button" aria-controls="tip-solution-contents" aria-expanded="true" aria-label="Toggle tip box: Solution"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-12"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-12" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The second version is the one we want to run.
 This prints to screen everything enclosed in the quote marks, expanding the
 loop variable name because we have prefixed it with a dollar sign.</p>
@@ -2190,7 +2089,7 @@ to the file, <code class="language-plaintext highlighter-rouge">all.pdb</code>. 
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-nested-loops" class="box-title" aria-label="question box: Nested Loops"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Nested Loops</div>
+  <div class="box-title question-title" id="question-nested-loops"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Nested Loops</div>
 
   <p>Suppose we want to set up a directory structure to organize
 some experiments measuring reaction rate constants with different compounds
@@ -2207,7 +2106,7 @@ done
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div id="solution-12" class="box-title"><button type="button" aria-controls="solution-12-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-13"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-13" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>We have a nested loop, i.e. contained within another loop, so for each species
 in the outer loop, the inner loop (the nested loop) iterates over the list of
 temperatures, and creates a new directory for each combination.</p>
@@ -2224,7 +2123,7 @@ temperatures, and creates a new directory for each combination.</p>
 <p>In the same way that many of us now use ‘Google’ as a
 verb meaning ‘to find’, Unix programmers often use the
 word ‘grep’.
-‘grep’ is a contraction of ‘global/regular <span class="notranslate">expression</span>/print’,
+‘grep’ is a contraction of ‘global/regular expression/print’,
 a common sequence of operations in early Unix text editors.
 It is also the name of a very useful command-line program.</p>
 
@@ -2240,7 +2139,7 @@ cd </span>Desktop/shell-lesson-data/writing
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-forever-or-five-years" class="box-title"><button type="button" aria-controls="tip-forever-or-five-years-contents" aria-expanded="true" aria-label="Toggle tip box: Forever, or Five Years"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Forever, or Five Years<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-forever-or-five-years"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-forever-or-five-years" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Forever, or Five Years<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>We haven’t linked to the original haiku because
 they don’t appear to be on <em>Salon</em>’s site any longer.
@@ -2338,7 +2237,7 @@ the lines that do not contain the word ‘the’.</p>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-using-grep" class="box-title" aria-label="question box: Using `grep`"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Using `grep`</div>
+  <div class="box-title question-title" id="question-using-grep"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Using `grep`</div>
 
   <p>Which command would result in the following output:</p>
 
@@ -2353,7 +2252,7 @@ the lines that do not contain the word ‘the’.</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-13" class="box-title"><button type="button" aria-controls="solution-13-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-14"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-14" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The correct answer is 3, because the <code class="language-plaintext highlighter-rouge">-w</code> option looks only for whole-word matches.
 The other options will also match ‘of’ when part of another word.</p>
   </blockquote>
@@ -2363,12 +2262,12 @@ The other options will also match ‘of’ when part of another word.</p>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-wildcards" class="box-title"><button type="button" aria-controls="tip-wildcards-contents" aria-expanded="true" aria-label="Toggle tip box: Wildcards"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Wildcards<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-wildcards"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-wildcards" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Wildcards<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p><code class="language-plaintext highlighter-rouge">grep</code>’s real power doesn’t come from its options, though; it comes from
 the fact that patterns can include wildcards. (The technical name for
-these is <strong>regular <span class="notranslate">expression</span>s</strong>, which
-is what the ‘re’ in ‘grep’ stands for.) Regular <span class="notranslate">expression</span>s are both complex
+these is <strong>regular expressions</strong>, which
+is what the ‘re’ in ‘grep’ stands for.) Regular expressions are both complex
 and powerful; if you want to do complex searches, please look at the lesson
 on <a href="http://v4.software-carpentry.org/regexp/index.html">our website</a>. As a taster, we can
 find lines that have an ‘o’ in the second position like this:</p>
@@ -2393,7 +2292,7 @@ matches an actual ‘o’.</p>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-tracking-a-species" class="box-title" aria-label="question box: Tracking a Species"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Tracking a Species</div>
+  <div class="box-title question-title" id="question-tracking-a-species"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Tracking a Species</div>
 
   <p>Leah has several hundred
 data files saved in one directory, each of which is formatted like this:</p>
@@ -2431,7 +2330,7 @@ and <code class="language-plaintext highlighter-rouge">man cut</code> to select 
   <p>An example of such a file is provided in <code class="language-plaintext highlighter-rouge">shell-lesson-data/data/animal-counts/animals.txt</code></p>
 
   <blockquote class="solution">
-    <div id="solution-14" class="box-title"><button type="button" aria-controls="solution-14-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-15"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-15" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep -w $1 -r $2 | cut -d : -f 2 | cut -d , -f 1,3 &gt; $1.txt
 </code></pre></div>    </div>
@@ -2451,7 +2350,7 @@ from each step to see why this is the case.</p>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-little-women" class="box-title" aria-label="question box: Little Women"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Little Women</div>
+  <div class="box-title question-title" id="question-little-women"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Little Women</div>
 
   <p>You and your friend, having just finished reading <em>Little Women</em> by
 Louisa May Alcott, are in an argument.  Of the four sisters in the
@@ -2470,7 +2369,7 @@ particular solution is usually chosen based on a combination of
 yielding the correct result, elegance, readability, and speed.</p>
 
   <blockquote class="solution">
-    <div id="solution-15" class="box-title"><button type="button" aria-controls="solution-15-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-16"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-16" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for sis in Jo Meg Beth Amy
 do
 	echo $sis:
@@ -2478,7 +2377,7 @@ do
 done
 </code></pre></div>    </div>
 
-    <p>Alte<span class="notranslate">rna</span>tive, slightly inferior solution:</p>
+    <p>Alternative, slightly inferior solution:</p>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for sis in Jo Meg Beth Amy
 do
 	echo $sis:
@@ -2507,7 +2406,7 @@ Again,
 it has a lot of options;
 to show how the simplest ones work, we’ll use the directory tree shown below.</p>
 
-<p><img src="../../images/carpentries-cli/find-file-tree.svg" alt="A file tree under the directory 'writing' contians several sub-directories and files such that 'writing' contains directories 'data', 'thesis', 'tools' and a file 'haiku.txt'; 'writing/data' contains the files 'Little Women.txt', 'one.txt' and 'two.txt'; 'writing/thesis' contains the file 'empty-draft.md'; 'writing/tools' contains the directory 'old' and the files 'format' and 'stats'; and 'writing/tools/old' contains a file 'oldtool'. " loading="lazy" /></p>
+<p><img src="../../images/carpentries-cli/find-file-tree.svg" alt="A file tree under the directory 'writing' contians several sub-directories and files such that 'writing' contains directories 'data', 'thesis', 'tools' and a file 'haiku.txt'; 'writing/data' contains the files 'Little Women.txt', 'one.txt' and 'two.txt'; 'writing/thesis' contains the file 'empty-draft.md'; 'writing/tools' contains the directory 'old' and the files 'format' and 'stats'; and 'writing/tools/old' contains a file 'oldtool'. " width="172" height="139" loading="lazy" /></p>
 
 <p>Nelle’s <code class="language-plaintext highlighter-rouge">writing</code> directory contains one file called <code class="language-plaintext highlighter-rouge">haiku.txt</code> and three subdirectories:
 <code class="language-plaintext highlighter-rouge">thesis</code> (which contains a sadly empty file, <code class="language-plaintext highlighter-rouge">empty-draft.md</code>);
@@ -2572,7 +2471,7 @@ This way,
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-listing-vs-finding" class="box-title"><button type="button" aria-controls="tip-listing-vs-finding-contents" aria-expanded="true" aria-label="Toggle tip box: Listing vs. Finding"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Listing vs. Finding<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-listing-vs-finding"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-listing-vs-finding" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Listing vs. Finding<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p><code class="language-plaintext highlighter-rouge">ls</code> and <code class="language-plaintext highlighter-rouge">find</code> can be made to do similar things given the right options,
 but under normal circumstances,
@@ -2595,7 +2494,7 @@ How can we combine that with <code class="language-plaintext highlighter-rouge">
 
 <p>When the shell executes this command,
 the first thing it does is run whatever is inside the <code class="language-plaintext highlighter-rouge">$()</code>.
-It then replaces the <code class="language-plaintext highlighter-rouge">$()</code> <span class="notranslate">expression</span> with that command’s output.
+It then replaces the <code class="language-plaintext highlighter-rouge">$()</code> expression with that command’s output.
 Since the output of <code class="language-plaintext highlighter-rouge">find</code> is the four filenames <code class="language-plaintext highlighter-rouge">./data/one.txt</code>, <code class="language-plaintext highlighter-rouge">./data/LittleWomen.txt</code>,
 <code class="language-plaintext highlighter-rouge">./data/two.txt</code>, and <code class="language-plaintext highlighter-rouge">./haiku.txt</code>, the shell constructs the command:</p>
 
@@ -2616,7 +2515,7 @@ by looking for the string ‘FE’ in all the <code class="language-plaintext hi
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-matching-and-subtracting" class="box-title" aria-label="question box: Matching and Subtracting"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Matching and Subtracting</div>
+  <div class="box-title question-title" id="question-matching-and-subtracting"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Matching and Subtracting</div>
 
   <p>The <code class="language-plaintext highlighter-rouge">-v</code> option to <code class="language-plaintext highlighter-rouge">grep</code> inverts pattern matching, so that only lines
 which do <em>not</em> match the pattern are printed. Given that, which of
@@ -2634,12 +2533,12 @@ directory.</p>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-16" class="box-title"><button type="button" aria-controls="solution-16-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-    <p>The correct answer is 1. Putting the match <span class="notranslate">expression</span> in quotes prevents the shell
+    <div class="box-title solution-title" id="solution-17"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-17" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+    <p>The correct answer is 1. Putting the match expression in quotes prevents the shell
 expanding it, so it gets passed to the <code class="language-plaintext highlighter-rouge">find</code> command.</p>
 
     <p>Option 2 is incorrect because the shell expands <code class="language-plaintext highlighter-rouge">*s.txt</code> instead of passing the wildcard
-<span class="notranslate">expression</span> to <code class="language-plaintext highlighter-rouge">find</code>.</p>
+expression to <code class="language-plaintext highlighter-rouge">find</code>.</p>
 
     <p>Option 3 is incorrect because it searches the contents of the files for lines which
 do not match ‘net’, rather than searching the file names.</p>
@@ -2650,7 +2549,7 @@ do not match ‘net’, rather than searching the file names.</p>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-binary-files" class="box-title"><button type="button" aria-controls="tip-binary-files-contents" aria-expanded="true" aria-label="Toggle tip box: Binary Files"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Binary Files<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-binary-files"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-binary-files" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Binary Files<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>We have focused exclusively on finding patterns in text files. What if
 your data is stored as images, in databases, or in some other format?</p>
@@ -2661,7 +2560,7 @@ extract the text-like elements from the data. On the one hand, it makes simple
 things easy to do. On the other hand, complex things are usually impossible. For
 example, it’s easy enough to write a program that will extract X and Y
 dimensions from image files for <code class="language-plaintext highlighter-rouge">grep</code> to play with, but how would you
-write something to find values in a sp<span class="notranslate">reads</span>heet whose cells contained
+write something to find values in a spreadsheet whose cells contained
 formulas?</p>
 
   <p>A last option is to recognize that the shell and text processing have
@@ -2683,7 +2582,7 @@ extending the number of important operations which we can perform
 without thinking about them.’</p>
 
 <blockquote class="question">
-  <div id="question-find-pipeline-reading-comprehension" class="box-title" aria-label="question box: `find` Pipeline Reading Comprehension"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: `find` Pipeline Reading Comprehension</div>
+  <div class="box-title question-title" id="question-find-pipeline-reading-comprehension"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: `find` Pipeline Reading Comprehension</div>
 
   <p>Write a short explanatory comment for the following shell script:</p>
 
@@ -2691,7 +2590,7 @@ without thinking about them.’</p>
 </code></pre></div>  </div>
 
   <blockquote class="solution">
-    <div id="solution-17" class="box-title"><button type="button" aria-controls="solution-17-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-18"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-18" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>Find all files with a <code class="language-plaintext highlighter-rouge">.dat</code> extension recursively from the current directory</li>
       <li>Count the number of lines each of these files contains</li>
@@ -2704,10 +2603,12 @@ without thinking about them.’</p>
 
 <p>All of the commands you have run up until now were ad-hoc, interactive commands.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p><code class="language-plaintext highlighter-rouge">wc</code> counts lines, words, and characters in its inputs.</p>
@@ -2799,38 +2700,18 @@ without thinking about them.’</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Advanced CLI in Galaxy (Foundations of Data Science)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Advanced CLI in Galaxy (Foundations of Data Science)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">The Carpentries, Helena Rasche, Bazante Sanders, Erasmus+ Programme, Avans Hogeschool,  <b>Advanced CLI in Galaxy (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            The Carpentries, Helena Rasche, Bazante Sanders, Erasmus+ Programme, Avans Hogeschool,  <b>Advanced CLI in Galaxy (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2842,7 +2723,7 @@ without thinking about them.’</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -2851,28 +2732,31 @@ without thinking about them.’</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{data-science-cli-advanced,
 author = "The Carpentries and Helena Rasche and Bazante Sanders and Erasmus+ Programme and Avans Hogeschool",
-title = "Advanced CLI in Galaxy (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Advanced CLI in Galaxy (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/cli-advanced/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2880,11 +2764,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2893,6 +2777,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
@@ -2904,8 +2789,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         
             <ul>
                 
-                    
-                        
                     
                         
                     
@@ -2985,6 +2868,16 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                     
                         
                     
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                 
             </ul>
         
@@ -2995,49 +2888,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 </blockquote>
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/data-science/tutorials/cli-advanced/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00074">https://gxy.io/GTN:T00074</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/cli-advanced/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

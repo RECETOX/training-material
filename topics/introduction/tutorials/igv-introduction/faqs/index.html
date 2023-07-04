@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,43 +8,75 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/introduction/tutorials/igv-introduction/faqs/" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-02-24 14:27:35 +0000" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/introduction/tutorials/igv-introduction/faqs/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-02-24 14:27:35 +0000">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Galaxy is a scientific workflow, data integration, and da..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Introduction to Galaxy Analyses" />
-        <meta property="og:description" content="Galaxy is a scientific workflow, data integration, and da..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,38 +93,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/introduction/tutorials/igv-introduction/faqs/&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/introduction/tutorials/igv-introduction/faqs/&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/introduction/tutorials/igv-introduction/faqs/&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/introduction/tutorials/igv-introduction/faqs/&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/introduction/tutorials/igv-introduction/faqs/&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/introduction/tutorials/igv-introduction/faqs/&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -112,10 +116,6 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
-        <a class="dropdown-item" href="/training-material/topics/introduction/faqs/" title="Check our FAQs for the Introduction to Galaxy Analyses topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
         </a>
@@ -132,8 +132,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/introduction/tutorials/igv-introduction/faqs/" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/introduction/tutorials/igv-introduction/faqs/index.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -158,27 +157,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -190,13 +176,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/introduction/tutorials/igv-introduction/faqs/" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/introduction/tutorials/igv-introduction/faqs/">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/introduction/tutorials/igv-introduction/faqs/" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/introduction/tutorials/igv-introduction/faqs/">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/introduction/tutorials/igv-introduction/faqs/" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/introduction/tutorials/igv-introduction/faqs/">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -209,7 +195,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -223,6 +209,7 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
 
@@ -281,9 +268,9 @@
 
 
 
-<h4 class="faq-area"> Using IGV with <span class="notranslate">Galaxy</span> <a href="/training-material/topics/introduction/tutorials/igv-introduction/faqs/visualisations_igv.html"><i class="fas fa-external-link-alt"></i></a> </h4>
+<h4 class="faq-area"> Using IGV with Galaxy <a href="/training-material/topics/introduction/tutorials/igv-introduction/faqs/visualisations_igv.html"><i class="fas fa-external-link-alt"></i></a> </h4>
 
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-using-igv-with-galaxy" class="box-title"><button type="button" aria-controls="tip-using-igv-with-galaxy-contents" aria-expanded="true" aria-label="Toggle tip box: Using IGV with Galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Using IGV with <span class="notranslate">Galaxy</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>You can send data from your <span class="notranslate">Galaxy</span> history to IGV for viewing as follows:</p>  <ol>  <li>Install IGV on your computer (<a href="https://software.broadinstitute.org/software/igv/download">IGV download page</a>)</li>  <li>Start IGV</li>  <li>In recent versions of IGV, you will have to enable the port:    <ul>      <li>In IGV, go to <code class="language-plaintext highlighter-rouge">View &gt; Preferences &gt; Advanced</code></li>      <li>Check the box <code class="language-plaintext highlighter-rouge">Enable Port</code></li>    </ul>  </li>  <li>In <span class="notranslate">Galaxy</span>, expand the dataset you would like to view in IGV    <ul>      <li>Make sure you have set a reference genome/database correctly (dbkey) (<a href="/training-material/faqs/galaxy/datasets_change_dbkey.html">instructions</a>)</li>      <li>Under <code class="language-plaintext highlighter-rouge">display in IGV</code>, click on <code class="language-plaintext highlighter-rouge">local</code></li>    </ul>  </li></ol></blockquote>
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-using-igv-with-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-using-igv-with-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Using IGV with Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>You can send data from your Galaxy history to IGV for viewing as follows:</p>   <ol>   <li>Install IGV on your computer (<a href="https://software.broadinstitute.org/software/igv/download">IGV download page</a>)</li>   <li>Start IGV</li>   <li>In recent versions of IGV, you will have to enable the port:     <ul>       <li>In IGV, go to <code class="language-plaintext highlighter-rouge">View &gt; Preferences &gt; Advanced</code></li>       <li>Check the box <code class="language-plaintext highlighter-rouge">Enable Port</code></li>     </ul>   </li>   <li>In Galaxy, expand the dataset you would like to view in IGV     <ul>       <li>Make sure you have set a reference genome/database correctly (dbkey) (<a href="/training-material/faqs/galaxy/datasets_change_dbkey.html">instructions</a>)</li>       <li>Under <code class="language-plaintext highlighter-rouge">display in IGV</code>, click on <code class="language-plaintext highlighter-rouge">local</code></li>     </ul>   </li> </ol> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -293,9 +280,9 @@
 <hr>
 <!-- Add the "help my tool is missing FAQ to all tutorial faq pages -->
 <h4 class="faq-area"> Can't find one of the tools for this tutorial? <a href="/training-material/faqs/galaxy/tools_missing.html"><i class="fas fa-external-link-alt"></i></a> </h4>
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-if-a-tool-is-missing" class="box-title"><button type="button" aria-controls="tip-if-a-tool-is-missing-contents" aria-expanded="true" aria-label="Toggle tip box: If a Tool is Missing"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: If a Tool is Missing<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>To use the tools installed and available on the <span class="notranslate">Galaxy</span> server:</p>  <ol>  <li>At the top of the left tool panel, type in a tool name or datatype into the tool search box.</li>  <li>Shorter keywords find more choices.</li>  <li>Tools can also be directly browsed by category in the tool panel.</li></ol>  <p>If you can’t find a tool you need for a tutorial on <span class="notranslate">Galaxy</span>, please:</p>  <ol>  <li><strong>Check that you are using a compatible <span class="notranslate">Galaxy</span> server</strong>    <ul>      <li>Navigate to the overview box at the top of the tutorial</li>      <li>Find the <strong>“Supporting Materials”</strong> section</li>      <li>Check <strong>“Available on these Galaxies”</strong></li>      <li>If your server is not listed here, the tutorial is not supported on your <span class="notranslate">Galaxy</span> server</li>      <li>You can create an account on one of the supporting Galaxies  <img src="/training-material/faqs/galaxy/images/supporting_galaxies.png" alt="screenshot of overview box with available Galaxies section" /></li>    </ul>  </li>  <li>Use the <strong>Tutorial mode</strong> feature    <ul>      <li>Open your <span class="notranslate">Galaxy</span> server</li>      <li>Click on the <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> icon on the top menu, this will open the GTN inside <span class="notranslate">Galaxy</span>.</li>      <li>Navigate to your tutorial</li>      <li>Tool names in tutorials will be blue buttons that open the correct tool for you</li>      <li><strong>Note:</strong> this does not work for all tutorials (yet)  <img src="/training-material/topics/contributing/images/88277962-ddda4a80-cce1-11ea-92cd-41b1df063db0.gif" alt="gif showing how GTN-in-Galaxy works" /></li>    </ul>  </li>  <li><strong>Still not finding the tool?</strong>    <ul>      <li>Ask help in <a href="https://gitter.im/Galaxy-Training-Network/Lobby">Gitter</a>.</li>    </ul>  </li></ol></blockquote>
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-if-a-tool-is-missing"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-if-a-tool-is-missing" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: If a Tool is Missing<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>To use the tools installed and available on the Galaxy server:</p>   <ol>   <li>At the top of the left tool panel, type in a tool name or datatype into the tool search box.</li>   <li>Shorter keywords find more choices.</li>   <li>Tools can also be directly browsed by category in the tool panel.</li> </ol>   <p>If you can’t find a tool you need for a tutorial on Galaxy, please:</p>   <ol>   <li><strong>Check that you are using a compatible Galaxy server</strong>     <ul>       <li>Navigate to the overview box at the top of the tutorial</li>       <li>Find the <strong>“Supporting Materials”</strong> section</li>       <li>Check <strong>“Available on these Galaxies”</strong></li>       <li>If your server is not listed here, the tutorial is not supported on your Galaxy server</li>       <li>You can create an account on one of the supporting Galaxies   <img src="/training-material/faqs/galaxy/images/supporting_galaxies.png" alt="screenshot of overview box with available Galaxies section" /></li>     </ul>   </li>   <li>Use the <strong>Tutorial mode</strong> feature     <ul>       <li>Open your Galaxy server</li>       <li>Click on the <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> icon on the top menu, this will open the GTN inside Galaxy.</li>       <li>Navigate to your tutorial</li>       <li>Tool names in tutorials will be blue buttons that open the correct tool for you</li>       <li><strong>Note:</strong> this does not work for all tutorials (yet)   <img src="/training-material/topics/contributing/images/88277962-ddda4a80-cce1-11ea-92cd-41b1df063db0.gif" alt="gif showing how GTN-in-Galaxy works" /></li>     </ul>   </li>   <li><strong>Still not finding the tool?</strong>     <ul>       <li>Ask help in <a href="https://gitter.im/Galaxy-Training-Network/Lobby">Gitter</a>.</li>     </ul>   </li> </ol> </blockquote> <!--END_SNIPPET-->
 <h4 class="faq-area"> Running into an error? <a href="/training-material/faqs/galaxy/analysis_troubleshooting.html"><i class="fas fa-external-link-alt"></i></a> </h4>
-<!--SNIPPET--><blockquote class="tip">  <div id="tip-troubleshooting-errors" class="box-title"><button type="button" aria-controls="tip-troubleshooting-errors-contents" aria-expanded="true" aria-label="Toggle tip box: Troubleshooting errors"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Troubleshooting errors<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>When something goes wrong in <span class="notranslate">Galaxy</span>, there are a number of things you can do to find out what it was. Error messages can help you figure out whether it was a problem with one of the settings of the tool, or with the input data, or maybe there is a bug in the tool itself and the problem should be reported. Below are the steps you can follow to troubleshoot your <span class="notranslate">Galaxy</span> errors.</p>  <ol>  <li><strong>Expand</strong> the red history dataset by clicking on it.    <ul>      <li>Sometimes you can already see an error message here</li>    </ul>  </li>  <li>    <p><strong>View the error message</strong> by clicking on the <strong>bug icon</strong> <i class="fas fa-bug" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-bug</span></p>  </li>  <li><strong>Check the logs.</strong> Output (stdout) and error logs (stderr) of the tool are available:    <ul>      <li>Expand the history item</li>      <li>Click on the <i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> icon</li>      <li>Scroll down to the <strong>Job Information</strong> section to view the 2 logs:        <ul>          <li>Tool Standard Output</li>          <li>Tool Standard Error</li>        </ul>      </li>      <li>For more information about specific tool errors, please see the <a href="/training-material/faqs/galaxy/#troubleshooting">Troubleshooting section</a></li>    </ul>  </li>  <li><strong>Submit a bug report!</strong> If you are still unsure what the problem is.    <ul>      <li>Click on the bug icon <i class="fas fa-bug" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-bug</span></li>      <li>Write down any information you think might help solve the problem        <ul>          <li>See <a href="/training-material/faqs/galaxy/analysis_troubleshooting_reporting.html">this FAQ</a> on how to write good bug reports</li>        </ul>      </li>      <li>Click <strong><i class="fas fa-bug" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-bug</span> Report</strong> button</li>    </ul>  </li>  <li><strong>Ask for help!</strong>    <ul>      <li>Where?        <ul>          <li>In the <a href="https://gitter.im/Galaxy-Training-Network/Lobby">GTN Gitter Channel</a></li>          <li>In the <a href="https://gitter.im/galaxyproject/Lobby"><span class="notranslate">Galaxy</span> Gitter Channel</a></li>          <li>Browse the <a href="https://help.galaxyproject.org/"><span class="notranslate">Galaxy</span> Help Forum</a> to see if others have encountered the same problem before (or post your question).</li>        </ul>      </li>      <li>When asking for help, it is useful to <a href="/training-material/faqs/galaxy/histories_sharing.html">share a link to your history</a></li>    </ul>  </li></ol></blockquote>
+<!--SNIPPET--><blockquote class="tip">   <div class="box-title tip-title" id="tip-troubleshooting-errors"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-troubleshooting-errors" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Troubleshooting errors<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>When something goes wrong in Galaxy, there are a number of things you can do to find out what it was. Error messages can help you figure out whether it was a problem with one of the settings of the tool, or with the input data, or maybe there is a bug in the tool itself and the problem should be reported. Below are the steps you can follow to troubleshoot your Galaxy errors.</p>   <ol>   <li><strong>Expand</strong> the red history dataset by clicking on it.     <ul>       <li>Sometimes you can already see an error message here</li>     </ul>   </li>   <li>     <p><strong>View the error message</strong> by clicking on the <strong>bug icon</strong> <i class="fas fa-bug" aria-hidden="true"></i><span class="visually-hidden">galaxy-bug</span></p>   </li>   <li><strong>Check the logs.</strong> Output (stdout) and error logs (stderr) of the tool are available:     <ul>       <li>Expand the history item</li>       <li>Click on the <i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden">details</span> icon</li>       <li>Scroll down to the <strong>Job Information</strong> section to view the 2 logs:         <ul>           <li>Tool Standard Output</li>           <li>Tool Standard Error</li>         </ul>       </li>       <li>For more information about specific tool errors, please see the <a href="/training-material/faqs/galaxy/index.html#troubleshooting">Troubleshooting section</a></li>     </ul>   </li>   <li><strong>Submit a bug report!</strong> If you are still unsure what the problem is.     <ul>       <li>Click on the bug icon <i class="fas fa-bug" aria-hidden="true"></i><span class="visually-hidden">galaxy-bug</span></li>       <li>Write down any information you think might help solve the problem         <ul>           <li>See <a href="/training-material/faqs/galaxy/analysis_troubleshooting_reporting.html">this FAQ</a> on how to write good bug reports</li>         </ul>       </li>       <li>Click <strong><i class="fas fa-bug" aria-hidden="true"></i><span class="visually-hidden">galaxy-bug</span> Report</strong> button</li>     </ul>   </li>   <li><strong>Ask for help!</strong>     <ul>       <li>Where?         <ul>           <li>In the <a href="https://gitter.im/Galaxy-Training-Network/Lobby">GTN Gitter Channel</a></li>           <li>In the <a href="https://gitter.im/galaxyproject/Lobby">Galaxy Gitter Channel</a></li>           <li>Browse the <a href="https://help.galaxyproject.org/">Galaxy Help Forum</a> to see if others have encountered the same problem before (or post your question).</li>         </ul>       </li>       <li>When asking for help, it is useful to <a href="/training-material/faqs/galaxy/histories_sharing.html">share a link to your history</a></li>     </ul>   </li> </ol> </blockquote> <!--END_SNIPPET-->
 
 
 
@@ -337,7 +324,7 @@ add a button, include configuration options:
 
 
 
-<a href="https://help.galaxyproject.org" class="btn btn-square-medium btn-purple"><div><span class="notranslate">Galaxy</span> Help Forum</div></a>
+<a href="https://help.galaxyproject.org" class="btn btn-square-medium btn-purple"><div>Galaxy Help Forum</div></a>
 
 
 
@@ -347,56 +334,48 @@ add a button, include configuration options:
 </section>
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/introduction/tutorials/igv-introduction/faqs/index.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/3e099f33f0b616ddeef76c2a1ee9871ebbceb042">3e099f33f0b616ddeef76c2a1ee9871ebbceb042</a></p>
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

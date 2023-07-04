@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,251 +8,67 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Enable upload via FTP" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 08:58:35 +0000" />
-<meta name="DC.creator" content="Lucille Delisle" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Enable upload via FTP" />
-        <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/admin" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Galaxy Server administration
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/ftp/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/ftp/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/ftp/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/ftp/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/ftp/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/ftp/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/ftp/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/ftp/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/admin/tutorials/ftp/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/admin/tutorials/ftp/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/admin/tutorials/ftp/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxyproject/admins'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Enable upload via FTP">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-04-20 15:16:30 +0000">
+<meta name="DC.creator" content="Lucille Delisle">
+
+        
+        
+        
+        
+        <meta name="description" content="Resources related to configuration and maintenance of Gal...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Enable upload via FTP">
+        <meta property="og:description" content="Resources related to configuration and maintenance of Gal...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -277,7 +93,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 08:58:35 +0000",
+  "dateModified": "2023-04-20 15:16:30 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Enable upload via FTP",
   "interactivityType": "mixed",
@@ -303,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -330,6 +150,7 @@
   "name": "Hands-on for 'Enable upload via FTP' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Configure galaxy and install a FTP server.\n - Use an Ansible playbook for this.",
   "keywords": "admin, data, git-gat",
   "description": "The questions this  addresses are:\n - How can I setup FTP to be easy for my users?\n - Can I authenticate ftp users with Galaxy credentials?\n\n\nThe objectives are:\n - Configure galaxy and install a FTP server.\n - Use an Ansible playbook for this.\n\n",
   "inLanguage": {
@@ -404,33 +225,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/lldelisle/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/lldelisle/",
-      "name": "Lucille Delisle",
-      "image": "https://avatars.githubusercontent.com/lldelisle",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-1964-4960",
-      "orcid": "https://orcid.org/0000-0002-1964-4960"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/lldelisle/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/lldelisle/",
@@ -456,31 +252,216 @@
       "description": "Resources related to configuration and maintenance of Galaxy servers",
       "url": "https://training.galaxyproject.org/training-material/topics/admin/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "data"
+    },
+    {
+      "@type": "Thing",
+      "name": "git-gat"
+    }
+  ],
+  "abstract": "This tutorial will guide you to setup an File Transfer Protocol (FTP) server so galaxy users can use it to upload large files. Indeed, as written on the [galaxy community hub](https://galaxyproject.org/ftp-upload/), uploading data directly from the browser can be unreliable and cumbersome. FTP will allow users to monitor the upload status as well as resume interrupted transfers."
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-admin">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/admin" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Galaxy Server administration
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/ftp/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/admin/tutorials/ftp/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/admin/tutorials/ftp/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/admin/tutorials/ftp/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/admin/tutorials/ftp/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-admin">
     <h1 data-toc-skip>Enable upload via FTP</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/lldelisle/" class="contributor-badge contributor-lldelisle"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/lldelisle?s=27" alt="Avatar">Lucille Delisle</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/lldelisle/" class="contributor-badge contributor-lldelisle"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/lldelisle?s=36" alt="Avatar" width="36" height="36">Lucille Delisle</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -517,6 +498,24 @@
         
             <ul>
                 
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -609,17 +608,17 @@
                     
                         
                     
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
                 
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -720,8 +719,6 @@
                     
                         
                     
-                        
-                    
                 
             </ul>
         
@@ -744,10 +741,6 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/admin/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
 
@@ -760,13 +753,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/admin/tutorials/ftp/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/admin/tutorials/ftp/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -792,14 +782,18 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Apr 20, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00008">https://gxy.io/GTN:T00008</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -810,14 +804,15 @@
             <div class="col-sm-10">
                  
 
-                <p>This tutorial will guide you to setup an File Transfer Protocol (FTP) server so <span class="notranslate">galaxy</span> users can use it to upload large files. Indeed, as written on the <a href="https://galaxyproject.org/ftp-upload/"><span class="notranslate">galaxy</span> community hub</a>, uploading data directly from the browser can be unreliable and cumbersome. FTP will allow users to monitor the upload status as well as resume interrupted transfers.</p>
+                <section aria-label="Tutorial Content" id="tutorial-content">
+                <p>This tutorial will guide you to setup an File Transfer Protocol (FTP) server so galaxy users can use it to upload large files. Indeed, as written on the <a href="https://galaxyproject.org/ftp-upload/">galaxy community hub</a>, uploading data directly from the browser can be unreliable and cumbersome. FTP will allow users to monitor the upload status as well as resume interrupted transfers.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
 <ol id="markdown-toc">
   <li><a href="#ftp" id="markdown-toc-ftp">FTP</a></li>
-  <li><a href="#ftp-and-galaxy" id="markdown-toc-ftp-and-galaxy">FTP and <span class="notranslate">Galaxy</span></a>    <ol>
+  <li><a href="#ftp-and-galaxy" id="markdown-toc-ftp-and-galaxy">FTP and Galaxy</a>    <ol>
       <li><a href="#installing-and-configuring" id="markdown-toc-installing-and-configuring">Installing and Configuring</a></li>
       <li><a href="#check-it-works" id="markdown-toc-check-it-works">Check it works</a></li>
     </ol>
@@ -827,18 +822,19 @@
 </blockquote>
 
 <!--SNIPPET-->
-<blockquote class="comment">  <div id="comment-galaxy-admin-training-path" class="box-title" aria-label="comment box: Galaxy Admin Training Path"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <span class="notranslate">Galaxy</span> Admin Training Path</div>  <p>The yearly <span class="notranslate">Galaxy</span> Admin Training follows a specific ordering of tutorials. Use this timeline to help keep track of where you are in <span class="notranslate">Galaxy</span> Admin Training.</p>  <ol id="git-gat-timeline">    <a href="/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html">    <li class="disabled">        <span>Step 1</span>        <span>ansible-<span class="notranslate">galaxy</span></span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/tus/tutorial.html">    <li class="disabled">        <span>Step 2</span>        <span>tus</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/cvmfs/tutorial.html">    <li class="disabled">        <span>Step 3</span>        <span>cvmfs</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/singularity/tutorial.html">    <li class="disabled">        <span>Step 4</span>        <span>singularity</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/tool-management/tutorial.html">    <li class="disabled">        <span>Step 5</span>        <span>tool-management</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/data-library/tutorial.html">    <li class="disabled">        <span>Step 6</span>        <span>data-library</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html">    <li class="disabled">        <span>Step 7</span>        <span>connect-to-compute-cluster</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/job-destinations/tutorial.html">    <li class="disabled">        <span>Step 8</span>        <span>job-destinations</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/pulsar/tutorial.html">    <li class="disabled">        <span>Step 9</span>        <span>pulsar</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/gxadmin/tutorial.html">    <li class="disabled">        <span>Step 10</span>        <span>gxadmin</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">    <li class="disabled">        <span>Step 11</span>        <span>monitoring</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/tiaas/tutorial.html">    <li class="disabled">        <span>Step 12</span>        <span>tiaas</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/reports/tutorial.html">    <li class="disabled">        <span>Step 13</span>        <span>reports</span>    </li>        </a>        <span aria-hidden="true">        <i class="fas fa-arrow-right" aria-hidden="true"></i>    </span>        <a href="/training-material/topics/admin/tutorials/ftp/tutorial.html">    <li class="active">        <span>Step 14</span>        <span>ftp</span>    </li>        </a>    </ol>  <style type="text/css">#git-gat-timeline {    display: flex;    flex-direction: row;    flex-wrap: wrap;}#git-gat-timeline li  {    display: flex;    flex-direction: column;    border: 1px solid black;    border-radius: 5px;    padding: 0.5em;    margin: 0.5em;}#git-gat-timeline li.active {    background: #86d486;    color: black;}#git-gat-timeline li.disabled {    background: #eee;}#git-gat-timeline span {    align-self: center;}</style></blockquote>
+<blockquote class="comment">   <div class="box-title comment-title" id="comment-galaxy-admin-training-path"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Galaxy Admin Training Path</div>   <p>The yearly Galaxy Admin Training follows a specific ordering of tutorials. Use this timeline to help keep track of where you are in Galaxy Admin Training.</p>   <ol id="git-gat-timeline">                    <li class="disabled">         <a href="/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html">             <div>Step 1</div>             <div>ansible-galaxy</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/backup-cleanup/tutorial.html">             <div>Step 2</div>             <div>backup-cleanup</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/customization/tutorial.html">             <div>Step 3</div>             <div>customization</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tus/tutorial.html">             <div>Step 4</div>             <div>tus</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/cvmfs/tutorial.html">             <div>Step 5</div>             <div>cvmfs</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/apptainer/tutorial.html">             <div>Step 6</div>             <div>apptainer</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tool-management/tutorial.html">             <div>Step 7</div>             <div>tool-management</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/reference-genomes/tutorial.html">             <div>Step 8</div>             <div>reference-genomes</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/data-library/tutorial.html">             <div>Step 9</div>             <div>data-library</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/dev/tutorials/bioblend-api/tutorial.html">             <div>Step 10</div>             <div>dev/bioblend-api</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html">             <div>Step 11</div>             <div>connect-to-compute-cluster</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/job-destinations/tutorial.html">             <div>Step 12</div>             <div>job-destinations</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/pulsar/tutorial.html">             <div>Step 13</div>             <div>pulsar</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/celery/tutorial.html">             <div>Step 14</div>             <div>celery</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/gxadmin/tutorial.html">             <div>Step 15</div>             <div>gxadmin</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/reports/tutorial.html">             <div>Step 16</div>             <div>reports</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">             <div>Step 17</div>             <div>monitoring</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tiaas/tutorial.html">             <div>Step 18</div>             <div>tiaas</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/sentry/tutorial.html">             <div>Step 19</div>             <div>sentry</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="active">         <a href="/training-material/topics/admin/tutorials/ftp/tutorial.html">             <div>Step 20</div>             <div>ftp</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/beacon/tutorial.html">             <div>Step 21</div>             <div>beacon</div>         </a>     </li>           </ol> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <h1 id="ftp">FTP</h1>
 
-<p><abbr title="File Transfer Protocol">FTP</abbr> is a very old and reliable communication protocol that has been around since 1971 <span class="citation"><a href="#rfc114">Bhushan 1971</a></span>. It requires a server (here our <span class="notranslate">galaxy</span> server) and a client (user’s computer). The FTP server requires to have at least 2 ports accessible from outside (one for the commands and one for the transfer). Usually the port for the command is 21.</p>
+<p><abbr title="File Transfer Protocol">FTP</abbr> is a very old and reliable communication protocol that has been around since 1971 <span class="citation"><a href="#rfc114">Bhushan 1971</a></span>. It requires a server (here our galaxy server) and a client (user’s computer). The FTP server requires to have at least 2 ports accessible from outside (one for the commands and one for the transfer). Usually the port for the command is 21.</p>
 
 <p>FTP supports two different modes: active, and passive. Active mode requires that the user’s computer be reachable from the internet, which in the age of Network Address Translation (NAT) and firewalls is usually unusable. So passive mode is the most commonly used. In passive mode, a client connects to the FTP server, and requests a channel for sending files. The server responds with an IP and port, from its range of “Passive Ports”.</p>
 
 <blockquote class="comment">
-  <div id="comment-requirements-for-running-this-tutorial" class="box-title" aria-label="comment box: Requirements for Running This Tutorial"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Requirements for Running This Tutorial</div>
+  <div class="box-title comment-title" id="comment-requirements-for-running-this-tutorial"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Requirements for Running This Tutorial</div>
 
-  <p>Your VM or wherever you are installing <span class="notranslate">Galaxy</span> needs to have the following ports available:</p>
+  <p>Your VM or wherever you are installing Galaxy needs to have the following ports available:</p>
 
   <ul>
     <li>21</li>
@@ -850,41 +846,43 @@
   <p>Which ports precisely is not important, and these numbers can differ between sites.</p>
 </blockquote>
 
-<h1 id="ftp-and-galaxy">FTP and <span class="notranslate">Galaxy</span></h1>
+<h1 id="ftp-and-galaxy">FTP and Galaxy</h1>
 
 <p>To allow your user to upload via FTP, you will need to:</p>
 
 <ul>
-  <li>configure <span class="notranslate">Galaxy</span> to know where the files are uploaded.</li>
+  <li>configure Galaxy to know where the files are uploaded.</li>
   <li>install a FTP server</li>
-  <li>allow your FTP server to read <span class="notranslate">Galaxy</span>’s database so users can use their credential and upload in the good directory.</li>
+  <li>allow your FTP server to read Galaxy’s database so users can use their credential and upload in the good directory.</li>
 </ul>
 
-<p>For secure transmission we will use SSL/TLS (FTPS), not the SSH File Transfer Protocol (SFTP) as the <span class="notranslate">Galaxy</span> users don’t correspond to users on the machine.</p>
+<p>For secure transmission we will use SSL/TLS (FTPS), not the SSH File Transfer Protocol (SFTP) as the Galaxy users don’t correspond to users on the machine.</p>
 
 <h2 id="installing-and-configuring">Installing and Configuring</h2>
 
-<p>Luckily for us, there is an ansible role written by the <span class="notranslate">Galaxy</span> Project for this purpose. It will install proftpd. Firstly, we need to install the role and then update our playbook for using it.</p>
+<p>Luckily for us, there is an ansible role written by the Galaxy Project for this purpose. It will install proftpd. Firstly, we need to install the role and then update our playbook for using it.</p>
 
 <p>If the terms “Ansible”, “role” and “playbook” mean nothing to you, please checkout <a href="/training-material/topics/admin/tutorials/ansible/slides.html">the Ansible introduction slides</a> and <a href="/training-material/topics/admin/tutorials/ansible/tutorial.html">the Ansible introduction tutorial</a></p>
 
 <!--SNIPPET-->
-<blockquote class="tip">  <div id="tip-running-ansible-on-your-remote-machine" class="box-title"><button type="button" aria-controls="tip-running-ansible-on-your-remote-machine-contents" aria-expanded="true" aria-label="Toggle tip box: Running Ansible on your remote machine"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Running Ansible on your remote machine<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>It is possible to have ansible installed on the remote machine and run it there, not just from your local machine connecting to the remote machine.</p>  <p>Your hosts file will need to use <code class="language-plaintext highlighter-rouge">localhost</code>,  and whenever you run playbooks with <code class="language-plaintext highlighter-rouge">ansible-playbook -i hosts playbook.yml</code>, you will need to add <code class="language-plaintext highlighter-rouge">-c local</code> to your command.</p>  <p>Be <strong>certain</strong> that the playbook that you’re writing on the remote machine is stored somewhere safe, like your user home directory, or backed up on your local machine. The cloud can be unreliable and things can disappear at any time.</p></blockquote>
+<blockquote class="tip">   <div class="box-title tip-title" id="tip-running-ansible-on-your-remote-machine"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-running-ansible-on-your-remote-machine" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Running Ansible on your remote machine<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>It is possible to have ansible installed on the remote machine and run it there, not just from your local machine connecting to the remote machine.</p>   <p>Your hosts file will need to use <code class="language-plaintext highlighter-rouge">localhost</code>,  and whenever you run playbooks with <code class="language-plaintext highlighter-rouge">ansible-playbook -i hosts playbook.yml</code>, you will need to add <code class="language-plaintext highlighter-rouge">-c local</code> to your command.</p>   <p>Be <strong>certain</strong> that the playbook that you’re writing on the remote machine is stored somewhere safe, like your user home directory, or backed up on your local machine. The cloud can be unreliable and things can disappear at any time.</p> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-setting-up-ftp-upload-with-ansible" class="box-title" aria-label="hands-on box: Setting up ftp upload with Ansible"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Setting up ftp upload with Ansible</div>
+  <div class="box-title hands-on-title" id="hands-on-setting-up-ftp-upload-with-ansible"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Setting up ftp upload with Ansible</div>
 
   <ol>
     <li>
-      <p>In your playbook directory, add the <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>project.proftpd</code> role to your <code class="language-plaintext highlighter-rouge">requirements.yml</code></p>
+      <p>In your playbook directory, add the <code class="language-plaintext highlighter-rouge">galaxyproject.proftpd</code> role to your <code class="language-plaintext highlighter-rouge">requirements.yml</code></p>
 
       <div data-commit="Add requirement" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/requirements.yml
 </span><span class="gi">+++ b/requirements.yml
-</span><span class="p">@@ -38,3 +38,5 @@</span>
-   version: 0.12.0
- - src: use<span class="notranslate">galaxy</span>_eu.tiaas2
-   version: 0.0.8
-<span class="gi">+- src: <span class="notranslate">galaxy</span>project.proftpd
+</span><span class="p">@@ -57,3 +57,6 @@</span>
+ # Sentry
+ - name: mvdbeek.sentry_selfhosted
+   src: https://github.com/mvdbeek/ansible-role-sentry/archive/main.tar.gz
+<span class="gi">+# Our FTP Server
++- src: galaxyproject.proftpd
 +  version: 0.3.1
 </span>   
 </code></pre></div>      </div>
@@ -893,24 +891,26 @@
       <p>Install the role with:</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-        <div data-cmd="true" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-<span class="notranslate">galaxy</span> <span class="nb">install</span> <span class="nt">-p</span> roles <span class="nt">-r</span> requirements.yml
+        <div class="box-title code-in-title" id="code-in-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+        <div data-cmd="true" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-galaxy <span class="nb">install</span> <span class="nt">-p</span> roles <span class="nt">-r</span> requirements.yml
 </code></pre></div>        </div>
       </blockquote>
     </li>
     <li>
-      <p>As in this training we are using certbot, we will ask for a private key for proftpd. Add the following line to your <code class="language-plaintext highlighter-rouge">group_vars/<span class="notranslate">galaxy</span>server.yml</code> file:</p>
+      <p>As in this training we are using certbot, we will ask for a private key for proftpd. Add the following line to your <code class="language-plaintext highlighter-rouge">group_vars/galaxyserver.yml</code> file:</p>
 
-      <div data-commit="Add proftpd in certbot" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="gi">+++ b/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="p">@@ -159,9 +159,11 @@</span> certbot_well_known_root: /srv/nginx/_well-known_root
+      <div data-commit="Add proftpd in certbot" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/galaxyservers.yml
+</span><span class="gi">+++ b/group_vars/galaxyservers.yml
+</span><span class="p">@@ -207,11 +207,13 @@</span> certbot_environment: staging
+ certbot_well_known_root: /srv/nginx/_well-known_root
  certbot_share_key_users:
-   - nginx
-   - rabbitmq
+   - www-data
 <span class="gi">+  - proftpd
-</span> certbot_post_renewal: |
+</span> certbot_share_key_ids:
+   - "999:999"
+ certbot_post_renewal: |
      systemctl restart nginx || true
-     systemctl restart rabbitmq-server || true
+     docker restart rabbit_hole || true
 <span class="gi">+    systemctl restart proftpd || true
 </span> certbot_domains:
   - "{{ inventory_hostname }}"
@@ -921,62 +921,59 @@
       <p>This will make a copy of the current letsencrypt key available as <code class="language-plaintext highlighter-rouge">/etc/ssl/user/privkey-proftpd.pem</code>, and automatically restart proftpd every time the key is updated.</p>
     </li>
     <li>
-      <p>We will configure <span class="notranslate">Galaxy</span> to enable ftp file upload. Add the following line to your <code class="language-plaintext highlighter-rouge">group_vars/<span class="notranslate">galaxy</span>server.yml</code> file in the <span class="notranslate">galaxy</span>_config/<span class="notranslate">galaxy</span> section:</p>
+      <p>We will configure Galaxy to enable ftp file upload. Add the following line to your <code class="language-plaintext highlighter-rouge">group_vars/galaxyserver.yml</code> file in the galaxy_config/galaxy section:</p>
 
-      <div data-commit="Add ftp vars in galaxy" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="gi">+++ b/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="p">@@ -100,6 +100,9 @@</span> <span class="notranslate">galaxy</span>_config:
-     outputs_to_working_directory: true
-     # TUS
-     tus_upload_store: /data/tus
+      <div data-commit="Add ftp vars in galaxy" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/galaxyservers.yml
+</span><span class="gi">+++ b/group_vars/galaxyservers.yml
+</span><span class="p">@@ -119,6 +119,9 @@</span> galaxy_config:
+     sentry_dsn: "{{ vault_galaxy_sentry_dsn }}"
+     sentry_traces_sample_rate: 0.5
+     error_report_file: "{{ galaxy_config_dir }}/error_reports_file.yml"
 <span class="gi">+    # FTP
 +    ftp_upload_dir: /data/uploads
 +    ftp_upload_site: "{{ inventory_hostname }}"
 </span>   gravity:
-     <span class="notranslate">galaxy</span>_root: "{{ <span class="notranslate">galaxy</span>_root }}/server"
-     app_server: gunicorn
+     process_manager: systemd
+     galaxy_root: "{{ galaxy_root }}/server"
    
 </code></pre></div>      </div>
     </li>
   </ol>
 
-  <p>To check the other options for setting up ftp in <span class="notranslate">Galaxy</span>, please check the <a href="https://docs.galaxyproject.org/en/master/admin/galaxy_options.html?highlight=ftp_upload_site#ftp-upload-dir"><span class="notranslate">Galaxy</span> configuration documentation</a>.</p>
+  <p>To check the other options for setting up ftp in Galaxy, please check the <a href="https://docs.galaxyproject.org/en/master/admin/galaxy_options.html?highlight=ftp_upload_site#ftp-upload-dir">Galaxy configuration documentation</a>.</p>
 
   <ol>
     <li>
-      <p>Then we will set the different variables for proftpd. Add the following lines to your <code class="language-plaintext highlighter-rouge">group_vars/<span class="notranslate">galaxy</span>server.yml</code> file. Please replace the PassivePorts below with the range of ports that are appropriate for your machine!</p>
+      <p>Then we will set the different variables for proftpd. Add the following lines to your <code class="language-plaintext highlighter-rouge">group_vars/galaxyserver.yml</code> file. Please replace the PassivePorts below with the range of ports that are appropriate for your machine!</p>
 
-      <div data-commit="Add proftpd variables" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="gi">+++ b/group_vars/<span class="notranslate">galaxy</span>servers.yml
-</span><span class="p">@@ -250,6 +250,27 @@</span> rabbitmq_users:
-     password: "{{ vault_rabbitmq_password_vhost }}"
-     vhost: /pulsar/<span class="notranslate">galaxy</span>_au
-    
-<span class="gi">+# Proftpd:
-+proftpd_<span class="notranslate">galaxy</span>_auth: yes
-+<span class="notranslate">galaxy</span>_ftp_upload_dir: "{{ <span class="notranslate">galaxy</span>_config.<span class="notranslate">galaxy</span>.ftp_upload_dir }}"
+      <div data-commit="Add proftpd variables" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/group_vars/galaxyservers.yml
+</span><span class="gi">+++ b/group_vars/galaxyservers.yml
+</span><span class="p">@@ -363,3 +363,24 @@</span> telegraf_plugins_extra:
+ tiaas_dir: /srv/tiaas
+ tiaas_admin_user: admin
+ tiaas_admin_pass: changeme
+<span class="gi">+
++# Proftpd:
++proftpd_galaxy_auth: yes
++galaxy_ftp_upload_dir: "{{ galaxy_config.galaxy.ftp_upload_dir }}"
 +proftpd_display_connect: |
 +  {{ inventory_hostname }} FTP server
 +
 +  Unauthorized access is prohibited
 +proftpd_create_ftp_upload_dir: yes
 +proftpd_options:
-+  - User: <span class="notranslate">galaxy</span>
-+  - Group: <span class="notranslate">galaxy</span>
++  - User: galaxy
++  - Group: galaxy
 +  - Port: 21
-+proftpd_sql_db: <span class="notranslate">galaxy</span>@/var/run/postgresql
-+proftpd_sql_user: <span class="notranslate">galaxy</span>
++proftpd_sql_db: galaxy@/var/run/postgresql
++proftpd_sql_user: galaxy
 +proftpd_conf_ssl_certificate: /etc/ssl/certs/cert.pem
 +proftpd_conf_ssl_certificate_key: /etc/ssl/user/privkey-proftpd.pem
 +proftpd_global_options:
 +  - PassivePorts: 56000 60000
 +proftpd_use_mod_tls_shmcache: false
 +proftpd_tls_options: NoSessionReuseRequired
-+
-</span> # Telegraf
- telegraf_plugins_extra:
-   listen_<span class="notranslate">galaxy</span>_routes:
-   
+</span>   
 </code></pre></div>      </div>
 
       <p>Here is a description of the set variables:</p>
@@ -990,12 +987,12 @@
         </thead>
         <tbody>
           <tr>
-            <td><code class="language-plaintext highlighter-rouge">proftpd_<span class="notranslate">galaxy</span>_auth</code></td>
-            <td>Attempt to authenticate users against a <span class="notranslate">Galaxy</span> database.</td>
+            <td><code class="language-plaintext highlighter-rouge">proftpd_galaxy_auth</code></td>
+            <td>Attempt to authenticate users against a Galaxy database.</td>
           </tr>
           <tr>
-            <td><code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_ftp_upload_dir</code></td>
-            <td>Path to the <span class="notranslate">Galaxy</span> FTP upload directory, should match <code class="language-plaintext highlighter-rouge">ftp_upload_dir</code> in your <span class="notranslate">Galaxy</span> config.</td>
+            <td><code class="language-plaintext highlighter-rouge">galaxy_ftp_upload_dir</code></td>
+            <td>Path to the Galaxy FTP upload directory, should match <code class="language-plaintext highlighter-rouge">ftp_upload_dir</code> in your Galaxy config.</td>
           </tr>
           <tr>
             <td><code class="language-plaintext highlighter-rouge">proftpd_display_connect</code></td>
@@ -1003,11 +1000,11 @@
           </tr>
           <tr>
             <td><code class="language-plaintext highlighter-rouge">proftpd_create_ftp_upload_dir</code></td>
-            <td>Whether to allow the role to create this with owner <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_user</code>.</td>
+            <td>Whether to allow the role to create this with owner <code class="language-plaintext highlighter-rouge">galaxy_user</code>.</td>
           </tr>
           <tr>
             <td><code class="language-plaintext highlighter-rouge">proftpd_options</code></td>
-            <td>Any option for proftpd, we will just set up the user and group of the <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_user</code>.</td>
+            <td>Any option for proftpd, we will just set up the user and group of the <code class="language-plaintext highlighter-rouge">galaxy_user</code>.</td>
           </tr>
           <tr>
             <td><code class="language-plaintext highlighter-rouge">proftpd_sql_db</code></td>
@@ -1015,7 +1012,7 @@
           </tr>
           <tr>
             <td><code class="language-plaintext highlighter-rouge">proftpd_sql_user</code></td>
-            <td>(default: the value of <span class="notranslate">galaxy</span>_user): Value of the use<span class="notranslate">rna</span>me parameter to SQLConnectInfo.</td>
+            <td>(default: the value of galaxy_user): Value of the username parameter to SQLConnectInfo.</td>
           </tr>
           <tr>
             <td><code class="language-plaintext highlighter-rouge">proftpd_conf_ssl_certificate</code></td>
@@ -1041,24 +1038,24 @@
       </table>
 
       <blockquote class="tip">
-        <div id="tip-why-nosessionreuserequired" class="box-title"><button type="button" aria-controls="tip-why-nosessionreuserequired-contents" aria-expanded="true" aria-label="Toggle tip box: Why NoSessionReuseRequired?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Why NoSessionReuseRequired?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-why-nosessionreuserequired"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-why-nosessionreuserequired" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Why NoSessionReuseRequired?<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <p><code class="language-plaintext highlighter-rouge">mod_tls</code> only accepts SSL/TLS data connections that reuse the SSL session of the control connection, as a security measure. Unfortunately, there are some clients (e.g. curl/Filezilla) which do not reuse SSL sessions.
 To relax the requirement that the SSL session from the control connection be reused for data connections we set <code class="language-plaintext highlighter-rouge">NoSessionReuseRequired</code>.</p>
       </blockquote>
     </li>
     <li>
-      <p>Add the new role to the list of roles under the <code class="language-plaintext highlighter-rouge">roles</code> key in your playbook, <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>.yml</code>:</p>
+      <p>Add the new role to the list of roles under the <code class="language-plaintext highlighter-rouge">roles</code> key in your playbook, <code class="language-plaintext highlighter-rouge">galaxy.yml</code>:</p>
 
-      <div data-commit="Add role to playbook" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/<span class="notranslate">galaxy</span>.yml
-</span><span class="gi">+++ b/<span class="notranslate">galaxy</span>.yml
-</span><span class="p">@@ -31,6 +31,7 @@</span>
-       become_user: "{{ <span class="notranslate">galaxy</span>_user.name }}"
-     - use<span class="notranslate">galaxy</span>_eu.rabbitmq
-     - <span class="notranslate">galaxy</span>project.nginx
-<span class="gi">+    - <span class="notranslate">galaxy</span>project.proftpd
-</span>     - <span class="notranslate">galaxy</span>project.tusd
-     - <span class="notranslate">galaxy</span>project.cvmfs
-     - <span class="notranslate">galaxy</span>project.gxadmin
+      <div data-commit="Add role to playbook" class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">--- a/galaxy.yml
+</span><span class="gi">+++ b/galaxy.yml
+</span><span class="p">@@ -45,6 +45,7 @@</span>
+     - geerlingguy.redis
+     - usegalaxy_eu.flower
+     - galaxyproject.nginx
+<span class="gi">+    - galaxyproject.proftpd
+</span>     - geerlingguy.docker
+     - usegalaxy_eu.rabbitmqserver
+     - galaxyproject.tiaas2
    
 </code></pre></div>      </div>
     </li>
@@ -1066,8 +1063,8 @@ To relax the requirement that the SSL session from the control connection be reu
       <p>Run the playbook</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-1" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-        <div data-cmd="true" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook <span class="notranslate">galaxy</span>.yml
+        <div class="box-title code-in-title" id="code-in-bash-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+        <div data-cmd="true" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook galaxy.yml
 </code></pre></div>        </div>
       </blockquote>
     </li>
@@ -1075,12 +1072,12 @@ To relax the requirement that the SSL session from the control connection be reu
 
 </blockquote>
 
-<p>Congratulations, you’ve set up FTP for <span class="notranslate">Galaxy</span>.</p>
+<p>Congratulations, you’ve set up FTP for Galaxy.</p>
 
 <h2 id="check-it-works">Check it works</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-checking-proftpd-from-the-server" class="box-title" aria-label="hands-on box: Checking proftpd from the server"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking proftpd from the server</div>
+  <div class="box-title hands-on-title" id="hands-on-checking-proftpd-from-the-server"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Checking proftpd from the server</div>
 
   <ol>
     <li>
@@ -1093,12 +1090,12 @@ To relax the requirement that the SSL session from the control connection be reu
       <p>Check the port has been correctly attributed by <code class="language-plaintext highlighter-rouge">sudo lsof -i -P -n</code>.</p>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>What do you see?</p>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>You should see all the ports used by the server. What interests us is the line with proftpd.
 You should see TCP *:21 (LISTEN).</p>
 
@@ -1110,7 +1107,7 @@ You should see TCP *:21 (LISTEN).</p>
       <p>Check the directory <code class="language-plaintext highlighter-rouge">/data/uploads/</code> has been created and is empty.</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-2" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-2"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo tree /data/uploads/
 </code></pre></div>        </div>
       </blockquote>
@@ -1125,11 +1122,11 @@ You should see TCP *:21 (LISTEN).</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-checking-galaxy-detected-the-ftp-possibility" class="box-title" aria-label="hands-on box: Checking galaxy detected the ftp possibility"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking <span class="notranslate">galaxy</span> detected the ftp possibility</div>
+  <div class="box-title hands-on-title" id="hands-on-checking-galaxy-detected-the-ftp-possibility"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Checking galaxy detected the ftp possibility</div>
 
   <ol>
     <li>
-      <p>Open your <span class="notranslate">galaxy</span> in a browser.</p>
+      <p>Open your galaxy in a browser.</p>
     </li>
     <li>
       <p>Log in with a user (FTP is only possible for authenticated sessions).</p>
@@ -1147,7 +1144,7 @@ You should see TCP *:21 (LISTEN).</p>
 <p>It’s working!</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-upload-your-first-file" class="box-title" aria-label="hands-on box: Upload your first file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Upload your first file</div>
+  <div class="box-title hands-on-title" id="hands-on-upload-your-first-file"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Upload your first file</div>
 
   <p>There are three options for uploading files, you can choose whichever is easiest for you.</p>
 
@@ -1169,7 +1166,7 @@ You should see TCP *:21 (LISTEN).</p>
         <li>Install lftp with <code class="language-plaintext highlighter-rouge">sudo apt-get install lftp</code>.</li>
         <li>Add the public certificate to the list of known certificates (only for LetsEncrypt Staging Certificates!):
           <blockquote class="code-in">
-            <div id="code-in-bash-3" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+            <div class="box-title code-in-title" id="code-in-bash-3"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
             <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir .lftp
 echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
 </code></pre></div>            </div>
@@ -1177,16 +1174,16 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
         </li>
         <li>Connect to the server with for example the admin account:
           <blockquote class="code-in">
-            <div id="code-in-bash-4" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+            <div class="box-title code-in-title" id="code-in-bash-4"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
             <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lftp admin@example.org@$HOSTNAME
 </code></pre></div>            </div>
           </blockquote>
         </li>
-        <li>Enter the password of the admin@example.org <span class="notranslate">galaxy</span> user.</li>
+        <li>Enter the password of the admin@example.org galaxy user.</li>
         <li>
           <p>Put a random file:</p>
 
-          <p><code class="language-plaintext highlighter-rouge">put /srv/<span class="notranslate">galaxy</span>/server/CITATION</code></p>
+          <p><code class="language-plaintext highlighter-rouge">put /srv/galaxy/server/CITATION</code></p>
         </li>
         <li>Check it is there with <code class="language-plaintext highlighter-rouge">ls</code>.</li>
         <li>Leave lftp with <code class="language-plaintext highlighter-rouge">quit</code>.</li>
@@ -1196,8 +1193,8 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
       <p><strong>Curl</strong></p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-5" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -T {"/srv/<span class="notranslate">galaxy</span>/server/CITATION"} ftp://localhost --user admin@example.org:password --ssl -k
+        <div class="box-title code-in-title" id="code-in-bash-5"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -T {"/srv/galaxy/server/CITATION"} ftp://localhost --user admin@example.org:password --ssl -k
 </code></pre></div>        </div>
         <p>Here <code class="language-plaintext highlighter-rouge">-T</code> says to upload a file, <code class="language-plaintext highlighter-rouge">--ssl</code> ensures that the FTP connection is SSL/TLS encrypted, and <code class="language-plaintext highlighter-rouge">-k</code> ignores any certificate issues as the hostname <code class="language-plaintext highlighter-rouge">localhost</code> will not match the certificate we have.</p>
       </blockquote>
@@ -1207,7 +1204,7 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-check-where-the-file-has-been-uploaded" class="box-title" aria-label="hands-on box: Check where the file has been uploaded"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Check where the file has been uploaded</div>
+  <div class="box-title hands-on-title" id="hands-on-check-where-the-file-has-been-uploaded"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Check where the file has been uploaded</div>
 
   <ol>
     <li>
@@ -1217,18 +1214,18 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
       <p>Check the directory <code class="language-plaintext highlighter-rouge">/uploads/</code>.</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-6" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-6"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo tree /uploads/
 </code></pre></div>        </div>
       </blockquote>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>What do you see?</p>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>As I uploaded a file called <code class="language-plaintext highlighter-rouge">CITATION</code> with the admin@example.org user I see:</p>
           <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/uploads/
 └── admin@example.org
@@ -1244,11 +1241,11 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-use-it-in-galaxy" class="box-title" aria-label="hands-on box: Use it in galaxy"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Use it in <span class="notranslate">galaxy</span></div>
+  <div class="box-title hands-on-title" id="hands-on-use-it-in-galaxy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Use it in galaxy</div>
 
   <ol>
     <li>
-      <p>Open your <span class="notranslate">galaxy</span> in a browser.</p>
+      <p>Open your galaxy in a browser.</p>
     </li>
     <li>
       <p>Log in with the user you used to upload the file.</p>
@@ -1266,8 +1263,8 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
       <p>Click again on Choose FTP files button. Your file has disappeared. By default, the files are removed from the FTP at import.</p>
 
       <blockquote class="tip">
-        <div id="tip-you-want-to-change-this-behaviour" class="box-title"><button type="button" aria-controls="tip-you-want-to-change-this-behaviour-contents" aria-expanded="true" aria-label="Toggle tip box: You want to change this behaviour?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: You want to change this behaviour?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-        <p>You just need to add <code class="language-plaintext highlighter-rouge">ftp_upload_purge: false</code> to the <span class="notranslate">galaxy</span>_config/<span class="notranslate">galaxy</span> variables (next to <code class="language-plaintext highlighter-rouge">ftp_upload_dir</code>).</p>
+        <div class="box-title tip-title" id="tip-you-want-to-change-this-behaviour"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-you-want-to-change-this-behaviour" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: You want to change this behaviour?<span class="fold-unfold fa fa-minus-square"></span></button></div>
+        <p>You just need to add <code class="language-plaintext highlighter-rouge">ftp_upload_purge: false</code> to the galaxy_config/galaxy variables (next to <code class="language-plaintext highlighter-rouge">ftp_upload_dir</code>).</p>
       </blockquote>
     </li>
   </ol>
@@ -1277,12 +1274,23 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
 <p>Congratulations! Let your users know this is an option, many of them will prefer to start large uploads from an FTP client.</p>
 
 <!--SNIPPET-->
-<blockquote class="comment">  <div id="comment-got-lost-along-the-way" class="box-title" aria-label="comment box: Got lost along the way?"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Got lost along the way?</div>  <p>If you missed any steps, you can compare against the <a href="https://github.com/hexylena/git-gat/tree/step-14">reference files</a>, or see what changed since <a href="https://github.com/hexylena/git-gat/compare/step-13...step-14#files_bucket">the previous tutorial</a>.</p>  <p>If you’re using <code class="language-plaintext highlighter-rouge">git</code> to track your progress, remember to add your changes and commit with a good commit message!</p></blockquote>
+<blockquote class="notranslate hands_on">   <div class="box-title hands_on-title" id="hands-on-time-to-git-commit"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Time to git commit</div>   <p>It’s time to commit your work! Check the status with</p>   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status<br /></code></pre></div></div>   <p>Add your changed files with</p>   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add ... # any files you see that are changed<br /></code></pre></div></div>   <p>And then commit it!</p>   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit -m 'Finished Enable upload via FTP'<br /></code></pre></div></div> </blockquote>
+<p><!--END_SNIPPET--></p>
 
+<!--SNIPPET-->
+<blockquote class="comment">   <div class="box-title comment-title" id="comment-got-lost-along-the-way"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Got lost along the way?</div>   <p>If you missed any steps, you can compare against the <a href="https://github.com/hexylena/git-gat/tree/step-16">reference files</a>, or see what changed since <a href="https://github.com/hexylena/git-gat/compare/step-15...step-16#files_bucket">the previous tutorial</a>.</p>   <p>If you’re using <code class="language-plaintext highlighter-rouge">git</code> to track your progress, remember to add your changes and commit with a good commit message!</p> </blockquote>
+<p><!--END_SNIPPET--></p>
 
+<!--SNIPPET-->
+<blockquote class="comment">   <div class="box-title comment-title" id="comment-galaxy-admin-training-path-1"><i class="far fa-comment-dots" aria-hidden="true"></i> Comment: Galaxy Admin Training Path</div>   <p>The yearly Galaxy Admin Training follows a specific ordering of tutorials. Use this timeline to help keep track of where you are in Galaxy Admin Training.</p>   <ol id="git-gat-timeline">                    <li class="disabled">         <a href="/training-material/topics/admin/tutorials/ansible-galaxy/tutorial.html">             <div>Step 1</div>             <div>ansible-galaxy</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/backup-cleanup/tutorial.html">             <div>Step 2</div>             <div>backup-cleanup</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/customization/tutorial.html">             <div>Step 3</div>             <div>customization</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tus/tutorial.html">             <div>Step 4</div>             <div>tus</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/cvmfs/tutorial.html">             <div>Step 5</div>             <div>cvmfs</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/apptainer/tutorial.html">             <div>Step 6</div>             <div>apptainer</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tool-management/tutorial.html">             <div>Step 7</div>             <div>tool-management</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/reference-genomes/tutorial.html">             <div>Step 8</div>             <div>reference-genomes</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/data-library/tutorial.html">             <div>Step 9</div>             <div>data-library</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/dev/tutorials/bioblend-api/tutorial.html">             <div>Step 10</div>             <div>dev/bioblend-api</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/connect-to-compute-cluster/tutorial.html">             <div>Step 11</div>             <div>connect-to-compute-cluster</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/job-destinations/tutorial.html">             <div>Step 12</div>             <div>job-destinations</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/pulsar/tutorial.html">             <div>Step 13</div>             <div>pulsar</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/celery/tutorial.html">             <div>Step 14</div>             <div>celery</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/gxadmin/tutorial.html">             <div>Step 15</div>             <div>gxadmin</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/reports/tutorial.html">             <div>Step 16</div>             <div>reports</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/monitoring/tutorial.html">             <div>Step 17</div>             <div>monitoring</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/tiaas/tutorial.html">             <div>Step 18</div>             <div>tiaas</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="disabled">         <a href="/training-material/topics/admin/tutorials/sentry/tutorial.html">             <div>Step 19</div>             <div>sentry</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="active">         <a href="/training-material/topics/admin/tutorials/ftp/tutorial.html">             <div>Step 20</div>             <div>ftp</div>         </a>     </li>               <span aria-hidden="true">         <i class="fas fa-arrow-right" aria-hidden="true"></i>     </span>                         <li class="">         <a href="/training-material/topics/admin/tutorials/beacon/tutorial.html">             <div>Step 21</div>             <div>beacon</div>         </a>     </li>           </ol> </blockquote>
+<p><!--END_SNIPPET--></p>
+
+                </section>
+
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>FTP is easy to deploy thanks to the role</p>
@@ -1329,38 +1337,18 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Enable upload via FTP (Galaxy Server administration)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Enable upload via FTP (Galaxy Server administration)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Lucille Delisle,  <b>Enable upload via FTP (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html">https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Lucille Delisle,  <b>Enable upload via FTP (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html">https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1372,7 +1360,7 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1381,28 +1369,31 @@ echo "set ssl:ca-file \"/etc/ssl/certs/cert.pem\"" &gt; .lftp/rc
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{admin-ftp,
 author = "Lucille Delisle",
-title = "Enable upload via FTP (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Enable upload via FTP (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/admin/tutorials/ftp/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1410,11 +1401,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1423,49 +1414,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/admin/tutorials/ftp/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00008">https://gxy.io/GTN:T00008</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/ftp/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

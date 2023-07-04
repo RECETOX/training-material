@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Submitting sequence data to ENA" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Miguel Roncoroni" />
-<meta name="DC.creator" content="Bert Droesbeke" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="A collection of microtutorials explaining various feature..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Submitting sequence data to ENA" />
-        <meta property="og:description" content="A collection of microtutorials explaining various feature..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/galaxy-interface" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Using Galaxy and Managing your Data
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/galaxy-interface/faqs/" title="Check our FAQs for the Using Galaxy and Managing your Data topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Submitting sequence data to ENA">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-17 17:21:19 +0000">
+<meta name="DC.creator" content="Miguel Roncoroni">
+<meta name="DC.creator" content="Bert Droesbeke">
+
+        
+        
+        
+        
+        <meta name="description" content="A collection of microtutorials explaining various feature...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Submitting sequence data to ENA">
+        <meta property="og:description" content="A collection of microtutorials explaining various feature...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -278,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2023-05-17 17:21:19 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Submitting sequence data to ENA",
   "interactivityType": "mixed",
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'Submitting sequence data to ENA' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Submit raw sequencing reads and metadata to ENA's test server\n - Submit consensus sequence and metadata to ENA's test server",
   "keywords": "galaxy-interface, covid19",
   "description": "The questions this  addresses are:\n - How do you submit raw sequence reads and assembled genomes to the European Nucleotide Archive?\n\n\nThe objectives are:\n - Submit raw sequencing reads and metadata to ENA's test server\n - Submit consensus sequence and metadata to ENA's test server\n\n",
   "inLanguage": {
@@ -375,8 +196,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/roncoronimiguel/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/roncoronimiguel/",
@@ -396,54 +217,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bedroesb/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bedroesb/",
-      "name": "Bert Droesbeke",
-      "image": "https://avatars.githubusercontent.com/bedroesb",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-0522-5674",
-      "orcid": "https://orcid.org/0000-0003-0522-5674"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/roncoronimiguel/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/roncoronimiguel/",
-      "name": "Miguel Roncoroni",
-      "image": "https://avatars.githubusercontent.com/roncoronimiguel",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bedroesb/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bedroesb/",
@@ -470,35 +245,211 @@
       "url": "https://training.galaxyproject.org/training-material/topics/galaxy-interface/"
     }
   ],
-  "educationalLevel": "Intermediate"
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "covid19"
+    }
+  ],
+  "abstract": "# Introduction"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-galaxy-interface">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/galaxy-interface" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Using Galaxy and Managing your Data
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/galaxy-interface/faqs/" title="Check our FAQs for the Using Galaxy and Managing your Data topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-galaxy-interface">
     <h1 data-toc-skip>Submitting sequence data to ENA</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/roncoronimiguel/" class="contributor-badge contributor-roncoronimiguel"><img src="https://avatars.githubusercontent.com/roncoronimiguel?s=27" alt="Avatar">Miguel Roncoroni</a>
-
-
-
-<a href="/training-material/hall-of-fame/bedroesb/" class="contributor-badge contributor-bedroesb"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bedroesb?s=27" alt="Avatar">Bert Droesbeke</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/roncoronimiguel/" class="contributor-badge contributor-roncoronimiguel"><img src="https://avatars.githubusercontent.com/roncoronimiguel?s=36" alt="Avatar" width="36" height="36">Miguel Roncoroni</a><a href="/training-material/hall-of-fame/bedroesb/" class="contributor-badge contributor-bedroesb"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bedroesb?s=36" alt="Avatar" width="36" height="36">Bert Droesbeke</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -534,10 +485,6 @@
                 
                     
                         
-                    
-                        
-                    
-                        
                             
                             <li> Removal of human reads from SARS-CoV-2 sequencing data:
                             
@@ -547,6 +494,12 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                 
@@ -585,24 +538,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> Using dataset collections:
                             
@@ -612,6 +547,24 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -661,7 +614,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.5163611">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -671,8 +624,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/workflows/" title="Workflows" alt="Submitting sequence data to ENA workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/workflows/" title="Submitting sequence data to ENA workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -685,13 +638,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -714,191 +664,21 @@
 
 
             
-                <li class="btn btn-default supporting_material">
-
-
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
-        <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
-    </a>
-    <ul class="dropdown-menu">
-    
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-    </ul>
-
-
-</li>
-            
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 17, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00159">https://gxy.io/GTN:T00159</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -909,36 +689,37 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <!-- This is a comment. -->
 
-<p>Raw <span class="notranslate">reads</span> contain valuable information, such as coverage depth and quality scores, that is lost in a consensus sequence.
-Submission of raw <span class="notranslate">reads</span> to public repositories allows reuse of data and reproducibility of analysis and enables discovery of minor allelic variants and intrahost variation, for example during the recent COVID-19 pandemic (<span class="citation"><a href="#Maier2021">Maier <i>et al.</i> 2021</a></span>).</p>
+<p>Raw reads contain valuable information, such as coverage depth and quality scores, that is lost in a consensus sequence.
+Submission of raw reads to public repositories allows reuse of data and reproducibility of analysis and enables discovery of minor allelic variants and intrahost variation, for example during the recent COVID-19 pandemic (<span class="citation"><a href="#Maier2021">Maier <i>et al.</i> 2021</a></span>).</p>
 
-<p>The European Nucleotide Archive is an Open and FAIR repository of nucleotide data. As part of the Inte<span class="notranslate">rna</span>tional Nucleotide Sequence Database Collaboration (INSDC), ENA also indexes data from the NCBI and DDBJ <span class="citation"><a href="#Arita2020">Arita <i>et al.</i> 2020</a></span>. Data submitted to ENA must be accompanied by sufficient metadata. You can learn more from this <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/slides.html">introductory slide deck</a> or directly from <a href="https://ena-docs.readthedocs.io/en/latest/submit/general-guide/metadata.html">ENA</a>.</p>
+<p>The European Nucleotide Archive is an Open and FAIR repository of nucleotide data. As part of the International Nucleotide Sequence Database Collaboration (INSDC), ENA also indexes data from the NCBI and DDBJ <span class="citation"><a href="#Arita2020">Arita <i>et al.</i> 2020</a></span>. Data submitted to ENA must be accompanied by sufficient metadata. You can learn more from this <a href="/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/slides.html">introductory slide deck</a> or directly from <a href="https://ena-docs.readthedocs.io/en/latest/submit/general-guide/metadata.html">ENA</a>.</p>
 
-<p>In this tutorial we will show you how to use <span class="notranslate">Galaxy</span>’s ‘ENA Upload tool’ to submit raw sequencing <span class="notranslate">reads</span>, consensus sequences and their associated metadata to ENA <span class="citation"><a href="#Roncoroni2021">Roncoroni <i>et al.</i> 2021</a></span>. You will learn to add your ENA Webin credentials to <span class="notranslate">Galaxy</span>, input metadata interactively or via a metadata template and submit the <span class="notranslate">reads</span> to ENA (test) server using <span class="notranslate">Galaxy</span>’s ‘ENA upload tool’.
-Specifically, we will use one ONT sequencing file to demonstrate interactive metadata input and two sets of PE Illumina <span class="notranslate">reads</span> to demonstrate how to use the ENA metadata template. Finally, we will submit consensus sequences to ENA using ‘Submit consensus sequence to ENA’ tool.</p>
+<p>In this tutorial we will show you how to use Galaxy’s ‘ENA Upload tool’ to submit raw sequencing reads, consensus sequences and their associated metadata to ENA <span class="citation"><a href="#Roncoroni2021">Roncoroni <i>et al.</i> 2021</a></span>. You will learn to add your ENA Webin credentials to Galaxy, input metadata interactively or via a metadata template and submit the reads to ENA (test) server using Galaxy’s ‘ENA upload tool’.
+Specifically, we will use one ONT sequencing file to demonstrate interactive metadata input and two sets of PE Illumina reads to demonstrate how to use the ENA metadata template. Finally, we will submit consensus sequences to ENA using ‘Submit consensus sequence to ENA’ tool.</p>
 
 <p>Data will be submitted to ENA’s test server and will not be public.</p>
 
 <blockquote class="comment">
-  <div id="comment-nature-of-the-input-data" class="box-title" aria-label="comment box: Nature of the input data"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Nature of the input data</div>
+  <div class="box-title comment-title" id="comment-nature-of-the-input-data"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Nature of the input data</div>
   <p>We will use data derived from sequencing data of bronchoalveolar lavage fluid (BALF) samples obtained from early COVID-19 patients in China as our input data.
-Human traces have been removed in <a href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/human-reads-removal/tutorial.html"><span class="notranslate">Galaxy</span></a>.</p>
+Human traces have been removed in <a href="/training-material/topics/sequence-analysis/tutorials/human-reads-removal/tutorial.html">Galaxy</a>.</p>
 
 </blockquote>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
 <ol id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
-  <li><a href="#adding-ena-webin-credentials-to-your-galaxy-user-information" id="markdown-toc-adding-ena-webin-credentials-to-your-galaxy-user-information">Adding ENA Webin credentials to your <span class="notranslate">Galaxy</span> user information</a></li>
-  <li><a href="#submitting-raw-sequence-data-reads-to-the-ena" id="markdown-toc-submitting-raw-sequence-data-reads-to-the-ena">Submitting raw sequence data (<span class="notranslate">reads</span>) to the ENA</a>    <ol>
+  <li><a href="#adding-ena-webin-credentials-to-your-galaxy-user-information" id="markdown-toc-adding-ena-webin-credentials-to-your-galaxy-user-information">Adding ENA Webin credentials to your Galaxy user information</a></li>
+  <li><a href="#submitting-raw-sequence-data-reads-to-the-ena" id="markdown-toc-submitting-raw-sequence-data-reads-to-the-ena">Submitting raw sequence data (reads) to the ENA</a>    <ol>
       <li><a href="#option-1-submitting-to-ena-using-interactive-metadata-generator" id="markdown-toc-option-1-submitting-to-ena-using-interactive-metadata-generator">Option 1: submitting to ENA using interactive metadata generator</a></li>
       <li><a href="#option-2-submitting-to-ena-using-a-metadata-template" id="markdown-toc-option-2-submitting-to-ena-using-a-metadata-template">Option 2: submitting to ENA using a metadata template</a></li>
     </ol>
@@ -948,15 +729,15 @@ Human traces have been removed in <a href="https://training.galaxyproject.org/tr
 
 </blockquote>
 
-<h1 id="adding-ena-webin-credentials-to-your-galaxy-user-information">Adding ENA Webin credentials to your <span class="notranslate">Galaxy</span> user information</h1>
+<h1 id="adding-ena-webin-credentials-to-your-galaxy-user-information">Adding ENA Webin credentials to your Galaxy user information</h1>
 
-<p>In order to submit data to ENA, you need to have a valid Webin account. If you don’t have one already you can register for one <a href="https://www.ebi.ac.uk/ena/submit/sra/#registration">here</a>. Webin credentials need to be included in your <span class="notranslate">Galaxy</span> user information before you can use the ENA Upload tool.</p>
+<p>In order to submit data to ENA, you need to have a valid Webin account. If you don’t have one already you can register for one <a href="https://www.ebi.ac.uk/ena/submit/sra/#registration">on ENA’s Registration Page</a>. Webin credentials need to be included in your Galaxy user information before you can use the ENA Upload tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-add-webin-credentials-to-your-galaxy-user-information" class="box-title" aria-label="hands-on box: Add Webin credentials to your Galaxy user information"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Add Webin credentials to your <span class="notranslate">Galaxy</span> user information</div>
+  <div class="box-title hands-on-title" id="hands-on-add-webin-credentials-to-your-galaxy-user-information"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Add Webin credentials to your Galaxy user information</div>
 
   <ol>
-    <li>If you have not already done so, log in to use<span class="notranslate">galaxy</span>.eu</li>
+    <li>If you have not already done so, log in to usegalaxy.eu</li>
     <li>Navigate to <em>“User”</em> &gt; <em>“Preferences”</em> on the top menu
       <ul>
         <li>Click on <i class="fa fa-user" aria-hidden="true"></i> <strong>Manage Information</strong></li>
@@ -966,23 +747,24 @@ Human traces have been removed in <a href="https://training.galaxyproject.org/tr
       </ul>
     </li>
   </ol>
-  <figure id="figure-1"><img src="../../images/upload-data-to-ena/ENA-credentials.png" alt="ENA Webin Account details in Galaxy. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> ENA Webin Account details</figcaption></figure>
+  <figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/upload-data-to-ena/ENA-credentials.png" alt="ENA Webin Account details in Galaxy. " width="212" height="165" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> ENA Webin Account details</figcaption></figure>
 </blockquote>
 
-<h1 id="submitting-raw-sequence-data-reads-to-the-ena">Submitting raw sequence data (<span class="notranslate">reads</span>) to the ENA</h1>
+<h1 id="submitting-raw-sequence-data-reads-to-the-ena">Submitting raw sequence data (reads) to the ENA</h1>
 <h2 id="option-1-submitting-to-ena-using-interactive-metadata-generator">Option 1: submitting to ENA using interactive metadata generator</h2>
 
 <p>In this first example, you will submit one ONT sequence file using the interactive metadata forms from the ENA Upload tool. This method is only convenient for small submissions. For bulk submissions, we recommend you use the metadata template described below in Option 2.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Upload the ONT data from Zenodo via URLs</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <p>The URL for our example data is this:</p>
 
@@ -999,10 +781,10 @@ Human traces have been removed in <a href="https://training.galaxyproject.org/tr
 After you confirm that all the data and metadata looks ok, you can go ahead and submit to the public ENA server.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-add-metadata-interactively-and-submit-a-single-sequence-to-ena" class="box-title" aria-label="hands-on box: add metadata interactively and submit a single sequence to ENA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: add metadata interactively and submit a single sequence to ENA</div>
+  <div class="box-title hands-on-title" id="hands-on-add-metadata-interactively-and-submit-a-single-sequence-to-ena"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: add metadata interactively and submit a single sequence to ENA</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1"><strong>ENA Upload tool</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1</span></span> :
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1" title="ENA Upload tool tool" aria-role="link"><strong>ENA Upload tool</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1</span></span>:
       <ul>
         <li><em>“Action to execute”</em>: <code class="language-plaintext highlighter-rouge">Add new data</code></li>
         <li>Under “Testing options”:
@@ -1012,7 +794,7 @@ After you confirm that all the data and metadata looks ok, you can go ahead and 
           </ul>
         </li>
         <li><em>“Would you like to submit pregenerated table files or interactively define the input structures?”</em>: <code class="language-plaintext highlighter-rouge">Interactive generation of the study structure</code></li>
-        <li><em>“Add .fastq.(gz.bz2) extension to the <span class="notranslate">Galaxy</span> dataset names to match the ones described in the input tables?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+        <li><em>“Add .fastq.(gz.bz2) extension to the Galaxy dataset names to match the ones described in the input tables?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
         <li><em>“Does your submission contains viral samples?”</em>: <code class="language-plaintext highlighter-rouge">yes</code></li>
       </ul>
     </li>
@@ -1025,7 +807,7 @@ After you confirm that all the data and metadata looks ok, you can go ahead and 
         <li><em>“Host common name”</em>: <code class="language-plaintext highlighter-rouge">human</code></li>
         <li><em>“Host subject id”</em>: avoid using ID that can be use to trace samples back to patients</li>
         <li><em>“Host scientific name”</em>: <code class="language-plaintext highlighter-rouge">Homo sapiens</code></li>
-        <li><em>“Library strategy”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">RNA</span>-Seq</code></li>
+        <li><em>“Library strategy”</em>: <code class="language-plaintext highlighter-rouge">RNA-Seq</code></li>
         <li><em>“Select library source”</em>: <code class="language-plaintext highlighter-rouge">METAGENOMIC</code></li>
         <li><em>“Library selection”</em>: <code class="language-plaintext highlighter-rouge">RANDOM</code></li>
         <li><em>“Library layout”</em>: <code class="language-plaintext highlighter-rouge">SINGLE</code></li>
@@ -1044,29 +826,29 @@ After you confirm that all the data and metadata looks ok, you can go ahead and 
 </blockquote>
 
 <blockquote class="warning">
-  <div id="warning-do-not-include-personal-identifiable-data" class="box-title" aria-label="warning box: Do not include personal identifiable data"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Do not include personal identifiable data</div>
+  <div class="box-title warning-title" id="warning-do-not-include-personal-identifiable-data"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Do not include personal identifiable data</div>
   <p>In some cases, some information is requested by ENA that may classify as personal or could be used to identify persons (e.g. ‘host ID’ for checklist ERC000033). Make sure that you do not publish any personal metadata that infringes privacy protection regulations in your jurisdiction.</p>
 </blockquote>
 
 <blockquote class="warning">
-  <div id="warning-submit-to-the-test-server-first" class="box-title" aria-label="warning box: Submit to the test server first"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Submit to the test server first</div>
+  <div class="box-title warning-title" id="warning-submit-to-the-test-server-first"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Submit to the test server first</div>
   <p>Make sure  <em>“Submit to test ENA server?”</em>: <code class="language-plaintext highlighter-rouge">yes</code>. Otherwise your data will be submitted to the public server.</p>
 </blockquote>
 
 <p>Four metadata tables (Study, Sample, Experiment and Run), and a metadata ticket with submission information are generated. You can confirm a successful submission at ENA <a href="https://wwwdev.ebi.ac.uk/ena/submit/webin/">test server</a> (or the <a href="https://www.ebi.ac.uk/ena/submit/sra">public server</a>, if you chose it).</p>
 
 <blockquote class="tip">
-  <div id="tip-metadata-ticket" class="box-title"><button type="button" aria-controls="tip-metadata-ticket-contents" aria-expanded="true" aria-label="Toggle tip box: Metadata ticket"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Metadata ticket<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-metadata-ticket"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-metadata-ticket" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Metadata ticket<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Upon successful submission, a metadata ticket is generated. This contains information of the submission, including parseable metadata. Importantly, it contains Study, Sample, Run and Experiment accession numbers. The former two you will use later to link the consensus sequence to the raw data.</p>
 </blockquote>
 
 <h2 id="option-2-submitting-to-ena-using-a-metadata-template">Option 2: submitting to ENA using a metadata template</h2>
 
-<p>For larger submissions, interactive metadata input can be tedious and not practical. In the second example, you will submit two sets of Illumina PE sequence files and input metadata using a template sp<span class="notranslate">reads</span>heet. This template contains all fields for ENA sample checklist <em>‘ERC000033 - ENA virus pathogen reporting standard checklist’</em>. Tabular (.tsv and .xlsx) metadata templates for all sample checklist can be found in <a href="https://github.com/ELIXIR-Belgium/ENA-metadata-templates">this repository</a>.
+<p>For larger submissions, interactive metadata input can be tedious and not practical. In the second example, you will submit two sets of Illumina PE sequence files and input metadata using a template spreadsheet. This template contains all fields for ENA sample checklist <em>‘ERC000033 - ENA virus pathogen reporting standard checklist’</em>. Tabular (.tsv and .xlsx) metadata templates for all sample checklist can be found in <a href="https://github.com/ELIXIR-Belgium/ENA-metadata-templates">this repository</a>.
 For this tutorial, we provide you with a pre-filled template and encourage you to explore it.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-upload-and-inspect-data" class="box-title" aria-label="hands-on box: Upload and inspect data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Upload and inspect data</div>
+  <div class="box-title hands-on-title" id="hands-on-upload-and-inspect-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Upload and inspect data</div>
 
   <ol>
     <li>
@@ -1083,11 +865,12 @@ https://zenodo.org/record/6912963/files/metadata_template_ERC000033_mock_complet
       <p>Arrange the data into a paired dataset collection</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-paired-collection" class="box-title"><button type="button" aria-controls="tip-creating-a-paired-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a paired collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a paired collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on <strong>Operations on multiple datasets</strong> (check box icon) at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Operations on multiple datasets button" /></li>  <li>Check all the datasets in your history you would like to include</li>  <li>    <p>Click <strong>For all selected..</strong> and choose <strong>Build List of Dataset Pairs</strong></p>  </li>  <li>Change the text of <em>unpaired forward</em> to a common selector for the forward <span class="notranslate">reads</span></li>  <li>Change the text of <em>unpaired reverse</em> to a common selector for the reverse <span class="notranslate">reads</span></li>  <li>Click <strong>Pair these datasets</strong> for each valid <em>forward</em> and <em>reverse</em> pair.</li>  <li>Enter a name for your collection</li>  <li>Click <strong>Create List</strong> to build your collection</li>  <li>Click on the checkmark icon at the top of your history again</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-paired-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-paired-collection" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a paired collection<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">galaxy-selector</span> <strong>Select Items</strong> at the top of the history panel <img src="/training-material/topics/galaxy-interface/images/historyItemControls.png" alt="Select Items button" /></li>   <li>Check all the datasets in your history you would like to include</li>   <li>     <p>Click <strong>n of N selected</strong> and choose <strong>Build List of Dataset Pairs</strong></p>   </li>   <li>Change the text of <em>unpaired forward</em> to a common selector for the forward reads</li>   <li>Change the text of <em>unpaired reverse</em> to a common selector for the reverse reads</li>   <li>Click <strong>Pair these datasets</strong> for each valid <em>forward</em> and <em>reverse</em> pair.</li>   <li>Enter a name for your collection</li>   <li>Click <strong>Create List</strong> to build your collection</li>   <li>Click on the checkmark icon at the top of your history again</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <p>For the example datasets this means:</p>
       <ul>
-        <li>You need to tell <span class="notranslate">Galaxy</span> about the suffix for your forward and reverse <span class="notranslate">reads</span>, respectively:
+        <li>You need to tell Galaxy about the suffix for your forward and reverse reads, respectively:
           <ul>
             <li>set the text of <em>unpaired forward</em> to: <code class="language-plaintext highlighter-rouge">_1.fastq.gz</code></li>
             <li>set the text of <em>unpaired reverse</em> to: <code class="language-plaintext highlighter-rouge">_2.fastq.gz</code></li>
@@ -1099,7 +882,7 @@ https://zenodo.org/record/6912963/files/metadata_template_ERC000033_mock_complet
       </ul>
 
       <blockquote class="warning">
-        <div id="warning-paired-collection-names" class="box-title" aria-label="warning box: Paired collection names"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Paired collection names</div>
+        <div class="box-title warning-title" id="warning-paired-collection-names"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Paired collection names</div>
         <p>It is very important that the paired collection names contain no suffix (e.g. _1, _R1, etc.) or file extensions (.fastq, .fastq.gz). The submission tool will add these at runtime and leaving them in the paired collection names will cause a mismatch with the filenames in the metadata table.</p>
       </blockquote>
       <ul>
@@ -1109,12 +892,12 @@ https://zenodo.org/record/6912963/files/metadata_template_ERC000033_mock_complet
       </ul>
     </li>
     <li>
-      <p>Inspect the <code class="language-plaintext highlighter-rouge">GTN_tutorial_mock_metadata.xlsx</code> (filled-in template) file by clicking on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon</p>
+      <p>Inspect the <code class="language-plaintext highlighter-rouge">GTN_tutorial_mock_metadata.xlsx</code> (filled-in template) file by clicking on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (eye) icon</p>
 
       <p>https://github.com/enasequence/webin-cli</p>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>How many metadata sheets are there?</li>
@@ -1122,10 +905,10 @@ https://zenodo.org/record/6912963/files/metadata_template_ERC000033_mock_complet
         </ol>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>There are four metadata sheets, one per metadata object (Study, Sample, Experiment, Run)</li>
-            <li>The Sample section is more extensive in the template sp<span class="notranslate">reads</span>heet, because it contains all the fields from ENA ERC000033 sample checklist, as well as all ‘Recommended’ and ‘Optional’ fields in the other sections.</li>
+            <li>The Sample section is more extensive in the template spreadsheet, because it contains all the fields from ENA ERC000033 sample checklist, as well as all ‘Recommended’ and ‘Optional’ fields in the other sections.</li>
           </ol>
         </blockquote>
       </blockquote>
@@ -1137,10 +920,10 @@ https://zenodo.org/record/6912963/files/metadata_template_ERC000033_mock_complet
 <p>As before, the submission is done to the test server before submitting to the public one.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-use-a-metadata-template-and-submit-multiple-sequences-to-ena" class="box-title" aria-label="hands-on box: use a metadata template and submit multiple sequences to ENA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: use a metadata template and submit multiple sequences to ENA</div>
+  <div class="box-title hands-on-title" id="hands-on-use-a-metadata-template-and-submit-multiple-sequences-to-ena"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: use a metadata template and submit multiple sequences to ENA</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1"><strong>ENA Upload tool</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1</span></span> :
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1" title="ENA Upload tool tool" aria-role="link"><strong>ENA Upload tool</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/ena_upload/ena_upload/0.6.1</span></span>:
       <ul>
         <li><em>“Action to execute”</em>: <code class="language-plaintext highlighter-rouge">Add new data</code></li>
         <li>Under “Testing options”:
@@ -1162,19 +945,19 @@ https://zenodo.org/record/6912963/files/metadata_template_ERC000033_mock_complet
 </blockquote>
 
 <blockquote class="warning">
-  <div id="warning-do-not-include-personal-identifiable-data-1" class="box-title" aria-label="warning box: Do not include personal identifiable data"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Do not include personal identifiable data</div>
+  <div class="box-title warning-title" id="warning-do-not-include-personal-identifiable-data-1"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Do not include personal identifiable data</div>
   <p>In some cases, some information is requested by ENA that may classify as personal or could be used to identify persons (e.g. ‘host ID’ for checklist ERC000033). Make sure that you do not publish any personal metadata that infringes privacy protection regulations in your jurisdiction.</p>
 </blockquote>
 
 <blockquote class="warning">
-  <div id="warning-submit-to-the-test-server-first-1" class="box-title" aria-label="warning box: Submit to the test server first"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Submit to the test server first</div>
+  <div class="box-title warning-title" id="warning-submit-to-the-test-server-first-1"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Submit to the test server first</div>
   <p>Make sure  <em>“Submit to test ENA server?”</em>: <code class="language-plaintext highlighter-rouge">yes</code>. Otherwise your data will be submitted to the public server.</p>
 </blockquote>
 
 <p>Four metadata tables (Study, Sample, Experiment and Run), and a metadata ticket with submission information are generated. You can confirm a successful submission at ENA <a href="https://wwwdev.ebi.ac.uk/ena/submit/webin/">test server</a> (or the <a href="https://www.ebi.ac.uk/ena/submit/sra">public server</a>, if you chose it).</p>
 
 <blockquote class="tip">
-  <div id="tip-metadata-ticket-1" class="box-title"><button type="button" aria-controls="tip-metadata-ticket-1-contents" aria-expanded="true" aria-label="Toggle tip box: Metadata ticket"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Metadata ticket<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-metadata-ticket-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-metadata-ticket-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Metadata ticket<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>Upon succesful submission, a metadata ticket is generated. This contains information of the submission, including parseable metadata. Importantly, it contains Study, Sample, Run and Experiment accession numbers. The former two you will use later to link the consensus sequence to the raw data.</p>
 </blockquote>
 
@@ -1183,35 +966,33 @@ https://zenodo.org/record/6912963/files/metadata_template_ERC000033_mock_complet
 <p>We produced consensus sequences for the Illumina data from Option 2 above following <a href="https://workflowhub.eu/workflows/113?version=4">SARS-CoV-2-PE-Illumina-WGS-variant-calling</a>, <a href="https://workflowhub.eu/workflows/109?version=5">SARS-CoV-2-variation-reporting</a> and <a href="https://workflowhub.eu/workflows/138?version=4">COVID-19-consensus-construction</a> workflows.</p>
 
 <p>In this step we will submit one consensus sequence to ENA.
-We will link it to the <span class="notranslate">reads</span> submitted in the first step using the accession numbers given to those submissions. <span class="notranslate">Galaxy</span>’s ‘ENA Upload tool’ captures and stores metadata on a metadata ticket.</p>
+We will link it to the reads submitted in the first step using the accession numbers given to those submissions. Galaxy’s ‘ENA Upload tool’ captures and stores metadata on a metadata ticket.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-submit-consensus-sequences-to-ena" class="box-title" aria-label="hands-on box: submit consensus sequences to ENA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: submit consensus sequences to ENA</div>
+  <div class="box-title hands-on-title" id="hands-on-submit-consensus-sequences-to-ena"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: submit consensus sequences to ENA</div>
 
   <ol>
-    <li>Upload the consensus sequence to <span class="notranslate">Galaxy</span> from Zenodo via URLs:
+    <li>Upload the consensus sequence to Galaxy from Zenodo via URLs:
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/6912963/files/SRR10903401.fasta
 </code></pre></div>      </div>
     </li>
-    <li><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> Open the ‘ENA submsission receipt’ and find the Study and Sample accession numbers from the raw data submission.</li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ieguinoa/ena_webin_cli/ena_webin_cli/7d751b5943b0" title="Tested with toolshed.g2.bx.psu.edu/repos/ieguinoa/ena_webin_cli/ena_webin_cli/7d751b5943b0"><strong>Submit consensus sequence to ENA</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ieguinoa/ena_webin_cli/ena_webin_cli/7d751b5943b0</span></span> :
+    <li><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> Open the ‘ENA submsission receipt’ and find the Study and Sample accession numbers from the raw data submission.</li>
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ieguinoa/ena_webin_cli/ena_webin_cli/7d751b5943b0" title="Submit consensus sequence to ENA tool" aria-role="link"><strong>Submit consensus sequence to ENA</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ieguinoa/ena_webin_cli/ena_webin_cli/7d751b5943b0</span></span>:
       <ul>
         <li><em>“Submit to test ENA server?”</em>: <code class="language-plaintext highlighter-rouge">yes</code></li>
         <li><em>“Validate files and metadata but do not submit”</em>: <code class="language-plaintext highlighter-rouge">no</code></li>
         <li>Fill the assembly metadata. For our assembly:
-          <blockquote>
-            <ul>
-              <li><em>“Assembly type”</em>: <code class="language-plaintext highlighter-rouge">Clone</code></li>
-              <li><em>“Assembly program”</em>: <code class="language-plaintext highlighter-rouge">BWA-MEM</code></li>
-              <li><em>“Molecule type”</em>: <code class="language-plaintext highlighter-rouge">genomic <span class="notranslate">RNA</span></code></li>
-              <li><em>“Coverage”</em>: <code class="language-plaintext highlighter-rouge">1000</code></li>
-              <li><em>“Select the method to load study and sample metadata”</em>: <code class="language-plaintext highlighter-rouge">Fill in required metadata</code></li>
-              <li><em>“Assembly name”</em>: give a name to your assembly.</li>
-              <li><em>“Study accession”</em>: <code class="language-plaintext highlighter-rouge">ERP139884</code> (you can find the Study accession number from your raw data submission metadata ticket)</li>
-              <li><em>“Sample accession”</em>: <code class="language-plaintext highlighter-rouge">ERS12519941</code> (you can find the Sample accession number from your raw data submission metadata ticket)</li>
-              <li><em>“Sequencing platform”</em>: <code class="language-plaintext highlighter-rouge">Illumina</code></li>
-            </ul>
-          </blockquote>
+          <ul>
+            <li><em>“Assembly type”</em>: <code class="language-plaintext highlighter-rouge">Clone</code></li>
+            <li><em>“Assembly program”</em>: <code class="language-plaintext highlighter-rouge">BWA-MEM</code></li>
+            <li><em>“Molecule type”</em>: <code class="language-plaintext highlighter-rouge">genomic RNA</code></li>
+            <li><em>“Coverage”</em>: <code class="language-plaintext highlighter-rouge">1000</code></li>
+            <li><em>“Select the method to load study and sample metadata”</em>: <code class="language-plaintext highlighter-rouge">Fill in required metadata</code></li>
+            <li><em>“Assembly name”</em>: give a name to your assembly.</li>
+            <li><em>“Study accession”</em>: <code class="language-plaintext highlighter-rouge">ERP139884</code> (you can find the Study accession number from your raw data submission metadata ticket)</li>
+            <li><em>“Sample accession”</em>: <code class="language-plaintext highlighter-rouge">ERS12519941</code> (you can find the Sample accession number from your raw data submission metadata ticket)</li>
+            <li><em>“Sequencing platform”</em>: <code class="language-plaintext highlighter-rouge">Illumina</code></li>
+          </ul>
         </li>
         <li>Select the consensus sequence assembly file from your history: <code class="language-plaintext highlighter-rouge">SRR10903401.fasta</code></li>
       </ul>
@@ -1222,10 +1003,12 @@ We will link it to the <span class="notranslate">reads</span> submitted in the f
 
 <p>The output are a list of manifest (in our example one manifest) and a ‘submission log’. The manifest file is the metadata required by <a href="https://github.com/enasequence/webin-cli">ENA’s Webin CLI tool</a>. The ‘submission log’ can be useful to troubleshoot failed submissions.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Use Galaxy’s ‘ENA Upload tool’ to submit raw reads to ENA</p>
@@ -1271,38 +1054,18 @@ We will link it to the <span class="notranslate">reads</span> submitted in the f
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Submitting sequence data to ENA (Using Galaxy and Managing your Data)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Submitting sequence data to ENA (Using Galaxy and Managing your Data)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Miguel Roncoroni, Bert Droesbeke,  <b>Submitting sequence data to ENA (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Miguel Roncoroni, Bert Droesbeke,  <b>Submitting sequence data to ENA (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html">https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1314,7 +1077,7 @@ We will link it to the <span class="notranslate">reads</span> submitted in the f
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1323,28 +1086,31 @@ We will link it to the <span class="notranslate">reads</span> submitted in the f
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{galaxy-interface-upload-data-to-ena,
 author = "Miguel Roncoroni and Bert Droesbeke",
-title = "Submitting sequence data to ENA (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Submitting sequence data to ENA (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1352,11 +1118,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1365,49 +1131,89 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: ena_upload
+  owner: iuc
+  revisions: 9e2df763086c
+  tool_panel_section_label: Using Galaxy and Managing your Data
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: ena_upload
+  owner: iuc
+  revisions: a62c4a11a67d
+  tool_panel_section_label: Using Galaxy and Managing your Data
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00159">https://gxy.io/GTN:T00159</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/galaxy-interface/tutorials/upload-data-to-ena/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

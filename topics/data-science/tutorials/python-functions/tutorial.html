@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,254 +8,70 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Python - Functions" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-09-29 12:58:11 +0000" />
-<meta name="DC.creator" content="The Carpentries" />
-<meta name="DC.creator" content="Helena Rasche" />
-<meta name="DC.creator" content="Donny Vrins" />
-<meta name="DC.creator" content="Bazante Sanders" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Python - Functions" />
-        <meta property="og:description" content="These lessons will help you get your feet in data science..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/data-science" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Foundations of Data Science
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-functions/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-functions/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-functions/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-functions/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-functions/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/data-science/tutorials/python-functions/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/data-science/faqs/" title="Check our FAQs for the Foundations of Data Science topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-functions/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/data-science/tutorials/python-functions/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/python-functions/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/python-functions/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/python-functions/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Python - Functions">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-02-13 13:04:13 +0000">
+<meta name="DC.creator" content="The Carpentries">
+<meta name="DC.creator" content="Helena Rasche">
+<meta name="DC.creator" content="Donny Vrins">
+<meta name="DC.creator" content="Bazante Sanders">
+
+        
+        
+        
+        
+        <meta name="description" content="These lessons will help you get your feet in data science...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Python - Functions">
+        <meta property="og:description" content="These lessons will help you get your feet in data science...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -280,7 +96,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-29 12:58:11 +0000",
+  "dateModified": "2023-02-13 13:04:13 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Python - Functions",
   "interactivityType": "mixed",
@@ -306,6 +122,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -333,6 +153,7 @@
   "name": "Hands-on for 'Python - Functions' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html",
   "timeRequired": "PT30M",
+  "teaches": "Understand the structure of a \"function\" in order to be able to construct their own functions and predict which functions will not work.",
   "keywords": "data-science, jupyter-notebook",
   "description": "The questions this  addresses are:\n - How do I write functions in Python?\n - What is a function?\n - What do they look like?\n - Fill in the missing part of a function\n\n\nThe objectives are:\n - Understand the structure of a \"function\" in order to be able to construct their own functions and predict which functions will not work.\n\n",
   "inLanguage": {
@@ -362,8 +183,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
@@ -383,8 +204,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
@@ -406,8 +227,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
@@ -427,96 +248,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
-      "name": "Bazante Sanders",
-      "image": "https://avatars.githubusercontent.com/bazante1",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/carpentries/",
-      "name": "The Carpentries",
-      "image": "https://avatars.githubusercontent.com/carpentries",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dirowa/",
-      "name": "Donny Vrins",
-      "image": "https://avatars.githubusercontent.com/dirowa",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bazante1/",
@@ -539,45 +272,220 @@
       "name": "Foundations of Data Science",
       "description": "These lessons will help you get your feet in data science and give you tools to help you slice and dice your data into results.",
       "url": "https://training.galaxyproject.org/training-material/topics/data-science/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
   ],
-  "educationalLevel": "Beginner"
+  "educationalLevel": "Beginner",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "jupyter-notebook"
+    }
+  ],
+  "abstract": "Functions are the basic unit of all work in Python! Absolutely everything you do uses functions. Conceptually, functions are super simple. Just like in maths, they take an input, do some transformation, and return an output. As an example, `f(x) = x + 2` is a function that calculates whatever value you request, plus two. But functions are foundational, so, you should understand them well before moving on."
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-data-science">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/data-science" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Foundations of Data Science
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/data-science/faqs/" title="Check our FAQs for the Foundations of Data Science topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-functions/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/data-science/tutorials/python-functions/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/data-science/tutorials/python-functions/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/data-science/tutorials/python-functions/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/data-science/tutorials/python-functions/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-data-science">
     <h1 data-toc-skip>Python - Functions</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=27" alt="Avatar">The Carpentries</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
-<a href="/training-material/hall-of-fame/dirowa/" class="contributor-badge contributor-dirowa"><img src="https://avatars.githubusercontent.com/dirowa?s=27" alt="Avatar">Donny Vrins</a>
-
-
-
-<a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=27" alt="Avatar">Bazante Sanders</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/carpentries/" class="contributor-badge contributor-carpentries"><img src="https://avatars.githubusercontent.com/carpentries?s=36" alt="Avatar" width="36" height="36">The Carpentries</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/dirowa/" class="contributor-badge contributor-dirowa"><img src="https://avatars.githubusercontent.com/dirowa?s=36" alt="Avatar" width="36" height="36">Donny Vrins</a><a href="/training-material/hall-of-fame/bazante1/" class="contributor-badge contributor-bazante1"><img src="https://avatars.githubusercontent.com/bazante1?s=36" alt="Avatar" width="36" height="36">Bazante Sanders</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -625,44 +533,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> Python - Math:
                             
@@ -672,6 +542,52 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -777,14 +693,18 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 29, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Feb 13, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00089">https://gxy.io/GTN:T00089</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -794,13 +714,14 @@
             </div>
             <div class="col-sm-10">
                  
+                <section aria-label="Tutorial Notebook access information" id="tutorial-notebook">
                      
                      
                      
                      
                     
                         <blockquote class="comment">
-                            <div class="box-title" aria-label="comment box">Best viewed in a Jupyter Notebook</div>
+                            <div class="box-title">Best viewed in a Jupyter Notebook</div>
                             <p>
                                 This tutorial is best viewed in a Jupyter notebook! You can load this notebook one of the following ways<!--, or you can click to run it in MyBinder-->
                             </p>
@@ -810,6 +731,12 @@
                                 <a href="https://mybinder.org/v2/gh/galaxyproject/training-material/main?filepath=training-material%2Ftopics%2Fdata-science%2Ftutorials%2Fpython-functions%2Ftutorial.md.ipynb" title="Launch notebook on MyBinder"><img src="https://mybinder.org/badge_logo.svg" alt="My Binder Logo"/></a>
                             </p>
                             -->
+                            
+                            <p><b>Run on the GTN with JupyterLite (in-browser computations)</b>
+                                <ol>
+                                    <li><a href="/training-material/jupyter/lab/index.html?path=data-science-python-functions.ipynb">Click to Launch JupyterLite</a></li>
+                                </ol>
+                            </p>
                             
                             <p><b>Launching the notebook in Jupyter in Galaxy</b>
                                 <ol>
@@ -827,12 +754,14 @@
                             </p>
                         </blockquote>
                     
-                 
+                </section>
+                
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <p>Functions are the basic unit of all work in Python! Absolutely everything you do uses functions. Conceptually, functions are super simple. Just like in maths, they take an input, do some transformation, and return an output. As an example, <code class="language-plaintext highlighter-rouge">f(x) = x + 2</code> is a function that calculates whatever value you request, plus two. But functions are foundational, so, you should understand them well before moving on.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -849,7 +778,7 @@
 
 <blockquote class="code-2col">
   <blockquote class="code-in">
-    <div id="code-in-math" class="box-title" aria-label="code-in box: Math"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Math</div>
+    <div class="box-title code-in-title" id="code-in-math"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Math</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Define our function
 f(x) = 3 * x
 # Compute some value
@@ -858,7 +787,7 @@ f(3) # is 9
   </blockquote>
 
   <blockquote class="code-out">
-    <div id="code-out-python" class="box-title" aria-label="code-out box: Python"><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output: Python</div>
+    <div class="box-title code-out-title" id="code-out-python"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output: Python</div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Define our function
 def f(x):
    return 3 * x
@@ -878,10 +807,10 @@ f(3)
 <p>Knowing what Americans mean when they talk about temperatures and weather can be difficult, but we can wrap the temperature conversion calculation (\(^{\circ}\text{C} = (^{\circ}\text{F} - 32) * \dfrac{5}{9}\)) up as a function that we can easily re-use.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fahr_to_celsius</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">9</span><span class="p">))</span>
+    <span class="nf">return </span><span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">9</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p><img src="../../images/python-basics/Figure7_Functions.png" alt="The above function fahr to celsius is shown except annotated. def is labelled &quot;def statement&quot;, fahr_to_celsius is noted as the function name. Inside parentheses is temp and an arrow shows it is called parameter names. The next line which is indented is annotated as the function body which has a return statement and the calculation from above." loading="lazy" /></p>
+<p><img src="../../images/python-basics/Figure7_Functions.png" alt="The above function fahr to celsius is shown except annotated. def is labelled &quot;def statement&quot;, fahr_to_celsius is noted as the function name. Inside parentheses is temp and an arrow shows it is called parameter names. The next line which is indented is annotated as the function body which has a return statement and the calculation from above." width="340" height="130" loading="lazy" /></p>
 
 <p>The function definition opens with the keyword <code class="language-plaintext highlighter-rouge">def</code> followed by the name of the function <code class="language-plaintext highlighter-rouge">fahr_to_celsius</code> and a parenthesized list of parameter names <code class="language-plaintext highlighter-rouge">temp</code>. The body of the function — the statements that are executed when it runs — is indented below the definition line. The body concludes with a <code class="language-plaintext highlighter-rouge">return</code> keyword followed by the return value.</p>
 
@@ -889,13 +818,13 @@ f(3)
 
 <p>Let’s try running our function.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fahr_to_celsius</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"freezing point of water: </span><span class="si">{</span><span class="n">fahr_to_celsius</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="si">}</span><span class="s">C"</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"boiling point of water: </span><span class="si">{</span><span class="n">fahr_to_celsius</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span><span class="si">}</span><span class="s">C"</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">fahr_to_celsius</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"freezing point of water: </span><span class="si">{</span><span class="nf">fahr_to_celsius</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="si">}</span><span class="s">C"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"boiling point of water: </span><span class="si">{</span><span class="nf">fahr_to_celsius</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span><span class="si">}</span><span class="s">C"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-formatting-strings" class="box-title"><button type="button" aria-controls="tip-formatting-strings-contents" aria-expanded="true" aria-label="Toggle tip box: Formatting Strings"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Formatting Strings<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-formatting-strings"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-formatting-strings" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Formatting Strings<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>There are several ways to print out a few values in python. We’d recommend you to use <code class="language-plaintext highlighter-rouge">f-strings</code> as it’s the cleanest and most modern way to do it.</p>
 
   <p><code class="language-plaintext highlighter-rouge">f</code>-strings start with an <code class="language-plaintext highlighter-rouge">f</code> (very descriptive name eh?). Within the text between the single or double quotes (<code class="language-plaintext highlighter-rouge">'</code>/<code class="language-plaintext highlighter-rouge">"</code>) you can use curly braces to refer to variables or python code which will be placed there in the string.</p>
@@ -913,7 +842,7 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 
   <ol>
     <li>Start with an <code class="language-plaintext highlighter-rouge">f</code></li>
-    <li>Use braces to use the value of a variable, a function, or some python <span class="notranslate">expression</span>.</li>
+    <li>Use braces to use the value of a variable, a function, or some python expression.</li>
   </ol>
 </blockquote>
 
@@ -924,25 +853,25 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">celsius_to_kelvin</span><span class="p">(</span><span class="n">temp_c</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">temp_c</span> <span class="o">+</span> <span class="mf">273.15</span>
 
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'freezing point of water in Kelvin: </span><span class="si">{</span><span class="n">celsius_to_kelvin</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'freezing point of water in Kelvin: </span><span class="si">{</span><span class="nf">celsius_to_kelvin</span><span class="p">(</span><span class="mf">0.</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote class="tip">
-  <div id="tip-what-is-0" class="box-title"><button type="button" aria-controls="tip-what-is-0-contents" aria-expanded="true" aria-label="Toggle tip box: What is `0.`"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: What is `0.`<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-what-is-0"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-what-is-0" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: What is `0.`<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>That’s a float! A <code class="language-plaintext highlighter-rouge">.</code> in a number makes it a float, rather than an integer.</p>
 </blockquote>
 
 <p>What about converting Fahrenheit to Kelvin? We could write out both formulae, but we don’t need to. Instead, we can <em>compose</em> the two functions we have already created:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fahr_to_kelvin</span><span class="p">(</span><span class="n">temp_f</span><span class="p">):</span>
-    <span class="n">temp_c</span> <span class="o">=</span> <span class="n">fahr_to_celsius</span><span class="p">(</span><span class="n">temp_f</span><span class="p">)</span>
-    <span class="n">temp_k</span> <span class="o">=</span> <span class="n">celsius_to_kelvin</span><span class="p">(</span><span class="n">temp_c</span><span class="p">)</span>
+    <span class="n">temp_c</span> <span class="o">=</span> <span class="nf">fahr_to_celsius</span><span class="p">(</span><span class="n">temp_f</span><span class="p">)</span>
+    <span class="n">temp_k</span> <span class="o">=</span> <span class="nf">celsius_to_kelvin</span><span class="p">(</span><span class="n">temp_c</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">temp_k</span>
 
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'boiling point of water in Kelvin: </span><span class="si">{</span><span class="n">fahr_to_kelvin</span><span class="p">(</span><span class="mf">212.0</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'boiling point of water in Kelvin: </span><span class="si">{</span><span class="nf">fahr_to_kelvin</span><span class="p">(</span><span class="mf">212.0</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-larger chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here — typically half a dozen to a few dozen lines — but they shouldn’t ever be much longer than that, or the next person who <span class="notranslate">reads</span> it won’t be able to understand what’s going on.</p>
+<p>This is our first taste of how larger programs are built: we define basic operations, then combine them in ever-larger chunks to get the effect we want. Real-life functions will usually be larger than the ones shown here — typically half a dozen to a few dozen lines — but they shouldn’t ever be much longer than that, or the next person who reads it won’t be able to understand what’s going on.</p>
 
 <h3 id="documentation">Documentation</h3>
 
@@ -956,23 +885,23 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 
     returns the temperature in Celsius
     """</span>
-    <span class="n">temp_c</span> <span class="o">=</span> <span class="n">fahr_to_celsius</span><span class="p">(</span><span class="n">temp_f</span><span class="p">)</span>
-    <span class="n">temp_k</span> <span class="o">=</span> <span class="n">celsius_to_kelvin</span><span class="p">(</span><span class="n">temp_c</span><span class="p">)</span>
+    <span class="n">temp_c</span> <span class="o">=</span> <span class="nf">fahr_to_celsius</span><span class="p">(</span><span class="n">temp_f</span><span class="p">)</span>
+    <span class="n">temp_k</span> <span class="o">=</span> <span class="nf">celsius_to_kelvin</span><span class="p">(</span><span class="n">temp_c</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">temp_k</span>
 
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'boiling point of water in Kelvin: </span><span class="si">{</span><span class="n">fahr_to_kelvin</span><span class="p">(</span><span class="mf">212.0</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'boiling point of water in Kelvin: </span><span class="si">{</span><span class="nf">fahr_to_kelvin</span><span class="p">(</span><span class="mf">212.0</span><span class="p">)</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>For a function this small, with such a descriptive name (<code class="language-plaintext highlighter-rouge">fahr_to_kelvin</code>) it feels quite obvious what the function should do, what inputs it takes, what outputs it produces. However, you will thank yourself in the future if you do this now. You may think you will remember what the code does, but, be kind to your future self who is busy and stressed and may not want to spend time reading the code over again to figure out what every single function does.</p>
 
 <blockquote class="question">
-  <div id="question-converting-statements-to-functions" class="box-title" aria-label="question box: Converting statements to functions"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Converting statements to functions</div>
+  <div class="box-title question-title" id="question-converting-statements-to-functions"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Converting statements to functions</div>
   <p>A lot of what you’ll do in programing is to turn a procedure that you want to do, into statements and a function.</p>
 
   <p>Fill in the missing portions of this function, two average numbers. Then use it to find the average of 32326 and 631</p>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def average2(a, b):
     c = (a + b) / 2
     return c
@@ -986,11 +915,11 @@ print(f"Here is the value of a: {function_that_returns_10()}")
     <span class="n">c</span> <span class="o">=</span>
     <span class="k">return</span> <span class="n">c</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">average2</span><span class="p">(</span><span class="mi">32326</span><span class="p">,</span> <span class="mi">631</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">average2</span><span class="p">(</span><span class="mi">32326</span><span class="p">,</span> <span class="mi">631</span><span class="p">))</span>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-a-more-complicated-example" class="box-title" aria-label="question box: A more complicated example"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: A more complicated example</div>
+  <div class="box-title question-title" id="question-a-more-complicated-example"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: A more complicated example</div>
 
   <p>The formula for a 90° triangle can be expressed as: \(c = \sqrt{a^2 + b^2}\)</p>
 
@@ -1001,7 +930,7 @@ print(f"Here is the value of a: {function_that_returns_10()}")
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def pythagorus(a, b):
     c = math.sqrt(math.pow(a, 2) + math.pow(b, 2))
     return c
@@ -1012,20 +941,20 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Test out solutions here!
 </span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">pythagorus</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">4321</span><span class="p">))</span> <span class="c1"># Should return 4493.750883170984
+<span class="nf">print</span><span class="p">(</span><span class="nf">pythagorus</span><span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">4321</span><span class="p">))</span> <span class="c1"># Should return 4493.750883170984
 </span></code></pre></div></div>
 
 <h3 id="variable-scope">Variable Scope</h3>
 
 <p>In composing our temperature conversion functions, we created variables inside of those functions, <code class="language-plaintext highlighter-rouge">temp</code>, <code class="language-plaintext highlighter-rouge">temp_c</code>, <code class="language-plaintext highlighter-rouge">temp_f</code>, and <code class="language-plaintext highlighter-rouge">temp_k</code>. We refer to these variables as local variables because they no longer exist once the function is done executing. If we try to access their values outside of the function, we will encounter an error:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Again, temperature in Kelvin was: </span><span class="si">{</span><span class="n">temp_k</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Again, temperature in Kelvin was: </span><span class="si">{</span><span class="n">temp_k</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>If you want to reuse the temperature in Kelvin after you have calculated it with fahr_to_kelvin, you can store the result of the function call in a variable:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp_kelvin</span> <span class="o">=</span> <span class="n">fahr_to_kelvin</span><span class="p">(</span><span class="mf">212.0</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'temperature in Kelvin was: </span><span class="si">{</span><span class="n">temp_kelvin</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">temp_kelvin</span> <span class="o">=</span> <span class="nf">fahr_to_kelvin</span><span class="p">(</span><span class="mf">212.0</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'temperature in Kelvin was: </span><span class="si">{</span><span class="n">temp_kelvin</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Watch out for scope issues:</p>
@@ -1052,11 +981,11 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 </span></code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-scope" class="box-title" aria-label="question box: Scope"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Scope</div>
+  <div class="box-title question-title" id="question-scope"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Scope</div>
   <p>Given the above code, which variables are accessible at Locations 1, 2, and 3?</p>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>a, b</li>
       <li>a and b are there but you shouldn’t use these. x, y, c, d, e are also accessible.</li>
@@ -1070,24 +999,24 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 <p>If we usually want a function to work one way, but occasionally need it to do something else, we can allow people to pass a parameter when they need to but provide a default to make the normal case easier. The example below shows how Python matches values to parameters:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'a: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s">, b: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s">, c: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'a: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s">, b: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s">, c: </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
 
 <span class="c1"># no parameters:
-</span><span class="n">display</span><span class="p">()</span>
+</span><span class="nf">display</span><span class="p">()</span>
 <span class="c1"># one parameter:
-</span><span class="n">display</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
+</span><span class="nf">display</span><span class="p">(</span><span class="mi">55</span><span class="p">)</span>
 <span class="c1"># two parameters:
-</span><span class="n">display</span><span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">)</span>
+</span><span class="nf">display</span><span class="p">(</span><span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>As this example shows, parameters are matched up from left to right, and any that haven’t been given a value explicitly get their default value. We can override this behavior by naming the value as we pass it in:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># only setting the value of c
-</span><span class="n">display</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span>
+</span><span class="nf">display</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mi">77</span><span class="p">)</span>
 </code></pre></div></div>
 
 <blockquote class="question">
-  <div id="question-exercise-signing-a-message" class="box-title" aria-label="question box: Exercise: Signing a message"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Exercise: Signing a message</div>
+  <div class="box-title question-title" id="question-exercise-signing-a-message"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Exercise: Signing a message</div>
   <p>Let’s test out a default argument. Imagine you are printing out a message, and at the bottom it should have a signature.</p>
 
   <p>Inputs:</p>
@@ -1104,7 +1033,7 @@ print(f"Here is the value of a: {function_that_returns_10()}")
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def myFunction(message, signature="Your name"):
     print(message)
     print()
@@ -1118,14 +1047,16 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 </span>
 
 <span class="c1"># Here are some test cases, for you to check if your function works!
-</span><span class="n">myFunction</span><span class="p">(</span><span class="s">'This is a message'</span><span class="p">)</span>
-<span class="n">myFunction</span><span class="p">(</span><span class="s">'This is a message'</span><span class="p">,</span> <span class="n">signature</span><span class="o">=</span><span class="s">'Jane Doe'</span><span class="p">)</span>
+</span><span class="nf">myFunction</span><span class="p">(</span><span class="s">'This is a message'</span><span class="p">)</span>
+<span class="nf">myFunction</span><span class="p">(</span><span class="s">'This is a message'</span><span class="p">,</span> <span class="n">signature</span><span class="o">=</span><span class="s">'Jane Doe'</span><span class="p">)</span>
 </code></pre></div></div>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Functions are foundational in Python</p>
@@ -1172,38 +1103,18 @@ print(f"Here is the value of a: {function_that_returns_10()}")
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Python - Functions (Foundations of Data Science)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Python - Functions (Foundations of Data Science)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">The Carpentries, Helena Rasche, Donny Vrins, Bazante Sanders,  <b>Python - Functions (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            The Carpentries, Helena Rasche, Donny Vrins, Bazante Sanders,  <b>Python - Functions (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html">https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1215,7 +1126,7 @@ print(f"Here is the value of a: {function_that_returns_10()}")
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1224,28 +1135,31 @@ print(f"Here is the value of a: {function_that_returns_10()}")
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{data-science-python-functions,
 author = "The Carpentries and Helena Rasche and Donny Vrins and Bazante Sanders",
-title = "Python - Functions (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Python - Functions (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/data-science/tutorials/python-functions/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1253,11 +1167,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1266,6 +1180,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
@@ -1273,49 +1188,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 </blockquote>
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/data-science/tutorials/python-functions/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00089">https://gxy.io/GTN:T00089</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/data-science/tutorials/python-functions/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

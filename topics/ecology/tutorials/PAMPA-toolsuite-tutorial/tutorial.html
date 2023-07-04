@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,253 +8,69 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Compute and analyze biodiversity metrics with PAMPA toolsuite" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-11-01 08:52:44 +0000" />
-<meta name="DC.creator" content="Coline Royaux" />
-<meta name="DC.creator" content="Yvan Le Bras" />
-<meta name="DC.creator" content="Jean-Baptiste Mihoub" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Learn to analyse Ecological data through Galaxy." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Compute and analyze biodiversity metrics with PAMPA tools..." />
-        <meta property="og:description" content="Learn to analyse Ecological data through Galaxy." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/ecology" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Ecology
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/ecology/faqs/" title="Check our FAQs for the Ecology topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Compute and analyze biodiversity metrics with PAMPA toolsuite">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-18 09:34:29 +0000">
+<meta name="DC.creator" content="Coline Royaux">
+<meta name="DC.creator" content="Yvan Le Bras">
+<meta name="DC.creator" content="Jean-Baptiste Mihoub">
+
+        
+        
+        
+        
+        <meta name="description" content="Learn to analyse Ecological data through Galaxy.">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Compute and analyze biodiversity metrics with PAMPA tools...">
+        <meta property="og:description" content="Learn to analyse Ecological data through Galaxy.">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -279,7 +95,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-11-01 08:52:44 +0000",
+  "dateModified": "2023-05-18 09:34:29 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Compute and analyze biodiversity metrics with PAMPA toolsuite",
   "interactivityType": "mixed",
@@ -305,6 +121,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -332,6 +152,7 @@
   "name": "Hands-on for 'Compute and analyze biodiversity metrics with PAMPA toolsuite' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html",
   "timeRequired": "PT2H",
+  "teaches": "Upload data from DATRAS portal of ICES\n - Pre-process population data with Galaxy\n - Learning how to use an ecological analysis workflow from raw data to graphical representations\n - Learning how to construct a Generalized Linear (Mixed) Model from a usual ecological question\n - Learning how to interpret a Generalized Linear (Mixed) Model",
   "keywords": "ecology, Species population EBV class, Community composition EBV class, EBV dataset, EBV workflow, modeling",
   "description": "The questions this  addresses are:\n - How to evaluate properly populations and communities biological state with abundance data?\n - How does trawl exploited populations of Baltic sea, Southern Atlantic and Scotland are doing over time?\n - How to compute and analyze biodiversity metrics from abundance data?\n\n\nThe objectives are:\n - Upload data from DATRAS portal of ICES\n - Pre-process population data with Galaxy\n - Learning how to use an ecological analysis workflow from raw data to graphical representations\n - Learning how to construct a Generalized Linear (Mixed) Model from a usual ecological question\n - Learning how to interpret a Generalized Linear (Mixed) Model\n\n",
   "inLanguage": {
@@ -359,8 +180,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/colineroyaux/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/colineroyaux/",
@@ -382,8 +203,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/yvanlebras/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/yvanlebras/",
@@ -405,77 +226,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jbmihoub/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jbmihoub/",
-      "name": "Jean-Baptiste Mihoub",
-      "image": "https://avatars.githubusercontent.com/jbmihoub",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/colineroyaux/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/colineroyaux/",
-      "name": "Coline Royaux",
-      "image": "https://avatars.githubusercontent.com/colineroyaux",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-4308-5617",
-      "orcid": "https://orcid.org/0000-0003-4308-5617"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/yvanlebras/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/yvanlebras/",
-      "name": "Yvan Le Bras",
-      "image": "https://avatars.githubusercontent.com/yvanlebras",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-8504-068X",
-      "orcid": "https://orcid.org/0000-0002-8504-068X"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jbmihoub/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jbmihoub/",
@@ -506,39 +258,228 @@
       "termCode": "topic_0610",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0610"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Species population EBV class"
+    },
+    {
+      "@type": "Thing",
+      "name": "Community composition EBV class"
+    },
+    {
+      "@type": "Thing",
+      "name": "EBV dataset"
+    },
+    {
+      "@type": "Thing",
+      "name": "EBV workflow"
+    },
+    {
+      "@type": "Thing",
+      "name": "modeling"
+    }
+  ],
+  "abstract": "# Introduction"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-ecology">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/ecology" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Ecology
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/ecology/faqs/" title="Check our FAQs for the Ecology topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-ecology">
     <h1 data-toc-skip>Compute and analyze biodiversity metrics with PAMPA toolsuite</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/colineroyaux/" class="contributor-badge contributor-colineroyaux"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/colineroyaux?s=27" alt="Avatar">Coline Royaux</a>
-
-
-
-<a href="/training-material/hall-of-fame/yvanlebras/" class="contributor-badge contributor-yvanlebras"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/yvanlebras?s=27" alt="Avatar">Yvan Le Bras</a>
-
-
-
-<a href="/training-material/hall-of-fame/jbmihoub/" class="contributor-badge contributor-jbmihoub"><img src="https://avatars.githubusercontent.com/jbmihoub?s=27" alt="Avatar">Jean-Baptiste Mihoub</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/colineroyaux/" class="contributor-badge contributor-colineroyaux"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/colineroyaux?s=36" alt="Avatar" width="36" height="36">Coline Royaux</a><a href="/training-material/hall-of-fame/yvanlebras/" class="contributor-badge contributor-yvanlebras"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/yvanlebras?s=36" alt="Avatar" width="36" height="36">Yvan Le Bras</a><a href="/training-material/hall-of-fame/jbmihoub/" class="contributor-badge contributor-jbmihoub"><img src="https://avatars.githubusercontent.com/jbmihoub?s=36" alt="Avatar" width="36" height="36">Jean-Baptiste Mihoub</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -610,7 +551,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.4264936">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -620,8 +561,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/workflows/" title="Workflows" alt="Compute and analyze biodiversity metrics with PAMPA toolsuite workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/workflows/" title="Compute and analyze biodiversity metrics with PAMPA toolsuite workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -634,13 +575,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -659,7 +597,10 @@
 
 
   
-  <li class="btn btn-default supporting_material">
+<!-- GTN Video Library true -->
+  
+<li class="btn btn-default supporting_material">
+  
     <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Latest recordings of this tutorial in the GTN Video Library">
         <i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span>&nbsp;Recordings
     </a>
@@ -681,7 +622,9 @@
         
         
     </ul>
-   </li>
+  
+</li>
+  
    
 
 
@@ -690,194 +633,79 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr>
+		</a>
+	</li>
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/ecology/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://ecology.usegalaxy.eu/" title="Galaxy for Ecology">
-            Galaxy for Ecology
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Nov 1, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 18, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00125">https://gxy.io/GTN:T00125</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -888,21 +716,22 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
-<p>This tutorial aims to present the PAMPA <span class="notranslate">Galaxy</span> <span class="notranslate">workflow</span>, how to use it to compute common
+<p>This tutorial aims to present the PAMPA Galaxy workflow, how to use it to compute common
 biodiversity metrics from species abundance data and analyse it through generalized
-linear (mixed) models (GLM and GLMM). This <span class="notranslate">workflow</span> made up of 5 tools will allow you to process
+linear (mixed) models (GLM and GLMM). This workflow made up of 5 tools will allow you to process
 temporal series data that include at least year, location and species sampled along with
 abundance value and, finally, generate article-ready data products.</p>
 
-<p>The PAMPA <span class="notranslate">workflow</span> is an ecological analysis <span class="notranslate">workflow</span>, like so, it is divided as to do a Community
+<p>The PAMPA workflow is an ecological analysis workflow, like so, it is divided as to do a Community
 analysis and a Population analysis separately in accordance with the biodiversity level described.
-Only the last tool to create a plot from your GLM results is common to the two parts of this <span class="notranslate">workflow</span>.
+Only the last tool to create a plot from your GLM results is common to the two parts of this workflow.
 Thus, in this tutorial, we’ll start by the Community analysis followed by the Population analysis.</p>
 
 <blockquote class="details">
-  <div id="details-ecological-definitions-of-population-and-community" class="box-title"><button type="button" aria-controls="details-ecological-definitions-of-population-and-community-contents" aria-expanded="true" aria-label="Toggle details box: Ecological definitions of Population and Community"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Ecological definitions of Population and Community<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-ecological-definitions-of-population-and-community"><button class="gtn-boxify-button details" type="button" aria-controls="details-ecological-definitions-of-population-and-community" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Ecological definitions of Population and Community<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Population: group of individuals of the same species interacting with each other.</p>
 
@@ -910,35 +739,35 @@ Thus, in this tutorial, we’ll start by the Community analysis followed by the 
 
 </blockquote>
 
-<figure id="figure-1"><img src="../../images/PAMPA-toolsuite-tutorial/PAMPA_workflow.png" alt="PAMPA toolsuite workflow. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> PAMPA toolsuite <span class="notranslate">workflow</span></figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/PAMPA-toolsuite-tutorial/PAMPA_workflow.png" alt="PAMPA toolsuite workflow. " width="3026" height="900" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> PAMPA toolsuite workflow</figcaption></figure>
 
-<p>Each part of this <span class="notranslate">workflow</span> has the same elementary steps :</p>
+<p>Each part of this workflow has the same elementary steps :</p>
 <ul>
   <li><strong>A first tool</strong> to compute metrics:
     <ul>
-      <li>Community metrics (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2"><strong>Calculate community metrics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2</span></span> ):
+      <li>Community metrics (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2" title="Calculate community metrics tool" aria-role="link"><strong>Calculate community metrics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2</span></span>):
 Total abundance, Species richness, Shannon index, Simpson index, Hill index and Pielou index</li>
-      <li>Population metrics (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2"><strong>Calculate presence absence table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2</span></span> ):
+      <li>Population metrics (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2" title="Calculate presence absence table tool" aria-role="link"><strong>Calculate presence absence table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2</span></span>):
 Abundance, Presence-absence</li>
     </ul>
   </li>
   <li><strong>A second tool</strong> to compute Generalized Linear (Mixed) Models, testing the effect of <code class="language-plaintext highlighter-rouge">'site'</code>, <code class="language-plaintext highlighter-rouge">'year'</code> and/or
 <code class="language-plaintext highlighter-rouge">'habitat'</code> on a metric selected by the user:
     <ul>
-      <li>Community analysis (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2"><strong>Compute GLM on community data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2</span></span> ):
+      <li>Community analysis (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2" title="Compute GLM on community data tool" aria-role="link"><strong>Compute GLM on community data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2</span></span>):
 The GLM(M) is computed on the whole dataset and, if a separation factor is selected by the user, GLM(M)s are computed on subsets
 of the dataset (example: one GLM(M) per ecoregion)</li>
-      <li>Population analysis (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2"><strong>Compute GLM on population data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2</span></span> ):
+      <li>Population analysis (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2" title="Compute GLM on population data tool" aria-role="link"><strong>Compute GLM on population data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2</span></span>):
 One GLM(M) is computed on each species separately</li>
     </ul>
   </li>
   <li><strong>A third tool</strong> common for Community and Population analyses with at least <code class="language-plaintext highlighter-rouge">'year'</code> as a fixed effect to
-create time-series plots from your GLM(M) results (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2"><strong>Create a plot from GLM data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2</span></span> ).
+create time-series plots from your GLM(M) results (<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2" title="Create a plot from GLM data tool" aria-role="link"><strong>Create a plot from GLM data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2</span></span>).
 Two plots will be created for each GLM(M): one from the <em>“Estimate”</em> values of the GLM(M) and one from raw values from metrics file.</li>
 </ul>
 
 <blockquote class="details">
-  <div id="details-details-about-generalized-linear-mixed-models" class="box-title"><button type="button" aria-controls="details-details-about-generalized-linear-mixed-models-contents" aria-expanded="true" aria-label="Toggle details box: Details about Generalized Linear (Mixed) Models"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Details about Generalized Linear (Mixed) Models<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-details-about-generalized-linear-mixed-models"><button class="gtn-boxify-button details" type="button" aria-controls="details-details-about-generalized-linear-mixed-models" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Details about Generalized Linear (Mixed) Models<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Generalized Linear Models (GLMs) and Generalized Linear Mixed Models (GLMMs) are two extensions of Linear Models (LMs).
 As LMs uses only Gaussian distribution (for continuous variables), GLMs permits to analyse a wide spectrum of data
@@ -951,13 +780,13 @@ and/or spatial replicas. The other effects taken into account in the model that 
 </blockquote>
 
 <p>In this tutorial, we’ll be working on data extracted from the data portal DATRAS (Database of Trawls Surveys) of the
-Inte<span class="notranslate">rna</span>tional Council for the Exploration of the Sea (ICES). After pre-processing to fit the input format of the tools,
+International Council for the Exploration of the Sea (ICES). After pre-processing to fit the input format of the tools,
 we’ll see how to calculate biodiversity metrics and construct properly, easily and with good practice, several GLMMs
 to test the effect of <code class="language-plaintext highlighter-rouge">'year'</code> and <code class="language-plaintext highlighter-rouge">'site'</code> on the species richness of each survey studied and on the abundance
 of each species.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -989,17 +818,20 @@ of each species.</p>
 <h2 id="data-upload">Data upload</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
-      <p>Create a new history for this tutorial and give it a name (example: “DATRAS data analysis through PAMPA <span class="notranslate">workflow</span>”)
+      <p>Create a new history for this tutorial and give it a name (example: “DATRAS data analysis through PAMPA workflow”)
 for you to find it again later if needed.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Import the CSV files from <a href="https://doi.org/10.5281/zenodo.4264936">Zenodo</a> via link with the three following links
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/4264936/files/CPUE%20per%20length%20per%20area_A.csv?download=1
@@ -1008,20 +840,22 @@ https://zenodo.org/record/4264936/files/CPUE%20per%20length%20per%20area_C.csv?d
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <p>You may as well use the shared data library or directly download the data from the DATRAS data portal but the previous
 method is preferred.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-data-from-a-data-library" class="box-title"><button type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>  <ul>  <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>  <li>Navigate to the correct folder as indicated by your instructor</li>  <li>Select the desired files</li>  <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>  <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>  <li>Click on <strong>Import</strong></li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <p>The files used for this tutorial have been imported from DATRAS data portal in October 2020. Those files are
 often updated on the data portal. So if you choose to download files directly from DATRAS there may be
 some differences with the files on Zenodo and the final results of this tutorial.</p>
 
       <blockquote class="tip">
-        <div id="tip-importing-data-from-datras-data-portal" class="box-title"><button type="button" aria-controls="tip-importing-data-from-datras-data-portal-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from DATRAS data portal"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from DATRAS data portal<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-importing-data-from-datras-data-portal"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-datras-data-portal" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Importing data from DATRAS data portal<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <ul>
           <li>Go to link: https://datras.ices.dk/Data_products/Download/Download_Data_public.aspx</li>
@@ -1036,10 +870,10 @@ repeat the six following steps for each of the three surveys.</li>
           <li>In the field ‘Species’ we chose to tick ‘Standard species’ and ‘All’</li>
           <li>Click on ‘Submit’</li>
           <li>Tick ‘I accept the documents and their associated restrictions and agree to acknowledge the data source’</li>
-          <li>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</li>
+          <li>Open the Galaxy Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top-right of the tool panel)</li>
           <li>Drop files on the dedicated area or click ‘Choose local files’</li>
           <li>Click on ‘Start’</li>
-          <li>Click on ‘Close’ to return to <span class="notranslate">Galaxy</span> tools interface</li>
+          <li>Click on ‘Close’ to return to Galaxy tools interface</li>
         </ul>
 
       </blockquote>
@@ -1056,7 +890,8 @@ repeat the six following steps for each of the three surveys.</li>
       </ul>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-adding-a-tag" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the dataset to expand it</li>   <li>Click on <strong>Add Tags</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span></li>   <li>Add a tag  starting with <code class="language-plaintext highlighter-rouge">#</code>     <ul>       <li>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</li>     </ul>   </li>   <li>Press <kbd>Enter</kbd></li>   <li>Check that the tag appears below the dataset name</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <p>If tags doesn’t display directly on your history, refresh the page.</p>
     </li>
@@ -1064,7 +899,8 @@ repeat the six following steps for each of the three surveys.</li>
       <p>Convert datatype CSV to tabular for each data file</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-converting-the-file-format" class="box-title"><button type="button" aria-controls="tip-converting-the-file-format-contents" aria-expanded="true" aria-label="Toggle tip box: Converting the file format"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Converting the file format<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> <strong>Convert</strong> tab on the top</li>  <li>Select <code class="language-plaintext highlighter-rouge">Convert CSV to tabular</code></li>  <li>Click the <strong>Create dataset</strong> button to start the conversion.</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-converting-the-file-format"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-converting-the-file-format" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Converting the file format<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <strong>Convert</strong> tab on the top</li>   <li>In the upper part <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <strong>Convert</strong>, select <code class="language-plaintext highlighter-rouge">Convert CSV to tabular</code></li>   <li>Click the <strong>Create dataset</strong> button to start the conversion.</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1075,7 +911,7 @@ to assess exploited fish species populations :</p>
 <ul>
   <li>EVHOE (<span class="citation"><a href="#EVHOE">MAHE Jean-Claude 1987</a></span>) is a French survey on Southern Atlantic Bottom Trawl, the extracted file available on Zenodo goes from
 1997 to 2018 and records CPUE for seven exploited fish species</li>
-  <li>BITS (<span class="citation"><a href="#BITS">“<b>Fish trawl survey: ICES Baltic Inte<span class="notranslate">rna</span>tional Trawl Survey for commercial fish species. ICES Database of trawl surveys (DATRAS)</b>” 2010</a></span>) is an inte<span class="notranslate">rna</span>tional survey on Trawl in Baltic sea, the extracted file available on Zenodo goes from 1991
+  <li>BITS (<span class="citation"><a href="#BITS">“<b>Fish trawl survey: ICES Baltic International Trawl Survey for commercial fish species. ICES Database of trawl surveys (DATRAS)</b>” 2010</a></span>) is an international survey on Trawl in Baltic sea, the extracted file available on Zenodo goes from 1991
 to 2020 and records CPUE for three exploited fish species</li>
   <li>SWC-IBTS (<span class="citation"><a href="#SWCIBTS">“<b>DATRAS Scottish West Coast Bottom Trawl Survey (SWC-IBTS)</b>” 2013</a></span>) is a Scottish survey on bottom trawl in the west coast, the extracted file available on Zenodo goes
 from 1985 to 2010 and records CPUE for six exploited fish species</li>
@@ -1095,7 +931,7 @@ about the location at a given <code class="language-plaintext highlighter-rouge"
 </ul>
 
 <blockquote class="details">
-  <div id="details-what-is-the-observation-unit-field" class="box-title"><button type="button" aria-controls="details-what-is-the-observation-unit-field-contents" aria-expanded="true" aria-label="Toggle details box: What is the 'observation.unit' field?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: What is the 'observation.unit' field?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-what-is-the-observation-unit-field"><button class="gtn-boxify-button details" type="button" aria-controls="details-what-is-the-observation-unit-field" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: What is the 'observation.unit' field?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The ‘observation.unit’ field is a primary key linking the observation data file and the metrics data file to an observation
 unit data file. An unique ‘observation.unit’ identifier represents an unique sampling event at a given year and location.
@@ -1106,9 +942,9 @@ Such a file permits to reduce the size of data files, if all informations about 
 </blockquote>
 
 <blockquote class="tip">
-  <div id="tip-the-observation-unit-nomenclature" class="box-title"><button type="button" aria-controls="tip-the-observation-unit-nomenclature-contents" aria-expanded="true" aria-label="Toggle tip box: The 'observation.unit' nomenclature"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: The 'observation.unit' nomenclature<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-the-observation-unit-nomenclature"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-the-observation-unit-nomenclature" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: The 'observation.unit' nomenclature<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>For this <span class="notranslate">workflow</span>, two nomenclatures are advised :</p>
+  <p>For this workflow, two nomenclatures are advised :</p>
   <ul>
     <li>
       <p>The PAMPA file nomenclature:
@@ -1128,13 +964,13 @@ have a “observation.unit” field but only <code class="language-plaintext hig
   <p>If you already have your own nomenclature for the primary key linking your files, it will remain untouched by the tools but the
 output data table from the first tools to compute metrics won’t contain <code class="language-plaintext highlighter-rouge">'year'</code> and “location” fields.
 In this case and if you want to add such informations to your metrics data file, you can use the tool
-<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/1.1.2" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/1.1.2"><strong>Join</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/1.1.2</span></span> 
+<span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/1.1.2" title="Join tool" aria-role="link"><strong>Join</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_easyjoin_tool/1.1.2</span></span>
 with the metrics data file and the observation unit data file.</p>
 
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-the-difference-between-fields-site-and-quot-location-quot" class="box-title"><button type="button" aria-controls="details-the-difference-between-fields-site-and-quot-location-quot-contents" aria-expanded="true" aria-label="Toggle details box: The difference between fields ```'site'``` and &quot;location&quot;?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: The difference between fields ```'site'``` and &quot;location&quot;?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-the-difference-between-fields-site-and-quot-location-quot"><button class="gtn-boxify-button details" type="button" aria-controls="details-the-difference-between-fields-site-and-quot-location-quot" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: The difference between fields ```'site'``` and &quot;location&quot;?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Those two fields both inform a geographical indication.</p>
 
@@ -1147,23 +983,25 @@ level you want to take into account in your statistical analysis.</p>
 <h3 id="concatenation-of-data-files">Concatenation of data files</h3>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-files-concatenation" class="box-title" aria-label="hands-on box: Data files concatenation"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data files concatenation</div>
+  <div class="box-title hands-on-title" id="hands-on-data-files-concatenation"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data files concatenation</div>
 
   <ol>
     <li>
-      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/0.1.0" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/0.1.0"><strong>Concatenate datasets tail-to-head (cat)</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/0.1.0</span></span>  select the three <code class="language-plaintext highlighter-rouge">#BITS</code>, <code class="language-plaintext highlighter-rouge">#EVHOE</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code>
+      <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/0.1.0" title="Concatenate datasets tail-to-head (cat) tool" aria-role="link"><strong>Concatenate datasets tail-to-head (cat)</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/0.1.0</span></span> select the three <code class="language-plaintext highlighter-rouge">#BITS</code>, <code class="language-plaintext highlighter-rouge">#EVHOE</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code>
 datasets in <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Datasets to concatenate”</em></p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-select-multiple-datasets" class="box-title"><button type="button" aria-controls="tip-select-multiple-datasets-contents" aria-expanded="true" aria-label="Toggle tip box: Select multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>  <li>Select several files by keeping the <kbd>Ctrl</kbd> (or<kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-select-multiple-datasets"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-multiple-datasets" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Select multiple datasets<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>   <li>Select several files by keeping the <kbd>Ctrl</kbd> (or <kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Suppress the <code class="language-plaintext highlighter-rouge">#BITS</code>, <code class="language-plaintext highlighter-rouge">#EVHOE</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code> tags and add the <code class="language-plaintext highlighter-rouge">#Concatenate</code> tag to the Concatenated data file</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-adding-a-tag-1" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-1-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the dataset to expand it</li>   <li>Click on <strong>Add Tags</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span></li>   <li>Add a tag  starting with <code class="language-plaintext highlighter-rouge">#</code>     <ul>       <li>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</li>     </ul>   </li>   <li>Press <kbd>Enter</kbd></li>   <li>Check that the tag appears below the dataset name</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
-    <li>Verify if the three header lines have been included in the concatenate with <span class="tool" data-tool="Count1" title="Tested with Count1"><strong>Count occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Count1</span></span> 
+    <li>Verify if the three header lines have been included in the concatenate with <span class="tool" data-tool="Count1" title="Count occurrences of each record tool" aria-role="link"><strong>Count occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Count1</span></span>
 and following parameters :
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“from dataset”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Concatenated data file</li>
@@ -1172,7 +1010,7 @@ and following parameters :
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“How should the results be sorted?”</em>: <code class="language-plaintext highlighter-rouge">With the rarest value first</code> so multiple occurences can be seen directly at first lines of the resulting file</li>
       </ul>
     </li>
-    <li>If the value <code class="language-plaintext highlighter-rouge">Survey</code> has more than <code class="language-plaintext highlighter-rouge">1</code> occurrence use <span class="tool" data-tool="Filter1" title="Tested with Filter1"><strong>Filter data on any column using simple <span class="notranslate">expression</span>s</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Filter1</span></span> 
+    <li>If the value <code class="language-plaintext highlighter-rouge">Survey</code> has more than <code class="language-plaintext highlighter-rouge">1</code> occurrence use <span class="tool" data-tool="Filter1" title="Filter data on any column using simple expressions tool" aria-role="link"><strong>Filter data on any column using simple expressions</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Filter1</span></span>
 with following parameters :
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Filter”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Concatenated data file</li>
@@ -1181,10 +1019,10 @@ with following parameters :
       </ul>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
         <p>How many header line(s) is left?</p>
 
-        <p>Use <span class="tool" data-tool="Count1" title="Tested with Count1"><strong>Count occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Count1</span></span>  and following parameters :</p>
+        <p>Use <span class="tool" data-tool="Count1" title="Count occurrences of each record tool" aria-role="link"><strong>Count occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Count1</span></span> and following parameters :</p>
         <ul>
           <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“from dataset”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Filtered data file</li>
           <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Count occurrences of values in column(s)”</em>: <code class="language-plaintext highlighter-rouge">Column: 1</code></li>
@@ -1192,11 +1030,11 @@ with following parameters :
           <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“How should the results be sorted?”</em>: <code class="language-plaintext highlighter-rouge">With the rarest value first</code></li>
         </ul>
 
-        <p><strong>Tip:</strong> Hit the rerun button <i class="fas fa-redo" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-refresh</span> on the output of the previous run of <span class="tool" data-tool="Count1" title="Tested with Count1"><strong>Count occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Count1</span></span> ,
+        <p><strong>Tip:</strong> Hit the rerun button <i class="fas fa-redo" aria-hidden="true"></i><span class="visually-hidden">galaxy-refresh</span> on the output of the previous run of <span class="tool" data-tool="Count1" title="Count occurrences of each record tool" aria-role="link"><strong>Count occurrences of each record</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: Count1</span></span>,
 and change the input dataset.</p>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>One header line is left as the value <code class="language-plaintext highlighter-rouge">Survey</code> has only <code class="language-plaintext highlighter-rouge">1</code> occurrence in the first column.</p>
 
         </blockquote>
@@ -1211,7 +1049,7 @@ and change the input dataset.</p>
 
 <p>Here we have data from the three surveys in one datatable (Filtered data file) with the following fields <code class="language-plaintext highlighter-rouge">"Survey",
 "Year","Quarter","Area", "AphiaID","Species","LngtClass","CPUE_number_per_hour"</code>. We now need to define the proper
-columns needed for the PAMPA <span class="notranslate">workflow</span> considering there is no primary key close to “observation.unit” :</p>
+columns needed for the PAMPA workflow considering there is no primary key close to “observation.unit” :</p>
 <ul>
   <li>“location” from “Area” associated with “Survey” to avoid mixing up areas from different surveys</li>
   <li><code class="language-plaintext highlighter-rouge">'year'</code> from “Year”</li>
@@ -1229,10 +1067,10 @@ populations of the same species that do not interact with each other. Therefore,
 the three <code class="language-plaintext highlighter-rouge">#BITS</code>, <code class="language-plaintext highlighter-rouge">#EVHOE</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code> original tabular files used for the concatenation.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-create-the-quot-location-quot-field" class="box-title" aria-label="hands-on box: Create the &quot;location&quot; field"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create the &quot;location&quot; field</div>
+  <div class="box-title hands-on-title" id="hands-on-create-the-quot-location-quot-field"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create the &quot;location&quot; field</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0"><strong>Column Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/regex_find_replace/regexColumn1/1.0.0</span></span>  with following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0" title="Column Regex Find And Replace tool" aria-role="link"><strong>Column Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0</span></span> with following parameters:
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Select cells from”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Filtered data file +
 three <code class="language-plaintext highlighter-rouge">#BITS</code>, <code class="language-plaintext highlighter-rouge">#EVHOE</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code> tabular data files</li>
@@ -1246,14 +1084,15 @@ three <code class="language-plaintext highlighter-rouge">#BITS</code>, <code cla
       </ul>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-select-multiple-datasets-1" class="box-title"><button type="button" aria-controls="tip-select-multiple-datasets-1-contents" aria-expanded="true" aria-label="Toggle tip box: Select multiple datasets"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Select multiple datasets<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>  <li>Select several files by keeping the <kbd>Ctrl</kbd> (or<kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-select-multiple-datasets-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-multiple-datasets-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Select multiple datasets<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>   <li>Select several files by keeping the <kbd>Ctrl</kbd> (or <kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
         <p>What did we do with this tool?</p>
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-          <p>We searched for every character chain matching the extended regular <span class="notranslate">expression</span> (Regex) <code class="language-plaintext highlighter-rouge">([A-Z]{3}[A-Z]+)</code>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
+          <p>We searched for every character chain matching the extended regular expression (Regex) <code class="language-plaintext highlighter-rouge">([A-Z]{3}[A-Z]+)</code>
 in the first column “Survey” meaning every character chain of 4 or more capital letters. With the replacement <code class="language-plaintext highlighter-rouge">\1-</code>
 we indicated to add <code class="language-plaintext highlighter-rouge">-</code> after the bracketed character chain. This manipulation is made in order to merge
 properly columns “Area” and “Survey” with a separation.</p>
@@ -1262,7 +1101,7 @@ properly columns “Area” and “Survey” with a separation.</p>
 
       </blockquote>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2"><strong>Merge Columns</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2</span></span>  with following parameters :
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2" title="Merge Columns tool" aria-role="link"><strong>Merge Columns</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2</span></span> with following parameters :
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Select data”</em>: four <code class="language-plaintext highlighter-rouge">#Concatenate</code>, <code class="language-plaintext highlighter-rouge">#BITS</code>, <code class="language-plaintext highlighter-rouge">#EVHOE</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code>
 Column Regex Find And Replace data files</li>
@@ -1278,9 +1117,9 @@ separated with <code class="language-plaintext highlighter-rouge">-</code>.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-change-column-names" class="box-title" aria-label="hands-on box: Change column names"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Change column names</div>
+  <div class="box-title hands-on-title" id="hands-on-change-column-names"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Change column names</div>
 
-  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0"><strong>Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/regex_find_replace/regex1/1.0.0</span></span>  with following parameters :</p>
+  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0" title="Regex Find And Replace tool" aria-role="link"><strong>Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0</span></span> with following parameters :</p>
   <ul>
     <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Select lines from”</em>: four <code class="language-plaintext highlighter-rouge">#Concatenate</code>, <code class="language-plaintext highlighter-rouge">#BITS</code>, <code class="language-plaintext highlighter-rouge">#EVHOE</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code> Merged data files</li>
     <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> Click <em>”+ Insert Check”</em>:
@@ -1315,14 +1154,14 @@ separated with <code class="language-plaintext highlighter-rouge">-</code>.</p>
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-other-tools-that-could-be-useful-to-pre-process-data" class="box-title"><button type="button" aria-controls="details-other-tools-that-could-be-useful-to-pre-process-data-contents" aria-expanded="true" aria-label="Toggle details box: Other tools that could be useful to pre-process data"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Other tools that could be useful to pre-process data<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-other-tools-that-could-be-useful-to-pre-process-data"><button class="gtn-boxify-button details" type="button" aria-controls="details-other-tools-that-could-be-useful-to-pre-process-data" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Other tools that could be useful to pre-process data<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p><span><strong>Add input name as column</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> ; <span><strong>Compute an <span class="notranslate">expression</span> on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> 
-; <span><strong>Table Compute</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> ; <span><strong>Join two files on column allowing a small difference</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> 
-; <span><strong>Join two files</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> ; <span><strong>Filter Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> ; <span><strong>melt</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> 
-; <span><strong>Unfold columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> ; <span><strong>Remove columns by heading</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> 
-; <span><strong>Cut columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> ; <span><strong>Filter data on any column using simple <span class="notranslate">expression</span>s</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> 
-; <span><strong>Transpose rows/columns in a tabular file</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span> ; …</p>
+  <p><span><strong>Add input name as column</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>; <span><strong>Compute an expression on every row</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>
+; <span><strong>Table Compute</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>; <span><strong>Join two files on column allowing a small difference</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>
+; <span><strong>Join two files</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>; <span><strong>Filter Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>; <span><strong>melt</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>
+; <span><strong>Unfold columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>; <span><strong>Remove columns by heading</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>
+; <span><strong>Cut columns from a table</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>; <span><strong>Filter data on any column using simple expressions</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>
+; <span><strong>Transpose rows/columns in a tabular file</strong> <i class="fas fa-wrench" aria-hidden="true"></i></span>; …</p>
 
 </blockquote>
 
@@ -1332,10 +1171,10 @@ separated with <code class="language-plaintext highlighter-rouge">-</code>.</p>
 and Population metrics. Then, we’ll be creating the observation unit file.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-compute-community-metrics" class="box-title" aria-label="hands-on box: Compute Community metrics"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Compute Community metrics</div>
+  <div class="box-title hands-on-title" id="hands-on-compute-community-metrics"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Compute Community metrics</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2"><strong>Calculate community metrics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2</span></span>  with following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2" title="Calculate community metrics tool" aria-role="link"><strong>Calculate community metrics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_communitymetrics/pampa_communitymetrics/0.0.2</span></span> with following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input file”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Regex Find And Replace data file</li>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Choose the community metrics you want to compute”</em>: <code class="language-plaintext highlighter-rouge">All</code></li>
@@ -1350,9 +1189,9 @@ and Population metrics. Then, we’ll be creating the observation unit file.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-compute-population-metrics" class="box-title" aria-label="hands-on box: Compute Population metrics"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Compute Population metrics</div>
+  <div class="box-title hands-on-title" id="hands-on-compute-population-metrics"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Compute Population metrics</div>
 
-  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2"><strong>Calculate presence absence table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2</span></span>  with <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Input file”</em>: <code class="language-plaintext highlighter-rouge">#EVHOE</code>, <code class="language-plaintext highlighter-rouge">#BITS</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code> Regex Find And Replace data files</p>
+  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2" title="Calculate presence absence table tool" aria-role="link"><strong>Calculate presence absence table</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_presabs/pampa_presabs/0.0.2</span></span> with <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Input file”</em>: <code class="language-plaintext highlighter-rouge">#EVHOE</code>, <code class="language-plaintext highlighter-rouge">#BITS</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code> Regex Find And Replace data files</p>
 
   <p>Check if the outputs Population metrics data files has the following column names <code class="language-plaintext highlighter-rouge">"year","location",
 "species.code","number","presence_absence","observation.unit"</code>.</p>
@@ -1368,10 +1207,10 @@ nomenclature for the “observation.unit” fields, namely:</p>
 <p><code class="language-plaintext highlighter-rouge">['year' in four numbers]_[Identifier of the precise sampled location in any character chain]</code></p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-create-the-observation-unit-file" class="box-title" aria-label="hands-on box: Create the observation unit file"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create the observation unit file</div>
+  <div class="box-title hands-on-title" id="hands-on-create-the-observation-unit-file"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create the observation unit file</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0"><strong>Column Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/regex_find_replace/regexColumn1/1.0.0</span></span>  with following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0" title="Column Regex Find And Replace tool" aria-role="link"><strong>Column Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0</span></span> with following parameters:
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Select cells from”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Regex Find And Replace data file</li>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“using column”</em>: <code class="language-plaintext highlighter-rouge">Column: 2</code></li>
@@ -1383,7 +1222,7 @@ nomenclature for the “observation.unit” fields, namely:</p>
         </li>
       </ul>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2"><strong>Merge Columns</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2</span></span>  with following parameters :
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2" title="Merge Columns tool" aria-role="link"><strong>Merge Columns</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/merge_cols/mergeCols1/1.0.2</span></span> with following parameters :
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Select data”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Column Regex Find And Replace data file</li>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Merge column”</em>: <code class="language-plaintext highlighter-rouge">Column: 2</code></li>
@@ -1393,7 +1232,7 @@ nomenclature for the “observation.unit” fields, namely:</p>
       <p>Check if the output data file has a supplementary column called “yearlocation” and values with the <code class="language-plaintext highlighter-rouge">'year'</code> and “location” ID
 separated with <code class="language-plaintext highlighter-rouge">_</code>.</p>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0"><strong>Column Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/regex_find_replace/regexColumn1/1.0.0</span></span>  with following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0" title="Column Regex Find And Replace tool" aria-role="link"><strong>Column Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regexColumn1/1.0.0</span></span> with following parameters:
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Select cells from”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Merge Columns data file</li>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“using column”</em>: <code class="language-plaintext highlighter-rouge">Column: 2</code></li>
@@ -1406,11 +1245,11 @@ separated with <code class="language-plaintext highlighter-rouge">_</code>.</p>
       </ul>
 
       <blockquote class="question">
-        <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
         <p>What did we do with this tool?</p>
 
         <blockquote class="solution">
-          <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>We removed the <code class="language-plaintext highlighter-rouge">_</code> we added in the first part of this “Hands_on” from the values of the second column
 <code class="language-plaintext highlighter-rouge">'year'</code> to get proper numeric values back.</p>
 
@@ -1418,7 +1257,7 @@ separated with <code class="language-plaintext highlighter-rouge">_</code>.</p>
 
       </blockquote>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0"><strong>Cut columns from a table (cut)</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0</span></span> 
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0" title="Cut columns from a table (cut) tool" aria-role="link"><strong>Cut columns from a table (cut)</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cut_tool/1.1.0</span></span>
 with following parameters :
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“File to cut”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Column Regex Find And Replace data file</li>
@@ -1434,7 +1273,7 @@ with following parameters :
       <p>Check if the output <code class="language-plaintext highlighter-rouge">#Concatenate</code> Advanced Cut data file has the following column names <code class="language-plaintext highlighter-rouge">"Survey","year","Quarter",
 "Area","location","yearlocation"</code>.</p>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1"><strong>Sort data in ascending or descending order</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1</span></span> 
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1" title="Sort data in ascending or descending order tool" aria-role="link"><strong>Sort data in ascending or descending order</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1</span></span>
  with following parameters :
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Sort Query”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Advanced Cut data file</li>
@@ -1452,7 +1291,7 @@ with following parameters :
 
       <p>The output <code class="language-plaintext highlighter-rouge">#Concatenate</code> Sort data file must have fewer lines than the <code class="language-plaintext highlighter-rouge">#Concatenate</code> Advanced Cut data file.</p>
     </li>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0"><strong>Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/regex_find_replace/regex1/1.0.0</span></span>  with following parameters :
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0" title="Regex Find And Replace tool" aria-role="link"><strong>Regex Find And Replace</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/regex_find_replace/regex1/1.0.0</span></span> with following parameters :
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Select lines from”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate</code> Sort data file</li>
         <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> Click <em>”+ Insert Check”</em>:
@@ -1484,8 +1323,8 @@ with following parameters :
 <h1 id="glmms-and-plots-on-community-and-population-metrics">GLMMs and plots on Community and Population metrics</h1>
 
 <p>Now that we have all our input files for GLM(M) tools ready, we can start computing statistical models to make
-conclusions on our surveys. But before starting to use the <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2"><strong>Compute GLM on community data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2</span></span> 
-and the <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2"><strong>Compute GLM on population data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2</span></span>  tools, we have to think about the model we want to compute.
+conclusions on our surveys. But before starting to use the <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2" title="Compute GLM on community data tool" aria-role="link"><strong>Compute GLM on community data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2</span></span>
+and the <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2" title="Compute GLM on population data tool" aria-role="link"><strong>Compute GLM on population data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2</span></span> tools, we have to think about the model we want to compute.
 The tools allows to test the effects <code class="language-plaintext highlighter-rouge">Year'</code>, <code class="language-plaintext highlighter-rouge">Site</code> and/or <code class="language-plaintext highlighter-rouge">Habitat</code> on one interest variable at a time.
 As we don’t have data about the <code class="language-plaintext highlighter-rouge">Habitat</code> we can’t test its effect. It is always better to take a temporal and a
 geographical variable into account in an ecological model so we’ll test the effect of <code class="language-plaintext highlighter-rouge">Year</code> and <code class="language-plaintext highlighter-rouge">Site</code> with
@@ -1515,10 +1354,10 @@ the metrics cited above.</p>
 <p>As said above, analyses will be separated by the field “Survey” (first column) to avoid bias.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-compute-glmm-on-community-metrics" class="box-title" aria-label="hands-on box: Compute GLMM on Community metrics"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Compute GLMM on Community metrics</div>
+  <div class="box-title hands-on-title" id="hands-on-compute-glmm-on-community-metrics"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Compute GLMM on Community metrics</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2"><strong>Compute GLM on community data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2</span></span>  with following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2" title="Compute GLM on community data tool" aria-role="link"><strong>Compute GLM on community data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmcomm/pampa_glmcomm/0.0.2</span></span> with following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input metrics file”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate #Community</code> metrics data file</li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Unitobs informations file”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate #unitobs</code> data file</li>
@@ -1534,18 +1373,18 @@ the metrics cited above.</p>
   <p>The three outputs must have three tags <code class="language-plaintext highlighter-rouge">#Concatenate #Community #unitobs</code> and the first one named ‘GLM - results
 from your community analysis’ must contain five lines. This file is formated to have one line per GLM processed,
 it has been formated this way to make GLM results easier to represent and modify if needed. However, this format is
-often not suited to read directly the results on <span class="notranslate">Galaxy</span> as <span class="notranslate">Galaxy</span> handles better tabular files with a lot of lines
-rather than files with a lot of columns. So, if your file doesn’t display properly on <span class="notranslate">Galaxy</span> as a data table, we advise
+often not suited to read directly the results on Galaxy as Galaxy handles better tabular files with a lot of lines
+rather than files with a lot of columns. So, if your file doesn’t display properly on Galaxy as a data table, we advise
 to do the following optional step.</p>
 
   <ol>
-    <li>(optional) <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0"><strong>Transpose rows/columns in a tabular file</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0</span></span>  with <code class="language-plaintext highlighter-rouge">#Concatenate #Community #unitobs</code> ‘GLM - results from your community analysis’ data file</li>
+    <li>(optional) <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0" title="Transpose rows/columns in a tabular file tool" aria-role="link"><strong>Transpose rows/columns in a tabular file</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0</span></span> with <code class="language-plaintext highlighter-rouge">#Concatenate #Community #unitobs</code> ‘GLM - results from your community analysis’ data file</li>
   </ol>
 
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-details-on-advanced-parameters-of-glm-tools" class="box-title"><button type="button" aria-controls="details-details-on-advanced-parameters-of-glm-tools-contents" aria-expanded="true" aria-label="Toggle details box: Details on advanced parameters of GLM tools"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Details on advanced parameters of GLM tools<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-details-on-advanced-parameters-of-glm-tools"><button class="gtn-boxify-button details" type="button" aria-controls="details-details-on-advanced-parameters-of-glm-tools" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Details on advanced parameters of GLM tools<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>For now, there are two advanced parameters you can setup in the GLM tools:</p>
   <ul>
@@ -1564,7 +1403,7 @@ want to use it in your own R console.</p>
 </blockquote>
 
 <blockquote class="details">
-  <div id="details-how-to-choose-a-proper-distribution-family-for-your-model" class="box-title"><button type="button" aria-controls="details-how-to-choose-a-proper-distribution-family-for-your-model-contents" aria-expanded="true" aria-label="Toggle details box: How to choose a proper distribution family for your model?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: How to choose a proper distribution family for your model?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-how-to-choose-a-proper-distribution-family-for-your-model"><button class="gtn-boxify-button details" type="button" aria-controls="details-how-to-choose-a-proper-distribution-family-for-your-model" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: How to choose a proper distribution family for your model?<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>The distribution family for a model is mainly selected by looking at the interest variable of the model:</p>
   <ul>
@@ -1603,9 +1442,9 @@ are displayed also depending on the same criterias. This file is really useful t
 </ul>
 
 <blockquote class="details">
-  <div id="details-details-on-criterias-used-in-your-analysis-rating-file" class="box-title"><button type="button" aria-controls="details-details-on-criterias-used-in-your-analysis-rating-file-contents" aria-expanded="true" aria-label="Toggle details box: Details on criterias used in 'Your analysis rating file'"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Details on criterias used in 'Your analysis rating file'<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title details-title" id="details-details-on-criterias-used-in-your-analysis-rating-file"><button class="gtn-boxify-button details" type="button" aria-controls="details-details-on-criterias-used-in-your-analysis-rating-file" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Details on criterias used in 'Your analysis rating file'<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>For now, there are nine criterias taken into account to rate GLM(M)s in the <span class="notranslate">Galaxy</span> tools:</p>
+  <p>For now, there are nine criterias taken into account to rate GLM(M)s in the Galaxy tools:</p>
   <ul>
     <li><em>Plan completeness</em>: If part of factor levels combinations are inexistant, bias can be induced. (0.5)</li>
     <li><em>Plan balance</em>: If factor levels combinations aren’t present in same quantity, bias can be induced. (0.5)</li>
@@ -1692,11 +1531,11 @@ three geographical areas so three distinct communities. However, we observe the 
 the three surveys separately.</p>
 
 <blockquote class="question">
-  <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <p>What does this result with no significant effect found mean? How can we explain it?</p>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>This result would mean that the communities sampled in this dataset haven’t change in the whole
 time series. However, this result can’t be really trusted because the interest variable we selected is
 the species richness and for the need of this tutorial we downloaded only part of the dataset with
@@ -1743,9 +1582,9 @@ Here, for these models, we know these plots won’t be trust-worthy but it can s
 <h3 id="create-and-read-plots">Create and read plots</h3>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-create-plots-from-community-metrics-file-and-glmm-results" class="box-title" aria-label="hands-on box: Create plots from Community metrics file and GLMM results"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create plots from Community metrics file and GLMM results</div>
+  <div class="box-title hands-on-title" id="hands-on-create-plots-from-community-metrics-file-and-glmm-results"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create plots from Community metrics file and GLMM results</div>
 
-  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2"><strong>Create a plot from GLM data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2</span></span>  with following parameters:</p>
+  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2" title="Create a plot from GLM data tool" aria-role="link"><strong>Create a plot from GLM data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2</span></span> with following parameters:</p>
   <ul>
     <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Input glm results file”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate #Community #unitobs</code> ‘GLM - results
 from your community analysis’ data file</li>
@@ -1757,7 +1596,7 @@ from your community analysis’ data file</li>
 
 </blockquote>
 
-<figure id="figure-2"><img src="../../images/PAMPA-toolsuite-tutorial/Community.png" alt="Community analysis plots. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Community analysis plots</figcaption></figure>
+<figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/PAMPA-toolsuite-tutorial/Community.png" alt="Community analysis plots. " width="2401" height="2243" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Community analysis plots</figcaption></figure>
 
 <p>Each PNG file contains two plots :</p>
 <ul>
@@ -1793,10 +1632,10 @@ the GLM(M) tool again and choose the fifth column of the <code class="language-p
 files.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-compute-glmm-on-population-metrics" class="box-title" aria-label="hands-on box: Compute GLMM on Population metrics"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Compute GLMM on Population metrics</div>
+  <div class="box-title hands-on-title" id="hands-on-compute-glmm-on-population-metrics"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Compute GLMM on Population metrics</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2"><strong>Compute GLM on population data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2</span></span>  with following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2" title="Compute GLM on population data tool" aria-role="link"><strong>Compute GLM on population data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_glmsp/pampa_glmsp/0.0.2</span></span> with following parameters:
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Input metrics file”</em>: <code class="language-plaintext highlighter-rouge">#EVHOE</code>, <code class="language-plaintext highlighter-rouge">#BITS</code> and <code class="language-plaintext highlighter-rouge">#SWCIBTS</code> metrics (here presence absence) data files</li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Unitobs informations file”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate #unitobs</code> data file</li>
@@ -1810,11 +1649,11 @@ files.</p>
 
       <p>The first files of each survey named ‘GLM - results from your population analysis’ must contain one line
 per GLM processed, it has been formated this way to make GLM results easier to represent and modify if needed.
-However, this format is often not suited to read directly the results on <span class="notranslate">Galaxy</span> as <span class="notranslate">Galaxy</span> handles better tabular
+However, this format is often not suited to read directly the results on Galaxy as Galaxy handles better tabular
 files with a lot of lines rather than files with a lot of columns. So, if your files doesn’t display properly
-on <span class="notranslate">Galaxy</span> as a data table, we advise to do the following optional step.</p>
+on Galaxy as a data table, we advise to do the following optional step.</p>
     </li>
-    <li>(optional) <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0"><strong>Transpose rows/columns in a tabular file</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0</span></span> 
+    <li>(optional) <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0" title="Transpose rows/columns in a tabular file tool" aria-role="link"><strong>Transpose rows/columns in a tabular file</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/datamash_transpose/datamash_transpose/1.1.0</span></span>
 with <code class="language-plaintext highlighter-rouge">#Concatenate #EVHOE #unitobs</code> <code class="language-plaintext highlighter-rouge">#BITS #Concatenate #unitobs</code> <code class="language-plaintext highlighter-rouge">#Concatenate #SWCIBTS #unitobs</code>
 ‘GLM - results from your population analysis’ data files</li>
   </ol>
@@ -1833,7 +1672,7 @@ For the need of this tutorial, we’ll be analyzing only the <code class="langua
 one for each species in the <code class="language-plaintext highlighter-rouge">BITS</code> survey: <code class="language-plaintext highlighter-rouge">Gadus morhua</code> (Atlantic cod), <code class="language-plaintext highlighter-rouge">Platichthys flesus</code> (European flounder) and
 <code class="language-plaintext highlighter-rouge">Pleuronectes platessa</code> (European plaice).</p>
 
-<figure id="figure-3"><img src="../../images/PAMPA-toolsuite-tutorial/Fish-BITS.png" alt="BITS survey standard fish species. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 3:</span> BITS survey standard fish species</figcaption></figure>
+<figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/PAMPA-toolsuite-tutorial/Fish-BITS.png" alt="BITS survey standard fish species. " width="955" height="233" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> BITS survey standard fish species</figcaption></figure>
 
 <p>We also see the <code class="language-plaintext highlighter-rouge">Gaussian</code> distribution has been automatically selected by the tool. It seems right even if the interest variable
 “Abundance” is usually a count, here it is a Catch Per Unit Effort abundance so it isn’t a round value.</p>
@@ -1864,11 +1703,11 @@ its effects on CPUE abundance.</p>
 </ul>
 
 <blockquote class="question">
-  <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <p>What does these results on the effect <code class="language-plaintext highlighter-rouge">Year</code> as continuous variable mean?</p>
 
   <blockquote class="solution">
-    <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>The question behind the test of this effect is: “Is the global temporal trend different from 1?”
 When it isn’t significant as in the <code class="language-plaintext highlighter-rouge">Gadus morhua</code> model, it means the <em>“year Estimate”</em> value isn’t
 significantly different from 1 so the interest variable “Abundance” hasn’t varied much through time.
@@ -1921,9 +1760,9 @@ Hence, more interesting to look at.</p>
 <h3 id="create-and-read-plots-1">Create and read plots</h3>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-create-plots-from-population-metrics-file-and-glmm-results" class="box-title" aria-label="hands-on box: Create plots from Population metrics file and GLMM results"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create plots from Population metrics file and GLMM results</div>
+  <div class="box-title hands-on-title" id="hands-on-create-plots-from-population-metrics-file-and-glmm-results"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create plots from Population metrics file and GLMM results</div>
 
-  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2" title="Tested with toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2"><strong>Create a plot from GLM data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2</span></span>  with following parameters:</p>
+  <p><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2" title="Create a plot from GLM data tool" aria-role="link"><strong>Create a plot from GLM data</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/ecology/pampa_plotglm/pampa_plotglm/0.0.2</span></span> with following parameters:</p>
   <ul>
     <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Input glm results file”</em>: <code class="language-plaintext highlighter-rouge">#Concatenate #EVHOE #unitobs</code> <code class="language-plaintext highlighter-rouge">#BITS #Concatenate #unitobs</code>
 <code class="language-plaintext highlighter-rouge">#Concatenate #SWCIBTS #unitobs</code> ‘GLM - results from your population analysis’ data files</li>
@@ -1939,7 +1778,7 @@ Hence, more interesting to look at.</p>
 As the interest variable is “Abundance”, the plot with a purple line represents raw abundance: the sum of
 all abundances of the studied species for one year.</p>
 
-<figure id="figure-4"><img src="../../images/PAMPA-toolsuite-tutorial/BITS.png" alt="BITS population analysis plots. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 4:</span> BITS population analysis plots</figcaption></figure>
+<figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/PAMPA-toolsuite-tutorial/BITS.png" alt="BITS population analysis plots. " width="2354" height="2243" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> BITS population analysis plots</figcaption></figure>
 
 <p>On the <code class="language-plaintext highlighter-rouge">Gadus morhua</code> plots, only small variations of the abundance occured between 1991 and 2020 apart for year 1995
 where we see a huge augmentation for the estimated value and the raw abundance (value almost tripled). As the values
@@ -1947,13 +1786,13 @@ are coming back to an average range of values the following year, there should b
 typing mistake in the dataset.</p>
 
 <blockquote class="question">
-  <div id="question-5" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-5"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
   <p>How can we see if there is a mistake in the dataframe? How can we deal with it?</p>
 
   <blockquote class="solution">
-    <div id="solution-5" class="box-title"><button type="button" aria-controls="solution-5-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-5"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-5" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>To see if there is an abnormal value in the <code class="language-plaintext highlighter-rouge">'number'</code> field representing the CPUE abundance we’ll use
-the <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1" title="Tested with toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1"><strong>Sort data in ascending or descending order</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1</span></span> 
+the <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1" title="Sort data in ascending or descending order tool" aria-role="link"><strong>Sort data in ascending or descending order</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sort_header_tool/1.1.1</span></span>
 tool in the “Text Manipulation” tool collection with following parameters :</p>
     <ul>
       <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Sort Query”</em>: <code class="language-plaintext highlighter-rouge">#BITS</code> ‘Calculate presence absence table’ data file</li>
@@ -1983,21 +1822,23 @@ since 30 years. Both species had a first CPUE abundance increase around 2000 tha
 the trawl survey around this time. Then, for <code class="language-plaintext highlighter-rouge">Platichthys flesus</code>, after a decrease in 2003 had a more or less stable
 CPUE abundance. For <code class="language-plaintext highlighter-rouge">Pleuronectes platessa</code> a second wave of increase occured between 2008 and 2013 to decrease after 2018.</p>
 
-<figure id="figure-5"><img src="../../images/PAMPA-toolsuite-tutorial/EVHOE.png" alt="EVHOE population analysis plots. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 5:</span> EVHOE population analysis plots</figcaption></figure>
-<figure id="figure-6"><img src="../../images/PAMPA-toolsuite-tutorial/SWCIBTS.png" alt="SWCIBTS population analysis plots. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 6:</span> SWCIBTS population analysis plots</figcaption></figure>
+<figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="../../images/PAMPA-toolsuite-tutorial/EVHOE.png" alt="EVHOE population analysis plots. " width="3177" height="1515" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> EVHOE population analysis plots</figcaption></figure>
+<figure id="figure-6" style="max-width: 90%; margin:auto;"><img src="../../images/PAMPA-toolsuite-tutorial/SWCIBTS.png" alt="SWCIBTS population analysis plots. " width="3177" height="1991" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 6</strong>:</span> SWCIBTS population analysis plots</figcaption></figure>
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>In this tutorial, you analyzed abundance data from three trawl surveys with an ecological analysis <span class="notranslate">workflow</span>.
-You learned how to pre-process abundance data with <span class="notranslate">Galaxy</span> and compute Community and Population metrics.
+<p>In this tutorial, you analyzed abundance data from three trawl surveys with an ecological analysis workflow.
+You learned how to pre-process abundance data with Galaxy and compute Community and Population metrics.
 You know now how to construct a proper GL(M)M easily and interpret its results. The construction of a Generalized
 Linear (Mixed) Model has to be well thought out and may need corrections a posteriori by the use of common tests
 that helps evaluate the quality of your GL(M)M (found in the rating file).</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Pre-process abundance data</p>
@@ -2049,38 +1890,18 @@ that helps evaluate the quality of your GL(M)M (found in the rating file).</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Compute and analyze biodiversity metrics with PAMPA toolsuite (Ecology)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Compute and analyze biodiversity metrics with PAMPA toolsuite (Ecology)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Coline Royaux, Yvan Le Bras, Jean-Baptiste Mihoub,  <b>Compute and analyze biodiversity metrics with PAMPA toolsuite (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html">https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Coline Royaux, Yvan Le Bras, Jean-Baptiste Mihoub,  <b>Compute and analyze biodiversity metrics with PAMPA toolsuite (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html">https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2092,7 +1913,7 @@ that helps evaluate the quality of your GL(M)M (found in the rating file).</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -2101,28 +1922,31 @@ that helps evaluate the quality of your GL(M)M (found in the rating file).</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{ecology-PAMPA-toolsuite-tutorial,
 author = "Coline Royaux and Yvan Le Bras and Jean-Baptiste Mihoub",
-title = "Compute and analyze biodiversity metrics with PAMPA toolsuite (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Compute and analyze biodiversity metrics with PAMPA toolsuite (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2130,11 +1954,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2143,49 +1967,149 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: text_processing
+  owner: bgruening
+  revisions: ddf54b12c295
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: merge_cols
+  owner: devteam
+  revisions: dd40b1e9eebe
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pampa_communitymetrics
+  owner: ecology
+  revisions: c67ece97d4b1
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pampa_glmcomm
+  owner: ecology
+  revisions: b40fecef616b
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pampa_glmsp
+  owner: ecology
+  revisions: 7a69e1c8ba46
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pampa_plotglm
+  owner: ecology
+  revisions: c448e026f122
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pampa_presabs
+  owner: ecology
+  revisions: 1ebb70b59037
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: regex_find_replace
+  owner: galaxyp
+  revisions: 209b7c5ee9d7
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: regex_find_replace
+  owner: galaxyp
+  revisions: 209b7c5ee9d7
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: regex_find_replace
+  owner: galaxyp
+  revisions: ae8c4b2488e7
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: datamash_transpose
+  owner: iuc
+  revisions: 22c2a1ac7ae3
+  tool_panel_section_label: Ecology
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00125">https://gxy.io/GTN:T00125</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/ecology/tutorials/PAMPA-toolsuite-tutorial/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

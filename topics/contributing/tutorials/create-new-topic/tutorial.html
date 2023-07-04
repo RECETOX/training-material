@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,44 +8,208 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Including a new topic" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:25:39 +0000" />
-<meta name="DC.creator" content="Bérénice Batut" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Including a new topic">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-01-23 11:26:58 +0000">
+<meta name="DC.creator" content="Bérénice Batut">
 
         
         
         
         
+        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Including a new topic">
+        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co...">
         
-        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Including a new topic" />
-        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-01-23 11:26:58 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Including a new topic",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Contributing to the Galaxy Training Material",
+    "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
+    "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Including a new topic' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html",
+  "timeRequired": "PT30M",
+  "teaches": "Create a new topic\n - Set up the metadata for a topic",
+  "keywords": "contributing",
+  "description": "The questions this  addresses are:\n - How to include a new topic?\n - What kinds of Topics are possible?\n\n\nThe objectives are:\n - Create a new topic\n - Set up the metadata for a topic\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
+      "name": "Bérénice Batut",
+      "image": "https://avatars.githubusercontent.com/bebatut",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9852-1987",
+      "orcid": "https://orcid.org/0000-0001-9852-1987"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Contributing to the Galaxy Training Material",
+      "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
+      "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,38 +225,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/create-new-topic/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/create-new-topic/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/create-new-topic/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/create-new-topic/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/create-new-topic/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/create-new-topic/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -112,9 +248,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/contributing/faqs/" title="Check our FAQs for the Contributing to the Galaxy Training Material topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -132,7 +270,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/contributing/tutorials/create-new-topic/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -161,27 +298,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -193,13 +317,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/create-new-topic/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/create-new-topic/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/contributing/tutorials/create-new-topic/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/contributing/tutorials/create-new-topic/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/contributing/tutorials/create-new-topic/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/contributing/tutorials/create-new-topic/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -212,7 +336,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -226,8 +350,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -244,114 +373,13 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 14:25:39 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Including a new topic",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Contributing to the Galaxy Training Material",
-    "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
-    "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Including a new topic' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html",
-  "timeRequired": "PT30M",
-  "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How to include a new topic?\n\n\nThe objectives are:\n - Create a new topic\n - Set up the metadata for a topic\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Contributing to the Galaxy Training Material",
-      "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
-      "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
-    }
-  ]
-}
-</script>
-
-<section class="tutorial topic-contributing">
+<article class="tutorial topic-contributing">
     <h1 data-toc-skip>Including a new topic</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
@@ -361,11 +389,7 @@
 	<tr>
 		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
 		<td>
-			
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
+			<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a>
 		</td>
 	</tr>
 	
@@ -377,11 +401,7 @@
 	<tr>
 		<td><abbr title="These people edited the text, either for spelling and grammar, flow, GTN-fit, or other similar editing categories">Editor(s)</abbr></td>
 		<td>
-			
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-</td>
+			<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a></td>
 	</tr>
 	
 
@@ -399,14 +419,17 @@
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
         
         <li><p>How to include a new topic?</p>
+</li>
+        
+        <li><p>What kinds of Topics are possible?</p>
 </li>
         
         </ul>
@@ -437,10 +460,6 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/contributing/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
 
@@ -453,13 +472,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/contributing/tutorials/create-new-topic/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/contributing/tutorials/create-new-topic/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -485,34 +501,73 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/contributing/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 23, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00056">https://gxy.io/GTN:T00056</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -523,6 +578,7 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <p>Each training material is related to a topic. All training materials (slides, tutorials, …) related to a topic are found in a dedicated directory (<em>e.g.</em> <code class="language-plaintext highlighter-rouge">transcriptomics</code> directory contains the material related to exome sequencing analysis).</p>
@@ -545,7 +601,7 @@
 │   │   ├── data-library.yaml
 │   │   ├── workflows
 │   │   │   ├── index.md
-│   │   │   ├── <span class="notranslate">workflow</span>.ga
+│   │   │   ├── workflow.ga
 │   │   ├── tours
 │   │   │   ├── tour.yaml
 </code></pre></div></div>
@@ -558,39 +614,33 @@
 
 <p>All images for the slides must be in <code class="language-plaintext highlighter-rouge">images</code> directory. The images must be in good quality. The sources (<code class="language-plaintext highlighter-rouge">svg</code> or other) of the images must also be added to the <code class="language-plaintext highlighter-rouge">images</code> directory. We encourage you to use <a href="https://www.yworks.com/products/yed">yEd</a> to easily generate diagrams and <a href="https://inkscape.org/en/">Inkscape</a> for any other images.</p>
 
-<h3 id="slides-directory"><code class="language-plaintext highlighter-rouge">slides</code> directory</h3>
-
-<p>This directory contains introduction slide deck. There could be several slide decks, to cover different aspect. The slides are rendered using <code class="language-plaintext highlighter-rouge">remark.js</code> but written in Markdown to facilitate collaboration.</p>
-
 <h3 id="tutorials-directory"><code class="language-plaintext highlighter-rouge">tutorials</code> directory</h3>
 
-<p>This directory collects the tutorials related to the topic, one per subdirectory.</p>
+<p>This directory collects the materials related to the topic, one material per subdirectory, though it may consist of slides, tutorials, or both.</p>
 
-<p>The tutorials are hands-on built for workshop and self-training, with description of the whole infrastructure needed to run the tutorial on any <span class="notranslate">Galaxy</span> instance (tools, data library, etc).</p>
+<p>The tutorials are hands-on built for workshop and self-training, with description of the whole infrastructure needed to run the tutorial on any Galaxy instance (tools, data library, etc).</p>
 
 <p>The templates for the tutorials are different from the other pages to help users to focus on the content of the tutorial. To improve the output of the tutorial, several metadata are mandatory for every tutorials, such as the requirements or the objectives of the tutorials. Boxes are also used to highlight some key points as the hands-on or the tips.</p>
 
 <p>The content of each tutorial is generated with <a href="https://jekyllrb.com/">Jekyll</a> from a Markdown file and some metadata (e.g. the requirements, the Zenodo link, the questions) defined inside the metadata of the related topic.</p>
 
 <blockquote class="comment">
-  <div id="comment-contributing" class="box-title" aria-label="comment box: Contributing"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Contributing</div>
-  <p>Want to contribute to a tutorial? Check out <a href="/training-material/topics/contributing/">our training materials about that</a>.</p>
+  <div class="box-title comment-title" id="comment-contributing"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Contributing</div>
+  <p>Want to contribute to a tutorial? Check out <a href="/training-material/topics/contributing/index.html">our training materials about that</a>.</p>
 </blockquote>
 
-<p>Sometimes, an hands-on tutorial is not the most appropriate format for a tutorial and slides are better. The content must be then added in the <code class="language-plaintext highlighter-rouge">slides</code> directory.</p>
+<p>Sometimes, an hands-on tutorial is not the most appropriate format for a tutorial and slides are better.</p>
 
 <h3 id="docker-directory"><code class="language-plaintext highlighter-rouge">docker</code> directory</h3>
 
 <p>For each topic, a flavored Docker image must integrate the tools needed for
-the tutorials. The corresponding image must be based on official <span class="notranslate">Galaxy</span> Docker
+the tutorials. The corresponding image must be based on official Galaxy Docker
 images.</p>
 
-<p>The <code class="language-plaintext highlighter-rouge">docker</code> image will also integrate the <span class="notranslate">Galaxy</span> tours available for each topics and the workflows.</p>
-
-<h1 id="creating-a-new-topic">Creating a new topic</h1>
+<p>The <code class="language-plaintext highlighter-rouge">docker</code> image will also integrate the Galaxy tours available for each topics and the workflows.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -599,36 +649,46 @@ images.</p>
       <li><a href="#directory-structure" id="markdown-toc-directory-structure">Directory structure</a></li>
     </ol>
   </li>
-  <li><a href="#creating-a-new-topic" id="markdown-toc-creating-a-new-topic">Creating a new topic</a></li>
-  <li><a href="#defining-the-topic" id="markdown-toc-defining-the-topic">Defining the topic</a></li>
-  <li><a href="#creating-the-skeleton-for-the-topic" id="markdown-toc-creating-the-skeleton-for-the-topic">Creating the skeleton for the topic</a></li>
-  <li><a href="#adapt-the-metadata-for-your-topic" id="markdown-toc-adapt-the-metadata-for-your-topic">Adapt the metadata for your topic</a></li>
+  <li><a href="#creating-a-new-topic-with-its-own-materials" id="markdown-toc-creating-a-new-topic-with-its-own-materials">Creating a new topic with it’s own materials</a>    <ol>
+      <li><a href="#defining-the-topic" id="markdown-toc-defining-the-topic">Defining the topic</a></li>
+      <li><a href="#creating-the-skeleton-for-the-topic" id="markdown-toc-creating-the-skeleton-for-the-topic">Creating the skeleton for the topic</a></li>
+      <li><a href="#adapt-the-metadata-for-your-topic" id="markdown-toc-adapt-the-metadata-for-your-topic">Adapt the metadata for your topic</a></li>
+    </ol>
+  </li>
+  <li><a href="#creating-a-tag-based-topic" id="markdown-toc-creating-a-tag-based-topic">Creating a tag based topic</a>    <ol>
+      <li><a href="#defining-the-topic-1" id="markdown-toc-defining-the-topic-1">Defining the topic</a></li>
+    </ol>
+  </li>
   <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
 </blockquote>
 
-<h1 id="defining-the-topic">Defining the topic</h1>
+<p>There are two kinds of topics we will cover: topics with their own materials, and synthetic topics that are based solely on a tag. For large collections of materials around a single central theme a topic with materials is a good choice. However, sometimes you will want to highlight materials spread across numerous or disparate topics like e.g. Cancer or SARS-CoV-2 tutorials where you might have individual tutorials on assembly or transcriptomics, but you’d like a single page listing all of them.</p>
 
-<p>When we structured the repository, we decided to use as topics the categories that are used in the <a href="https://toolshed.g2.bx.psu.edu/"><span class="notranslate">ToolShed</span></a>. The <span class="notranslate">ToolShed</span> assigns a category to each tool. Therefore, to decide where to put your tutorial, have a look at which <span class="notranslate">ToolShed</span>’s category the main tools in your tutorial belong. For example, this tutorial will rely on the NCBI Blast+ tool.</p>
+<h1 id="creating-a-new-topic-with-its-own-materials">Creating a new topic with it’s own materials</h1>
+
+<h2 id="defining-the-topic">Defining the topic</h2>
+
+<p>When we structured the repository, we decided to use as topics the categories that are used in the <a href="https://toolshed.g2.bx.psu.edu/">ToolShed</a>. The ToolShed assigns a category to each tool. Therefore, to decide where to put your tutorial, have a look at which ToolShed’s category the main tools in your tutorial belong. For example, this tutorial will rely on the NCBI Blast+ tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-defining-the-topic-for-the-tutorial" class="box-title" aria-label="hands-on box: Defining the topic for the tutorial"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Defining the topic for the tutorial</div>
+  <div class="box-title hands-on-title" id="hands-on-defining-the-topic-for-the-tutorial"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Defining the topic for the tutorial</div>
 
   <ol>
-    <li>Search for NCBI Blast+ on the <a href="https://toolshed.g2.bx.psu.edu/"><span class="notranslate">ToolShed</span></a></li>
+    <li>Search for NCBI Blast+ on the <a href="https://toolshed.g2.bx.psu.edu/">ToolShed</a></li>
     <li>
       <p>Check in which category it has been placed</p>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>In which topic will you put the new tutorial?</p>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-          <p>If we search for <a href="https://toolshed.g2.bx.psu.edu/view/devteam/ncbi_blast_plus/7538e2bfcd41">NCBI Blast+ in the <span class="notranslate">ToolShed</span></a>, it is placed in 2 categories (bottom): “Next Gen Mappers”, and “Sequence Analysis”.
+          <p>If we search for <a href="https://toolshed.g2.bx.psu.edu/view/devteam/ncbi_blast_plus/7538e2bfcd41">NCBI Blast+ in the ToolShed</a>, it is placed in 2 categories (bottom): “Next Gen Mappers”, and “Sequence Analysis”.
 We decided to put it in “Sequence analysis” because this is the most general one for this tutorial.</p>
         </blockquote>
       </blockquote>
@@ -638,12 +698,12 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 <p>In this tutorial, we want to add a new topic called about “my-favorite-topic”.</p>
 
-<h1 id="creating-the-skeleton-for-the-topic">Creating the skeleton for the topic</h1>
+<h2 id="creating-the-skeleton-for-the-topic">Creating the skeleton for the topic</h2>
 
 <p>Once the topic name has been chosen, we can create it.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-create-all-the-required-files-and-folders-structures-automatically" class="box-title" aria-label="hands-on box: Create all the required files and folders structures automatically"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Create all the required files and folders structures automatically</div>
+  <div class="box-title hands-on-title" id="hands-on-create-all-the-required-files-and-folders-structures-automatically"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Create all the required files and folders structures automatically</div>
 
   <ol>
     <li>Open a terminal</li>
@@ -663,7 +723,7 @@ We decided to put it in “Sequence analysis” because this is the most general
       <p>Make sure that Jekyll is running</p>
 
       <blockquote class="comment">
-        <div id="comment-jekyll" class="box-title" aria-label="comment box: Jekyll"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Jekyll</div>
+        <div class="box-title comment-title" id="comment-jekyll"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Jekyll</div>
         <p>Want to learn how to start Jekyll? <a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Check out our tutorial to serve the website locally</a></p>
       </blockquote>
     </li>
@@ -672,7 +732,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 </blockquote>
 
-<h1 id="adapt-the-metadata-for-your-topic">Adapt the metadata for your topic</h1>
+<h2 id="adapt-the-metadata-for-your-topic">Adapt the metadata for your topic</h2>
 
 <p>Several metadata are defined in <code class="language-plaintext highlighter-rouge">metadata.yaml</code> file in your topic folder to :</p>
 
@@ -732,7 +792,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 <b>Free Text</b>
 
 <p>
-<p>The inte<span class="notranslate">rna</span>l identifier for a topic, it should be the same as the folder name.</p>
+<p>The internal identifier for a topic, it should be the same as the folder name.</p>
 
 </p>
 
@@ -767,7 +827,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 
 <p>
-<b>Required Pattern:</b> Must match the following regular <span class="notranslate">expression</span>
+<b>Required Pattern:</b> Must match the following regular expression
 
 <div>
         <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">/^[a-z0-9_-]+$/</span>
@@ -808,13 +868,13 @@ We decided to put it in “Sequence analysis” because this is the most general
   <dt><code class="language-plaintext highlighter-rouge">admin-dev</code></dt>
   <dd>should be used for admin and developer topics that are not scientifically focused.</dd>
   <dt><code class="language-plaintext highlighter-rouge">basics</code></dt>
-  <dd>Only used for <span class="notranslate">galaxy</span>-interface type topics</dd>
+  <dd>Only used for galaxy-interface type topics</dd>
   <dt><code class="language-plaintext highlighter-rouge">data-science</code></dt>
-  <dd>Topics which are not necessarily <span class="notranslate">Galaxy</span> focused but expand into broader communities</dd>
+  <dd>Topics which are not necessarily Galaxy focused but expand into broader communities</dd>
   <dt><code class="language-plaintext highlighter-rouge">use</code></dt>
-  <dd>These topics use <span class="notranslate">galaxy</span> for some analysis</dd>
+  <dd>These topics use galaxy for some analysis</dd>
   <dt><code class="language-plaintext highlighter-rouge">instructors</code></dt>
-  <dd>Specific to topics related to instruction of <span class="notranslate">Galaxy</span></dd>
+  <dd>Specific to topics related to instruction of Galaxy</dd>
 </dl>
 
 </p>
@@ -971,7 +1031,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>
 	<b>Example(s)</b>
 <div>
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">summary</span><span class="pi">:</span> <span class="s">Statistical Analyses for omics data and machine learning using <span class="notranslate">Galaxy</span> tools</span>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">summary</span><span class="pi">:</span> <span class="s">Statistical Analyses for omics data and machine learning using Galaxy tools</span>
 </code></pre></div>        </div>
       </div>
 	
@@ -1048,8 +1108,75 @@ We decided to put it in “Sequence analysis” because this is the most general
 	
 		
 	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
 
 	
+	
+		
+			
+			
+			
+
+			<blockquote class="tip">
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: custom_css">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>custom_css</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
+
+<b>Free Text</b>
+
+<p>
+<p>Any custom CSS you might want to apply to a specific topic. This could be overriding e.g. the masthead colour (beware, will potentially conflict with themes.)</p>
+
+<p>This is generally not a recommended property to set on topics, and something that is only used as part of outreach efforts to import content into the GTN.</p>
+
+</p>
+
+
+
+
+
+
+
+
+<p>
+	<b>Example(s)</b>
+<div>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">custom_css</span><span class="pi">:</span> <span class="s">- :root { --brand-color</span><span class="err">:</span> <span class="s">red; }</span>
+
+</code></pre></div>        </div>
+      </div>
+	
+	</p>
+
+
+
+
+
+
+
+
+
+</blockquote>
+
+		
 	
 		
 			
@@ -1087,11 +1214,56 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>
 	<b>Example(s)</b>
 <div>
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docker_image</span><span class="pi">:</span> <span class="s">quay.io/<span class="notranslate">galaxy</span>/sequence-analysis-training</span>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">docker_image</span><span class="pi">:</span> <span class="s">quay.io/galaxy/sequence-analysis-training</span>
 </code></pre></div>        </div>
       </div>
 	
 	</p>
+
+
+
+
+
+
+
+
+
+</blockquote>
+
+		
+	
+		
+			
+			
+			
+
+			<blockquote class="tip">
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: draft">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>draft</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
+
+<b>Boolean</b>
+
+<p>
+<p><code class="language-plaintext highlighter-rouge">true</code> to hide your tutorial from the topic page (optional). This is useful if you need a tutorial for a workshop, but have not finished making it up to GTN standards.</p>
+
+</p>
+
+
+
+
+
+
+
 
 
 
@@ -1124,10 +1296,10 @@ We decided to put it in “Sequence analysis” because this is the most general
 		
 	</div>
 
-<b>Free Text</b>
+<b>List of Items</b>
 
 <p>
-<p>An edam ontology id that describes the topic.</p>
+
 
 </p>
 
@@ -1138,77 +1310,17 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 
 
-<p>
-	<b>Example(s)</b>
-<div>
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">edam_ontology</span><span class="pi">:</span> <span class="s">topic_3173</span>
-</code></pre></div>        </div>
-      </div>
+
+
+
+
+
+
+
+
 	
-	</p>
 
-
-
-
-
-<p>
-<b>Required Pattern:</b> Must match the following regular <span class="notranslate">expression</span>
-
-<div>
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">/^topic_[0-9]+$/</span>
-</code></pre></div>        </div>
-      </div>
-
-</p>
-
-
-
-
-
-</blockquote>
-
-		
 	
-		
-			
-			
-			
-
-			<blockquote class="tip">
-
-	<div class="box-title">
-		
-		<button type="button" aria-expanded="true" aria-label="Toggle tip box: enable">
-			<i class="far fa-lightbulb" aria-hidden="true"></i>
-			
-				<code>enable</code>
-			
-			<span role="button" class="fold-unfold fa fa-plus-square"></span>
-		</button>
-		
-	</div>
-
-<b>Boolean</b>
-
-<p>
-<p><code class="language-plaintext highlighter-rouge">false</code> to hide your topic from the production GTN. This is useful if you need a topic for a workshop, but have not finished making it up to GTN standards.</p>
-
-</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </blockquote>
 
@@ -1236,7 +1348,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 <b>Free Text</b>
 
 <p>
-<p>Link to a gitter channel that is more relevant for this topic than the default. E.g. a <span class="notranslate">single cell</span> topic, you could use <code class="language-plaintext highlighter-rouge"><span class="notranslate">Galaxy</span>-Training-Network/<span class="notranslate">galaxy</span>-<span class="notranslate">single-cell</span></code> to link to their specific chat room in all of the child tutorials by default.</p>
+<p>Link to a gitter channel that is more relevant for this topic than the default. E.g. a single cell topic, you could use <code class="language-plaintext highlighter-rouge">Galaxy-Training-Network/galaxy-single-cell</code> to link to their specific chat room in all of the child tutorials by default.</p>
 
 </p>
 
@@ -1250,12 +1362,12 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>
 	<b>Example(s)</b>
 <div>
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">gitter</span><span class="pi">:</span> <span class="s"><span class="notranslate">Galaxy</span>-Training-Network/<span class="notranslate">galaxy</span>-<span class="notranslate">single-cell</span></span>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">gitter</span><span class="pi">:</span> <span class="s">Galaxy-Training-Network/galaxy-single-cell</span>
 </code></pre></div>        </div>
       </div>
 	
 <div>
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">gitter</span><span class="pi">:</span> <span class="s"><span class="notranslate">galaxy</span>-genome-annotation/Lobby</span>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">gitter</span><span class="pi">:</span> <span class="s">galaxy-genome-annotation/Lobby</span>
 </code></pre></div>        </div>
       </div>
 	
@@ -1274,7 +1386,161 @@ We decided to put it in “Sequence analysis” because this is the most general
 		
 	
 		
+			
+			
+			
+
+			<blockquote class="tip">
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: logo">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>logo</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
+
+<b>Free Text</b>
+
+<p>
+<p>A logo identifier (e.g. GTN) should be used by default, but may be swapped out for special logos from the assets folder.</p>
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</blockquote>
+
+		
 	
+		
+			
+			
+			
+
+			<blockquote class="tip">
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: logo_alt">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>logo_alt</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
+
+<b>Free Text</b>
+
+<p>
+<p>The alt text for the logo (MANDATORY).</p>
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</blockquote>
+
+		
+	
+		
+	
+		
+	
+		
+			
+			
+			
+
+			<blockquote class="tip">
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: og_image">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>og_image</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
+
+<b>Free Text</b>
+
+<p>
+<p>A custom image to show on the link preview in external applications (e.g. when the URL is pasted into Twitter)</p>
+
+</p>
+
+
+
+
+
+
+
+
+<p>
+	<b>Example(s)</b>
+<div>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">og_image</span><span class="pi">:</span> <span class="s">/assets/images/gat.png</span>
+</code></pre></div>        </div>
+      </div>
+	
+	</p>
+
+
+
+
+
+<p>
+<b>Required Pattern:</b> Must match the following regular expression
+
+<div>
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">/^\/.*/</span>
+</code></pre></div>        </div>
+      </div>
+
+</p>
+
+
+
+
+
+</blockquote>
+
 		
 	
 		
@@ -1592,7 +1858,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>
 	<b>Example(s)</b><div>
         <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">requirements</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">inte<span class="notranslate">rna</span>l</span>
+<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">internal</span>
   <span class="na">topic_name</span><span class="pi">:</span> <span class="s">statistics</span>
   <span class="na">tutorials</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">age-prediction-with-ml</span>
@@ -1675,7 +1941,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 <b>Possible Values:</b>
 <ul>
 
-	<li><code>inte<span class="notranslate">rna</span>l</code></li>
+	<li><code>internal</code></li>
 
 </ul>
 </p>
@@ -1688,7 +1954,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 	<b>Example(s)</b>
 	
 <div>
-            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">inte<span class="notranslate">rna</span>l"</span>
+            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">internal"</span>
 </code></pre></div>            </div>
           </div>
 	</p>
@@ -1932,7 +2198,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>
 	<b>Example(s)</b>
 <div>
-            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">id</span><span class="pi">:</span> <span class="s"><span class="notranslate">single-cell</span></span>
+            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">id</span><span class="pi">:</span> <span class="s">single-cell</span>
 </code></pre></div>            </div>
           </div>
 	
@@ -1943,7 +2209,7 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 
 <p>
-<b>Required Pattern:</b> Must match the following regular <span class="notranslate">expression</span>
+<b>Required Pattern:</b> Must match the following regular expression
 
 <div>
             <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">/^[A-Za-z0-9_-]+$/</span>
@@ -1992,12 +2258,12 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>
 	<b>Example(s)</b>
 <div>
-            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">Maintaining a Production <span class="notranslate">Galaxy</span></span>
+            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">Maintaining a Production Galaxy</span>
 </code></pre></div>            </div>
           </div>
 	
 <div>
-            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s"><span class="notranslate">Single-cell</span> <span class="notranslate">RNA</span>-seq</span>
+            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">Single-cell RNA-seq</span>
 </code></pre></div>            </div>
           </div>
 	
@@ -2047,10 +2313,10 @@ We decided to put it in “Sequence analysis” because this is the most general
 <p>
 	<b>Example(s)</b>
 <div>
-            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">description</span><span class="pi">:</span> <span class="s">- "Start here if you are new to <span class="notranslate">RNA</span>-Seq analysis in <span class="notranslate">Galaxy</span>"</span>
-<span class="pi">-</span> <span class="s2">"</span><span class="s">These</span><span class="nv"> </span><span class="s">tutorials</span><span class="nv"> </span><span class="s">take</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">raw</span><span class="nv"> </span><span class="s">sequencing</span><span class="nv"> </span><span class="s"><span class="notranslate">reads</span></span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pathway</span><span class="nv"> </span><span class="s">analysis"</span>
-<span class="pi">-</span> <span class="s2">"</span><span class="s">Tutorials</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s"><span class="notranslate">single-cell</span></span><span class="nv"> </span><span class="s"><span class="notranslate">RNA</span>-seq</span><span class="nv"> </span><span class="s">data"</span>
-<span class="pi">-</span> <span class="s2">"</span><span class="s">Tutorials</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">published</span><span class="nv"> </span><span class="s"><span class="notranslate">single-cell</span></span><span class="nv"> </span><span class="s"><span class="notranslate">RNA</span>-seq</span><span class="nv"> </span><span class="s">dataset</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">variety</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">analyses"</span>
+            <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">description</span><span class="pi">:</span> <span class="s">- "Start here if you are new to RNA-Seq analysis in Galaxy"</span>
+<span class="pi">-</span> <span class="s2">"</span><span class="s">These</span><span class="nv"> </span><span class="s">tutorials</span><span class="nv"> </span><span class="s">take</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">raw</span><span class="nv"> </span><span class="s">sequencing</span><span class="nv"> </span><span class="s">reads</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pathway</span><span class="nv"> </span><span class="s">analysis"</span>
+<span class="pi">-</span> <span class="s2">"</span><span class="s">Tutorials</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">single-cell</span><span class="nv"> </span><span class="s">RNA-seq</span><span class="nv"> </span><span class="s">data"</span>
+<span class="pi">-</span> <span class="s2">"</span><span class="s">Tutorials</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">single</span><span class="nv"> </span><span class="s">published</span><span class="nv"> </span><span class="s">single-cell</span><span class="nv"> </span><span class="s">RNA-seq</span><span class="nv"> </span><span class="s">dataset</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">variety</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">analyses"</span>
 
 </code></pre></div>            </div>
           </div>
@@ -2137,28 +2403,61 @@ We decided to put it in “Sequence analysis” because this is the most general
 		
 	
 		
+			
+			
+			
+
+			<blockquote class="tip">
+
+	<div class="box-title">
+		
+		<button type="button" aria-expanded="true" aria-label="Toggle tip box: tag_based">
+			<i class="far fa-lightbulb" aria-hidden="true"></i>
+			
+				<code>tag_based</code>
+			
+			<span role="button" class="fold-unfold fa fa-plus-square"></span>
+		</button>
+		
+	</div>
+
+<b>Boolean</b>
+
+<p>
+<p>If this is a synthetic tag based topic (no tutorials of it’s own)
+then you must set this flag to indicate it as such, otherwise you
+will find yourself with an empty topic page.</p>
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</blockquote>
+
+		
+	
+		
 	
 		
 	
 
 </blockquote>
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">subtopics</code>: for large topics, we can define subtopics and create multiple tutorial lists:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>subtopics:
-  singlecell:
-    title: "<span class="notranslate">Single Cell</span> Analysis"
-    description: "These tutorials cover <span class="notranslate">single cell</span> analysis"
-  small:
-    title: "Small <span class="notranslate">RNA</span>"
-    description: "These Tutorial"
-</code></pre></div>    </div>
-    <p>tutorials can be assigned to subtopics by adding e.g. <code class="language-plaintext highlighter-rouge">subtopic: singlecell</code> to the tutorial metadata. An example of this subtopic division can be found in the <a href="/training-material/topics/admin/">admin section</a></p>
-  </li>
-</ul>
-
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-update-the-new-topic-to-the-website" class="box-title" aria-label="hands-on box: Update the new topic to the website"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Update the new topic to the website</div>
+  <div class="box-title hands-on-title" id="hands-on-update-the-new-topic-to-the-website"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Update the new topic to the website</div>
 
   <ol>
     <li>Open the <code class="language-plaintext highlighter-rouge">metadata.yaml</code> file in your topic folder</li>
@@ -2167,7 +2466,7 @@ We decided to put it in “Sequence analysis” because this is the most general
       <p>Make sure that Jekyll is running</p>
 
       <blockquote class="comment">
-        <div id="comment-jekyll-1" class="box-title" aria-label="comment box: Jekyll"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Jekyll</div>
+        <div class="box-title comment-title" id="comment-jekyll-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Jekyll</div>
         <p>Want to learn how to start Jekyll? <a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Check out our tutorial to serve the website locally</a></p>
       </blockquote>
     </li>
@@ -2176,14 +2475,80 @@ We decided to put it in “Sequence analysis” because this is the most general
 
 </blockquote>
 
+<h3 id="subtopics">Subtopics</h3>
+
+<p>For large topics, we can define subtopics and create multiple tutorial lists, within a topic’s <code class="language-plaintext highlighter-rouge">metadata.yaml</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">transcriptomics</span>
+<span class="na">type</span><span class="pi">:</span> <span class="s">use</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Transcriptomics</span>
+<span class="na">summary</span><span class="pi">:</span> <span class="s">Training material for all kinds of transcriptomics analysis.</span>
+<span class="na">docker_image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">quay.io/galaxy/transcriptomics-training"</span>
+
+<span class="pi">[</span><span class="nv">...</span><span class="pi">]</span>
+
+<span class="na">subtopics</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">introduction</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Introduction"</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Start</span><span class="nv"> </span><span class="s">here</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">RNA-Seq</span><span class="nv"> </span><span class="s">analysis</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">Galaxy"</span>
+<span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">end-to-end</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">End-to-End</span><span class="nv"> </span><span class="s">Analysis"</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">These</span><span class="nv"> </span><span class="s">tutorials</span><span class="nv"> </span><span class="s">take</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">raw</span><span class="nv"> </span><span class="s">sequencing</span><span class="nv"> </span><span class="s">reads</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pathway</span><span class="nv"> </span><span class="s">analysis"</span>
+<span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">visualisation</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Visualisation"</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Tutorials</span><span class="nv"> </span><span class="s">covering</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">visualisation"</span>
+</code></pre></div></div>
+
+<p>Each subtopic has:</p>
+<ul>
+  <li>an ID, used as a reference in the tutorial</li>
+  <li>a short descriptive title</li>
+  <li>a longer description discussion what is contained in that subtopic</li>
+</ul>
+
+<p>Tutorials can be assigned to subtopics by adding e.g. <code class="language-plaintext highlighter-rouge">subtopic: singlecell</code> to the tutorial metadata. An example of this subtopic division can be found in the <a href="/training-material/topics/admin/">admin section</a></p>
+
+<h1 id="creating-a-tag-based-topic">Creating a tag based topic</h1>
+
+<p>For tag based topics, first ensure that all of the relevant tutorials share a single tag, across all materials that should be included in this view.</p>
+
+<h2 id="defining-the-topic-1">Defining the topic</h2>
+
+<p>Compare with other topic level metadata files in the <code class="language-plaintext highlighter-rouge">metadata/</code> directory of the training material. Then create a file of your own naming the topic and providing maintainers and so on. We will use the Covid-19 synthetic topic as an example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+name: "covid19"
+type: "use"
+title: "SARS-CoV-2"
+summary: "Tutorials covering analysis of SARS-CoV-2 (COVID 19)"
+tag_based: true
+
+maintainers:
+  - wm75
+
+gitter: galaxyproject/sars-cov-2
+</code></pre></div></div>
+
+<p>As you can see it is very short, and there are only a handful of important points:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tag_based</code> must be set to <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">name</code> must be equal to the tag name, that’s being used across tutorials.</li>
+  <li><code class="language-plaintext highlighter-rouge">subtopics</code> must not be set.</li>
+</ul>
+
+<p>With this done, all materials tagged <code class="language-plaintext highlighter-rouge">covid19</code> will be aggregated and available under this synthetic topic. They are organised by the “parent” topic, so e.g. assembly tutorials are collected together and transcriptomics tutorials are also in a section together, similar to how other tutorials define subtopics.</p>
+
 <h1 id="conclusion">Conclusion</h1>
 
 <p>We just created a new topic. We can now fill it by <a href="/training-material/topics/contributing/tutorials/create-new-tutorial/tutorial.html">creating new tutorials</a></p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>A new topic can be easily added for new tutorials</p>
@@ -2212,38 +2577,18 @@ We decided to put it in “Sequence analysis” because this is the most general
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Including a new topic (Contributing to the Galaxy Training Material)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Including a new topic (Contributing to the Galaxy Training Material)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">,  <b>Including a new topic (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Bérénice Batut,  <b>Including a new topic (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2255,7 +2600,7 @@ We decided to put it in “Sequence analysis” because this is the most general
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -2264,28 +2609,31 @@ We decided to put it in “Sequence analysis” because this is the most general
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{contributing-create-new-topic,
 author = "Bérénice Batut",
-title = "Including a new topic (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Including a new topic (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2296,170 +2644,134 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
+                    <div class="box-title">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
                     
                         
-                            
-                    <li><a href="/training-material/topics/contributing/slides/introduction.html">Overview of the Galaxy Training Material</a></li>
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">Adding auto-generated video to your slides</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-quiz/tutorial.html">Adding Quizzes to your Tutorial</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">Contributing with GitHub via its interface</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial/tutorial.html">Creating a new tutorial</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html">Creating content in Markdown</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/introduction/slides.html">Overview of the Galaxy Training Material</a></li>
                                 
-                            
                         
                     
                         
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">Creating Interactive Galaxy Tours</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-slides/slides.html">Creating Slides</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">Contributing with GitHub via its interface</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-quiz/tutorial.html">Adding Quizzes to your Tutorial</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">Adding auto-generated video to your slides</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/schemas/tutorial.html">GTN Metadata</a></li>
                                 
-                            
                         
                     
                         
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">Including a new topic</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-technical/tutorial.html">Tools, Data, and Workflows for tutorials</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html">Creating content in Markdown</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">Including a new topic</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">Creating Interactive Galaxy Tours</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">Updating diffs in admin training</a></li>
                                 
-                            
                         
                     
                     </ol>
@@ -2468,49 +2780,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/contributing/tutorials/create-new-topic/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00056">https://gxy.io/GTN:T00056</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/contributing/tutorials/create-new-topic/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

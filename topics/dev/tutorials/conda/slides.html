@@ -1,41 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Tool Dependencies and Conda</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/conda/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Tool Dependencies and Conda">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-04-14 14:14:17 +0000">
+<meta name="DC.creator" content="Nicola Soranzo">
+<meta name="DC.creator" content="John Chilton">
+<meta name="DC.creator" content="Björn Grüning">
+<meta name="DC.creator" content="Hervé Ménager">
 
+        
+        
+        
+        
+        <meta name="description" content="Galaxy is an open-source project. Everyone can contribute..." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Tool Dependencies and Conda" />
+        <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Tool Dependencies and Conda</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Galaxy is an open-source project. Everyone can contribute..." />
-    <meta property="og:title" content="Galaxy Training: Tool Dependencies and Conda" />
-    <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/conda/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -60,7 +91,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-28 13:13:58 +0000",
+  "dateModified": "2023-04-14 14:14:17 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Tool Dependencies and Conda",
   "interactivityType": "mixed",
@@ -86,6 +117,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -113,6 +148,7 @@
   "name": "Slides for 'Tool Dependencies and Conda' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/conda/slides.html",
   "timeRequired": "PT75M",
+  "teaches": "Learn to use existing Conda recipes to enable best practice tool dependency management in Galaxy.\n - Learn the basics of building Conda recipes and contributing to Bioconda.\n - Learn to use Planemo to assist in developing Galaxy tools from existing and new Conda recipes.",
   "keywords": "dev",
   "description": "The questions this  addresses are:\n - How can I connect tools to applications and libraries?\n - What are the advantages of declaring dependencies for my tool?\n - What are Conda and Bioconda?\n - What are Conda recipes and environments?\n - How do I find and use existing Conda recipes?\n - How do I develop Conda recipes for use within Galaxy tools?\n\n\nThe objectives are:\n - Learn to use existing Conda recipes to enable best practice tool dependency management in Galaxy.\n - Learn the basics of building Conda recipes and contributing to Bioconda.\n - Learn to use Planemo to assist in developing Galaxy tools from existing and new Conda recipes.\n\n",
   "inLanguage": {
@@ -164,8 +200,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
@@ -187,8 +223,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
@@ -210,8 +246,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
@@ -233,100 +269,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hmenager/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hmenager/",
-      "name": "Hervé Ménager",
-      "image": "https://avatars.githubusercontent.com/hmenager",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "name": "Nicola Soranzo",
-      "image": "https://avatars.githubusercontent.com/nsoranzo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3627-5340",
-      "orcid": "https://orcid.org/0000-0003-3627-5340"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "name": "John Chilton",
-      "image": "https://avatars.githubusercontent.com/jmchilton",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-6794-0756",
-      "orcid": "https://orcid.org/0000-0002-6794-0756"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/",
-      "name": "Björn Grüning",
-      "image": "https://avatars.githubusercontent.com/bgruening",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-3079-6586",
-      "orcid": "https://orcid.org/0000-0002-3079-6586"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hmenager/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hmenager/",
@@ -349,13 +293,27 @@
       "name": "Development in Galaxy",
       "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
       "url": "https://training.galaxyproject.org/training-material/topics/dev/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "## Planemo"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -378,7 +336,7 @@ class: center, middle, inverse
 
 
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" class="cover-logo"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
 
 
 # Tool Dependencies and Conda
@@ -387,30 +345,17 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/jmchilton?s=27" alt="Avatar">John Chilton</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
-<a href="/training-material/hall-of-fame/hmenager/" class="contributor-badge contributor-hmenager"><img src="https://avatars.githubusercontent.com/hmenager?s=27" alt="Avatar">Hervé Ménager</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jmchilton?s=36" alt="Avatar" width="36" height="36">John Chilton</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/hmenager/" class="contributor-badge contributor-hmenager"><img src="https://avatars.githubusercontent.com/hmenager?s=36" alt="Avatar" width="36" height="36">Hervé Ménager</a>
 	</div>
 
 </div>
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00045">gxy.io/GTN:S00045</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -523,15 +468,15 @@ From Planemo docs - the following example builds a tool for the `seqtk seq` comm
 
 ```sh
 $ planemo tool_init --force \
-                    --id 'seqtk_seq' \
-                    --name 'Convert to FASTA (seqtk)' \
+                    --id &apos;seqtk_seq&apos; \
+                    --name &apos;Convert to FASTA (seqtk)&apos; \
                     --requirement seqtk@1.2 \
-                    --example_command 'seqtk seq -a 2.fastq &gt; 2.fasta' \
+                    --example_command &apos;seqtk seq -a 2.fastq &gt; 2.fasta&apos; \
                     --example_input 2.fastq \
                     --example_output 2.fasta \
                     --test_case \
-                    --cite_url 'https://github.com/lh3/seqtk' \
-                    --help_from_command 'seqtk seq'
+                    --cite_url &apos;https://github.com/lh3/seqtk&apos; \
+                    --help_from_command &apos;seqtk seq&apos;
 ```
 
 Notice the `--requirement seqtk@1.2`.
@@ -688,7 +633,7 @@ Galaxy now automatically installs Conda when first launched and will use [Biocon
 
 ### Installing Tools with Conda
 
-![Screnshot of tool installation menu](../../images/tool_install.png)
+![Screenshot of tool installation menu](../../images/tool_install.png)
 
 ---
 
@@ -708,7 +653,7 @@ Using Conda directly is generally package-centric, Planemo provides abstractions
 
 class: left, enlarge120
 
-The next few slides will use the seqtk example from Planemo's documentation - this can be downloaded to
+The next few slides will use the seqtk example from Planemo&apos;s documentation - this can be downloaded to
 follow along using the following command:
 
 ```bash
@@ -769,7 +714,7 @@ $ which seqtk
 seqtk not found
 ```]
 
-Notice seqtk hasn't been placed on the `PATH`, an environment has been setup that Galaxy (when
+Notice seqtk hasn&apos;t been placed on the `PATH`, an environment has been setup that Galaxy (when
 used through Planemo) can leverage.
 
 ---
@@ -792,7 +737,7 @@ Options: -q INT    mask bases with quality lower than INT [0]
          -n CHAR   masked bases converted to CHAR; 0 for lowercase [0]
          -l INT    number of residues per line; 0 for 2^32-1 [0]
 ...
-         -V        shift quality by '(-Q) - 33'
+         -V        shift quality by &apos;(-Q) - 33&apos;
          -U        convert all bases to uppercases
          -S        strip of white spaces in sequences
 (seqtk_seq) $ conda_env_deactivate
@@ -825,7 +770,7 @@ INFO  [galaxy.tools.actions] Flushed transaction for job Job[id=2,tool_id=seqtk_
 INFO  [galaxy.jobs.handler] (2) Job dispatched
 DEBUG [galaxy.tools.deps] Using dependency seqtk version 1.2 of type conda
 DEBUG [galaxy.tools.deps] Using dependency seqtk version 1.2 of type conda
-INFO  [galaxy.jobs.command_factory] Built script [/tmp/tmpLvKwta/job_working_directory/000/2/tool_script.sh] for tool command [[ &quot;$CONDA_DEFAULT_ENV&quot; = &quot;/Users/john/miniconda2/envs/__seqtk@1.2&quot; ] || . /Users/john/miniconda2/bin/activate '/Users/john/miniconda2/envs/__seqtk@1.2' &gt;conda_activate.log 2&gt;&amp;1 ; seqtk seq -a '/tmp/tmpLvKwta/files/000/dataset_1.dat' &gt; '/tmp/tmpLvKwta/files/000/dataset_2.dat']
+INFO  [galaxy.jobs.command_factory] Built script [/tmp/tmpLvKwta/job_working_directory/000/2/tool_script.sh] for tool command [[ &quot;$CONDA_DEFAULT_ENV&quot; = &quot;/Users/john/miniconda2/envs/__seqtk@1.2&quot; ] || . /Users/john/miniconda2/bin/activate &apos;/Users/john/miniconda2/envs/__seqtk@1.2&apos; &gt;conda_activate.log 2&gt;&amp;1 ; seqtk seq -a &apos;/tmp/tmpLvKwta/files/000/dataset_1.dat&apos; &gt; &apos;/tmp/tmpLvKwta/files/000/dataset_2.dat&apos;]
 DEBUG [galaxy.tools.deps] Using dependency samtools version None of type conda
 DEBUG [galaxy.tools.deps] Using dependency samtools version None of type conda
 ok
@@ -848,20 +793,20 @@ The following line indicates the seqtk package was found:
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 ![Cartoon of people jumping.](../../images/exercise.png)
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-1&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 #### The Goal
 - Use the Planemo commands `conda_install`, `conda_env`, and `test` to practice the Galaxy tool dependency development lifecycle.
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-2&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 #### Steps
 
@@ -937,13 +882,13 @@ only one that will be used by Galaxy by default.
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-3&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 ![Cartoon of people jumping.](../../images/exercise.png)
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-4&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 #### The Goal
 - Find the correct package and version for a tool in a best practice channel.
@@ -951,7 +896,7 @@ only one that will be used by Galaxy by default.
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-5&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 #### Steps
 
@@ -1021,7 +966,7 @@ about:
 ```yaml
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler(&apos;c&apos;) }}
   host:
     - zlib
   run:
@@ -1075,13 +1020,13 @@ test:
 ```yaml
 test:
   commands:
-    - bwa 2&gt;&amp;1 | grep 'index sequences in the'
+    - bwa 2&gt;&amp;1 | grep &apos;index sequences in the&apos;
 ```
 
 ```yaml
 test:
   commands:
-    - '$R -e &quot;library(''xcms'')&quot;'
+    - &apos;$R -e &quot;library(&apos;&apos;xcms&apos;&apos;)&quot;&apos;
 ```
 
 Please note that the Conda tests run inside the runtime environment and not in the build environment.
@@ -1156,8 +1101,7 @@ $ $HOME/miniconda3/bin/conda build .
 5. (Provides the .tar.bz2 path)
 
 
-.footnote[If miniconda wasn't configured with `planemo conda_init`, you may have &lt;br/&gt; to run `conda install conda-build` before using the above command.]
-
+.footnote[If miniconda wasn&apos;t configured with `planemo conda_init`, you may have &lt;br/&gt; to run `conda install conda-build` before using the above command.]
 
 ---
 
@@ -1202,7 +1146,7 @@ $ $HOME/miniconda3/bin/conda build .
   ```
 
   ```bash
-  $ git commit -m 'my recipe description'
+  $ git commit -m &apos;my recipe description&apos;
   ```
 
   ```bash
@@ -1231,13 +1175,13 @@ cache.
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-6&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 ![Cartoon of people jumping.](../../images/exercise.png)
 
 ---
 
-&lt;div id=&quot;hands-on-hands-on-7&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 #### The Goal
 - Implement and test a local Conda recipe.
@@ -1247,7 +1191,7 @@ cache.
 
 class: left
 
-&lt;div id=&quot;hands-on-hands-on-8&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 #### Before
 
@@ -1265,7 +1209,7 @@ This directory contains the outline of a tool for [fleeqtk](https://github.com/j
 
 class: left
 
-&lt;div id=&quot;hands-on-hands-on-9&quot; class=&quot;box-title&quot; aria-label=&quot;hands-on box: Hands-on&quot;&gt;&lt;i class=&quot;fas fa-pencil-alt&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;visually-hidden&quot;&gt;&lt;/span&gt; Hands-on: Hands-on&lt;/div&gt;
+&lt;hands-on-title&gt;Hands-on&lt;/hands-on-title&gt;
 
 #### Steps
 
@@ -1334,14 +1278,14 @@ conda skeleton pypi &lt;package_name&gt;
 
 ---
 
-## Python - pysam's `build.sh`
+## Python - pysam&apos;s `build.sh`
 
 ```sh
 #!/bin/bash
 # Remove gcc statements that do not work on older compilers for CentOS5
 # support
-sed -i'' -e 's/&quot;-Wno-error=declaration-after-statement&quot;,//g' setup.py
-sed -i'' -e 's/&quot;-Wno-error=declaration-after-statement&quot;//g' setup.py
+sed -i&apos;&apos; -e &apos;s/&quot;-Wno-error=declaration-after-statement&quot;,//g&apos; setup.py
+sed -i&apos;&apos; -e &apos;s/&quot;-Wno-error=declaration-after-statement&quot;//g&apos; setup.py
 # linking htslib, see:
 # https://pysam.readthedocs.org/en/latest/installation.html#external
 # https://github.com/pysam-developers/pysam/blob/v0.9.0/setup.py#L79
@@ -1356,7 +1300,7 @@ $PYTHON setup.py install
 
 ---
 
-## Python - pysam's `meta.yaml`
+## Python - pysam&apos;s `meta.yaml`
 
 .reduce50[
 ```yaml
@@ -1366,7 +1310,7 @@ $PYTHON setup.py install
 
 package:
   name: pysam
-  version: '{{ version }}'
+  version: &apos;{{ version }}&apos;
 
 source:
   url: https://github.com/pysam-developers/pysam/archive/v{{ version }}.tar.gz
@@ -1378,7 +1322,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler(&apos;c&apos;) }}
   host:
     - htslib
     - samtools {{ samtools_version }}
@@ -1432,7 +1376,7 @@ https://bioconda.github.io/guidelines.html#java
 
 ---
 
-## Java - PeptideShaker's `build.sh`
+## Java - PeptideShaker&apos;s `build.sh`
 
 ```sh
 #!/bin/bash
@@ -1452,7 +1396,7 @@ chmod 0755 &quot;${PREFIX}/bin/peptide-shaker&quot;
 
 class: reduce70
 
-## Java - PeptideShaker's `meta.yaml`
+## Java - PeptideShaker&apos;s `meta.yaml`
 
 
 ```yaml
@@ -1521,7 +1465,7 @@ requirements:
     # [...]
 
 test:
-  # Perl 'use' tests
+  # Perl &apos;use&apos; tests
   imports:
     - Module::Build
     - Module::Build::Base
@@ -1532,7 +1476,7 @@ test:
 about:
   home: https://metacpan.org/pod/Module::Build
   license: perl_5
-  summary: 'Build and install Perl modules
+  summary: &apos;Build and install Perl modules
 ```
 
 ---
@@ -1593,7 +1537,7 @@ $ circleci build
 
 - Conda and Bioconda are Galaxy best practices for connecting Galaxy tools to underlying applications and libraries.
 
-- Leveraging Conda allows easy installation of your tool's dependencies by Galaxy deployers.
+- Leveraging Conda allows easy installation of your tool&apos;s dependencies by Galaxy deployers.
 
 - The Planemo commands `conda_search`, `conda_init`, `conda_install`, `lint`, `test`, and `serve` make it easy to search and use existing Conda recipes when developing tools.
 
@@ -1618,23 +1562,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/jmchilton?s=27" alt="Avatar">John Chilton</a>
-
-
-
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
-
-
-<a href="/training-material/hall-of-fame/hmenager/" class="contributor-badge contributor-hmenager"><img src="https://avatars.githubusercontent.com/hmenager?s=27" alt="Avatar">Hervé Ménager</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jmchilton?s=36" alt="Avatar" width="36" height="36">John Chilton</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/hmenager/" class="contributor-badge contributor-hmenager"><img src="https://avatars.githubusercontent.com/hmenager?s=36" alt="Avatar" width="36" height="36">Hervé Ménager</a>
 	</div>
 
 </div>
@@ -1642,7 +1570,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 
 <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 </div>
@@ -1652,10 +1580,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -1667,7 +1595,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -1679,6 +1607,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

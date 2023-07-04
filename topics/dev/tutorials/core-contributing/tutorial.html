@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Contributing a New Feature to Galaxy Core" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="John Chilton" />
-<meta name="DC.creator" content="John Davis" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Galaxy is an open-source project. Everyone can contribute..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Contributing a New Feature to Galaxy Core" />
-        <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/dev" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Development in Galaxy
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/core-contributing/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/core-contributing/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/core-contributing/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/core-contributing/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/core-contributing/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/core-contributing/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/dev/faqs/" title="Check our FAQs for the Development in Galaxy topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/core-contributing/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/dev/tutorials/core-contributing/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/dev/tutorials/core-contributing/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/dev/tutorials/core-contributing/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/dev/tutorials/core-contributing/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'galaxyproject/dev'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Contributing a New Feature to Galaxy Core">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000">
+<meta name="DC.creator" content="John Chilton">
+<meta name="DC.creator" content="John Davis">
+
+        
+        
+        
+        
+        <meta name="description" content="Galaxy is an open-source project. Everyone can contribute...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Contributing a New Feature to Galaxy Core">
+        <meta property="og:description" content="Galaxy is an open-source project. Everyone can contribute...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'Contributing a New Feature to Galaxy Core' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Learn to develop extensions to the Galaxy data model\n - Learn to implement new API functionality within Galaxy\n - Learn to extend the Galaxy user interface with VueJS components",
   "keywords": "dev",
   "description": "The questions this  addresses are:\n - How can I add a new feature to Galaxy that involves modifications to the database, the API, and the UI?\n\n\nThe objectives are:\n - Learn to develop extensions to the Galaxy data model\n - Learn to implement new API functionality within Galaxy\n - Learn to extend the Galaxy user interface with VueJS components\n\n",
   "inLanguage": {
@@ -390,8 +211,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
@@ -413,36 +234,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jdavcs/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jdavcs/",
       "name": "John Davis",
       "image": "https://avatars.githubusercontent.com/jdavcs",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jmchilton/",
-      "name": "John Chilton",
-      "image": "https://avatars.githubusercontent.com/jmchilton",
       "description": "A contributor to the GTN project.",
       "memberOf": [
         {
@@ -452,29 +250,8 @@
           "url": "https://galaxyproject.org/teach/gtn/"
         }
       ],
-      "identifier": "https://orcid.org/0000-0002-6794-0756",
-      "orcid": "https://orcid.org/0000-0002-6794-0756"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jdavcs/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jdavcs/",
-      "name": "John Davis",
-      "image": "https://avatars.githubusercontent.com/jdavcs",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      "identifier": "https://orcid.org/0000-0002-1363-1245",
+      "orcid": "https://orcid.org/0000-0002-1363-1245"
     }
   ],
   "about": [
@@ -483,36 +260,217 @@
       "name": "Development in Galaxy",
       "description": "Galaxy is an open-source project. Everyone can contribute to its development with core Galaxy development, integration of softwares in Galaxy environment, ...",
       "url": "https://training.galaxyproject.org/training-material/topics/dev/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_3372",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_3372",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3372"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-dev">
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/dev" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Development in Galaxy
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/dev/faqs/" title="Check our FAQs for the Development in Galaxy topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/core-contributing/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/dev/tutorials/core-contributing/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/dev/tutorials/core-contributing/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/dev/tutorials/core-contributing/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/dev/tutorials/core-contributing/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-dev">
     <h1 data-toc-skip>Contributing a New Feature to Galaxy Core</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/jmchilton?s=27" alt="Avatar">John Chilton</a>
-
-
-
-<a href="/training-material/hall-of-fame/jdavcs/" class="contributor-badge contributor-jdavcs"><img src="https://avatars.githubusercontent.com/jdavcs?s=27" alt="Avatar">John Davis</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/jmchilton/" class="contributor-badge contributor-jmchilton"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jmchilton?s=36" alt="Avatar" width="36" height="36">John Chilton</a><a href="/training-material/hall-of-fame/jdavcs/" class="contributor-badge contributor-jdavcs"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/jdavcs?s=36" alt="Avatar" width="36" height="36">John Davis</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -629,6 +587,14 @@
                         
                     
                         
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                             
                             <li> Galaxy Code Architecture:
                             
@@ -637,16 +603,6 @@
                             
                             
                             </li>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
                         
                     
                         
@@ -691,10 +647,6 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/dev/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
 
@@ -707,13 +659,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/dev/tutorials/core-contributing/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/dev/tutorials/core-contributing/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -739,20 +688,55 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/dev/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
@@ -761,12 +745,16 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00113">https://gxy.io/GTN:T00113</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -777,24 +765,25 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
-<p>This tutorial walks you through developing an extension to <span class="notranslate">Galaxy</span>, and how to contribute back to the core project.</p>
+<p>This tutorial walks you through developing an extension to Galaxy, and how to contribute back to the core project.</p>
 
-<p>To setup the proposed extension imagine you’re running a specialized <span class="notranslate">Galaxy</span> server and each of your users only use a few of <span class="notranslate">Galaxy</span> datatypes. You’d like to tailor the UI experience by allowing users of <span class="notranslate">Galaxy</span> to select their favorite extensions for additional filtering in <span class="notranslate">downstream</span> applications, UI extensions, etc..</p>
+<p>To setup the proposed extension imagine you’re running a specialized Galaxy server and each of your users only use a few of Galaxy datatypes. You’d like to tailor the UI experience by allowing users of Galaxy to select their favorite extensions for additional filtering in downstream applications, UI extensions, etc..</p>
 
-<p>Like many extensions to <span class="notranslate">Galaxy</span>, the proposed change requires persistent state. <span class="notranslate">Galaxy</span> stores most persistent state in a relational database. The Python layer that defines <span class="notranslate">Galaxy</span>’s data model is setup by defining SQLAlchemy models.</p>
+<p>Like many extensions to Galaxy, the proposed change requires persistent state. Galaxy stores most persistent state in a relational database. The Python layer that defines Galaxy’s data model is setup by defining SQLAlchemy models.</p>
 
-<p>The proposed extension could be implemented in several different ways on <span class="notranslate">Galaxy</span>’s backend. We will choose one for this example for its simplicity, not for its correctness or cleverness, because our purpose here is to demonstrate modifying and extending various layers of <span class="notranslate">Galaxy</span>.</p>
+<p>The proposed extension could be implemented in several different ways on Galaxy’s backend. We will choose one for this example for its simplicity, not for its correctness or cleverness, because our purpose here is to demonstrate modifying and extending various layers of Galaxy.</p>
 
-<p>With simplicity in mind, we will implement our proposed extension to <span class="notranslate">Galaxy</span> by adding a single new table to <span class="notranslate">Galaxy</span>’s data model called <code class="language-plaintext highlighter-rouge">user_favorite_extension</code>. The concept of a favorite extension will be represented by a one-to-many relationship from the table that stores <span class="notranslate">Galaxy</span>’s user records to this new table. The extension itself that will be favorited will be stored as a <code class="language-plaintext highlighter-rouge">Text</code> field in this new table. This table will also need to include an integer primary key named <code class="language-plaintext highlighter-rouge">id</code> to follow the example set by the rest of the <span class="notranslate">Galaxy</span> data model.</p>
+<p>With simplicity in mind, we will implement our proposed extension to Galaxy by adding a single new table to Galaxy’s data model called <code class="language-plaintext highlighter-rouge">user_favorite_extension</code>. The concept of a favorite extension will be represented by a one-to-many relationship from the table that stores Galaxy’s user records to this new table. The extension itself that will be favorited will be stored as a <code class="language-plaintext highlighter-rouge">Text</code> field in this new table. This table will also need to include an integer primary key named <code class="language-plaintext highlighter-rouge">id</code> to follow the example set by the rest of the Galaxy data model.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
 <ol id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
-  <li><a href="#forking-galaxy" id="markdown-toc-forking-galaxy">Forking <span class="notranslate">Galaxy</span></a></li>
+  <li><a href="#forking-galaxy" id="markdown-toc-forking-galaxy">Forking Galaxy</a></li>
   <li><a href="#models" id="markdown-toc-models">Models</a></li>
   <li><a href="#migrations" id="markdown-toc-migrations">Migrations</a></li>
   <li><a href="#test-driven-development" id="markdown-toc-test-driven-development">Test Driven Development</a></li>
@@ -805,42 +794,43 @@
 
 </blockquote>
 
-<h1 id="forking-galaxy">Forking <span class="notranslate">Galaxy</span></h1>
+<h1 id="forking-galaxy">Forking Galaxy</h1>
 
 <!--SNIPPET-->
-<blockquote class="tip">  <div id="tip-how-to-contribute-to-galaxy" class="box-title"><button type="button" aria-controls="tip-how-to-contribute-to-galaxy-contents" aria-expanded="true" aria-label="Toggle tip box: How to Contribute to Galaxy"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: How to Contribute to <span class="notranslate">Galaxy</span><span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>To contribute to <span class="notranslate">galaxy</span>, a GitHub account is required. Changes are proposed via a <a href="https://docs.github.com/en/github/collaborating-with-pull-requests">pull request</a>. This allows the project maintainers to review the changes and suggest improvements.</p>  <p>The general steps are as follows:</p>  <ol>  <li>Fork the <span class="notranslate">Galaxy</span> repository</li>  <li>Clone your fork</li>  <li>Make changes in a new branch</li>  <li>Commit your changes, push branch to your fork</li>  <li>Open a pull request for this branch in the <span class="notranslate">upstream</span> <span class="notranslate">Galaxy</span> repository</li></ol>  <blockquote class="details">  <details-title>Git, Github, and <span class="notranslate">Galaxy</span> Core</details-title>  <p>For a lot more information about Git branching and managing a repository on Github, see the <a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a> tutorial.</p>  <p>The <a href="/training-material/topics/dev/tutorials/architecture/slides.html"><span class="notranslate">Galaxy</span> Core Architecture slides</a> have a lot of important <span class="notranslate">Galaxy</span> core-related information related to branches, project management, and contributing to <span class="notranslate">Galaxy</span> - under the Project Management section of the slides.</p></blockquote></blockquote>
+<blockquote class="tip">   <div class="box-title tip-title" id="tip-how-to-contribute-to-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-how-to-contribute-to-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: How to Contribute to Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>To contribute to galaxy, a GitHub account is required. Changes are proposed via a <a href="https://docs.github.com/en/github/collaborating-with-pull-requests">pull request</a>. This allows the project maintainers to review the changes and suggest improvements.</p>   <p>The general steps are as follows:</p>   <ol>   <li>Fork the Galaxy repository</li>   <li>Clone your fork</li>   <li>Make changes in a new branch</li>   <li>Commit your changes, push branch to your fork</li>   <li>Open a pull request for this branch in the upstream Galaxy repository</li> </ol>   <blockquote class="details">   <div class="box-title details-title" id="details-git-github-and-galaxy-core"><button class="gtn-boxify-button details" type="button" aria-controls="details-git-github-and-galaxy-core" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Git, Github, and Galaxy Core<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>For a lot more information about Git branching and managing a repository on Github,  see the <a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a> tutorial.</p>   <p>The <a href="/training-material/topics/dev/tutorials/architecture/slides.html">Galaxy Core Architecture slides</a> have a lot of important Galaxy core-related information related to branches,  project management, and contributing to Galaxy - under the Project Management section of the slides.</p> </blockquote> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-setup-your-local-galaxy-instance" class="box-title" aria-label="hands-on box: Setup your local Galaxy instance"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Setup your local <span class="notranslate">Galaxy</span> instance</div>
+  <div class="box-title hands-on-title" id="hands-on-setup-your-local-galaxy-instance"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Setup your local Galaxy instance</div>
 
   <ol>
-    <li>Use GitHub UI to fork <span class="notranslate">Galaxy</span>’s repository at <code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>project/<span class="notranslate">galaxy</span></code>.</li>
+    <li>Use GitHub UI to fork Galaxy’s repository at <code class="language-plaintext highlighter-rouge">galaxyproject/galaxy</code>.</li>
     <li>
-      <p>Clone your forked repository to a local path, further referred to as <code class="language-plaintext highlighter-rouge"><span class="notranslate">GALAXY</span>_ROOT</code> and <code class="language-plaintext highlighter-rouge">cd</code> into <code class="language-plaintext highlighter-rouge"><span class="notranslate">GALAXY</span>_ROOT</code>. Note that we specify the tutorial branch with the <code class="language-plaintext highlighter-rouge">-b</code> option:</p>
+      <p>Clone your forked repository to a local path, further referred to as <code class="language-plaintext highlighter-rouge">GALAXY_ROOT</code> and <code class="language-plaintext highlighter-rouge">cd</code> into <code class="language-plaintext highlighter-rouge">GALAXY_ROOT</code>. Note that we specify the tutorial branch with the <code class="language-plaintext highlighter-rouge">-b</code> option:</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/&lt;your-use<span class="notranslate">rna</span>me&gt;/<span class="notranslate">galaxy</span> <span class="notranslate">GALAXY</span>_ROOT
-<span class="nb">cd </span><span class="notranslate">GALAXY</span>_ROOT
+        <div class="box-title code-in-title" id="code-in-bash"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/&lt;your-username&gt;/galaxy GALAXY_ROOT
+<span class="nb">cd </span>GALAXY_ROOT
 </code></pre></div>        </div>
       </blockquote>
     </li>
     <li>
-      <p>Before we can use <span class="notranslate">Galaxy</span>, we need to create a virtual environment and install the required dependencies. This is generally done with the <code class="language-plaintext highlighter-rouge">common_startup.sh</code> script:</p>
+      <p>Before we can use Galaxy, we need to create a virtual environment and install the required dependencies. This is generally done with the <code class="language-plaintext highlighter-rouge">common_startup.sh</code> script:</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-1" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-1"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash scripts/common_startup.sh <span class="nt">--dev-wheels</span>
 </code></pre></div>        </div>
       </blockquote>
 
-      <p>Make sure your Python version is at least 3.7 (you can check your Python version with <code class="language-plaintext highlighter-rouge">python --version</code>). If your system uses an older version, you may specify an alte<span class="notranslate">rna</span>tive Python interpreter using the <code class="language-plaintext highlighter-rouge"><span class="notranslate">GALAXY</span>_PYTHON</code> environment variable (<code class="language-plaintext highlighter-rouge"><span class="notranslate">GALAXY</span>_PYTHON=/path/to/alt/python bash scripts/common_startup.sh --dev-wheels</code>).</p>
+      <p>Make sure your Python version is at least 3.7 (you can check your Python version with <code class="language-plaintext highlighter-rouge">python --version</code>). If your system uses an older version, you may specify an alternative Python interpreter using the <code class="language-plaintext highlighter-rouge">GALAXY_PYTHON</code> environment variable (<code class="language-plaintext highlighter-rouge">GALAXY_PYTHON=/path/to/alt/python bash scripts/common_startup.sh --dev-wheels</code>).</p>
     </li>
     <li>
       <p>Activate your new virtual environment:</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-2" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-2"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span> .venv/bin/activate
 </code></pre></div>        </div>
       </blockquote>
@@ -851,7 +841,7 @@
       <p>Finally, let’s create a new branch for your edits:</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-3" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-3"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> my-feature
 </code></pre></div>        </div>
       </blockquote>
@@ -860,13 +850,13 @@
 
       <blockquote class="code-2col">
         <blockquote class="code-in">
-          <div id="code-in-bash-4" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+          <div class="box-title code-in-title" id="code-in-bash-4"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
           <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch
 </code></pre></div>          </div>
         </blockquote>
 
         <blockquote class="code-out">
-          <div id="code-out" class="box-title" aria-label="code-out box: "><i class="fas fa-laptop-code" aria-hidden="true"></i><span class="visually-hidden"></span> Output</div>
+          <div class="box-title code-out-title" id="code-out"><i class="fas fa-laptop-code" aria-hidden="true" ></i> Output</div>
           <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  dev
 <span class="k">*</span> my-feature
 </code></pre></div>          </div>
@@ -877,15 +867,15 @@
     </li>
     <li>
       <p>As one last step, you need to initialize your database. This only applies if you are working on
-a clean clone and have not started <span class="notranslate">Galaxy</span> (starting <span class="notranslate">Galaxy</span> will initialize the database). 
+a clean clone and have not started Galaxy (starting Galaxy will initialize the database). 
 Initializing the database is necessary because you will be making changes to the database
 schema, which cannot be applied to a database that has not been initialized.</p>
 
-      <p>To initialize the database, you can either start <span class="notranslate">Galaxy</span> (might take some time when executing
+      <p>To initialize the database, you can either start Galaxy (might take some time when executing
 for the first time):</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-5" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-5"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh run.sh
 </code></pre></div>        </div>
       </blockquote>
@@ -893,7 +883,7 @@ for the first time):</p>
       <p>or you may run the following script (faster):</p>
 
       <blockquote class="code-in">
-        <div id="code-in-bash-6" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
+        <div class="box-title code-in-title" id="code-in-bash-6"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
         <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh create_db.sh
 </code></pre></div>        </div>
       </blockquote>
@@ -904,43 +894,43 @@ for the first time):</p>
 
 <h1 id="models">Models</h1>
 
-<p><span class="notranslate">Galaxy</span> uses a relational database to persist objects and object relationships. <span class="notranslate">Galaxy</span>’s data model represents the object view of this data. To map objects and their relationships onto tables and rows in the database, <span class="notranslate">Galaxy</span> relies on SQLAlchemy, which is a SQL toolkit and object-relational mapper.</p>
+<p>Galaxy uses a relational database to persist objects and object relationships. Galaxy’s data model represents the object view of this data. To map objects and their relationships onto tables and rows in the database, Galaxy relies on SQLAlchemy, which is a SQL toolkit and object-relational mapper.</p>
 
-<p>The <span class="notranslate">mapping</span> between objects and the database is defined in <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/model/__init__.py</code> via “declarative <span class="notranslate">mapping</span>”, which means that models are defined as Python classes together with the database metadata that describes the database table corresponding to each class. For example, the definition of the JobParameter class includes the database table name:</p>
+<p>The mapping between objects and the database is defined in <code class="language-plaintext highlighter-rouge">lib/galaxy/model/__init__.py</code> via “declarative mapping”, which means that models are defined as Python classes together with the database metadata that describes the database table corresponding to each class. For example, the definition of the JobParameter class includes the database table name:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">__tablename__</span> <span class="o">=</span> <span class="s">"job_parameter"</span>
 </code></pre></div></div>
 
 <p>and four <code class="language-plaintext highlighter-rouge">Column</code> attributes that correspond to table columns with the same names:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">job_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s">"job.id"</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
-<span class="n">value</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">TEXT</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">job_id</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="nc">ForeignKey</span><span class="p">(</span><span class="s">"job.id"</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="nc">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+<span class="n">value</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">TEXT</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Associations between objects are usually defined with the <code class="language-plaintext highlighter-rouge">relationship</code> construct. For example, the <code class="language-plaintext highlighter-rouge">UserAddress</code> model has an association with the <code class="language-plaintext highlighter-rouge">User</code> model and is defined with the <code class="language-plaintext highlighter-rouge">relationship</code> construct as the <code class="language-plaintext highlighter-rouge">user</code> attribute.</p>
 
 <blockquote class="question">
-  <div id="question-about-mapping" class="box-title" aria-label="question box: about Mapping"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: about <span class="notranslate">Mapping</span></div>
+  <div class="box-title question-title" id="question-about-mapping"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: about Mapping</div>
 
   <ol>
     <li>What should be the SQLAlchemy model named corresponding to the table <code class="language-plaintext highlighter-rouge">user_favorite_extension</code> based on <a href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/model/__init__.py">other examples</a>?</li>
-    <li>What table stores <span class="notranslate">Galaxy</span>’s user records?</li>
-    <li>What is another simple table with a relationship with the <span class="notranslate">Galaxy</span>’s user table?</li>
+    <li>What table stores Galaxy’s user records?</li>
+    <li>What is another simple table with a relationship with the Galaxy’s user table?</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li><code class="language-plaintext highlighter-rouge">UserFavoriteExtension</code></li>
-      <li><code class="language-plaintext highlighter-rouge"><span class="notranslate">galaxy</span>_user</code></li>
+      <li><code class="language-plaintext highlighter-rouge">galaxy_user</code></li>
       <li>An example table might be the <code class="language-plaintext highlighter-rouge">user_preference</code> table.</li>
     </ol>
   </blockquote>
 </blockquote>
 
-<p>To implement the required changes to add the new model, you need to create a new class in <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/model/__init__.py</code> with appropriate database metadata:</p>
+<p>To implement the required changes to add the new model, you need to create a new class in <code class="language-plaintext highlighter-rouge">lib/galaxy/model/__init__.py</code> with appropriate database metadata:</p>
 
 <ol>
   <li>Add a class definition for your new class</li>
@@ -954,43 +944,43 @@ for the first time):</p>
 
 <p>To define a regular <code class="language-plaintext highlighter-rouge">Column</code> attribute you must include the datatype:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">foo</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">foo</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>To define an attribute that is the primary key, you need to include the <code class="language-plaintext highlighter-rouge">primary_key</code> argument:
 (a primary key is one or more columns that uniquely identify a row in a database table)</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>To define an attribute that is a foreign key, you need to reference the associated table + its primary key column using the <code class="language-plaintext highlighter-rouge">ForeignKey</code> construct (the datatype will be derived from that column, so you don’t have to include it):</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bar_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">"bar.id"</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bar_id</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="s">"bar.id"</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>To define a relationship between tables, you need to set it on <em>both</em> tables:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Order</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
     <span class="err">…</span>
-    <span class="n">items</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s">"Item"</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s">"order"</span><span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="nf">relationship</span><span class="p">(</span><span class="s">"Item"</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s">"order"</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Item</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
     <span class="err">…</span>
-    <span class="n">order_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">"order.id"</span><span class="p">)</span>
-    <span class="n">awesome_order</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s">"Order"</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s">"items"</span><span class="p">)</span>
+    <span class="n">order_id</span> <span class="o">=</span> <span class="nc">Column</span><span class="p">(</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="s">"order.id"</span><span class="p">)</span>
+    <span class="n">awesome_order</span> <span class="o">=</span> <span class="nf">relationship</span><span class="p">(</span><span class="s">"Order"</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s">"items"</span><span class="p">)</span>
     <span class="c1"># relationship not named "order" to avoid confusion: this is NOT the table name for Order
 </span></code></pre></div></div>
 
-<p>Now modify <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/model/__init__.py</code> to add a model class called <code class="language-plaintext highlighter-rouge">UserFavoriteExtension</code> as described above.</p>
+<p>Now modify <code class="language-plaintext highlighter-rouge">lib/galaxy/model/__init__.py</code> to add a model class called <code class="language-plaintext highlighter-rouge">UserFavoriteExtension</code> as described above.</p>
 
 <blockquote class="solution">
-  <solution-title>``lib/<span class="notranslate">galaxy</span>/model/__init__.py``</solution-title>
+  <div class="box-title solution-title" id="solution-lib-galaxy-model-init-py"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-lib-galaxy-model-init-py" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``lib/galaxy/model/__init__.py``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/model/__init__.py</code>:</p>
+  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/galaxy/model/__init__.py</code>:</p>
 
   <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">index 76004a716e..c5f2ea79a8 100644
-</span><span class="gd">--- a/lib/<span class="notranslate">galaxy</span>/model/__init__.py
-</span><span class="gi">+++ b/lib/<span class="notranslate">galaxy</span>/model/__init__.py
+</span><span class="gd">--- a/lib/galaxy/model/__init__.py
+</span><span class="gi">+++ b/lib/galaxy/model/__init__.py
 </span><span class="p">@@ -593,6 +593,7 @@</span> class User(Base, Dictifiable, RepresentById):
              &amp; not_(Role.name == User.email)  # type: ignore[has-type]
          ),
@@ -1008,7 +998,7 @@ for the first time):</p>
 +    __tablename__ = "user_favorite_extension"
 +
 +    id = Column(Integer, primary_key=True)
-+    user_id = Column(ForeignKey("<span class="notranslate">galaxy</span>_user.id"))
++    user_id = Column(ForeignKey("galaxy_user.id"))
 +    value = Column(TEXT)
 +    user = relationship("User", back_populates="favorite_extensions")
 </span></code></pre></div>  </div>
@@ -1016,15 +1006,15 @@ for the first time):</p>
 
 <h1 id="migrations">Migrations</h1>
 
-<p>There is one last database issue to consider before moving on to considering the API. Each successive release of <span class="notranslate">Galaxy</span> requires recipes for how to migrate old database schemas to updated ones. These recipes are called versions, or revisions, and are implemented using Alembic.</p>
+<p>There is one last database issue to consider before moving on to considering the API. Each successive release of Galaxy requires recipes for how to migrate old database schemas to updated ones. These recipes are called versions, or revisions, and are implemented using Alembic.</p>
 
-<p><span class="notranslate">Galaxy</span>’s data model is split into the <span class="notranslate">galaxy</span> model and the install model. These models are persisted in one combined database or two separate databases and are represented by two migration branches: “gxy” (the <span class="notranslate">galaxy</span> branch) and “tsi” (the tool shed install branch). Schema changes for these branches are defined in these revision modules:</p>
+<p>Galaxy’s data model is split into the galaxy model and the install model. These models are persisted in one combined database or two separate databases and are represented by two migration branches: “gxy” (the galaxy branch) and “tsi” (the tool shed install branch). Schema changes for these branches are defined in these revision modules:</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/model/migrations/alembic/versions_gxy</code> (<span class="notranslate">galaxy</span> model)</li>
-  <li><code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/model/migrations/alembic/versions_tsi</code> (install model)</li>
+  <li><code class="language-plaintext highlighter-rouge">lib/galaxy/model/migrations/alembic/versions_gxy</code> (galaxy model)</li>
+  <li><code class="language-plaintext highlighter-rouge">lib/galaxy/model/migrations/alembic/versions_tsi</code> (install model)</li>
 </ul>
 
-<p>We encourage you to read <a href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/model/migrations"><span class="notranslate">Galaxy</span>’s documentation on migrations</a>, as well as relevant <a href="https://alembic.sqlalchemy.org/en/latest/tutorial.html#create-a-migration-script">Alembic documentation</a>.</p>
+<p>We encourage you to read <a href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/model/migrations">Galaxy’s documentation on migrations</a>, as well as relevant <a href="https://alembic.sqlalchemy.org/en/latest/tutorial.html#create-a-migration-script">Alembic documentation</a>.</p>
 
 <p>For this tutorial, you’ll need to do the following:</p>
 <ol>
@@ -1034,12 +1024,12 @@ for the first time):</p>
 </ol>
 
 <blockquote class="question">
-  <div id="question-about-generating-a-revision-template" class="box-title" aria-label="question box:  about generating a revision template"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question:  about generating a revision template</div>
+  <div class="box-title question-title" id="question-about-generating-a-revision-template"><i class="far fa-question-circle" aria-hidden="true" ></i> Question:  about generating a revision template</div>
 
   <p>What command should you run to generate a revision template?</p>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh run_alembic.sh revision <span class="nt">--head</span><span class="o">=</span>gxy@head <span class="nt">-m</span> <span class="s2">"Add user_favorite_extentions table"</span>
 </code></pre></div>    </div>
     <p>The title of the revision is an example only.</p>
@@ -1056,14 +1046,14 @@ Also, while you didn’t have to specify the datatype of the <code class="langua
 do that here.</p>
 
 <blockquote class="solution">
-  <solution-title>``...alembic/versions_gxy/2ad8047d652e_add_user_favorite_extentions_table.py``</solution-title>
+  <div class="box-title solution-title" id="solution-alembic-versions-gxy-2ad8047d652e-add-user-favorite-extentions-table-py"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-alembic-versions-gxy-2ad8047d652e-add-user-favorite-extentions-table-py" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``...alembic/versions_gxy/2ad8047d652e_add_user_favorite_extentions_table.py``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Possible changes to revision template:</p>
 
   <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">new file mode 100644
 </span><span class="gh">index 0000000000..e8e5fe0ea3
 </span><span class="gd">--- /dev/null
-</span><span class="gi">+++ b/lib/<span class="notranslate">galaxy</span>/model/migrations/alembic/versions_gxy/2ad8047d652e_add_user_favorite_extentions_table.py
+</span><span class="gi">+++ b/lib/galaxy/model/migrations/alembic/versions_gxy/2ad8047d652e_add_user_favorite_extentions_table.py
 </span><span class="p">@@ -0,0 +1,29 @@</span>
 <span class="gi">+"""Add user_favorite_extentions table
 +
@@ -1087,7 +1077,7 @@ do that here.</p>
 +    op.create_table(
 +        'user_favorite_extension',
 +        sa.Column('id', sa.Integer, primary_key=True),
-+        sa.Column('user_id', sa.Integer, sa.ForeignKey("<span class="notranslate">galaxy</span>_user.id")),
++        sa.Column('user_id', sa.Integer, sa.ForeignKey("galaxy_user.id")),
 +        sa.Column('value', sa.String),
 +    )
 +
@@ -1098,12 +1088,12 @@ do that here.</p>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-about-running-the-migration" class="box-title" aria-label="question box: about running the migration"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: about running the migration</div>
+  <div class="box-title question-title" id="question-about-running-the-migration"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: about running the migration</div>
 
   <p>What command should you run to upgrade your database to include the new table?</p>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh manage_db.sh upgrade
 </code></pre></div>    </div>
   </blockquote>
@@ -1124,7 +1114,7 @@ CREATE TABLE user_favorite_extension (
 	user_id INTEGER, 
 	value VARCHAR, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(user_id) REFERENCES <span class="notranslate">galaxy</span>_user (id)
+	FOREIGN KEY(user_id) REFERENCES galaxy_user (id)
 );
 sqlite&gt; select * from alembic_version;
 fe1ce5cacb20
@@ -1140,7 +1130,7 @@ that exercises operations we would like to have available for favorite
 extensions.</p>
 
 <p>We will stick a test case for user extensions in
-<code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>_test/api/test_users.py</code> which is a relatively
+<code class="language-plaintext highlighter-rouge">lib/galaxy_test/api/test_users.py</code> which is a relatively
 straightforward file that contains tests for other user API
 endpoints.</p>
 
@@ -1164,17 +1154,17 @@ for the current user.</p>
   <tbody>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">GET</code></td>
-      <td><code class="language-plaintext highlighter-rouge">&lt;<span class="notranslate">galaxy</span>_root_url&gt;/api/users/current/favorites/extensions</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;galaxy_root_url&gt;/api/users/current/favorites/extensions</code></td>
       <td>This should return a list of favorited extensions for the current user.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">POST</code></td>
-      <td><code class="language-plaintext highlighter-rouge">&lt;<span class="notranslate">galaxy</span>_root_url&gt;/api/users/current/favorites/extensions/&lt;extension&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;galaxy_root_url&gt;/api/users/current/favorites/extensions/&lt;extension&gt;</code></td>
       <td>This should mark an extension as a favorite for the current user.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">DELETE</code></td>
-      <td><code class="language-plaintext highlighter-rouge">&lt;<span class="notranslate">galaxy</span>_root_url&gt;/api/users/current/favorites/extensions/&lt;extension&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;galaxy_root_url&gt;/api/users/current/favorites/extensions/&lt;extension&gt;</code></td>
       <td>This should unmark an extension as a favorite for the current user.</td>
     </tr>
   </tbody>
@@ -1184,20 +1174,20 @@ for the current user.</p>
 
 <ul>
   <li>Verifies the test user’s initially favorited extensions is an empty list.</li>
-  <li>Verifies that a <code class="language-plaintext highlighter-rouge">POST</code> to <code class="language-plaintext highlighter-rouge">&lt;<span class="notranslate">galaxy</span>_root_url&gt;/api/users/current/favorites/extensions/fasta</code> returns a 200 status code indicating success.</li>
+  <li>Verifies that a <code class="language-plaintext highlighter-rouge">POST</code> to <code class="language-plaintext highlighter-rouge">&lt;galaxy_root_url&gt;/api/users/current/favorites/extensions/fasta</code> returns a 200 status code indicating success.</li>
   <li>Verifies that after this <code class="language-plaintext highlighter-rouge">POST</code> the list of user favorited extensions contains <code class="language-plaintext highlighter-rouge">fasta</code> and is of size 1.</li>
-  <li>Verifies that a <code class="language-plaintext highlighter-rouge">DELETE</code> to <code class="language-plaintext highlighter-rouge">&lt;<span class="notranslate">galaxy</span>_root_url&gt;/api/users/current/favorites/extensions/fasta</code> succeeds.</li>
+  <li>Verifies that a <code class="language-plaintext highlighter-rouge">DELETE</code> to <code class="language-plaintext highlighter-rouge">&lt;galaxy_root_url&gt;/api/users/current/favorites/extensions/fasta</code> succeeds.</li>
   <li>Verifies that after this <code class="language-plaintext highlighter-rouge">DELETE</code> the favorited extensions list is again empty.</li>
 </ul>
 
 <blockquote class="solution">
-  <solution-title>``lib/<span class="notranslate">galaxy</span>_test/api/test_users.py``</solution-title>
+  <div class="box-title solution-title" id="solution-lib-galaxy-test-api-test-users-py"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-lib-galaxy-test-api-test-users-py" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``lib/galaxy_test/api/test_users.py``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>_test/api/test_users.py</code>:</p>
+  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/galaxy_test/api/test_users.py</code>:</p>
 
   <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">index e6fbfec6ee..7dc82d7179 100644
-</span><span class="gd">--- a/lib/<span class="notranslate">galaxy</span>_test/api/test_users.py
-</span><span class="gi">+++ b/lib/<span class="notranslate">galaxy</span>_test/api/test_users.py
+</span><span class="gd">--- a/lib/galaxy_test/api/test_users.py
+</span><span class="gi">+++ b/lib/galaxy_test/api/test_users.py
 </span><span class="p">@@ -171,6 +171,33 @@</span> class UsersApiTestCase(ApiTestCase):
          search_response = get(url).json()
          assert "cat1" in search_response
@@ -1243,19 +1233,19 @@ for the current user.</p>
 <p>Verify this test fails when running stand-alone.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-bash-7" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./run_tests.sh <span class="nt">-api</span> lib/<span class="notranslate">galaxy</span>_test/api/test_users.py::UsersApiTestCase::test_favorite_extensions
+  <div class="box-title code-in-title" id="code-in-bash-7"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./run_tests.sh <span class="nt">-api</span> lib/galaxy_test/api/test_users.py::UsersApiTestCase::test_favorite_extensions
 </code></pre></div>  </div>
 </blockquote>
 
 <h1 id="implementing-the-api">Implementing the API</h1>
 
 <p>Add a new API implementation file to
-<code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/api/</code> called <code class="language-plaintext highlighter-rouge">user_favorites.py</code> with
+<code class="language-plaintext highlighter-rouge">lib/galaxy/webapps/galaxy/api/</code> called <code class="language-plaintext highlighter-rouge">user_favorites.py</code> with
 an API implementation of the endpoints we just outlined.</p>
 
 <p>To implement the API itself, add three methods to the user manager in
-<code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/managers/users.py</code>.</p>
+<code class="language-plaintext highlighter-rouge">lib/galaxy/managers/users.py</code>.</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">get_favorite_extensions(user)</code></li>
@@ -1264,25 +1254,25 @@ an API implementation of the endpoints we just outlined.</p>
 </ul>
 
 <blockquote class="solution">
-  <solution-title>``lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/api/user_favorites.py``</solution-title>
+  <div class="box-title solution-title" id="solution-lib-galaxy-webapps-galaxy-api-user-favorites-py"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-lib-galaxy-webapps-galaxy-api-user-favorites-py" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``lib/galaxy/webapps/galaxy/api/user_favorites.py``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/api/user_favorites.py</code>:</p>
+  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/galaxy/webapps/galaxy/api/user_favorites.py</code>:</p>
 
   <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">new file mode 100644
 </span><span class="gh">index 0000000000..3587a9056e
 </span><span class="gd">--- /dev/null
-</span><span class="gi">+++ b/lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/api/user_favorites.py
+</span><span class="gi">+++ b/lib/galaxy/webapps/galaxy/api/user_favorites.py
 </span><span class="p">@@ -0,0 +1,66 @@</span>
 <span class="gi">+"""
-+API operations allowing clients to determine datatype supported by <span class="notranslate">Galaxy</span>.
++API operations allowing clients to determine datatype supported by Galaxy.
 +"""
 +import logging
 +from typing import List
 +
 +from fastapi import Path
 +
-+from <span class="notranslate">galaxy</span>.managers.context import ProvidesUserContext
-+from <span class="notranslate">galaxy</span>.managers.users import UserManager
++from galaxy.managers.context import ProvidesUserContext
++from galaxy.managers.users import UserManager
 +from . import (
 +    depends,
 +    DependsOnTrans,
@@ -1343,13 +1333,13 @@ an API implementation of the endpoints we just outlined.</p>
 </blockquote>
 
 <blockquote class="solution">
-  <solution-title>``lib/<span class="notranslate">galaxy</span>/managers/users.py``</solution-title>
+  <div class="box-title solution-title" id="solution-lib-galaxy-managers-users-py"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-lib-galaxy-managers-users-py" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``lib/galaxy/managers/users.py``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/managers/users.py</code>:</p>
+  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/galaxy/managers/users.py</code>:</p>
 
   <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">index 3407a6bd75..f15bb4c5d6 100644
-</span><span class="gd">--- a/lib/<span class="notranslate">galaxy</span>/managers/users.py
-</span><span class="gi">+++ b/lib/<span class="notranslate">galaxy</span>/managers/users.py
+</span><span class="gd">--- a/lib/galaxy/managers/users.py
+</span><span class="gi">+++ b/lib/galaxy/managers/users.py
 </span><span class="p">@@ -590,6 +590,23 @@</span> class UserManager(base.ModelManager, deletable.PurgableManagerMixin):
                  log.exception('Subscribing to the mailing list has failed.')
                  return "Subscribing to the mailing list has failed."
@@ -1387,27 +1377,27 @@ implement <code class="language-plaintext highlighter-rouge">get_favorite_extens
 with <code class="language-plaintext highlighter-rouge">add_favorite_extension</code> before finishing with <code class="language-plaintext highlighter-rouge">delete_favorite_extension</code>.</p>
 
 <blockquote class="code-in">
-  <div id="code-in-bash-8" class="box-title" aria-label="code-in box: Bash"><i class="far fa-keyboard" aria-hidden="true"></i><span class="visually-hidden"></span> Input: Bash</div>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./run_tests.sh <span class="nt">-api</span> lib/<span class="notranslate">galaxy</span>_test/api/test_users.py::UsersApiTestCase::test_favorite_extensions
+  <div class="box-title code-in-title" id="code-in-bash-8"><i class="far fa-keyboard" aria-hidden="true" ></i> Input: Bash</div>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./run_tests.sh <span class="nt">-api</span> lib/galaxy_test/api/test_users.py::UsersApiTestCase::test_favorite_extensions
 </code></pre></div>  </div>
 </blockquote>
 
 <h1 id="building-the-ui">Building the UI</h1>
 
-<p>Once the API test is done, it is time to build a user interface for this addition to <span class="notranslate">Galaxy</span>. Let’s get
+<p>Once the API test is done, it is time to build a user interface for this addition to Galaxy. Let’s get
 some of the plumbing out of the way right away. We’d like to have a URL for viewing the current user’s
-favorite extensions in the UI. This URL needs to be registered as a client route in <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/buildapp.py</code>.</p>
+favorite extensions in the UI. This URL needs to be registered as a client route in <code class="language-plaintext highlighter-rouge">lib/galaxy/webapps/galaxy/buildapp.py</code>.</p>
 
 <p>Add <code class="language-plaintext highlighter-rouge">/user/favorite/extensions</code> as a route for the client in <code class="language-plaintext highlighter-rouge">buildapp.py</code>.</p>
 
 <blockquote class="solution">
-  <solution-title>``lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/buildapp.py``</solution-title>
+  <div class="box-title solution-title" id="solution-lib-galaxy-webapps-galaxy-buildapp-py"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-lib-galaxy-webapps-galaxy-buildapp-py" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``lib/galaxy/webapps/galaxy/buildapp.py``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
-  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/buildapp.py</code>:</p>
+  <p>Possible changes to file <code class="language-plaintext highlighter-rouge">lib/galaxy/webapps/galaxy/buildapp.py</code>:</p>
 
   <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">index 83757e5307..c9e0feeb77 100644
-</span><span class="gd">--- a/lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/buildapp.py
-</span><span class="gi">+++ b/lib/<span class="notranslate">galaxy</span>/webapps/<span class="notranslate">galaxy</span>/buildapp.py
+</span><span class="gd">--- a/lib/galaxy/webapps/galaxy/buildapp.py
+</span><span class="gi">+++ b/lib/galaxy/webapps/galaxy/buildapp.py
 </span><span class="p">@@ -213,6 +213,7 @@</span> def app_pair(global_conf, load_app_kwds=None, wsgi_preflight=True, **kwargs):
      webapp.add_client_route("/tours/{tour_id}")
      webapp.add_client_route("/user")
@@ -1418,17 +1408,17 @@ favorite extensions in the UI. This URL needs to be registered as a client route
      webapp.add_client_route("/visualizations/edit")
 <span class="gd">-- 
 </span><span class="p">2.30.1 (Apple Git-130)
-</span>
-</code></pre></div>  </div>
+</span><span class="err">
+</span></code></pre></div>  </div>
 </blockquote>
 
 <p>Let’s add the ability to navigate to this URL and future component to
-the “User” menu in the <span class="notranslate">Galaxy</span> masthead. The file <code class="language-plaintext highlighter-rouge">client/src/layout/menu.js</code>
+the “User” menu in the Galaxy masthead. The file <code class="language-plaintext highlighter-rouge">client/src/layout/menu.js</code>
 contains the “model” data describing the masthead. Add a link to the route
 we described above to <code class="language-plaintext highlighter-rouge">menu.js</code> with an entry titled “Favorite Extensions”.</p>
 
 <blockquote class="solution">
-  <solution-title>``client/src/layout/menu.js``</solution-title>
+  <div class="box-title solution-title" id="solution-client-src-layout-menu-js"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-client-src-layout-menu-js" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``client/src/layout/menu.js``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Possible changes to file <code class="language-plaintext highlighter-rouge">client/src/layout/menu.js</code>:</p>
 
@@ -1446,7 +1436,7 @@ we described above to <code class="language-plaintext highlighter-rouge">menu.js
 +                },
 </span>             ],
          };
-         if (<span class="notranslate">Galaxy</span>.config.visualizations_visible) {
+         if (Galaxy.config.visualizations_visible) {
 </code></pre></div>  </div>
 </blockquote>
 
@@ -1462,7 +1452,7 @@ added above in <code class="language-plaintext highlighter-rouge">buildapp.py</c
 <code class="language-plaintext highlighter-rouge">FavoriteExtensions</code>.</p>
 
 <blockquote class="solution">
-  <solution-title>``client/src/entry/analysis/router.js``</solution-title>
+  <div class="box-title solution-title" id="solution-client-src-entry-analysis-router-js"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-client-src-entry-analysis-router-js" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``client/src/entry/analysis/router.js``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Possible changes to file <code class="language-plaintext highlighter-rouge">client/src/entry/analysis/router.js</code>:</p>
 
@@ -1476,8 +1466,8 @@ added above in <code class="language-plaintext highlighter-rouge">buildapp.py</c
 <span class="gi">+import { FavoriteExtensions } from "components/User/FavoriteExtensions/index";
 </span> import HistoryView from "components/HistoryView";
  import InteractiveTools from "components/InteractiveTools/InteractiveTools";
- import InvocationReport from "components/<span class="notranslate">Workflow</span>/InvocationReport";
-<span class="p">@@ -299,6 +300,11 @@</span> export function getRouter(<span class="notranslate">Galaxy</span>) {
+ import InvocationReport from "components/Workflow/InvocationReport";
+<span class="p">@@ -299,6 +300,11 @@</span> export function getRouter(Galaxy) {
                          props: true,
                          redirect: redirectAnon(),
                      },
@@ -1499,7 +1489,7 @@ and the API entry points we implemented earlier and renders an editable list of
 extensions based on it.</p>
 
 <blockquote class="solution">
-  <solution-title>``client/src/components/User/FavoriteExtensions/List.test.js``</solution-title>
+  <div class="box-title solution-title" id="solution-client-src-components-user-favoriteextensions-list-test-js"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-client-src-components-user-favoriteextensions-list-test-js" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``client/src/components/User/FavoriteExtensions/List.test.js``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Possible changes to file <code class="language-plaintext highlighter-rouge">client/src/components/User/FavoriteExtensions/List.test.js</code>:</p>
 
@@ -1616,7 +1606,7 @@ individual components make sense before continuing though.</p>
 <code class="language-plaintext highlighter-rouge">List.vue</code> that fullfills the contract described by the unit test.</p>
 
 <blockquote class="solution">
-  <solution-title>``client/src/components/User/FavoriteExtensions/List.vue``</solution-title>
+  <div class="box-title solution-title" id="solution-client-src-components-user-favoriteextensions-list-vue"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-client-src-components-user-favoriteextensions-list-vue" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``client/src/components/User/FavoriteExtensions/List.vue``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Possible changes to file <code class="language-plaintext highlighter-rouge">client/src/components/User/FavoriteExtensions/List.vue</code>:</p>
 
@@ -1647,7 +1637,7 @@ individual components make sense before continuing though.</p>
 +
 +&lt;script&gt;
 +import axios from "axios";
-+import { get<span class="notranslate">Galaxy</span>Instance } from "app";
++import { getGalaxyInstance } from "app";
 +import LoadingSpan from "components/LoadingSpan";
 +import { errorMessageAsString } from "utils/simple-error";
 +
@@ -1656,10 +1646,10 @@ individual components make sense before continuing though.</p>
 +        LoadingSpan,
 +    },
 +    data() {
-+        const <span class="notranslate">Galaxy</span> = get<span class="notranslate">Galaxy</span>Instance();
++        const Galaxy = getGalaxyInstance();
 +        return {
-+            datatypesUrl: `${<span class="notranslate">Galaxy</span>.root}api/datatypes`,
-+            favoriteExtensionsUrl: `${<span class="notranslate">Galaxy</span>.root}api/users/current/favorites/extensions`,
++            datatypesUrl: `${Galaxy.root}api/datatypes`,
++            favoriteExtensionsUrl: `${Galaxy.root}api/users/current/favorites/extensions`,
 +            extensions: null,
 +            favoriteExtensions: null,
 +            errorMessage: null,
@@ -1713,7 +1703,7 @@ component from the analysis router above by importing it from
 <code class="language-plaintext highlighter-rouge">FavoriteExtensions</code>.</p>
 
 <blockquote class="solution">
-  <solution-title>``client/src/components/User/FavoriteExtensions/index.js``</solution-title>
+  <div class="box-title solution-title" id="solution-client-src-components-user-favoriteextensions-index-js"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-client-src-components-user-favoriteextensions-index-js" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution: ``client/src/components/User/FavoriteExtensions/index.js``<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <p>Possible changes to file <code class="language-plaintext highlighter-rouge">client/src/components/User/FavoriteExtensions/index.js</code>:</p>
 
@@ -1727,10 +1717,12 @@ component from the analysis router above by importing it from
 </blockquote>
 
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Galaxy database interactions are mitigated via SQLAlchemy code in lib/galaxy/model.</p>
@@ -1765,38 +1757,18 @@ component from the analysis router above by importing it from
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Contributing a New Feature to Galaxy Core (Development in Galaxy)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Contributing a New Feature to Galaxy Core (Development in Galaxy)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">John Chilton, John Davis,  <b>Contributing a New Feature to Galaxy Core (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html">https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            John Chilton, John Davis,  <b>Contributing a New Feature to Galaxy Core (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html">https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1808,7 +1780,7 @@ component from the analysis router above by importing it from
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1817,28 +1789,31 @@ component from the analysis router above by importing it from
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{dev-core-contributing,
 author = "John Chilton and John Davis",
-title = "Contributing a New Feature to Galaxy Core (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Contributing a New Feature to Galaxy Core (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/dev/tutorials/core-contributing/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1846,11 +1821,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1859,49 +1834,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/dev/tutorials/core-contributing/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00113">https://gxy.io/GTN:T00113</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/core-contributing/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

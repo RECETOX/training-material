@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,254 +8,70 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="De novo transcriptome assembly, annotation, and differential expression analysis" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Anthony Bretaudeau" />
-<meta name="DC.creator" content="Gildas Le Corguillé" />
-<meta name="DC.creator" content="Erwan Corre" />
-<meta name="DC.creator" content="Xi Liu" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: De novo transcriptome assembly, annotation, and different..." />
-        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/full-de-novo/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/full-de-novo/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/full-de-novo/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/full-de-novo/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/full-de-novo/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/full-de-novo/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/full-de-novo/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/full-de-novo/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/full-de-novo/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/full-de-novo/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="De novo transcriptome assembly, annotation, and differential expression analysis">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-18 09:34:29 +0000">
+<meta name="DC.creator" content="Anthony Bretaudeau">
+<meta name="DC.creator" content="Gildas Le Corguillé">
+<meta name="DC.creator" content="Erwan Corre">
+<meta name="DC.creator" content="Xi Liu">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for all kinds of transcriptomics analysis.">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: De novo transcriptome assembly, annotation, and different...">
+        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis.">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -280,7 +96,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2023-05-18 09:34:29 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "De novo transcriptome assembly, annotation, and differential expression analysis",
   "interactivityType": "mixed",
@@ -306,6 +122,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Under development",
   "accessMode": [
     "textual",
     "visual"
@@ -333,6 +153,7 @@
   "name": "Hands-on for 'De novo transcriptome assembly, annotation, and differential expression analysis' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "The learning objectives are the goals of the tutorial\n - They will be informed by your audience and will communicate to them and to yourself what you should focus on during the course\n - They are single sentences describing what a learner should be able to do once they have completed the tutorial\n - You can use Bloom's Taxonomy to write effective learning objectives",
   "keywords": "transcriptomics",
   "description": "The questions this  addresses are:\n - Which biological questions are addressed by the tutorial?\n - Which bioinformatics techniques are important to know for this type of data?\n\n\nThe objectives are:\n - The learning objectives are the goals of the tutorial\n - They will be informed by your audience and will communicate to them and to yourself what you should focus on during the course\n - They are single sentences describing what a learner should be able to do once they have completed the tutorial\n - You can use Bloom's Taxonomy to write effective learning objectives\n\n",
   "inLanguage": {
@@ -420,8 +241,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
@@ -443,8 +264,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
@@ -464,8 +285,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/r1corre/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/r1corre/",
@@ -487,98 +308,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/xiliu/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/xiliu/",
-      "name": "Xi Liu",
-      "image": "https://avatars.githubusercontent.com/xiliu",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/abretaud/",
-      "name": "Anthony Bretaudeau",
-      "image": "https://avatars.githubusercontent.com/abretaud",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-0914-2470",
-      "orcid": "https://orcid.org/0000-0003-0914-2470"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/lecorguille/",
-      "name": "Gildas Le Corguillé",
-      "image": "https://avatars.githubusercontent.com/lecorguille",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/r1corre/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/r1corre/",
-      "name": "Erwan Corre",
-      "image": "https://avatars.githubusercontent.com/r1corre",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-6354-2278",
-      "orcid": "https://orcid.org/0000-0001-6354-2278"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/xiliu/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/xiliu/",
@@ -609,11 +340,192 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-transcriptomics">
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/full-de-novo/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/full-de-novo/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/full-de-novo/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/full-de-novo/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-transcriptomics">
     <h1 data-toc-skip>De novo transcriptome assembly, annotation, and differential expression analysis</h1>
     
     <div class="alert alert-warning" role="alert">
@@ -623,35 +535,20 @@
     </div>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/abretaud?s=27" alt="Avatar">Anthony Bretaudeau</a>
-
-
-
-<a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=27" alt="Avatar">Gildas Le Corguillé</a>
-
-
-
-<a href="/training-material/hall-of-fame/r1corre/" class="contributor-badge contributor-r1corre"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/r1corre?s=27" alt="Avatar">Erwan Corre</a>
-
-
-
-<a href="/training-material/hall-of-fame/xiliu/" class="contributor-badge contributor-xiliu"><img src="https://avatars.githubusercontent.com/xiliu?s=27" alt="Avatar">Xi Liu</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/abretaud/" class="contributor-badge contributor-abretaud"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/abretaud?s=36" alt="Avatar" width="36" height="36">Anthony Bretaudeau</a><a href="/training-material/hall-of-fame/lecorguille/" class="contributor-badge contributor-lecorguille"><img src="https://avatars.githubusercontent.com/lecorguille?s=36" alt="Avatar" width="36" height="36">Gildas Le Corguillé</a><a href="/training-material/hall-of-fame/r1corre/" class="contributor-badge contributor-r1corre"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/r1corre?s=36" alt="Avatar" width="36" height="36">Erwan Corre</a><a href="/training-material/hall-of-fame/xiliu/" class="contributor-badge contributor-xiliu"><img src="https://avatars.githubusercontent.com/xiliu?s=36" alt="Avatar" width="36" height="36">Xi Liu</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -706,6 +603,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -723,6 +622,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -766,17 +667,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/transcriptomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/3541678">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -786,8 +683,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/full-de-novo/workflows/" title="Workflows" alt="De novo transcriptome assembly, annotation, and differential expression analysis workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/transcriptomics/tutorials/full-de-novo/workflows/" title="De novo transcriptome assembly, annotation, and differential expression analysis workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -800,13 +697,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/full-de-novo/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/full-de-novo/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -832,194 +726,85 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 18, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00290">https://gxy.io/GTN:T00290</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -1030,6 +815,7 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <!-- This is a comment. -->
@@ -1041,7 +827,7 @@
 <p><a href="https://en.wikipedia.org/wiki/De_novo_transcriptome_assembly">(source)</a></p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -1060,11 +846,11 @@
   </li>
   <li><a href="#assembly-assessment--cleaning" id="markdown-toc-assembly-assessment--cleaning">Assembly assessment / cleaning</a>    <ol>
       <li><a href="#checking-of-the-assembly-statistics" id="markdown-toc-checking-of-the-assembly-statistics">Checking of the assembly statistics</a></li>
-      <li><a href="#remapping-on-the-raw-transcriptome" id="markdown-toc-remapping-on-the-raw-transcriptome">Re<span class="notranslate">mapping</span> on the raw transcriptome</a></li>
-      <li><a href="#merge-the-mapping-tables-and-compute-normalizations" id="markdown-toc-merge-the-mapping-tables-and-compute-normalizations">Merge the <span class="notranslate">mapping</span> tables and compute normalizations</a></li>
+      <li><a href="#remapping-on-the-raw-transcriptome" id="markdown-toc-remapping-on-the-raw-transcriptome">Remapping on the raw transcriptome</a></li>
+      <li><a href="#merge-the-mapping-tables-and-compute-normalizations" id="markdown-toc-merge-the-mapping-tables-and-compute-normalizations">Merge the mapping tables and compute normalizations</a></li>
       <li><a href="#compute-contig-ex90n50-statistic-and-ex90-transcript-count" id="markdown-toc-compute-contig-ex90n50-statistic-and-ex90-transcript-count">Compute contig Ex90N50 statistic and Ex90 transcript count</a></li>
       <li><a href="#transcriptome-annotation-completeness" id="markdown-toc-transcriptome-annotation-completeness">Transcriptome annotation completeness</a></li>
-      <li><a href="#filter-low-expression-transcripts" id="markdown-toc-filter-low-expression-transcripts">Filter low <span class="notranslate">expression</span> transcripts</a></li>
+      <li><a href="#filter-low-expression-transcripts" id="markdown-toc-filter-low-expression-transcripts">Filter low expression transcripts</a></li>
       <li><a href="#checking-of-the-assembly-statistics-after-cleaning" id="markdown-toc-checking-of-the-assembly-statistics-after-cleaning">Checking of the assembly statistics after cleaning</a></li>
     </ol>
   </li>
@@ -1078,13 +864,13 @@
       <li><a href="#transcriptome-annotation-using-trinotate" id="markdown-toc-transcriptome-annotation-using-trinotate">Transcriptome annotation using <strong>Trinotate</strong></a></li>
     </ol>
   </li>
-  <li><a href="#differential-expression-de-analysis" id="markdown-toc-differential-expression-de-analysis">Differential <span class="notranslate">Expression</span> (DE) Analysis</a>    <ol>
-      <li><a href="#remapping-on-the-filtered-transcriptome-using" id="markdown-toc-remapping-on-the-filtered-transcriptome-using">Re<span class="notranslate">mapping</span> on the filtered transcriptome using</a></li>
-      <li><a href="#merge-the-mapping-tables-and-compute-a-tmm-normalization" id="markdown-toc-merge-the-mapping-tables-and-compute-a-tmm-normalization">Merge the <span class="notranslate">mapping</span> tables and compute a TMM normalization</a></li>
-      <li><a href="#rnaseq-samples-quality-check" id="markdown-toc-rnaseq-samples-quality-check"><span class="notranslate">RNA</span>Seq samples quality check</a></li>
-      <li><a href="#differential-expression-analysis" id="markdown-toc-differential-expression-analysis">Differential <span class="notranslate">expression</span> analysis</a></li>
+  <li><a href="#differential-expression-de-analysis" id="markdown-toc-differential-expression-de-analysis">Differential Expression (DE) Analysis</a>    <ol>
+      <li><a href="#remapping-on-the-filtered-transcriptome-using" id="markdown-toc-remapping-on-the-filtered-transcriptome-using">Remapping on the filtered transcriptome using</a></li>
+      <li><a href="#merge-the-mapping-tables-and-compute-a-tmm-normalization" id="markdown-toc-merge-the-mapping-tables-and-compute-a-tmm-normalization">Merge the mapping tables and compute a TMM normalization</a></li>
+      <li><a href="#rnaseq-samples-quality-check" id="markdown-toc-rnaseq-samples-quality-check">RNASeq samples quality check</a></li>
+      <li><a href="#differential-expression-analysis" id="markdown-toc-differential-expression-analysis">Differential expression analysis</a></li>
       <li><a href="#extract-and-cluster-differentially-expressed-transcripts" id="markdown-toc-extract-and-cluster-differentially-expressed-transcripts">Extract and cluster differentially expressed transcripts</a></li>
-      <li><a href="#partition-genes-into-expression-clusters" id="markdown-toc-partition-genes-into-expression-clusters">Partition genes into <span class="notranslate">expression</span> clusters</a></li>
+      <li><a href="#partition-genes-into-expression-clusters" id="markdown-toc-partition-genes-into-expression-clusters">Partition genes into expression clusters</a></li>
     </ol>
   </li>
   <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
@@ -1110,14 +896,15 @@
 <h2 id="get-data">Get data</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Import the 12 <code class="language-plaintext highlighter-rouge">fq.gz</code> into a <code class="language-plaintext highlighter-rouge">List of Pairs</code> collection named <code class="language-plaintext highlighter-rouge">fastq_raw</code>
       <ul>
@@ -1144,22 +931,27 @@ https://zenodo.org/record/3541678/files/B3_right.fq.gz
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>    <p>Click on <strong>Collection</strong> on the top</p>  </li>  <li>    <p>Click on <strong>Collection Type</strong> and select <code class="language-plaintext highlighter-rouge">List of Pairs</code></p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li>    <p>Click on <strong>Build</strong> when available</p>  </li>  <li>    <p>Enter a name for the collection</p>    <ul>      <li>fastq_raw</li>    </ul>  </li>  <li>Click on <strong>Create list</strong> (and wait a bit)</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>     <p>Click on <strong>Collection</strong> on the top</p>   </li>   <li>     <p>Click on <strong>Collection Type</strong> and select <code class="language-plaintext highlighter-rouge">List of Pairs</code></p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li>     <p>Click on <strong>Build</strong> when available</p>   </li>   <li>     <p>Enter a name for the collection</p>     <ul>       <li>fastq_raw</li>     </ul>   </li>   <li>Click on <strong>Create list</strong> (and wait a bit)</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-data-from-a-data-library" class="box-title"><button type="button" aria-controls="tip-importing-data-from-a-data-library-contents" aria-expanded="true" aria-label="Toggle tip box: Importing data from a data library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing data from a data library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>As an alte<span class="notranslate">rna</span>tive to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>  <ul>  <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>  <li>Navigate to the correct folder as indicated by your instructor</li>  <li>Select the desired files</li>  <li>Click on the <strong>To History</strong> button near the top and select <strong>as Datasets</strong> from the dropdown menu</li>  <li>In the pop-up window, select the history you want to import the files to (or create a new one)</li>  <li>Click on <strong>Import</strong></li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Rename the datasets</li>
     <li>
       <p>Check that the datatype</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-changing-the-datatype" class="box-title"><button type="button" aria-controls="tip-changing-the-datatype-contents" aria-expanded="true" aria-label="Toggle tip box: Changing the datatype"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing the datatype<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, click on the <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-chart-select-data</span> <strong>Datatypes</strong> tab on the top</li>  <li>Select <code class="language-plaintext highlighter-rouge">datatypes</code>    <ul>      <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>    </ul>  </li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-changing-the-datatype"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-changing-the-datatype" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Changing the datatype<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> <strong>Convert</strong> tab on the top</li>   <li>In the lower part <i class="fas fa-database" aria-hidden="true"></i><span class="visually-hidden">galaxy-chart-select-data</span> <strong>Datatypes</strong>, select <code class="language-plaintext highlighter-rouge">datatypes</code>     <ul>       <li>tip: you can start typing the datatype into the field to filter the dropdown menu</li>     </ul>   </li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Add to each database a tag corresponding to …</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-adding-a-tag" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the dataset to expand it</li>   <li>Click on <strong>Add Tags</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span></li>   <li>Add a tag  starting with <code class="language-plaintext highlighter-rouge">#</code>     <ul>       <li>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</li>     </ul>   </li>   <li>Press <kbd>Enter</kbd></li>   <li>Check that the tag appears below the dataset name</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1168,7 +960,7 @@ https://zenodo.org/record/3541678/files/B3_right.fq.gz
 <h2 id="quality-control">Quality control</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1182,7 +974,7 @@ https://zenodo.org/record/3541678/files/B3_right.fq.gz
 
 <!-- ## Quality control with **MultiQC** - step 2/2
 
-> <div id="hands-on-task-description-1" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+> <div class="box-title hands-on-title" id="hands-on-task-description-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 >
 > 1. **MultiQC** <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
 >    - In *"Results"*:
@@ -1192,7 +984,7 @@ https://zenodo.org/record/3541678/files/B3_right.fq.gz
 >                    - *"Type of FastQC output?"*: `Raw data`
 >                    - *"FastQC output"*: `data XX, data XX, and others (flattened)`
 >
->    > <div id="comment" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+>    > <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 >    >
 >    > We agree that it's not comfortable. The wrapper of MultiQC must be improved
 >    {: .comment}
@@ -1202,12 +994,12 @@ https://zenodo.org/record/3541678/files/B3_right.fq.gz
 <h2 id="read-cleaning-with-trimmomatic">Read cleaning with <strong>Trimmomatic</strong></h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-2" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Trimmomatic</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“Single-end or paired-end <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">Paired-end (as collection)</code></li>
+        <li><em>“Single-end or paired-end reads?”</em>: <code class="language-plaintext highlighter-rouge">Paired-end (as collection)</code></li>
         <li><em>“Select FASTQ dataset collection with R1/R2 pair”</em>: <code class="language-plaintext highlighter-rouge">fastq_raw</code></li>
         <li><em>“Perform initial ILLUMINACLIP step?”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
         <li><em>“Adapter sequences to use”</em>: <code class="language-plaintext highlighter-rouge">TruSeq3 (additional seqs) (paired-ended, for MiSeq and HiSeq)</code></li>
@@ -1230,18 +1022,18 @@ https://zenodo.org/record/3541678/files/B3_right.fq.gz
             </li>
             <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Trimmomatic Operation”</em>
               <ul>
-                <li><em>“Select Trimmomatic operation to perform”</em>: <code class="language-plaintext highlighter-rouge">Drop <span class="notranslate">reads</span> with average quality lower than a specific level (AVGQUAL)</code>
+                <li><em>“Select Trimmomatic operation to perform”</em>: <code class="language-plaintext highlighter-rouge">Drop reads with average quality lower than a specific level (AVGQUAL)</code>
                   <ul>
-                    <li><em>“Minimum length of <span class="notranslate">reads</span> to be kept”</em>: <code class="language-plaintext highlighter-rouge">25</code></li>
+                    <li><em>“Minimum length of reads to be kept”</em>: <code class="language-plaintext highlighter-rouge">25</code></li>
                   </ul>
                 </li>
               </ul>
             </li>
             <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Trimmomatic Operation”</em>
               <ul>
-                <li><em>“Select Trimmomatic operation to perform”</em>: <code class="language-plaintext highlighter-rouge">Drop <span class="notranslate">reads</span> below a specified length (MINLEN)</code>
+                <li><em>“Select Trimmomatic operation to perform”</em>: <code class="language-plaintext highlighter-rouge">Drop reads below a specified length (MINLEN)</code>
                   <ul>
-                    <li><em>“Minimum length of <span class="notranslate">reads</span> to be kept”</em>: <code class="language-plaintext highlighter-rouge">50</code></li>
+                    <li><em>“Minimum length of reads to be kept”</em>: <code class="language-plaintext highlighter-rouge">50</code></li>
                   </ul>
                 </li>
               </ul>
@@ -1257,7 +1049,7 @@ https://zenodo.org/record/3541678/files/B3_right.fq.gz
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-1" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>You can check the Trimmomatic log files to get the number of read before and after the cleaning</p>
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Input Read Pairs: 10000
@@ -1268,7 +1060,8 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
       </blockquote>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-collection" class="box-title"><button type="button" aria-controls="tip-renaming-a-collection-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a collection"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a collection<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on the collection</li>  <li>Click on the name of the collection at the top</li>  <li>Change the name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-collection"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-collection" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a collection<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the collection</li>   <li>Click on the name of the collection at the top</li>   <li>Change the name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1277,7 +1070,7 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
 <h2 id="quality-control-after-cleaning">Quality control after cleaning</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-3" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-3"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1294,7 +1087,7 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
 <h2 id="assembly-with-trinity">Assembly with <strong>Trinity</strong></h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-4" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-4"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Trinity</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1308,7 +1101,7 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
             </li>
           </ul>
         </li>
-        <li><em>“Run in silico normalization of <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+        <li><em>“Run in silico normalization of reads”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
         <li>In <em>“Additional Options”</em>:
           <ul>
             <li><em>“Use the genome guided mode?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
@@ -1322,7 +1115,8 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
       </ul>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-dataset" class="box-title"><button type="button" aria-controls="tip-renaming-a-dataset-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a dataset"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a dataset<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Name</strong> field</li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-dataset"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-dataset" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a dataset<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Name</strong> field</li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -1333,7 +1127,7 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
 <h2 id="checking-of-the-assembly-statistics">Checking of the assembly statistics</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-5" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-5"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Trinity Statistics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1342,7 +1136,7 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-2" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-2"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
         <p>This step, even with this toy dataset, will take around 2 hours</p>
       </blockquote>
     </li>
@@ -1350,18 +1144,18 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
 
 </blockquote>
 
-<h2 id="remapping-on-the-raw-transcriptome">Re<span class="notranslate">mapping</span> on the raw transcriptome</h2>
+<h2 id="remapping-on-the-raw-transcriptome">Remapping on the raw transcriptome</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-6" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-6"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
-    <li><strong>Align <span class="notranslate">reads</span> and estimate abundance</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Align reads and estimate abundance</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><em>“Transcripts”</em>: <code class="language-plaintext highlighter-rouge">transcriptome_raw.fasta</code></li>
         <li><em>“Paired or Single-end data?”</em>: <code class="language-plaintext highlighter-rouge">Paired</code>
           <ul>
-            <li><em>“Left/Forward strand <span class="notranslate">reads</span>”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
+            <li><em>“Left/Forward strand reads”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
               <ul>
                 <li>Click on the <em>Folder</em> button at the right
                   <ul>
@@ -1371,7 +1165,7 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
                 </li>
               </ul>
             </li>
-            <li><em>“Right/Reverse strand <span class="notranslate">reads</span>”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
+            <li><em>“Right/Reverse strand reads”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
               <ul>
                 <li>Click on the <em>Folder</em> button at the right
                   <ul>
@@ -1399,26 +1193,26 @@ Reverse Only Surviving: 456 (4.56%) Dropped: 249 (2.49%)
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-3" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-3"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-        <p>If you check at the Standard Error messages of your outputs. You can get the <code class="language-plaintext highlighter-rouge"><span class="notranslate">Mapping</span> rate</code></p>
+        <p>If you check at the Standard Error messages of your outputs. You can get the <code class="language-plaintext highlighter-rouge">Mapping rate</code></p>
         <ol>
           <li>Click on one dataset</li>
           <li>Click on the little <strong>i</strong> icon</li>
           <li>Click on <em>Tool Standard Error:	stderr</em>
-            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2019-11-14 15:44:21.500] [jointLog] [info] <span class="notranslate">Mapping</span> rate = 44.4358%
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2019-11-14 15:44:21.500] [jointLog] [info] Mapping rate = 44.4358%
 </code></pre></div>            </div>
           </li>
         </ol>
       </blockquote>
 
       <blockquote class="comment">
-        <div id="comment-4" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-4"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>At this stage, you can now delete some useless datasets</p>
         <ul>
           <li><code class="language-plaintext highlighter-rouge">Trimmomatic on collection XX: unpaired</code></li>
-          <li><code class="language-plaintext highlighter-rouge">Align <span class="notranslate">reads</span> and estimate abundance on *: genes counts</code>
+          <li><code class="language-plaintext highlighter-rouge">Align reads and estimate abundance on *: genes counts</code>
 Note that the dataset are just hidden. You can delete them permanently and make some room in the history options (the little wheel icon)</li>
         </ul>
       </blockquote>
@@ -1427,13 +1221,13 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 
 </blockquote>
 
-<h2 id="merge-the-mapping-tables-and-compute-normalizations">Merge the <span class="notranslate">mapping</span> tables and compute normalizations</h2>
+<h2 id="merge-the-mapping-tables-and-compute-normalizations">Merge the mapping tables and compute normalizations</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-7" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-7"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
-    <li><strong>Build <span class="notranslate">expression</span> matrix</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Build expression matrix</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><em>“Abundance estimates”</em>: <code class="language-plaintext highlighter-rouge">A1_raw</code>, <code class="language-plaintext highlighter-rouge">A2_raw</code>, <code class="language-plaintext highlighter-rouge">A3_raw</code>, <code class="language-plaintext highlighter-rouge">B1_raw</code>, <code class="language-plaintext highlighter-rouge">B2_raw</code>, <code class="language-plaintext highlighter-rouge">B3_raw</code></li>
         <li><em>“Abundance estimation method”</em>: <code class="language-plaintext highlighter-rouge">Salmon</code></li>
@@ -1444,17 +1238,17 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 </blockquote>
 
 <blockquote class="question">
-  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>What are the three tables?</p>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <ol>
-      <li><code class="language-plaintext highlighter-rouge">estimated <span class="notranslate">RNA</span>-Seq fragment isoform counts (raw counts)</code>`</li>
-      <li><code class="language-plaintext highlighter-rouge">matrix of isoform TPM <span class="notranslate">expression</span> values (not cross-sample normalized)</code></li>
-      <li><code class="language-plaintext highlighter-rouge">matrix of TMM-normalized <span class="notranslate">expression</span> values</code></li>
+      <li><code class="language-plaintext highlighter-rouge">estimated RNA-Seq fragment isoform counts (raw counts)</code>`</li>
+      <li><code class="language-plaintext highlighter-rouge">matrix of isoform TPM expression values (not cross-sample normalized)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">matrix of TMM-normalized expression values</code></li>
     </ol>
 
   </blockquote>
@@ -1464,12 +1258,12 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="compute-contig-ex90n50-statistic-and-ex90-transcript-count">Compute contig Ex90N50 statistic and Ex90 transcript count</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-8" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-8"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Compute contig Ex90N50 statistic and Ex90 transcript count</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“<span class="notranslate">Expression</span> matrix”</em>: <code class="language-plaintext highlighter-rouge">Build <span class="notranslate">expression</span> matrix: matrix of TMM-normalized <span class="notranslate">expression</span> values</code></li>
+        <li><em>“Expression matrix”</em>: <code class="language-plaintext highlighter-rouge">Build expression matrix: matrix of TMM-normalized expression values</code></li>
         <li><em>“Transcripts”</em>: <code class="language-plaintext highlighter-rouge">transcriptome_raw.fasta</code></li>
       </ul>
     </li>
@@ -1485,16 +1279,16 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 </blockquote>
 
 <h3 id="what-we-get">What we get</h3>
-<p><img src="../../images/full-de-novo/ExN50_plot_toy_dataset.png" alt="ExN50_plot_toy_dataset. " loading="lazy" /></p>
+<p><img src="../../images/full-de-novo/ExN50_plot_toy_dataset.png" alt="ExN50_plot_toy_dataset. " width="482" height="453" loading="lazy" /></p>
 
 <h3 id="what-we-should-get-with-a-real-dataset">What we should get with a real dataset</h3>
-<p><img src="../../images/full-de-novo/ExN50_plot.png" alt="ExN50_plot. " loading="lazy" />
+<p><img src="../../images/full-de-novo/ExN50_plot.png" alt="ExN50_plot. " width="500" height="423" loading="lazy" />
 <a href="https://github.com/trinityrnaseq/trinityrnaseq/wiki/Transcriptome-Contig-Nx-and-ExN50-stats">(source)</a></p>
 
 <h2 id="transcriptome-annotation-completeness">Transcriptome annotation completeness</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-9" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-9"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Busco</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1508,28 +1302,28 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 
 </blockquote>
 
-<p><img src="../../images/full-de-novo/rnaseq_samples_quality_check.png" alt="RNASeq samples quality check Graphs. " loading="lazy" /></p>
+<p><img src="../../images/full-de-novo/rnaseq_samples_quality_check.png" alt="RNASeq samples quality check Graphs. " width="1000" height="1000" loading="lazy" /></p>
 
-<h2 id="filter-low-expression-transcripts">Filter low <span class="notranslate">expression</span> transcripts</h2>
+<h2 id="filter-low-expression-transcripts">Filter low expression transcripts</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-10" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-10"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
-    <li><strong>Filter low <span class="notranslate">expression</span> transcripts</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Filter low expression transcripts</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><em>“Trinity assembly”</em>: <code class="language-plaintext highlighter-rouge">transcriptome_raw.fasta</code></li>
-        <li><em>“<span class="notranslate">Expression</span> matrix”</em>: <code class="language-plaintext highlighter-rouge">Build <span class="notranslate">expression</span> matrix: matrix of isoform TPM <span class="notranslate">expression</span> values (not cross-sample normalized)</code></li>
-        <li><em>“Minimum <span class="notranslate">expression</span> level required across any sample”</em>: <code class="language-plaintext highlighter-rouge">1.0</code></li>
-        <li><em>“Isoform filtering method”</em>: <code class="language-plaintext highlighter-rouge">Keep all isoforms above a minimum percent of dominant <span class="notranslate">expression</span></code>
+        <li><em>“Expression matrix”</em>: <code class="language-plaintext highlighter-rouge">Build expression matrix: matrix of isoform TPM expression values (not cross-sample normalized)</code></li>
+        <li><em>“Minimum expression level required across any sample”</em>: <code class="language-plaintext highlighter-rouge">1.0</code></li>
+        <li><em>“Isoform filtering method”</em>: <code class="language-plaintext highlighter-rouge">Keep all isoforms above a minimum percent of dominant expression</code>
           <ul>
-            <li><em>“Minimum percent of dominant isoform <span class="notranslate">expression</span>”</em>: <code class="language-plaintext highlighter-rouge">1</code></li>
+            <li><em>“Minimum percent of dominant isoform expression”</em>: <code class="language-plaintext highlighter-rouge">1</code></li>
           </ul>
         </li>
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-5" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-5"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>If you check at the Standard Error messages of your outputs. You can get the <code class="language-plaintext highlighter-rouge">Retained</code> rate</p>
         <ol>
@@ -1544,7 +1338,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
     </li>
     <li><strong>Rename</strong> the output
       <ul>
-        <li><code class="language-plaintext highlighter-rouge">Filter low <span class="notranslate">expression</span> transcripts on data 42 and data 14: filtered low <span class="notranslate">expression</span> transcripts</code> -&gt; <code class="language-plaintext highlighter-rouge">transcriptome_filtered.fasta</code></li>
+        <li><code class="language-plaintext highlighter-rouge">Filter low expression transcripts on data 42 and data 14: filtered low expression transcripts</code> -&gt; <code class="language-plaintext highlighter-rouge">transcriptome_filtered.fasta</code></li>
       </ul>
     </li>
   </ol>
@@ -1554,7 +1348,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="checking-of-the-assembly-statistics-after-cleaning">Checking of the assembly statistics after cleaning</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-11" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-11"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Trinity Statistics</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1570,7 +1364,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="generate-gene-to-transcript-map">Generate gene to transcript map</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-12" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-12"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Generate gene to transcript map</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1585,7 +1379,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="peptide-prediction">Peptide prediction</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-13" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-13"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>TransDecoder</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1605,7 +1399,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="similarity-search">Similarity search</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-14" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-14"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Diamond</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1628,7 +1422,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
     </li>
     <li><strong>Diamond</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“What do you want to align?”</em>: <code class="language-plaintext highlighter-rouge">Align <span class="notranslate">DNA</span> query sequences (blastx)</code></li>
+        <li><em>“What do you want to align?”</em>: <code class="language-plaintext highlighter-rouge">Align DNA query sequences (blastx)</code></li>
         <li><em>“Input query file in FASTA or FASTQ format”</em>: <code class="language-plaintext highlighter-rouge">transcriptome_filtered.fasta</code></li>
         <li><em>“Select a reference database”</em>: <code class="language-plaintext highlighter-rouge">Uniprot Swissprot</code></li>
         <li><em>“Format of output file”</em>: <code class="language-plaintext highlighter-rouge">BLAST Tabular</code></li>
@@ -1645,7 +1439,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-6" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-6"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>Note that you can both use <strong>Diamond</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> or the <strong>NCBI BLAST+ blastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> and <strong>NCBI BLAST+ blast</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></p>
       </blockquote>
@@ -1657,7 +1451,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="find-signal-peptides">Find signal peptides</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-15" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-15"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>SignalP 3.0</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1672,7 +1466,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="find-transmembrane-domains">Find transmembrane domains</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-16" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-16"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>TMHMM 2.0</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1687,7 +1481,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="search-again-profile-database">Search again profile database</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-17" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-17"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>hmmscan</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1702,7 +1496,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="transcriptome-annotation-using-trinotate">Transcriptome annotation using <strong>Trinotate</strong></h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-18" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-18"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Trinotate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1715,27 +1509,27 @@ Note that the dataset are just hidden. You can delete them permanently and make 
         <li><em>“HMMER hmmscan: Peptides vs PFAM”</em>: <code class="language-plaintext highlighter-rouge">Table of per-domain hits from HMM matches of TransDecoder on data XXX: pep against the profile database</code></li>
         <li><em>“TMHMM on Peptides”</em>: <code class="language-plaintext highlighter-rouge">TMHMM results</code></li>
         <li><em>“SignalP on Peptides”</em>: <code class="language-plaintext highlighter-rouge">SignalP euk results</code></li>
-        <li><em>“Let <span class="notranslate">Galaxy</span> downloading the Trinotate Pre-generated Resource SQLite database”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+        <li><em>“Let Galaxy downloading the Trinotate Pre-generated Resource SQLite database”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
       </ul>
     </li>
   </ol>
 
 </blockquote>
 
-<h1 id="differential-expression-de-analysis">Differential <span class="notranslate">Expression</span> (DE) Analysis</h1>
+<h1 id="differential-expression-de-analysis">Differential Expression (DE) Analysis</h1>
 
-<h2 id="remapping-on-the-filtered-transcriptome-using">Re<span class="notranslate">mapping</span> on the filtered transcriptome using</h2>
+<h2 id="remapping-on-the-filtered-transcriptome-using">Remapping on the filtered transcriptome using</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-19" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-19"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
-    <li><strong>Align <span class="notranslate">reads</span> and estimate abundance</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Align reads and estimate abundance</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><em>“Transcripts”</em>: <code class="language-plaintext highlighter-rouge">transcriptome_filtered.fasta</code></li>
         <li><em>“Paired or Single-end data?”</em>: <code class="language-plaintext highlighter-rouge">Paired</code>
           <ul>
-            <li><em>“Left/Forward strand <span class="notranslate">reads</span>”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
+            <li><em>“Left/Forward strand reads”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
               <ul>
                 <li>Click on the <em>Folder</em> button at the right
                   <ul>
@@ -1745,7 +1539,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
                 </li>
               </ul>
             </li>
-            <li><em>“Right/Reverse strand <span class="notranslate">reads</span>”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
+            <li><em>“Right/Reverse strand reads”</em> -&gt; <code class="language-plaintext highlighter-rouge">Multiple datasets</code>
               <ul>
                 <li>Click on the <em>Folder</em> button at the right
                   <ul>
@@ -1773,25 +1567,25 @@ Note that the dataset are just hidden. You can delete them permanently and make 
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-7" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-7"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
-        <p>If you check at the Standard Error messages of your outputs. You can get the <code class="language-plaintext highlighter-rouge"><span class="notranslate">Mapping</span> rate</code></p>
+        <p>If you check at the Standard Error messages of your outputs. You can get the <code class="language-plaintext highlighter-rouge">Mapping rate</code></p>
         <ol>
           <li>Click on one dataset</li>
           <li>Click on the little <strong>i</strong> icon</li>
           <li>Click on <em>Tool Standard Error:	stderr</em>
-            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2019-11-14 15:44:21.500] [jointLog] [info] <span class="notranslate">Mapping</span> rate = 44.4358%
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2019-11-14 15:44:21.500] [jointLog] [info] Mapping rate = 44.4358%
 </code></pre></div>            </div>
           </li>
         </ol>
       </blockquote>
 
       <blockquote class="comment">
-        <div id="comment-8" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-8"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p>At this stage, you can now delete some useless datasets</p>
         <ul>
-          <li><code class="language-plaintext highlighter-rouge">Align <span class="notranslate">reads</span> and estimate abundance on *: genes counts</code>
+          <li><code class="language-plaintext highlighter-rouge">Align reads and estimate abundance on *: genes counts</code>
 Note that the dataset are just hidden. You can delete them permanently and make some room in the history options (the little wheel icon)</li>
         </ul>
       </blockquote>
@@ -1800,13 +1594,13 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 
 </blockquote>
 
-<h2 id="merge-the-mapping-tables-and-compute-a-tmm-normalization">Merge the <span class="notranslate">mapping</span> tables and compute a TMM normalization</h2>
+<h2 id="merge-the-mapping-tables-and-compute-a-tmm-normalization">Merge the mapping tables and compute a TMM normalization</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-20" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-20"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
-    <li><strong>Build <span class="notranslate">expression</span> matrix</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Build expression matrix</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><em>“Abundance estimates”</em>: <code class="language-plaintext highlighter-rouge">A1</code>, <code class="language-plaintext highlighter-rouge">A2</code>, <code class="language-plaintext highlighter-rouge">A3</code>, <code class="language-plaintext highlighter-rouge">B1</code>, <code class="language-plaintext highlighter-rouge">B2</code>, <code class="language-plaintext highlighter-rouge">B3</code></li>
         <li><em>“Abundance estimation method”</em>: <code class="language-plaintext highlighter-rouge">Salmon</code></li>
@@ -1843,14 +1637,14 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 
 </blockquote>
 
-<h2 id="rnaseq-samples-quality-check"><span class="notranslate">RNA</span>Seq samples quality check</h2>
+<h2 id="rnaseq-samples-quality-check">RNASeq samples quality check</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-21" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-21"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
   <ol>
-    <li><strong><span class="notranslate">RNA</span>Seq samples quality check</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>RNASeq samples quality check</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“<span class="notranslate">Expression</span> matrix”</em>: <code class="language-plaintext highlighter-rouge">Build <span class="notranslate">expression</span> matrix: estimated <span class="notranslate">RNA</span>-Seq fragment isoform counts (raw counts)</code></li>
+        <li><em>“Expression matrix”</em>: <code class="language-plaintext highlighter-rouge">Build expression matrix: estimated RNA-Seq fragment isoform counts (raw counts)</code></li>
         <li><em>“Samples description”</em>: <code class="language-plaintext highlighter-rouge">Describe samples</code></li>
       </ul>
     </li>
@@ -1858,14 +1652,14 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 
 </blockquote>
 
-<h2 id="differential-expression-analysis">Differential <span class="notranslate">expression</span> analysis</h2>
+<h2 id="differential-expression-analysis">Differential expression analysis</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-22" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-22"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
   <ol>
-    <li><strong>Differential <span class="notranslate">expression</span> analysis</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Differential expression analysis</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li><em>“<span class="notranslate">Expression</span> matrix”</em>: <code class="language-plaintext highlighter-rouge">Build <span class="notranslate">expression</span> matrix: estimated <span class="notranslate">RNA</span>-Seq fragment isoform counts (raw counts)</code></li>
+        <li><em>“Expression matrix”</em>: <code class="language-plaintext highlighter-rouge">Build expression matrix: estimated RNA-Seq fragment isoform counts (raw counts)</code></li>
         <li><em>“Sample description”</em>: <code class="language-plaintext highlighter-rouge">Describe samples</code> (the last one)</li>
         <li><em>“Differential analysis method”</em>: <code class="language-plaintext highlighter-rouge">DESeq2</code></li>
       </ul>
@@ -1877,16 +1671,16 @@ Note that the dataset are just hidden. You can delete them permanently and make 
 <h2 id="extract-and-cluster-differentially-expressed-transcripts">Extract and cluster differentially expressed transcripts</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-23" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-23"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
     <li><strong>Extract and cluster differentially expressed transcripts</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li>In <em>“Additional Options”</em>:
           <ul>
-            <li><em>“<span class="notranslate">Expression</span> matrix”</em>: <code class="language-plaintext highlighter-rouge">Build <span class="notranslate">expression</span> matrix: estimated <span class="notranslate">RNA</span>-Seq fragment isoform counts (raw counts)</code></li>
+            <li><em>“Expression matrix”</em>: <code class="language-plaintext highlighter-rouge">Build expression matrix: estimated RNA-Seq fragment isoform counts (raw counts)</code></li>
             <li><em>“Sample description”</em>: <code class="language-plaintext highlighter-rouge">Describe samples</code></li>
-            <li><em>“Differential <span class="notranslate">expression</span> results”</em>: <code class="language-plaintext highlighter-rouge">Differential <span class="notranslate">expression</span> results on data XXX and data XXX</code></li>
+            <li><em>“Differential expression results”</em>: <code class="language-plaintext highlighter-rouge">Differential expression results on data XXX and data XXX</code></li>
             <li><em>“p-value cutoff for FDR”</em>: <code class="language-plaintext highlighter-rouge">1</code></li>
             <li><em>“Run GO enrichment analysis”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
           </ul>
@@ -1894,7 +1688,7 @@ Note that the dataset are just hidden. You can delete them permanently and make 
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-9" class="box-title" aria-label="comment box: "><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment</div>
+        <div class="box-title comment-title" id="comment-9"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
         <p><em>“p-value cutoff for FDR”</em>: <code class="language-plaintext highlighter-rouge">1</code>
 Don’t do this at home! It’s because we have a Toy Dataset. The cutoff should be around <code class="language-plaintext highlighter-rouge">0.001</code></p>
@@ -1904,13 +1698,13 @@ Don’t do this at home! It’s because we have a Toy Dataset. The cutoff should
 
 </blockquote>
 
-<h2 id="partition-genes-into-expression-clusters">Partition genes into <span class="notranslate">expression</span> clusters</h2>
+<h2 id="partition-genes-into-expression-clusters">Partition genes into expression clusters</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-task-description-24" class="box-title" aria-label="hands-on box: Task description"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Task description</div>
+  <div class="box-title hands-on-title" id="hands-on-task-description-24"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Task description</div>
 
   <ol>
-    <li><strong>Partition genes into <span class="notranslate">expression</span> clusters</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Partition genes into expression clusters</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li><em>“RData file”</em>: <code class="language-plaintext highlighter-rouge">Extract and cluster differentially expressed transcripts: RData file</code></li>
         <li><em>“Method for partitioning genes into clusters”</em>: <code class="language-plaintext highlighter-rouge">Cut tree based on x percent of max(height) of tree</code></li>
@@ -1925,10 +1719,12 @@ Don’t do this at home! It’s because we have a Toy Dataset. The cutoff should
 <p>Sum up the tutorial and the key takeaways here. We encourage adding an overview image of the
 pipeline used.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>The take-home messages</p>
@@ -1963,38 +1759,18 @@ pipeline used.</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=De novo transcriptome assembly, annotation, and differential expression analysis (Transcriptomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=De novo transcriptome assembly, annotation, and differential expression analysis (Transcriptomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Anthony Bretaudeau, Gildas Le Corguillé, Erwan Corre, Xi Liu,  <b>De novo transcriptome assembly, annotation, and differential expression analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Anthony Bretaudeau, Gildas Le Corguillé, Erwan Corre, Xi Liu,  <b>De novo transcriptome assembly, annotation, and differential expression analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2006,7 +1782,7 @@ pipeline used.</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -2015,28 +1791,31 @@ pipeline used.</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{transcriptomics-full-de-novo,
 author = "Anthony Bretaudeau and Gildas Le Corguillé and Erwan Corre and Xi Liu",
-title = "De novo transcriptome assembly, annotation, and differential expression analysis (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "De novo transcriptome assembly, annotation, and differential expression analysis (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/full-de-novo/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2044,11 +1823,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2057,49 +1836,154 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/transcriptomics/tutorials/full-de-novo/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: fastqc
+  owner: devteam
+  revisions: f2e8552cf1d0
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: describe_samples
+  owner: iuc
+  revisions: '0693ccd171c4'
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: multiqc
+  owner: iuc
+  revisions: e4574a4d09d8
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: transdecoder
+  owner: iuc
+  revisions: 0db979fead3a
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity
+  owner: iuc
+  revisions: c9cfec002f71
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_abundance_estimates_to_matrix
+  owner: iuc
+  revisions: d6a479fd4281
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_align_and_estimate_abundance
+  owner: iuc
+  revisions: 478f36effca1
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_analyze_diff_expr
+  owner: iuc
+  revisions: fab23c3b5258
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_contig_exn50_statistic
+  owner: iuc
+  revisions: 34a018cbee9c
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_define_clusters_by_cutting_tree
+  owner: iuc
+  revisions: 33406f5a445c
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_filter_low_expr_transcripts
+  owner: iuc
+  revisions: e406ac71165d
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_run_de_analysis
+  owner: iuc
+  revisions: 1d689e4e1caf
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinity_samples_qccheck
+  owner: iuc
+  revisions: 9871104ea630
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trinotate
+  owner: iuc
+  revisions: 6fd16fad465d
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: trimmomatic
+  owner: pjbriggs
+  revisions: f8a9a5eaca8a
+  tool_panel_section_label: Transcriptomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00290">https://gxy.io/GTN:T00290</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/full-de-novo/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

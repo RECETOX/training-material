@@ -1,7 +1,9 @@
 {
   "layout": "tutorial_hands_on",
   "title": "Protein FASTA Database Handling",
-  "edam_ontology": "topic_0121",
+  "edam_ontology": [
+    "topic_0121"
+  ],
   "zenodo_link": "",
   "level": "Introductory",
   "questions": [
@@ -26,26 +28,158 @@
       "email": "sigloch+github@mailbox.org",
       "joined": "2017-09",
       "id": "stortebecker",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/stortebecker.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/stortebecker.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/stortebecker/"
     },
     {
       "name": "Björn Grüning",
       "email": "bjoern.gruening@gmail.com",
       "twitter": "bjoerngruening",
-      "gitter": "bgruening",
+      "fediverse": "https://fosstodon.org/@bgruening",
+      "fediverse_flavor": "mastodon",
+      "matrix": "bgruening:matrix.org",
       "orcid": "0000-0002-3079-6586",
       "linkedin": "bgruening",
       "joined": "2017-09",
       "elixir_node": "de",
       "id": "bgruening",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/bgruening.json"
+      "url": "https://training.galaxyproject.org/training-material/api/contributors/bgruening.json",
+      "page": "https://training.galaxyproject.org/training-material/hall-of-fame/bgruening/"
     }
   ],
   "subtopic": "id-quant",
   "tags": [
     "DDA"
   ],
+  "short_id": "T00214",
   "url": "/topics/proteomics/tutorials/database-handling/tutorial.html",
   "topic_name": "proteomics",
-  "tutorial_name": "database-handling"
+  "tutorial_name": "database-handling",
+  "dir": "topics/proteomics/tutorials/database-handling",
+  "id": "proteomics/database-handling",
+  "video_library": {
+    "tutorial": null,
+    "slides": null,
+    "demo": null,
+    "both": null,
+    "session": null
+  },
+  "hands_on": true,
+  "slides": false,
+  "workflows": [
+    {
+      "workflow": "wf_database-handling.ga",
+      "tests": false,
+      "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/database-handling/workflows/wf_database-handling.ga",
+      "path": "topics/proteomics/tutorials/database-handling/workflows/wf_database-handling.ga",
+      "wfid": "proteomics-database-handling",
+      "wfname": "wf_database-handling",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/proteomics-database-handling/versions/wf_database-handling",
+      "license": null,
+      "creators": [
+
+      ],
+      "test_results": null
+    },
+    {
+      "workflow": "wf_database-handling_mycoplasma.ga",
+      "tests": false,
+      "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/database-handling/workflows/wf_database-handling_mycoplasma.ga",
+      "path": "topics/proteomics/tutorials/database-handling/workflows/wf_database-handling_mycoplasma.ga",
+      "wfid": "proteomics-database-handling",
+      "wfname": "wf_database-handling_mycoplasma",
+      "trs_endpoint": "https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/proteomics-database-handling/versions/wf_database-handling_mycoplasma",
+      "license": null,
+      "creators": [
+
+      ],
+      "test_results": null
+    }
+  ],
+  "api": "https://training.galaxyproject.org/training-material/api/topics/proteomics/tutorials/database-handling/tutorial.json",
+  "tools": [
+    "addValue",
+    "toolshed.g2.bx.psu.edu/repos/devteam/fasta_to_tabular/fasta2tab/1.1.1",
+    "toolshed.g2.bx.psu.edu/repos/devteam/tabular_to_fasta/tab2fasta/1.1.1",
+    "toolshed.g2.bx.psu.edu/repos/galaxyp/dbbuilder/dbbuilder/0.3.1",
+    "toolshed.g2.bx.psu.edu/repos/galaxyp/fasta_merge_files_and_filter_unique_sequences/fasta_merge_files_and_filter_unique_sequences/1.2.0",
+    "toolshed.g2.bx.psu.edu/repos/galaxyp/openms_decoydatabase/DecoyDatabase/2.6+galaxy0"
+  ],
+  "supported_servers": {
+    "exact": [
+      {
+        "url": "https://usegalaxy.eu",
+        "name": "UseGalaxy.eu",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org.au",
+        "name": "UseGalaxy.org.au",
+        "usegalaxy": "true"
+      }
+    ],
+    "inexact": [
+      {
+        "url": "https://usegalaxy.no/",
+        "name": "UseGalaxy.no",
+        "usegalaxy": "true"
+      }
+    ]
+  },
+  "topic_name_human": "Proteomics",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "fasta_to_tabular",
+        "owner": "devteam",
+        "revisions": "e7ed3c310b74",
+        "tool_panel_section_label": "Proteomics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "tabular_to_fasta",
+        "owner": "devteam",
+        "revisions": "0a7799698fe5",
+        "tool_panel_section_label": "Proteomics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "dbbuilder",
+        "owner": "galaxyp",
+        "revisions": "c1b437242fee",
+        "tool_panel_section_label": "Proteomics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "fasta_merge_files_and_filter_unique_sequences",
+        "owner": "galaxyp",
+        "revisions": "f546e7278f04",
+        "tool_panel_section_label": "Proteomics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "openms_decoydatabase",
+        "owner": "galaxyp",
+        "revisions": "370141bc0da3",
+        "tool_panel_section_label": "Proteomics",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: fasta_to_tabular\n  owner: devteam\n  revisions: e7ed3c310b74\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: tabular_to_fasta\n  owner: devteam\n  revisions: 0a7799698fe5\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: dbbuilder\n  owner: galaxyp\n  revisions: c1b437242fee\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fasta_merge_files_and_filter_unique_sequences\n  owner: galaxyp\n  revisions: f546e7278f04\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: openms_decoydatabase\n  owner: galaxyp\n  revisions: 370141bc0da3\n  tool_panel_section_label: Proteomics\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial"
 }

@@ -1,41 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Pangeo ecosystem 101 for everyone</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/climate/tutorials/pangeo/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Pangeo ecosystem 101 for everyone">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-02-28 20:47:27 +0000">
+<meta name="DC.creator" content="Anne Fouilloux">
+<meta name="DC.creator" content="Ryan Abernathey">
 
+        
+        
+        
+        
+        <meta name="description" content="Learn to analyze climate data through Galaxy." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Pangeo ecosystem 101 for everyone" />
+        <meta property="og:description" content="Learn to analyze climate data through Galaxy." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Pangeo ecosystem 101 for everyone</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Learn to analyze climate data through Galaxy." />
-    <meta property="og:title" content="Galaxy Training: Pangeo ecosystem 101 for everyone" />
-    <meta property="og:description" content="Learn to analyze climate data through Galaxy." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/climate/tutorials/pangeo/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -86,6 +115,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -113,6 +146,7 @@
   "name": "Slides for 'Pangeo ecosystem 101 for everyone' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/climate/tutorials/pangeo/slides.html",
   "timeRequired": "PT15M",
+  "teaches": "Understand Pangeo, its community and software ecosystem\n - Learn how to use Pangeo within Galaxy.\n - Learn to cite and support Pangeo.",
   "keywords": "climate, climate",
   "description": "The questions this  addresses are:\n - What are Pangeo and its ecosystem?\n - Why Pangeo?\n - What is the Pangeo Software Ecosystem?\n - How can I use Pangeo in Galaxy?\n - How to cite and support Pangeo?\n\n\nThe objectives are:\n - Understand Pangeo, its community and software ecosystem\n - Learn how to use Pangeo within Galaxy.\n - Learn to cite and support Pangeo.\n\n",
   "inLanguage": {
@@ -140,34 +174,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/annefou/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/annefou/",
       "name": "Anne Fouilloux",
       "image": "https://avatars.githubusercontent.com/annefou",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/rabernat/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/rabernat/",
-      "name": "Ryan Abernathey",
-      "image": "https://avatars.githubusercontent.com/rabernat",
       "description": "A contributor to the GTN project.",
       "memberOf": [
         {
@@ -177,38 +190,15 @@
           "url": "https://galaxyproject.org/teach/gtn/"
         }
       ],
-      "identifier": "https://orcid.org/0000-0001-5999-4917",
-      "orcid": "https://orcid.org/0000-0001-5999-4917"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/annefou/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/annefou/",
-      "name": "Anne Fouilloux",
-      "image": "https://avatars.githubusercontent.com/annefou",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      "identifier": "https://orcid.org/0000-0002-1784-2920",
+      "orcid": "https://orcid.org/0000-0002-1784-2920"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/rabernat/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/rabernat/",
@@ -234,12 +224,22 @@
       "description": "Learn to analyze climate data through Galaxy.",
       "url": "https://training.galaxyproject.org/training-material/topics/climate/"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "climate"
+    }
+  ],
+  "abstract": "## Pangeo in a nutshell"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -262,7 +262,7 @@ class: center, middle, inverse
 
 
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" class="cover-logo"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
 
 
 # Pangeo ecosystem 101 for everyone
@@ -271,22 +271,17 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="https://avatars.githubusercontent.com/annefou?s=27" alt="Avatar">Anne Fouilloux</a>
-
-
-
-<a href="/training-material/hall-of-fame/rabernat/" class="contributor-badge contributor-rabernat"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/rabernat?s=27" alt="Avatar">Ryan Abernathey</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/annefou?s=36" alt="Avatar" width="36" height="36">Anne Fouilloux</a><a href="/training-material/hall-of-fame/rabernat/" class="contributor-badge contributor-rabernat"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/rabernat?s=36" alt="Avatar" width="36" height="36">Ryan Abernathey</a>
 	</div>
 
 </div>
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00038">gxy.io/GTN:S00038</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -544,15 +539,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="https://avatars.githubusercontent.com/annefou?s=27" alt="Avatar">Anne Fouilloux</a>
-
-
-
-<a href="/training-material/hall-of-fame/rabernat/" class="contributor-badge contributor-rabernat"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/rabernat?s=27" alt="Avatar">Ryan Abernathey</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/annefou/" class="contributor-badge contributor-annefou"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/annefou?s=36" alt="Avatar" width="36" height="36">Anne Fouilloux</a><a href="/training-material/hall-of-fame/rabernat/" class="contributor-badge contributor-rabernat"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/rabernat?s=36" alt="Avatar" width="36" height="36">Ryan Abernathey</a>
 	</div>
 
 </div>
@@ -560,7 +547,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 
 <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 </div>
@@ -570,10 +557,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -585,7 +572,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -597,6 +584,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

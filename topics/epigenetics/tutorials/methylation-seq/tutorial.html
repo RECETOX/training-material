@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="DNA Methylation data analysis" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-09-28 13:44:21 +0000" />
-<meta name="DC.creator" content="Joachim Wolff" />
-<meta name="DC.creator" content="Devon Ryan" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="DNA methylation is an epigenetic mechanism used by higher..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: DNA Methylation data analysis" />
-        <meta property="og:description" content="DNA methylation is an epigenetic mechanism used by higher..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/epigenetics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Epigenetics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/epigenetics/tutorials/methylation-seq/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/epigenetics/tutorials/methylation-seq/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/epigenetics/tutorials/methylation-seq/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/epigenetics/tutorials/methylation-seq/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/epigenetics/tutorials/methylation-seq/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/epigenetics/tutorials/methylation-seq/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/epigenetics/faqs/" title="Check our FAQs for the Epigenetics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/epigenetics/tutorials/methylation-seq/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/epigenetics/tutorials/methylation-seq/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/epigenetics/tutorials/methylation-seq/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/epigenetics/tutorials/methylation-seq/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="DNA Methylation data analysis">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-25 11:53:18 +0000">
+<meta name="DC.creator" content="Joachim Wolff">
+<meta name="DC.creator" content="Devon Ryan">
+
+        
+        
+        
+        
+        <meta name="description" content="DNA methylation is an epigenetic mechanism used by higher...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: DNA Methylation data analysis">
+        <meta property="og:description" content="DNA methylation is an epigenetic mechanism used by higher...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -278,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-28 13:44:21 +0000",
+  "dateModified": "2023-05-25 11:53:18 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "DNA Methylation data analysis",
   "interactivityType": "mixed",
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'DNA Methylation data analysis' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Learn how to analyse methylation data\n - Get a first intuition what are common pitfalls.",
   "keywords": "epigenetics",
   "description": "The questions this  addresses are:\n - What is methylation and why it cannot be recognised by a normal NGS procedure?\n - Can a different methylation influence the expression of a gene? How?\n - Which tools you can use to analyse methylation data?\n\n\nThe objectives are:\n - Learn how to analyse methylation data\n - Get a first intuition what are common pitfalls.\n\n",
   "inLanguage": {
@@ -418,8 +239,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/",
@@ -439,52 +260,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dpryan79/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dpryan79/",
-      "name": "Devon Ryan",
-      "image": "https://avatars.githubusercontent.com/dpryan79",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/joachimwolff/",
-      "name": "Joachim Wolff",
-      "image": "https://avatars.githubusercontent.com/joachimwolff",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/dpryan79/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/dpryan79/",
@@ -515,35 +292,209 @@
       "termCode": "topic_3173",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3173"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-epigenetics">
+  ],
+  "abstract": "> <div class="box-title agenda-title" id="agenda">Agenda</div>"
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/epigenetics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Epigenetics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/epigenetics/faqs/" title="Check our FAQs for the Epigenetics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/epigenetics/tutorials/methylation-seq/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/epigenetics/tutorials/methylation-seq/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/epigenetics/tutorials/methylation-seq/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/epigenetics/tutorials/methylation-seq/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-epigenetics">
     <h1 data-toc-skip>DNA Methylation data analysis</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/joachimwolff/" class="contributor-badge contributor-joachimwolff"><img src="https://avatars.githubusercontent.com/joachimwolff?s=27" alt="Avatar">Joachim Wolff</a>
-
-
-
-<a href="/training-material/hall-of-fame/dpryan79/" class="contributor-badge contributor-dpryan79"><img src="https://avatars.githubusercontent.com/dpryan79?s=27" alt="Avatar">Devon Ryan</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/joachimwolff/" class="contributor-badge contributor-joachimwolff"><img src="https://avatars.githubusercontent.com/joachimwolff?s=36" alt="Avatar" width="36" height="36">Joachim Wolff</a><a href="/training-material/hall-of-fame/dpryan79/" class="contributor-badge contributor-dpryan79"><img src="https://avatars.githubusercontent.com/dpryan79?s=36" alt="Avatar" width="36" height="36">Devon Ryan</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -595,6 +546,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -612,6 +565,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -655,17 +610,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/epigenetics/slides/introduction-dna-methylation.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/557099">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -675,34 +626,24 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/epigenetics/tutorials/methylation-seq/workflows/" title="Workflows" alt="DNA Methylation data analysis workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/epigenetics/tutorials/methylation-seq/workflows/" title="DNA Methylation data analysis workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
             
 
             
-                <li class="btn btn-default supporting_material">
-<a class="topic-icon" href="https://github.com/galaxyproject/training-material/tree/main/topics/epigenetics/tutorials/methylation-seq/tours/" title="Galaxy interactive tour" >
-    <i class="fas fa-magic" aria-hidden="true"></i> Tours
-</a>
-
-</li>
-            
 
             
 
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/epigenetics/tutorials/methylation-seq/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/epigenetics/tutorials/methylation-seq/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -728,198 +669,97 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.hyphy.org/" title="">
+			HyPhy HIV NGS Tools
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/epigenetics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 25, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00142">https://gxy.io/GTN:T00142</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -930,63 +770,85 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda-1">Agenda</div>
 
-  <p>In this tutorial we will do:</p>
+  <p>In this tutorial, we will deal with:</p>
 
-  <ol>
-    <li>quality control</li>
-    <li>alignment</li>
-    <li>methylation extraction</li>
-    <li>visualization of methylation levels</li>
-    <li>differentially methylated regions analysis</li>
-  </ol>
-
-  <p>We will use a small subset of the original data. If we would do the computation on the orginal data the computation time for a tutorial is too long. To show you all necessary steps for Methyl-Seq we decided to use a subset of the data set. In a second step we use precomputed data from the study to show you different levels of methylation. We will consider samples from normal breast cells (NB), fibroadenoma (noncancerous breast tumor, BT089), two invasive ductal carcinomas (BT126, BT198) and a breast adenocarcinoma cell line (MCF7).</p>
+<ol id="markdown-toc">
+  <li><a href="#data-upload" id="markdown-toc-data-upload">Data upload</a></li>
+  <li><a href="#quality-control" id="markdown-toc-quality-control">Quality Control</a></li>
+  <li><a href="#alignment" id="markdown-toc-alignment">Alignment</a></li>
+  <li><a href="#methylation-bias-and-metric-extraction" id="markdown-toc-methylation-bias-and-metric-extraction">Methylation bias and metric extraction</a></li>
+  <li><a href="#visualization" id="markdown-toc-visualization">Visualization</a></li>
+  <li><a href="#metilene" id="markdown-toc-metilene">Metilene</a></li>
+</ol>
 
 </blockquote>
 
+<p>We will use a small subset of the original data. If we would do the computation on the orginal data the computation time for a tutorial is too long. To show you all necessary steps for Methyl-Seq we decided to use a subset of the data set. In a second step we use precomputed data from the study to show you different levels of methylation. We will consider samples from normal breast cells (NB), fibroadenoma (noncancerous breast tumor, BT089), two invasive ductal carcinomas (BT126, BT198) and a breast adenocarcinoma cell line (MCF7).</p>
+
 <p>This tutorial is based off of <span class="citation"><a href="#Lin2015">Lin <i>et al.</i> 2015</a></span>. The data we use in this tutorial is available at <a href="https://zenodo.org/record/557099">Zenodo</a>.</p>
 
-<h1 id="load-data-and-quality-control">Load data and quality control</h1>
-<blockquote class="notranslate hands_on">
-  <div id="hands-on-get-the-data-and-look-at-the-quality" class="box-title" aria-label="hands-on box: Get the data and look at the quality"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Get the data and look at the quality</div>
+<h1 id="data-upload">Data upload</h1>
 
-  <p>We load now the example dataset which will be used for the tutorial.</p>
+<p>We will start by loading the example dataset which will be used for the tutorial into Galaxy</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-get-the-data-into-galaxy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Get the data into Galaxy</div>
 
   <ol>
     <li>
-      <p>Load the two example datasets from our data library: subset_1.fastq.gz and subset_2.fastq.gz.</p>
+      <p>Create a new history</p>
 
-      <blockquote class="tip">
-        <div id="tip-get-data-from-the-library" class="box-title"><button type="button" aria-controls="tip-get-data-from-the-library-contents" aria-expanded="true" aria-label="Toggle tip box: Get data from the library"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Get data from the library<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-
-        <ul>
-          <li>Click on <code class="language-plaintext highlighter-rouge">Shared Data</code> –&gt; <code class="language-plaintext highlighter-rouge">Data Libraries</code> and here <code class="language-plaintext highlighter-rouge">MethylSeq_2017</code></li>
-          <li>Select the uploaded datasets <code class="language-plaintext highlighter-rouge">subset_1.fastq.gz</code> and <code class="language-plaintext highlighter-rouge">subset_2.fastq.gz</code> as the fastq files</li>
-        </ul>
-      </blockquote>
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
-      <p>Quality control</p>
+      <p>Import the two example datasets from Zenodo or the shared data library:</p>
 
-      <blockquote class="tip">
-        <div id="tip-search-for-tools" class="box-title"><button type="button" aria-controls="tip-search-for-tools-contents" aria-expanded="true" aria-label="Toggle tip box: Search for tools"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Search for tools<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/557099/files/subset_1.fastq
+https://zenodo.org/record/557099/files/subset_2.fastq
+</code></pre></div>      </div>
 
-        <ul>
-          <li><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:</li>
-          <li>Select the uploaded datasets <code class="language-plaintext highlighter-rouge">subset_1.fastq.gz</code> and <code class="language-plaintext highlighter-rouge">subset_2.fastq.gz</code> as the fastq files</li>
-        </ul>
-      </blockquote>
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-data-from-a-data-library"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-data-from-a-data-library" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing data from a data library<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>As an alternative to uploading the data from a URL or your computer, the files may also have been made available from a <em>shared data library</em>:</p>   <ol>   <li>Go into <strong>Shared data</strong> (top panel) then <strong>Data libraries</strong></li>   <li>Navigate to  the correct folder as indicated by your instructor.     <ul>       <li>On most Galaxies tutorial data will be provided in a folder named <strong>GTN - Material –&gt; Topic Name -&gt; Tutorial Name</strong>.</li>     </ul>   </li>   <li>Select the desired files</li>   <li>Click on <strong>Add to History</strong> <i class="fas fa-caret-down" aria-hidden="true"></i><span class="visually-hidden">galaxy-dropdown</span> near the top and select <strong>as Datasets</strong> from the dropdown menu</li>   <li>     <p>In the pop-up window, choose</p>     <ul>       <li><em>“Select history”</em>: the history you want to import the data to (or create a new one)</li>     </ul>   </li>   <li>Click on <strong>Import</strong></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
+    </li>
+  </ol>
+
+</blockquote>
+
+<h1 id="quality-control">Quality Control</h1>
+
+<p>The first step in any analysis should always be quality control. We will use the FastQC tool to asses the quality of our reads and determine if we need to perform any data cleaning before proceeding with our analysis.</p>
+
+<blockquote class="notranslate hands_on">
+  <div class="box-title hands-on-title" id="hands-on-quality-control"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Quality Control</div>
+
+  <ol>
+    <li><strong>FastQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+      <ul>
+        <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Raw read data from your current history”</em>:  <code class="language-plaintext highlighter-rouge">subset_1.fastq.gz</code> and <code class="language-plaintext highlighter-rouge">subset_2.fastq.gz</code></li>
+      </ul>
+
+      <!--SNIPPET-->
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-select-multiple-datasets"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-select-multiple-datasets" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Select multiple datasets<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <strong>Multiple datasets</strong></li>   <li>Select several files by keeping the <kbd>Ctrl</kbd> (or <kbd>COMMAND</kbd>) key pressed and clicking on the files of interest</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Go to the web page result page and have a closer look at ‘Per base sequence content’</p>
 
-      <p><img src="../../images/fastqc.png" alt="FastQC webpage results. " loading="lazy" /></p>
+      <p><img src="../../images/fastqc.png" alt="FastQC webpage results. " width="1065" height="771" loading="lazy" /></p>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>Note the GC distribution and percentage of “T” and “C”. Why is this so weird?</li>
@@ -994,7 +856,7 @@
         </ol>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The attentive audience of the theory part knows: Every C-meth stays a C and every normal C becomes a T during the bisulfite conversion.</li>
             <li>Yes it is. Always be careful and have the specific characteristics of your data in mind during the interpretation of FastQC results.</li>
@@ -1009,7 +871,7 @@
 <h1 id="alignment">Alignment</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-mapping-with-bwameth" class="box-title" aria-label="hands-on box: Mapping with bwameth"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> with bwameth</div>
+  <div class="box-title hands-on-title" id="hands-on-mapping-with-bwameth"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Mapping with bwameth</div>
 
   <p>We will map now the imported dataset against a reference genome.</p>
 
@@ -1022,12 +884,12 @@ Compute now the alignment. Please notice that depending on your system this comp
       </ul>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>Why we need other alignment tools for bisulfite sequencing data?</p>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>You may have noticed that all the C’s are C-meth’s and a T can be a T or a C. A mapper for methylation data needs to find out what is what.</p>
         </blockquote>
       </blockquote>
@@ -1039,7 +901,7 @@ Compute now the alignment. Please notice that depending on your system this comp
 <h1 id="methylation-bias-and-metric-extraction">Methylation bias and metric extraction</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-methylation-bias" class="box-title" aria-label="hands-on box: Methylation bias"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Methylation bias</div>
+  <div class="box-title hands-on-title" id="hands-on-methylation-bias"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Methylation bias</div>
 
   <p>In this step we will have a look at the distribution of the methylation and will look at a possible bias.</p>
 
@@ -1052,10 +914,10 @@ Compute now the alignment. Please notice that depending on your system this comp
         <li>Set the parameters <code class="language-plaintext highlighter-rouge">By default, if only one read in a pair aligns (a singleton) then it's ignored.</code> and <code class="language-plaintext highlighter-rouge">By default, paired-end alignments with the properly-paired bit unset in the FLAG field are ignored. Note that the definition of concordant and discordant is based on your aligner settings.</code> to <code class="language-plaintext highlighter-rouge">Yes</code>.</li>
       </ul>
 
-      <p><img src="../../images/methylation_bias_example_data.png" alt="Methylation bias example. " loading="lazy" /></p>
+      <p><img src="../../images/methylation_bias_example_data.png" alt="Methylation bias example. " width="660" height="660" loading="lazy" /></p>
 
       <blockquote class="question">
-        <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>Consider the <code class="language-plaintext highlighter-rouge">original top strand</code> output. Is there a methylation bias?</li>
@@ -1063,10 +925,10 @@ Compute now the alignment. Please notice that depending on your system this comp
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>The distribution of the methylation is more or less equal. Only at the start and the end we could trim a bit but a +- 5% variation is acceptable.</li>
-            <li>To trim the <span class="notranslate">reads</span> we would include for the first strand only the positions 0 to 145, for the second 6 to 149.</li>
+            <li>To trim the reads we would include for the first strand only the positions 0 to 145, for the second 6 to 149.</li>
           </ol>
         </blockquote>
       </blockquote>
@@ -1076,7 +938,7 @@ Compute now the alignment. Please notice that depending on your system this comp
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-methylation-extraction-with-methyldackel" class="box-title" aria-label="hands-on box: Methylation extraction with MethylDackel"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Methylation extraction with MethylDackel</div>
+  <div class="box-title hands-on-title" id="hands-on-methylation-extraction-with-methyldackel"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Methylation extraction with MethylDackel</div>
 
   <p>We will extract the methylation on the resulting BAM file of the alignment step. We need this to create a methylation level plot in the next step.</p>
 
@@ -1098,18 +960,18 @@ Compute now the alignment. Please notice that depending on your system this comp
 <h1 id="visualization">Visualization</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on" class="box-title" aria-label="hands-on box: "><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
-  <p>In this step we want to visualize the methylation level around all TSS of our data. When located at gene promoters, <span class="notranslate">DNA</span> methylation is usually a repressive mark.</p>
+  <p>In this step we want to visualize the methylation level around all TSS of our data. When located at gene promoters, DNA methylation is usually a repressive mark.</p>
 
   <ol>
-    <li><strong>Wig/<span class="notranslate">Bed</span>Graph-to-bigWig</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Wig/BedGraph-to-bigWig</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li>
           <p>Use the result of MethylDackel to transform it to a bigWig file.</p>
 
           <blockquote class="tip">
-            <div id="tip-database-edit" class="box-title"><button type="button" aria-controls="tip-database-edit-contents" aria-expanded="true" aria-label="Toggle tip box: Database edit"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Database edit<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+            <div class="box-title tip-title" id="tip-database-edit"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-database-edit" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Database edit<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
             <p>It can happen that you can not select the correct input file. In this case you have to add meta information about the used genome to the file.</p>
             <ul>
@@ -1123,7 +985,7 @@ Compute now the alignment. Please notice that depending on your system this comp
     </li>
     <li><strong>computeMatrix</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
-        <li>Use the file <code class="language-plaintext highlighter-rouge">CpGIslands.<span class="notranslate">bed</span></code>as <code class="language-plaintext highlighter-rouge">Regions to plot</code> and the in the previous step created bigwig file as the <code class="language-plaintext highlighter-rouge">score file</code>.</li>
+        <li>Use the file <code class="language-plaintext highlighter-rouge">CpGIslands.bed</code>as <code class="language-plaintext highlighter-rouge">Regions to plot</code> and the in the previous step created bigwig file as the <code class="language-plaintext highlighter-rouge">score file</code>.</li>
         <li>Use for the option <code class="language-plaintext highlighter-rouge">computeMatrix has two main output options</code> the value <code class="language-plaintext highlighter-rouge">reference-point</code>.</li>
       </ul>
     </li>
@@ -1136,45 +998,45 @@ Compute now the alignment. Please notice that depending on your system this comp
 
   <p>The output should look like this:</p>
 
-  <p><img src="../../images/methylation_output.png" alt="Methylation output. " loading="lazy" /></p>
+  <p><img src="../../images/methylation_output.png" alt="Methylation output. " width="866" height="551" loading="lazy" /></p>
 
   <p>Lets see how the methylation looks for a few provided files:</p>
   <ol>
-    <li><strong><span class="notranslate">Galaxy</span></strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Import the files <code class="language-plaintext highlighter-rouge">NB1_CpG.meth.<span class="notranslate">bed</span>Graph</code> from the data library</li>
-    <li><strong>Wig/<span class="notranslate">Bed</span>Graph-to-bigWig</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
+    <li><strong>Galaxy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Import the files <code class="language-plaintext highlighter-rouge">NB1_CpG.meth.bedGraph</code> from the data library</li>
+    <li><strong>Wig/BedGraph-to-bigWig</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
       <ul>
         <li>Use the imported file to transform it to a bigWig file.</li>
       </ul>
 
       <blockquote class="question">
-        <div id="question-3" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-3"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>The execution fails. Do you have an idea why?</p>
 
         <blockquote class="solution">
-          <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>A conversion to bigWig would fail right now, probably with some error message like <code class="language-plaintext highlighter-rouge">hashMustFindVal: '1' not found</code>. The reason is the source of the reference genome which was used. There is ensembl and UCSC as sources which differ in naming the chromosomes. Ensembl is using just numbers e.g. 1 for chromosome one. UCSC is using chr1 for the same. Be careful with this especially if you have data from different sources. We need to convert this.</p>
         </blockquote>
       </blockquote>
 
       <blockquote class="comment">
-        <div id="comment-ucsc-ensembl-convert" class="box-title" aria-label="comment box: UCSC - Ensembl convert"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: UCSC - Ensembl convert</div>
+        <div class="box-title comment-title" id="comment-ucsc-ensembl-convert"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: UCSC - Ensembl convert</div>
 
         <ul>
-          <li>Download the <code class="language-plaintext highlighter-rouge">Replace information file</code> for hg38 chromosome: <a href="https://raw.githubusercontent.com/dpryan79/ChromosomeMappings/master/GRCh38_ensembl2UCSC.txt">Download</a> and import it to <span class="notranslate">Galaxy</span>.</li>
+          <li>Download the <code class="language-plaintext highlighter-rouge">Replace information file</code> for hg38 chromosome: <a href="https://raw.githubusercontent.com/dpryan79/ChromosomeMappings/master/GRCh38_ensembl2UCSC.txt">Download</a> and import it to Galaxy.</li>
           <li><strong>Replace column</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>:
             <ul>
-              <li>Choose for <code class="language-plaintext highlighter-rouge">File in which you want to replace some values</code> the previous used <code class="language-plaintext highlighter-rouge">NB1_CpG.meth.<span class="notranslate">bed</span>Graph</code> file and for <code class="language-plaintext highlighter-rouge">Replace information file</code>  conversion file. For <code class="language-plaintext highlighter-rouge">Which column should be replaced?</code> choose <code class="language-plaintext highlighter-rouge">Column: 1</code>, for <code class="language-plaintext highlighter-rouge">Skip this many starting lines</code> a <code class="language-plaintext highlighter-rouge">1</code> and for <code class="language-plaintext highlighter-rouge">Delimited by</code> <code class="language-plaintext highlighter-rouge">Tab</code>.</li>
+              <li>Choose for <code class="language-plaintext highlighter-rouge">File in which you want to replace some values</code> the previous used <code class="language-plaintext highlighter-rouge">NB1_CpG.meth.bedGraph</code> file and for <code class="language-plaintext highlighter-rouge">Replace information file</code>  conversion file. For <code class="language-plaintext highlighter-rouge">Which column should be replaced?</code> choose <code class="language-plaintext highlighter-rouge">Column: 1</code>, for <code class="language-plaintext highlighter-rouge">Skip this many starting lines</code> a <code class="language-plaintext highlighter-rouge">1</code> and for <code class="language-plaintext highlighter-rouge">Delimited by</code> <code class="language-plaintext highlighter-rouge">Tab</code>.</li>
             </ul>
           </li>
         </ul>
       </blockquote>
     </li>
-    <li>To save compute time we prepared the converted files for you. Import the files: <code class="language-plaintext highlighter-rouge">NB1_CpG.meth_ucsc.<span class="notranslate">bed</span>Graph</code>, <code class="language-plaintext highlighter-rouge">NB2_CpG.meth_ucsc.<span class="notranslate">bed</span>Graph</code>, <code class="language-plaintext highlighter-rouge">BT089_CpG.meth_ucsc.<span class="notranslate">bed</span>Graph</code>, <code class="language-plaintext highlighter-rouge">BT126_CpG.meth_ucsc.<span class="notranslate">bed</span>Graph</code>, <code class="language-plaintext highlighter-rouge">BT198_CpG.meth_ucsc.<span class="notranslate">bed</span>Graph</code> and <code class="language-plaintext highlighter-rouge">MCF7_CpG.meth_ucsc.<span class="notranslate">bed</span>graph</code>.</li>
+    <li>To save compute time we prepared the converted files for you. Import the files: <code class="language-plaintext highlighter-rouge">NB1_CpG.meth_ucsc.bedGraph</code>, <code class="language-plaintext highlighter-rouge">NB2_CpG.meth_ucsc.bedGraph</code>, <code class="language-plaintext highlighter-rouge">BT089_CpG.meth_ucsc.bedGraph</code>, <code class="language-plaintext highlighter-rouge">BT126_CpG.meth_ucsc.bedGraph</code>, <code class="language-plaintext highlighter-rouge">BT198_CpG.meth_ucsc.bedGraph</code> and <code class="language-plaintext highlighter-rouge">MCF7_CpG.meth_ucsc.bedgraph</code>.</li>
     <li>Compute the matrix and plot the profile as described above.</li>
   </ol>
 
-  <p><img src="../../images/methyl_level.png" alt="Methylation level around TSS. " loading="lazy" /></p>
+  <p><img src="../../images/methyl_level.png" alt="Methylation level around TSS. " width="866" height="393" loading="lazy" /></p>
 
   <p>More information about deepTools can be found here: https://deeptools.readthedocs.io</p>
 
@@ -1183,28 +1045,28 @@ Compute now the alignment. Please notice that depending on your system this comp
 <h1 id="metilene">Metilene</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-metilene" class="box-title" aria-label="hands-on box: Metilene"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Metilene</div>
+  <div class="box-title hands-on-title" id="hands-on-metilene"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Metilene</div>
 
   <p>With metilene it is possible to detect differentially methylated regions (DMRs) which is a necessary prerequisite for characterizing different epigenetic states.</p>
 
   <ol>
-    <li><strong><span class="notranslate">Galaxy</span></strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Import from the data library the files <code class="language-plaintext highlighter-rouge">NB1_CpG.meth.<span class="notranslate">bed</span>Graph</code>, <code class="language-plaintext highlighter-rouge">NB2_CpG.meth.<span class="notranslate">bed</span>Graph</code> and <code class="language-plaintext highlighter-rouge">BT198_CpG.meth.<span class="notranslate">bed</span>Graph</code>.</li>
+    <li><strong>Galaxy</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>: Import from the data library the files <code class="language-plaintext highlighter-rouge">NB1_CpG.meth.bedGraph</code>, <code class="language-plaintext highlighter-rouge">NB2_CpG.meth.bedGraph</code> and <code class="language-plaintext highlighter-rouge">BT198_CpG.meth.bedGraph</code>.</li>
     <li><strong>Metilene</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>:
       <ul>
-        <li>Choose for the first option <code class="language-plaintext highlighter-rouge">Input group 1</code> the imported files starting with <code class="language-plaintext highlighter-rouge">NB</code> and for <code class="language-plaintext highlighter-rouge">Input group 2</code> the imported files <code class="language-plaintext highlighter-rouge">BT198_CpG.meth.<span class="notranslate">bed</span>Graph</code>.</li>
-        <li>Select for the option <code class="language-plaintext highlighter-rouge"><span class="notranslate">BED</span> file containing regions of interest</code> the imported <span class="notranslate">BED</span> file CpGIslands.<span class="notranslate">bed</span>.</li>
+        <li>Choose for the first option <code class="language-plaintext highlighter-rouge">Input group 1</code> the imported files starting with <code class="language-plaintext highlighter-rouge">NB</code> and for <code class="language-plaintext highlighter-rouge">Input group 2</code> the imported files <code class="language-plaintext highlighter-rouge">BT198_CpG.meth.bedGraph</code>.</li>
+        <li>Select for the option <code class="language-plaintext highlighter-rouge">BED file containing regions of interest</code> the imported BED file CpGIslands.bed.</li>
       </ul>
     </li>
     <li>
       <p>More information about metilene can be found here: https://www.bioinf.uni-leipzig.de/Software/metilene</p>
 
       <blockquote class="question">
-        <div id="question-4" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-4"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <p>Have a look at the produced pdf document. What is the data showing?</p>
 
         <blockquote class="solution">
-          <div id="solution-4" class="box-title"><button type="button" aria-controls="solution-4-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-4"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-4" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <p>It shows the distribution of DMR differences, DMR length in nucleotides and number CpGs, DMR differences vs. q-values, mean methylation group 1 vs. mean methylation group 2 and DMR length in nucleotides vs. length in CpGs</p>
         </blockquote>
       </blockquote>
@@ -1213,10 +1075,12 @@ Compute now the alignment. Please notice that depending on your system this comp
 
 </blockquote>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>The output of a methylation NGS is having a different distribution of the four bases. This is caused by the bisulfite treatment of the DNA.</p>
@@ -1254,38 +1118,18 @@ Compute now the alignment. Please notice that depending on your system this comp
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=DNA Methylation data analysis (Epigenetics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=DNA Methylation data analysis (Epigenetics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Joachim Wolff, Devon Ryan,  <b>DNA Methylation data analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html">https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Joachim Wolff, Devon Ryan,  <b>DNA Methylation data analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html">https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1297,7 +1141,7 @@ Compute now the alignment. Please notice that depending on your system this comp
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1306,28 +1150,31 @@ Compute now the alignment. Please notice that depending on your system this comp
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{epigenetics-methylation-seq,
 author = "Joachim Wolff and Devon Ryan",
-title = "DNA Methylation data analysis (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "DNA Methylation data analysis (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1335,11 +1182,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1348,49 +1195,124 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/epigenetics/tutorials/methylation-seq/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: deeptools_compute_matrix
+  owner: bgruening
+  revisions: fd1275e01605
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: deeptools_plot_profile
+  owner: bgruening
+  revisions: aac8444d6681
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pileometh
+  owner: bgruening
+  revisions: 906db57d5d65
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: replace_column_by_key_value_file
+  owner: bgruening
+  revisions: cc18bac5afdb
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: e39fceb6ab85
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: text_processing
+  owner: bgruening
+  revisions: d698c222f354
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fastqc
+  owner: devteam
+  revisions: 484e86282f4b
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bwameth
+  owner: iuc
+  revisions: a6ea26c1f225
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: metilene
+  owner: rnateam
+  revisions: 37abd09a0ae6
+  tool_panel_section_label: Epigenetics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00142">https://gxy.io/GTN:T00142</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/epigenetics/tutorials/methylation-seq/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

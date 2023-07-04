@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,251 +8,67 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Wolfgang Maier" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="DNA sequence data has become an indispensable tool for Mo..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Unicycler assembly of SARS-CoV-2 genome with preprocessin..." />
-        <meta property="og:description" content="DNA sequence data has become an indispensable tool for Mo..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/assembly" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Assembly
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/assembly/faqs/" title="Check our FAQs for the Assembly topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-05-18 09:34:29 +0000">
+<meta name="DC.creator" content="Wolfgang Maier">
+
+        
+        
+        
+        
+        <meta name="description" content="DNA sequence data has become an indispensable tool for Mo...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Unicycler assembly of SARS-CoV-2 genome with preprocessin...">
+        <meta property="og:description" content="DNA sequence data has become an indispensable tool for Mo...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -277,7 +93,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-10-18 14:23:35 +0000",
+  "dateModified": "2023-05-18 09:34:29 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads",
   "interactivityType": "mixed",
@@ -303,6 +119,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -330,6 +150,7 @@
   "name": "Hands-on for 'Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html",
   "timeRequired": "PT4H",
+  "teaches": "Obtain viral (SARS-CoV-2) sequencing data with contaminating human reads from public sources\n - Organize the data into collections and check its quality\n - Detect and remove human reads\n - Assemble retained reads and explore the results",
   "keywords": "assembly, covid19",
   "description": "The questions this  addresses are:\n - How can a genome of interest be assembled against a background of contaminating reads from other genomes?\n - How can sequencing data from public sources be turned into assembly-ready polished datasets?\n\n\nThe objectives are:\n - Obtain viral (SARS-CoV-2) sequencing data with contaminating human reads from public sources\n - Organize the data into collections and check its quality\n - Detect and remove human reads\n - Assemble retained reads and explore the results\n\n",
   "inLanguage": {
@@ -462,8 +283,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/wm75/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/wm75/",
@@ -477,30 +298,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/wm75/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/wm75/",
-      "name": "Wolfgang Maier",
-      "image": "https://avatars.githubusercontent.com/wm75",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-9464-6640",
+      "orcid": "https://orcid.org/0000-0002-9464-6640"
     }
   ],
   "about": [
@@ -509,33 +309,220 @@
       "name": "Assembly",
       "description": "DNA sequence data has become an indispensable tool for Molecular Biology & Evolutionary Biology. Study in these fields now require a genome sequence to work from. We call this a 'Reference Sequence.' We need to build a reference for each species. We do this by Genome Assembly. De novo Genome Assembly is the process of reconstructing the original DNA sequence from the fragment reads alone.",
       "url": "https://training.galaxyproject.org/training-material/topics/assembly/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_0196",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_0196",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0196"
     }
   ],
-  "educationalLevel": "Intermediate"
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "covid19"
+    }
+  ],
+  "abstract": "# Introduction"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-assembly">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/assembly" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Assembly
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/assembly/faqs/" title="Check our FAQs for the Assembly topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-assembly">
     <h1 data-toc-skip>Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="https://avatars.githubusercontent.com/wm75?s=27" alt="Avatar">Wolfgang Maier</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/wm75/" class="contributor-badge contributor-wm75"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/wm75?s=36" alt="Avatar" width="36" height="36">Wolfgang Maier</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -590,6 +577,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -631,18 +620,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> Unicycler Assembly:
                             
@@ -655,6 +632,24 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -677,6 +672,8 @@
         
             <ul>
                 
+                    
+                        
                     
                         
                             
@@ -733,24 +730,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> Using dataset collections:
                             
@@ -760,6 +739,24 @@
                                 
                             
                             </li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -808,8 +805,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.3732358">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+<a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/3732359">
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -819,8 +816,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/assembly/tutorials/assembly-with-preprocessing/workflows/" title="Workflows" alt="Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/assembly/tutorials/assembly-with-preprocessing/workflows/" title="Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -833,13 +830,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/assembly/tutorials/assembly-with-preprocessing/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/assembly/tutorials/assembly-with-preprocessing/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -858,7 +852,10 @@
 
 
   
-  <li class="btn btn-default supporting_material">
+<!-- GTN Video Library true -->
+  
+<li class="btn btn-default supporting_material">
+  
     <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Latest recordings of this tutorial in the GTN Video Library">
         <i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span>&nbsp;Recordings
     </a>
@@ -880,7 +877,9 @@
         
         
     </ul>
-   </li>
+  
+</li>
+  
    
 
 
@@ -889,202 +888,97 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main)
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/assembly/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> May 18, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00029">https://gxy.io/GTN:T00029</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -1095,36 +989,37 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <p>In some research or clinical contexts it is not possible, or very hard, to
-purify <span class="notranslate">DNA</span>/<span class="notranslate">RNA</span> for sequencing from just the specimen of interest.
-Instead you will isolate <span class="notranslate">DNA</span> that is contaminated, sometimes heavily, with
-<span class="notranslate">DNA</span>/<span class="notranslate">RNA</span> of a different origin.
+purify DNA/RNA for sequencing from just the specimen of interest.
+Instead you will isolate DNA that is contaminated, sometimes heavily, with
+DNA/RNA of a different origin.
 This is the case for example with microbiome samples, which typically display
-considerable contamination with host <span class="notranslate">DNA</span>, or with samples of body fluids for
+considerable contamination with host DNA, or with samples of body fluids for
 pathogen detection. Such contamination can pose an issue with certain types of
 analyses, in particular with genome assembly.</p>
 
 <p>This tutorial guides you through the preprocessing of sequencing data of
 bronchoalveolar lavage fluid (BALF) samples obtained from early COVID-19
 patients in China. Since such samples are expected to be contaminated
-signficantly with human sequenced <span class="notranslate">reads</span>, the goal is to enrich the data for
-SARS-CoV-2 <span class="notranslate">reads</span> by identifying and discarding <span class="notranslate">reads</span> of human origin before
+signficantly with human sequenced reads, the goal is to enrich the data for
+SARS-CoV-2 reads by identifying and discarding reads of human origin before
 trying to assemble the viral genome sequence.</p>
 
 <blockquote class="comment">
-  <div id="comment-the-usegalaxy-covid-19-analysis-project" class="box-title" aria-label="comment box: The usegalaxy.* COVID-19 analysis project"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: The use<span class="notranslate">galaxy</span>.* COVID-19 analysis project</div>
+  <div class="box-title comment-title" id="comment-the-usegalaxy-covid-19-analysis-project"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: The usegalaxy.* COVID-19 analysis project</div>
   <p>This tutorial uses the same data as, and recapitulates to a large extent, the
 <a href="https://covid19.galaxyproject.org/genomics/1-PreProcessing/">Pre-processing</a>
 and <a href="https://covid19.galaxyproject.org/genomics/2-Assembly/">Assembly</a> steps
 of the <a href="https://covid19.galaxyproject.org/genomics/">Genomics</a> section of
-<a href="https://covid19.galaxyproject.org/">covid19.<span class="notranslate">galaxy</span>project.org</a>.</p>
+<a href="https://covid19.galaxyproject.org/">covid19.galaxyproject.org</a>.</p>
 
 </blockquote>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -1136,24 +1031,24 @@ of the <a href="https://covid19.galaxyproject.org/genomics/">Genomics</a> sectio
     </ol>
   </li>
   <li><a href="#read-trimming-and-quality-control" id="markdown-toc-read-trimming-and-quality-control">Read trimming and quality control</a>    <ol>
-      <li><a href="#trimming-and-filtering-of-illumina-reads" id="markdown-toc-trimming-and-filtering-of-illumina-reads">Trimming and filtering of Illumina <span class="notranslate">reads</span></a></li>
-      <li><a href="#quality-control-of-nanopore-reads" id="markdown-toc-quality-control-of-nanopore-reads">Quality control of Nanopore <span class="notranslate">reads</span></a></li>
+      <li><a href="#trimming-and-filtering-of-illumina-reads" id="markdown-toc-trimming-and-filtering-of-illumina-reads">Trimming and filtering of Illumina reads</a></li>
+      <li><a href="#quality-control-of-nanopore-reads" id="markdown-toc-quality-control-of-nanopore-reads">Quality control of Nanopore reads</a></li>
     </ol>
   </li>
-  <li><a href="#subtraction-of-reads-mapping-to-the-human-reference-genome" id="markdown-toc-subtraction-of-reads-mapping-to-the-human-reference-genome">Subtraction of <span class="notranslate">reads</span> <span class="notranslate">mapping</span> to the human reference genome</a>    <ol>
-      <li><a href="#mapping-of-illumina-reads" id="markdown-toc-mapping-of-illumina-reads"><span class="notranslate">Mapping</span> of Illumina <span class="notranslate">reads</span></a></li>
-      <li><a href="#mapping-of-nanopore-reads" id="markdown-toc-mapping-of-nanopore-reads"><span class="notranslate">Mapping</span> of Nanopore <span class="notranslate">reads</span></a></li>
-      <li><a href="#human-reads-subtraction" id="markdown-toc-human-reads-subtraction">Human <span class="notranslate">reads</span> subtraction</a></li>
+  <li><a href="#subtraction-of-reads-mapping-to-the-human-reference-genome" id="markdown-toc-subtraction-of-reads-mapping-to-the-human-reference-genome">Subtraction of reads mapping to the human reference genome</a>    <ol>
+      <li><a href="#mapping-of-illumina-reads" id="markdown-toc-mapping-of-illumina-reads">Mapping of Illumina reads</a></li>
+      <li><a href="#mapping-of-nanopore-reads" id="markdown-toc-mapping-of-nanopore-reads">Mapping of Nanopore reads</a></li>
+      <li><a href="#human-reads-subtraction" id="markdown-toc-human-reads-subtraction">Human reads subtraction</a></li>
     </ol>
   </li>
-  <li><a href="#format-conversion-of-remaining-reads" id="markdown-toc-format-conversion-of-remaining-reads">Format conversion of remaining <span class="notranslate">reads</span></a>    <ol>
+  <li><a href="#format-conversion-of-remaining-reads" id="markdown-toc-format-conversion-of-remaining-reads">Format conversion of remaining reads</a>    <ol>
       <li><a href="#conversion-to-fastq-format" id="markdown-toc-conversion-to-fastq-format">Conversion to fastq format</a></li>
       <li><a href="#optional-rearrange-the-filtered-data-into-the-original-nested-data-structure" id="markdown-toc-optional-rearrange-the-filtered-data-into-the-original-nested-data-structure">Optional: Rearrange the filtered data into the original nested data structure</a></li>
-      <li><a href="#merging-of-reads-with-collection-operations" id="markdown-toc-merging-of-reads-with-collection-operations">Merging of <span class="notranslate">reads</span> with collection operations</a></li>
+      <li><a href="#merging-of-reads-with-collection-operations" id="markdown-toc-merging-of-reads-with-collection-operations">Merging of reads with collection operations</a></li>
     </ol>
   </li>
   <li><a href="#sars-cov-2-genome-assembly" id="markdown-toc-sars-cov-2-genome-assembly">SARS-CoV-2 genome assembly</a>    <ol>
-      <li><a href="#optional-subsampling-of-reads" id="markdown-toc-optional-subsampling-of-reads">Optional: Subsampling of <span class="notranslate">reads</span></a></li>
+      <li><a href="#optional-subsampling-of-reads" id="markdown-toc-optional-subsampling-of-reads">Optional: Subsampling of reads</a></li>
       <li><a href="#create-assembly" id="markdown-toc-create-assembly">Create assembly</a></li>
       <li><a href="#explore-assembly" id="markdown-toc-explore-assembly">Explore assembly</a></li>
     </ol>
@@ -1166,13 +1061,13 @@ of the <a href="https://covid19.galaxyproject.org/genomics/">Genomics</a> sectio
 <h1 id="get-data">Get data</h1>
 
 <p>We are going to create an assembly of the SARS-CoV-2 genome based on mixed
-short-<span class="notranslate">reads</span> (Illumina) and long-<span class="notranslate">reads</span> (Nanopore) data from a total of six
+short-reads (Illumina) and long-reads (Nanopore) data from a total of six
 different samples, all of which are publicly accessible through the NCBI
-and EBI short-<span class="notranslate">reads</span> archives (SRAs).</p>
+and EBI short-reads archives (SRAs).</p>
 
 <p>Since automated data downloads from SRAs can be unreliable at times and could
 get broken by changes to the download interface on the NCBI/EBI side, this
-tutorial offers two ways to access the sequenced <span class="notranslate">reads</span> input data:</p>
+tutorial offers two ways to access the sequenced reads input data:</p>
 
 <ol>
   <li>
@@ -1180,20 +1075,20 @@ tutorial offers two ways to access the sequenced <span class="notranslate">reads
 dedicated <strong>Faster Download</strong> tool</p>
 
     <p>Use this method if it works and is fast enough for you, and if you are
-interested in learning to obtain short-<span class="notranslate">reads</span> data directly from NCBI, in
+interested in learning to obtain short-reads data directly from NCBI, in
 general.</p>
   </li>
   <li>
     <p>Download of the same data deposited as a copy at <a href="https://zenodo.org/record/3732359">Zenodo</a>
-This method uses <span class="notranslate">Galaxy</span>’s generic data import functionality, and should be
+This method uses Galaxy’s generic data import functionality, and should be
 very reliable and faster than the download from NCBI.
 It also showcases <strong>rule-based</strong> uploads and demonstrates how they can be
 used to download several datasets and to arrange them into easy to handle
 data structures at the same time.</p>
 
     <blockquote class="details">
-      <div id="details-rule-based-uploads" class="box-title"><button type="button" aria-controls="details-rule-based-uploads-contents" aria-expanded="true" aria-label="Toggle details box: Rule-based uploads"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Rule-based uploads<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-      <p>In this tutorial you will only use the features of <span class="notranslate">Galaxy</span>’s rule-based
+      <div class="box-title details-title" id="details-rule-based-uploads"><button class="gtn-boxify-button details" type="button" aria-controls="details-rule-based-uploads" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Rule-based uploads<span class="fold-unfold fa fa-minus-square"></span></button></div>
+      <p>In this tutorial you will only use the features of Galaxy’s rule-based
 uploader that are required to get the input data ready for our analysis,
 and we will not explain those features in much detail.</p>
 
@@ -1204,7 +1099,7 @@ we recommend the advanced tutorial
 
     <p>Use this method if the direct download from the NCBI SRA does not work, or
 is too slow for your time frame, or if you are interested in advanced use
-of <span class="notranslate">Galaxy</span>’s data import functionality.</p>
+of Galaxy’s data import functionality.</p>
   </li>
 </ol>
 
@@ -1215,16 +1110,19 @@ steps are independent of the data source you choose.</p>
 <h2 id="get-data-from-ncbi-sra">Get data from NCBI SRA</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload-to-galaxy-from-ncbi-sra" class="box-title" aria-label="hands-on box: Data upload to Galaxy from NCBI SRA"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload to <span class="notranslate">Galaxy</span> from NCBI SRA</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload-to-galaxy-from-ncbi-sra"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload to Galaxy from NCBI SRA</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial and give it a proper name</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Create a new dataset listing the SRA accession numbers of the Illumina paired-end input data for this tutorial:</p>
@@ -1237,7 +1135,8 @@ SRR10971381
       <p>call it, <em>e.g.</em>, <code class="language-plaintext highlighter-rouge">Illumina accessions</code> and set its datatype to <code class="language-plaintext highlighter-rouge">tabular</code>.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-file" class="box-title"><button type="button" aria-controls="tip-creating-a-new-file-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new file"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new file<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Open the <span class="notranslate">Galaxy</span> Upload Manager</li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the file contents into the text field</p>  </li>  <li>    <p>Change <strong>Type</strong> from “Auto-detect” to <code class="language-plaintext highlighter-rouge">tabular</code></p>  </li>  <li>Press <strong>Start</strong> and <strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-file"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-file" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new file<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong> at the bottom</li>   <li>Paste the file contents into the text field</li>   <li>Change <strong>Type</strong> from “Auto-detect” to <code class="language-plaintext highlighter-rouge">tabular</code>* Press <strong>Start</strong> and <strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Create another new dataset listing the SRA accession numbers of the Nanopore input data for this tutorial:</p>
@@ -1253,12 +1152,12 @@ SRR10902284
       <p>Add <code class="language-plaintext highlighter-rouge">#illumina</code>/<code class="language-plaintext highlighter-rouge">#nanopore</code> tags to the datasets</p>
 
       <blockquote class="comment">
-        <div id="comment-name-tags-in-the-analysis" class="box-title" aria-label="comment box: Name tags in the analysis"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Name tags in the analysis</div>
+        <div class="box-title comment-title" id="comment-name-tags-in-the-analysis"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Name tags in the analysis</div>
         <p>We are going to treat the Illumina- and the Nanopore-sequenced data
 separately in this tutorial up to the actual genome assembly step.</p>
 
         <p>To make it easier to keep track of the two branches of the analysis, we
-recommend the use of <span class="notranslate">Galaxy</span>’s dataset <strong>name tags</strong>.
+recommend the use of Galaxy’s dataset <strong>name tags</strong>.
 A name tag will automatically propagate to any new dataset derived
 from the tagged dataset.</p>
       </blockquote>
@@ -1270,12 +1169,13 @@ dataset.</p>
 Feel free to either use the suggested names above or choose ones you like.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-adding-a-tag" class="box-title"><button type="button" aria-controls="tip-adding-a-tag-contents" aria-expanded="true" aria-label="Toggle tip box: Adding a tag"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Adding a tag<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the dataset</li>  <li>Click on <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-tags</span> <strong>Edit dataset tags</strong></li>  <li>    <p>Add a tag starting with <code class="language-plaintext highlighter-rouge">#</code></p>    <p>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</p>  </li>  <li>Check that the tag is appearing below the dataset name</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-adding-a-tag"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-adding-a-tag" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Adding a tag<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on the dataset to expand it</li>   <li>Click on <strong>Add Tags</strong> <i class="fas fa-tags" aria-hidden="true"></i><span class="visually-hidden">galaxy-tags</span></li>   <li>Add a tag  starting with <code class="language-plaintext highlighter-rouge">#</code>     <ul>       <li>Tags starting with <code class="language-plaintext highlighter-rouge">#</code> will be automatically propagated to the outputs of tools using this dataset.</li>     </ul>   </li>   <li>Press <kbd>Enter</kbd></li>   <li>Check that the tag appears below the dataset name</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
-      <p>Retrieve the Illumina <span class="notranslate">reads</span> data from NCBI:</p>
+      <p>Retrieve the Illumina reads data from NCBI:</p>
 
-      <p>Run <strong>Faster Download and Extract <span class="notranslate">Reads</span> in FASTQ</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with
+      <p>Run <strong>Faster Download and Extract Reads in FASTQ</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with
 the following parameter settings:</p>
       <ul>
         <li><em>“select input type”</em>: <code class="language-plaintext highlighter-rouge">List of SRA accession, one per line</code>
@@ -1295,7 +1195,7 @@ the <code class="language-plaintext highlighter-rouge">Illumina accessions</code
 collections and one <em>log</em> dataset with a summary of what happened.</p>
 
       <p>Since all three datasets that we tried to retrieve contain only
-paired-end <span class="notranslate">reads</span>, only the <code class="language-plaintext highlighter-rouge">Pair-end data</code> collection is expected to
+paired-end reads, only the <code class="language-plaintext highlighter-rouge">Pair-end data</code> collection is expected to
 contain downloaded data. Click on the other two collections to verify that
 they are empty, then delete them from your history (since the collections
 do not contain any datasets, it does not matter, which delete option -
@@ -1303,9 +1203,9 @@ do not contain any datasets, it does not matter, which delete option -
 are choosing when prompted).</p>
     </li>
     <li>
-      <p>Retrieve the Nanopore <span class="notranslate">reads</span> data from NCBI:</p>
+      <p>Retrieve the Nanopore reads data from NCBI:</p>
 
-      <p>Run <strong>Faster Download and Extract <span class="notranslate">Reads</span> in FASTQ</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with
+      <p>Run <strong>Faster Download and Extract Reads in FASTQ</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with
 the following parameter settings:</p>
       <ul>
         <li><em>“select input type”</em>: <code class="language-plaintext highlighter-rouge">List of SRA accession, one per line</code>
@@ -1325,7 +1225,7 @@ the <code class="language-plaintext highlighter-rouge">Nanopore accessions</code
 your history.</p>
 
       <p>Since all three datasets that we tried to retrieve in this run contain
-only single-end <span class="notranslate">reads</span>, only the <code class="language-plaintext highlighter-rouge">Single-end data</code> collection is expected to
+only single-end reads, only the <code class="language-plaintext highlighter-rouge">Single-end data</code> collection is expected to
 contain downloaded data this time. Click on the other two collections to
 verify that they are empty, then delete them from your history.</p>
     </li>
@@ -1336,19 +1236,22 @@ verify that they are empty, then delete them from your history.</p>
 <h2 id="get-data-from-zenodo">Get data from Zenodo</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload-to-galaxy-from-zenodo" class="box-title" aria-label="hands-on box: Data upload to Galaxy from Zenodo"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload to <span class="notranslate">Galaxy</span> from Zenodo</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload-to-galaxy-from-zenodo"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload to Galaxy from Zenodo</div>
 
   <ol>
     <li>
       <p>Create a new history for this tutorial and give it a proper name</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history-1" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-1-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
+
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-renaming-a-history-1" class="box-title"><button type="button" aria-controls="tip-renaming-a-history-1-contents" aria-expanded="true" aria-label="Toggle tip box: Renaming a history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Renaming a history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ol>  <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>  <li>Type the new name</li>  <li>Press <kbd>Enter</kbd></li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-renaming-a-history-1"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-renaming-a-history-1" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Renaming a history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ol>   <li>Click on <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name (which by default is “Unnamed history”)</li>   <li>Type the new name</li>   <li>Click on <strong>Save</strong></li> </ol>   <p>If you do not have the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> (<strong>Edit</strong>) next to the history name:</p>   <ol>   <li>Click on <strong>Unnamed history</strong> (or the current name of the history) (<strong>Click to rename history</strong>) at the top of your history panel</li>   <li>Type the new name</li>   <li>Press <kbd>Enter</kbd></li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
-      <p>Import Illumina-sequenced <span class="notranslate">reads</span> data from <a href="https://zenodo.org/record/3732359">Zenodo</a></p>
+      <p>Import Illumina-sequenced reads data from <a href="https://zenodo.org/record/3732359">Zenodo</a></p>
 
       <p>The Zenodo links for the data are these:</p>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/3732359/files/SRR10903401_r1.fq.gz
@@ -1359,12 +1262,12 @@ https://zenodo.org/record/3732359/files/SRR10971381_r1.fq.gz
 https://zenodo.org/record/3732359/files/SRR10971381_r2.fq.gz
 </code></pre></div>      </div>
 
-      <p>To upload these data to your <span class="notranslate">Galaxy</span> history in structured form:</p>
+      <p>To upload these data to your Galaxy history in structured form:</p>
 
       <ul>
         <li>Copy the above list of links</li>
-        <li>Open the <span class="notranslate">Galaxy</span> Upload Manager
-(<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top right of the tool panel)</li>
+        <li>Open the Galaxy Upload Manager
+(<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top right of the tool panel)</li>
         <li>In the pop-up window, switch to the <strong>Rule-based</strong> tab and select
           <ul>
             <li><em>“Upload data as:”</em>: <code class="language-plaintext highlighter-rouge">Collection(s)</code></li>
@@ -1375,11 +1278,11 @@ https://zenodo.org/record/3732359/files/SRR10971381_r2.fq.gz
         </li>
         <li>In the next screen, select
           <ul>
-            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Column”</em>: <code class="language-plaintext highlighter-rouge">Using a Regular <span class="notranslate">expression</span></code>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Column”</em>: <code class="language-plaintext highlighter-rouge">Using a Regular expression</code>
               <ul>
                 <li><em>“From Column”</em>: <code class="language-plaintext highlighter-rouge">A</code></li>
-                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>“Create columns matching <span class="notranslate">expression</span> groups.”</em></li>
-                <li><em>“Regular <span class="notranslate">Expression</span>”</em>: <code class="language-plaintext highlighter-rouge">.+/(SRR\d+)_r(\d).fq.gz</code></li>
+                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>“Create columns matching expression groups.”</em></li>
+                <li><em>“Regular Expression”</em>: <code class="language-plaintext highlighter-rouge">.+/(SRR\d+)_r(\d).fq.gz</code></li>
                 <li><em>“Number of Groups”</em>: <code class="language-plaintext highlighter-rouge">2</code></li>
                 <li>Click <strong>Apply</strong></li>
               </ul>
@@ -1410,17 +1313,17 @@ https://zenodo.org/record/3732359/files/SRR10971381_r2.fq.gz
               <p><em>“Add nametag for name:”</em> <i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span></p>
 
               <blockquote class="comment">
-                <div id="comment-name-tags-in-the-analysis-1" class="box-title" aria-label="comment box: Name tags in the analysis"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Name tags in the analysis</div>
+                <div class="box-title comment-title" id="comment-name-tags-in-the-analysis-1"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Name tags in the analysis</div>
                 <p>We are going to treat the Illumina- and the Nanopore-sequenced data
 separately in this tutorial up to the actual genome assembly step.</p>
 
                 <p>To make it easier to keep track of the two branches of the analysis, we
-recommend the use of <span class="notranslate">Galaxy</span>’s dataset <strong>name tags</strong>.
+recommend the use of Galaxy’s dataset <strong>name tags</strong>.
 A name tag will automatically propagate to any new dataset derived
 from the tagged dataset.</p>
               </blockquote>
 
-              <p>Checking this option tells <span class="notranslate">Galaxy</span> to reuse the collection name above
+              <p>Checking this option tells Galaxy to reuse the collection name above
 as a name tag on the collection.</p>
             </li>
             <li>Click <strong>Upload</strong></li>
@@ -1429,7 +1332,7 @@ as a name tag on the collection.</p>
       </ul>
     </li>
     <li>
-      <p>Import Nanopore-sequenced <span class="notranslate">reads</span> data from <a href="https://zenodo.org/record/3732359">Zenodo</a></p>
+      <p>Import Nanopore-sequenced reads data from <a href="https://zenodo.org/record/3732359">Zenodo</a></p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/3732359/files/SRR10902284_ONT.fq.gz
 https://zenodo.org/record/3732359/files/SRR10948474_ONT.fq.gz
@@ -1441,8 +1344,8 @@ To do so:</p>
 
       <ul>
         <li>Copy the above list of links</li>
-        <li>Open the <span class="notranslate">Galaxy</span> Upload Manager
-(<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top right of the tool panel)</li>
+        <li>Open the Galaxy Upload Manager
+(<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> on the top right of the tool panel)</li>
         <li>In the pop-up window, switch to the <strong>Rule-based</strong> tab and select
           <ul>
             <li><em>“Upload data as:”</em>: <code class="language-plaintext highlighter-rouge">Collection(s)</code></li>
@@ -1453,11 +1356,11 @@ To do so:</p>
         </li>
         <li>In the next screen, select
           <ul>
-            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Column”</em>: <code class="language-plaintext highlighter-rouge">Using a Regular <span class="notranslate">expression</span></code>
+            <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Column”</em>: <code class="language-plaintext highlighter-rouge">Using a Regular expression</code>
               <ul>
                 <li><em>“From Column”</em>: <code class="language-plaintext highlighter-rouge">A</code></li>
-                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>“Create columns matching <span class="notranslate">expression</span> groups.”</em></li>
-                <li><em>“Regular <span class="notranslate">Expression</span>”</em>: <code class="language-plaintext highlighter-rouge">.+/(SRR\d+)_ONT.fq.gz</code></li>
+                <li><i class="far fa-check-square" aria-hidden="true"></i><span class="visually-hidden">param-check</span> <em>“Create columns matching expression groups.”</em></li>
+                <li><em>“Regular Expression”</em>: <code class="language-plaintext highlighter-rouge">.+/(SRR\d+)_ONT.fq.gz</code></li>
                 <li><em>“Number of Groups”</em>: <code class="language-plaintext highlighter-rouge">1</code></li>
                 <li>Click <strong>Apply</strong></li>
               </ul>
@@ -1491,25 +1394,25 @@ To do so:</p>
 
 <h1 id="read-trimming-and-quality-control">Read trimming and quality control</h1>
 
-<p>In the end, we do not want to base our <span class="notranslate">mapping</span> on low-quality <span class="notranslate">reads</span> that may
+<p>In the end, we do not want to base our mapping on low-quality reads that may
 cause misassembly of fragments or introduce sequencing artefacts into the final
 assembled sequence. Since quality control, read filtering and read trimming are
 all quite fast and computationally cheap operations compared to the read
-<span class="notranslate">mapping</span> that we will use to identify and eliminate human <span class="notranslate">reads</span>, it is best to
+mapping that we will use to identify and eliminate human reads, it is best to
 perform these steps up front.</p>
 
 <p>Due to their very different nature, however, Illumina- and Nanopore-sequenced
-<span class="notranslate">reads</span> should be treated rather differently.</p>
+reads should be treated rather differently.</p>
 
-<h2 id="trimming-and-filtering-of-illumina-reads">Trimming and filtering of Illumina <span class="notranslate">reads</span></h2>
+<h2 id="trimming-and-filtering-of-illumina-reads">Trimming and filtering of Illumina reads</h2>
 
-<p><span class="notranslate">Galaxy</span> offers a panel of different NGS <span class="notranslate">reads</span> trimming/filtering tools. Here,
+<p>Galaxy offers a panel of different NGS reads trimming/filtering tools. Here,
 we use <strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>, which is straightforward to configure,
 and when combined with <strong>MultiQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>, enables nice and
 easy-to-interpret visualizations of the effects of preprocessing, in particular
 for multiple samples.</p>
 
-<p>In the following, we configure the tool to retain <span class="notranslate">reads</span> only if at most 20% of
+<p>In the following, we configure the tool to retain reads only if at most 20% of
 their bases have a Phred-scaled quality &gt;= 20 and if there length in bases after
 trimming of adapter sequences (which the tool auto-detects for us) is at least
 50.</p>
@@ -1519,14 +1422,14 @@ trimming of adapter sequences (which the tool auto-detects for us) is at least
 metrics for all samples before and after preprocessing.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-reads-preprocessing-and-quality-reporting" class="box-title" aria-label="hands-on box: Reads preprocessing and quality reporting"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Reads</span> preprocessing and quality reporting</div>
+  <div class="box-title hands-on-title" id="hands-on-reads-preprocessing-and-quality-reporting"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Reads preprocessing and quality reporting</div>
   <ol>
     <li><strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
-        <li><em>“Single-end or paired <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">Paired Collection</code>
+        <li><em>“Single-end or paired reads”</em>: <code class="language-plaintext highlighter-rouge">Paired Collection</code>
           <ul>
             <li><em>“Select paired collection(s)”</em>: the collection of Illumina-sequenced
-<span class="notranslate">reads</span> as produced in the <em>Get Data</em> section</li>
+reads as produced in the <em>Get Data</em> section</li>
           </ul>
         </li>
         <li>in <em>“Filter Options”</em>
@@ -1555,7 +1458,7 @@ metrics for all samples before and after preprocessing.</p>
       </ul>
 
       <p>The tool run produces two collections - one with the actual preprocessed
-<span class="notranslate">reads</span> of all input samples, another one with a JSON-formatted report of
+reads of all input samples, another one with a JSON-formatted report of
 the processing for every sample.</p>
     </li>
     <li><strong>MultiQC</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1580,18 +1483,18 @@ for all samples before and after processing with <strong>fastp</strong> <i class
 
 </blockquote>
 
-<h2 id="quality-control-of-nanopore-reads">Quality control of Nanopore <span class="notranslate">reads</span></h2>
+<h2 id="quality-control-of-nanopore-reads">Quality control of Nanopore reads</h2>
 
-<p>Nanopore-sequenced <span class="notranslate">reads</span> differ greatly in length from one another and are, on
+<p>Nanopore-sequenced reads differ greatly in length from one another and are, on
 average, of relatively low quality (in particular when compared to
-Illumina-sequenced <span class="notranslate">reads</span>). These properties make it challenging to preprocess
+Illumina-sequenced reads). These properties make it challenging to preprocess
 them with standard tools. Quality assessment tools calibrated to work well with
-Illumina-sequenced <span class="notranslate">reads</span> are less useful for Nanopore-sequenced <span class="notranslate">reads</span>, too, for
+Illumina-sequenced reads are less useful for Nanopore-sequenced reads, too, for
 the same reasons. Here we restrict ourselves to a simple quality check with
-<strong>NanoPlot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>, a dedicated QC tool for Nanopore-sequenced <span class="notranslate">reads</span>.</p>
+<strong>NanoPlot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span>, a dedicated QC tool for Nanopore-sequenced reads.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-checking-the-quality-of-nanopore-reads-with-nanoplot" class="box-title" aria-label="hands-on box: Checking the quality of Nanopore reads with NanoPlot"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Checking the quality of Nanopore <span class="notranslate">reads</span> with NanoPlot</div>
+  <div class="box-title hands-on-title" id="hands-on-checking-the-quality-of-nanopore-reads-with-nanoplot"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Checking the quality of Nanopore reads with NanoPlot</div>
   <ol>
     <li><strong>NanoPlot</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
@@ -1600,7 +1503,7 @@ the same reasons. Here we restrict ourselves to a simple quality check with
             <li><em>“Type of the file(s) to work on”</em>: <code class="language-plaintext highlighter-rouge">fastq</code>
               <ul>
                 <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“files”</em>: the collection of
-Nanopore-sequenced <span class="notranslate">reads</span> as produced in the <em>Get Data</em> section</li>
+Nanopore-sequenced reads as produced in the <em>Get Data</em> section</li>
               </ul>
             </li>
           </ul>
@@ -1613,7 +1516,7 @@ Nanopore-sequenced <span class="notranslate">reads</span> as produced in the <em
       </ul>
 
       <blockquote class="question">
-        <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
           <li>Looking at the three generated quality reports, which of the three
@@ -1622,7 +1525,7 @@ and what are some criteria that support this conclusion?</li>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
             <li>
               <p>Sample <code class="language-plaintext highlighter-rouge">SRR10948474</code> has the best overall quality.</p>
@@ -1631,7 +1534,7 @@ and what are some criteria that support this conclusion?</li>
 two (see the <em>Summary statistics</em> table), has a distribution of
 read qualities that peaks around intermediate quality scores (not
 low ones as for the other samples), and contains some extra-long
-(though at least partly rather low-quality) <span class="notranslate">reads</span>. Those last two
+(though at least partly rather low-quality) reads. Those last two
 points become most obvious when looking at the <em>Read lengths vs
 Average read quality</em> plots.</p>
             </li>
@@ -1643,43 +1546,43 @@ Average read quality</em> plots.</p>
 
 </blockquote>
 
-<h1 id="subtraction-of-reads-mapping-to-the-human-reference-genome">Subtraction of <span class="notranslate">reads</span> <span class="notranslate">mapping</span> to the human reference genome</h1>
+<h1 id="subtraction-of-reads-mapping-to-the-human-reference-genome">Subtraction of reads mapping to the human reference genome</h1>
 
-<h2 id="mapping-of-illumina-reads"><span class="notranslate">Mapping</span> of Illumina <span class="notranslate">reads</span></h2>
+<h2 id="mapping-of-illumina-reads">Mapping of Illumina reads</h2>
 
-<p>In this tutorial, we are using <strong>Bowtie2</strong> for <span class="notranslate">mapping</span> our short-<span class="notranslate">reads</span> data to
-the human genome. <em>BWA-MEM</em> would be a good alte<span class="notranslate">rna</span>tive for <span class="notranslate">mapping</span> the 150
-nucleotides (see the QC report above) <span class="notranslate">reads</span> from our samples.</p>
+<p>In this tutorial, we are using <strong>Bowtie2</strong> for mapping our short-reads data to
+the human genome. <em>BWA-MEM</em> would be a good alternative for mapping the 150
+nucleotides (see the QC report above) reads from our samples.</p>
 
 <p>According to its authors, the <em>Minimap2</em> aligner, which we will be using for
-<span class="notranslate">mapping</span> the Nanopore-sequenced data in the next step, is supposed to outcompete
-<em>Bowtie2</em> and <em>BWA-MEM</em> in terms of speed even for Illumina-sequenced <span class="notranslate">reads</span>
+mapping the Nanopore-sequenced data in the next step, is supposed to outcompete
+<em>Bowtie2</em> and <em>BWA-MEM</em> in terms of speed even for Illumina-sequenced reads
 of length &gt; 100 nts, but we opt for the conservative approach of using a
 widely-used, well-tested tool here.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-mapping-with-bowtie2" class="box-title" aria-label="hands-on box: Mapping with Bowtie2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: <span class="notranslate">Mapping</span> with Bowtie2</div>
+  <div class="box-title hands-on-title" id="hands-on-mapping-with-bowtie2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Mapping with Bowtie2</div>
   <ol>
     <li><strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
         <li><em>“Is this single or paired library”</em>: <code class="language-plaintext highlighter-rouge">Paired-end Dataset Collection</code>
           <ul>
             <li><em>“FASTQ Paired Dataset”</em>: the collection of preprocessed
-Illumina-sequenced <span class="notranslate">reads</span>, output of <strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
+Illumina-sequenced reads, output of <strong>fastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
             <li>
-              <p><em>“Write unaligned <span class="notranslate">reads</span> (in fastq format) to separate file(s)”</em>: <code class="language-plaintext highlighter-rouge">No</code></p>
+              <p><em>“Write unaligned reads (in fastq format) to separate file(s)”</em>: <code class="language-plaintext highlighter-rouge">No</code></p>
 
-              <p>Activating this option may seem attractive since the unaligned <span class="notranslate">reads</span>
-are what we are interested in, but filtering for those <span class="notranslate">reads</span> with
+              <p>Activating this option may seem attractive since the unaligned reads
+are what we are interested in, but filtering for those reads with
 a dedicated tool in a separate step allows us to filter on the
-properties of the read pairs instead of those of individual <span class="notranslate">reads</span>.</p>
+properties of the read pairs instead of those of individual reads.</p>
             </li>
-            <li><em>“Write aligned <span class="notranslate">reads</span> (in fastq format) to separate file(s)”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+            <li><em>“Write aligned reads (in fastq format) to separate file(s)”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
             <li><em>“Do you want to set paired-end options?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
           </ul>
         </li>
         <li><em>“Will you select a reference genome from your history or use a built-in index?”</em>:
-  <code class="language-plaintext highlighter-rouge">Use a built-in genome index</code>
+<code class="language-plaintext highlighter-rouge">Use a built-in genome index</code>
           <ul>
             <li><em>“Select reference genome”</em>: <code class="language-plaintext highlighter-rouge">Human (Homo sapiens): hg38 Full</code></li>
           </ul>
@@ -1687,37 +1590,37 @@ properties of the read pairs instead of those of individual <span class="notrans
         <li><em>“Set read groups information?”</em>: <code class="language-plaintext highlighter-rouge">Do not set</code></li>
         <li><em>“Select analysis mode”</em>: <code class="language-plaintext highlighter-rouge">Default setting only</code></li>
         <li><em>“Do you want to tweak SAM/BAM Options?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
-        <li><em>“Save the bowtie2 <span class="notranslate">mapping</span> statistics to the history”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
+        <li><em>“Save the bowtie2 mapping statistics to the history”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
       </ul>
 
       <p>The tool run should produce two collections of output datasets. One with
-the actual mapped <span class="notranslate">reads</span> of the three samples and one with the corresponding
-<span class="notranslate">mapping</span> statistics for each sample, which we want to have a brief look at
+the actual mapped reads of the three samples and one with the corresponding
+mapping statistics for each sample, which we want to have a brief look at
 next.</p>
     </li>
     <li>
-      <p>Inspect the <code class="language-plaintext highlighter-rouge"><span class="notranslate">mapping</span> stats</code> of each sample by clicking on the corresponding collection, then on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon of each individual sample data</p>
+      <p>Inspect the <code class="language-plaintext highlighter-rouge">mapping stats</code> of each sample by clicking on the corresponding collection, then on the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (eye) icon of each individual sample data</p>
 
       <blockquote class="question">
-        <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+        <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
         <ol>
-          <li>What percentage of <span class="notranslate">reads</span> of each sample has been aligned to the <code class="language-plaintext highlighter-rouge">hg38</code> reference genome?</li>
-          <li>Which sample is the least contaminated with human <span class="notranslate">reads</span>?</li>
-          <li>Which sample contains the highest amount of SARS-CoV2 <span class="notranslate">reads</span>?</li>
+          <li>What percentage of reads of each sample has been aligned to the <code class="language-plaintext highlighter-rouge">hg38</code> reference genome?</li>
+          <li>Which sample is the least contaminated with human reads?</li>
+          <li>Which sample contains the highest amount of SARS-CoV2 reads?</li>
         </ol>
 
         <blockquote class="solution">
-          <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+          <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
           <ol>
-            <li>The samples have between 13% and 21% of <span class="notranslate">reads</span> aligned to <code class="language-plaintext highlighter-rouge">hg38</code>.
+            <li>The samples have between 13% and 21% of reads aligned to <code class="language-plaintext highlighter-rouge">hg38</code>.
 The information can be found on the last line of output for each
 sample.</li>
             <li>Sample <code class="language-plaintext highlighter-rouge">SRR10971381</code> is the least contaminated with just above 13%
-of human <span class="notranslate">reads</span></li>
+of human reads</li>
             <li>You cannot answer this question with this data. While <code class="language-plaintext highlighter-rouge">SRR10971381</code>
-shows the lowest relative contamination with human <span class="notranslate">reads</span>, that
-does not mean that all other <span class="notranslate">reads</span> are from SARS-CoV-2. They could
+shows the lowest relative contamination with human reads, that
+does not mean that all other reads are from SARS-CoV-2. They could
 come from other species (<em>e.g.</em>, bacteria or other viruses)
 contained in this BALF sample.</li>
           </ol>
@@ -1728,13 +1631,13 @@ contained in this BALF sample.</li>
 
 </blockquote>
 
-<h2 id="mapping-of-nanopore-reads"><span class="notranslate">Mapping</span> of Nanopore <span class="notranslate">reads</span></h2>
+<h2 id="mapping-of-nanopore-reads">Mapping of Nanopore reads</h2>
 
-<p>For the <span class="notranslate">mapping</span> of the Nanopore-sequenced data we are using the <strong>Minimap2</strong>
-aligner, which is particularly efficient for <span class="notranslate">mapping</span> long <span class="notranslate">reads</span>.</p>
+<p>For the mapping of the Nanopore-sequenced data we are using the <strong>Minimap2</strong>
+aligner, which is particularly efficient for mapping long reads.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-nanopore-reads-mapping" class="box-title" aria-label="hands-on box: Nanopore reads mapping"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Nanopore <span class="notranslate">reads</span> <span class="notranslate">mapping</span></div>
+  <div class="box-title hands-on-title" id="hands-on-nanopore-reads-mapping"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Nanopore reads mapping</div>
 
   <ol>
     <li><strong>Map with minimap2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -1745,24 +1648,24 @@ aligner, which is particularly efficient for <span class="notranslate">mapping</
             <li><em>“Using reference genome”</em>: <code class="language-plaintext highlighter-rouge">Human Dec. 2013 (GRCh38/hg38) (hg38)</code></li>
           </ul>
         </li>
-        <li><em>“Single or Paired-end <span class="notranslate">reads</span>”</em>: <code class="language-plaintext highlighter-rouge">Single</code>
+        <li><em>“Single or Paired-end reads”</em>: <code class="language-plaintext highlighter-rouge">Single</code>
           <ul>
             <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Select fastq dataset”</em>: the collection
-of Nanopore-sequenced <span class="notranslate">reads</span> as set up in the <em>Get Data</em> section</li>
+of Nanopore-sequenced reads as set up in the <em>Get Data</em> section</li>
           </ul>
         </li>
-        <li><em>“Select a profile of preset options”</em>: <code class="language-plaintext highlighter-rouge">Oxford Nanopore read to reference <span class="notranslate">mapping</span>. ...</code></li>
+        <li><em>“Select a profile of preset options”</em>: <code class="language-plaintext highlighter-rouge">Oxford Nanopore read to reference mapping. ...</code></li>
       </ul>
 
-      <p>This tool run produces one collection with the actual mapped <span class="notranslate">reads</span> for
+      <p>This tool run produces one collection with the actual mapped reads for
 each Nanopore-sequenced sample. Unlike <strong>Bowtie2</strong> it does not have an
-option to output <span class="notranslate">mapping</span> statistics directly. However, we can generate
+option to output mapping statistics directly. However, we can generate
 that information through an extra step.</p>
     </li>
     <li><strong>Samtools stats</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“BAM file”</em>: the collection of mapped
-Nanopore-sequenced <span class="notranslate">reads</span>, output of **Map with minimap2 <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> (step 1)</li>
+Nanopore-sequenced reads, output of **Map with minimap2 <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> (step 1)</li>
         <li><em>“Output”</em>: <code class="language-plaintext highlighter-rouge">Separate datasets for each statistic</code>
           <ul>
             <li><em>“Desired output files”</em>
@@ -1780,11 +1683,11 @@ statistics generated by <strong>Bowtie2</strong> and are enough for our purpose.
       </ul>
 
       <blockquote class="comment">
-        <div id="comment-mapping-stats-for-nanopore-sequenced-long-reads" class="box-title" aria-label="comment box: Mapping stats for Nanopore-sequenced long reads"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: <span class="notranslate">Mapping</span> stats for Nanopore-sequenced long <span class="notranslate">reads</span></div>
+        <div class="box-title comment-title" id="comment-mapping-stats-for-nanopore-sequenced-long-reads"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Mapping stats for Nanopore-sequenced long reads</div>
 
-        <p>Since, unlike Illumina-generated <span class="notranslate">reads</span>, Nanopore-sequenced <span class="notranslate">reads</span> can
+        <p>Since, unlike Illumina-generated reads, Nanopore-sequenced reads can
 have very different lengths, it makes limited sense to calculate a
-ratio of mapped to overall <span class="notranslate">reads</span> for them.</p>
+ratio of mapped to overall reads for them.</p>
 
         <p>Instead, <code class="language-plaintext highlighter-rouge">bases mapped</code> / <code class="language-plaintext highlighter-rouge">total length</code> should give a more reliable
 estimate of which fraction of the data is due to human genome sequence.</p>
@@ -1796,26 +1699,26 @@ estimate of which fraction of the data is due to human genome sequence.</p>
 
 </blockquote>
 
-<h2 id="human-reads-subtraction">Human <span class="notranslate">reads</span> subtraction</h2>
+<h2 id="human-reads-subtraction">Human reads subtraction</h2>
 
-<p>At this point you should have two collections of mapped <span class="notranslate">reads</span> - one holding the
-<span class="notranslate">mapping</span> results obtained with <strong>Bowtie2</strong> of the three Illumina-sequenced
+<p>At this point you should have two collections of mapped reads - one holding the
+mapping results obtained with <strong>Bowtie2</strong> of the three Illumina-sequenced
 samples, the other one holding the <strong>minimap2</strong> output for the three
 Nanopore-sequenced samples.</p>
 
 <p>Next, we are going to filter the data from both collections to retain only
-those <span class="notranslate">reads</span> that were <em>not</em> mapped to the human genome, <em>i.e</em> those of
+those reads that were <em>not</em> mapped to the human genome, <em>i.e</em> those of
 potential viral origin.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-mapped-reads-filtering" class="box-title" aria-label="hands-on box: Mapped reads filtering"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Mapped <span class="notranslate">reads</span> filtering</div>
+  <div class="box-title hands-on-title" id="hands-on-mapped-reads-filtering"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Mapped reads filtering</div>
 
   <ol>
-    <li><strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to filter the Illumina-sequenced <span class="notranslate">reads</span> mapped with Bowtie2:
+    <li><strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to filter the Illumina-sequenced reads mapped with Bowtie2:
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“SAM/BAM/CRAM data set”</em>: the collection of
-mapped Illumina-sequenced <span class="notranslate">reads</span>, output of <strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
-        <li><em>“What would you like to look at?”</em>: <code class="language-plaintext highlighter-rouge">A filtered/subsampled selection of <span class="notranslate">reads</span></code>
+mapped Illumina-sequenced reads, output of <strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
+        <li><em>“What would you like to look at?”</em>: <code class="language-plaintext highlighter-rouge">A filtered/subsampled selection of reads</code>
           <ul>
             <li>in <em>“Configure filters”</em>
               <ul>
@@ -1823,9 +1726,9 @@ mapped Illumina-sequenced <span class="notranslate">reads</span>, output of <str
 <code class="language-plaintext highlighter-rouge">Mate is unmapped</code></li>
               </ul>
             </li>
-            <li><em>“What would you like to have reported?”</em>: <code class="language-plaintext highlighter-rouge">All <span class="notranslate">reads</span> retained after filtering and subsampling</code>
+            <li><em>“What would you like to have reported?”</em>: <code class="language-plaintext highlighter-rouge">All reads retained after filtering and subsampling</code>
               <ul>
-                <li><em>“Produce extra dataset with dropped <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+                <li><em>“Produce extra dataset with dropped reads?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
                 <li><em>“Output format”</em>: <code class="language-plaintext highlighter-rouge">BAM (-b)</code></li>
               </ul>
             </li>
@@ -1833,20 +1736,20 @@ mapped Illumina-sequenced <span class="notranslate">reads</span>, output of <str
         </li>
       </ul>
     </li>
-    <li><strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to filter the Nanopore-sequenced <span class="notranslate">reads</span> mapped with minimap2:
+    <li><strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to filter the Nanopore-sequenced reads mapped with minimap2:
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“SAM/BAM/CRAM data set”</em>: the collection of
-mapped Nanopore-sequenced <span class="notranslate">reads</span>, output of <strong>minimap2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
-        <li><em>“What would you like to look at?”</em>: <code class="language-plaintext highlighter-rouge">A filtered/subsampled selection of <span class="notranslate">reads</span></code>
+mapped Nanopore-sequenced reads, output of <strong>minimap2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
+        <li><em>“What would you like to look at?”</em>: <code class="language-plaintext highlighter-rouge">A filtered/subsampled selection of reads</code>
           <ul>
             <li>In <em>“Configure filters”</em>
               <ul>
                 <li><em>“Require that these flags are set”</em>: <code class="language-plaintext highlighter-rouge">Read is unmapped</code></li>
               </ul>
             </li>
-            <li><em>“What would you like to have reported?”</em>: <code class="language-plaintext highlighter-rouge">All <span class="notranslate">reads</span> retained after filtering and subsampling</code>
+            <li><em>“What would you like to have reported?”</em>: <code class="language-plaintext highlighter-rouge">All reads retained after filtering and subsampling</code>
               <ul>
-                <li><em>“Produce extra dataset with dropped <span class="notranslate">reads</span>?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
+                <li><em>“Produce extra dataset with dropped reads?”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
                 <li><em>“Output format”</em>: <code class="language-plaintext highlighter-rouge">BAM (-b)</code></li>
               </ul>
             </li>
@@ -1858,15 +1761,15 @@ mapped Nanopore-sequenced <span class="notranslate">reads</span>, output of <str
       <p>(Optional) Remove the database <code class="language-plaintext highlighter-rouge">hg38</code> attribute from the output files</p>
 
       <blockquote class="details">
-        <div id="details-why-do-this" class="box-title"><button type="button" aria-controls="details-why-do-this-contents" aria-expanded="true" aria-label="Toggle details box: Why do this?"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: Why do this?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title details-title" id="details-why-do-this"><button class="gtn-boxify-button details" type="button" aria-controls="details-why-do-this" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: Why do this?<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>When we ran the <strong>Bowtie2</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> and <strong>minimap2</strong>
 <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> mappers before, these tools set the <em>database</em> attribute
-on their outputs to <code class="language-plaintext highlighter-rouge">hg38</code> to indicate that the mapped <span class="notranslate">reads</span> in these
+on their outputs to <code class="language-plaintext highlighter-rouge">hg38</code> to indicate that the mapped reads in these
 outputs have been mapped against this version of the human reference
 genome - an important piece of information for further work with those
-mapped <span class="notranslate">reads</span>.</p>
+mapped reads.</p>
 
-        <p>In step 1 and 2 above, however, we have eliminated all mapped <span class="notranslate">reads</span> so
+        <p>In step 1 and 2 above, however, we have eliminated all mapped reads so
 the <code class="language-plaintext highlighter-rouge">database: hg38</code> info is misleading from this point onward in the
 analysis. While not directly harmful, it is best practice to remove this
 metadata now.</p>
@@ -1876,37 +1779,38 @@ metadata now.</p>
 (dbkey) to <code class="language-plaintext highlighter-rouge">unspecified (?)</code>.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-changing-database-build-dbkey" class="box-title"><button type="button" aria-controls="tip-changing-database-build-dbkey-contents" aria-expanded="true" aria-label="Toggle tip box: Changing database/build (dbkey)"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Changing database/build (dbkey)<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>  <li>In the central panel, change the <strong>Database/Build</strong> field</li>  <li>Select your desired database key from the dropdown list: <code class="language-plaintext highlighter-rouge">unspecified (?)</code></li>  <li>Click the <strong>Save</strong> button</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-changing-database-build-dbkey"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-changing-database-build-dbkey" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Changing database/build (dbkey)<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the dataset to edit its attributes</li>   <li>In the central panel, change the <strong>Database/Build</strong> field</li>   <li>Select your desired database key from the dropdown list: <code class="language-plaintext highlighter-rouge">unspecified (?)</code></li>   <li>Click the <strong>Save</strong> button</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
 </blockquote>
 
-<h1 id="format-conversion-of-remaining-reads">Format conversion of remaining <span class="notranslate">reads</span></h1>
+<h1 id="format-conversion-of-remaining-reads">Format conversion of remaining reads</h1>
 
 <h2 id="conversion-to-fastq-format">Conversion to fastq format</h2>
 
 <p>Assembly tools, typically, expect their input data to be fastq-formatted, but
-what we have after <span class="notranslate">mapping</span> and filtering is data in BAM format. Hence, we need
-to convert the retained Illumina- and Nanopore-sequenced <span class="notranslate">reads</span> back into their
+what we have after mapping and filtering is data in BAM format. Hence, we need
+to convert the retained Illumina- and Nanopore-sequenced reads back into their
 original format before proceeding to assembly.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-bam-to-fastq-format-conversion" class="box-title" aria-label="hands-on box: BAM to fastq format conversion"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: BAM to fastq format conversion</div>
+  <div class="box-title hands-on-title" id="hands-on-bam-to-fastq-format-conversion"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: BAM to fastq format conversion</div>
 
   <ol>
-    <li><strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to convert the filtered Illumina-sequenced <span class="notranslate">reads</span> to fastq format
+    <li><strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to convert the filtered Illumina-sequenced reads to fastq format
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“BAM or SAM file to convert”</em>: the collection of
-filtered Illumina-sequenced <span class="notranslate">reads</span>, output of first <strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
+filtered Illumina-sequenced reads, output of first <strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
         <li><em>“Output format”</em>: <code class="language-plaintext highlighter-rouge">compressed FASTQ</code></li>
         <li><em>“outputs”</em>: <code class="language-plaintext highlighter-rouge">READ1</code> and <code class="language-plaintext highlighter-rouge">READ2</code></li>
       </ul>
     </li>
-    <li><strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to convert the filtered Nanopore-sequenced <span class="notranslate">reads</span> to fastq format
+    <li><strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> to convert the filtered Nanopore-sequenced reads to fastq format
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“BAM or SAM file to convert”</em>: the collection of
-filtered Nanopore-sequenced <span class="notranslate">reads</span>, output of second <strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
+filtered Nanopore-sequenced reads, output of second <strong>Samtools view</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
         <li><em>“Output format”</em>: <code class="language-plaintext highlighter-rouge">compressed FASTQ</code></li>
         <li><em>“outputs”</em>: <code class="language-plaintext highlighter-rouge">unspecific</code></li>
       </ul>
@@ -1920,26 +1824,26 @@ filtered Nanopore-sequenced <span class="notranslate">reads</span>, output of se
 <p>If you compare the outputs of the last step to the input data we started out
 with, you will notice that the Illumina-sequenced data is arranged differently
 now than initially. It is arranged now into separate collections of forward and
-reverse <span class="notranslate">reads</span>, whereas we started with a single nested collection of the data.</p>
+reverse reads, whereas we started with a single nested collection of the data.</p>
 
 <p>We can easily cast the data back into its original structure with one of
-<span class="notranslate">Galaxy</span>’s collection manipulation tools, but note that we will not use the
+Galaxy’s collection manipulation tools, but note that we will not use the
 resulting nested collection for this tutorial because the <strong>Unicycler</strong> tool
-for assembling the <span class="notranslate">reads</span> would not be able to handle the nested data correctly.</p>
+for assembling the reads would not be able to handle the nested data correctly.</p>
 
 <p>Thus, the following just serves as an illustration and is entirely optional.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-arrange-two-list-collections-into-a-list-of-pairs" class="box-title" aria-label="hands-on box: Arrange two list collections into a list of pairs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Arrange two list collections into a list of pairs</div>
+  <div class="box-title hands-on-title" id="hands-on-arrange-two-list-collections-into-a-list-of-pairs"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Arrange two list collections into a list of pairs</div>
 
   <ol>
     <li><strong>Zip Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Input Dataset (Forward)”</em>: the collection
-of filtered Illumina-sequenced forward <span class="notranslate">reads</span> in fastq format,
+of filtered Illumina-sequenced forward reads in fastq format,
 first output of first <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Input Dataset (Reverse)”</em>: the collection
-of filtered Illumina-sequenced reverse <span class="notranslate">reads</span> in fastq format,
+of filtered Illumina-sequenced reverse reads in fastq format,
 second output of first <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
       </ul>
     </li>
@@ -1947,43 +1851,43 @@ second output of first <strong>Samtools fastx</strong> <i class="fas fa-wrench" 
 
 </blockquote>
 
-<h2 id="merging-of-reads-with-collection-operations">Merging of <span class="notranslate">reads</span> with collection operations</h2>
+<h2 id="merging-of-reads-with-collection-operations">Merging of reads with collection operations</h2>
 
-<p>To merge <span class="notranslate">reads</span> from several samples into a combined final assembly, we need to
+<p>To merge reads from several samples into a combined final assembly, we need to
 pass the data to <strong>Unicycler</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> in partially merged form. The
-forward and reverse <span class="notranslate">reads</span> of paired-end data should be kept separate, and so
-should short and long <span class="notranslate">reads</span>. However, the tool has no option to combine data
+forward and reverse reads of paired-end data should be kept separate, and so
+should short and long reads. However, the tool has no option to combine data
 from individual samples, so we need to merge the forward, reverse, and the long
-<span class="notranslate">reads</span> data, respectively, across samples. Conveniently for us, the outputs of
+reads data, respectively, across samples. Conveniently for us, the outputs of
 the earlier <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> runs have already returned the
 data structured into three corresponding collections for us.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-collapsing-each-collection-into-a-single-dataset" class="box-title" aria-label="hands-on box: Collapsing each collection into a single dataset"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Collapsing each collection into a single dataset</div>
+  <div class="box-title hands-on-title" id="hands-on-collapsing-each-collection-into-a-single-dataset"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Collapsing each collection into a single dataset</div>
 
   <ol>
-    <li><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> of Illumina-sequenced <em>forward</em> <span class="notranslate">reads</span>
+    <li><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> of Illumina-sequenced <em>forward</em> reads
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Collection of files to collapse into single dataset”</em>:
-the collection of filtered Illumina-sequenced forward <span class="notranslate">reads</span> in fastq format,
+the collection of filtered Illumina-sequenced forward reads in fastq format,
 first output of first <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
         <li><em>“Keep one header line”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
         <li><em>“Prepend File name”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
       </ul>
     </li>
-    <li><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> of Illumina-sequenced <em>reverse</em> <span class="notranslate">reads</span>
+    <li><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> of Illumina-sequenced <em>reverse</em> reads
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Collection of files to collapse into single dataset”</em>:
-the collection of filtered Illumina-sequenced reverse <span class="notranslate">reads</span> in fastq format,
+the collection of filtered Illumina-sequenced reverse reads in fastq format,
 second output of first <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
         <li><em>“Keep one header line”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
         <li><em>“Prepend File name”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
       </ul>
     </li>
-    <li><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> of Nanopore-sequenced <span class="notranslate">reads</span>
+    <li><strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> of Nanopore-sequenced reads
       <ul>
         <li><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">param-collection</span> <em>“Collection of files to collapse into single dataset”</em>:
-the collection of filtered Nanopore-sequenced <span class="notranslate">reads</span> in fastq format,
+the collection of filtered Nanopore-sequenced reads in fastq format,
 output of second <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
         <li><em>“Keep one header line”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
         <li><em>“Prepend File name”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
@@ -1995,31 +1899,31 @@ output of second <strong>Samtools fastx</strong> <i class="fas fa-wrench" aria-h
 
 <h1 id="sars-cov-2-genome-assembly">SARS-CoV-2 genome assembly</h1>
 
-<h2 id="optional-subsampling-of-reads">Optional: Subsampling of <span class="notranslate">reads</span></h2>
+<h2 id="optional-subsampling-of-reads">Optional: Subsampling of reads</h2>
 
-<p>The actual assembly of the sequenced <span class="notranslate">reads</span> represents the real bottleneck in
+<p>The actual assembly of the sequenced reads represents the real bottleneck in
 this tutorial. Assembly of the full set of sequences can easily take 10 hours
 and would best be conducted overnight.</p>
 
 <p>If you do not have that much time, you should downsample the Illumina-sequenced
-combined <span class="notranslate">reads</span> now. Which will reduce the time required to finish the
+combined reads now. Which will reduce the time required to finish the
 subsequent assembly step to approximately 1-2 hours.</p>
 
 <blockquote class="comment">
-  <div id="comment-if-you-are-in-a-hurry" class="box-title" aria-label="comment box: If you are in a hurry"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: If you are in a hurry</div>
+  <div class="box-title comment-title" id="comment-if-you-are-in-a-hurry"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: If you are in a hurry</div>
   <p>The downsampling parameters below have been chosen to have minimal impact on
 the assembly results. Further speed-ups are certainly possible, but will
 likely lead to poor assembly outcomes.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-subsampling-of-paired-end-short-reads-data" class="box-title" aria-label="hands-on box: Subsampling of paired-end short-reads data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Subsampling of paired-end short-<span class="notranslate">reads</span> data</div>
+  <div class="box-title hands-on-title" id="hands-on-subsampling-of-paired-end-short-reads-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Subsampling of paired-end short-reads data</div>
 
   <ol>
     <li><strong>seqtk_sample</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
         <li><i class="far fa-copy" aria-hidden="true"></i><span class="visually-hidden">param-files</span> <em>“Input FASTA/Q file”</em>: The two datasets with the
-combined Illumina-sequenced forward and reverse <span class="notranslate">reads</span>, outputs of the
+combined Illumina-sequenced forward and reverse reads, outputs of the
 first and the second run of <strong>Collapse Collection</strong></li>
         <li><em>“RNG seed”</em>: 4</li>
         <li><em>“Subsample (decimal fraction or number)”</em>: 0.1</li>
@@ -2032,25 +1936,25 @@ first and the second run of <strong>Collapse Collection</strong></li>
 <h2 id="create-assembly">Create assembly</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-assembly-of-sars-cov2-genome" class="box-title" aria-label="hands-on box: Assembly of SARS-CoV2 genome"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assembly of SARS-CoV2 genome</div>
+  <div class="box-title hands-on-title" id="hands-on-assembly-of-sars-cov2-genome"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Assembly of SARS-CoV2 genome</div>
 
   <ol>
     <li><strong>Create assemblies with Unicycler</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
       <ul>
         <li><em>“Paired or Single end data?”</em>: <code class="language-plaintext highlighter-rouge">Paired</code>
           <ul>
-            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select first set of <span class="notranslate">reads</span>”</em>: the combined
-Illumina-sequenced forward <span class="notranslate">reads</span> from all samples, output of the
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select first set of reads”</em>: the combined
+Illumina-sequenced forward reads from all samples, output of the
 first <strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run (or first output of
 <strong>seqtk_sample</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> for a subsample-based assembly)</li>
-            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select second set of <span class="notranslate">reads</span>”</em>: the combined
-Illumina-sequenced reverse <span class="notranslate">reads</span> from all samples, output of the
+            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select second set of reads”</em>: the combined
+Illumina-sequenced reverse reads from all samples, output of the
 second <strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run  (or second output
 of <strong>seqtk_sample</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> for a subsample-based assembly)</li>
           </ul>
         </li>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select long <span class="notranslate">reads</span>. If there are no long <span class="notranslate">reads</span>, leave this empty”</em>:
-Nanpore-sequenced <span class="notranslate">reads</span> from all samples, output of the third
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“Select long reads. If there are no long reads, leave this empty”</em>:
+Nanpore-sequenced reads from all samples, output of the third
 <strong>Collapse Collection</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run</li>
         <li><em>“Select Bridging mode”</em>: <code class="language-plaintext highlighter-rouge">Normal (moderate contig size and misassembly rate)</code></li>
         <li><em>“Exclude contigs from the FASTA file which are shorter than this length (bp)”</em>:
@@ -2076,7 +1980,7 @@ Nanpore-sequenced <span class="notranslate">reads</span> from all samples, outpu
 contains the sequences of <em>all</em> assembled fragments (including the ones shorter
 than the threshold length defined for inclusion of the fragments into the FASTA
 output), but also indicates the relative average coverage of the fragments by
-sequenced <span class="notranslate">reads</span> and how some of the fragments could potentially be bridged
+sequenced reads and how some of the fragments could potentially be bridged
 after resolving ambiguities manually.</p>
 
 <h3 id="assembly-inspection-with-bandage">Assembly inspection with Bandage</h3>
@@ -2089,7 +1993,7 @@ exploring assembly graphs through summary reports and visualizations of their
 contents.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-assembly-stats-and-visualization-with-bandage" class="box-title" aria-label="hands-on box: Assembly stats and visualization with Bandage"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Assembly stats and visualization with Bandage</div>
+  <div class="box-title hands-on-title" id="hands-on-assembly-stats-and-visualization-with-bandage"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Assembly stats and visualization with Bandage</div>
 
   <ol>
     <li><strong>Bandage Info</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2151,11 +2055,11 @@ easier if we work with the FASTA output of <strong>Unicycler</strong> instead.</
 
 <p>From the visualization with <strong>Bandage Image</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> we know that the
 separately assembled nodes are all longer than 1000 bp. We can extract those
-sequences based on the length threshold in <span class="notranslate">Galaxy</span>, then BLAST all retained
+sequences based on the length threshold in Galaxy, then BLAST all retained
 sequences in one go.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-filter-fasta-sequences-by-their-length" class="box-title" aria-label="hands-on box: Filter FASTA sequences by their length"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Filter FASTA sequences by their length</div>
+  <div class="box-title hands-on-title" id="hands-on-filter-fasta-sequences-by-their-length"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Filter FASTA sequences by their length</div>
 
   <ol>
     <li><strong>Filter sequences by length</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters
@@ -2171,7 +2075,7 @@ length threshold.</p>
   </ol>
 
   <blockquote class="tip">
-    <div id="tip-apply-length-filters-after-instead-of-during-assembly" class="box-title"><button type="button" aria-controls="tip-apply-length-filters-after-instead-of-during-assembly-contents" aria-expanded="true" aria-label="Toggle tip box: Apply length filters after instead of during assembly"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Apply length filters after instead of during assembly<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title tip-title" id="tip-apply-length-filters-after-instead-of-during-assembly"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-apply-length-filters-after-instead-of-during-assembly" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Apply length filters after instead of during assembly<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <p>You may have noted that in the <strong>Unicycler</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> run we kept
 the tool’s <em>“Exclude contigs from the FASTA file which are shorter than
 this length (bp)”</em> option at its default value of <code class="language-plaintext highlighter-rouge">100</code> instead of using
@@ -2189,11 +2093,11 @@ from the output.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-ncbi-blast-of-multiple-contigs" class="box-title" aria-label="hands-on box: NCBI BLAST of multiple contigs"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: NCBI BLAST of multiple contigs</div>
+  <div class="box-title hands-on-title" id="hands-on-ncbi-blast-of-multiple-contigs"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: NCBI BLAST of multiple contigs</div>
 
   <ol>
     <li>View the output of <strong>Filter sequences by length</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by
-clicking the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-eye</span> (eye) icon attached to that dataset.</li>
+clicking the <i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden">galaxy-eye</span> (eye) icon attached to that dataset.</li>
     <li>Click into the middle panel, which should now display the content of the
 dataset, select all sequences by pressing <kbd>Ctrl</kbd>+<kbd>A</kbd>,
 then copy the selection to the clipboard with <kbd>Ctrl</kbd>+<kbd>C</kbd></li>
@@ -2215,7 +2119,7 @@ sequence (node #1) and the circular node #2, but also investigate the results
 for a few others.</p>
 
 <blockquote class="question">
-  <div id="question-2" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-2"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>Which genome is represented by node #1?</li>
@@ -2226,7 +2130,7 @@ findings make sense?</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>The sequence of node #1 is the assembled SARS-CoV-2 sequence we are
 looking for. It is a perfect match to various SARS-CoV-2 genome
@@ -2244,16 +2148,16 @@ our analysis worked and produced meaningful results.</li>
 bacterial genomes. The only exceptions are the node #10 sequence, for
 which no significant BLAST hits could be found, and the node #11
 sequence, which represents a small stretch of left-over human genomic
-<span class="notranslate">DNA</span>, which seems to have survived our subtraction approach.</p>
+DNA, which seems to have survived our subtraction approach.</p>
 
         <p>What all the bacterial genomes have in common is that they represent
 genera of bacteria that are known to colonize the oral cavity and
 mucosa. Since all samples in this analysis are BALF samples the presence
-of <span class="notranslate">DNA</span> from such bacteria should not be surprising. In addition, some
+of DNA from such bacteria should not be surprising. In addition, some
 members of the identified genera are known as opportunistic pathogens.
 In particular, members of the genus <em>Prevotella</em> can infect the
 respiratory tract and contribute to inflammation under anaerobic
-conditions caused by primary infections. Hence, an alte<span class="notranslate">rna</span>tive
+conditions caused by primary infections. Hence, an alternative
 explanation for the presence of some of these sequences in the samples
 might be that the corresponding bacteria contributed to the clinical
 picture of some of the Covid-19 patients they were obtained from.</p>
@@ -2266,7 +2170,7 @@ picture of some of the Covid-19 patients they were obtained from.</p>
 <h1 id="conclusion">Conclusion</h1>
 
 <p>The power of modern genome assembly tools is remarkable, and so is their
-robustness in the face of data of metagenomic nature. Assembling <span class="notranslate">reads</span> derived
+robustness in the face of data of metagenomic nature. Assembling reads derived
 from a virus and a good handful of copurified bacteria back into separate
 contigs is a challenging task, which Unicycler solved without major issues!</p>
 
@@ -2274,10 +2178,12 @@ contigs is a challenging task, which Unicycler solved without major issues!</p>
 filtering to reduce the number of misassembly events, ambiguous assemblies and
 of incorporation of sequencing errors into the final assembly.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Certain types of NGS samples can be heavily contaminated with sequences from other genomes</p>
@@ -2312,38 +2218,18 @@ of incorporation of sequencing errors into the final assembly.</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads (Assembly)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads (Assembly)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Wolfgang Maier,  <b>Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html">https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Wolfgang Maier,  <b>Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html">https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -2355,7 +2241,7 @@ of incorporation of sequencing errors into the final assembly.</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -2364,28 +2250,31 @@ of incorporation of sequencing errors into the final assembly.</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{assembly-assembly-with-preprocessing,
 author = "Wolfgang Maier",
-title = "Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Unicycler assembly of SARS-CoV-2 genome with preprocessing to remove human genome reads (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -2393,11 +2282,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -2406,49 +2295,154 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: bowtie2
+  owner: devteam
+  revisions: 749c918495f7
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fasta_filter_by_length
+  owner: devteam
+  revisions: 8cacfcf96a52
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_stats
+  owner: devteam
+  revisions: 145f6d74ff5e
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bandage
+  owner: iuc
+  revisions: b2860df42e16
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: bandage
+  owner: iuc
+  revisions: 94fe43e75ddc
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: fastp
+  owner: iuc
+  revisions: 1d8fe9bc4cb0
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: minimap2
+  owner: iuc
+  revisions: 53c0b7a1a0c3
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: multiqc
+  owner: iuc
+  revisions: b2f1f75d49c4
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: nanoplot
+  owner: iuc
+  revisions: 645159bcee2d
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_fastx
+  owner: iuc
+  revisions: a8d69aee190e
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: samtools_view
+  owner: iuc
+  revisions: b01db2684fa5
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: seqtk
+  owner: iuc
+  revisions: 3da72230c066
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: sra_tools
+  owner: iuc
+  revisions: aad3885b3216
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: unicycler
+  owner: iuc
+  revisions: 9e3e80cc4ad4
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: collapse_collections
+  owner: nml
+  revisions: 830961c48e42
+  tool_panel_section_label: Assembly
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00029">https://gxy.io/GTN:T00029</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/assembly/tutorials/assembly-with-preprocessing/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

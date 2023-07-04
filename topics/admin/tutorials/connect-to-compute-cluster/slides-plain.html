@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,47 +8,79 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Connecting Galaxy to a compute cluster" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-11-25 01:19:33 +0000" />
-<meta name="DC.creator" content="Nate Coraor" />
-<meta name="DC.creator" content="Björn Grüning" />
-<meta name="DC.creator" content="Nicola Soranzo" />
-<meta name="DC.creator" content="Helena Rasche" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Connecting Galaxy to a compute cluster">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-07-04 07:38:20 +0000">
+<meta name="DC.creator" content="Nate Coraor">
+<meta name="DC.creator" content="Björn Grüning">
+<meta name="DC.creator" content="Nicola Soranzo">
+<meta name="DC.creator" content="Helena Rasche">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Connecting Galaxy to a compute cluster">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Resources related to configuration and maintenance of Gal..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Connecting Galaxy to a compute cluster" />
-        <meta property="og:description" content="Resources related to configuration and maintenance of Gal..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,38 +97,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -116,10 +120,6 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
-        <a class="dropdown-item" href="/training-material/topics/admin/faqs/" title="Check our FAQs for the Galaxy Server administration topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
         </a>
@@ -136,8 +136,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/admin/tutorials/connect-to-compute-cluster/slides.html" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -162,27 +161,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -194,13 +180,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/admin/tutorials/connect-to-compute-cluster/slides-plain.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -213,7 +199,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -227,6 +213,7 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section class="tutorial">
 	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/admin/tutorials/connect-to-compute-cluster/slides.html">View markdown source on GitHub</a>
@@ -235,21 +222,28 @@
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="https://avatars.githubusercontent.com/natefoo?s=27" alt="Avatar">Nate Coraor</a>
+		
+<table class="contributions">
+	
+	<tr>
+		<td><abbr title="These people wrote the bulk of the tutorial, they may have done the analysis, built the workflow, and wrote the text themselves.">Author(s)</abbr></td>
+		<td>
+			<a href="/training-material/hall-of-fame/natefoo/" class="contributor-badge contributor-natefoo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/natefoo?s=36" alt="Avatar" width="36" height="36">Nate Coraor</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a><a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a>
+		</td>
+	</tr>
+	
 
 
+	
 
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
+	
 
+	
 
+	
 
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
+	
+</table>
 
 
 	</div>
@@ -277,7 +271,7 @@
 		<li><p>Understand all components of the Galaxy job running stack</p>
 </li>
 		
-		<li><p>Understand how the <code class="language-plaintext highlighter-rouge">job_conf.xml</code> file controls Galaxy’s jobs subsystem</p>
+		<li><p>Understand how the job conf controls Galaxy’s jobs subsystem</p>
 </li>
 		
 		<li><p>Know how to map tools to job destinations</p>
@@ -291,7 +285,7 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Nov 25, 2022 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 4, 2023 </div>
 
 	<hr />
 
@@ -299,13 +293,12 @@
 	<h1 id="galaxy-job-configuration">Galaxy Job Configuration</h1>
 
 <ul>
-  <li>Configured in <code class="language-plaintext highlighter-rouge">config/job_conf.xml</code></li>
-  <li>XML format with macro support</li>
+  <li>Configured in <code class="language-plaintext highlighter-rouge">job_config</code> in <code class="language-plaintext highlighter-rouge">galaxy.yml</code>, <code class="language-plaintext highlighter-rouge">group_vars/galaxyservers.yml</code>, and <code class="language-plaintext highlighter-rouge">files/galaxy/config/tpv*.yml</code></li>
   <li>Major components:
     <ul>
-      <li><strong>Plugins</strong>: distributed resource manager (DRM) modules to load</li>
-      <li><strong>Handlers</strong>: job handler processes managing the lifecycle of jobs</li>
-      <li><strong>Destinations</strong>: where to send jobs, and what parameters to run those jobs with</li>
+      <li><strong>Runners</strong>: distributed resource manager (DRM) modules to load</li>
+      <li><strong>Handlers</strong>: dedicated Galaxy server processes managing the lifecycle of jobs</li>
+      <li><strong>Environments</strong> (aka “destinations”): where to send jobs, and what parameters to run those jobs with</li>
       <li><strong>Tool</strong> to destination/handler mappings</li>
       <li><strong>Resource</strong> selection mappings: give users job execution options on the tool form</li>
       <li><strong>Limits</strong>: job runtime limits, e.g. the max number of concurrent jobs</li>
@@ -316,12 +309,12 @@
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li>The job_conf file is a very powerul galaxy configuration piece critical to smooth cluster operation.</li>
-  <li>Written in XML it connects your server with the available cluster resources.</li>
+  <li>The job_conf file is a very powerful galaxy configuration piece critical to smooth cluster operation.</li>
+  <li>Written in YML, it connects your server with the available cluster resources.</li>
   <li>You can configure it in myriad ways.</li>
   <li>Study the advanced sample provided with codebase once you get a basic understanding.</li>
   <li>There are several major components of the job conf file.</li>
-  <li>Plugins, handlers, destinations, tools, resources, and limits.</li>
+  <li>Plugins, handlers, environments (destinations), tools, resources, and limits.</li>
   <li>We’ll go into detail on each of these in the tutorial.</li>
 </ul>
 
@@ -345,7 +338,7 @@
 
 <hr />
 
-<h1 id="plugins">Plugins</h1>
+<h1 id="runners">Runners</h1>
 
 <p>Correspond to job runner plugins in <a href="https://github.com/galaxyproject/galaxy/tree/dev/lib/galaxy/jobs/runners">lib/galaxy/jobs/runners</a></p>
 
@@ -353,7 +346,14 @@
 <ul>
   <li>local</li>
   <li>Slurm (DRMAA subclass)</li>
-  <li>DRMAA: SGE, PBS Pro, LSF, Torque</li>
+  <li>DRMAA (Distributed Resource Management Application API)
+    <ul>
+      <li>SGE</li>
+      <li>PBS Pro</li>
+      <li>LSF</li>
+      <li>Torque</li>
+    </ul>
+  </li>
   <li>HTCondor</li>
   <li>Torque: Using the <code class="language-plaintext highlighter-rouge">pbs_python</code> library</li>
   <li>Pulsar: Galaxy’s own remote job management system</li>
@@ -391,15 +391,9 @@
 
 <h1 id="handlers">Handlers</h1>
 
-<p>Define which Galaxy processes are job handlers</p>
+<p>Control how jobs are assigned to handlers (use <code class="language-plaintext highlighter-rouge">db-skip-locked</code>)</p>
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">id</code> attribute should match the <code class="language-plaintext highlighter-rouge">--server-name</code> param value of a process</li>
-  <li>Dedicated handlers can be reserved, e.g. for small, high throughput jobs</li>
-  <li>The list of plugins that are loaded by a job handler can be limited using <code class="language-plaintext highlighter-rouge">&lt;plugin&gt;</code> subelements (e.g. when the DRMAA plugin needs to be loaded with different library paths)</li>
-  <li>Not defined in <code class="language-plaintext highlighter-rouge">job_conf.xml</code> when using <em>job handler mules</em></li>
-  <li>Defines how jobs are assigned to individual processes (use <code class="language-plaintext highlighter-rouge">db-skip-locked</code> !)</li>
-</ul>
+<p>Can statically define handler configuration (uncommon)</p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -413,7 +407,9 @@
 
 <hr />
 
-<h1 id="destinations">Destinations</h1>
+<h1 id="environments">Environments</h1>
+
+<p>Formerly “Destinations”</p>
 
 <p>Define <em>how</em> jobs should be run</p>
 
@@ -427,7 +423,7 @@
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li>The destination section of the job configuration file is a map that defines which jobs go where.</li>
+  <li>The environments section of the job configuration is a map that defines which jobs go where.</li>
   <li>Jobs from any destination, can be processed by any plugin.</li>
   <li>Every job will find a path through this configuration and eventually get dispatched to the matching runner.</li>
   <li>These destinations can specify things like environment variables or resource requirements.</li>
@@ -437,16 +433,16 @@
 
 <h1 id="the-default-job-configuration">The default job configuration</h1>
 
-<p>.left[<code class="language-plaintext highlighter-rouge">config/job_conf.xml.sample_basic</code>:]</p>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
-<span class="nt">&lt;job_conf&gt;</span>
-    <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin</span> <span class="na">id=</span><span class="s">"local"</span> <span class="na">type=</span><span class="s">"runner"</span> <span class="na">load=</span><span class="s">"galaxy.jobs.runners.local:LocalJobRunner"</span> <span class="na">workers=</span><span class="s">"4"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/plugins&gt;</span>
-    <span class="nt">&lt;destinations&gt;</span>
-        <span class="nt">&lt;destination</span> <span class="na">id=</span><span class="s">"local"</span> <span class="na">runner=</span><span class="s">"local"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/destinations&gt;</span>
-<span class="nt">&lt;/job_conf&gt;</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">runners</span><span class="pi">:</span>
+  <span class="na">local</span><span class="pi">:</span>
+    <span class="na">load</span><span class="pi">:</span> <span class="s">galaxy.jobs.runners.local:LocalJobRunner</span>
+    <span class="na">workers</span><span class="pi">:</span> <span class="m">4</span>
+
+<span class="na">execution</span><span class="pi">:</span>
+  <span class="na">default</span><span class="pi">:</span> <span class="s">local</span>
+  <span class="na">environments</span><span class="pi">:</span>
+    <span class="na">local</span><span class="pi">:</span>
+      <span class="na">runner</span><span class="pi">:</span> <span class="s">local</span>
 </code></pre></div></div>
 
 <p><span>Speaker Notes</span></p>
@@ -461,45 +457,46 @@
 
 <h1 id="job-config---tags">Job Config - Tags</h1>
 
-<p>Both destinations and handlers can be grouped by <strong>tags</strong></p>
+<p>Both environments and handlers can be grouped by <strong>tags</strong></p>
 
 <ul>
   <li>Allows random selection from multiple resources</li>
-  <li>Allows concurrency limits at the destination group level</li>
+  <li>Allows concurrency limits at the environment group level</li>
 </ul>
 
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li>Tags can be applied to both destinations and handlers.</li>
-  <li>This permits selecting randomly amongst the handlers or destinations.</li>
+  <li>Tags can be applied to both environments and handlers.</li>
+  <li>This permits selecting randomly amongst the handlers or environments.</li>
   <li>Tags can help the load distribution.</li>
+  <li>Tags can also be used for concurrency limits that apply across multiple environments.</li>
 </ul>
 
 <hr />
 
 <h1 id="job-environment">Job Environment</h1>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;env&gt;</code> tag in destinations: configure the job exec environment</p>
+<p><code class="language-plaintext highlighter-rouge">env</code> key in environments: configure the job execution environment</p>
 
 <table>
   <thead>
     <tr>
-      <th>tag syntax</th>
+      <th>syntax</th>
       <th>function</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">&lt;env id="NAME"&gt;VALUE&lt;/env&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">- {name: NAME, value: VALUE}</code></td>
       <td>Set <code class="language-plaintext highlighter-rouge">$NAME</code> to <code class="language-plaintext highlighter-rouge">VALUE</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">&lt;env file="/path/to/file" /&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">- {file: /path/to/file}</code></td>
       <td>Source shell file at <code class="language-plaintext highlighter-rouge">/path/to/file</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">&lt;env exec="CMD" /&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">- {execute: CMD}</code></td>
       <td>Execute <code class="language-plaintext highlighter-rouge">CMD</code></td>
     </tr>
   </tbody>
@@ -544,8 +541,8 @@
 <ul>
   <li>Number of active jobs per registered user</li>
   <li>Number of active jobs per unregistered user</li>
-  <li>Number of active jobs per registered user in a specified destination or destination tag</li>
-  <li>Number of total active jobs in a specified destination or destination tag</li>
+  <li>Number of active jobs per registered user in a specified environment or environment tag</li>
+  <li>Number of total active jobs in a specified environment or environment tag</li>
 </ul>
 
 <p><span>Speaker Notes</span></p>
@@ -562,7 +559,7 @@
 
 <p>Most job plugins require a <strong>shared filesystem</strong> between the Galaxy server and compute.</p>
 
-<p>The exception is <strong>Pulsar</strong>. More on this in <em>Using heterogeneous compute resources</em></p>
+<p>The exception is <strong>Pulsar</strong>. More on this in <em>Running Jobs on Remote Resources with Pulsar</em>.</p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -592,7 +589,7 @@
   </li>
 </ol>
 
-<p>The first can be worked around with symlinks or Pulsar embedded (later)</p>
+<p>The first can be worked around with symlinks, copies, or Pulsar embedded</p>
 
 <p>The second can be worked around with Pulsar REST/MQ (with a performance/throughput penalty)</p>
 
@@ -633,15 +630,17 @@
 
 <h1 id="memory-requirements">Memory requirements</h1>
 
-<p>For <strong>Slurm only</strong>, Galaxy will set <code class="language-plaintext highlighter-rouge">$GALAXY_MEMORY_MB</code> and <code class="language-plaintext highlighter-rouge">$GALAXY_MEMORY_MB_PER_SLOT</code> as integers.</p>
+<p>For <strong>Slurm and Gridengine only</strong>, Galaxy will set <code class="language-plaintext highlighter-rouge">$GALAXY_MEMORY_MB</code> and <code class="language-plaintext highlighter-rouge">$GALAXY_MEMORY_MB_PER_SLOT</code> as integers.</p>
 
 <p><strong>Other DRMs:</strong> Please PR the <a href="https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/jobs/runners/util/job_script/MEMORY_STATEMENT.sh">appropriate code</a>.</p>
 
 <p>For Java tools, be sure to set <code class="language-plaintext highlighter-rouge">-Xmx</code>, e.g.:</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;destination</span> <span class="na">id=</span><span class="s">"foo"</span> <span class="err">...</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;env</span> <span class="na">id=</span><span class="s">"_JAVA_OPTIONS"</span><span class="nt">&gt;</span>-Xmx4096m<span class="nt">&lt;/env&gt;</span>
-<span class="nt">&lt;/destination&gt;</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">java_cluster</span><span class="pi">:</span>
+      <span class="na">runner</span><span class="pi">:</span> <span class="s">drmaa</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">_JAVA_OPTIONS'</span>
+          <span class="na">value</span><span class="pi">:</span> <span class="s1">'</span><span class="s">-Xmx6G'</span>
 </code></pre></div></div>
 
 <p><span>Speaker Notes</span></p>
@@ -674,7 +673,7 @@
 
 <hr />
 
-<h2 id="job-config---mapping-tools-to-destinations">Job Config - Mapping Tools to Destinations</h2>
+<h2 id="job-config---mapping-tools-to-environments">Job Config - Mapping Tools to Environments</h2>
 
 <p>Problem: Tool A uses single core, Tool B uses multiple</p>
 <ul>
@@ -685,39 +684,42 @@
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li>Mapping tools to destinations is the heart of the job configuration.</li>
+  <li>Mapping tools to environments is the heart of the job configuration.</li>
   <li>This permits you to define which tools go to which destinations, and what resources they need.</li>
 </ul>
 
 <hr />
 
-<h2 id="job-config---mapping-tools-to-destinations-1">Job Config - Mapping Tools to Destinations</h2>
+<h2 id="job-config---mapping-tools-to-environments-1">Job Config - Mapping Tools to Environments</h2>
 
 <p>Solution:</p>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;destinations</span> <span class="na">default=</span><span class="s">"single"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;destination</span> <span class="na">id=</span><span class="s">"single"</span> <span class="na">runner=</span><span class="s">"slurm"</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;destination</span> <span class="na">id=</span><span class="s">"multi"</span> <span class="na">runner=</span><span class="s">"slurm"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;param</span> <span class="na">id=</span><span class="s">"nativeSpecification"</span><span class="nt">&gt;</span>--ntasks=4<span class="nt">&lt;/param&gt;</span>
-        <span class="nt">&lt;/destination&gt;</span>
-    <span class="nt">&lt;/destinations&gt;</span>
-    <span class="nt">&lt;tools&gt;</span>
-        <span class="nt">&lt;tool</span> <span class="na">id=</span><span class="s">"hisat2"</span> <span class="na">destination=</span><span class="s">"multi"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/tools&gt;</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">execution</span><span class="pi">:</span>
+  <span class="na">default</span><span class="pi">:</span> <span class="s">singlecore_slurm</span>
+  <span class="na">environments</span><span class="pi">:</span>
+    <span class="na">singlecore_slurm</span><span class="pi">:</span>
+      <span class="na">runner</span><span class="pi">:</span> <span class="s">slurm</span>
+
+    <span class="na">multicore_slurm</span><span class="pi">:</span>
+      <span class="na">runner</span><span class="pi">:</span> <span class="s">slurm</span>
+      <span class="na">native_specification</span><span class="pi">:</span> <span class="s1">'</span><span class="s">--ntasks=4'</span>
+<span class="na">tools</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">hisat2</span>
+  <span class="na">handler</span><span class="pi">:</span> <span class="s">multicore_slurm</span>
 </code></pre></div></div>
 
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li>Here is an example mapping the hisat2 tool to a definition named multi.</li>
-  <li>The multi destination specifies that 4 cores should be allocated for each job, and uses the slurm plugin.</li>
+  <li>Here is an example mapping the hisat2 tool to an environment named multicore_slurm.</li>
+  <li>The multicore environment specifies that 4 cores should be allocated for each job, and uses the slurm plugin.</li>
 </ul>
 
 <hr />
 
 <h1 id="the-dynamic-job-runner">The Dynamic Job Runner</h1>
 
-<p>For when basic tool-to-destination mapping isn’t enough</p>
+<p>For when basic tool-to-environment mapping isn’t enough</p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -737,8 +739,8 @@
 
 <p>.left[Two types:]</p>
 <ul>
-  <li>Dynamic Tool Destinations</li>
-  <li>Python function</li>
+  <li>Total Perspective Vortex (TPV)</li>
+  <li>Arbitrary Python function</li>
 </ul>
 
 <p>See: <a href="https://docs.galaxyproject.org/en/master/admin/jobs.html#dynamic-destination-mapping">Dynamic Destination Mapping</a></p>
@@ -746,34 +748,18 @@
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li>There are two built in ways to do this: dynamic tool destinations, and custom Python functions.</li>
-  <li>We will cover both of these in the tutorial.</li>
+  <li>There are two built in ways to do this: TPV and custom Python functions.</li>
 </ul>
 
 <hr />
 
-<h2 id="dynamic-tool-destinations">Dynamic Tool Destinations</h2>
+<h2 id="total-perspective-vortex-tpv">Total Perspective Vortex (TPV)</h2>
 
-<p>.left[Configurable mappings without programming:]</p>
-<ul>
-  <li>YAML format config file <code class="language-plaintext highlighter-rouge">tool_destinations.yml</code></li>
-  <li>Map based on tool ID plus:
-    <ul>
-      <li>Input dataset size(s)</li>
-      <li>Input dataset number of records</li>
-      <li>User</li>
-    </ul>
-  </li>
-  <li>Maps to static destinations defined in job config</li>
-</ul>
+<p>Powerful, fully dynamic tool-to-environment mapping based on tool, user, resource requirements, tags, and more.</p>
 
-<p><span>Speaker Notes</span></p>
+<p>Discussed in detail in <a href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/job-destinations/tutorial.html">its own tutorial</a>.</p>
 
-<ul>
-  <li>The Dynamic Tool Destinations are written as a yaml file.</li>
-  <li>You can easily write rules based on file input sizes or number of inputs or user information.</li>
-  <li>This can be used to determine memory and cpu allocations.</li>
-</ul>
+<p>See also: <a href="https://total-perspective-vortex.readthedocs.io/">TPV Documentation</a>.</p>
 
 <hr />
 
@@ -803,7 +789,6 @@
 <p><span>Speaker Notes</span></p>
 
 <ul>
-  <li>If Dynamic Tool Destinations are insufficiently flexible, then custom Python functions can be written.</li>
   <li>These can use any arbitrary information you want.</li>
   <li>They have full access to submitter information, job parameters, and any other resource you might want.</li>
   <li>They can dynamically modify destination parameters during runtime.</li>
@@ -820,9 +805,7 @@
 
 <li>Galaxy supports a variety of different DRMs.</li>
 
-<li>Dynamic Tool Destinations are a convenient way to map</li>
-
-<li>Job resource parameters can allow you to give your users control over job resource requirements, if they are knowledgeable about the tools and compute resources available to them.</li>
+<li>Total Perspective Vortex is a convenient way to map</li>
 
 </ul>
 
@@ -849,57 +832,52 @@ This material is licensed under the <a rel="license" href="https://creativecommo
 
 
 
-        </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-        The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-        </p>
 
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/3e099f33f0b616ddeef76c2a1ee9871ebbceb042">3e099f33f0b616ddeef76c2a1ee9871ebbceb042</a></p>
+
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/admin/tutorials/connect-to-compute-cluster/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

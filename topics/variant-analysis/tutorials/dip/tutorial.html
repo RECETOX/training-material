@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,252 +8,68 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Calling variants in diploid systems" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-09-28 13:13:58 +0000" />
-<meta name="DC.creator" content="Anton Nekrutenko" />
-<meta name="DC.creator" content="Nicola Soranzo" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Genetic differences (variants) between healthy and diseas..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Calling variants in diploid systems" />
-        <meta property="og:description" content="Genetic differences (variants) between healthy and diseas..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dip/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dip/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dip/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dip/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dip/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/variant-analysis/tutorials/dip/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/dip/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/dip/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/variant-analysis/tutorials/dip/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/variant-analysis/tutorials/dip/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/variant-analysis/tutorials/dip/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Calling variants in diploid systems">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-03-05 09:19:48 +0000">
+<meta name="DC.creator" content="Anton Nekrutenko">
+<meta name="DC.creator" content="Nicola Soranzo">
+
+        
+        
+        
+        
+        <meta name="description" content="Genetic differences (variants) between healthy and diseas...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Calling variants in diploid systems">
+        <meta property="og:description" content="Genetic differences (variants) between healthy and diseas...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -278,7 +94,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-28 13:13:58 +0000",
+  "dateModified": "2023-03-05 09:19:48 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Calling variants in diploid systems",
   "interactivityType": "mixed",
@@ -304,6 +120,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -331,6 +151,7 @@
   "name": "Hands-on for 'Calling variants in diploid systems' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html",
   "timeRequired": "PT3H",
+  "teaches": "Identification of genetic variations using variant calling",
   "keywords": "variant-analysis",
   "description": "The questions this  addresses are:\n - How to find variable sites in diploid genomes?\n\n\nThe objectives are:\n - Identification of genetic variations using variant calling\n\n",
   "inLanguage": {
@@ -418,8 +239,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
@@ -439,54 +260,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
-      "name": "Nicola Soranzo",
-      "image": "https://avatars.githubusercontent.com/nsoranzo",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3627-5340",
-      "orcid": "https://orcid.org/0000-0003-3627-5340"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nekrut/",
-      "name": "Anton Nekrutenko",
-      "image": "https://avatars.githubusercontent.com/nekrut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/nsoranzo/",
@@ -519,35 +294,209 @@
       "termCode": "topic_0199",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0199"
     }
-  ]
-}
-</script>
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
 
-<section class="tutorial topic-variant-analysis">
+  ],
+  "abstract": "Today we hear a lot about personalized medicine. Yet the *personalization* is defined by the genetic make up of the individual. In this tutorial we will discuss how this information can be uncovered from the genomic sequencing data."
+}
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/variant-analysis" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Variant Analysis
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/variant-analysis/faqs/" title="Check our FAQs for the Variant Analysis topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/dip/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/variant-analysis/tutorials/dip/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/variant-analysis/tutorials/dip/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/variant-analysis/tutorials/dip/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/variant-analysis/tutorials/dip/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-variant-analysis">
     <h1 data-toc-skip>Calling variants in diploid systems</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/nekrut/" class="contributor-badge contributor-nekrut"><img src="https://avatars.githubusercontent.com/nekrut?s=27" alt="Avatar">Anton Nekrutenko</a>
-
-
-
-<a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=27" alt="Avatar">Nicola Soranzo</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/nekrut/" class="contributor-badge contributor-nekrut"><img src="https://avatars.githubusercontent.com/nekrut?s=36" alt="Avatar" width="36" height="36">Anton Nekrutenko</a><a href="/training-material/hall-of-fame/nsoranzo/" class="contributor-badge contributor-nsoranzo"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/nsoranzo?s=36" alt="Avatar" width="36" height="36">Nicola Soranzo</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -590,6 +539,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -607,6 +558,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -650,17 +603,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/variant-analysis/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.60520">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -670,34 +619,24 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/variant-analysis/tutorials/dip/workflows/" title="Workflows" alt="Calling variants in diploid systems workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/variant-analysis/tutorials/dip/workflows/" title="Calling variants in diploid systems workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
             
 
             
-                <li class="btn btn-default supporting_material">
-<a class="topic-icon" href="https://github.com/galaxyproject/training-material/tree/main/topics/variant-analysis/tutorials/dip/tours/" title="Galaxy interactive tour" >
-    <i class="fas fa-magic" aria-hidden="true"></i> Tours
-</a>
-
-</li>
-            
 
             
 
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/variant-analysis/tutorials/dip/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/variant-analysis/tutorials/dip/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -723,202 +662,91 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/variant-analysis/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://test.galaxyproject.org/" title="Galaxy Test">
-            Galaxy Test
-        </a>
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.fr/" title="UseGalaxy.fr">
-            UseGalaxy.fr
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Mar 5, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00309">https://gxy.io/GTN:T00309</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -929,10 +757,11 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <p>Today we hear a lot about personalized medicine. Yet the <em>personalization</em> is defined by the genetic make up of the individual. In this tutorial we will discuss how this information can be uncovered from the genomic sequencing data.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -957,30 +786,30 @@
 
 <h1 id="calling-variants">Calling variants</h1>
 
-<p>Variant calling is a complex field that was significantly propelled by advances in <span class="notranslate">DNA</span> sequencing and efforts of large scientific consortia such as the <a href="http://www.1000genomes.org">1000 Genomes</a>. Here we summarize basic ideas central to Genotype and Variant calling. First, let’s contrast the two things although they often go together:</p>
+<p>Variant calling is a complex field that was significantly propelled by advances in DNA sequencing and efforts of large scientific consortia such as the <a href="http://www.1000genomes.org">1000 Genomes</a>. Here we summarize basic ideas central to Genotype and Variant calling. First, let’s contrast the two things although they often go together:</p>
 
 <ul>
   <li><strong>Variant calling</strong> - identification of positions where the sequenced sample is different from the reference sequence (or <a href="https://github.com/vgteam/vg">reference genome graph</a>)</li>
   <li><strong>Genotype calling</strong> - identifying individual’s genotype at variable sites.</li>
 </ul>
 
-<p>A typical <span class="notranslate">workflow</span> for variation discovery involves the following steps (e.g., see Nielsen et al. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3593722/">2011</a>):</p>
+<p>A typical workflow for variation discovery involves the following steps (e.g., see Nielsen et al. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3593722/">2011</a>):</p>
 
 <ol>
-  <li><span class="notranslate">Mapping</span> <span class="notranslate">reads</span> against the reference genome</li>
-  <li>Thresholding BAM datasets by, for example, retaining paired, properly mapped <span class="notranslate">reads</span></li>
+  <li>Mapping reads against the reference genome</li>
+  <li>Thresholding BAM datasets by, for example, retaining paired, properly mapped reads</li>
   <li>Performing quality score recalibration</li>
   <li>Performing realignment</li>
   <li>Performing variant calling/genotype assignment</li>
   <li>Performing filtering and genotype quality score recalibration</li>
-  <li>Annotating variants and performing <span class="notranslate">downstream</span> analyses</li>
+  <li>Annotating variants and performing downstream analyses</li>
 </ol>
 
-<p>However, continuing evolution of variant detection methods has made some of these steps obsolete. For instance, omitting quality score recalibration and re-alignment (steps 3 and 4 above) when using haplotype-aware variant callers such as <a href="https://github.com/ekg/freebayes">FreeBayes</a> does not have an effect on the resulting calls (see Brad Chapman’s methodological comparisons at <a href="https://bit.ly/1S9kFJN">bcbio</a>). Before going forward with an actual genotype calling in <span class="notranslate">Galaxy</span> let’s take a look as some basic ideas behind modern variant callers.</p>
+<p>However, continuing evolution of variant detection methods has made some of these steps obsolete. For instance, omitting quality score recalibration and re-alignment (steps 3 and 4 above) when using haplotype-aware variant callers such as <a href="https://github.com/ekg/freebayes">FreeBayes</a> does not have an effect on the resulting calls (see Brad Chapman’s methodological comparisons at <a href="https://bit.ly/1S9kFJN">bcbio</a>). Before going forward with an actual genotype calling in Galaxy let’s take a look as some basic ideas behind modern variant callers.</p>
 
 <h2 id="how-does-snp-calling-and-genotyping-work">How does SNP calling and genotyping work?</h2>
 
-<p>Consider a set of sequencing <span class="notranslate">reads</span> derived from a diploid individual:</p>
+<p>Consider a set of sequencing reads derived from a diploid individual:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REFERENCE: atcatgacggcaGtagcatat
 --------------------------------
@@ -1002,7 +831,7 @@ READ5:     atcatgacggcaGtagc
 
 <p>The modern variant callers attempt to assign a reliability estimate for each genotype call. This is done using Bayes reasoning (for a great visual explanation see <a href="https://oscarbonilla.com/2009/05/visualizing-bayes-theorem/">blog</a> by Oscar Bonilla). Here we present a SNP-relevant “translation” on this explanation (with inspiration from <a href="https://github.com/ekg">Erik Garrison</a>).</p>
 
-<p>Suppose in a population you have \(A\) individuals (not to be confused with nucleotide <strong>A</strong>; in this case \(A\) is a number of individuals) with a variant. You are performing re-sequencing and observe a variant in \(B\) (again, a number) of your sequencing <span class="notranslate">reads</span>. We want to estimate the probability of having the real polymorphism in the population given our observations in sequencing <span class="notranslate">reads</span>. The logic is as follows:</p>
+<p>Suppose in a population you have \(A\) individuals (not to be confused with nucleotide <strong>A</strong>; in this case \(A\) is a number of individuals) with a variant. You are performing re-sequencing and observe a variant in \(B\) (again, a number) of your sequencing reads. We want to estimate the probability of having the real polymorphism in the population given our observations in sequencing reads. The logic is as follows:</p>
 
 <ul>
   <li>The probability of having polymorphism <em>A</em> in the population is \(P(A) = \lvert A \rvert / \lvert U \rvert\)</li>
@@ -1021,9 +850,9 @@ READ5:     atcatgacggcaGtagc
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center"><img src="../../images/pA.png" alt="P(A) polymorphism. " loading="lazy" /></td>
-      <td style="text-align: center"><img src="../../images/pB.png" alt="P(B) variant calls. " loading="lazy" /></td>
-      <td style="text-align: center"><img src="../../images/pAB.png" alt="P(AB) polymorphism and variant calls. " loading="lazy" /></td>
+      <td style="text-align: center"><img src="../../images/pA.png" alt="P(A) polymorphism. " width="377" height="377" loading="lazy" /></td>
+      <td style="text-align: center"><img src="../../images/pB.png" alt="P(B) variant calls. " width="380" height="381" loading="lazy" /></td>
+      <td style="text-align: center"><img src="../../images/pAB.png" alt="P(AB) polymorphism and variant calls. " width="379" height="378" loading="lazy" /></td>
     </tr>
     <tr>
       <td style="text-align: center">\(P(A)\)</td>
@@ -1033,7 +862,7 @@ READ5:     atcatgacggcaGtagc
   </tbody>
 </table>
 
-<p>Now we can ask the following question: <em>What is the probability of a having a real polymorphism \(A\) given our observation of variants in <span class="notranslate">reads</span> \(B\)?</em> In other words, <em>what is the probability of \(A\) given \(B\)?</em> Or, as stated in the original <a href="https://oscarbonilla.com/2009/05/visualizing-bayes-theorem/">blog</a>: “<em>given that we are in region \(B\), what is the probability that we are in the region \(AB\)?</em>”</p>
+<p>Now we can ask the following question: <em>What is the probability of a having a real polymorphism \(A\) given our observation of variants in reads \(B\)?</em> In other words, <em>what is the probability of \(A\) given \(B\)?</em> Or, as stated in the original <a href="https://oscarbonilla.com/2009/05/visualizing-bayes-theorem/">blog</a>: “<em>given that we are in region \(B\), what is the probability that we are in the region \(AB\)?</em>”</p>
 
 \[P(A \vert B) = \frac{\lvert AB \rvert}{\lvert B \rvert}\]
 
@@ -1053,7 +882,7 @@ READ5:     atcatgacggcaGtagc
 
 \[P(A \vert B) = \frac{P(B \vert A)P(A)}{P(B)}\]
 
-<p>Translating this into “genomics terms”, the probability of having a genotype \(G\) given sequencing <span class="notranslate">reads</span> \(S\) is: \(P(G \vert S) = \frac{P(S \vert G)P(G)}{P(S)}\). Because in a given calculation of \(P(G \vert S)\) the <span class="notranslate">reads</span> are fixed, we can re-write the Bayes formula in the following way:</p>
+<p>Translating this into “genomics terms”, the probability of having a genotype \(G\) given sequencing reads \(S\) is: \(P(G \vert S) = \frac{P(S \vert G)P(G)}{P(S)}\). Because in a given calculation of \(P(G \vert S)\) the reads are fixed, we can re-write the Bayes formula in the following way:</p>
 
 \[P(G \vert S) \sim P(S \vert G)P(G)\]
 
@@ -1102,15 +931,15 @@ READ5:     atcatgacggcaGtagc
 <p><a href="https://github.com/ekg/freebayes">FreeBayes</a> is an open source variant caller that has been battle-tested by the 1000 Genomes community and is extensively used today (also see <a href="https://bcbio.wordpress.com/">bcbio</a>). It has a number of features that simplify variant discovery workflows. These include (from FreeBayes github page):</p>
 
 <ul>
-  <li><strong>Indel realignment is accomplished inte<span class="notranslate">rna</span>lly</strong> using a read-independent method, and issues resulting from discordant alignments are dramatically reduced through the direct detection of haplotypes</li>
-  <li><strong>The need for base quality recalibration is avoided</strong> through the direct detection of haplotypes. Sequencing platform errors tend to cluster (e.g. at the ends of <span class="notranslate">reads</span>), and generate unique, non-repeating haplotypes at a given locus</li>
+  <li><strong>Indel realignment is accomplished internally</strong> using a read-independent method, and issues resulting from discordant alignments are dramatically reduced through the direct detection of haplotypes</li>
+  <li><strong>The need for base quality recalibration is avoided</strong> through the direct detection of haplotypes. Sequencing platform errors tend to cluster (e.g. at the ends of reads), and generate unique, non-repeating haplotypes at a given locus</li>
   <li><strong>Variant quality recalibration is avoided</strong> by incorporating a number of metrics, such as read placement bias and allele balance, directly into the Bayesian model</li>
   <li><strong>Ability to incorporate non-diploid cases</strong> such as pooled datasets or data from polyploid samples.</li>
 </ul>
 
-<p>Freebayes is a <em>haplotype-based</em> variant caller. This implies that instead of looking at an individual positions within an alignment of <span class="notranslate">reads</span> to the reference genome, it looks at a haplotype window, length of which is dynamically determined (see section 3.2. in <a href="https://arxiv.org/pdf/1207.3907v2.pdf">FreeBayes manuscript</a>):</p>
+<p>Freebayes is a <em>haplotype-based</em> variant caller. This implies that instead of looking at an individual positions within an alignment of reads to the reference genome, it looks at a haplotype window, length of which is dynamically determined (see section 3.2. in <a href="https://arxiv.org/pdf/1207.3907v2.pdf">FreeBayes manuscript</a>):</p>
 
-<figure id="figure-1"><img src="../../images/freebayes.png" alt="Haplotype-based calling. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Looking at a haplotype window makes misalignments tolerable. In this case a low complexity poly(A) stretch is misaligned. As a result looking at individual positions will result in calling multiple spurious variants. In the case of FreeBayes looking at a haplotype identifies two alleles (this is a diploid example) A(7) and A(6), while A(8) is likely an error. Image by Erik Garrison</figcaption></figure>
+<figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/freebayes.png" alt="Haplotype-based calling. " width="1502" height="1064" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Looking at a haplotype window makes misalignments tolerable. In this case a low complexity poly(A) stretch is misaligned. As a result looking at individual positions will result in calling multiple spurious variants. In the case of FreeBayes looking at a haplotype identifies two alleles (this is a diploid example) A(7) and A(6), while A(8) is likely an error. Image by Erik Garrison</figcaption></figure>
 
 <h3 id="the-data">The data</h3>
 
@@ -1122,22 +951,23 @@ READ5:     atcatgacggcaGtagc
   <li>HG004 - NA24143 - hu8E87A9 (mother)</li>
 </ul>
 
-<p>Yet for a quick tutorial these datasets are way too big, so we created a <a href="https://doi.org/10.5281/zenodo.60520">downsampled dataset</a>. This dataset was produced by <span class="notranslate">mapping</span> the trio <span class="notranslate">reads</span> against the <code class="language-plaintext highlighter-rouge">hg19</code> version of the human genome, merging the resulting bam files together (we use readgroups to label individual <span class="notranslate">reads</span> so they can be traced to each of the original individuals), and restricting alignments to a small portion of chromosome 19 containing the <a href="https://www.ncbi.nlm.nih.gov/gene?cmd=Retrieve&amp;dopt=Graphics&amp;list_uids=5442"><em>POLRMT</em></a> gene.</p>
+<p>Yet for a quick tutorial these datasets are way too big, so we created a <a href="https://doi.org/10.5281/zenodo.60520">downsampled dataset</a>. This dataset was produced by mapping the trio reads against the <code class="language-plaintext highlighter-rouge">hg19</code> version of the human genome, merging the resulting bam files together (we use readgroups to label individual reads so they can be traced to each of the original individuals), and restricting alignments to a small portion of chromosome 19 containing the <a href="https://www.ncbi.nlm.nih.gov/gene?cmd=Retrieve&amp;dopt=Graphics&amp;list_uids=5442"><em>POLRMT</em></a> gene.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-upload" class="box-title" aria-label="hands-on box: Data upload"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Data upload</div>
+  <div class="box-title hands-on-title" id="hands-on-data-upload"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Data upload</div>
 
   <ol>
     <li>
       <p>Create a new history for this variant calling exercise</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>Import the files named <code class="language-plaintext highlighter-rouge">GIAB-Ashkenazim-Trio.txt</code> (tabular format) and <code class="language-plaintext highlighter-rouge">GIAB-Ashkenazim-Trio-hg19</code> (BAM format) from <a href="https://doi.org/10.5281/zenodo.60520">Zenodo</a> or a data library:</li>
-    <li>Specify the used genome for <span class="notranslate">mapping</span>:
+    <li>Specify the used genome for mapping:
       <ol>
-        <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-pencil</span> <strong>pencil icon</strong> for the BAM dataset to edit its attributes</li>
+        <li>Click on the <i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">galaxy-pencil</span> <strong>pencil icon</strong> for the BAM dataset to edit its attributes</li>
         <li>Select <code class="language-plaintext highlighter-rouge">Human Feb 2009</code> on <strong>Database/Build</strong></li>
         <li>Click the <strong>Save</strong> button</li>
       </ol>
@@ -1148,7 +978,7 @@ READ5:     atcatgacggcaGtagc
 <h3 id="generating-and-post-processing-freebayes-calls">Generating and post-processing FreeBayes calls</h3>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-generating-freebayes-calls" class="box-title" aria-label="hands-on box: Generating FreeBayes calls"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Generating FreeBayes calls</div>
+  <div class="box-title hands-on-title" id="hands-on-generating-freebayes-calls"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Generating FreeBayes calls</div>
 
   <ol>
     <li><strong>FreeBayes</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with the following parameters:
@@ -1167,7 +997,7 @@ READ5:     atcatgacggcaGtagc
 <p>This will produce a dataset in <a href="http://www.1000genomes.org/wiki/Analysis/variant-call-format">VCF</a> format containing 35 putative variants. Before we can continue, we need to post-process this dataset by breaking compound variants into multiple independent variants.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-simplify-variant-representation" class="box-title" aria-label="hands-on box: Simplify variant representation"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Simplify variant representation</div>
+  <div class="box-title hands-on-title" id="hands-on-simplify-variant-representation"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Simplify variant representation</div>
 
   <ol>
     <li><strong>VcfAllelicPrimitives</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1202,7 +1032,7 @@ READ5:     atcatgacggcaGtagc
 <p>At this point we are ready to begin annotating variants using <a href="http://snpeff.sourceforge.net/SnpEff.html"><strong>SnpEff</strong></a>. SnpEff “<em>…annotates and predicts the effects of variants on genes (such as amino acid changes)…</em>” and so is critical for functional interpretation of variation data.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-annotating-variants" class="box-title" aria-label="hands-on box: Annotating variants"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Annotating variants</div>
+  <div class="box-title hands-on-title" id="hands-on-annotating-variants"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Annotating variants</div>
   <ol>
     <li><strong>SnpEff</strong> (Variant effect and annotation) <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
       <ul>
@@ -1223,11 +1053,11 @@ READ5:     atcatgacggcaGtagc
 
 <p>The report contains a number of useful metrics such as distribution of variants across gene features:</p>
 
-<p><img src="../../images/snpeff_chart.png" alt="SnpEff output chart. " loading="lazy" /></p>
+<p><img src="../../images/snpeff_chart.png" alt="SnpEff output chart. " width="800" height="300" loading="lazy" /></p>
 
 <p>or changes to codons:</p>
 
-<p><img src="../../images/snpeff_codons.png" alt="SnpEff output codon changes. " loading="lazy" /></p>
+<p><img src="../../images/snpeff_codons.png" alt="SnpEff output codon changes. " width="966" height="567" loading="lazy" /></p>
 
 <h1 id="manipulating-variation-data-with-gemini">Manipulating variation data with GEMINI</h1>
 
@@ -1242,8 +1072,8 @@ READ5:     atcatgacggcaGtagc
     <tr>
       <th>#family_id</th>
       <th>sample_id</th>
-      <th>pate<span class="notranslate">rna</span>l_id</th>
-      <th>mate<span class="notranslate">rna</span>l_id</th>
+      <th>paternal_id</th>
+      <th>maternal_id</th>
       <th>sex</th>
       <th>phenotype</th>
       <th>ethnicity</th>
@@ -1281,7 +1111,7 @@ READ5:     atcatgacggcaGtagc
 </table>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-loading-data-into-gemini" class="box-title" aria-label="hands-on box: Loading data into GEMINI"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Loading data into GEMINI</div>
+  <div class="box-title hands-on-title" id="hands-on-loading-data-into-gemini"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Loading data into GEMINI</div>
 
   <ol>
     <li><strong>GEMINI load</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1298,23 +1128,23 @@ READ5:     atcatgacggcaGtagc
         <li><em>“GEMINI database”</em>: the output of <strong>GEMINI load</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span></li>
       </ul>
 
-      <p>This produces a list of all database tables and their columns. The latest version of the GEMINI database schema can be found <a href="https://gemini.readthedocs.org/en/latest/content/database_schema.html">here</a>.</p>
+      <p>This produces a list of all database tables and their columns according to the <a href="https://gemini.readthedocs.org/en/latest/content/database_schema.html">latest version of the GEMINI database schema</a>.</p>
     </li>
   </ol>
 </blockquote>
 
 <h2 id="querying-the-gemini-database">Querying the GEMINI database</h2>
 
-<p>The GEMINI database can be queried using the versatile SQL language (more on SQL <a href="https://swcarpentry.github.io/sql-novice-survey">here</a>). In <span class="notranslate">Galaxy</span> this is done using the <strong>GEMINI query</strong> tool. Within this tool SQL commands are typed directly into the <strong>The query to be issued to the database</strong> text box. Let’s begin getting information from some of the tables we discovered using the <strong>GEMINI db_info</strong> tool above.</p>
+<p>The GEMINI database can be queried using the versatile <a href="https://swcarpentry.github.io/sql-novice-survey">SQL language</a>. In Galaxy this is done using the <strong>GEMINI query</strong> tool. Within this tool SQL commands are typed directly into the <strong>The query to be issued to the database</strong> text box. Let’s begin getting information from some of the tables we discovered using the <strong>GEMINI db_info</strong> tool above.</p>
 
 <blockquote class="comment">
-  <div id="comment-gemini-tutorials" class="box-title" aria-label="comment box: GEMINI tutorials"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: GEMINI tutorials</div>
+  <div class="box-title comment-title" id="comment-gemini-tutorials"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: GEMINI tutorials</div>
 
   <p>The examples below are taken from “<a href="https://s3.amazonaws.com/gemini-tutorials/Intro-To-Gemini.pdf">Introduction to GEMINI</a>” tutorial. For extensive documentation see “<a href="https://gemini.readthedocs.org/en/latest/content/querying.html">Querying the GEMINI database</a>”.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-selecting-quot-novel-quot-variants-that-are-not-annotated-in-dbsnp-database" class="box-title" aria-label="hands-on box: Selecting &quot;novel&quot; variants that are not annotated in dbSNP database"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Selecting &quot;novel&quot; variants that are not annotated in dbSNP database</div>
+  <div class="box-title hands-on-title" id="hands-on-selecting-quot-novel-quot-variants-that-are-not-annotated-in-dbsnp-database"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Selecting &quot;novel&quot; variants that are not annotated in dbSNP database</div>
 
   <ol>
     <li><strong>GEMINI query</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1329,7 +1159,7 @@ READ5:     atcatgacggcaGtagc
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-find-variants-within-the-polrmt-gene" class="box-title" aria-label="hands-on box: Find variants within the POLRMT gene"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Find variants within the POLRMT gene</div>
+  <div class="box-title hands-on-title" id="hands-on-find-variants-within-the-polrmt-gene"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Find variants within the POLRMT gene</div>
 
   <ol>
     <li><strong>GEMINI query</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> with:
@@ -1350,13 +1180,13 @@ READ5:     atcatgacggcaGtagc
 <ul>
   <li><code class="language-plaintext highlighter-rouge">gt_types.subjectID</code> - three types of genotype types: <code class="language-plaintext highlighter-rouge">HOM_REF</code>, <code class="language-plaintext highlighter-rouge">HET</code>, <code class="language-plaintext highlighter-rouge">HOM_ALT</code></li>
   <li><code class="language-plaintext highlighter-rouge">gt_quals.subjectID</code> - genotype quality</li>
-  <li><code class="language-plaintext highlighter-rouge">gt_depths.subjectID</code> - total number of <span class="notranslate">reads</span> in this subject at position</li>
-  <li><code class="language-plaintext highlighter-rouge">gt_ref_depths.subjectID</code> -  number of reference allele <span class="notranslate">reads</span> in this subject at position</li>
-  <li><code class="language-plaintext highlighter-rouge">gt_alt_depths.subjectID</code> - number of alte<span class="notranslate">rna</span>te allele <span class="notranslate">reads</span> in this subject at position</li>
+  <li><code class="language-plaintext highlighter-rouge">gt_depths.subjectID</code> - total number of reads in this subject at position</li>
+  <li><code class="language-plaintext highlighter-rouge">gt_ref_depths.subjectID</code> -  number of reference allele reads in this subject at position</li>
+  <li><code class="language-plaintext highlighter-rouge">gt_alt_depths.subjectID</code> - number of alternate allele reads in this subject at position</li>
 </ul>
 
 <blockquote class="question">
-  <div id="question" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <ol>
     <li>At how many sites does child have a non-reference allele?</li>
@@ -1365,7 +1195,7 @@ READ5:     atcatgacggcaGtagc
   </ol>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
     <ol>
       <li>To answer this question you can run the <strong>GEMINI query</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> tool with:
         <ul>
@@ -1391,7 +1221,7 @@ READ5:     atcatgacggcaGtagc
 
 <h2 id="using-wildcards">Using wildcards</h2>
 
-<p>Wildcards simply writing SQL <span class="notranslate">expression</span>s when searching across multiple terms. The syntax for genotype filter wildcards is:</p>
+<p>Wildcards simply writing SQL expressions when searching across multiple terms. The syntax for genotype filter wildcards is:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(COLUMN).(SAMPLE_WILDCARD).(SAMPLE_WILDCARD_RULE).(RULE_ENFORCEMENT)
 </code></pre></div></div>
@@ -1399,12 +1229,12 @@ READ5:     atcatgacggcaGtagc
 <p>Let’s look at some examples.</p>
 
 <blockquote class="question">
-  <div id="question-1" class="box-title" aria-label="question box: "><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question</div>
+  <div class="box-title question-title" id="question-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question</div>
 
   <p>At which variants are every sample heterozygous?</p>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>To answer this question you can run the <strong>GEMINI query</strong> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> tool with:</p>
     <ul>
@@ -1419,41 +1249,41 @@ READ5:     atcatgacggcaGtagc
 
 <h2 id="going-further">Going further</h2>
 
-<p>This short tutorial should give you an overall idea on how generate variant data in <span class="notranslate">Galaxy</span> and process it with GEMINI. Yet there is much more to learn. Below we list GEMINI tutorials and links to <span class="notranslate">Galaxy</span> libraries with relevant data:</p>
+<p>This short tutorial should give you an overall idea on how generate variant data in Galaxy and process it with GEMINI. Yet there is much more to learn. Below we list GEMINI tutorials and links to Galaxy libraries with relevant data:</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: left">Tutorial</th>
       <th style="text-align: center">PDF</th>
-      <th style="text-align: center"><span class="notranslate">Galaxy</span> library</th>
-      <th style="text-align: center"><span class="notranslate">Galaxy</span> history</th>
+      <th style="text-align: center">Galaxy library</th>
+      <th style="text-align: center">Galaxy history</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left">Introduction</td>
       <td style="text-align: center"><a href="https://s3.amazonaws.com/gemini-tutorials/Intro-To-Gemini.pdf"><i class="far fa-bookmark" aria-hidden="true"></i><span class="visually-hidden">references</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F0283ca691a41c352"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-library</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-introduction"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-history</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F0283ca691a41c352"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">galaxy-library</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-introduction"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden">galaxy-history</span></a></td>
     </tr>
     <tr>
       <td style="text-align: left">Identifying <em>de novo</em> mutations underlying Mendelian disease</td>
       <td style="text-align: center"><a href="https://s3.amazonaws.com/gemini-tutorials/Gemini-DeNovo-Tutorial.pdf"><i class="far fa-bookmark" aria-hidden="true"></i><span class="visually-hidden">references</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F775008f45cbbf010"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-library</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-de-novo-mutations"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-history</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F775008f45cbbf010"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">galaxy-library</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-de-novo-mutations"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden">galaxy-history</span></a></td>
     </tr>
     <tr>
       <td style="text-align: left">Identifying autosomal recessive variants underlying Mendelian disease</td>
       <td style="text-align: center"><a href="https://s3.amazonaws.com/gemini-tutorials/Gemini-Recessive-Tutorial.pdf"><i class="far fa-bookmark" aria-hidden="true"></i><span class="visually-hidden">references</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F35b262f5ac8aa63a"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-library</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-autosomal-recessive"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-history</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F35b262f5ac8aa63a"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">galaxy-library</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-autosomal-recessive"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden">galaxy-history</span></a></td>
     </tr>
     <tr>
       <td style="text-align: left">Identifying autosomal dominant variants underlying Mendelian disease</td>
       <td style="text-align: center"><a href="https://s3.amazonaws.com/gemini-tutorials/Gemini-Dominant-Tutorial.pdf"><i class="far fa-bookmark" aria-hidden="true"></i><span class="visually-hidden">references</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F1c4722ad56892a31"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-library</span></a></td>
-      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-autosomal-dominant"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-history</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/library/folders/F1c4722ad56892a31"><i class="far fa-folder" aria-hidden="true"></i><span class="visually-hidden">galaxy-library</span></a></td>
+      <td style="text-align: center"><a href="https://usegalaxy.org/u/aun1/h/gemini-autosomal-dominant"><i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden">galaxy-history</span></a></td>
     </tr>
   </tbody>
 </table>
@@ -1462,33 +1292,35 @@ READ5:     atcatgacggcaGtagc
 
 <ul>
   <li>Right click on the <strong>PDF</strong> <i class="far fa-bookmark" aria-hidden="true"></i><span class="visually-hidden">references</span> icon and open tutorial in a new browser tab</li>
-  <li>Right click on <strong><span class="notranslate">Galaxy</span> history</strong> <i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-history</span> icon and open <span class="notranslate">Galaxy</span> history in another new browser tab</li>
+  <li>Right click on <strong>Galaxy history</strong> <i class="fas fa-columns" aria-hidden="true"></i><span class="visually-hidden">galaxy-history</span> icon and open Galaxy history in another new browser tab</li>
   <li>
-    <p>When the <span class="notranslate">Galaxy</span> history interface opens, you will need to click the <strong>Import history</strong> link highlighted with a red outline in the following figure:</p>
+    <p>When the Galaxy history interface opens, you will need to click the <strong>Import history</strong> link highlighted with a red outline in the following figure:</p>
 
-    <p><img src="../../images/import_history.png" alt="Import history. " loading="lazy" /></p>
+    <p><img src="../../images/import_history.png" alt="Import history. " width="1101" height="761" loading="lazy" /></p>
   </li>
   <li>
     <p>If you have a wide screen arrange browsers tabs side by side:</p>
 
-    <p><img src="../../images/side-by-side.png" alt="Arranging browsers side by side. " loading="lazy" /></p>
+    <p><img src="../../images/side-by-side.png" alt="Arranging browsers side by side. " width="1981" height="652" loading="lazy" /></p>
   </li>
   <li>
     <p>Proceed with the tutorial. For example, to repeat the following command from GEMINI tutorial:</p>
 
-    <p><img src="../../images/gemini_command.png" alt="GEMINI query command. " loading="lazy" /></p>
+    <p><img src="../../images/gemini_command.png" alt="GEMINI query command. " width="789" height="142" loading="lazy" /></p>
 
-    <p>use <span class="notranslate">Galaxy</span>’s <strong>GEMINI query</strong> tool as below:</p>
+    <p>use Galaxy’s <strong>GEMINI query</strong> tool as below:</p>
 
-    <p><img src="../../images/galaxy_command.png" alt="GEMINI_query tool interface. " loading="lazy" /></p>
+    <p><img src="../../images/galaxy_command.png" alt="GEMINI_query tool interface. " width="472" height="431" loading="lazy" /></p>
   </li>
   <li>and so on….</li>
 </ul>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Variants versus Genotypes</p>
@@ -1532,38 +1364,18 @@ READ5:     atcatgacggcaGtagc
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Calling variants in diploid systems (Variant Analysis)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Calling variants in diploid systems (Variant Analysis)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Anton Nekrutenko, Nicola Soranzo,  <b>Calling variants in diploid systems (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html">https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Anton Nekrutenko, Nicola Soranzo,  <b>Calling variants in diploid systems (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html">https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1575,7 +1387,7 @@ READ5:     atcatgacggcaGtagc
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1584,28 +1396,31 @@ READ5:     atcatgacggcaGtagc
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{variant-analysis-dip,
 author = "Anton Nekrutenko and Nicola Soranzo",
-title = "Calling variants in diploid systems (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Calling variants in diploid systems (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1613,11 +1428,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1626,49 +1441,114 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/variant-analysis/tutorials/dip/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: freebayes
+  owner: devteam
+  revisions: 156b60c1530f
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: vcfallelicprimitives
+  owner: devteam
+  revisions: f49b23b41a12
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: gemini_db_info
+  owner: iuc
+  revisions: 4c5f4e9b1931
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: gemini_load
+  owner: iuc
+  revisions: cf61daf064fe
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: gemini_query
+  owner: iuc
+  revisions: 666f60a9331a
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: snpeff
+  owner: iuc
+  revisions: 5c7b70713fb5
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: snpeff
+  owner: iuc
+  revisions: 68693743661e
+  tool_panel_section_label: Variant Analysis
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00309">https://gxy.io/GTN:T00309</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/variant-analysis/tutorials/dip/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

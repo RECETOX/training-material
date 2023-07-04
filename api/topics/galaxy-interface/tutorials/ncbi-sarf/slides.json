@@ -1,6 +1,5 @@
 {
   "layout": "tutorial_slides",
-  "logo": "assets/images/ncbi.png",
   "title": "Introduction to SRA Aligned Read Format and Cloud Metadata for SARS-CoV-2",
   "questions": [
     "What is the SRA Aligned Read Format",
@@ -21,15 +20,223 @@
   ],
   "subtopic": "upload",
   "contributors": [
+    "jontrow"
+  ],
+  "requirements": [
     {
-      "name": "Jon Trow",
-      "joined": "2021-05",
-      "github": false,
-      "id": "jontrow",
-      "url": "https://training.galaxyproject.org/training-material/api/contributors/jontrow.json"
+      "type": "internal",
+      "topic_name": "galaxy-interface",
+      "tutorials": [
+        "upload-rules"
+      ]
     }
   ],
+  "short_id": "S00063",
   "url": "/topics/galaxy-interface/tutorials/ncbi-sarf/slides.html",
   "topic_name": "galaxy-interface",
-  "tutorial_name": "ncbi-sarf"
+  "tutorial_name": "ncbi-sarf",
+  "dir": "topics/galaxy-interface/tutorials/ncbi-sarf",
+  "id": "galaxy-interface/ncbi-sarf",
+  "video_library": {
+    "tutorial": {
+      "description": "This tutorial will walk you through accessing and using SRA Aligned read format in Galaxy.",
+      "materials": [
+        {
+          "link": "topics/galaxy-interface/tutorials/ncbi-sarf/tutorial.html",
+          "title": "SRA Aligned Read Formats to Speed Up SARS-CoV-2 data Analysis",
+          "type": "Tutorial"
+        },
+        {
+          "link": "topics/variant-analysis/tutorials/sars-cov-2/tutorial.html",
+          "title": "From NCBI's Sequence Read Archive (SRA) to Galaxy: SARS-CoV-2 variant analysis",
+          "type": "Related Tutorial"
+        }
+      ],
+      "tags": [
+        "galaxy-interface"
+      ],
+      "type": "Tutorial",
+      "versions": [
+        {
+          "captions": [
+            "prodromus"
+          ],
+          "date": "2021-02-15",
+          "galaxy_version": "21.01",
+          "length": "40M",
+          "link": "ogu-NBTP-DM",
+          "speakers": [
+            "prodromus"
+          ]
+        }
+      ],
+      "gtn_id": "galaxy-interface/ncbi-sarf",
+      "title": "SRA Aligned Read Format to Speed Up SARS-CoV-2 data Analysis",
+      "captioned": true
+    },
+    "slides": {
+      "description": "This lecture will introduce the SRA Aligned Read format available in the cloud from SRA, as well as some accompanying metadata that can help you search and filter the data. This sessions is aimed specifically at SARS-CoV-2 runs in SRA.",
+      "materials": [
+        {
+          "link": "topics/galaxy-interface/tutorials/ncbi-sarf/slides.html",
+          "title": "Introduction to SRA Aligned Read Format and Cloud Metadata for SARS-CoV-2",
+          "type": "Slides"
+        }
+      ],
+      "tags": [
+        "galaxy-interface"
+      ],
+      "type": "Lecture",
+      "versions": [
+        {
+          "captions": [
+            "prodromus"
+          ],
+          "date": "2021-02-15",
+          "galaxy_version": "21.01",
+          "length": "15M",
+          "link": "siLP71B9gm4",
+          "speakers": [
+            "prodromus"
+          ]
+        }
+      ],
+      "gtn_id": "galaxy-interface/ncbi-sarf",
+      "title": "SRA Aligned Read Format to Speed Up SARS-CoV-2 data Analysis",
+      "captioned": true
+    },
+    "demo": null,
+    "both": null,
+    "session": {
+      "title": "SRA Aligned read format in Galaxy",
+      "description": "This session will introduce the SRA Aligned Read format, and show you how to use this in Galaxy to analyze a SARS-CoV-2 dataset.",
+      "videos": [
+        "galaxy-interface/ncbi-sarf/slides",
+        "galaxy-interface/ncbi-sarf/tutorial"
+      ]
+    }
+  },
+  "hands_on": true,
+  "slides": true,
+  "api": "https://training.galaxyproject.org/training-material/api/topics/galaxy-interface/tutorials/ncbi-sarf/tutorial.json",
+  "tools": [
+    "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_cat/0.1.0",
+    "toolshed.g2.bx.psu.edu/repos/devteam/fastqtofasta/fastq_to_fasta_python/1.1.5",
+    "toolshed.g2.bx.psu.edu/repos/iuc/jq/jq/1.0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/snpeff_sars_cov_2/snpeff_sars_cov_2/4.5covid19",
+    "toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fasterq_dump/2.11.0+galaxy0",
+    "toolshed.g2.bx.psu.edu/repos/iuc/sra_tools/fastq_dump/2.11.0+galaxy0"
+  ],
+  "supported_servers": {
+    "exact": [
+      {
+        "url": "https://usegalaxy.be/",
+        "name": "UseGalaxy.be",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org",
+        "name": "UseGalaxy.org (Main)",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.org.au",
+        "name": "UseGalaxy.org.au",
+        "usegalaxy": "true"
+      }
+    ],
+    "inexact": [
+      {
+        "url": "https://galaxy.genouest.org",
+        "name": "Galaxy@GenOuest",
+        "usegalaxy": "false"
+      },
+      {
+        "url": "https://usegalaxy.eu",
+        "name": "UseGalaxy.eu",
+        "usegalaxy": "true"
+      },
+      {
+        "url": "https://usegalaxy.no/",
+        "name": "UseGalaxy.no",
+        "usegalaxy": "true"
+      }
+    ]
+  },
+  "topic_name_human": "Using Galaxy and Managing your Data",
+  "admin_install": {
+    "install_tool_dependencies": true,
+    "install_repository_dependencies": true,
+    "install_resolver_dependencies": true,
+    "tools": [
+      {
+        "name": "text_processing",
+        "owner": "bgruening",
+        "revisions": "ddf54b12c295",
+        "tool_panel_section_label": "Using Galaxy and Managing your Data",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "fastqtofasta",
+        "owner": "devteam",
+        "revisions": "297962e79f39",
+        "tool_panel_section_label": "Using Galaxy and Managing your Data",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "jq",
+        "owner": "iuc",
+        "revisions": "5ff75eb1a893",
+        "tool_panel_section_label": "Using Galaxy and Managing your Data",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "query_tabular",
+        "owner": "iuc",
+        "revisions": "33d61c89fb8d",
+        "tool_panel_section_label": "Using Galaxy and Managing your Data",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "snpeff_sars_cov_2",
+        "owner": "iuc",
+        "revisions": "2a3a00c1fa0a",
+        "tool_panel_section_label": "Using Galaxy and Managing your Data",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "sra_tools",
+        "owner": "iuc",
+        "revisions": "69ebb7f46e45",
+        "tool_panel_section_label": "Using Galaxy and Managing your Data",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      },
+      {
+        "name": "sra_tools",
+        "owner": "iuc",
+        "revisions": "83c7d564b128",
+        "tool_panel_section_label": "Using Galaxy and Managing your Data",
+        "tool_shed_url": "https://toolshed.g2.bx.psu.edu/"
+      }
+    ]
+  },
+  "admin_install_yaml": "---\ninstall_tool_dependencies: true\ninstall_repository_dependencies: true\ninstall_resolver_dependencies: true\ntools:\n- name: text_processing\n  owner: bgruening\n  revisions: ddf54b12c295\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: fastqtofasta\n  owner: devteam\n  revisions: 297962e79f39\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: jq\n  owner: iuc\n  revisions: 5ff75eb1a893\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: query_tabular\n  owner: iuc\n  revisions: 33d61c89fb8d\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: snpeff_sars_cov_2\n  owner: iuc\n  revisions: 2a3a00c1fa0a\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: sra_tools\n  owner: iuc\n  revisions: 69ebb7f46e45\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n- name: sra_tools\n  owner: iuc\n  revisions: 83c7d564b128\n  tool_panel_section_label: Using Galaxy and Managing your Data\n  tool_shed_url: https://toolshed.g2.bx.psu.edu/\n",
+  "tours": false,
+  "video": false,
+  "translations": {
+    "tutorial": [
+
+    ],
+    "slides": [
+
+    ],
+    "video": false
+  },
+  "type": "tutorial",
+  "logo": "assets/images/ncbi.png",
+  "redirect_from": [
+    "/short/galaxy-interface/ncbi-sarf/slides",
+    "/short/S00063"
+  ]
 }

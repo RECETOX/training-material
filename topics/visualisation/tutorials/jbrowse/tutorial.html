@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,46 +8,276 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Genomic Data Visualisation with JBrowse" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Helena Rasche" />
-<meta name="DC.creator" content="Saskia Hiltemann" />
-<meta name="DC.creator" content="Erasmus+ Programme" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Genomic Data Visualisation with JBrowse">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-01-23 14:28:11 +0000">
+<meta name="DC.creator" content="Helena Rasche">
+<meta name="DC.creator" content="Saskia Hiltemann">
+<meta name="DC.creator" content="Erasmus+ Programme">
 
         
         
         
         
+        <meta name="description" content="Training material for data visualisation in Galaxy">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Genomic Data Visualisation with JBrowse">
+        <meta property="og:description" content="Training material for data visualisation in Galaxy">
         
-        <meta name="description" content="Training material for data visualisation in Galaxy" />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Genomic Data Visualisation with JBrowse" />
-        <meta property="og:description" content="Training material for data visualisation in Galaxy" />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-01-23 14:28:11 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Genomic Data Visualisation with JBrowse",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Visualisation",
+    "description": "Training material for data visualisation in Galaxy",
+    "url": "https://training.galaxyproject.org/training-material/topics/visualisation/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Genomic Data Visualisation with JBrowse' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html",
+  "timeRequired": "PT1H",
+  "teaches": "Build several visualisations in JBrowse\n - Have basic familiarity with moving around JBrowse, and loading several data tracks",
+  "keywords": "visualisation",
+  "description": "The questions this  addresses are:\n - How can I visualise features or blast data?\n - How can I visualise sequencing data in a workflow\n\n\nThe objectives are:\n - Build several visualisations in JBrowse\n - Have basic familiarity with moving around JBrowse, and loading several data tracks\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "competencyRequired": [
+    {
+      "@context": "http://schema.org",
+      "@type": "LearningResource",
+      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
+      "name": "Introduction to Galaxy Analyses",
+      "description": "Introduction to Galaxy Analyses",
+      "provider": {
+        "@type": "Organization",
+        "email": "galaxytrainingnetwork@gmail.com",
+        "name": "Galaxy Training Network",
+        "url": "https://galaxyproject.org/teach/gtn/"
+      }
+    }
+  ],
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "name": "Helena Rasche",
+      "image": "https://avatars.githubusercontent.com/hexylena",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9760-8992",
+      "orcid": "https://orcid.org/0000-0001-9760-8992"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
+      "name": "Saskia Hiltemann",
+      "image": "https://avatars.githubusercontent.com/shiltemann",
+      "description": "Researcher at Erasmus Medical Center",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0003-3803-468X",
+      "orcid": "https://orcid.org/0000-0003-3803-468X"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
+      "name": "Erasmus+ Programme",
+      "image": "https://avatars.githubusercontent.com/erasmusplus",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ]
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Visualisation",
+      "description": "Training material for data visualisation in Galaxy",
+      "url": "https://training.galaxyproject.org/training-material/topics/visualisation/"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "http://edamontology.org/topic_0337",
+      "inDefinedTermSet": "http://edamontology.org",
+      "termCode": "topic_0337",
+      "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0337"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Introduction"
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,38 +293,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/visualisation/tutorials/jbrowse/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/visualisation/tutorials/jbrowse/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/visualisation/tutorials/jbrowse/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/visualisation/tutorials/jbrowse/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/visualisation/tutorials/jbrowse/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/visualisation/tutorials/jbrowse/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -114,9 +316,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/visualisation/faqs/" title="Check our FAQs for the Visualisation topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -134,7 +338,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/visualisation/tutorials/jbrowse/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -163,27 +366,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -195,13 +385,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/visualisation/tutorials/jbrowse/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/visualisation/tutorials/jbrowse/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/visualisation/tutorials/jbrowse/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/visualisation/tutorials/jbrowse/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/visualisation/tutorials/jbrowse/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/visualisation/tutorials/jbrowse/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -214,7 +404,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -228,8 +418,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -246,292 +441,26 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 14:23:35 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Genomic Data Visualisation with JBrowse",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Visualisation",
-    "description": "Training material for data visualisation in Galaxy",
-    "url": "https://training.galaxyproject.org/training-material/topics/visualisation/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Genomic Data Visualisation with JBrowse' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html",
-  "timeRequired": "PT1H",
-  "keywords": "visualisation",
-  "description": "The questions this  addresses are:\n - How can I visualise features or blast data?\n - How can I visualise sequencing data in a workflow\n\n\nThe objectives are:\n - Build several visualisations in JBrowse\n - Have basic familiarity with moving around JBrowse, and loading several data tracks\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "competencyRequired": [
-    {
-      "@context": "http://schema.org",
-      "@type": "LearningResource",
-      "url": "https://training.galaxyproject.org/training-material/topics/introduction/",
-      "name": "Introduction to Galaxy Analyses",
-      "description": "Introduction to Galaxy Analyses",
-      "provider": {
-        "@type": "Organization",
-        "email": "galaxytrainingnetwork@gmail.com",
-        "name": "Galaxy Training Network",
-        "url": "https://galaxyproject.org/teach/gtn/"
-      }
-    }
-  ],
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
-      "name": "Saskia Hiltemann",
-      "image": "https://avatars.githubusercontent.com/shiltemann",
-      "description": "Researcher at Erasmus Medical Center",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3803-468X",
-      "orcid": "https://orcid.org/0000-0003-3803-468X"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "name": "Erasmus+ Programme",
-      "image": "https://avatars.githubusercontent.com/erasmusplus",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/shiltemann/",
-      "name": "Saskia Hiltemann",
-      "image": "https://avatars.githubusercontent.com/shiltemann",
-      "description": "Researcher at Erasmus Medical Center",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-3803-468X",
-      "orcid": "https://orcid.org/0000-0003-3803-468X"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "name": "Erasmus+ Programme",
-      "image": "https://avatars.githubusercontent.com/erasmusplus",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Visualisation",
-      "description": "Training material for data visualisation in Galaxy",
-      "url": "https://training.galaxyproject.org/training-material/topics/visualisation/"
-    }
-  ]
-}
-</script>
-
-<section class="tutorial topic-visualisation">
+<article class="tutorial topic-visualisation">
     <h1 data-toc-skip>Genomic Data Visualisation with JBrowse</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
-
-
-
-<a href="/training-material/hall-of-fame/erasmusplus/" class="contributor-badge contributor-erasmusplus"><img src="https://avatars.githubusercontent.com/erasmusplus?s=27" alt="Avatar">Erasmus+ Programme</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a><a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a><a href="/training-material/hall-of-fame/erasmusplus/" class="contributor-badge contributor-erasmusplus"><img src="https://www.erasmusplus.nl/assets/images/logo.png" alt="Avatar" width="36" height="36">Erasmus+ Programme</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -595,7 +524,7 @@
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.3591856">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -610,13 +539,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/visualisation/tutorials/jbrowse/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/visualisation/tutorials/jbrowse/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -642,14 +568,18 @@
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 23, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00322">https://gxy.io/GTN:T00322</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -660,6 +590,7 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <blockquote class="quote">
@@ -669,10 +600,10 @@ and HTML5, with optional run-once data formatting tools written in Perl.</p>
   <p><em>from <a href="http://jbrowse.org/">http://jbrowse.org/</a></em></p>
 </blockquote>
 
-<p>The <span class="notranslate">Galaxy</span> tool accepts data in many formats:</p>
+<p>The Galaxy tool accepts data in many formats:</p>
 
 <ul>
-  <li>Intervals/Annotation/Feature Tracks (GFF/GFF3, <span class="notranslate">BED</span>, GenBank)</li>
+  <li>Intervals/Annotation/Feature Tracks (GFF/GFF3, BED, GenBank)</li>
   <li>BAM Pileups</li>
   <li>Blast XML results</li>
   <li>Wig/BigWig</li>
@@ -684,7 +615,7 @@ and HTML5, with optional run-once data formatting tools written in Perl.</p>
 <p>This tutorial covers version 1.16.5+ of the JBrowse tool, earlier versions will have different behaviour and tool layout.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 
@@ -703,32 +634,34 @@ and HTML5, with optional run-once data formatting tools written in Perl.</p>
 <h1 id="data-upload">Data Upload</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-getting-the-data" class="box-title" aria-label="hands-on box: Getting the data"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Getting the data</div>
+  <div class="box-title hands-on-title" id="hands-on-getting-the-data"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Getting the data</div>
 
   <ol>
     <li>
       <p>Create and name a new history for this tutorial.</p>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-creating-a-new-history" class="box-title"><button type="button" aria-controls="tip-creating-a-new-history-contents" aria-expanded="true" aria-label="Toggle tip box: Creating a new history"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Creating a new history<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>  <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>  <ol>  <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>  <li>Select the option <strong>Create New</strong> from the menu</li></ol></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-creating-a-new-history"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-creating-a-new-history" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Creating a new history<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Click the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> icon at the top of the history panel.</p>   <p>If the <i class="fas fa-plus" aria-hidden="true"></i><span class="visually-hidden">new-history</span> is missing:</p>   <ol>   <li>Click on the <i class="fas fa-cog" aria-hidden="true"></i><span class="visually-hidden">galaxy-gear</span> icon (<strong>History options</strong>) on the top of the history panel</li>   <li>Select the option <strong>Create New</strong> from the menu</li> </ol> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
     <li>
       <p>Import the datasets we will visualize:</p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/3591856/files/blastp%20genes.gff3
 https://zenodo.org/record/3591856/files/blastp%20vs%20swissprot.xml
-https://zenodo.org/record/3591856/files/<span class="notranslate">dna</span>%20sequencing.bam
-https://zenodo.org/record/3591856/files/<span class="notranslate">dna</span>%20sequencing%20coverage.bw
+https://zenodo.org/record/3591856/files/dna%20sequencing.bam
+https://zenodo.org/record/3591856/files/dna%20sequencing%20coverage.bw
 https://zenodo.org/record/3591856/files/genes%20(de%20novo).gff3
 https://zenodo.org/record/3591856/files/genes%20(NCBI).gff3
 https://zenodo.org/record/3591856/files/genome.fa
-https://zenodo.org/record/3591856/files/<span class="notranslate">RNA</span>-Seq%20coverage%201.bw
-https://zenodo.org/record/3591856/files/<span class="notranslate">RNA</span>-Seq%20coverage%202.bw
+https://zenodo.org/record/3591856/files/RNA-Seq%20coverage%201.bw
+https://zenodo.org/record/3591856/files/RNA-Seq%20coverage%202.bw
 https://zenodo.org/record/3591856/files/variants.vcf
 </code></pre></div>      </div>
 
       <!--SNIPPET-->
-      <blockquote class="tip">  <div id="tip-importing-via-links" class="box-title"><button type="button" aria-controls="tip-importing-via-links-contents" aria-expanded="true" aria-label="Toggle tip box: Importing via links"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Importing via links<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>  <ul>  <li>Copy the link location</li>  <li>    <p>Open the <span class="notranslate">Galaxy</span> Upload Manager (<i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden"><span class="notranslate">galaxy</span>-upload</span> on the top-right of the tool panel)</p>  </li>  <li>Select <strong>Paste/Fetch Data</strong></li>  <li>    <p>Paste the link into the text field</p>  </li>  <li>    <p>Press <strong>Start</strong></p>  </li>  <li><strong>Close</strong> the window</li></ul></blockquote>
+      <blockquote class="tip">   <div class="box-title tip-title" id="tip-importing-via-links"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-importing-via-links" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true"></i> Tip: Importing via links<span class="fold-unfold fa fa-minus-square"></span></button></div>   <ul>   <li>Copy the link location</li>   <li>     <p>Click <i class="fas fa-upload" aria-hidden="true"></i><span class="visually-hidden">galaxy-upload</span> <strong>Upload Data</strong> at the top of the tool panel</p>   </li>   <li>Select <i class="fa fa-edit" aria-hidden="true"></i><span class="visually-hidden">galaxy-wf-edit</span> <strong>Paste/Fetch Data</strong></li>   <li>     <p>Paste the link(s) into the text field</p>   </li>   <li>     <p>Press <strong>Start</strong></p>   </li>   <li><strong>Close</strong> the window</li> </ul> </blockquote>
+      <p><!--END_SNIPPET--></p>
     </li>
   </ol>
 
@@ -741,10 +674,10 @@ https://zenodo.org/record/3591856/files/variants.vcf
 <p>We will start by adding a couple of gene call tracks. In our case these are genes and gene predictions, but they don’t have to be. In the general case this can be any interesting region from an analysis, where a tool has pointed out some region for further inspection for some reason, then this data can be visualised with the “gene” track type.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-build-the-jbrowse" class="box-title" aria-label="hands-on box: Build the JBrowse"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Build the JBrowse</div>
+  <div class="box-title hands-on-title" id="hands-on-build-the-jbrowse"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Build the JBrowse</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="JBrowse tool" aria-role="link"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0</span></span> with the following parameters:
       <ul>
         <li><em>“Reference genome to display”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history</code>
           <ul>
@@ -761,9 +694,9 @@ https://zenodo.org/record/3591856/files/variants.vcf
                   <ul>
                     <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Annotation Track”</em>
                       <ul>
-                        <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/<span class="notranslate">BED</span> Features</code>
+                        <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/BED Features</code>
                           <ul>
-                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GFF/GFF3/<span class="notranslate">BED</span> Track Data”</em>: <code class="language-plaintext highlighter-rouge">genes (de novo).gff3</code></li>
+                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GFF/GFF3/BED Track Data”</em>: <code class="language-plaintext highlighter-rouge">genes (de novo).gff3</code></li>
                           </ul>
                         </li>
                       </ul>
@@ -782,11 +715,11 @@ https://zenodo.org/record/3591856/files/variants.vcf
     <li>
       <p>View the contents of the file</p>
 
-      <figure id="figure-1"><img src="../../images/jbrowse-gff-track.png" alt="Screenshot of JBrowse. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> Screenshot of JBrowse</figcaption></figure>
+      <figure id="figure-1" style="max-width: 90%; margin:auto;"><img src="../../images/jbrowse-gff-track.png" alt="Screenshot of JBrowse. " width="1202" height="311" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 1</strong>:</span> Screenshot of JBrowse</figcaption></figure>
 
       <blockquote class="tip">
-        <div id="tip-error-reading-from-name-store" class="box-title"><button type="button" aria-controls="tip-error-reading-from-name-store-contents" aria-expanded="true" aria-label="Toggle tip box: Error reading from name store"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Error reading from name store<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
-        <p><img src="../../images/jbrowse/error.png" alt="error message. " loading="lazy" /></p>
+        <div class="box-title tip-title" id="tip-error-reading-from-name-store"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-error-reading-from-name-store" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Error reading from name store<span class="fold-unfold fa fa-minus-square"></span></button></div>
+        <p><img src="../../images/jbrowse/error.png" alt="error message. " width="261" height="143" loading="lazy" /></p>
 
         <p>If you see this error message, click OK, this is a known bug.</p>
       </blockquote>
@@ -804,7 +737,7 @@ https://zenodo.org/record/3591856/files/variants.vcf
 </ul>
 
 <blockquote class="tip">
-  <div id="tip-naming-tracks" class="box-title"><button type="button" aria-controls="tip-naming-tracks-contents" aria-expanded="true" aria-label="Toggle tip box: Naming Tracks"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Naming Tracks<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-naming-tracks"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-naming-tracks" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Naming Tracks<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
   <ul>
     <li>The JBrowse tool takes track names directly from file names</li>
@@ -818,10 +751,10 @@ https://zenodo.org/record/3591856/files/variants.vcf
 <p>All of the track types in the JBrowse tool support a wide array of features. We’ve only looked at a simple track with default options, however there are more tools available to us to help create user-friendly JBrowse instances that can embed rich data.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-build-a-jbrowse-for-viewing-genes" class="box-title" aria-label="hands-on box: Build a JBrowse for viewing Genes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Build a JBrowse for viewing Genes</div>
+  <div class="box-title hands-on-title" id="hands-on-build-a-jbrowse-for-viewing-genes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Build a JBrowse for viewing Genes</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="JBrowse tool" aria-role="link"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0</span></span> with the following parameters:
       <ul>
         <li><em>“Reference genome to display”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history</code>
           <ul>
@@ -838,9 +771,9 @@ https://zenodo.org/record/3591856/files/variants.vcf
                   <ul>
                     <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Annotation Track”</em>
                       <ul>
-                        <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/<span class="notranslate">BED</span> Features</code>
+                        <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/BED Features</code>
                           <ul>
-                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GFF/GFF3/<span class="notranslate">BED</span> Track Data”</em>: <code class="language-plaintext highlighter-rouge">genes (de novo).gff3</code></li>
+                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GFF/GFF3/BED Track Data”</em>: <code class="language-plaintext highlighter-rouge">genes (de novo).gff3</code></li>
                             <li><em>“JBrowse Track Type [Advanced]”</em>: <code class="language-plaintext highlighter-rouge">Canvas Features</code></li>
                             <li>In <em>“JBrowse Feature Score Scaling &amp; Coloring Options [Advanced]”</em>:
                               <ul>
@@ -862,15 +795,15 @@ https://zenodo.org/record/3591856/files/variants.vcf
                     </li>
                     <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <em>“Insert Annotation Track”</em>
                       <ul>
-                        <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/<span class="notranslate">BED</span> Features</code>
+                        <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">GFF/GFF3/BED Features</code>
                           <ul>
-                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GFF/GFF3/<span class="notranslate">BED</span> Track Data”</em>: <code class="language-plaintext highlighter-rouge">genes (NCBI).gff3</code></li>
+                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GFF/GFF3/BED Track Data”</em>: <code class="language-plaintext highlighter-rouge">genes (NCBI).gff3</code></li>
                             <li><em>“JBrowse Track Type [Advanced]”</em>: <code class="language-plaintext highlighter-rouge">Canvas Features</code></li>
                             <li>
                               <p>In <em>“JBrowse Contextual Menu options [Advanced]”</em>:</p>
 
                               <blockquote class="tip">
-                                <div id="tip-contextual-menus" class="box-title"><button type="button" aria-controls="tip-contextual-menus-contents" aria-expanded="true" aria-label="Toggle tip box: Contextual Menus"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Contextual Menus<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+                                <div class="box-title tip-title" id="tip-contextual-menus"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-contextual-menus" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Contextual Menus<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
                                 <p>We’re going to add a “Contextual Menu” which deserves a little explanation first. In JBrowse
 terminology the right click menu of some features is called the contextual menus. You can customize
@@ -912,7 +845,7 @@ directly in your templating</p>
     <li>
       <p>View the output</p>
 
-      <figure id="figure-2"><img src="../../images/jbrowse/genes.png" alt="genes in JBrowse. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> Genes visualised in JBrowse. The lighter coloured genes on the denovo track are coloured based on the confidence score given to the prediction by AUGUSTUS. NCBI genes do not have scores, these are more like an official gene set.</figcaption></figure>
+      <figure id="figure-2" style="max-width: 90%; margin:auto;"><img src="../../images/jbrowse/genes.png" alt="genes in JBrowse. " width="1273" height="301" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 2</strong>:</span> Genes visualised in JBrowse. The lighter coloured genes on the denovo track are coloured based on the confidence score given to the prediction by AUGUSTUS. NCBI genes do not have scores, these are more like an official gene set.</figcaption></figure>
     </li>
     <li>
       <p>Turn on both tracks of data.</p>
@@ -925,7 +858,7 @@ directly in your templating</p>
 
       <p>This menu option is dynamic, try it with a few other features from the <code class="language-plaintext highlighter-rouge">genes (NCBI).gff3</code> track. These features have a <code class="language-plaintext highlighter-rouge">locus_tag</code> and the menu button we added will open a URL to an NCBI search page for the value of this <code class="language-plaintext highlighter-rouge">locus_tag</code> attribute.</p>
 
-      <figure id="figure-3"><img src="../../images/jbrowse/ncbi.png" alt="ncbi view. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 3:</span> The NCBI iframe within JBrowse, you can see how to link to exte<span class="notranslate">rna</span>l databases from JBrowse and help the viewer obtain as much information or context as they might need... but you have to build it yourself.</figcaption></figure>
+      <figure id="figure-3" style="max-width: 90%; margin:auto;"><img src="../../images/jbrowse/ncbi.png" alt="ncbi view. " width="1721" height="864" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 3</strong>:</span> The NCBI iframe within JBrowse, you can see how to link to external databases from JBrowse and help the viewer obtain as much information or context as they might need... but you have to build it yourself.</figcaption></figure>
     </li>
   </ol>
 </blockquote>
@@ -941,13 +874,13 @@ directly in your templating</p>
 
 <p>This is the next major category of data that people wish to visualize: sequencing, coverage, and variation. The sequencing data can be of any type, and does not necessarily need to be sequencing data, as long as the results are formatted as BAM files. Here we will add several coverage tracks (essentially a line plot along the genome, associating a position with a value) with various visualisation options like scaling and display type. Each of these visualisation options can be useful in different situations, but it largely is a matter of preference or what you are used to seeing.</p>
 
-<p>Next we will add a sequencing dataset, a BAM file which maps some sequencing <span class="notranslate">reads</span> against various locations along the genome. JBrowse helpfully highlights which <span class="notranslate">reads</span> have <span class="notranslate">mapping</span> issues, and any changes in bases between the <span class="notranslate">reads</span> and the genome. We “Autogenerate a SNP track”, which produces an extra track we can enable in JBrowse. This track <span class="notranslate">reads</span> the same BAM file used for visualising <span class="notranslate">reads</span>, and then produces a SNP and coverage visualisation. <strong>NB</strong>: This only works for small BAM files, if your files are large (&gt;200 Mb), then you should consider generating these coverage and SNP tracks by other means (e.g. <code class="language-plaintext highlighter-rouge">bamCoverage</code> and <code class="language-plaintext highlighter-rouge">FreeBayes</code> or similar tools) as it will be significantly faster. You can learn more about generating these files in <a href="/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html">the <span class="notranslate">Mapping</span> tutorial</a>.</p>
+<p>Next we will add a sequencing dataset, a BAM file which maps some sequencing reads against various locations along the genome. JBrowse helpfully highlights which reads have mapping issues, and any changes in bases between the reads and the genome. We “Autogenerate a SNP track”, which produces an extra track we can enable in JBrowse. This track reads the same BAM file used for visualising reads, and then produces a SNP and coverage visualisation. <strong>NB</strong>: This only works for small BAM files, if your files are large (&gt;200 Mb), then you should consider generating these coverage and SNP tracks by other means (e.g. <code class="language-plaintext highlighter-rouge">bamCoverage</code> and <code class="language-plaintext highlighter-rouge">FreeBayes</code> or similar tools) as it will be significantly faster. You can learn more about generating these files in <a href="/training-material/topics/sequence-analysis/tutorials/mapping/tutorial.html">the Mapping tutorial</a>.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-hands-on" class="box-title" aria-label="hands-on box: Hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Hands-on</div>
+  <div class="box-title hands-on-title" id="hands-on"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="JBrowse tool" aria-role="link"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0</span></span> with the following parameters:
       <ul>
         <li><em>“Reference genome to display”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history</code>
           <ul>
@@ -966,7 +899,7 @@ directly in your templating</p>
                       <ul>
                         <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">BigWig XY</code>
                           <ul>
-                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BigWig Track Data”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">dna</span> sequencing coverage.bw</code></li>
+                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BigWig Track Data”</em>: <code class="language-plaintext highlighter-rouge">dna sequencing coverage.bw</code></li>
                           </ul>
                         </li>
                       </ul>
@@ -975,7 +908,7 @@ directly in your templating</p>
                       <ul>
                         <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">BigWig XY</code>
                           <ul>
-                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BigWig Track Data”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">rna</span>-seq coverage/1.bw</code></li>
+                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BigWig Track Data”</em>: <code class="language-plaintext highlighter-rouge">rna-seq coverage/1.bw</code></li>
                             <li><em>“Use XYPlot”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
                           </ul>
                         </li>
@@ -985,7 +918,7 @@ directly in your templating</p>
                       <ul>
                         <li><em>“Track Type”</em>: <code class="language-plaintext highlighter-rouge">BigWig XY</code>
                           <ul>
-                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BigWig Track Data”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">rna</span>-seq coverage/2.bw</code></li>
+                            <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BigWig Track Data”</em>: <code class="language-plaintext highlighter-rouge">rna-seq coverage/2.bw</code></li>
                             <li><em>“Use XYPlot”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
                             <li><em>“Show variance band”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
                             <li><em>“Track Scaling”</em>: <code class="language-plaintext highlighter-rouge">Autoscale (global)</code></li>
@@ -1032,7 +965,7 @@ directly in your templating</p>
     <li>
       <p>Execute and then explore the resulting data.</p>
 
-      <figure id="figure-4"><img src="../../images/jbrowse/sequencing.png" alt="sequencing tracks in JBrowse. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 4:</span> All of the sequencing tracks in JBrowse. Try exploring! There are many menu and configuration options which can help you filter and sort your data.</figcaption></figure>
+      <figure id="figure-4" style="max-width: 90%; margin:auto;"><img src="../../images/jbrowse/sequencing.png" alt="sequencing tracks in JBrowse. " width="1283" height="928" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 4</strong>:</span> All of the sequencing tracks in JBrowse. Try exploring! There are many menu and configuration options which can help you filter and sort your data.</figcaption></figure>
     </li>
   </ol>
 </blockquote>
@@ -1042,21 +975,21 @@ directly in your templating</p>
 <ul>
   <li>Clicking on individual variations in the dedicated <code class="language-plaintext highlighter-rouge">variants.vcf</code> track</li>
   <li>Hovering over the autogenerated SNPs/Coverage track</li>
-  <li>Clicking on individual <span class="notranslate">reads</span> of the <code class="language-plaintext highlighter-rouge">sequencing.bam</code> track</li>
+  <li>Clicking on individual reads of the <code class="language-plaintext highlighter-rouge">sequencing.bam</code> track</li>
   <li>Changing the visualisation options of the BAM track</li>
 </ul>
 
 <h1 id="blast-results">Blast Results</h1>
 
-<p>The Blast visualisation module requires that you have a gff3 formatted set of features which you then exported as <span class="notranslate">DNA</span> or protein, and blasted. The reason is easy to understand: when you extract <span class="notranslate">DNA</span>/protein sequences for Blasting, this process looses information about where these sequences were along the genome. The results from Blast retains the identifiers from the <span class="notranslate">DNA</span>/protein sequences, so we need to “map” these identifiers, to proper features with locations.</p>
+<p>The Blast visualisation module requires that you have a gff3 formatted set of features which you then exported as DNA or protein, and blasted. The reason is easy to understand: when you extract DNA/protein sequences for Blasting, this process looses information about where these sequences were along the genome. The results from Blast retains the identifiers from the DNA/protein sequences, so we need to “map” these identifiers, to proper features with locations.</p>
 
 <p>The best way to accomplish this is through the <code class="language-plaintext highlighter-rouge">gffread</code> tool which can cleanup a gff3 file, and export various features, optionally translating them. With these outputs, the cleaned features and <code class="language-plaintext highlighter-rouge">fasta</code> formatted sequences, you can Blast the sequences, and then supply the resulting Blast XML outputs in addition to the cleaned features, allowing a script to re-associate these Blast results to their original locations along the genome.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-building-a-jbrowse-for-blast-results" class="box-title" aria-label="hands-on box: Building a JBrowse for Blast results"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Building a JBrowse for Blast results</div>
+  <div class="box-title hands-on-title" id="hands-on-building-a-jbrowse-for-blast-results"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Building a JBrowse for Blast results</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+<span class="notranslate">galaxy</span>0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0" title="JBrowse tool" aria-role="link"><strong>JBrowse</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/jbrowse/jbrowse/1.16.9+galaxy0</span></span> with the following parameters:
       <ul>
         <li><em>“Reference genome to display”</em>: <code class="language-plaintext highlighter-rouge">Use a genome from history</code>
           <ul>
@@ -1102,7 +1035,7 @@ directly in your templating</p>
     <li>
       <p>Execute and then explore the resulting data.</p>
 
-      <figure id="figure-5"><img src="../../images/jbrowse/blast.png" alt="blast results in JBrowse. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 5:</span> Blast results, coloured according to their e-value. This sort of track is commonly used to help genome annotators have additional genomic context when they are annotating.</figcaption></figure>
+      <figure id="figure-5" style="max-width: 90%; margin:auto;"><img src="../../images/jbrowse/blast.png" alt="blast results in JBrowse. " width="1286" height="766" loading="lazy" /><figcaption><span class="figcaption-prefix"><strong>Figure 5</strong>:</span> Blast results, coloured according to their e-value. This sort of track is commonly used to help genome annotators have additional genomic context when they are annotating.</figcaption></figure>
     </li>
   </ol>
 </blockquote>
@@ -1111,10 +1044,12 @@ directly in your templating</p>
 
 <p>This does not exhaustively cover JBrowse, and the tool is more extensible than can be easily documented, but hopefully these examples are illustrative and can give you some ideas about your next steps.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>This tutorial can not exhaustively cover every data type, but maybe it provides inspiration for your own analyses</p>
@@ -1152,38 +1087,18 @@ directly in your templating</p>
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Genomic Data Visualisation with JBrowse (Visualisation)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Genomic Data Visualisation with JBrowse (Visualisation)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Helena Rasche, Saskia Hiltemann, Erasmus+ Programme,  <b>Genomic Data Visualisation with JBrowse (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html">https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Helena Rasche, Saskia Hiltemann, Erasmus+ Programme,  <b>Genomic Data Visualisation with JBrowse (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html">https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1195,7 +1110,7 @@ directly in your templating</p>
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1204,28 +1119,31 @@ directly in your templating</p>
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{visualisation-jbrowse,
 author = "Helena Rasche and Saskia Hiltemann and Erasmus+ Programme",
-title = "Genomic Data Visualisation with JBrowse (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Genomic Data Visualisation with JBrowse (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/visualisation/tutorials/jbrowse/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1233,11 +1151,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1246,49 +1164,84 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/visualisation/tutorials/jbrowse/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: jbrowse
+  owner: iuc
+  revisions: 17359b808b01
+  tool_panel_section_label: Visualisation
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00322">https://gxy.io/GTN:T00322</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/visualisation/tutorials/jbrowse/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

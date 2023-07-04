@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,44 +8,208 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Updating diffs in admin training" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Helena Rasche" />
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Updating diffs in admin training">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-04-17 12:26:56 +0000">
+<meta name="DC.creator" content="Helena Rasche">
 
         
         
         
         
+        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Updating diffs in admin training">
+        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co...">
         
-        <meta name="description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Updating diffs in admin training" />
-        <meta property="og:description" content="Galaxy is a great solution to train the bioinformatics co..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
+        
+        <script type="application/ld+json">
+            
+
+
+{
+  "@context": "http://schema.org",
+  "@type": "LearningResource",
+  "http://purl.org/dc/terms/conformsTo": {
+    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+    "@type": "CreativeWork"
+  },
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Students"
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "Community-Driven Data Analysis Training for Biology",
+    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
+  },
+  "copyrightHolder": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "dateModified": "2023-04-17 12:26:56 +0000",
+  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
+  "headline": "Updating diffs in admin training",
+  "interactivityType": "mixed",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
+  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
+  "producer": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "provider": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "sourceOrganization": {
+    "@type": "Organization",
+    "email": "galaxytrainingnetwork@gmail.com",
+    "name": "Galaxy Training Network",
+    "url": "https://galaxyproject.org/teach/gtn/"
+  },
+  "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
+  "accessMode": [
+    "textual",
+    "visual"
+  ],
+  "accessModeSufficient": [
+    "textual",
+    "visual"
+  ],
+  "accessibilityControl": [
+    "fullKeyboardControl",
+    "fullMouseControl"
+  ],
+  "accessibilityFeature": [
+    "alternativeText",
+    "tableOfContents"
+  ],
+  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
+  "isPartOf": {
+    "@type": "CreativeWork",
+    "name": "Contributing to the Galaxy Training Material",
+    "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
+    "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
+  },
+  "learningResourceType": "hands-on tutorial",
+  "name": "Hands-on for 'Updating diffs in admin training' tutorial",
+  "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html",
+  "timeRequired": "PT5M",
+  "teaches": "Update some text in an earlier commit",
+  "keywords": "contributing",
+  "description": "The questions this  addresses are:\n - How does it work?\n\n\nThe objectives are:\n - Update some text in an earlier commit\n\n",
+  "inLanguage": {
+    "@type": "Language",
+    "name": "English",
+    "alternateName": "en"
+  },
+  "author": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "http://purl.org/dc/terms/conformsTo": {
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
+      },
+      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
+      "name": "Helena Rasche",
+      "image": "https://avatars.githubusercontent.com/hexylena",
+      "description": "A contributor to the GTN project.",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "email": "galaxytrainingnetwork@gmail.com",
+          "name": "Galaxy Training Network",
+          "url": "https://galaxyproject.org/teach/gtn/"
+        }
+      ],
+      "identifier": "https://orcid.org/0000-0001-9760-8992",
+      "orcid": "https://orcid.org/0000-0001-9760-8992"
+    }
+  ],
+  "about": [
+    {
+      "@type": "CreativeWork",
+      "name": "Contributing to the Galaxy Training Material",
+      "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
+      "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
+    }
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Updating Diffs"
+}
+        </script>
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,38 +225,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/admin-knitting/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/admin-knitting/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/admin-knitting/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/admin-knitting/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/admin-knitting/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/admin-knitting/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -112,9 +248,11 @@
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
         </a>
         
+        
         <a class="dropdown-item" href="/training-material/topics/contributing/faqs/" title="Check our FAQs for the Contributing to the Galaxy Training Material topic">
            <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
         </a>
+        
         
         <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
             <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
@@ -132,7 +270,6 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
         <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/contributing/tutorials/admin-knitting/tutorial.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
@@ -161,27 +298,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -193,13 +317,13 @@
 
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/admin-knitting/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/contributing/tutorials/admin-knitting/tutorial.html">2022-06-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/contributing/tutorials/admin-knitting/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/contributing/tutorials/admin-knitting/tutorial.html">2022-05-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/contributing/tutorials/admin-knitting/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/contributing/tutorials/admin-knitting/tutorial.html">2022-04-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -212,7 +336,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -226,8 +350,13 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         
+
+
+
+
 
 
 
@@ -244,181 +373,26 @@
 
 
 
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-<script type="application/ld+json">
-    
 
 
-{
-  "@context": "http://schema.org",
-  "@type": "LearningResource",
-  "http://purl.org/dc/terms/conformsTo": {
-    "@id": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
-    "@type": "CreativeWork"
-  },
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "Students"
-  },
-  "citation": {
-    "@type": "CreativeWork",
-    "name": "Community-Driven Data Analysis Training for Biology",
-    "url": "https://doi.org/10.1016/j.cels.2018.05.012"
-  },
-  "copyrightHolder": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "dateModified": "2022-10-18 14:23:35 +0000",
-  "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
-  "headline": "Updating diffs in admin training",
-  "interactivityType": "mixed",
-  "isAccessibleForFree": true,
-  "isFamilyFriendly": true,
-  "license": "https://spdx.org/licenses/CC-BY-4.0.html",
-  "producer": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "provider": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "sourceOrganization": {
-    "@type": "Organization",
-    "email": "galaxytrainingnetwork@gmail.com",
-    "name": "Galaxy Training Network",
-    "url": "https://galaxyproject.org/teach/gtn/"
-  },
-  "identifier": "https://github.com/galaxyproject/training-material",
-  "accessMode": [
-    "textual",
-    "visual"
-  ],
-  "accessModeSufficient": [
-    "textual",
-    "visual"
-  ],
-  "accessibilityControl": [
-    "fullKeyboardControl",
-    "fullMouseControl"
-  ],
-  "accessibilityFeature": [
-    "alternativeText",
-    "tableOfContents"
-  ],
-  "accessibilitySummary": "The text aims to be as accessible as possible. Image descriptions will vary per tutorial, from images being completely inaccessible, to images with good descriptions for non-visual users.",
-  "isPartOf": {
-    "@type": "CreativeWork",
-    "name": "Contributing to the Galaxy Training Material",
-    "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
-    "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
-  },
-  "learningResourceType": "hands-on tutorial",
-  "name": "Hands-on for 'Updating diffs in admin training' tutorial",
-  "url": "https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html",
-  "timeRequired": "PT5M",
-  "keywords": "contributing",
-  "description": "The questions this  addresses are:\n - How does it work?\n\n\nThe objectives are:\n - Update some text in an earlier commit\n\n",
-  "inLanguage": {
-    "@type": "Language",
-    "name": "English",
-    "alternateName": "en"
-  },
-  "author": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/hexylena/",
-      "name": "Helena Rasche",
-      "image": "https://avatars.githubusercontent.com/hexylena",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9760-8992",
-      "orcid": "https://orcid.org/0000-0001-9760-8992"
-    }
-  ],
-  "about": [
-    {
-      "@type": "CreativeWork",
-      "name": "Contributing to the Galaxy Training Material",
-      "description": "Galaxy is a great solution to train the bioinformatics concepts: numerous bioinformatics tools are available (more than 7,000 in the ToolShed), it can be used by people without any computer science skills, it trains to use technology, outlining available resources and efforts that have made them accessible to researchers, it is scalable.<br> In 2016, the Galaxy Training Network decided to set up a new infrastructure for delivering easily Galaxy related training material. The idea was to develop something open and online based on a community effort, as always in Galaxy.",
-      "url": "https://training.galaxyproject.org/training-material/topics/contributing/"
-    }
-  ]
-}
-</script>
-
-<section class="tutorial topic-contributing">
+<article class="tutorial topic-contributing">
     <h1 data-toc-skip>Updating diffs in admin training</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/hexylena?s=27" alt="Avatar">Helena Rasche</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/hexylena/" class="contributor-badge contributor-hexylena"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/hexylena?s=36" alt="Avatar" width="36" height="36">Helena Rasche</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -451,10 +425,6 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/contributing/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
 
@@ -467,13 +437,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/contributing/tutorials/admin-knitting/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/contributing/tutorials/admin-knitting/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -499,34 +466,73 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/contributing/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Apr 17, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00055">https://gxy.io/GTN:T00055</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -537,6 +543,7 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="updating-diffs">Updating Diffs</h1>
 
 <p>The admin training was recently converted completely to use diffs. This was
@@ -546,7 +553,7 @@ admin training, in support of students and testing.</p>
 <p>Here’s some common editing scenarios to help you out.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will:</p>
 
@@ -622,13 +629,13 @@ admin training, in support of students and testing.</p>
 <p>But mostly you don’t need to care about the <code class="language-plaintext highlighter-rouge">knit.py</code> or <code class="language-plaintext highlighter-rouge">knit-frog.py</code>, we have <code class="language-plaintext highlighter-rouge">knit-automated.sh</code> which takes care of calling those properly. You can call it with <code class="language-plaintext highlighter-rouge">export</code> to write the patches into <code class="language-plaintext highlighter-rouge">/tmp/git-gat/</code></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./bin/knit-automated.sh export
-/tmp/git-gat/0-ansible-<span class="notranslate">galaxy</span>-commit-0000-add-requirements.patch
-/tmp/git-gat/0-ansible-<span class="notranslate">galaxy</span>-commit-0001-add-ansible-cfg.patch
-/tmp/git-gat/0-ansible-<span class="notranslate">galaxy</span>-commit-0002-add-hosts.patch
-/tmp/git-gat/0-ansible-<span class="notranslate">galaxy</span>-commit-0003-add-initial-group-variables-file.patch
-/tmp/git-gat/0-ansible-<span class="notranslate">galaxy</span>-commit-0004-add-initial-<span class="notranslate">galaxy</span>-playbook.patch
-/tmp/git-gat/0-ansible-<span class="notranslate">galaxy</span>-commit-0005-add-pip--miniconda--<span class="notranslate">galaxy</span>-to-playbook.patch
-/tmp/git-gat/0-ansible-<span class="notranslate">galaxy</span>-commit-0006-configure-miniconda-and-<span class="notranslate">galaxy</span>.patch
+/tmp/git-gat/0-ansible-galaxy-commit-0000-add-requirements.patch
+/tmp/git-gat/0-ansible-galaxy-commit-0001-add-ansible-cfg.patch
+/tmp/git-gat/0-ansible-galaxy-commit-0002-add-hosts.patch
+/tmp/git-gat/0-ansible-galaxy-commit-0003-add-initial-group-variables-file.patch
+/tmp/git-gat/0-ansible-galaxy-commit-0004-add-initial-galaxy-playbook.patch
+/tmp/git-gat/0-ansible-galaxy-commit-0005-add-pip--miniconda--galaxy-to-playbook.patch
+/tmp/git-gat/0-ansible-galaxy-commit-0006-configure-miniconda-and-galaxy.patch
 [...]
 /tmp/git-gat/6-pulsar-commit-0000-add-requirements.patch
 /tmp/git-gat/6-pulsar-commit-0001-configure-rabbitmq.patch
@@ -645,13 +652,13 @@ admin training, in support of students and testing.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[hxr@mk:/tmp/git-gat]$ git init
 [hxr@mk:/tmp/git-gat]$ git am -3 *
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0000: Add requirements
+Applying: admin/ansible-galaxy/0000: Add requirements
 applying to an empty history
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0001: Add ansible.cfg
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0002: Add hosts
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0003: Add initial group variables file
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0004: Add initial <span class="notranslate">galaxy</span> playbook
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0005: Add pip, miniconda, <span class="notranslate">galaxy</span> to playbook
+Applying: admin/ansible-galaxy/0001: Add ansible.cfg
+Applying: admin/ansible-galaxy/0002: Add hosts
+Applying: admin/ansible-galaxy/0003: Add initial group variables file
+Applying: admin/ansible-galaxy/0004: Add initial galaxy playbook
+Applying: admin/ansible-galaxy/0005: Add pip, miniconda, galaxy to playbook
 [...]
 Applying: admin/pulsar/0004: Add pulsar host
 Applying: admin/pulsar/0005: Add pulsar playbook
@@ -667,7 +674,7 @@ Applying: admin/pulsar/0008: Send bwa and bwa-mem to pulsar
 <span class="c">.
 </span><span class="go">├── ansible.cfg
 ├── files
-│   └── <span class="notranslate">galaxy</span>
+│   └── galaxy
 │       ├── config
 │       │   ├── dependency_resolvers_conf.xml
 │       │   └── tool_destinations.yml
@@ -676,22 +683,22 @@ Applying: admin/pulsar/0008: Send bwa and bwa-mem to pulsar
 │       │   └── my_rules.py
 │       └── tools
 │           └── testing.xml
-├── <span class="notranslate">galaxy</span>.yml
+├── galaxy.yml
 ├── group_vars
 │   ├── all.yml
-│   ├── <span class="notranslate">galaxy</span>servers.yml
+│   ├── galaxyservers.yml
 │   └── pulsarservers.yml
 ├── hosts
 ├── pulsar.yml
 ├── requirements.yml
 └── templates
-    ├── <span class="notranslate">galaxy</span>
+    ├── galaxy
     │   └── config
     │       ├── container_resolvers_conf.xml.j2
-    │       ├── job_conf.xml.j2
+    │       ├── job_conf.yml.j2
     │       └── job_resource_params_conf.xml.j2
     └── nginx
-        ├── <span class="notranslate">galaxy</span>.j2
+        ├── galaxy.j2
         └── redirect-ssl.j2
 
 10 directories, 18 files
@@ -705,7 +712,7 @@ Applying: admin/pulsar/0008: Send bwa and bwa-mem to pulsar
 </ul>
 
 <blockquote class="warning">
-  <div id="warning-danger-don-t-mess-with-the-commit-names-at-this-step" class="box-title" aria-label="warning box: Danger: Don't mess with the commit names at this step"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span class="visually-hidden"></span> Warning: Danger: Don't mess with the commit names at this step</div>
+  <div class="box-title warning-title" id="warning-danger-don-t-mess-with-the-commit-names-at-this-step"><i class="fas fa-exclamation-triangle" aria-hidden="true" ></i> Warning: Danger: Don't mess with the commit names at this step</div>
   <p>They’re used for figuring out which commit a patch file belongs to. Sorry!</p>
 </blockquote>
 
@@ -714,12 +721,12 @@ Applying: admin/pulsar/0008: Send bwa and bwa-mem to pulsar
 <h2 id="i-want-to-update-the-text-of-a-specific-commit">I want to update the text of a specific commit</h2>
 
 <blockquote class="question">
-  <div id="question-example-problem" class="box-title" aria-label="question box: Example problem"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Example problem</div>
-  <p>I want to edit the commit titled “Add production facing vars” to add an addtional variable in admin/ansible-<span class="notranslate">galaxy</span>.</p>
+  <div class="box-title question-title" id="question-example-problem"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Example problem</div>
+  <p>I want to edit the commit titled “Add production facing vars” to add an addtional variable in admin/ansible-galaxy.</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-make-the-change-you-want-to-see-in-the-gat" class="box-title" aria-label="hands-on box: Make the change you want to see in the GAT"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make the change you want to see in the GAT</div>
+  <div class="box-title hands-on-title" id="hands-on-make-the-change-you-want-to-see-in-the-gat"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Make the change you want to see in the GAT</div>
   <ol>
     <li>
       <p>Start by exporting</p>
@@ -732,15 +739,15 @@ Applying: admin/pulsar/0008: Send bwa and bwa-mem to pulsar
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[hxr@mk:/tmp/git-gat]$ git init
 [hxr@mk:/tmp/git-gat]$ git am -3 *.patch
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0000: Add requirements
+Applying: admin/ansible-galaxy/0000: Add requirements
 applying to an empty history
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0001: Add ansible.cfg
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0002: Add hosts
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0003: Add initial group variables file
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0004: Add initial <span class="notranslate">galaxy</span> playbook
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0005: Add pip, miniconda, <span class="notranslate">galaxy</span> to playbook
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0006: Configure miniconda and <span class="notranslate">galaxy</span>
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0007: Configure <span class="notranslate">galaxy</span> config
+Applying: admin/ansible-galaxy/0001: Add ansible.cfg
+Applying: admin/ansible-galaxy/0002: Add hosts
+Applying: admin/ansible-galaxy/0003: Add initial group variables file
+Applying: admin/ansible-galaxy/0004: Add initial galaxy playbook
+Applying: admin/ansible-galaxy/0005: Add pip, miniconda, galaxy to playbook
+Applying: admin/ansible-galaxy/0006: Configure miniconda and galaxy
+Applying: admin/ansible-galaxy/0007: Configure galaxy config
 [...]
 [hxr@mk:/tmp/git-gat]$ rm *.patch
 </code></pre></div>      </div>
@@ -749,26 +756,26 @@ Applying: admin/ansible-<span class="notranslate">galaxy</span>/0007: Configure 
       <p>Find the commit:</p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git log --oneline | grep "Add production facing vars"
-2f5b416 admin/ansible-<span class="notranslate">galaxy</span>/0022: Add production facing vars
+2f5b416 admin/ansible-galaxy/0022: Add production facing vars
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Edit rebase one <span class="notranslate">upstream</span> of that commit</p>
+      <p>Edit rebase one upstream of that commit</p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git rebase -i 2f5b416~
 </code></pre></div>      </div>
 
       <p>Mark it for editing</p>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit 2f5b416 admin/ansible-<span class="notranslate">galaxy</span>/0022: Add production facing vars
-pick a352bec admin/ansible-<span class="notranslate">galaxy</span>/0023: Add nginx x-accel-redir and g-i-g webhook config to nginx
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit 2f5b416 admin/ansible-galaxy/0022: Add production facing vars
+pick a352bec admin/ansible-galaxy/0023: Add nginx x-accel-redir and g-i-g webhook config to nginx
 pick 59f9ff0 admin/singularity/0000: Add golang and singulary ansible roles
 pick f38ddbf admin/singularity/0001: Configure golang and singularity
 </code></pre></div>      </div>
 
       <p>It should stop there</p>
 
-      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stopped at 2f5b416...  admin/ansible-<span class="notranslate">galaxy</span>/0022: Add production facing vars
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stopped at 2f5b416...  admin/ansible-galaxy/0022: Add production facing vars
 You can amend the commit now, with
 
   git commit --amend
@@ -782,11 +789,11 @@ Once you are satisfied with your changes, run
       <p>Open your file, make your change. Here I’m showing the change I made with <code class="language-plaintext highlighter-rouge">git diff</code></p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git diff | cat
-diff --git a/group_vars/<span class="notranslate">galaxy</span>servers.yml b/group_vars/<span class="notranslate">galaxy</span>servers.yml
+diff --git a/group_vars/galaxyservers.yml b/group_vars/galaxyservers.yml
 index 15fbf1e..8fe4343 100644
---- a/group_vars/<span class="notranslate">galaxy</span>servers.yml
-+++ b/group_vars/<span class="notranslate">galaxy</span>servers.yml
-@@ -53,6 +53,8 @@ <span class="notranslate">galaxy</span>_config:
+--- a/group_vars/galaxyservers.yml
++++ b/group_vars/galaxyservers.yml
+@@ -53,6 +53,8 @@ galaxy_config:
      expose_user_name: true
      expose_dataset_path: true
      expose_potentially_sensitive_job_metrics: true
@@ -803,9 +810,9 @@ index 15fbf1e..8fe4343 100644
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git status
 interactive rebase in progress; onto 7284036
 Last command done (1 command done):
-   edit 2f5b416 admin/ansible-<span class="notranslate">galaxy</span>/0022: Add production facing vars
+   edit 2f5b416 admin/ansible-galaxy/0022: Add production facing vars
 Next commands to do (46 remaining commands):
-   pick 3c6a72e admin/ansible-<span class="notranslate">galaxy</span>/0023: Add nginx x-accel-redir and g-i-g webhook config to nginx
+   pick 3c6a72e admin/ansible-galaxy/0023: Add nginx x-accel-redir and g-i-g webhook config to nginx
    pick a893955 admin/singularity/0000: Add golang and singulary ansible roles
   (use "git rebase --edit-todo" to view and edit)
 You are currently editing a commit while rebasing branch 'main' on '7284036'.
@@ -814,15 +821,15 @@ You are currently editing a commit while rebasing branch 'main' on '7284036'.
 
 Changes to be committed:
   (use "git restore --staged &lt;file&gt;..." to unstage)
-        modified:   group_vars/<span class="notranslate">galaxy</span>servers.yml
+        modified:   group_vars/galaxyservers.yml
 </code></pre></div>      </div>
     </li>
     <li>
       <p>Ammend the commit, and continue the rebase</p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git commit --amend
-[detached HEAD ed290de] admin/ansible-<span class="notranslate">galaxy</span>/0022: Add production facing vars
- Author: The <span class="notranslate">Galaxy</span> Training Network &lt;<span class="notranslate">galaxy</span>trainingnetwork@gmail.com&gt;
+[detached HEAD ed290de] admin/ansible-galaxy/0022: Add production facing vars
+ Author: The Galaxy Training Network &lt;galaxytrainingnetwork@gmail.com&gt;
  Date: Mon Feb 15 14:06:56 2021 +0100
  1 file changed, 22 insertions(+)
 $ git rebase --continue
@@ -844,12 +851,12 @@ Successfully rebased and updated refs/heads/main.
 <h2 id="upgrading-an-existing-tutorial">Upgrading an existing tutorial</h2>
 
 <blockquote class="question">
-  <div id="question-example-problem-1" class="box-title" aria-label="question box: Example problem"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Example problem</div>
+  <div class="box-title question-title" id="question-example-problem-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Example problem</div>
   <p>I have a new tutorial in the schedule and I want to upgrade it to use this feature</p>
 </blockquote>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-make-the-change-you-want-to-see-in-the-gat-1" class="box-title" aria-label="hands-on box: Make the change you want to see in the GAT"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make the change you want to see in the GAT</div>
+  <div class="box-title hands-on-title" id="hands-on-make-the-change-you-want-to-see-in-the-gat-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Make the change you want to see in the GAT</div>
 
   <ol>
     <li>
@@ -863,15 +870,15 @@ Successfully rebased and updated refs/heads/main.
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[hxr@mk:/tmp/git-gat]$ git init
 [hxr@mk:/tmp/git-gat]$ git am -3 0* 1* 2*
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0000: Add requirements
+Applying: admin/ansible-galaxy/0000: Add requirements
 applying to an empty history
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0001: Add ansible.cfg
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0002: Add hosts
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0003: Add initial group variables file
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0004: Add initial <span class="notranslate">galaxy</span> playbook
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0005: Add pip, miniconda, <span class="notranslate">galaxy</span> to playbook
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0006: Configure miniconda and <span class="notranslate">galaxy</span>
-Applying: admin/ansible-<span class="notranslate">galaxy</span>/0007: Configure <span class="notranslate">galaxy</span> config
+Applying: admin/ansible-galaxy/0001: Add ansible.cfg
+Applying: admin/ansible-galaxy/0002: Add hosts
+Applying: admin/ansible-galaxy/0003: Add initial group variables file
+Applying: admin/ansible-galaxy/0004: Add initial galaxy playbook
+Applying: admin/ansible-galaxy/0005: Add pip, miniconda, galaxy to playbook
+Applying: admin/ansible-galaxy/0006: Configure miniconda and galaxy
+Applying: admin/ansible-galaxy/0007: Configure galaxy config
 [...]
 </code></pre></div>      </div>
     </li>
@@ -918,7 +925,7 @@ $ ./bin/knit-automated.sh import
 <h2 id="i-want-to-add-a-new-commit">I want to add a new commit</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-make-the-change-you-want-to-see-in-the-gat-2" class="box-title" aria-label="hands-on box: Make the change you want to see in the GAT"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Make the change you want to see in the GAT</div>
+  <div class="box-title hands-on-title" id="hands-on-make-the-change-you-want-to-see-in-the-gat-2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Make the change you want to see in the GAT</div>
 
   <ol>
     <li>
@@ -932,11 +939,11 @@ $ ./bin/knit-automated.sh import
 +++ b/requirements.yml
 @@ -22,3 +22,7 @@
    version: 0.0.2
- - src: <span class="notranslate">galaxy</span>project.slurm
+ - src: galaxyproject.slurm
    version: 0.1.3
-+- name: use<span class="notranslate">galaxy</span>_eu.rabbitmq
++- name: usegalaxy_eu.rabbitmq
 +  version: 0.1.0
-+- src: <span class="notranslate">galaxy</span>project.pulsar
++- src: galaxyproject.pulsar
 +  version: 1.0.7
 { endraw }
 ```
@@ -961,14 +968,14 @@ $ git am -3 *.patch # Resolve any conflicts
       <p>This will fail. Here’s how to fix it:</p>
 
       <ol>
-        <li>Run <code class="language-plaintext highlighter-rouge">git am --show-current-patch</code> to see the above diff you’ve inserted (or the otherwise incorrect diff that’s a <span class="notranslate">downstream</span> result of your new change).</li>
+        <li>Run <code class="language-plaintext highlighter-rouge">git am --show-current-patch</code> to see the above diff you’ve inserted (or the otherwise incorrect diff that’s a downstream result of your new change).</li>
         <li>Make the correct change to the file on disk.</li>
         <li><code class="language-plaintext highlighter-rouge">git add &lt;path&gt;</code></li>
         <li><code class="language-plaintext highlighter-rouge">git am --continue</code></li>
       </ol>
     </li>
     <li>
-      <p>You’ll probably have to do this quite a few more times, diffs have a habit of affecting <span class="notranslate">downstream</span> diffs (e.g. changing a version number or being included in the diff context.)</p>
+      <p>You’ll probably have to do this quite a few more times, diffs have a habit of affecting downstream diffs (e.g. changing a version number or being included in the diff context.)</p>
     </li>
     <li>
       <p>Once you’ve finished all of them, you’ll just <code class="language-plaintext highlighter-rouge">./bin/knit-automated.sh import</code> and commit the resulting changes!</p>
@@ -976,7 +983,7 @@ $ git am -3 *.patch # Resolve any conflicts
   </ol>
 </blockquote>
 
-<p>The alte<span class="notranslate">rna</span>tive to the above approach is</p>
+<p>The alternative to the above approach is</p>
 
 <ol>
   <li>Export</li>
@@ -1008,7 +1015,7 @@ To restore the original branch and stop patching, run "git am --abort".
 <p>Here you grumble at how picky it is.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git am --show-current-patch
-From: The <span class="notranslate">Galaxy</span> Training Network &lt;<span class="notranslate">galaxy</span>trainingnetwork@gmail.com&gt;
+From: The Galaxy Training Network &lt;galaxytrainingnetwork@gmail.com&gt;
 Date: Mon, 15 Feb 2021 14:06:56 +0100
 Subject: admin/gxadmin/0000: Add requirement
 
@@ -1017,9 +1024,9 @@ Subject: admin/gxadmin/0000: Add requirement
 +++ b/requirements.yml
 @@ -26,3 +26,5 @@
    version: 0.1.0
- - src: <span class="notranslate">galaxy</span>project.pulsar
+ - src: galaxyproject.pulsar
    version: 1.0.6
-+- src: <span class="notranslate">galaxy</span>project.gxadmin
++- src: galaxyproject.gxadmin
 +  version: 0.0.8
 --
 2.25.1
@@ -1056,10 +1063,12 @@ topics/admin/tutorials/pulsar/tutorial.md
 
 <p>Roundtripping the commits and fixing up everywhere there was a single character difference in the diff context (UGH) will fix it.</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>The knitting script works OK?</p>
@@ -1097,38 +1106,18 @@ topics/admin/tutorials/pulsar/tutorial.md
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Updating diffs in admin training (Contributing to the Galaxy Training Material)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Updating diffs in admin training (Contributing to the Galaxy Training Material)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Helena Rasche,  <b>Updating diffs in admin training (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Helena Rasche,  <b>Updating diffs in admin training (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1140,7 +1129,7 @@ topics/admin/tutorials/pulsar/tutorial.md
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1149,28 +1138,31 @@ topics/admin/tutorials/pulsar/tutorial.md
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{contributing-admin-knitting,
 author = "Helena Rasche",
-title = "Updating diffs in admin training (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Updating diffs in admin training (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1178,170 +1170,134 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
 
                 
                 <blockquote class="agenda">
-                    <div class="box-title" aria-label="agenda box">Developing GTN training material</div>
+                    <div class="box-title">Developing GTN training material</div>
                     This tutorial is part of a series to develop GTN training material, feel free to also look at:
                     
                     <ol>
                     
                         
-                            
-                    <li><a href="/training-material/topics/contributing/slides/introduction.html">Overview of the Galaxy Training Material</a></li>
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">Adding auto-generated video to your slides</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-quiz/tutorial.html">Adding Quizzes to your Tutorial</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">Contributing with GitHub via its interface</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial/tutorial.html">Creating a new tutorial</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html">Creating content in Markdown</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/introduction/slides.html">Overview of the Galaxy Training Material</a></li>
                                 
-                            
                         
                     
                         
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">Creating Interactive Galaxy Tours</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-slides/slides.html">Creating Slides</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/github-command-line-contribution/tutorial.html">Contributing with GitHub via command-line</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/github-interface-contribution/tutorial.html">Contributing with GitHub via its interface</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-quiz/tutorial.html">Adding Quizzes to your Tutorial</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/slides-with-video/tutorial.html">Adding auto-generated video to your slides</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/generating-pdf/tutorial.html">Generating PDF artefacts of the website</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/design/tutorial.html">Design and plan session, course, materials</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/schemas/tutorial.html">GTN Metadata</a></li>
                                 
-                            
                         
                     
                         
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">Including a new topic</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
-                                
-                    <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
-                                
-                            
-                        
-                    
-                        
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/gitpod/tutorial.html">Running the GTN website online using GitPod</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
-                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
+                    <li><a href="/training-material/topics/contributing/tutorials/learning-principles/tutorial.html">Principles of learning and how they apply to training and teaching</a></li>
                                 
-                            
                         
                     
                         
-                            
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-technical/tutorial.html">Tools, Data, and Workflows for tutorials</a></li>
                                 
-                            
                         
                     
                         
-                            
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/running-jekyll/tutorial.html">Running the GTN website locally</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-content/tutorial.html">Creating content in Markdown</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-topic/tutorial.html">Including a new topic</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/create-new-tutorial-tours/tutorial.html">Creating Interactive Galaxy Tours</a></li>
+                                
+                        
+                    
+                        
+                                
+                    <li><a href="/training-material/topics/contributing/tutorials/python/tutorial.html">Teaching Python</a></li>
+                                
+                        
+                    
+                        
                                 
                     <li><a href="/training-material/topics/contributing/tutorials/admin-knitting/tutorial.html">Updating diffs in admin training</a></li>
                                 
-                            
                         
                     
                     </ol>
@@ -1350,49 +1306,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/contributing/tutorials/admin-knitting/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00055">https://gxy.io/GTN:T00055</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/contributing/tutorials/admin-knitting/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

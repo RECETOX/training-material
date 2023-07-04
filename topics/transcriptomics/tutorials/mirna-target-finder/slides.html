@@ -1,41 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Whole transcriptome analysis of Arabidopsis thaliana</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
 
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/mirna-target-finder/slides.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
 
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Whole transcriptome analysis of Arabidopsis thaliana">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-11-17 11:37:55 +0000">
+<meta name="DC.creator" content="Cristóbal Gallardo">
+<meta name="DC.creator" content="Pavankumar Videm">
 
+        
+        
+        
+        
+        <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
+        <meta property="og:site_name" content="Galaxy Training Network" />
+        <meta property="og:title" content="Galaxy Training: Whole transcriptome analysis of Arabidopsis thaliana" />
+        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
 
-
-
-
-
-  <head>
-    <meta charset="utf-8">
-    <title>Whole transcriptome analysis of Arabidopsis thaliana</title>
-    
-        <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
-
-    
-    <link rel="stylesheet" href="/training-material/assets/css/slides.css">
-    <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-
-    
-    
-    
-    
-    <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
-    <meta property="og:title" content="Galaxy Training: Whole transcriptome analysis of Arabidopsis thaliana" />
-    <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
-    <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/mirna-target-finder/slides.html" />
-
-    <script type="application/ld+json">
-      
+        <script type="application/ld+json">
+            
 
 
 {
@@ -60,7 +89,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2021-04-16 14:17:09 +0000",
+  "dateModified": "2022-11-17 11:37:55 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Whole transcriptome analysis of Arabidopsis thaliana",
   "interactivityType": "mixed",
@@ -86,6 +115,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -199,8 +232,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/gallardoalba/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/gallardoalba/",
@@ -214,14 +247,16 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-5752-2155",
+      "orcid": "https://orcid.org/0000-0002-5752-2155"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
@@ -235,51 +270,9 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/gallardoalba/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/gallardoalba/",
-      "name": "Cristóbal Gallardo",
-      "image": "https://avatars.githubusercontent.com/gallardoalba",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pavanvidem/",
-      "name": "Pavankumar Videm",
-      "image": "https://avatars.githubusercontent.com/pavanvidem",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0002-5192-126X",
+      "orcid": "https://orcid.org/0000-0002-5192-126X"
     }
   ],
   "about": [
@@ -296,12 +289,19 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+
+  ],
+  "abstract": "# Introduction"
 }
-    </script>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-  </head>
+        </script>
+    </head>
   <body>
+
+
+    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
     <textarea id="source">
 name: inverse
 layout: true
@@ -324,7 +324,7 @@ class: center, middle, inverse
 
 
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" class="cover-logo"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" class="cover-logo"/>
 
 
 # Whole transcriptome analysis of Arabidopsis thaliana
@@ -333,22 +333,17 @@ class: center, middle, inverse
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="https://avatars.githubusercontent.com/gallardoalba?s=27" alt="Avatar">Cristóbal Gallardo</a>
-
-
-
-<a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="https://avatars.githubusercontent.com/pavanvidem?s=27" alt="Avatar">Pavankumar Videm</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/gallardoalba?s=36" alt="Avatar" width="36" height="36">Cristóbal Gallardo</a><a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/pavanvidem?s=36" alt="Avatar" width="36" height="36">Pavankumar Videm</a>
 	</div>
 
 </div>
 
 
 <!-- modified date -->
-<div class="footnote" style="bottom: 8em;"><i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated: </div>
+<div class="footnote" style="bottom: 8em;">
+  <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Updated:  &nbsp;
+  <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:S00095">gxy.io/GTN:S00095</a>
+</div>
 
 
 <!-- other slide formats (video and plain-text) -->
@@ -426,13 +421,13 @@ Before diving into this slide deck, we recommend you to have a look at:
 # Introduction
 
 ???
-- Let's start with the introduction.
+- Let&apos;s start with the introduction.
 
 ---
 
 ## Introduction: plant response to stress
 
-![plant response to stress](../../images/plant_stress_response.png)
+![plant response to stress](/training-material/topics/transcriptomics/images/transcriptomics_images/plant_stress_response.png)
 
 ???
 - As sessile organisms, the survival of plants under adverse environmental conditions depends, to a large extent, on their ability to perceive stress stimuli and respond appropriately to counteract the potentially damaging effects.
@@ -443,7 +438,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 ## Introduction: role of brassinosteroids
 
-![role of brassinosteroids](../../images/role_of_brassinosteroids.png)
+![role of brassinosteroids](/training-material/topics/transcriptomics/images/transcriptomics_images/brassinosteroids.png)
 
 ???
 - Brassinosteroids are a group of plant steroid hormones essential for plant growth and development, as well as for controlling abiotic and biotic stress.
@@ -455,7 +450,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 ## Introduction: plant microRNAs
 
-![plant microRNAs](../../images/plant_mirna_synthesis_simple.png)
+![plant microRNAs](/training-material/topics/transcriptomics/images/transcriptomics_images/plant_mirna_synthesis_simple.png)
 
 ???
 - miRNAs, mainly 20–22 nucleotide small RNAs, are characterized for regulating gene expression at the post-transcriptional level.
@@ -493,7 +488,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 ## Experimental design
 
-![Experimental design](../../images/miRNA_pipeline.png)
+![Experimental design](/training-material/topics/transcriptomics/images/transcriptomics_images/miRNA_pipeline.png)
 
 ???
 - As shown here, we can divide the analysis into three stages. Differential expression analysis of miRNAs, differential expression analysis of mRNAs, and miRNA target identification.
@@ -509,7 +504,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 ---
 
 ## Background on data
-![Background on data](../../images/plant_rnaseq_data.png)
+![Background on data](/training-material/topics/transcriptomics/images/transcriptomics_images/plant_rnaseq_data.png)
 
 .footnote[[*E Oh, Elife, 2014*](https://www.ncbi.nlm.nih.gov/pubmed/24867218) and [*SY Park, Genes Genomics, 2020*](https://www.ncbi.nlm.nih.gov/pubmed/32648234)]
 
@@ -522,7 +517,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 ---
 
 ## Tools used in the analysis
-![Tools used in the analysis](../../images/plant_rnaseq_tools.png)
+![Tools used in the analysis](/training-material/topics/transcriptomics/images/transcriptomics_images/plant_rnaseq_tools.png)
 
 ???
 - Now we will look at the tools that are used in the tutorial.
@@ -540,7 +535,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 ## Background on tools
 
-![Tools used in the analysis](../../images/plant_rnaseq_tools.png)
+![Tools used in the analysis](/training-material/topics/transcriptomics/images/transcriptomics_images/plant_rnaseq_tools.png)
 
 - In mRNA-Seq data analysis:
     - No adapter clipping!
@@ -557,7 +552,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 ### Salmon overview
 
-![Salmon overview](../../images/salmon_steps.jpg)
+![Salmon overview](/training-material/topics/transcriptomics/images/transcriptomics_images/salmon_steps.jpg)
 
 .footnote[[*Patro, Nat Methods, 2017*](https://www.ncbi.nlm.nih.gov/pubmed/28263959)]
 
@@ -573,7 +568,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 
 ### Salmon quasi-mapping
 
-![Salmon quasi-mapping](../../images/salmon_quasialignment.png)
+![Salmon quasi-mapping](../../images/transcriptomics_images/salmon_quasialignment.png)
 
 .footnote[[*Srivastava, Bioinformatics, 2016*](https://www.ncbi.nlm.nih.gov/pubmed/27307617)]
 
@@ -591,9 +586,9 @@ Before diving into this slide deck, we recommend you to have a look at:
 - This figure is an illustration of the quasi-mapping of a read using k=3. Hash table lookup of k-mer A T T returns the suffix array interval b and e.
 - The current k-mer and its matching suffix intervals are colored in green.
 - The base G at position 6 has a mismatch with the C on reference transcripts, representing a possible sequencing error.
-- Hence, the first five bases A T T G A is the maximal mappable prefix and the suffix array interval of this maximal mappable prefix is b' and e'.
-- A T T G A C T A which is in the red colored box is the longest common prefix of the suffix array interval c and e'. So the next informative position on the read is the 9th base T.
-- In the end, the read in the above example most likely map to the suffix array at e'.
+- Hence, the first five bases A T T G A is the maximal mappable prefix and the suffix array interval of this maximal mappable prefix is b&apos; and e&apos;.
+- A T T G A C T A which is in the red colored box is the longest common prefix of the suffix array interval c and e&apos;. So the next informative position on the read is the 9th base T.
+- In the end, the read in the above example most likely map to the suffix array at e&apos;.
 
 ---
 
@@ -624,7 +619,7 @@ Before diving into this slide deck, we recommend you to have a look at:
 - Uses Smith-Waterman algorithm to align query small RNA sequence to the target sequence database
 - Penalty of 1 for mismatches, single-nucleotide gaps, or single-nucleotide bulges
 - Penalty of 0.5 G U base pairs
-- Doubled penalty scores at positions 2-13 relative to the 5' end of the small RNA query sequence
+- Doubled penalty scores at positions 2-13 relative to the 5&apos; end of the small RNA query sequence
 - Duplexes with the following characteristics are rejected:
     - more than one single-nucleotide bulge or gap
     - more than seven total mismatches, G:U base pairs, bulges and gaps
@@ -661,15 +656,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="https://avatars.githubusercontent.com/gallardoalba?s=27" alt="Avatar">Cristóbal Gallardo</a>
-
-
-
-<a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="https://avatars.githubusercontent.com/pavanvidem?s=27" alt="Avatar">Pavankumar Videm</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/gallardoalba?s=36" alt="Avatar" width="36" height="36">Cristóbal Gallardo</a><a href="/training-material/hall-of-fame/pavanvidem/" class="contributor-badge contributor-pavanvidem"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/pavanvidem?s=36" alt="Avatar" width="36" height="36">Pavankumar Videm</a>
 	</div>
 
 </div>
@@ -677,7 +664,7 @@ This material is the result of a collaborative work. Thanks to the [Galaxy Train
 
 <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;">
 
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 </div>
@@ -687,10 +674,10 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
 
     </textarea>
-	<script src="/training-material/assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
+	<script src="/training-material/assets/js/remark-latest.min.js"></script>
+    <script src="/training-material/assets/js/theme.js"></script>
+    <script src="/training-material/assets/js/clipboard.min.js"></script>
+    <script>
       var slideshow = remark.create({navigation: {scroll: false}, ratio: '16:9'});
       var hljs = remark.highlighter.engine;
       var snippets = document.querySelectorAll('code.remark-code');
@@ -702,7 +689,7 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
       }});
     </script>
 
-    <script type="text/javascript">
+    <script>
         if(window.location.hostname === "galaxyproject.github.io") {
             // Redirect
             var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
@@ -714,6 +701,15 @@ This material is licensed under the Creative Commons Attribution 4.0 Internation
 
         }
     </script>
+        <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
+        <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
+        <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
 
-  </body>
+    </body>
 </html>

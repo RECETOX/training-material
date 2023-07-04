@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,256 +8,72 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="Proteogenomics 3: Novel peptide analysis" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-09-28 13:13:58 +0000" />
-<meta name="DC.creator" content="Subina Mehta" />
-<meta name="DC.creator" content="Timothy J. Griffin" />
-<meta name="DC.creator" content="Pratik Jagtap" />
-<meta name="DC.creator" content="Ray Sajulga" />
-<meta name="DC.creator" content="James Johnson" />
-<meta name="DC.creator" content="Praveen Kumar" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for proteomics workflows in Galaxy" />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: Proteogenomics 3: Novel peptide analysis" />
-        <meta property="og:description" content="Training material for proteomics workflows in Galaxy" />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/proteomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Proteomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/proteomics/faqs/" title="Check our FAQs for the Proteomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Proteogenomics 3: Novel peptide analysis">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-01-24 14:22:01 +0000">
+<meta name="DC.creator" content="Subina Mehta">
+<meta name="DC.creator" content="Timothy J. Griffin">
+<meta name="DC.creator" content="Pratik Jagtap">
+<meta name="DC.creator" content="Ray Sajulga">
+<meta name="DC.creator" content="James Johnson">
+<meta name="DC.creator" content="Praveen Kumar">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for proteomics workflows in Galaxy">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Proteogenomics 3: Novel peptide analysis">
+        <meta property="og:description" content="Training material for proteomics workflows in Galaxy">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -282,7 +98,7 @@
     "name": "Galaxy Training Network",
     "url": "https://galaxyproject.org/teach/gtn/"
   },
-  "dateModified": "2022-09-28 13:13:58 +0000",
+  "dateModified": "2023-01-24 14:22:01 +0000",
   "discussionUrl": "https://gitter.im/Galaxy-Training-Network/Lobby",
   "headline": "Proteogenomics 3: Novel peptide analysis",
   "interactivityType": "mixed",
@@ -308,6 +124,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -335,6 +155,7 @@
   "name": "Hands-on for 'Proteogenomics 3: Novel peptide analysis' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html",
   "timeRequired": "PT30M",
+  "teaches": "How to assign and visualize the genomic localization of these identified novel proteoforms?",
   "keywords": "proteomics, proteogenomics",
   "description": "The questions this  addresses are:\n - How to verify the spectra of novel proteoforms?\n - How to assign genomic allocation to these novel proteoforms?\n\n\nThe objectives are:\n - How to assign and visualize the genomic localization of these identified novel proteoforms?\n\n",
   "inLanguage": {
@@ -362,8 +183,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
@@ -385,120 +206,13 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
       "name": "Timothy J. Griffin",
       "image": "https://avatars.githubusercontent.com/timothygriffin",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
-      "name": "Pratik Jagtap",
-      "image": "https://avatars.githubusercontent.com/pratikdjagtap",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
-      "name": "Ray Sajulga",
-      "image": "https://avatars.githubusercontent.com/jraysajulga",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
-      "name": "James Johnson",
-      "image": "https://avatars.githubusercontent.com/jj-umn",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
-      "name": "Praveen Kumar",
-      "image": "https://avatars.githubusercontent.com/pravs3683",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/subinamehta/",
-      "name": "Subina Mehta",
-      "image": "https://avatars.githubusercontent.com/subinamehta",
       "description": "A contributor to the GTN project.",
       "memberOf": [
         {
@@ -508,36 +222,15 @@
           "url": "https://galaxyproject.org/teach/gtn/"
         }
       ],
-      "identifier": "https://orcid.org/0000-0001-9818-0537",
-      "orcid": "https://orcid.org/0000-0001-9818-0537"
+      "identifier": "https://orcid.org/0000-0001-6801-2559",
+      "orcid": "https://orcid.org/0000-0001-6801-2559"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/timothygriffin/",
-      "name": "Timothy J. Griffin",
-      "image": "https://avatars.githubusercontent.com/timothygriffin",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pratikdjagtap/",
@@ -551,14 +244,16 @@
           "name": "Galaxy Training Network",
           "url": "https://galaxyproject.org/teach/gtn/"
         }
-      ]
+      ],
+      "identifier": "https://orcid.org/0000-0003-0984-0973",
+      "orcid": "https://orcid.org/0000-0003-0984-0973"
     },
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jraysajulga/",
@@ -578,8 +273,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/jj-umn/",
@@ -599,8 +294,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/pravs3683/",
@@ -632,51 +327,211 @@
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_0121"
     }
   ],
-  "educationalLevel": "Intermediate"
+  "educationalLevel": "Intermediate",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "proteogenomics"
+    }
+  ],
+  "abstract": "# Introduction"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-proteomics">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/proteomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Proteomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/proteomics/faqs/" title="Check our FAQs for the Proteomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-proteomics">
     <h1 data-toc-skip>Proteogenomics 3: Novel peptide analysis</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/subinamehta/" class="contributor-badge contributor-subinamehta"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/subinamehta?s=27" alt="Avatar">Subina Mehta</a>
-
-
-
-<a href="/training-material/hall-of-fame/timothygriffin/" class="contributor-badge contributor-timothygriffin"><img src="https://avatars.githubusercontent.com/timothygriffin?s=27" alt="Avatar">Timothy J. Griffin</a>
-
-
-
-<a href="/training-material/hall-of-fame/pratikdjagtap/" class="contributor-badge contributor-pratikdjagtap"><img src="https://avatars.githubusercontent.com/pratikdjagtap?s=27" alt="Avatar">Pratik Jagtap</a>
-
-
-
-<a href="/training-material/hall-of-fame/jraysajulga/" class="contributor-badge contributor-jraysajulga"><img src="https://avatars.githubusercontent.com/jraysajulga?s=27" alt="Avatar">Ray Sajulga</a>
-
-
-
-<a href="/training-material/hall-of-fame/jj-umn/" class="contributor-badge contributor-jj-umn"><img src="https://avatars.githubusercontent.com/jj-umn?s=27" alt="Avatar">James Johnson</a>
-
-
-
-<a href="/training-material/hall-of-fame/pravs3683/" class="contributor-badge contributor-pravs3683"><img src="https://avatars.githubusercontent.com/pravs3683?s=27" alt="Avatar">Praveen Kumar</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/subinamehta/" class="contributor-badge contributor-subinamehta"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/subinamehta?s=36" alt="Avatar" width="36" height="36">Subina Mehta</a><a href="/training-material/hall-of-fame/timothygriffin/" class="contributor-badge contributor-timothygriffin"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/timothygriffin?s=36" alt="Avatar" width="36" height="36">Timothy J. Griffin</a><a href="/training-material/hall-of-fame/pratikdjagtap/" class="contributor-badge contributor-pratikdjagtap"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/pratikdjagtap?s=36" alt="Avatar" width="36" height="36">Pratik Jagtap</a><a href="/training-material/hall-of-fame/jraysajulga/" class="contributor-badge contributor-jraysajulga"><img src="https://avatars.githubusercontent.com/jraysajulga?s=36" alt="Avatar" width="36" height="36">Ray Sajulga</a><a href="/training-material/hall-of-fame/jj-umn/" class="contributor-badge contributor-jj-umn"><img src="https://avatars.githubusercontent.com/jj-umn?s=36" alt="Avatar" width="36" height="36">James Johnson</a><a href="/training-material/hall-of-fame/pravs3683/" class="contributor-badge contributor-pravs3683"><img src="https://avatars.githubusercontent.com/pravs3683?s=36" alt="Avatar" width="36" height="36">Praveen Kumar</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -738,17 +593,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/proteomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://doi.org/10.5281/zenodo.1489208">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -758,8 +609,8 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a class="btn btn-default topic-icon" href="/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/workflows/" title="Workflows" alt="Proteogenomics 3: Novel peptide analysis workflows">
-        <i class="fas fa-share-alt" aria-hidden="true"></i> Workflows
+    <a class="btn btn-default topic-icon" href="/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/workflows/" title="Proteogenomics 3: Novel peptide analysis workflows">
+        <i class="fas fa-share-alt" aria-hidden="true"></i>&nbsp;Workflows
     </a>
 
 </li>
@@ -772,13 +623,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -797,7 +645,10 @@
 
 
   
-  <li class="btn btn-default supporting_material">
+<!-- GTN Video Library true -->
+  
+<li class="btn btn-default supporting_material">
+  
     <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Latest recordings of this tutorial in the GTN Video Library">
         <i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span>&nbsp;Recordings
     </a>
@@ -819,7 +670,9 @@
         
         
     </ul>
-   </li>
+  
+</li>
+  
    
 
 
@@ -828,198 +681,91 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.be/" title="">
+			UseGalaxy.be <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org.au" title="">
+			UseGalaxy.org.au <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.no/" title="">
+			UseGalaxy.no
+		</a>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/proteomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://africa.usegalaxy.eu/" title="Galaxy Africa">
-            Galaxy Africa
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://india.usegalaxy.eu/" title="Galaxy India">
-            Galaxy India
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://galaxy.genouest.org" title="Galaxy@GenOuest">
-            Galaxy@GenOuest
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://streetscience.usegalaxy.eu/" title="Street Science">
-            Street Science
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.be/" title="UseGalaxy.be">
-            UseGalaxy.be
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.eu" title="UseGalaxy.eu">
-            UseGalaxy.eu
-        </a>
-        
-    
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.no/" title="UseGalaxy.no">
-            UseGalaxy.no
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org" title="UseGalaxy.org (Main)">
-            UseGalaxy.org (Main)
-        </a>
-        
-    
-        
-        <a class="dropdown-item" href="https://usegalaxy.org.au" title="UseGalaxy.org.au">
-            UseGalaxy.org.au
-        </a>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
     </ul>
-
 
 </li>
             
         </ul>
         
 
-        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Sep 28, 2022 </div>
+        <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Jan 24, 2023 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00233">https://gxy.io/GTN:T00233</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -1030,22 +776,24 @@
             <div class="col-sm-10">
                  
 
-                <h1 class="no_toc" id="introduction">Introduction</h1>
+                <section aria-label="Tutorial Content" id="tutorial-content">
+                <h1 id="introduction">Introduction</h1>
 
-<p>The third and the last <span class="notranslate">workflow</span> in the proteogenomics tutorial is to identifying the “<strong>Novel peptides</strong>” using BlastP and to localize the peptides to its genomic coordinates. Inputs from both <span class="notranslate">workflow</span> 1 and 2 will be used in this <span class="notranslate">workflow</span>.
+<p>The third and the last workflow in the proteogenomics tutorial is to identifying the “<strong>Novel peptides</strong>” using BlastP and to localize the peptides to its genomic coordinates. Inputs from both workflow 1 and 2 will be used in this workflow.
 Please look at the following tutorials in this proteogenomics series before starting this tutorial:</p>
 <ol>
   <li><a href="/training-material/topics/proteomics/tutorials/proteogenomics-dbcreation/tutorial.html">Proteogenomics database creation</a></li>
   <li><a href="/training-material/topics/proteomics/tutorials/proteogenomics-dbsearch/tutorial.html">Proteogenomics database search</a></li>
 </ol>
 
-<p><img src="../../images/Third_workflow.png" alt="Workflow. " loading="lazy" /></p>
+<p><img src="../../images/Third_workflow.png" alt="Workflow. " width="1772" height="1084" loading="lazy" /></p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will deal with:</p>
 <ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#pretreatments" id="markdown-toc-pretreatments">Pretreatments</a></li>
   <li><a href="#peptide-selection" id="markdown-toc-peptide-selection">Peptide Selection</a></li>
   <li><a href="#multiomics-visualization-platform-mvp" id="markdown-toc-multiomics-visualization-platform-mvp">Multiomics Visualization Platform (MVP)</a></li>
@@ -1058,18 +806,18 @@ Please look at the following tutorials in this proteogenomics series before star
 
 <h1 id="pretreatments">Pretreatments</h1>
 
-<p class="no_toc">All the files to run this <span class="notranslate">workflow</span> can be obtained from the <a href="/training-material/topics/proteomics/tutorials/proteogenomics-dbsearch/tutorial.html">second tutorial</a> output. Once the tabular output is generated, we convert this tabular report into a FASTA file. This can be achieved by using the Tabular to FASTA convertion tool.</p>
+<p>All the files to run this workflow can be obtained from the <a href="/training-material/topics/proteomics/tutorials/proteogenomics-dbsearch/tutorial.html">second tutorial</a> output. Once the tabular output is generated, we convert this tabular report into a FASTA file. This can be achieved by using the Tabular to FASTA convertion tool.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-data-organization" class="box-title" aria-label="hands-on box: data organization"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: data organization</div>
+  <div class="box-title hands-on-title" id="hands-on-data-organization"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: data organization</div>
 
   <ol>
-    <li>The inputs for this <span class="notranslate">workflow</span> are:
+    <li>The inputs for this workflow are:
       <ul>
         <li><strong>Tabular file</strong> – “<strong>Peptides for BlastP analysis</strong>”</li>
         <li><strong>Tabular file</strong> – “<strong>PeptideShaker_PSM</strong>”</li>
         <li><strong>Mz to sqlite</strong></li>
-        <li><strong>Genomic <span class="notranslate">mapping</span> sqlite</strong></li>
+        <li><strong>Genomic mapping sqlite</strong></li>
       </ul>
     </li>
   </ol>
@@ -1078,7 +826,7 @@ Please look at the following tutorials in this proteogenomics series before star
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/1489208/files/Peptides_for_Blast-P_analysis.tabular
 https://zenodo.org/record/1489208/files/PeptideShaker_PSM.tabular
 https://zenodo.org/record/1489208/files/mz_to_sqlite.mz.sqlite
-https://zenodo.org/record/1489208/files/genomic_<span class="notranslate">mapping</span>_sqlite.sqlite
+https://zenodo.org/record/1489208/files/genomic_mapping_sqlite.sqlite
 </code></pre></div>  </div>
 </blockquote>
 
@@ -1089,10 +837,10 @@ https://zenodo.org/record/1489208/files/genomic_<span class="notranslate">mappin
 <p>The first step in this tutorial is to perfrom BLAST-P analysis using the NCBI-NR database. The output from BLASTP will determine the identification of the novel peptides. The result is a tabular file with 25 columns containing all the information regarding the alignment of these peptides with the sequences in the NCBI-NR database.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-ncbi-blast-blastp" class="box-title" aria-label="hands-on box: NCBI BLAST+ blastp"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: NCBI BLAST+ blastp</div>
+  <div class="box-title hands-on-title" id="hands-on-ncbi-blast-blastp"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: NCBI BLAST+ blastp</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3" title="Tested with toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3"><strong>NCBI BLAST+ blastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3" title="NCBI BLAST+ blastp tool" aria-role="link"><strong>NCBI BLAST+ blastp</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/devteam/ncbi_blast_plus/ncbi_blastp_wrapper/0.3.3</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <strong>Protein query sequence(s)</strong> - <code class="language-plaintext highlighter-rouge">Peptides for Blast-P analysis.tabular</code></li>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <strong>Subject database/sequences</strong> - <code class="language-plaintext highlighter-rouge">Locally installed BLAST database</code>
@@ -1125,7 +873,7 @@ https://zenodo.org/record/1489208/files/genomic_<span class="notranslate">mappin
         </li>
       </ul>
     </li>
-    <li>Click <strong>Execute</strong> and inspect the query results file after it turned green.</li>
+    <li>Click <strong>Run Tool</strong> and inspect the query results file after it turned green.</li>
   </ol>
 
 </blockquote>
@@ -1133,10 +881,10 @@ https://zenodo.org/record/1489208/files/genomic_<span class="notranslate">mappin
 <p>Once Blast-P search is performed, it provides a tabular output containing “<strong>Novel peptides</strong>”. Now this output is further processed by comparing the Novel Peptide output with the PSM report for selecting only distinct peptides which meet the criteria.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-query-tabular" class="box-title" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Query Tabular</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool" aria-role="link"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span> with the following parameters:
       <ul>
         <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <strong>Insert Database Table</strong>
           <ul>
@@ -1183,7 +931,7 @@ https://zenodo.org/record/1489208/files/genomic_<span class="notranslate">mappin
           <p><em>“Save the sqlite database in your history”</em>: <code class="language-plaintext highlighter-rouge">No</code></p>
 
           <blockquote class="comment">
-            <div id="comment-querying-an-sqlite-database" class="box-title" aria-label="comment box: Querying an SQLite Database"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Querying an SQLite Database</div>
+            <div class="box-title comment-title" id="comment-querying-an-sqlite-database"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Querying an SQLite Database</div>
 
             <p><strong>Query Tabular</strong> can also use an existing SQLite database. Activating <code class="language-plaintext highlighter-rouge">Save the sqlite database in your history</code>
 will store the created database in the history, allowing to reuse it directly.</p>
@@ -1198,7 +946,7 @@ ORDER BY psm.Sequence, psm.ID
 </code></pre></div>          </div>
 
           <blockquote class="comment">
-            <div id="comment-query-information" class="box-title" aria-label="comment box: Query information"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Query information</div>
+            <div class="box-title comment-title" id="comment-query-information"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Query information</div>
 
             <p>The query wants a tabular list of peptides in which the lenght of the PSM sequence is equal to the length of the Blast sequence, where in the pident (percentage identity) is less that 100 i.e. Peptide cannot be a 100% identical to the NCBI-nr reference database. Or it should fulfill the criteria that there should be atleast 1 gap present (blast.gapopen &gt;= 1) or the length of the peptide in NCBI-nr should be less than the length of the query length. If the peptide follows all this then it is accepted as a “Novel” proteoform.</p>
 
@@ -1207,7 +955,7 @@ ORDER BY psm.Sequence, psm.ID
         <li><em>“Include query result column headers”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
       </ul>
     </li>
-    <li>Click <strong>Execute</strong> and inspect the query results file after it turned green.</li>
+    <li>Click <strong>Run Tool</strong> and inspect the query results file after it turned green.</li>
   </ol>
 
 </blockquote>
@@ -1215,10 +963,10 @@ ORDER BY psm.Sequence, psm.ID
 <p>Once this step is completed, a tabular output containing novel proteoforms are displayed. These novel proteforms fulfill our criteria of not being present in the existing NCBI repository. The next step is to remove any duplicate sequences. For this, we use the Query tabular tool again to select distinct sequences from the tabular output.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-query-tabular-1" class="box-title" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Query Tabular</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool" aria-role="link"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
       <ul>
         <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span> <strong>Insert Database Table</strong>
           <ul>
@@ -1249,161 +997,161 @@ ORDER BY psm.Sequence, psm.ID
         <li><em>“include query result column headers”</em>: <code class="language-plaintext highlighter-rouge">Yes</code></li>
       </ul>
     </li>
-    <li>Click <strong>Execute</strong> and inspect the query results file after it turned green.</li>
+    <li>Click <strong>Run Tool</strong> and inspect the query results file after it turned green.</li>
   </ol>
 
 </blockquote>
 
 <h1 id="multiomics-visualization-platform-mvp">Multiomics Visualization Platform (MVP)</h1>
 
-<p>The Multiomics Visualization Platform is a <span class="notranslate">Galaxy</span> visualization plugin that allows the user to browse the selected proteomics data. It uses the SQlite database which allows the data to be filtered and aggregated in a user defined manner. It allows various features such as; the PSM can be displayed with a lorikeet spectral view, the selected peptide can be displayed in a protein view and an IGV browser is also available for the selected protein. The step by step guide shown below will provide a walkthrough on how to use this plugin (NOTE: the example shown below is a representative peptide which is subjected to change, so while you are running this tool please take a look at the “Novel Peptide” output from the previous steps).</p>
+<p>The Multiomics Visualization Platform is a Galaxy visualization plugin that allows the user to browse the selected proteomics data. It uses the SQlite database which allows the data to be filtered and aggregated in a user defined manner. It allows various features such as; the PSM can be displayed with a lorikeet spectral view, the selected peptide can be displayed in a protein view and an IGV browser is also available for the selected protein. The step by step guide shown below will provide a walkthrough on how to use this plugin (NOTE: the example shown below is a representative peptide which is subjected to change, so while you are running this tool please take a look at the “Novel Peptide” output from the previous steps).</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-guide-to-mvp" class="box-title" aria-label="hands-on box: Guide to MVP"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Guide to MVP</div>
+  <div class="box-title hands-on-title" id="hands-on-guide-to-mvp"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Guide to MVP</div>
 
-  <p>The spectra belonging to these “Novel peptides” can be viewed using MVP,this can be achieved by selecting the output from the <code class="language-plaintext highlighter-rouge">mz to sqlite tool</code> (Generated in the second <span class="notranslate">workflow</span>).
+  <p>The spectra belonging to these “Novel peptides” can be viewed using MVP,this can be achieved by selecting the output from the <code class="language-plaintext highlighter-rouge">mz to sqlite tool</code> (Generated in the second workflow).
 Here is a step by step guide to obtain the proteogenomic view of the “Novel peptides”.</p>
 
   <p>1) Click on the <strong>Visualize in MVP application</strong>, it will open up options for visualization application in the center pane, Select <strong>MVP Application</strong> from the options (or Right click to open in a new window).</p>
 
-  <p><img src="../../images/Visualize.png" alt="mz to sqlite. " width="20%" loading="lazy" /></p>
+  <p><img src="../../images/Visualize.png" alt="mz to sqlite. " width="570" height="634" loading="lazy" /></p>
 
   <p>This will open in the Center Pane. Select the MVP application.</p>
 
-  <p><img src="../../images/Open_MVP.png" alt="MVP. " width="20%" loading="lazy" /></p>
+  <p><img src="../../images/Open_MVP.png" alt="MVP. " width="614" height="625" loading="lazy" /></p>
 
   <p>This is how it will look.</p>
 
-  <p><img src="../../images/Peptide_overview.png" alt="Overview. " width="60%" loading="lazy" /></p>
+  <p><img src="../../images/Peptide_overview.png" alt="Overview. " width="2208" height="1772" loading="lazy" /></p>
 
-  <p>2) Click on <strong>Load from <span class="notranslate">Galaxy</span></strong> to open the list of peptides you would like to view.</p>
+  <p>2) Click on <strong>Load from Galaxy</strong> to open the list of peptides you would like to view.</p>
 
-  <p><img src="../../images/load_from_Galaxy.png" alt="load from galaxy. " width="80%" loading="lazy" /></p>
+  <p><img src="../../images/load_from_Galaxy.png" alt="load from galaxy. " width="1476" height="1032" loading="lazy" /></p>
 
   <p>This will open a dropdown list. Select the novel peptides from there.</p>
 
-  <p><img src="../../images/DropDown_novel.png" alt="dropdown. " width="50%" loading="lazy" /></p>
+  <p><img src="../../images/DropDown_novel.png" alt="dropdown. " width="908" height="743" loading="lazy" /></p>
 
   <p>3) Select <strong>Novel Peptides</strong> from the right hand side.</p>
 
-  <p><img src="../../images/novel_peptides_view.png" alt="novel peptides view. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/novel_peptides_view.png" alt="novel peptides view. " width="1316" height="904" loading="lazy" /></p>
 
   <p>4) Select any peptide, For eg: <code class="language-plaintext highlighter-rouge">DGDLENPVLYSGAV</code>, and then click on <strong>Selected Peptide PSMs</strong>.</p>
 
-  <p><img src="../../images/Filtering_novelpeptides.png" alt="select_pep. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/Filtering_novelpeptides.png" alt="select_pep. " width="989" height="802" loading="lazy" /></p>
 
   <p>5) If you scroll down, the PSM associated with the peptide will be displayed. By clicking on the PSM, the <em>Lorikeet</em>
 values will be shown. The Lorikeet visualization is interactive, i.e the user can change the values or select any
 parameter and click on Update button to view these changes.</p>
 
-  <p><img src="../../images/Peptide-Protein_Viewer.png" alt="PSM. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/Peptide-Protein_Viewer.png" alt="PSM. " width="1906" height="876" loading="lazy" /></p>
 
-  <p><img src="../../images/Lorikeet_Viewer.png" alt="lorikeet. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/Lorikeet_Viewer.png" alt="lorikeet. " width="1890" height="1816" loading="lazy" /></p>
 
   <p>6) For a Protein centric view, click on <strong>View in Protein</strong> , it will open up all the proteins associate with the
 peptides. For eg: Select the <code class="language-plaintext highlighter-rouge">DGDLENPVLYSGAV</code> peptide and click on the first protein. The chromosome location
 of the peptide will be displayed.</p>
 
-  <p><img src="../../images/Selecting_peptide.png" alt="view in protein. " width="70%" loading="lazy" /></p>
+  <p><img src="../../images/Selecting_peptide.png" alt="view in protein. " width="887" height="835" loading="lazy" /></p>
 
   <p>Once you click on protein it will show the list of proteins the belongs to the peptides.</p>
 
-  <p><img src="../../images/opening_IGV.png" alt="select protein. " width="60%" loading="lazy" /></p>
+  <p><img src="../../images/opening_IGV.png" alt="select protein. " width="987" height="677" loading="lazy" /></p>
 
   <p>Once you select the protein that you want to visualize you can click on the protein view.</p>
 
-  <p><img src="../../images/ProteinViewer.png" alt="protein view. " width="80%" loading="lazy" /></p>
+  <p><img src="../../images/ProteinViewer.png" alt="protein view. " width="1768" height="581" loading="lazy" /></p>
 
   <p>7) Clicking on the arrow marks will open up the IGV(js) visualization tool, where-in the genomic localization of the
 peptide will be displayed.</p>
 
-  <p><img src="../../images/IGV_1.png" alt="IGV. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/IGV_1.png" alt="IGV. " width="2044" height="824" loading="lazy" /></p>
 
   <p>8) To add tracks to your IGV viewer, click on <strong>Add Track</strong>. This will open up a list of tracks that are compatible
-to view in your IGV viewer. For eg. Select the <code class="language-plaintext highlighter-rouge">Pep_gen_coordinate.<span class="notranslate">bed</span></code> file and then click on <strong>Load Track</strong>.
-This will open up the <span class="notranslate">bed</span> will below the nucleotide sequence.</p>
+to view in your IGV viewer. For eg. Select the <code class="language-plaintext highlighter-rouge">Pep_gen_coordinate.bed</code> file and then click on <strong>Load Track</strong>.
+This will open up the bed will below the nucleotide sequence.</p>
 
-  <p><img src="../../images/Options_for_Track.png" alt="tracks align. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/Options_for_Track.png" alt="tracks align. " width="1160" height="764" loading="lazy" /></p>
 
   <p>9) By clicking the wheel, you can select the <strong>three frame translate</strong> which will show the three frame translated
 region of your sequence.</p>
 
-  <p><img src="../../images/IGV_viewer.png" alt="IGV viewer. " width="90%" loading="lazy" /></p>
+  <p><img src="../../images/IGV_viewer.png" alt="IGV viewer. " width="1254" height="220" loading="lazy" /></p>
 
   <p>10) The IGV is inbuilt in the MVP viewer and is very interactive, you could also load more tracks such as the aligned
 proBAM file (from HISAT) or the identified probam file (one of the input file).
 MVP has many useful features beyond those covered in this workshop and is under active development.</p>
 
-  <p><img src="../../images/IGV_2.png" alt="IGV2. " width="60%" loading="lazy" /></p>
+  <p><img src="../../images/IGV_2.png" alt="IGV2. " width="1378" height="546" loading="lazy" /></p>
 
 </blockquote>
 
-<p>The next tool in the <span class="notranslate">workflow</span> is the Peptide genomic coordinate tool which takes the “novel peptides” as the input along with the mztosqlite file and the genomic <span class="notranslate">mapping</span> sqlite file (obtained during creation of the database). This tool helps create a <span class="notranslate">bed</span> file with the genomic coordinate information of the peptides based on the sqlite files.</p>
+<p>The next tool in the workflow is the Peptide genomic coordinate tool which takes the “novel peptides” as the input along with the mztosqlite file and the genomic mapping sqlite file (obtained during creation of the database). This tool helps create a bed file with the genomic coordinate information of the peptides based on the sqlite files.</p>
 
 <h1 id="obtain-peptide-genomic-coordinates">Obtain Peptide genomic Coordinates</h1>
 
-<p>Gets genomic coordinate of peptides based on the information in mzsqlite and genomic <span class="notranslate">mapping</span> sqlite files. This program
-loads two sqlite databases (mzsqlite and genomic <span class="notranslate">mapping</span> sqlite files) and calculates the genomic coordinates of the
-peptides provided as input. This outputs <span class="notranslate">bed</span> file for peptides.</p>
+<p>Gets genomic coordinate of peptides based on the information in mzsqlite and genomic mapping sqlite files. This program
+loads two sqlite databases (mzsqlite and genomic mapping sqlite files) and calculates the genomic coordinates of the
+peptides provided as input. This outputs bed file for peptides.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-peptide-genomic-coordinate" class="box-title" aria-label="hands-on box: Peptide genomic Coordinate"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Peptide genomic Coordinate</div>
+  <div class="box-title hands-on-title" id="hands-on-peptide-genomic-coordinate"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Peptide genomic Coordinate</div>
 
   <ol>
-    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1"><strong>Peptide genomic Coordinate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1</span></span>  with the following parameters:
+    <li>Run <span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1" title="Peptide genomic Coordinate tool" aria-role="link"><strong>Peptide genomic Coordinate</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/peptide_genomic_coordinate/peptide_genomic_coordinate/0.1.1</span></span> with the following parameters:
       <ul>
-        <li><em>“Input”</em>: <code class="language-plaintext highlighter-rouge">Peptide list file</code>, <code class="language-plaintext highlighter-rouge">mzsqlite sqlite DB file</code>, and <code class="language-plaintext highlighter-rouge">genomic <span class="notranslate">mapping</span> sqlite DB file</code></li>
+        <li><em>“Input”</em>: <code class="language-plaintext highlighter-rouge">Peptide list file</code>, <code class="language-plaintext highlighter-rouge">mzsqlite sqlite DB file</code>, and <code class="language-plaintext highlighter-rouge">genomic mapping sqlite DB file</code></li>
         <li>
-          <p><em>“Output”</em>: <code class="language-plaintext highlighter-rouge">Tabular <span class="notranslate">BED</span> file with all the columns</code></p>
+          <p><em>“Output”</em>: <code class="language-plaintext highlighter-rouge">Tabular BED file with all the columns</code></p>
 
-          <p><img src="../../images/Output_PGC.png" alt="Output PGC. " width="50%" loading="lazy" /></p>
+          <p><img src="../../images/Output_PGC.png" alt="Output PGC. " width="1710" height="358" loading="lazy" /></p>
         </li>
       </ul>
     </li>
-    <li>Click <strong>Execute</strong> and inspect the resulting files</li>
+    <li>Click <strong>Run Tool</strong> and inspect the resulting files</li>
   </ol>
 
 </blockquote>
 
 <h1 id="classify-peptides">Classify Peptides</h1>
 
-<p>Given chromosomal locations of peptides in a <span class="notranslate">BED</span> file, PepPointer classifies them as CDS, UTR, exon, intron, or intergene.</p>
+<p>Given chromosomal locations of peptides in a BED file, PepPointer classifies them as CDS, UTR, exon, intron, or intergene.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-peppointer" class="box-title" aria-label="hands-on box: Peppointer"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Peppointer</div>
+  <div class="box-title hands-on-title" id="hands-on-peppointer"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Peppointer</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3" title="Tested with toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3"><strong>Peppointer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/<span class="notranslate">galaxy</span>p/pep_pointer/pep_pointer/0.1.3</span></span>  with the following parameters:
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3" title="Peppointer tool" aria-role="link"><strong>Peppointer</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/galaxyp/pep_pointer/pep_pointer/0.1.3</span></span> with the following parameters:
       <ul>
         <li><i class="fas fa-filter" aria-hidden="true"></i><span class="visually-hidden">param-select</span> <em>“Choose the source of the GTF file”</em> - <code class="language-plaintext highlighter-rouge">From History</code></li>
         <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“GTF file with the genome of interest”</em> - <code class="language-plaintext highlighter-rouge">edited_Mus_Musculus_GRCm38.90_Ensembl_GTF</code></li>
-        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“<span class="notranslate">BED</span> file with chromosomal coordinates of peptides”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">Bed</span> file from Peptide genomic coordinate tool</code></li>
+        <li><i class="far fa-file" aria-hidden="true"></i><span class="visually-hidden">param-file</span> <em>“BED file with chromosomal coordinates of peptides”</em>: <code class="language-plaintext highlighter-rouge">Bed file from Peptide genomic coordinate tool</code></li>
       </ul>
     </li>
-    <li>Click <strong>Execute</strong> and inspect the query results file after it turned green.</li>
+    <li>Click <strong>Run Tool</strong> and inspect the query results file after it turned green.</li>
   </ol>
 
-  <p>This tool provides a <span class="notranslate">bed</span> output with the classification of the genomic location of the peptides.The Mus-musculus GTF file will be in your history if you have completed the proteogenomics 1 tutorial.</p>
+  <p>This tool provides a bed output with the classification of the genomic location of the peptides.The Mus-musculus GTF file will be in your history if you have completed the proteogenomics 1 tutorial.</p>
 
-  <p><img src="../../images/Output_PP.png" alt="Output PP. " width="50%" loading="lazy" /></p>
+  <p><img src="../../images/Output_PP.png" alt="Output PP. " width="1350" height="444" loading="lazy" /></p>
 
 </blockquote>
 
-<p>The final tool for this <span class="notranslate">workflow</span> generates a tabular output that summarizes the information after running these workflows. The final summary output consists of the Peptide sequence, the spectra associated with the peptides, the protein accession number, chromosome number, Start and Stop of the genomic coordinate, the annotation, the genomic coordinate entry for viewing in Integrative Genomics Viewer (IGV), MVP or UCSC genome browser and the URL for viewing it on UCSC genome browser. This summary is created with the help of the query tabular tool.</p>
+<p>The final tool for this workflow generates a tabular output that summarizes the information after running these workflows. The final summary output consists of the Peptide sequence, the spectra associated with the peptides, the protein accession number, chromosome number, Start and Stop of the genomic coordinate, the annotation, the genomic coordinate entry for viewing in Integrative Genomics Viewer (IGV), MVP or UCSC genome browser and the URL for viewing it on UCSC genome browser. This summary is created with the help of the query tabular tool.</p>
 
 <h1 id="final-summary-output">Final Summary Output</h1>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-query-tabular-2" class="box-title" aria-label="hands-on box: Query Tabular"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Query Tabular</div>
+  <div class="box-title hands-on-title" id="hands-on-query-tabular-2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Query Tabular</div>
 
   <ol>
-    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Tested with toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: <span class="notranslate">toolshed</span>.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
+    <li><span class="tool" data-tool="toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0" title="Query Tabular tool" aria-role="link"><strong>Query Tabular</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: toolshed.g2.bx.psu.edu/repos/iuc/query_tabular/query_tabular/3.0.0</span></span>
       <ul>
         <li><i class="far fa-plus-square" aria-hidden="true"></i><span class="visually-hidden">param-repeat</span>  <strong>Insert Database Table</strong>
           <ul>
             <li>Section <strong>Table Options</strong>:
               <ul>
-                <li><em>“Specify Name for Table”</em>: <code class="language-plaintext highlighter-rouge"><span class="notranslate">bed</span>_pep_pointer</code></li>
+                <li><em>“Specify Name for Table”</em>: <code class="language-plaintext highlighter-rouge">bed_pep_pointer</code></li>
                 <li><em>“Use first line as column names”</em> : <code class="language-plaintext highlighter-rouge">No</code></li>
                 <li><em>“Specify Column Names (comma-separated list)”</em>:<code class="language-plaintext highlighter-rouge">chrom,start,end,peptide,score,strand,annot</code></li>
                 <li><em>“Only load the columns you have named into database”</em>: <code class="language-plaintext highlighter-rouge">No</code></li>
@@ -1437,15 +1185,15 @@ peptides provided as input. This outputs <span class="notranslate">bed</span> fi
           <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT psm.Sequence AS PeptideSequence,
 count(psm.Sequence) AS SpectralCount,
 psm.Proteins AS Proteins,
-<span class="notranslate">bed</span>_pep_pointer.chrom AS Chromosome,
-<span class="notranslate">bed</span>_pep_pointer.start AS Start,
-<span class="notranslate">bed</span>_pep_pointer.end AS End,
-<span class="notranslate">bed</span>_pep_pointer.strand AS Strand,
-<span class="notranslate">bed</span>_pep_pointer.annot AS Annotation,
-<span class="notranslate">bed</span>_pep_pointer.chrom||':'||<span class="notranslate">bed</span>_pep_pointer.start||'-'||<span class="notranslate">bed</span>_pep_pointer.end AS GenomeCoordinate,
-'https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm10&amp;position='||<span class="notranslate">bed</span>_pep_pointer.chrom||'%3A'||<span class="notranslate">bed</span>_pep_pointer.start||'-'||<span class="notranslate">bed</span>_pep_pointer.end AS UCSC_Genome_Browser
+bed_pep_pointer.chrom AS Chromosome,
+bed_pep_pointer.start AS Start,
+bed_pep_pointer.end AS End,
+bed_pep_pointer.strand AS Strand,
+bed_pep_pointer.annot AS Annotation,
+bed_pep_pointer.chrom||':'||bed_pep_pointer.start||'-'||bed_pep_pointer.end AS GenomeCoordinate,
+'https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm10&amp;position='||bed_pep_pointer.chrom||'%3A'||bed_pep_pointer.start||'-'||bed_pep_pointer.end AS UCSC_Genome_Browser
 FROM psm
-INNER JOIN <span class="notranslate">bed</span>_pep_pointer on <span class="notranslate">bed</span>_pep_pointer.peptide = psm.Sequence
+INNER JOIN bed_pep_pointer on bed_pep_pointer.peptide = psm.Sequence
 GROUP BY psm.Sequence
 </code></pre></div>          </div>
         </li>
@@ -1453,27 +1201,29 @@ GROUP BY psm.Sequence
       </ul>
     </li>
     <li>
-      <p>Click <strong>Execute</strong> and inspect the query results file after it turned green. If everything went well, it should look similiar:</p>
+      <p>Click <strong>Run Tool</strong> and inspect the query results file after it turned green. If everything went well, it should look similiar:</p>
 
-      <p><img src="../../images/final_summary.png" alt="Final Summary. " width="100%" loading="lazy" /></p>
+      <p><img src="../../images/final_summary.png" alt="Final Summary. " width="1784" height="290" loading="lazy" /></p>
     </li>
   </ol>
 
-  <p>The Final summary displays a tabular output containing the list of novel peptides and its corresponding protein. It also provides the users with the chromosomal location of the novel proteoform along with the peptide’s start and end position.	The output also features the strand information, gene	annotation and the genomic coordinates in a specific format that could be used on IGV or UCSC browser. It also provides the user with a	UCSC Genome Browser link, which the user can directly copy and paste it on a web browser to learn more about the novel proteoform. Here we are demonstrating the use of proteogenomics <span class="notranslate">workflow</span> on an example trimmed mouse dataset. This study explores the possibilities for <span class="notranslate">downstream</span> biological /functional analysis of peptides corresponding to novel proteoforms.</p>
+  <p>The Final summary displays a tabular output containing the list of novel peptides and its corresponding protein. It also provides the users with the chromosomal location of the novel proteoform along with the peptide’s start and end position.	The output also features the strand information, gene	annotation and the genomic coordinates in a specific format that could be used on IGV or UCSC browser. It also provides the user with a	UCSC Genome Browser link, which the user can directly copy and paste it on a web browser to learn more about the novel proteoform. Here we are demonstrating the use of proteogenomics workflow on an example trimmed mouse dataset. This study explores the possibilities for downstream biological /functional analysis of peptides corresponding to novel proteoforms.</p>
 
 </blockquote>
 
 <h3 id="conclusion">Conclusion</h3>
 
-<p>This completes the proteogenomics <span class="notranslate">workflow</span> analysis. This training <span class="notranslate">workflow</span> uses mouse data. For any other organism the data, tool paramters and the <span class="notranslate">workflow</span> will need to be modified accordingly.This <span class="notranslate">workflow</span> is also available at <a href="https://usegalaxy.eu/">use<span class="notranslate">galaxy</span>.eu</a>.</p>
+<p>This completes the proteogenomics workflow analysis. This training workflow uses mouse data. For any other organism the data, tool paramters and the workflow will need to be modified accordingly.This workflow is also available at <a href="https://usegalaxy.eu/">usegalaxy.eu</a>.</p>
 
-<p>This <span class="notranslate">workflow</span> was developed by the <span class="notranslate">Galaxy</span>-P team at the University of Minnesota.
-For more information about <span class="notranslate">Galaxy</span>-P or our ongoing work, please visit us at <a href="http://galaxyp.org"><span class="notranslate">galaxy</span>p.org</a></p>
+<p>This workflow was developed by the Galaxy-P team at the University of Minnesota.
+For more information about Galaxy-P or our ongoing work, please visit us at <a href="http://galaxyp.org">galaxyp.org</a></p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>Learning how to visualize proteomic data and to perform its genomic allocation</p>
@@ -1505,38 +1255,18 @@ For more information about <span class="notranslate">Galaxy</span>-P or our ongo
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Proteogenomics 3: Novel peptide analysis (Proteomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=Proteogenomics 3: Novel peptide analysis (Proteomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Subina Mehta, Timothy J. Griffin, Pratik Jagtap, Ray Sajulga, James Johnson, Praveen Kumar,  <b>Proteogenomics 3: Novel peptide analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Subina Mehta, Timothy J. Griffin, Pratik Jagtap, Ray Sajulga, James Johnson, Praveen Kumar,  <b>Proteogenomics 3: Novel peptide analysis (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html">https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1548,7 +1278,7 @@ For more information about <span class="notranslate">Galaxy</span>-P or our ongo
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1557,28 +1287,31 @@ For more information about <span class="notranslate">Galaxy</span>-P or our ongo
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{proteomics-proteogenomics-novel-peptide-analysis,
 author = "Subina Mehta and Timothy J. Griffin and Pratik Jagtap and Ray Sajulga and James Johnson and Praveen Kumar",
-title = "Proteogenomics 3: Novel peptide analysis (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "Proteogenomics 3: Novel peptide analysis (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1586,11 +1319,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1599,6 +1332,7 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
                 <blockquote class="agenda follow-up">
+                    <div class="box-title">Go Further</div>
                     <strong class="follow-up"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Do you want to extend your knowledge? Follow one of our recommended follow-up trainings:</strong>
                     <ul>
                         
@@ -1610,10 +1344,6 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
         
             <ul>
                 
-                    
-                        
-                    
-                        
                     
                         
                     
@@ -1675,21 +1405,11 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                     
                         
                     
+                        
+                    
+                        
+                    
                 
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                     
                         
                     
@@ -1741,6 +1461,20 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                     
                         
                     
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                 
             </ul>
         
@@ -1751,49 +1485,99 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
                 </blockquote>
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools:
+- name: ncbi_blast_plus
+  owner: devteam
+  revisions: 2889433c7ae1
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: pep_pointer
+  owner: galaxyp
+  revisions: 073a2965e3b2
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: peptide_genomic_coordinate
+  owner: galaxyp
+  revisions: 5f49ffce52cb
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+- name: query_tabular
+  owner: iuc
+  revisions: 33d61c89fb8d
+  tool_panel_section_label: Proteomics
+  tool_shed_url: https://toolshed.g2.bx.psu.edu/
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00233">https://gxy.io/GTN:T00233</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/proteomics/tutorials/proteogenomics-novel-peptide-analysis/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

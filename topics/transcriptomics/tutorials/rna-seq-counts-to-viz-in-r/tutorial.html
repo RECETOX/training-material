@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,254 +8,70 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
-        
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
-        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html" />
-        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />
-
-        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material" />
-<meta name="DC.type" content="text" />
-<meta name="DC.title" content="RNA Seq Counts to Viz in R" />
-<meta name="DC.publisher" content="Galaxy Training Network" />
-<meta name="DC.date" content="2022-10-18 14:23:35 +0000" />
-<meta name="DC.creator" content="Bérénice Batut" />
-<meta name="DC.creator" content="Fotis E. Psomopoulos" />
-<meta name="DC.creator" content="Toby Hodges" />
-<meta name="DC.creator" content="Erasmus+ Programme" />
-
-        
-        
-        
-        
-        
-        <meta name="description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:site_name" content="Galaxy Training Network" />
-        <meta property="og:title" content="Galaxy Training: RNA Seq Counts to Viz in R" />
-        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
-
-    </head>
-    <body data-spy="scroll" data-target="#toc">
-        <header>
-    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
-        <div class="container">
-            <a class="navbar-brand" href="/training-material/">
-                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
-            </a>
-
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="top-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        
-                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
-                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
-                        </a>
-                        
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
-        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <!-- disable Tess for now
-        <form method="get" action="https://tess.elixir-europe.org/materials">
-            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
-            <input type="hidden" value="Galaxy Training" name="content_provider">
-            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
-        </form>
-        -->
-
-        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
-        </a>
-        
-        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
-           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
-        </a>
-        
-        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
-            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
-        </a>
-        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
-           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
-        </a>
-    </div>
-</li>
-
-
-                    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
-        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.md" title="Edit on GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
-        </a>
-
-        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
-        </a>
-
-        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html" title="Show view statistics of this page">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
-        </a>
-
-        <!-- link to feedback -->
-        
-            
-            
-                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
-                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
-                </a>
-            
-        
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
-            </div>
-
-            <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
-            </div>
-
-        </div>
-
-        <div class="dropdown-item">
-            <div>
-                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
-            </div>
-
-            <div id="archive-selector">
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html" title="Version 2022-06-01">2022-06-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html" title="Version 2022-05-01">2022-05-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html" title="Version 2022-04-01">2022-04-01</a>
-            
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
-            </div>
-
-        </div>
-
-    </div>
-</li>
-
-
-                    <!-- Search bar-->
-                    <li class="nav-item">
-                      <div id="navbarSupportedContent" role="search">
-                        <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
-                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
-                          <div class="md-form mb-2">
-                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
-                          </div>
-                        </form>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-        <div class="container main-content" role="main">
-        
-
-
-
-
-
-
-
-
-
-
-
-<!-- Gitter -->
-
-
-
-
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-  room: 'Galaxy-Training-Network/Lobby'
-  };
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
 </script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 
-<script type="application/ld+json">
-    
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="RNA Seq Counts to Viz in R">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2022-10-18 14:23:35 +0000">
+<meta name="DC.creator" content="Bérénice Batut">
+<meta name="DC.creator" content="Fotis E. Psomopoulos">
+<meta name="DC.creator" content="Toby Hodges">
+<meta name="DC.creator" content="Erasmus+ Programme">
+
+        
+        
+        
+        
+        <meta name="description" content="Training material for all kinds of transcriptomics analysis.">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: RNA Seq Counts to Viz in R">
+        <meta property="og:description" content="Training material for all kinds of transcriptomics analysis.">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+        <script type="application/ld+json">
+            
 
 
 {
@@ -306,6 +122,10 @@
     "url": "https://galaxyproject.org/teach/gtn/"
   },
   "identifier": "https://github.com/galaxyproject/training-material",
+  "workTranslation": [
+
+  ],
+  "creativeWorkStatus": "Active",
   "accessMode": [
     "textual",
     "visual"
@@ -333,6 +153,7 @@
   "name": "Hands-on for 'RNA Seq Counts to Viz in R' tutorial",
   "url": "https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html",
   "timeRequired": "PT1H",
+  "teaches": "Describe the role of data, aesthetics, geoms, and layers in `ggplot` functions.\n - Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.",
   "keywords": "transcriptomics, interactive-tools",
   "description": "The questions this  addresses are:\n - How can I create neat visualizations of the data?\n\n\nThe objectives are:\n - Describe the role of data, aesthetics, geoms, and layers in `ggplot` functions.\n - Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.\n\n",
   "inLanguage": {
@@ -480,8 +301,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
@@ -503,8 +324,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/fpsom/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/fpsom/",
@@ -526,8 +347,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/tobyhodges/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/tobyhodges/",
@@ -549,100 +370,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
-      "name": "Erasmus+ Programme",
-      "image": "https://avatars.githubusercontent.com/erasmusplus",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ]
-    }
-  ],
-  "contributor": [
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/bebatut/",
-      "name": "Bérénice Batut",
-      "image": "https://avatars.githubusercontent.com/bebatut",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0001-9852-1987",
-      "orcid": "https://orcid.org/0000-0001-9852-1987"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/fpsom/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/fpsom/",
-      "name": "Fotis E. Psomopoulos",
-      "image": "https://avatars.githubusercontent.com/fpsom",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0002-0222-4273",
-      "orcid": "https://orcid.org/0000-0002-0222-4273"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
-      },
-      "url": "https://training.galaxyproject.org/training-material/hall-of-fame/tobyhodges/",
-      "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/tobyhodges/",
-      "name": "Toby Hodges",
-      "image": "https://avatars.githubusercontent.com/tobyhodges",
-      "description": "A contributor to the GTN project.",
-      "memberOf": [
-        {
-          "@type": "Organization",
-          "email": "galaxytrainingnetwork@gmail.com",
-          "name": "Galaxy Training Network",
-          "url": "https://galaxyproject.org/teach/gtn/"
-        }
-      ],
-      "identifier": "https://orcid.org/0000-0003-1766-456X",
-      "orcid": "https://orcid.org/0000-0003-1766-456X"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "http://purl.org/dc/terms/conformsTo": {
-        "@id": "https://bioschemas.org/profiles/Person/0.2-DRAFT-2019_07_19",
-        "@type": "Person"
+        "@id": "https://bioschemas.org/profiles/Person/0.3-DRAFT",
+        "@type": "CreativeWork"
       },
       "url": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
       "mainEntityOfPage": "https://training.galaxyproject.org/training-material/hall-of-fame/erasmusplus/",
@@ -673,43 +402,212 @@
       "termCode": "topic_3308",
       "url": "https://bioportal.bioontology.org/ontologies/EDAM/?p=classes&conceptid=http%3A%2F%2Fedamontology.org%2Ftopic_3308"
     }
-  ]
+  ],
+  "educationalLevel": "Introductory",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "interactive-tools"
+    }
+  ],
+  "abstract": "# Introduction"
 }
-</script>
+        </script>
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
 
-<section class="tutorial topic-transcriptomics">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/topics/transcriptomics" title="Go back to list of tutorials">
+                            <i class="far fa-folder" aria-hidden="true"></i> Transcriptomics
+                        </a>
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="/training-material/topics/transcriptomics/faqs/" title="Check our FAQs for the Transcriptomics topic">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> Topic FAQs
+        </a>
+        
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.md" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            
+            
+                <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+                </a>
+            
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gitter -->
+
+
+
+
+
+
+<article class="tutorial topic-transcriptomics">
     <h1 data-toc-skip>RNA Seq Counts to Viz in R</h1>
     
 
+    <section aria-labelledby="overview-box" id="tutorial-metadata">
     <div markdown="0">
 
 	<div class="contributors-line">
-		Authors: 
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
-
-
-
-<a href="/training-material/hall-of-fame/fpsom/" class="contributor-badge contributor-fpsom"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/fpsom?s=27" alt="Avatar">Fotis E. Psomopoulos</a>
-
-
-
-<a href="/training-material/hall-of-fame/tobyhodges/" class="contributor-badge contributor-tobyhodges"><img src="/training-material/assets/images/orcid.png" alt="orcid logo"/><img src="https://avatars.githubusercontent.com/tobyhodges?s=27" alt="Avatar">Toby Hodges</a>
-
-
-
-<a href="/training-material/hall-of-fame/erasmusplus/" class="contributor-badge contributor-erasmusplus"><img src="https://avatars.githubusercontent.com/erasmusplus?s=27" alt="Avatar">Erasmus+ Programme</a>
-
-
-
+		Authors: <a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/fpsom/" class="contributor-badge contributor-fpsom"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/fpsom?s=36" alt="Avatar" width="36" height="36">Fotis E. Psomopoulos</a><a href="/training-material/hall-of-fame/tobyhodges/" class="contributor-badge contributor-tobyhodges"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/tobyhodges?s=36" alt="Avatar" width="36" height="36">Toby Hodges</a><a href="/training-material/hall-of-fame/erasmusplus/" class="contributor-badge contributor-erasmusplus"><img src="https://www.erasmusplus.nl/assets/images/logo.png" alt="Avatar" width="36" height="36">Erasmus+ Programme</a>
 	</div>
 
 </div>
 
 
     <blockquote class="overview">
-        <div class="box-title" aria-label="overview box">Overview</div>
+        <div id="overview-box" class="box-title">Overview</div>
         
-        <img alt="Creative Commons License" class="float-right" style="border-width:0; display: inline-block; margin:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" aria-hidden="true" />
+        <img alt="Creative Commons License: CC-BY" class="float-right" style="border-width:0; display: inline-block; margin:0" src="/training-material/assets/images/cc-by.png"/>
         
         <strong><i class="far fa-question-circle" aria-hidden="true"></i> Questions:</strong>
         <ul>
@@ -755,6 +653,8 @@
                         
                     
                         
+                    
+                        
                             
                             <li> Quality Control:
                             
@@ -772,6 +672,8 @@
                         
                     
                 
+                    
+                        
                     
                         
                             
@@ -831,6 +733,12 @@
                         
                     
                         
+                    
+                        
+                    
+                        
+                    
+                        
                             
                             <li> RStudio in Galaxy:
                             
@@ -840,12 +748,6 @@
                                 
                             
                             </li>
-                        
-                    
-                        
-                    
-                        
-                    
                         
                     
                         
@@ -898,42 +800,6 @@
                         
                     
                         
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
                             
                             <li> R basics in Galaxy:
                             
@@ -957,7 +823,85 @@
                     
                         
                     
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                 
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
                     
                         
                     
@@ -973,32 +917,6 @@
                                 
                             
                             </li>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
                         
                     
                         
@@ -1097,8 +1015,6 @@
                         
                     
                         
-                    
-                        
                             
                             <li> Reference-based RNA-Seq data analysis:
                             
@@ -1108,30 +1024,6 @@
                                 
                             
                             </li>
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
                         
                     
                         
@@ -1158,17 +1050,13 @@
         <div id="supporting-materials"><strong><i class="fa fa-external-link" aria-hidden="true"></i> Supporting Materials:</strong></div>
         <ul class="supporting_material">
             
-                <li class="btn btn-default supporting_material"><a href="/training-material/topics/transcriptomics/slides/introduction.html" title="Topic Overview slides">
-                    <i class="fab fa-slideshare" aria-hidden="true"></i> Topic Overview slides
-                </a></li>
-            
 
             
                 <li class="btn btn-default supporting_material">
 
 
 <a class="btn btn-default topic-icon" title="Zenodo datasets used in this tutorial" href="https://zenodo.org/record/3477564/">
-    <i class="far fa-copy" aria-hidden="true"></i> Datasets
+    <i class="far fa-copy" aria-hidden="true"></i>&nbsp;Datasets
 </a>
 
 </li>
@@ -1183,13 +1071,10 @@
             
             
             
-                 <li class="btn btn-default supporting_material">
-    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/faqs/" title="Frequently Asked Questions" alt="Tutorial FAQs">
+                <li class="btn btn-default supporting_material">    <a class="topic-icon" href="/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/faqs/" title="Frequently Asked Questions">
         <i class="far fa-question-circle" aria-hidden="true"></i> FAQs
     </a>
-  </li>
-
-
+</li>
             
 
             <!-- Check the GTN Video Library for recordings of this tutorial or associated slides -->
@@ -1208,7 +1093,10 @@
 
 
   
-  <li class="btn btn-default supporting_material">
+<!-- GTN Video Library true -->
+  
+<li class="btn btn-default supporting_material">
+  
     <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Latest recordings of this tutorial in the GTN Video Library">
         <i class="fas fa-video" aria-hidden="true"></i><span class="visually-hidden">video</span>&nbsp;Recordings
     </a>
@@ -1230,7 +1118,9 @@
         
         
     </ul>
-   </li>
+  
+</li>
+  
    
 
 
@@ -1239,20 +1129,61 @@
                 <li class="btn btn-default supporting_material">
 
 
-    <a href="#" class="btn btn-default dropdown-toggle topic-icon" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
+
+
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Where to run the tutorial">
         <i class="fas fa-globe" aria-hidden="true"></i><span class="visually-hidden">instances</span>&nbsp;Available on these Galaxies 
     </a>
     <ul class="dropdown-menu">
+	<li class="dropdown-header">
+		<b>Known Working</b>
+	</li>
+	
+	
+
     
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.eu" title="">
+			UseGalaxy.eu <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.fr/" title="">
+			UseGalaxy.fr <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+	<li>
+		<a class="dropdown-item" href="https://usegalaxy.org" title="">
+			UseGalaxy.org (Main) <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr> ⭐️
+		</a>
+	</li>
+    
+    
+	<li>
+		<a class="dropdown-item" href="https://galaxy.genouest.org" title="">
+			Galaxy@GenOuest <abbr title="This instance supports the precise tool versions used in this tutorial">✅</abbr>
+		</a>
+	</li>
+    
+	<li class="dropdown-header">
+		<b>Possibly Working</b>
+	</li>
+    
+
+    
+	<li class="dropdown-header">
+		Containers
+	</li>
         <li>
-            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics/transcriptomics/docker" title="Docker image for this tutorial">
+            <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/tree/main/topics//docker" title="Docker image for this tutorial">
                 <i class="fab fa-docker" aria-hidden="true"></i><span class="visually-hidden">docker_image</span> Docker image
             </a>
         </li>
     
-    
     </ul>
-
 
 </li>
             
@@ -1261,12 +1192,16 @@
 
         <div><strong><i class="far fa-calendar" aria-hidden="true"></i> Last modification:</strong> Oct 18, 2022 </div>
         <div><strong><i class="fas fa-balance-scale" aria-hidden="true"></i> License:</strong>
+		
             
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>
-            
-            <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">The GTN Framework is licensed under MIT</a>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Tutorial Content is licensed under Creative Commons Attribution 4.0 International License</a>.
+             The GTN Framework is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
         </div>
+        
+        <div><strong><i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>:</strong> <a href="https://gxy.io/GTN:T00299">https://gxy.io/GTN:T00299</a> </div>
+        
     </blockquote>
+    </section>
 
     <div class="container">
         <div class="row">
@@ -1277,38 +1212,39 @@
             <div class="col-sm-10">
                  
 
+                <section aria-label="Tutorial Content" id="tutorial-content">
                 <h1 id="introduction">Introduction</h1>
 
 <blockquote class="comment">
-  <comment-title></comment-title>
+  <div class="box-title comment-title" id="comment"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment</div>
 
   <p>This tutorial is significantly based on <a href="https://carpentries.org">the Carpentries</a> <a href="https://datacarpentry.org/genomics-r-intro/">“Intro to R and RStudio for Genomics”</a> lesson</p>
 
 </blockquote>
 
-<p>With <span class="notranslate">RNA</span>-Seq data analysis, we generated tables containing list of DE genes, their <span class="notranslate">expression</span>, some statistics, etc. We can manipulate these tables using <span class="notranslate">Galaxy</span>, as we saw in some tutorials, e.g. <a href="/training-material/topics/transcriptomics/tutorials/ref-based/tutorial.html">“Reference-based <span class="notranslate">RNA</span>-Seq data analysis”</a>, and create some visualisations.</p>
+<p>With RNA-Seq data analysis, we generated tables containing list of DE genes, their expression, some statistics, etc. We can manipulate these tables using Galaxy, as we saw in some tutorials, e.g. <a href="/training-material/topics/transcriptomics/tutorials/ref-based/tutorial.html">“Reference-based RNA-Seq data analysis”</a>, and create some visualisations.</p>
 
-<p>Sometimes we want to have some customizations on visualization, some complex table manipulations or some statistical analysis. If we can not find a <span class="notranslate">Galaxy</span> tools for that or the right parameters, we may need to use programming languages as R or Python.</p>
+<p>Sometimes we want to have some customizations on visualization, some complex table manipulations or some statistical analysis. If we can not find a Galaxy tools for that or the right parameters, we may need to use programming languages as R or Python.</p>
 
 <blockquote class="tip">
-  <div id="tip-prerequisites" class="box-title"><button type="button" aria-controls="tip-prerequisites-contents" aria-expanded="true" aria-label="Toggle tip box: Prerequisites"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Prerequisites<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+  <div class="box-title tip-title" id="tip-prerequisites"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-prerequisites" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Prerequisites<span class="fold-unfold fa fa-minus-square"></span></button></div>
   <p>It is expected that you are already somewhat familiar with the R basics (how to create variables, create and access lists, etc.) If you are not yet comfortable with those topics, we recommend that you complete the requirements listed at the start of this tutorial first, before proceeding.</p>
 
   <p>If you are starting with this tutorial, you will need to import a dataset:</p>
 
   <blockquote class="notranslate hands_on">
-    <div id="hands-on-using-datasets-from-galaxy" class="box-title" aria-label="hands-on box: Using datasets from Galaxy"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using datasets from <span class="notranslate">Galaxy</span></div>
+    <div class="box-title hands-on-title" id="hands-on-using-datasets-from-galaxy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Using datasets from Galaxy</div>
 
     <ol>
-      <li>Upload the following URL to <span class="notranslate">Galaxy</span>:
+      <li>Upload the following URL to Galaxy:
         <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://zenodo.org/record/3477564/files/annotatedDEgenes.tabular
 </code></pre></div>        </div>
       </li>
       <li>
-        <p>Note the history ID of the dataset in your <span class="notranslate">Galaxy</span> history</p>
+        <p>Note the history ID of the dataset in your Galaxy history</p>
       </li>
       <li>
-        <p><span class="tool" data-tool="interactive_tool_rstudio" title="Tested with interactive_tool_rstudio"><strong>RStudio</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_rstudio</span></span>  in <span class="notranslate">Galaxy</span> provides some special functions to import and export from your history:</p>
+        <p><span class="tool" data-tool="interactive_tool_rstudio" title="RStudio tool" aria-role="link"><strong>RStudio</strong> <i class="fas fa-wrench" aria-hidden="true"></i><i aria-hidden="true" class="fas fa-cog"></i><span class="visually-hidden">Tool: interactive_tool_rstudio</span></span> in Galaxy provides some special functions to import and export from your history:</p>
 
         <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">annotatedDEgenes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="n">gx_get</span><span class="p">(</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\t"</span><span class="p">)</span><span class="w"> </span><span class="c1"># will import dataset number 2 from your history, use the correct ID for your dataset.</span><span class="w">
 </span></code></pre></div>        </div>
@@ -1318,7 +1254,7 @@
   </blockquote>
 
   <blockquote class="notranslate hands_on">
-    <div id="hands-on-using-datasets-without-galaxy" class="box-title" aria-label="hands-on box: Using datasets without Galaxy"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Using datasets without <span class="notranslate">Galaxy</span></div>
+    <div class="box-title hands-on-title" id="hands-on-using-datasets-without-galaxy"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Using datasets without Galaxy</div>
     <ol>
       <li>
         <p>Read the tabular file into an object called <code class="language-plaintext highlighter-rouge">annotatedDEgenes</code>:</p>
@@ -1332,10 +1268,10 @@
   </blockquote>
 </blockquote>
 
-<p>In this tutorial, we will take the list of DE genes extracted from DESEq2’s output that we generated in the <a href="/training-material/topics/transcriptomics/tutorials/ref-based/tutorial.html">“Reference-based <span class="notranslate">RNA</span>-Seq data analysis” tutorial</a>, manipulate it and create some visualizations.</p>
+<p>In this tutorial, we will take the list of DE genes extracted from DESEq2’s output that we generated in the <a href="/training-material/topics/transcriptomics/tutorials/ref-based/tutorial.html">“Reference-based RNA-Seq data analysis” tutorial</a>, manipulate it and create some visualizations.</p>
 
 <blockquote class="agenda">
-  <div id="agenda" class="box-title" aria-label="agenda box: ">Agenda</div>
+  <div class="box-title agenda-title" id="agenda">Agenda</div>
 
   <p>In this tutorial, we will cover:</p>
 
@@ -1353,17 +1289,18 @@
 </blockquote>
 
 <!--SNIPPET-->
-<blockquote class="notranslate hands_on">  <div id="hands-on-launch-rstudio" class="box-title" aria-label="hands_on box: Launch RStudio"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Launch RStudio</div>  <p>Depending on which server you are using, you may be able to run RStudio directly in <span class="notranslate">Galaxy</span>. If that is not available, RStudio Cloud can be an alte<span class="notranslate">rna</span>tive.</p>  <blockquote class="tip">  <tip-title>Launch RStudio in <span class="notranslate">Galaxy</span></tip-title>  <p>Currently RStudio in <span class="notranslate">Galaxy</span> is only available on <a href="https://usegalaxy.eu">Use<span class="notranslate">Galaxy</span>.eu</a> and <a href="https://usegalaxy.org">Use<span class="notranslate">Galaxy</span>.org</a></p>  <ol>    <li>Open the Rstudio tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by clicking <a href="https://usegalaxy.eu/?tool_id=interactive_tool_rstudio">here to launch RStudio</a></li>    <li>Click Execute</li>    <li>The tool will start running and will stay running permanently</li>    <li>Click on the “User” menu at the top and go to “Active InteractiveTools” and locate the RStudio instance you started.</li>  </ol></blockquote>  <blockquote class="tip">  <tip-title>Launch RStudio Cloud if not available on <span class="notranslate">Galaxy</span></tip-title>  <p>If RStudio is not available on the <span class="notranslate">Galaxy</span> instance:</p>  <ol>    <li>Register for <a href="https://client.login.rstudio.cloud/oauth/login?show_auth=0&amp;show_login=1&amp;show_setup=1">RStudio Cloud</a>, or login if you already have an account</li>    <li>Create a new project</li>  </ol></blockquote></blockquote>
+<blockquote class="notranslate hands_on">   <div class="box-title hands_on-title" id="hands-on-launch-rstudio"><i class="fas fa-pencil-alt" aria-hidden="true"></i> Hands-on: Launch RStudio</div>   <p>Depending on which server you are using, you may be able to run RStudio directly in Galaxy. If that is not available, RStudio Cloud can be an alternative.</p>   <blockquote class="tip">   <div class="box-title tip-title" id="tip-launch-rstudio-in-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-launch-rstudio-in-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Launch RStudio in Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>Currently RStudio in Galaxy is only available on <a href="https://usegalaxy.eu">UseGalaxy.eu</a> and <a href="https://usegalaxy.org">UseGalaxy.org</a></p>   <ol>     <li>Open the Rstudio tool <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> by clicking <a href="https://usegalaxy.eu/?tool_id=interactive_tool_rstudio">here to launch RStudio</a></li>     <li>Click Run Tool</li>     <li>The tool will start running and will stay running permanently</li>     <li>Click on the “User” menu at the top and go to “Active InteractiveTools” and locate the RStudio instance you started.</li>   </ol> </blockquote>   <blockquote class="tip">   <div class="box-title tip-title" id="tip-launch-rstudio-cloud-if-not-available-on-galaxy"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-launch-rstudio-cloud-if-not-available-on-galaxy" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Launch RStudio Cloud if not available on Galaxy<span class="fold-unfold fa fa-minus-square"></span></button></div>   <p>If RStudio is not available on the Galaxy instance:</p>   <ol>     <li>Register for <a href="https://client.login.rstudio.cloud/oauth/login?show_auth=0&amp;show_login=1&amp;show_setup=1">RStudio Cloud</a>, or login if you already have an account</li>     <li>Create a new project</li>   </ol> </blockquote> </blockquote>
+<p><!--END_SNIPPET--></p>
 
 <h1 id="visualization">Visualization</h1>
 
-<p>In <span class="notranslate">RNA</span>-seq data analysis and other omics experiments, visualization are an important step to check the data, their quality and represent the results found for publication.</p>
+<p>In RNA-seq data analysis and other omics experiments, visualization are an important step to check the data, their quality and represent the results found for publication.</p>
 
 <p><code class="language-plaintext highlighter-rouge">ggplot2</code> is a plotting package that makes it simple to create complex plots from data in a data frame. It provides a more programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties. Therefore, we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatter plot. This helps in creating publication quality plots with minimal amounts of adjustments and tweaking.</p>
 
 <p><code class="language-plaintext highlighter-rouge">ggplot2</code> graphics are built step by step by adding new elements, i.e. layers:</p>
 
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DATA</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n"><span class="notranslate">mapping</span></span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="o">&lt;</span><span class="n"><span class="notranslate">MAPPING</span>S</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DATA</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="o">&lt;</span><span class="n">MAPPINGS</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
   </span><span class="o">&lt;</span><span class="n">GEOM_FUNCTION</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
   </span><span class="o">&lt;</span><span class="n">GEOM_FUNCTION</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
   </span><span class="o">&lt;</span><span class="n">GEOM_FUNCTION</span><span class="o">&gt;</span><span class="p">()</span><span class="w">
@@ -1374,7 +1311,7 @@
 <h2 id="volcano-plot">Volcano plot</h2>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-first-plot-step-by-step" class="box-title" aria-label="hands-on box: First plot, step by step"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: First plot, step by step</div>
+  <div class="box-title hands-on-title" id="hands-on-first-plot-step-by-step"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: First plot, step by step</div>
 
   <ol>
     <li>
@@ -1384,7 +1321,7 @@
 </span></code></pre></div>      </div>
 
       <blockquote class="tip">
-        <div id="tip-didn-t-work" class="box-title"><button type="button" aria-controls="tip-didn-t-work-contents" aria-expanded="true" aria-label="Toggle tip box: Didn't work?"><i class="far fa-lightbulb" aria-hidden="true"></i><span class="visually-hidden"></span> Tip: Didn't work?<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title tip-title" id="tip-didn-t-work"><button class="gtn-boxify-button tip" type="button" aria-controls="tip-didn-t-work" aria-expanded="true"><i class="far fa-lightbulb" aria-hidden="true" ></i> Tip: Didn't work?<span class="fold-unfold fa fa-minus-square"></span></button></div>
         <p>You might need to install ggplot2 first</p>
 
         <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
@@ -1400,7 +1337,7 @@
       <p>A new window will open in the bottom-right panel</p>
     </li>
     <li>
-      <p>Define a <span class="notranslate">mapping</span> (using the <code class="language-plaintext highlighter-rouge">aes</code> aesthetic function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.</p>
+      <p>Define a mapping (using the <code class="language-plaintext highlighter-rouge">aes</code> aesthetic function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.</p>
 
       <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">annotatedDEgenes</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log2.FC.</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P.value</span><span class="p">))</span><span class="w">
 </span></code></pre></div>      </div>
@@ -1408,7 +1345,7 @@
       <p>X-axis is now the log2 FC and and Y-axis the p-value</p>
 
       <blockquote class="comment">
-        <div id="comment-data-format" class="box-title" aria-label="comment box: Data format"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Data format</div>
+        <div class="box-title comment-title" id="comment-data-format"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Data format</div>
 
         <p>Some <code class="language-plaintext highlighter-rouge">ggplot2</code> functions need data in the ‘long’ format:</p>
         <ul>
@@ -1427,7 +1364,7 @@
 </span></code></pre></div>      </div>
 
       <blockquote class="comment">
-        <div id="comment-graphical-representations-of-the-data-in-the-plot" class="box-title" aria-label="comment box: Graphical representations of the data in the plot"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Graphical representations of the data in the plot</div>
+        <div class="box-title comment-title" id="comment-graphical-representations-of-the-data-in-the-plot"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Graphical representations of the data in the plot</div>
 
         <p><code class="language-plaintext highlighter-rouge">ggplot2</code> offers many different <code class="language-plaintext highlighter-rouge">geoms</code>; we will use some common ones today, including:</p>
         <ul>
@@ -1442,14 +1379,14 @@
 
 <p>We should obtain our first ggplot2 plot:</p>
 
-<p><img src="../../images/rna-seq-counts-to-viz-in-r/firstPlot.png" alt="Our first ggplot2 plot. " loading="lazy" /></p>
+<p><img src="../../images/rna-seq-counts-to-viz-in-r/firstPlot.png" alt="Our first ggplot2 plot. " width="640" height="425" loading="lazy" /></p>
 
 <p>This plot is called a volcano plot, a type of scatterplot that shows statistical significance (P value) versus magnitude of change (fold change). The most upregulated genes are towards the right, the most downregulated genes are towards the left, and the most statistically significant genes are towards the top. With this plot, we can then quickly identify genes with large fold changes that are also statistically significant, i.e. probably the most biologically significant genes.</p>
 
 <p>The current version of the plot is not really informative, mostly due to the high number of p-values close to zero. In order to resolve this, we will apply <code class="language-plaintext highlighter-rouge">-log10()</code> to the y-axis values.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-volcano-plot-with-log-values-on-y-axis" class="box-title" aria-label="hands-on box: Volcano plot with log values on y-axis"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Volcano plot with log values on y-axis</div>
+  <div class="box-title hands-on-title" id="hands-on-volcano-plot-with-log-values-on-y-axis"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Volcano plot with log values on y-axis</div>
 
   <ol>
     <li>
@@ -1462,17 +1399,17 @@
   </ol>
 </blockquote>
 
-<p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v0.png" alt="Volcano Plot version 0. " loading="lazy" /></p>
+<p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v0.png" alt="Volcano Plot version 0. " width="640" height="425" loading="lazy" /></p>
 
 <blockquote class="question">
-  <div id="question-categorising-expression-levels" class="box-title" aria-label="question box: Categorising expression levels"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Categorising <span class="notranslate">expression</span> levels</div>
+  <div class="box-title question-title" id="question-categorising-expression-levels"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Categorising expression levels</div>
 
   <ol>
     <li>Why are there no points with log2 FC between -1 and 1?</li>
   </ol>
 
   <blockquote class="solution">
-    <div id="solution" class="box-title"><button type="button" aria-controls="solution-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution"><button class="gtn-boxify-button solution" type="button" aria-controls="solution" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <p>The input file we used are the 130 genes with a significant adjusted p-values (below &lt; 0.05) and an absolute fold change higher than 2 (log2 FC &lt; -1 or log 2 FC &gt; 1).</p>
 
@@ -1480,7 +1417,7 @@
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-the-sign" class="box-title" aria-label="comment box: The `+` sign"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: The `+` sign</div>
+  <div class="box-title comment-title" id="comment-the-sign"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: The `+` sign</div>
 
   <p>The <code class="language-plaintext highlighter-rouge">+</code> in the <code class="language-plaintext highlighter-rouge">ggplot2</code> package is particularly useful because it allows you to modify existing <code class="language-plaintext highlighter-rouge">ggplot</code> objects. This means you can easily set up plot templates and conveniently explore different types of plots, so the above plot can also be generated with code like this:</p>
 
@@ -1505,17 +1442,17 @@
 </blockquote>
 
 <blockquote class="comment">
-  <div id="comment-some-extra-comments" class="box-title" aria-label="comment box: Some extra comments"><i class="far fa-comment-dots" aria-hidden="true"></i><span class="visually-hidden"></span> Comment: Some extra comments</div>
+  <div class="box-title comment-title" id="comment-some-extra-comments"><i class="far fa-comment-dots" aria-hidden="true" ></i> Comment: Some extra comments</div>
 
-  <p>Anything you put in the <code class="language-plaintext highlighter-rouge">ggplot()</code> function can be seen by any <code class="language-plaintext highlighter-rouge">geom</code> layers that you add (i.e., these are universal plot settings). This includes the <code class="language-plaintext highlighter-rouge">x-</code> and <code class="language-plaintext highlighter-rouge">y-axis</code> <span class="notranslate">mapping</span> you set up in <code class="language-plaintext highlighter-rouge">aes()</code>.</p>
+  <p>Anything you put in the <code class="language-plaintext highlighter-rouge">ggplot()</code> function can be seen by any <code class="language-plaintext highlighter-rouge">geom</code> layers that you add (i.e., these are universal plot settings). This includes the <code class="language-plaintext highlighter-rouge">x-</code> and <code class="language-plaintext highlighter-rouge">y-axis</code> mapping you set up in <code class="language-plaintext highlighter-rouge">aes()</code>.</p>
 
-  <p>You can also specify <span class="notranslate">mapping</span>s for a given <code class="language-plaintext highlighter-rouge">geom</code> independently of the <span class="notranslate">mapping</span>s defined globally in the <code class="language-plaintext highlighter-rouge">ggplot()</code> function.</p>
+  <p>You can also specify mappings for a given <code class="language-plaintext highlighter-rouge">geom</code> independently of the mappings defined globally in the <code class="language-plaintext highlighter-rouge">ggplot()</code> function.</p>
 </blockquote>
 
 <p>Building plots with <code class="language-plaintext highlighter-rouge">ggplot2</code> is typically an iterative process. We start by defining the dataset we’ll use, lay out the axes, and choose a <code class="language-plaintext highlighter-rouge">geom</code>. We can now modify this plot to extract more information from it.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-format-plot" class="box-title" aria-label="hands-on box: Format plot"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Format plot</div>
+  <div class="box-title hands-on-title" id="hands-on-format-plot"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Format plot</div>
 
   <ol>
     <li>
@@ -1525,7 +1462,7 @@
      </span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w">
 </span></code></pre></div>      </div>
 
-      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v1.png" alt="Volcano Plot version 1. " loading="lazy" /></p>
+      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v1.png" alt="Volcano Plot version 1. " width="640" height="425" loading="lazy" /></p>
     </li>
     <li>
       <p>Add colors for all the points</p>
@@ -1534,7 +1471,7 @@
     </span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"blue"</span><span class="p">)</span><span class="w">
 </span></code></pre></div>      </div>
 
-      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v2.png" alt="Volcano Plot version 2. " loading="lazy" /></p>
+      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v2.png" alt="Volcano Plot version 2. " width="640" height="425" loading="lazy" /></p>
     </li>
     <li>
       <p>Color point based on their strand</p>
@@ -1543,7 +1480,7 @@
      </span><span class="n">geom_point</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w">
 </span></code></pre></div>      </div>
 
-      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v3.png" alt="Volcano Plot version 3. " loading="lazy" /></p>
+      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v3.png" alt="Volcano Plot version 3. " width="640" height="425" loading="lazy" /></p>
 
       <p>We use a vector as an input to the argument color and <code class="language-plaintext highlighter-rouge">ggplot2</code> provides a different color corresponding to different values in the vector.</p>
     </li>
@@ -1561,15 +1498,15 @@
 
 <p>We have now a nice Volcano plot:</p>
 
-<p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v5.png" alt="Volcano Plot version 5. " loading="lazy" /></p>
+<p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v5.png" alt="Volcano Plot version 5. " width="640" height="425" loading="lazy" /></p>
 
 <blockquote class="question">
-  <div id="question-standard-error-over-the-log10-of-the-adjusted-p-value" class="box-title" aria-label="question box: Standard error over the `-log10` of the adjusted `P-value`"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Standard error over the `-log10` of the adjusted `P-value`</div>
+  <div class="box-title question-title" id="question-standard-error-over-the-log10-of-the-adjusted-p-value"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Standard error over the `-log10` of the adjusted `P-value`</div>
 
   <p>Create a scatter plot of the standard error over the <code class="language-plaintext highlighter-rouge">-log10</code> of the adjusted <code class="language-plaintext highlighter-rouge">P-value</code> with the chromosomes showing in different colors. Make sure to give your plot relevant axis labels.</p>
 
   <blockquote class="solution">
-    <div id="solution-1" class="box-title"><button type="button" aria-controls="solution-1-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-1"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-1" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ggplot(data = annotatedDEgenes, aes(x = -log10(P.adj), y = StdErr, color = Chromosome)) +
   geom_point() +
@@ -1577,7 +1514,7 @@
           y = "StdErr")
 </code></pre></div>    </div>
 
-    <p><img src="../../images/rna-seq-counts-to-viz-in-r/ggplotExercise01.png" alt="Exercise Plot 1. " loading="lazy" /></p>
+    <p><img src="../../images/rna-seq-counts-to-viz-in-r/ggplotExercise01.png" alt="Exercise Plot 1. " width="640" height="425" loading="lazy" /></p>
   </blockquote>
 </blockquote>
 
@@ -1586,7 +1523,7 @@
 <p><code class="language-plaintext highlighter-rouge">ggplot2</code> has a special technique called faceting that allows us to split one plot into multiple plots based on a factor included in the dataset. We will use it to split our volcano plot into five panels, one for each chromosome.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-volcano-plot-by-chromosomes" class="box-title" aria-label="hands-on box: Volcano plot by chromosomes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Volcano plot by chromosomes</div>
+  <div class="box-title hands-on-title" id="hands-on-volcano-plot-by-chromosomes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Volcano plot by chromosomes</div>
 
   <ol>
     <li>
@@ -1599,7 +1536,7 @@
   </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Chromosome</span><span class="p">)</span><span class="w">
 </span></code></pre></div>      </div>
 
-      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v6.png" alt="Volcano Plot version 6. " loading="lazy" /></p>
+      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v6.png" alt="Volcano Plot version 6. " width="640" height="425" loading="lazy" /></p>
     </li>
     <li>
       <p>Split volcano plot by chromosome using <code class="language-plaintext highlighter-rouge">facet_grid</code> with plots stacked vertically</p>
@@ -1611,7 +1548,7 @@
   </span><span class="n">facet_grid</span><span class="p">(</span><span class="n">Chromosome</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w">
 </span></code></pre></div>      </div>
 
-      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v7.png" alt="Volcano Plot version 7. " loading="lazy" /></p>
+      <p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v7.png" alt="Volcano Plot version 7. " width="640" height="425" loading="lazy" /></p>
 
       <p>The <code class="language-plaintext highlighter-rouge">facet_grid</code> geometry allows to explicitly specify how we want your plots to be arranged via formula notation (<code class="language-plaintext highlighter-rouge">rows ~ columns</code>). The <code class="language-plaintext highlighter-rouge">.</code> can be used as a placeholder that indicates only one row or column).</p>
     </li>
@@ -1627,7 +1564,7 @@
 </span></code></pre></div>      </div>
 
       <blockquote class="details">
-        <div id="details-ggplot2-themes" class="box-title"><button type="button" aria-controls="details-ggplot2-themes-contents" aria-expanded="true" aria-label="Toggle details box: `ggplot2` themes"><i class="fas fa-info-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Details: `ggplot2` themes<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+        <div class="box-title details-title" id="details-ggplot2-themes"><button class="gtn-boxify-button details" type="button" aria-controls="details-ggplot2-themes" aria-expanded="true"><i class="fas fa-info-circle" aria-hidden="true" ></i> Details: `ggplot2` themes<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
         <p>In addition to <code class="language-plaintext highlighter-rouge">theme_bw()</code>, which changes the plot background to white, <code class="language-plaintext highlighter-rouge">ggplot2</code> comes with several other themes which can be useful to quickly change the look of your visualization.</p>
 
@@ -1655,15 +1592,15 @@
 
 </blockquote>
 
-<p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v8.png" alt="Volcano Plot version 8. " loading="lazy" /></p>
+<p><img src="../../images/rna-seq-counts-to-viz-in-r/volcanoPlot_v8.png" alt="Volcano Plot version 8. " width="640" height="425" loading="lazy" /></p>
 
 <blockquote class="question">
-  <div id="question-standard-error-over-the-log10-of-the-adjusted-p-value-1" class="box-title" aria-label="question box: Standard error over the `-log10` of the adjusted `P-value`"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Standard error over the `-log10` of the adjusted `P-value`</div>
+  <div class="box-title question-title" id="question-standard-error-over-the-log10-of-the-adjusted-p-value-1"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Standard error over the `-log10` of the adjusted `P-value`</div>
 
   <p>Create a scatter plot of the standard error over the <code class="language-plaintext highlighter-rouge">-log10</code> of the adjusted <code class="language-plaintext highlighter-rouge">P-value</code> with the chromosomes showing in different colors and one facet per strand. Make sure to give your plot relevant axis labels.</p>
 
   <blockquote class="solution">
-    <div id="solution-2" class="box-title"><button type="button" aria-controls="solution-2-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-2"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-2" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ggplot(data = annotatedDEgenes, aes(x = -log10(P.adj), y = StdErr, color = Chromosome)) +
  geom_point() +
@@ -1672,7 +1609,7 @@
  facet_grid(Strand ~ .)
 </code></pre></div>    </div>
 
-    <p><img src="../../images/rna-seq-counts-to-viz-in-r/ggplotExercise02.png" alt="Exercise Plot 2. " loading="lazy" /></p>
+    <p><img src="../../images/rna-seq-counts-to-viz-in-r/ggplotExercise02.png" alt="Exercise Plot 2. " width="640" height="425" loading="lazy" /></p>
 
   </blockquote>
 </blockquote>
@@ -1682,7 +1619,7 @@
 <p>We would like now to make a barplot showing the number of differentially expressed genes.</p>
 
 <blockquote class="notranslate hands_on">
-  <div id="hands-on-barplot-of-the-number-of-de-genes" class="box-title" aria-label="hands-on box: Barplot of the number of DE genes"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden"></span> Hands-on: Barplot of the number of DE genes</div>
+  <div class="box-title hands-on-title" id="hands-on-barplot-of-the-number-of-de-genes"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Barplot of the number of DE genes</div>
 
   <ol>
     <li>
@@ -1696,27 +1633,27 @@
   </ol>
 </blockquote>
 
-<p><img src="../../images/rna-seq-counts-to-viz-in-r/barPlot_v1.png" alt="Bar plot 1. " loading="lazy" /></p>
+<p><img src="../../images/rna-seq-counts-to-viz-in-r/barPlot_v1.png" alt="Bar plot 1. " width="640" height="425" loading="lazy" /></p>
 
 <blockquote class="question">
-  <div id="question-remove-the-legend" class="box-title" aria-label="question box: Remove the legend"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Remove the legend</div>
+  <div class="box-title question-title" id="question-remove-the-legend"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Remove the legend</div>
 
   <p>The chromosome is labeled on the individual plot facets so we don’t need the legend. Use the help file for <code class="language-plaintext highlighter-rouge">geom_bar</code> and any other online resources to remove the legend from the plot.</p>
 
   <blockquote class="solution">
-    <div id="solution-3" class="box-title"><button type="button" aria-controls="solution-3-contents" aria-expanded="true" aria-label="Toggle solution box: "><i class="far fa-eye" aria-hidden="true"></i><span class="visually-hidden"></span> Solution<span role="button" class="fold-unfold fa fa-minus-square"></span></button></div>
+    <div class="box-title solution-title" id="solution-3"><button class="gtn-boxify-button solution" type="button" aria-controls="solution-3" aria-expanded="true"><i class="far fa-eye" aria-hidden="true" ></i> Solution<span class="fold-unfold fa fa-minus-square"></span></button></div>
 
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ggplot(data = annotatedDEgenes, aes(x = Feature, fill = Chromosome)) +
  geom_bar(show.legend = F) +
  facet_grid(Chromosome ~ .)
 </code></pre></div>    </div>
-    <p><img src="../../images/rna-seq-counts-to-viz-in-r/barPlot_v2.png" alt="Bar plot 2. " loading="lazy" /></p>
+    <p><img src="../../images/rna-seq-counts-to-viz-in-r/barPlot_v2.png" alt="Bar plot 2. " width="640" height="425" loading="lazy" /></p>
 
   </blockquote>
 </blockquote>
 
 <blockquote class="question">
-  <div id="question-create-a-r-script-with-plots" class="box-title" aria-label="question box: Create a R script with plots"><i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden"></span> Question: Create a R script with plots</div>
+  <div class="box-title question-title" id="question-create-a-r-script-with-plots"><i class="far fa-question-circle" aria-hidden="true" ></i> Question: Create a R script with plots</div>
 
   <p>Take another few minutes to either improve one of the plots generated in this exercise or create a beautiful graph of your own (using the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization-2.1.pdf">RStudio <code class="language-plaintext highlighter-rouge">ggplot2</code> cheat sheet</a> for inspiration).</p>
 
@@ -1731,12 +1668,12 @@
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>Data manipulation and visualization are important parts of any <span class="notranslate">RNA</span>-Seq analysis. <span class="notranslate">Galaxy</span> provides several tools for that as explained in several tutorials:</p>
+<p>Data manipulation and visualization are important parts of any RNA-Seq analysis. Galaxy provides several tools for that as explained in several tutorials:</p>
 
 <ul>
-  <li><a href="/training-material/topics/transcriptomics/tutorials/ref-based/tutorial.html">Reference-based <span class="notranslate">RNA</span>-Seq</a></li>
-  <li><a href="/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-heatmap2/tutorial.html">Visualization of <span class="notranslate">RNA</span>-seq results with heatmap2</a></li>
-  <li><a href="/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html">Visualization of <span class="notranslate">RNA</span>-seq results with Volcano Plot</a></li>
+  <li><a href="/training-material/topics/transcriptomics/tutorials/ref-based/tutorial.html">Reference-based RNA-Seq</a></li>
+  <li><a href="/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-heatmap2/tutorial.html">Visualization of RNA-seq results with heatmap2</a></li>
+  <li><a href="/training-material/topics/transcriptomics/tutorials/rna-seq-viz-with-volcanoplot/tutorial.html">Visualization of RNA-seq results with Volcano Plot</a></li>
 </ul>
 
 <p>But sometimes we need more customization and then need to use programming languages as R or Python.</p>
@@ -1745,10 +1682,12 @@
 
 <p>Finally, we won’t lie; R is not the easiest-to-learn programming language ever created. So, don’t get discouraged! The truth is that even with the modest amount of R covered today, you can start using some sophisticated R software packages, and have a general sense of how to interpret an R script. Get through these lessons, and you are on your way to being an accomplished R user!</p>
 
+                </section>
 
+                <section aria-label="Tutorial Footer, Feedback, Citation" id="tutorial-footer">
                 
                 <blockquote class="key_points">
-                    <div class="box-title" aria-label="key-points box"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
+                    <div class="box-title"><i class="fas fa-key" aria-hidden="true"></i> Key points</div>
                     <ul>
                         
                         <li><p>When creating plots with <code class="language-plaintext highlighter-rouge">ggplot2</code>, think about the graphics in layers (aesthetics, geometry, statistics, scale transformation, and grouping).</p>
@@ -1780,38 +1719,18 @@
                 <br>Did you use this material as a learner or student? Click the form below to leave feedback.<i class="fas fa-hand-point-down"></i>
                 </p>
 
-                <div id="feedback-button">
-                    <img src="/training-material/shared/images/feedback.png" title="Click to activate" alt="Click here to load Google feedback frame" />
-                </div>
-                <div id="feedback-form">
-                </div>
-                <script type="text/javascript">
-                    (function (window, document) {
-                        function onDocumentReady(fn) {
-                            if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-                                fn();
-                            } else {
-                                document.addEventListener('DOMContentLoaded', fn);
-                            }
-                        }
-
-                        onDocumentReady(function () {
-                            $("#feedback-button").click(function(evt){
-                                var e = $(evt.target)
-                                e.hide();
-
-                                $("#feedback-form").html(`
-                                    <iframe id="feedback-google" class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=RNA Seq Counts to Viz in R (Transcriptomics)">Loading...</iframe>
-                                `)
-                            })
-                        });
-                    })(window, document);
-                </script>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4VZptFTQ03kHkMz0JyW9b6_S8geU5KjNE_tLM0dixT3ZQmA/viewform?embedded=true&entry.1235803833=RNA Seq Counts to Viz in R (Transcriptomics)" alt="Feedback form link">
+                    <img src="/training-material/shared/images/feedback.png" alt="Preview of the google form" />
+                </a>
 
                 <h1>Citing this Tutorial</h1>
                 <p>
                     <ol>
-                        <li id="citation-text">Bérénice Batut, Fotis E. Psomopoulos, Toby Hodges, Erasmus+ Programme,  <b>RNA Seq Counts to Viz in R (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html</a> Online; accessed TODAY
+                        <li id="citation-text">
+                            Bérénice Batut, Fotis E. Psomopoulos, Toby Hodges, Erasmus+ Programme,  <b>RNA Seq Counts to Viz in R (Galaxy Training Materials)</b>. <a href="https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html">https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html</a> Online; accessed TODAY
+                        </li>
+                        <li>
+                        Hiltemann, Saskia, Rasche, Helena et al., 2023 <b>Galaxy Training: A Powerful Framework for Teaching!</b> PLOS Computational Biology <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010752">10.1371/journal.pcbi.1010752</a>
                         </li>
                         <li>
                         Batut et al., 2018 <b>Community-Driven Data Analysis Training for Biology</b> Cell Systems <a href="https://doi.org/10.1016%2Fj.cels.2018.05.012">10.1016/j.cels.2018.05.012</a>
@@ -1823,7 +1742,7 @@
                 <blockquote class="details">
 
                   <div id="citation-bibtex" class="box-title">
-                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false" aria-label="Toggle details box: BibTeX for citing this tutorial">
+                    <button type="button" aria-controls="citation-bibtex" aria-expanded="false">
                       <i class="fas fa-info-circle" aria-hidden="true"></i>
                       <span class="visually-hidden"></span> BibTeX<span role="button" class="fold-unfold fa fa-minus-square" aria-hidden="true"></span>
                     </button>
@@ -1832,28 +1751,31 @@
 
                    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight">
 
+
 <code id="citation-code">@misc{transcriptomics-rna-seq-counts-to-viz-in-r,
 author = "Bérénice Batut and Fotis E. Psomopoulos and Toby Hodges and Erasmus+ Programme",
-title = "RNA Seq Counts to Viz in R (Galaxy Training Materials)",
-year = "",
-month = "",
-day = ""
-url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html}",
-note = "[Online; accessed TODAY]"
+	title = "RNA Seq Counts to Viz in R (Galaxy Training Materials)",
+	year = "",
+	month = "",
+	day = ""
+	url = "\url{https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.html}",
+	note = "[Online; accessed TODAY]"
 }
-@article{Batut_2018,
-    doi = {10.1016/j.cels.2018.05.012},
-    url = {https://doi.org/10.1016%2Fj.cels.2018.05.012},
-    year = 2018,
-    month = {jun},
-    publisher = {Elsevier {BV}},
-    volume = {6},
-    number = {6},
-    pages = {752--758.e1},
-    author = {B{\'{e}}r{\'{e}}nice Batut and Saskia Hiltemann and Andrea Bagnacani and Dannon Baker and Vivek Bhardwaj and Clemens Blank and Anthony Bretaudeau and Loraine Brillet-Gu{\'{e}}guen and Martin {\v{C}}ech and John Chilton and Dave Clements and Olivia Doppelt-Azeroual and Anika Erxleben and Mallory Ann Freeberg and Simon Gladman and Youri Hoogstrate and Hans-Rudolf Hotz and Torsten Houwaart and Pratik Jagtap and Delphine Larivi{\`{e}}re and Gildas Le Corguill{\'{e}} and Thomas Manke and Fabien Mareuil and Fidel Ram{\'{\i}}rez and Devon Ryan and Florian Christoph Sigloch and Nicola Soranzo and Joachim Wolff and Pavankumar Videm and Markus Wolfien and Aisanjiang Wubuli and Dilmurat Yusuf and James Taylor and Rolf Backofen and Anton Nekrutenko and Björn Grüning},
-    title = {Community-Driven Data Analysis Training for Biology},
-    journal = {Cell Systems}
-}</code>
+@article{Hiltemann_2023,
+	doi = {10.1371/journal.pcbi.1010752},
+	url = {https://doi.org/10.1371%2Fjournal.pcbi.1010752},
+	year = 2023,
+	month = {jan},
+	publisher = {Public Library of Science ({PLoS})},
+	volume = {19},
+	number = {1},
+	pages = {e1010752},
+	author = {Saskia Hiltemann and Helena Rasche and Simon Gladman and Hans-Rudolf Hotz and Delphine Larivi{\`{e}}re and Daniel Blankenberg and Pratik D. Jagtap and Thomas Wollmann and Anthony Bretaudeau and Nadia Gou{\'{e}} and Timothy J. Griffin and Coline Royaux and Yvan Le Bras and Subina Mehta and Anna Syme and Frederik Coppens and Bert Droesbeke and Nicola Soranzo and Wendi Bacon and Fotis Psomopoulos and Crist{\'{o}}bal Gallardo-Alba and John Davis and Melanie Christine Föll and Matthias Fahrner and Maria A. Doyle and Beatriz Serrano-Solano and Anne Claire Fouilloux and Peter van Heusden and Wolfgang Maier and Dave Clements and Florian Heyl and Björn Grüning and B{\'{e}}r{\'{e}}nice Batut and},
+	editor = {Francis Ouellette},
+	title = {Galaxy Training: A powerful framework for teaching!},
+	journal = {PLoS Comput Biol} Computational Biology}
+}
+</code>
                    </pre></div></div>
                    </p>
                 </blockquote>
@@ -1861,11 +1783,11 @@ note = "[Online; accessed TODAY]"
                 
 
 
-<script type="text/javascript">
+<script>
 // update the date on load, or leave fallback of 'today'
-d = new Date();
-document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", d.toDateString());
-document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", d.toDateString());
+const citationTodaysDate = new Date();
+document.getElementById("citation-code").innerHTML = document.getElementById("citation-code").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
+document.getElementById("citation-text").innerHTML = document.getElementById("citation-text").innerHTML.replace("TODAY", citationTodaysDate.toDateString());
 </script>
 
                 <i class="far fa-thumbs-up" aria-hidden="true"></i> Congratulations on successfully completing this tutorial!
@@ -1874,49 +1796,79 @@ document.getElementById("citation-text").innerHTML = document.getElementById("ci
 
                 
 
+		
+                <blockquote class="agenda follow-up" id="admins-install-missing-tools">
+                    <div class="box-title">Galaxy Administrators: Install the missing tools</div>
+			<p>You can use Ephemeris's <code>shed-tools install</code> command to install the tools used in this tutorial.</p>
+<div class="highlight"><pre class="highlight"><code>shed-tools install [-g GALAXY] [-a API_KEY] -t &lt;(curl https://training.galaxyproject.org/training-material/api/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.json | jq .admin_install_yaml -r)</code></pre></div>
+<p>Alternatively you can copy and paste the following YAML</p>
+<div class="highlight"><pre class="highlight"><code>---
+install_tool_dependencies: true
+install_repository_dependencies: true
+install_resolver_dependencies: true
+tools: []
+</code></pre></div>
+                </blockquote>
+		
+
+
+                </section>
+
             </div>
         </div>
     </div>
-</section>
+</article>
 <br/>
 <br/>
 <br/>
 
         </div>
-        
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					Resource <i class="fas fa-fingerprint" aria-hidden="true"></i><span class="visually-hidden">purl</span><abbr title="Persistent URL">PURL</abbr>: <a href="https://gxy.io/GTN:T00299">https://gxy.io/GTN:T00299</a>
+				</p>
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/topics/transcriptomics/tutorials/rna-seq-counts-to-viz-in-r/tutorial.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

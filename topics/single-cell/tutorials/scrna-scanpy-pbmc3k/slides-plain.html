@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Clustering 3K PBMCs with Scanpy</title>
+        
+            <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
+
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@b9509159e99296f29551e0575dfadf5880390048",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
+        
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1688456300' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1688456300' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Clustering 3K PBMCs with Scanpy">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-07-04 07:38:24 +0000">
+<meta name="DC.creator" content="Mehmet Tekman">
+
+        
+        
+        
+        
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Clustering 3K PBMCs with Scanpy">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
+        
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
+    </head>
+    <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1688456300'></script>
+        <header>
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
+        <div class="container">
+            <a class="navbar-brand" href="/training-material/">
+                <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
+                
+                    Galaxy Training!
+                
+            </a>
+
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="top-navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        
+                        <a class="nav-link" href="/training-material/hall-of-fame" title="Hall of Fame">
+                           <i class="fas fa-users" aria-hidden="true"></i><span class="visually-hidden">hall-of-fame</span> Contributors
+                        </a>
+
+                        
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Help">
+        <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">help</span> Help
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <!-- disable Tess for now
+        <form method="get" action="https://tess.elixir-europe.org/materials">
+            <input type="text" id="search" name="q" value="" style="margin-left: 0.5em;/*! border-radius: 0px; */">
+            <input type="hidden" value="Galaxy Training" name="content_provider">
+            <input type="submit" value="Search on TeSS" style="width: 92%;border-radius: 0px;margin: 0.5em;background: #f47d20;border: 0px;padding: 0.25em;" class="">
+        </form>
+        -->
+
+        <a class="dropdown-item" href="/training-material/faq" title="Check our FAQs">
+           <i class="far fa-question-circle" aria-hidden="true"></i><span class="visually-hidden">question</span> FAQs
+        </a>
+        
+        <a class="dropdown-item" href="https://help.galaxyproject.org/" title="Discuss on Galaxy Help">
+            <i class="far fa-comments" aria-hidden="true"></i><span class="visually-hidden">feedback</span> Galaxy Help Forum
+        </a>
+        <a class="dropdown-item" href="https://gitter.im/Galaxy-Training-Network/Lobby" title="Discuss on gitter">
+           <i class="fab fa-gitter" aria-hidden="true"></i><span class="visually-hidden">gitter</span> Discuss on Gitter
+        </a>
+    </div>
+</li>
+
+
+                    <li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Extras">
+        <i class="far fa-star" aria-hidden="true"></i><span class="visually-hidden">galaxy-star</span> Extras
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides.html" title="Edit on GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+        </a>
+
+        <a class="dropdown-item" href="/training-material/stats.html" title="Show view statistics about this repository">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN statistics
+        </a>
+
+        <a class="dropdown-item" href="https://plausible.galaxyproject.eu/training.galaxyproject.org?period=12mo&page=/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides-plain.html" title="Show view statistics of this page">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
+        </a>
+
+        <!-- link to feedback -->
+        
+            <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
+                <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
+            </a>
+        
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-palette" aria-hidden="true"></i><span class="visually-hidden">gtn-theme</span> Theme
+            </div>
+
+            <div id="theme-selector" data-toggle="buttons">
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
+            </div>
+
+        </div>
+
+        <div class="dropdown-item">
+            <div>
+                <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
+            </div>
+
+            <div id="archive-selector">
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-06-01/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides-plain.html">2022-06-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-05-01/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides-plain.html">2022-05-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2022-04-01/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides-plain.html">2022-04-01</a>
+            
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
+            </div>
+
+        </div>
+
+    </div>
+</li>
+
+
+                    <!-- Search bar-->
+                    <li class="nav-item">
+                      <div id="navbarSupportedContent" role="search">
+                        <!-- Search form -->
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
+                          <i class="fas fa-search nav-link" aria-hidden="true"></i>
+                          <div class="md-form mb-2">
+                            <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
+                          </div>
+                        </form>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+        
+        <div class="container main-content" role="main">
+        <section class="tutorial">
+	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides.html">View markdown source on GitHub</a>
+	<h1>Clustering 3K PBMCs with Scanpy</h1>
+		<h2>Contributors</h2>
+<div markdown="0">
+
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/mtekman/" class="contributor-badge contributor-mtekman"><img src="https://avatars.githubusercontent.com/mtekman?s=36" alt="Avatar" width="36" height="36">Mehmet Tekman</a>
+	</div>
+
+</div>
+
+
+		
+		<h2>Questions</h2>
+		<ul>
+		
+		<li><p>What are the main steps of scRNA-seq?</p>
+</li>
+		
+		<li><p>What kind of variation can confound an analysis?</p>
+</li>
+		
+		</ul>
+		
+
+		
+		<h2>Objectives</h2>
+		<ul>
+		
+		<li><p>Learn the main stages of an scRNA-seq analysis</p>
+</li>
+		
+		<li><p>Understand the methods and concepts underlying scRNA-seq</p>
+</li>
+		
+		</ul>
+		
+
+		
+
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 4, 2023 </div>
+
+	<hr />
+
+
+	<h3 id="single-cell-rna-pre-processing">Single Cell RNA Pre-processing</h3>
+
+<p><img src="../../images/scrna-scanpy-pbmc3k/scrna_preproc.svg" alt="fig01" /></p>
+
+<p><span>Speaker Notes</span></p>
+<ol>
+  <li>Barcode Extraction</li>
+  <li>Mapping</li>
+  <li>Gene Annotation</li>
+  <li>Batch count matrices</li>
+</ol>
+
+<hr />
+
+<h3 id="single-cell-rna-downstream-analysis">Single Cell RNA Downstream Analysis</h3>
+
+<p><img src="../../images/scrna-scanpy-pbmc3k/scrna_downstream.svg" alt="fig10" /></p>
+
+<p><span>Speaker Notes</span></p>
+<ol>
+  <li>Filtering</li>
+  <li>Normalising
+    <ul>
+      <li>Confounder Removal</li>
+    </ul>
+  </li>
+  <li>Dimension Reduction</li>
+  <li>Clustering
+    <ul>
+      <li>Annotation</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="barcoding-cells">Barcoding Cells</h3>
+
+<p><img src="../../images/scrna-intro/scrna_pbb_barcodes_add.svg" alt="fig1" /></p>
+
+<hr />
+
+<h3 id="filtering-cell-and-gene">Filtering: Cell and Gene</h3>
+
+<p><img src="../../images/scrna-raceid/libsize.svg" alt="fig2" /></p>
+
+<hr />
+
+<h3 id="normalisation-technical-variation">Normalisation: Technical Variation</h3>
+
+<p><img src="../../images/scrna-raceid/technical_variation.svg" alt="fig3" /></p>
+
+<hr />
+
+<h3 id="normalisation-biological-variation">Normalisation: Biological Variation</h3>
+
+<p><img src="../../images/scrna-raceid/cellcycle.svg" alt="fig4" /></p>
+
+<hr />
+
+<h3 id="dimension-reduction-relatedness-of-cells">Dimension Reduction: Relatedness of Cells</h3>
+
+<p><img src="../../images/scrna-intro/scrna_knn.svg" alt="fig5" /></p>
+
+<p><span>Speaker Notes</span>
+Build a KNN graph from distance matrix:</p>
+<ul>
+  <li>If P and q share distance which is</li>
+</ul>
+
+<hr />
+
+<h3 id="dimension-reduction-projection">Dimension Reduction: Projection</h3>
+
+<p><img src="../../images/scrna-raceid/dimred.svg" alt="fig6" /></p>
+
+<p><span>Speaker Notes</span></p>
+<ul>
+  <li>Can use tSNE, PCA, UMAP</li>
+</ul>
+
+<hr />
+
+<h3 id="community-clustering-louvain">Community Clustering: Louvain</h3>
+
+<p>Aim: Maximise internal links and minimise external links</p>
+
+<p><img src="../../images/scrna-intro/commgraph1.svg" alt="fig7" /></p>
+
+<hr />
+
+<h3 id="community-clustering-louvain-1">Community Clustering: Louvain</h3>
+
+<p>Pick a cell, place in neighbour, and accept if <em>internal:external</em> increases</p>
+
+<p><img src="../../images/scrna-intro/commgraph2.svg" alt="fig8" /></p>
+
+<hr />
+
+<h3 id="cell-type-identifying-cluster-types">Cell Type: Identifying Cluster Types</h3>
+
+<p>.left-column50[.image-100[<img src="../../images/scrna-scanpy-pbmc3k/singlecellplot3.png" alt="fig9" />]]
+.left-column50[.image-100[<img src="../../images/scrna-scanpy-pbmc3k/singlecellplot4.png" alt="fig10" />]]</p>
+
+<hr />
+
+<h3 id="clustering-hard-vs-soft">Clustering: Hard vs Soft</h3>
+
+<p>.pull-left[</p>
+
+<p><br /></p>
+
+<p>.image-100[<img src="../../images/scrna-scanpy-pbmc3k/singlecellplot3.png" alt="fig11" />]</p>
+
+<p><em>Hard</em></p>
+<ul>
+  <li>Big spaces between clusters</li>
+  <li>Cell types are well defined and the clustering reflects that</li>
+</ul>
+
+<p>]</p>
+
+<p>–</p>
+
+<p>.pull-right[
+.image-100[<img src="../../images/scrna-intro/10xdata.png" alt="fig12" />]</p>
+
+<p><em>Soft</em></p>
+<ul>
+  <li>Clusters bleed into one another</li>
+  <li>Cell types seem to intermingle with one another.</li>
+</ul>
+
+<p>]</p>
+
+<p><span>Speaker Notes</span>
+Why? Why would there be clusters so close to one another?</p>
+
+<hr />
+
+<h3 id="continuous-phenotypes">Continuous Phenotypes:</h3>
+
+<p>.image-100[<img src="../../images/scrna-raceid/contpheno.svg" alt="fig13" />]</p>
+
+<p><span>Speaker Notes</span></p>
+<ul>
+  <li>
+    <p>Cells aren’t discrete, they transition</p>
+  </li>
+  <li>
+    <p>Continuously changing over time from a less mature type to more mature type</p>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="interactive-environments-liveusegalaxyeu">Interactive Environments: live.usegalaxy.eu</h3>
+
+<p><br /></p>
+
+<video style="width:100%;height:auto;" controls="">
+    <source src="https://zenodo.org/record/3687100/files/live_cellxgene.mp4" />
+</video>
+
+<p><span>Speaker Notes</span>
+What is Differential Expression in scRNA-seq?</p>
+
+<hr />
+
+<h3 id="cellxgene-local-test">CellxGene Local Test</h3>
+
+<ul>
+  <li>
+    <p>We can probe clusters to see how they are so differentially expressed</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  pip3 install cellxgene
+  cellxgene launch https://cellxgene-example-data.czi.technology/pbmc3k.h5ad
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Launch locally: http://127.0.0.1:5005</p>
+  </li>
+</ul>
+
+
+	<hr />
+
+
+<h2>Key Points</h2>
+
+<ul>
+
+<li>Understanding the purpose of barcoding</li>
+
+<li>Knowing the difference between hard and soft clustering</li>
+
+<li>A KNN graph can be generated from a count matrix.</li>
+
+<li>Community clustering can be generated from a KNN graph.</li>
+
+<li>Interpreting scRNA-seq plots</li>
+
+</ul>
+
+
+
+
+
+
+
+<h2>Thank you!</h2>
+
+This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
+
+
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
+
+
+This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</section>
+
+
+
+
+
+        </div>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/b9509159e99296f29551e0575dfadf5880390048">b950915</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/single-cell/tutorials/scrna-scanpy-pbmc3k/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+    </div>
+</footer>
+
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1688456300'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </body>
+</html>
